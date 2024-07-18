@@ -1,0 +1,148 @@
+\documentclass[draft]{book}
+
+
+% Preamble ====================================================================
+% Layout
+\input{layout/format.tex}
+\input{layout/font.tex}
+\input{layout/pagestyle.tex}
+\input{layout/toc.tex}
+\pdfminorversion=7
+\usepackage{todonotes}
+\usepackage{lipsum}
+
+% Bibliography
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% Title
+\title{\sffamily An EEG-based visual Brain-Computer Interface for gaze-free communication}
+\author{Ir. Arne Van Den Kerchove}
+
+
+\begin{document}
+
+% Front matter ================================================================
+\pagestyle{front}
+\frontmatter
+
+\chapter{Preface}
+\lipsum[1]
+\chapter{Abstract}
+\lipsum[2-4]
+\chapter{Samenvatting}
+\lipsum[5-7]
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+
+% Main matter =================================================================
+\mainmatter
+\pagestyle{main}
+
+
+\part{Introduction \& Literature}
+
+\chapter{Brain-Computer Interfaces}
+\todo{chapters don't nicely follow imrad structure. Is this  problem?}
+\todo{concern: is a bit in between formula 1 and formula 2}
+\begin{refsection}
+\section{Rationale}
+\section{Overview \& state-of-the-art}
+different recording technologies and level of invasiveness + infographic
+active/reactive/passive + infographic
+\section{Visual Event-Related Potential based BCIs}
+\todo{Check provisionary and final doctoral plan for motivation}
+\printbibliography[heading=subbibliography]
+\end{refsection}
+
+\chapter{Linear ERP decoding}
+
+\chapter{Gaze-independent BCIs}
+\section{Oculomotor deficits in Locked-in Syndrome}
+\section{Gaze-independent visual BCIs}
+\section{Benefits \& drawbacks of covert attention in BCI operation}
+\section{Electrophysiological correlates of covert attention}
+\section{Compensating for covert attention}
+
+\chapter{Problem statement \& rationale}
+\emph{Goal:} Enable communication for eye-motor impaired patients
+
+\emph{Method:} Design a comfortable interface that allows them to maximally exploit
+their residual gaze capabilities, by leveraging a non-invasive high-ITR
+visuospatial ERP-based BCI and improving ERP decoding performance (in general
+and specifically in gaze-independent settings).
+
+\emph{Novelty:}
+
+
+\part{Algorithms \& Decoders}
+
+\chapter{Kronecker-structured discriminant analysis}
+\todo{check chapters/structure paper}
+\todo{check structure Leuven.ai poster}
+\section{The spatiotemporal EEG covariance}
+\section{The single-KP covariance model}
+\section{The sum-of-KP covariance model}
+\section{Decoding performance}
+\section{Extension into the space-time-frequency domain}
+
+\chapter{Tensor discriminant analysis}
+\section{The tensor structure of EEG data}
+\section{Higher-order Discriminant Analysis}
+\section{Block-term Tensor Discriminant Analysis}
+\section{Decoding performance}
+\section{Tensorizations coping with latency jitter}
+
+\chapter{Woody Classifier-based Latency Estimation}
+\section{The role of latency jitter in gaze-independent ERP decoding}
+\section{Latency estimation and correction}
+\todo{check earlier draft alignment paper}
+\todo{check deleted paragraphs in jitter paper}
+\section{Classifier-based Latency Estimation}
+\section{Classifier-based Latency Estimation with Woody iterations}
+\section{Simulation study}
+
+\part{Experiments \& Applications}
+
+\chapter{Interface design \& experimental setup}
+\section{The Hex-o-Spell interface}
+\section{Visuospatial attention conditions}
+
+\chapter{Compensating jitter for gaze-independent decoding}
+\section{Data collection \& preprocessing}
+\section{Results}
+\section{Discussion}
+\todo{check chapters paper}
+
+\chapter{Patient cases}
+\section{Patient presentation}
+\section{Data collection \& preprocessing}
+\todo{Define structure patient results/discussion}
+\section{Outcomes}
+\section{Discussion}
+
+\chapter{Integrating gaze-tracking data}
+
+\chapter{Conclusions \& recommendations}
+\section{General discussion}
+\section{Limitations}
+\section{Future directions}
+\section{Working with patients}
+\section{Conclusion}
+
+
+
+\appendix
+\backmatter
+\chapter{Curriculum vitae}
+\chapter{Publications}
+\chapter{Funding \& acknowledgments}
+\lipsum[1]
+\chapter{Personal contribution}
+\lipsum[2]
+\chapter{Conflict of interest}
+\lipsum[3]
+\end{document}

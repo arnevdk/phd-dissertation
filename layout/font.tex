@@ -1,0 +1,16 @@
+\usepackage[T1]{fontenc}
+
+\usepackage[cmintegrals,cmbraces]{newtxmath}
+
+% Serif font: Garamond
+\usepackage{ebgaramond-maths}
+
+% Sans-serif family: Open-Sans
+\usepackage{opensans}
+\renewcommand{\sffamily}{\opensans}
+
+% Setup titles
+\usepackage{titlesec}
+\titleformat{\part}[display]{\bfseries}{\sffamily\Large\partname\ \thepart}{10pt}{\Huge}
+\titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}

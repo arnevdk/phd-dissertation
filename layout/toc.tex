@@ -1,0 +1,19 @@
+% Setup ToC
+\usepackage{tocloft}
+\renewcommand\cftpartfont{\sffamily\bfseries}
+\renewcommand\cftpartpagefont{\sffamily\bfseries}
+\renewcommand\cftchapfont{\sffamily}
+\renewcommand\cftchappagefont{\sffamily}
+\renewcommand\cftsecfont{\sffamily\small}
+\renewcommand\cftsecpagefont{\sffamily}
+\makeatletter
+\renewcommand\@cftmaketoctitle{\chapter{\contentsname}}
+\makeatother
+% Setup LoF
+\makeatletter
+\renewcommand\@cftmakeloftitle{\chapter{\listfigurename}}
+% Setup LoT
+\makeatletter
+\renewcommand\@cftmakelottitle{\chapter{\listtablename}}
+\makeatother
+\makeatother

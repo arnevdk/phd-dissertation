@@ -1,0 +1,34 @@
+\usepackage{fancyhdr}
+
+% Capture part and chapter title
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+   \ifx\\#1\\% optional argument not present?
+      \origpart{#2}%
+      \renewcommand*\parttitle{#2}%
+   \else
+      \origpart[#1]{#2}%
+      \renewcommand*\parttitle{#1}%
+   \fi
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\hskip 1em #1}{}}
+\newcommand{\PartmarkHead}{
+  \ifx\parttitle\empty\else\partname\ \thepart:\ \parttitle\fi
+}
+% Setup header
+\fancypagestyle{front}{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[RO]{\sffamily\thepage\hfill}%
+  \fancyhead[LE]{\sffamily\hfill\thepage}%
+}
+\fancypagestyle{main}{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[RO]{\sffamily\thepage\hfill\PartmarkHead}%
+  \fancyhead[LE]{\sffamily\leftmark\hfill\thepage}%
+}
+\fancypagestyle{plain}{%
+  \fancyhf{} % clear all header and footer fields
+}
+\renewcommand{\headrulewidth}{0pt}
