@@ -35,8 +35,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create out dir
+        run: mkdir out
+
       - name: Build manuscript
-        run: latexmk main_manuscript.tex
+        run: latexmk main_manuscript.tex > out/build_report_manuscript.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -52,8 +55,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create out dir
+        run: mkdir out
+
       - name: Build booklet
-        run: latexmk main_booklet.tex
+        run: latexmk main_booklet.tex > out/build_report_booklet.txt
 
       - name: Prepend cover
         run: gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=out/main_booklet_with_cover.pdf  cover.pdf out/main_booklet.pdf
