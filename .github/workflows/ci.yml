@@ -41,8 +41,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dissertation-manuscript.pdf
-          path: out/main_booklet.pdf
+          name: manuscript
+          path: out/
 
   build-booklet:
     runs-on: ubuntu-latest
@@ -58,14 +58,8 @@ jobs:
       - name: Prepend cover
         run: gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=out/main_booklet_with_cover.pdf  cover.pdf out/main_booklet.pdf
 
-      - name: Upload without cover
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dissertation-booklet.pdf
-          path: out/main_booklet.pdf
-
-      - name: Upload with cover
-        uses: actions/upload-artifact@v4
-        with:
-          name: dissertation-booklet-with-cover.pdf
-          path: out/main_booklet_with_cover.pdf
+          name: booklet
+          path: out
