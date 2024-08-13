@@ -35,7 +35,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Build manuscript
         run: latexmk main_manuscript.tex
 
       - name: Upload artifacts
@@ -52,11 +52,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Build booklet
         run: latexmk main_booklet.tex
 
-      - name: Upload artifacts
+      - name: Prepend cover
+        run: gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=out/main_booklet_with_cover.pdf  cover.pdf out/main_booklet.pdf
+
+      - name: Upload without cover
         uses: actions/upload-artifact@v4
         with:
           name: dissertation-booklet.pdf
           path: out/main_booklet.pdf
+
+      - name: Upload with cover
+        uses: actions/upload-artifact@v4
+        with:
+          name: dissertation-booklet.pdf
+          path: out/main_booklet_with_cover.pdf
