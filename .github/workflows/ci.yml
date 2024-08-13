@@ -67,5 +67,5 @@ jobs:
       - name: Upload with cover
         uses: actions/upload-artifact@v4
         with:
-          name: dissertation-booklet.pdf
+          name: dissertation-booklet-with-cover.pdf
           path: out/main_booklet_with_cover.pdf
