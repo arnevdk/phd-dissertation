@@ -17,8 +17,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
-        run: chktex main.tex
+        run: chktex main.tex > lint_report.txt
+        with:
+          name: lint_report.txt
+          path: lint_report.txt
         continue-on-error: True
+
         
   build-booklet:
     runs-on: ubuntu-latest
@@ -30,3 +34,6 @@ jobs:
 
       - name: Run a one-line script
         run: latexmk main.tex
+        with:
+          name: dissertation-booklet.pdf
+          path: out/main.pdf
