@@ -1,5 +1,6 @@
 \usepackage[T1]{fontenc}
 
+\usepackage{xcolor}
 \usepackage[cmintegrals,cmbraces]{newtxmath}
 
 % Serif font: Garamond
@@ -11,6 +12,8 @@
 
 % Setup titles
 \usepackage{titlesec}
-\titleformat{\part}[display]{\bfseries}{\sffamily\Large\partname\ \thepart}{10pt}{\Huge}
+\usepackage{afterpage}
+\titleformat{\part}[display]{\pagecolor{lightgray}\vskip10em\centering\bfseries}{\sffamily\Large\partname\
+\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
 \titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
