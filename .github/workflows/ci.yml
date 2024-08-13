@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: chktex main.tex > lint_report.txt
+        continue-on-error: True
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint_report.txt
+          path: lint_report.txt
+
+        
+  build-booklet:
+    runs-on: ubuntu-latest
+    container:
+      image: texlive/texlive:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: latexmk main.tex
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dissertation-booklet.pdf
+          path: out/main.pdf
