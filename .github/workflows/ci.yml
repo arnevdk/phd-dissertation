@@ -61,9 +61,6 @@ jobs:
       - name: Build booklet
         run: latexmk main_booklet.tex > out/build_report_booklet.txt
 
-      - name: debug
-        run: ls out
-
       - name: Prepend cover
         run: gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=out/main_booklet_with_cover.pdf  cover.pdf out/main_booklet.pdf
 

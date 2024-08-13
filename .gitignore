@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/vim,latex,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=vim,latex,python
 
+out
+build
+
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
