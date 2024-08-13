@@ -18,10 +18,13 @@ jobs:
 
       - name: Run a one-line script
         run: chktex main.tex > lint_report.txt
+        continue-on-error: True
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: lint_report.txt
           path: lint_report.txt
-        continue-on-error: True
 
         
   build-booklet:
@@ -34,6 +37,9 @@ jobs:
 
       - name: Run a one-line script
         run: latexmk main.tex
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: dissertation-booklet.pdf
           path: out/main.pdf
