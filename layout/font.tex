@@ -14,6 +14,9 @@
 \usepackage{titlesec}
 \usepackage{afterpage}
 \titleformat{\part}[display]{\pagecolor{lightgray}\vskip10em\centering\bfseries}{\sffamily\Large\partname\
-\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
+	\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
 \titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries}{\thesubsubsection}{1em}{}
+%\titlespacing*{\subsubsection}{0pt}{1em}{0pt}

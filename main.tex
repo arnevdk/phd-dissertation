@@ -5,10 +5,15 @@
 \pdfminorversion=7
 \usepackage{todonotes}
 \usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{enumitem}
+\usepackage{hyperref}
 
 % Bibliography
 \usepackage[backend=biber]{biblatex}
 \addbibresource{references.bib}
+\addbibresource{publications.bib}
 
 % Title
 \title{\sffamily An EEG-based visual Brain-Computer Interface for gaze-free communication}
@@ -18,7 +23,7 @@
 \begin{document}
 
 % Front matter ================================================================
-%\pagestyle{front}
+\pagestyle{front}
 \frontmatter
 
 \chapter{Preface}
@@ -35,27 +40,26 @@
 
 % Main matter =================================================================
 \mainmatter
-%\pagestyle{main}
+\pagestyle{main}
 
 
 \part{Introduction \& Literature}
 
 \chapter{Brain-Computer Interfaces}
-\todo{chapters don't nicely follow imrad structure. Is this  problem?}
-\todo{concern: is a bit in between formula 1 and formula 2}
 \begin{refsection}
-\section{Rationale}
-\section{Overview \& state-of-the-art}
-different recording technologies and level of invasiveness + infographic
-active/reactive/passive + infographic
-\section{Visual Event-Related Potential based BCIs}
-\todo{Check provisionary and final doctoral plan for motivation}
-\printbibliography[heading=subbibliography]
+	\section{Rationale}
+	\section{Overview \& state-of-the-art}
+	different recording technologies and level of invasiveness + infographic
+	active/reactive/passive + infographic
+	\section{Visual Event-Related Potential based BCIs}
+	\todo{Check provisionary and final doctoral plan for motivation}
+	\printbibliography[heading=subbibliography]
 \end{refsection}
 
 \chapter{Linear ERP decoding}
 \section{LCMV-beamforming}
-proof equivalent to LDA
+proof equivalent to LDA, better results with balanced and correctly centered
+covariance matrix
 \section{Toeplitz-LDA}
 \section{Other methods}
 
@@ -78,22 +82,15 @@ and specifically in gaze-independent settings).
 
 
 \part{Algorithms \& Decoders}
-
-\chapter{Kronecker-structured discriminant analysis}
-\todo{check chapters/structure paper}
-\todo{check structure Leuven.ai poster}
-\section{The spatiotemporal EEG covariance}
-\section{The single-KP covariance model}
-\section{The sum-of-KP covariance model}
-\section{Decoding performance}
-\section{Extension into the space-time-frequency domain}
+\include{part1/kronlda.tex}
 
 \chapter{Tensor discriminant analysis}
 \section{The tensor structure of EEG data}
 \section{Higher-order Discriminant Analysis}
 \section{Block-term Tensor Discriminant Analysis}
 \section{Decoding performance}
-\section{Tensorizations coping with latency jitter}
+\section{Discussion}
+%\section{Tensorizations coping with latency jitter}
 
 \chapter{Woody Classifier-based Latency Estimation}
 \section{The role of jitter in gaze-independent ERP decoding}
@@ -103,6 +100,7 @@ and specifically in gaze-independent settings).
 \section{Classifier-based Latency Estimation}
 \section{Classifier-based Latency Estimation with Woody iterations}
 \section{Simulation study}
+\section{Discussion}
 
 \part{Experiments \& Applications}
 
@@ -136,7 +134,6 @@ and specifically in gaze-independent settings).
 
 \appendix
 \backmatter
-\chapter{Curriculum vitae}
 \chapter{Publications}
 \chapter{Funding \& acknowledgments}
 \lipsum[1]
@@ -144,4 +141,5 @@ and specifically in gaze-independent settings).
 \lipsum[2]
 \chapter{Conflict of interest}
 The authors declare no conflict of interest.
+\include{backmatter/cv.tex}
 \end{document}

@@ -1,0 +1,192 @@
+% Structure
+
+\newenvironment{cvlist}{
+	\begin{description}[font=\normalfont]\setlength\itemsep{0em}}
+		{\end{description}}
+
+\newcommand{\cvitem}[2]{\item[#1,] #2}
+
+%Preamble
+
+
+%\begin{minipage}[b]{.7\linewidth}
+%	\Large \textbf{Arne Van Den Kerchove}\\
+%	\normalsize Doctoral Researcher Computational Neuroscience\\
+%	KU Leuven, University of Lille
+%  \bigskip
+%
+%  \texttt{arne.vandenkerchove@kuleuven.be \\
+%  arne.vandenkerchove@univ-lille.fr \\
+%  arne@vandenkerchove.com \\
+%  +32 473 32 78 71 \\
+%	\url{https://arne.vandenkerchove.com}\\
+%	\url{https://orcid.org/0000-0002-9367-2986} \\
+%  \url{https://linkedin.com/in/arnevdk} \\}
+%
+%%	\begin{tabular}{@{}c l}
+%%		\faAt        & arne.vandenkerchove@kuleuven.be             \\
+%%		\faAt        & arne.vandenkerchove@univ-lille.fr           \\
+%%		\faAt        & arne@vandenkerchove.com                     \\
+%%		\faPhone     & +32 473 32 78 71                            \\
+%%		\faMapMarker & Leuven, Belgium                             \\
+%%		\faMapMarker & Laboratory for Neuro- and Psychophysiology  \\
+%%		             & KU Leuven-Campus Gasthuisberg             \\
+%%		             & ON II-Herestraat 49-box 1021            \\
+%%		             & BE-3000 Leuven                              \\
+%%		\faMapMarker & UMR CRIStAL                                 \\
+%%		             & Université de Lille-Campus scientifique   \\
+%%		             & Bâtiment ESPRIT-Avenue Henri Poincaré     \\
+%%		             & FR-59655 Villeneuve d'Ascq                  \\
+%%		\faGlobe     & \url{https://arne.vandenkerchove.com}       \\
+%%		\aiOrcid     & \url{https://orcid.org/0000-0002-9367-2986} \\
+%%		\faLinkedin  & \url{https://linkedin.com/in/arnevdk}
+%%	\end{tabular}
+%\end{minipage}%
+%\begin{minipage}[b]{.29\linewidth}
+%	\includegraphics[width=\linewidth]{photo.jpg}
+%\end{minipage}
+
+% Curriculum vitae =============================================================
+\chapter{Curriculum vitae}
+\section*{About me}
+
+I am a Ph.D. candidate\todo{change} at KU Leuven Laboratory for Neuro- and Psychophysiology
+and the University of Lille Research Center for Informatics, Signal Processing,
+and Control Science. My research is centered on developing brain-computer
+interface (BCI) technologies with a primary focus on assisting individuals with
+severe disabilities, especially those with motor and eye movement impairments.
+My goal is to enhance their quality of life by creating accurate and
+user-friendly BCIs. Combining my expertise in machine learning, signal
+processing, and user interface design with insights from neurophysiology, my
+PhD centers around the development of an event-related potential BCI system
+using EEG for real-time communication. I strongly believe in the potential of
+innovative neurotechnology to empower individuals and patients, enabling them
+to lead more independent and fulfilling lives.
+
+\paragraph{Keywords:} brain-computer interfaces, event-related
+potentials, multilinear classification, covert visual attention
+
+\subsection*{Education}
+
+\begin{cvlist}
+	\cvitem{Ph.D.\ in Biomedical Sciences}{KU Leuven, 2024}
+	\cvitem{Ph.D.\ in Control Science and Signal Processing}{University of
+		Lille, 2024}
+	\cvitem{M.Sc.\ in Engineering Science: Computer Science}{KU Leuven, 2024}
+	\cvitem{B.Sc.\ in Informatics}{KU Leuven, 2017}
+\end{cvlist}
+
+\subsection*{Publications}
+\nocite{%
+	VanDenKerchove2020,
+	Libert2022,
+	VanDenKerchove2022,
+	VanDenKerchove2024,
+}
+\printbibliography[heading=none, resetnumbers=true]
+
+
+\subsection*{Awards \& funding}
+\begin{cvlist}
+	\cvitem{Clinical Trial Sponsorship Program}{Zeto, 2024 \\
+		Our research project titled ``A gaze-independent Visual Brain-Computer
+		Interface for use by patients with limited or no eye control'' won a spot in
+		the Zeto Clinical Trial Sponsorship Program, granting us the resources to conduct research
+		with the Zeto EEG headset.
+	}
+	\cvitem{Student BCI competition 4th place worldwide}{NeuroTechX, 2022 \\
+		Our NeuroTechLeuven BrainBrowsR project, a plug-and-play BCI system that lets you control
+		social media applications  trough SSVEP-BCI was awarded 90 out of 100 points by
+		the jury of the NeuroTechX international student club competition.
+	}
+	\cvitem{Global Ph.D. Partnership Grant}{KU Leuven and University, 2021--2024}
+\end{cvlist}
+
+\subsection*{Conferences and presentations}
+\begin{cvlist}
+	\cvitem{CORTICO Days}{CORTICO, Nancy, 2024 \\
+		Poster presentation on covert visual attention BCIs for patients with
+		oculomotor impairment.}
+	\cvitem{10th International BCI Meeting}{BCI Society, Brussels, 2023\\
+		Poster presentation on classifier-based latency estimation for
+		gaze-independent BCIs.}
+	\cvitem{Leuven.AI Scientific Workshop 2022}{Leuven.AI, Leuven, 2022\\
+		Poster presentation on (multi-)Kronecker-structured linear discriminant
+		analysis for low sample size event-related potential classification.}
+	\cvitem{CORTICO Days}{CORTICO, Grenoble, 2022\\
+		Presentation on Kronecker-structured LCMV-beamforming for event-related potential
+		classification.}
+	\cvitem{CORTICO Days}{CORTICO, 2021\\
+		Presentation on a multi-component approach
+		to spatiotemporal beamforming decoding of event-related potentials.}
+	\cvitem{BCI \& Neurotechnology Spring School 2024}{g.tec, 2024}
+	\cvitem{Closed Loop Neurotechnologies Autumn School}{NeurotechEU, Lille, 2023}
+	\cvitem{CORTICO Days}{CORTICO, Paris, 2023}
+	\cvitem{BCI \& Neurotechnology Spring School 2023}{g.tec, 2023}
+	\cvitem{BCI \& Neurotechnology Masterclass Belgium}{g.tec, 2022}
+	\cvitem{BCI \& Neurotechnology Spring School 2022}{g.tec, 2022}
+\end{cvlist}
+
+\subsection*{Teaching Experience}
+\subsubsection*{Classes}
+\begin{cvlist}
+	\cvitem{Teaching Assistant Brain-Computer Interfaces}{KU Leuven, 2022--2024\\
+		Teaching exercise sessions in BCI design and signal processing to students in
+		the Master of Bioengineering and Advanced Master of Artificial
+		Intelligence.}
+	\cvitem{Teaching Assistant Fundamentals of Computer Science}{KU Leuven,
+		2022 \\
+		Teaching exercise sessions in Python programming and algorithmic reasoning to
+		students in the Bachelor of	Engineering Sciences.}
+\end{cvlist}
+
+\subsubsection{Master theses and internships}
+\begin{cvlist}
+	\cvitem{Eye-tracker and ERP data fusion for gaze-independent visual
+		BCI}{\ \\ Juliette  Meunier, University of Lille, 2024}
+	\cvitem{LDA in	the combined
+		space-time-frequency domain\\ for BCI decoding}{\ \\Lunkyadi Sucipto, KU Leuven,
+		2023--2023}
+	\cvitem{Tackling the Midas Touch problem in eye tracking with a
+		BCI}{\ \\Reniflal Ebenezer Sundaralal, KU Leuven, 2023--2023}
+	\cvitem{An EEG connectivity analysis of Alzheimer’s Disease
+		and Frontotemporal Dementia}{Zoe Barinaga, KU Leuven, 2023--2024}
+	\cvitem{Single-trial ERP latencies as a predictor for the mode
+		of visual attention}{\ \\Yildiz Dilara Parry, KU Leuven, 2023}
+	\cvitem{A hybrid P300-gaze BCI alternative for navigating virtual
+		spaces}{\ \\Gijs Claes, KU Leuven, 2021--2022}
+\end{cvlist}
+
+\subsubsection*{Extracurricular}
+\begin{cvlist}
+	\cvitem{Project supervisor}{NeuroTech Leuven, 2022--ongoing\\
+		Project supervisor and technical advisor for extracurricular
+		neurotechnology student projects and a student team competing in the
+		annual NeuroTechX BCI competition.}
+	\cvitem{PAL tutor Principles of Computer Programming}{KU Leuven, 2015--2016\\
+		Organizing and teaching peer-assisted learning sessions in Python programming for first year students.}
+\end{cvlist}
+
+\subsection*{Professional and volunteering Experience}
+\begin{cvlist}
+	\cvitem{Ambulance EMT}{Red Cross, FAST	vzw, 2022-ongoing}
+	\cvitem{Python developer}{Mindspeller, 2019
+		Python Flask developer in a KU Leuven spin-off that provides neuromarketing services based on
+		scientifically validated neuroscience and AI research.}
+	\cvitem{Freelance full-stack web developer}{Self-employed,
+		2014--2020}
+\end{cvlist}
+
+\subsection*{Licenses and certifications}
+\begin{cvlist}
+	\cvitem{ICH Good Clinical Practice}{E6 TransCelerate BioPharma Inc.}
+	\cvitem{Ambulance EMT}{FOD Volksgezondheid}
+\end{cvlist}
+
+\subsection*{Languages}
+\begin{cvlist}
+	\cvitem{Dutch}{Native}
+	\cvitem{English}{Fully proficient}
+	\cvitem{French}{Advanced}
+	\cvitem{German}{Intermediate}
+\end{cvlist}

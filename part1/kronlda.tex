@@ -1,0 +1,537 @@
+\chapter{Kronecker-structured discriminant analysis}
+
+
+Part of the work in this chapter was published in~\cite{VanDenKerchove2022}.
+\todo{Rename to LDA}
+
+\section{Introduction}
+
+Brain-computer interfaces (BCIs) establish a direct communication pathway
+between the brain and an external device~\cite{Wolpaw2002}.
+Severely disabled patients with impaired or absent communication capabilities
+can benefit from BCIs to restore normal functioning~\cite{Naci2012,Chaudhary2016}.
+BCIs can be implemented in multiple ways, using non-invasive recording
+techniques such as electroencephalography (EEG)~\cite{Abiri2019},
+magnetoencephalography (MEG)~\cite{Mellinger2007},
+functional Near-Infrared Spectroscopy (fNIRS)~\cite{Hong2015}, and Optically Pumped
+Magnetometers (OPM MEG)~\cite{Paek2020}, or semi-invasive and invasive methods such as
+electrocorticography (ECoG)~\cite{Schalk2011} or microelectrode
+arrays~\cite{Maynard1997} which require surgery to implant a recording device.
+While invasive BCIs yield the highest information transfer
+rate~\cite{Willett2021}, non-invasive BCIs are preferable for short-term use
+since they are not susceptible to the risks that come with surgery.
+Of the non-invasive options, EEG is the most cost-effective and practical as it
+is not limited to the same controlled settings as MEG and OPM MEG.
+
+Besides the recording method, BCIs differ in the communication paradigms used
+for communication~\cite{Abiri2019}.
+A popular class of BCI paradigms relies on the evocation
+of Event-Related Potentials (ERPs) in the brain in response to visual, auditory, or tactile stimulation, given their low decoding cost and generally short
+calibration time before usage~\cite{Gao2014, Kapgate2015}.
+The study we report on focuses on the visual P300 oddball ERP in response to a
+rare but attended visual stimulus.
+The decoder detects whether this ERP is present to determine which stimulus
+the user attended.
+The P300 paradigm has been used extensively in BCI development and is easy to
+set up~\cite{Farwell1988, Sellers2006, Barachant2014, Philip2020}.
+
+There are multiple state-of-the-art P300 classification methods, like Support
+Vector Machines (SVMs)~\cite{Tayeb2014}, deep
+learning models~\cite{vavreka2020evaluation,Borra2020}, and Riemannian Geometry
+classifiers~\cite{Barachant2014}.
+While these models often return a high classification accuracy, there is a need
+for lightweight models -- lightweight models lead to fast off-line analyses and can be transferred to consumer-grade hardware.
+When moving towards plug-and-play solutions, BCI calibration sessions should be short and model training times low.
+The spatiotemporal beamformer~\cite{VanVliet2015, Wittevrongel2016} belongs to
+this class of ERP decoding models as it achieves state-of-the-art performance and is fast to train.
+Earlier work has shown that it is
+possible to apply the spatiotemporal beamformer to multiple time-locked visual
+BCI paradigms, including the P300 oddball paradigm,
+Steady-State Visually Evoked Potentials (SSVEP), code-modulated Visually Evoked Potentials (cVEP)~\cite{Wittevrongel2017a} and
+motion-onset Visually Evoked Potentials (mVEP)~\cite{Libert2021}.
+
+This work shows that the original spatiotemporal
+beamformer~\cite{Wittevrongel2016} can fall short in performance when BCI
+calibration data are restricted.
+We also show that the spatiotemporal beamformer does not scale well for
+higher spatial and temporal resolution cases.
+As a response to these issues, we introduce a regularization method that
+exploits prior knowledge about the spatiotemporal nature of the EEG signal to
+improve the accuracy for low data availability settings and speed up the
+classifier training time, thereby considerably reducing memory usage.
+Similar structured regularization approaches have been applied to other linear
+ERP classifiers~\cite{gonzalez2017spatio, Vliet2020} and have shown
+significant increases in performance.
+Additionally, we show that regularization results in an interpretable
+classification model, which can aid in analyzing and developing spatiotemporal beamformer-based classifiers.
+
+\section{Materials \& methods}
+\subsection{Notation}
+We represent matrices with cursive capital letters, vectors with bold
+lowercase letters, and scalars with cursive lowercase letters.
+The epoched EEG data with $n$ epochs, $c$ channels, and $s$ samples are
+represented in epoch format as $\{X_i\in\mathbb{R}^{c\times s}\}^n_{i=1}$ or flattened vector format by concatenating all channels for each epoch.
+Flattening results in $\{\mathbf{x}_i\in\mathbb{R}^{cs}\}^n_{i=1}$ such that $\mathbf{x}_i = \text{vec}(X_i)$.
+The real covariance matrix of the epochs in vector format is
+denoted by $C$, estimators thereof as $\hat{C}$.
+
+\subsection{Spatiotemporal beamforming}
+LCMV-beamforming was initially introduced to EEG analysis as a filter for
+source localization~\cite{VanVeen1997} to enhance the signal-to-noise ratio
+(SNR).
+Van Vliet et al.~\cite{VanVliet2015} first applied the spatiotemporal
+LCMV-beamformer as a method for the analysis of ERPs.
+The extension to the combined spatiotemporal domain~\cite{VanVliet2015} and the
+data-driven approaches proposed by Treder et al.~\cite{TREDER2016279} and
+Wittevrongel et al.~\cite{Wittevrongel2016} allow for its application to classification problems.
+
+For the following analyses, we assume that all EEG channels are normalized with zero mean and unit variance without loss of generality.
+Solving \autoref{eq:minimum_variance} under the linear constraint given by
+\autoref{eq:linear_constraint} returns the filter weights $w$ defining the spatiotemporal LCMV-beamformer.
+	\begin{equation}
+		\underset{\mathbf{w}}{\arg\min}\mathbf{w}^\intercal C
+		\mathbf{w}^\intercal
+		\label{eq:minimum_variance}
+	\end{equation}
+	\begin{equation}
+		\mathbf{a}^\intercal\mathbf{w} = 1
+		\label{eq:linear_constraint}
+	\end{equation}
+
+These weights minimize the variance of the output of the filter while enhancing
+the signal characterized by the constraint.
+$\mathbf{a} = \text{vec}(A)$ is the data-driven activation pattern, a template
+of the signal of interest maximizing the difference between two classes of
+epochs, determined as follows:
+
+	\begin{equation}
+		\mathbf{a} =
+		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_i} -
+		\frac{1}{|\text{class 2}|}\sum_\text{class 2}\mathbf{x_i}
+		\label{eq:activation_pattern}
+	\end{equation}
+
+The method of Lagrange multipliers then gives the closed-form solution to the minimization problem posed by
+\autoref{eq:minimum_variance} and \autoref{eq:linear_constraint} as:
+
+	\begin{equation}
+		\mathbf{w} =
+		\frac{C^{-1}\mathbf{a}^\intercal}
+		{\mathbf{a}C^{-1}\mathbf{a}^\intercal}
+		\label{eq:closed_form}
+	\end{equation}
+
+
+
+The beamformer can be applied to epochs (unseen or not) as:
+
+	\begin{equation}
+		y_i = \mathbf{w}\mathbf{x}_i
+		\label{eq:apply_beamformer}
+	\end{equation}
+
+resulting in a scalar output per epoch.
+The linear constraint in \autoref{eq:linear_constraint} ensures that the
+beamformer maps epochs containing a target response to a score close to one
+and, conversely, epochs not containing a target response to a score close to
+zero.
+
+\subsection{Covariance matrix regularization}
+While the spatiotemporal beamformer, in theory, achieves optimal separation
+between target and non-target classes, in analogy to linear discriminant analysis~\cite{TREDER2016279}, it does not always perform well on unseen data.
+The main challenge is to find a good estimator for the inverse covariance matrix $C^{-1}$ since the real underlying covariance matrix generating the data is, in principle, unknown.
+
+\subsubsection{Empirical covariance estimation}
+\label{sec:empirical_covariance}
+Earlier spatiotemporal beamformer studies~\cite{Wittevrongel2016,
+Wittevrongel2016a, Wittevrongel2017, Wittevrongel2017a} use the empirical
+covariance and inverse covariance calculated as follows:
+
+	\begin{equation}
+		\hat{C}_\text{emp} =
+		\frac{1}{n-1}\sum^{n}_{i=1}\mathbf{x}_i\mathbf{x}_i^\intercal
+		\label{eq:empirical_covariance}
+	\end{equation}
+
+
+	\begin{equation}
+		\widehat{C^{-1}}_\text{emp} = \hat{C}_\text{emp}^+
+		\label{eq:empirical_inverse_covariance}
+	\end{equation}
+
+The Moore-Penrose pseudoinverse $^+$, ensures a solution exists when $\hat{C}_\text{emp}$ is singular.
+\autoref{fig:covs}a and \autoref{fig:covs}b respectively show examples of the
+empirical estimators of the covariance and the inverse covariance matrices.
+The empirical estimator suffers from performance and
+stability issues if the number of epochs $n$ used or estimation is not much larger than the number of features $cs$~\cite{Stein1956,Khatri1987}.
+
+\subsubsection{Shrunk covariance estimation}
+\label{sec:shrunk_covariance}
+The shrinkage covariance estimator creates a better-conditioned inversion matrix problem and generally performs better when applied to unseen data.
+The estimators for the covariance and inverse covariance are given by:
+
+	\begin{equation}
+		\hat{C}_\alpha =
+		(1-\alpha) \hat{C}_\text{emp}
+		+ \alpha\frac{\text{Tr}(\hat{C}_\text{emp})}{cs}\mathbb{I}
+		\label{eq:shrinkage}
+	\end{equation}
+
+
+	\begin{equation}
+		\widehat{C^{-1}}_\alpha =
+		\hat{C}^+_\alpha
+		\label{eq:shrinkage_inverse}
+	\end{equation}
+
+with $0<\alpha<1$.
+Analogous to L2 regularization of the beamforming problem,
+shrinkage reduces the ratio between the smallest and largest eigenvalues
+of the covariance matrix by strengthening the diagonal.
+\autoref{fig:covs}c and \autoref{fig:covs}d respectively show examples of the
+shrunk estimator of the covariance and the inverse covariance matrices.
+
+Earlier work~\cite{Libert2021} applied shrinkage regularization to ERP
+decoding with the spatiotemporal beamformer and showed competitive performance
+compared to other state-of-the-art decoding techniques like stepwise LDA or SVM.
+The abovementioned work chooses the shrinkage coefficient $\alpha$ as a fixed hyperparameter.
+However, its optimal value depends on the number of training epochs, the
+covariance matrix's dimensionality, and the independence and variance of the
+data, which can vary across evaluation settings and per session.
+The optimal value for $\alpha$ can be found with a line search using cross-validation, but this can be a costly procedure.
+Methods exist to estimate an optimal shrinkage value from the data directly.
+Most notable among these are the Ledoit-Wolf procedure~\cite{LEDOIT2004365},
+Rao-Blackwell Ledoit-Wolf~\cite{chen2010shrinkage}, and Oracle Approximating Shrinkage~\cite{chen2010shrinkage}.
+A more recent estimation method~\cite{Tong2018} emulates a leave-one-out
+cross-validation (LOOCV) scheme expressed by the data-driven closed-form
+estimate:
+
+	\begin{equation}
+		\alpha =
+		1-\frac{
+			\frac{n}{n-1}\text{Tr}(\hat{C}_\text{emp}^2)
+			- \frac{2}{cs}\left[\text{Tr}(\hat{C}_\text{emp})\right]^2
+			+ \frac{1}{cs}\text{Tr}(\hat{C}_\text{emp}^2)
+			- \frac{1}{n(n-1)}\sum_{i=1}^n||\mathbf{x}_i||_2^4
+		}
+		{
+			\frac{n^2 -2n}{(n-1)^2}\text{Tr}(\hat{C}_\text{emp}^2)
+			- \frac{2}{cs}\left[\text{Tr}(\hat{C}_\text{emp})\right]^2
+			+ \frac{1}{cs}\text{Tr}(\hat{C}_\text{emp}^2)
+			+ \frac{1}{n(n-1)^2}\sum_{i=1}^n||\mathbf{x}_i||_2^4
+		}
+		\label{eq:loocv}
+	\end{equation}
+
+We opt for the LOOCV shrinkage estimator because it avoids some of the
+assumptions made by~\cite{LEDOIT2004365} and~\cite{chen2010shrinkage} and
+because it generalizes to structured covariance estimation as described in
+\autoref{seq:structured_estimation}.
+
+\subsubsection{Spatiotemporal beamforming with Kronecker-Toeplitz structured covariance}
+\label{seq:structured_estimation}
+Exploiting prior knowledge about the spatiotemporal structure of the EEG signal leads to a more regularized estimator of the covariance.
+When viewing the example of empirical spatiotemporal EEG covariance in
+\autoref{fig:covs}a, it becomes clear that this matrix consists of a block pattern of repeated, similar matrices.
+Due to the multi-channel nature of the signal, we assume that the covariance of spatiotemporal EEG epochs is a Kronecker
+product of two smaller
+matrices~\cite{Munck1992,DeMunck1999,huizenga2002spatiotemporal}, as expressed
+by:
+
+	\begin{equation}
+		\hat{C}_\text{struct} = \hat{S} \otimes \hat{T}
+		\label{eq:kronecker}
+	\end{equation}
+
+with $\otimes$ the Kronecker product operator.
+$\hat{S} \in \mathbb{R}^{c\times c}$ and $\hat{T} \in \mathbb{R}^{s\times s}$ respectively correspond to estimators of the spatial and temporal covariance of the data.
+Furthermore, because the temporal covariance of the EEG-signal is
+stationary (i.e., it is only dependent on interval length between covarying
+time samples)~\cite{Bijma2003}, it is assumed to have a Toeplitz-matrix structure:
+
+	\begin{equation}
+		\hat{T}_{i,j} = \hat{T}_{i+1,j+1}
+		\label{eq:toeplitz}
+	\end{equation}
+
+\autoref{prop:inverse_kronecker} then leads to
+\autoref{eq:cov_inverse_kronecker} to estimate the inverse
+covariance.
+\begin{property}
+	$(U \otimes V)^+ = U^+ \otimes V^+$ for any non-singular
+	matrices $U$ and $V$~\cite{Langville2004}.
+	\label{prop:inverse_kronecker}
+\end{property}
+
+	\begin{equation}
+		\widehat{C^{-1}}_\text{struct} = \hat{S}^+ \otimes \hat{T}^+
+	\label{eq:cov_inverse_kronecker}
+	\end{equation}
+
+Finally, based on \autoref{prop:kronecker_multiplication},
+\autoref{eq:closed_form} can be reformulated more efficiently as
+\autoref{eq:closed_form_kronecker}.
+\begin{property}
+	$(U\otimes V)\cdot\text{vec}(W) = \text{vec}(VWU^\intercal)$
+	for any matrices $U\in\mathbb{R}^{p\times p}$,
+	$V\in\mathbb{R}^{q\times q}$ and $W\in\mathbb{R}^{p\times q}$~\cite{Loan2000}.
+	\label{prop:kronecker_multiplication}
+\end{property}
+
+	\begin{equation}
+		\hat{\mathbf{w}}_\text{struct} =
+		\frac{\hat{S}^+A^T\hat{T}^+}
+		{\mathbf{a}\cdot\text{vec}(\hat{S}^+A^T\hat{T}^+)}
+		\label{eq:closed_form_kronecker}
+	\end{equation}
+
+Using \autoref{eq:closed_form_kronecker} removes the need to calculate the full, high dimensional Kronecker product $\hat{S}^+\otimes
+\hat{T}^+$.
+\autoref{fig:covs}e and \autoref{fig:covs}f respectively show examples of the
+structured covariance and inverse covariance estimators,
+consisting of a spatial Kronecker factor (\autoref{fig:covs}g and
+\autoref{fig:covs}h) and a temporal component (\autoref{fig:covs}i and
+\autoref{fig:covs}j).
+
+\begin{figure}
+	\begin{adjustwidth}{-\extralength}{0cm}
+		\centering
+	\includegraphics[width=\linewidth]{figures/covs.eps}
+\end{adjustwidth}
+	\caption{Different estimators of the covariance and inverse covariance
+		of 100 epochs of data from \textit{Subject 01} for channels
+\textit{Fz}, \textit{Cz}, \textit{Pz}, and \textit{Oz} and time samples between 0.1s and 0.6s.
+Regularized estimators of the inverse covariance exhibit less extreme values and have a sparser structure.
+(\textbf{a,b}) Empirical covariance and inverse covariance matrices.
+(\textbf{c,d}) Shrunk covariance and inverse covariance matrices with $\alpha=0.14$ as
+determined by the closed-form LOOCV method. (\textbf{e,f}) Kronecker-Toeplitz
+structured covariance and inverse covariance matrices.
+(\textbf{g,h}) Spatial Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.
+(\textbf{i,j}) Temporal Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.}
+	\label{fig:covs}
+\end{figure}
+\unskip
+
+The Kronecker approach has shown significant performance yields in different linear spatiotemporal EEG and MEG
+applications~\cite{de2002estimating,huizenga2002spatiotemporal,6408231,gonzalez2016kronecker,gonzalez2017spatio}.
+Van Vliet \& Salmelin~\cite{Vliet2020} have applied a Kronecker-structured covariance estimator to ERP classification with linear models in a post-hoc fashion.
+Our work goes further by embedding the Kronecker structure in the
+spatiotemporal beamformer training process, using a data-adaptive shrinkage
+method, and regularizing the covariance further by imposing a Toeplitz
+structure on the temporal covariance.
+
+\subsubsection{Kronecker-Toeplitz structured covariance estimation}
+\label{sec:structured_covariance}
+The question remains how to estimate $\hat{S}$ and $\hat{T}$.
+While the Flip-Flop and Non-iterative Flip-Flop
+algorithms~\cite{Lu2005, werner2008estimation, wirfalt2010toeplitz} can estimate Kronecker or Kronecker-Toeplitz structured covariances, new results show that a fixed point iteration is more efficient~\cite{Wiesel2012a,Wiesel2012}.
+After each iteration, the spatial and temporal covariances matrices are scaled to unit
+variance to ensure the fixed point iteration converges.
+Finally, shrinkage can also be introduced in the Fixed Point Iteration to
+improve stability and achieve more robust
+regularization~\cite{Wiesel2012,Greenewald2014,6408231, Breloy2016}.
+The spatial and temporal covariance matrices are shrunk at every fixed-point
+iteration with shrinkage factors $\beta_k$ and $\gamma_k$ before matrix
+inversion in the
+next iteration.
+Combined, this leads to the iterative estimation algorithm described by the
+following equations:
+
+	\begin{subequations}
+	\begin{equation}
+		\tilde{S}_{k+1} =
+		\frac{1}{n}
+		\sum^n_{i=1}X_i^\intercal\hat{T}_k^+X_i
+		\label{eq:fpi_spatial}
+	\end{equation}
+	\begin{equation}
+		\tilde{T}_{k+1} =
+		\frac{1}{n}
+		\sum^n_{i=1}X_i\hat{S}_k^+X_i^\intercal
+		\label{eq:fpi_temporal}
+	\end{equation}
+\end{subequations}
+
+
+
+	\begin{subequations}
+	\begin{equation}
+	\tilde{S}_{k+1}^{(\beta)} =
+	(1-\beta_{k+1})\tilde{S}_{k+1}
+	+\beta_{k+1}\frac{\text{Tr}(\tilde{S}_{k+1})}{c}\mathbb{I}
+	\label{eq:fpi_spatial_shrunk}
+	\end{equation}
+	\begin{equation}
+	\tilde{T}_{k+1}^{(\gamma)} =
+	(1-\gamma_{k+1})\tilde{T}_{k+1}
+	+\gamma_{k+1}\frac{\text{Tr}(\tilde{T}_{k+1})}{s}\mathbb{I}
+	\label{eq:fpi_temporal_shrunk}
+	\end{equation}
+	\end{subequations}
+
+
+
+	\begin{subequations}
+	\begin{equation}
+		\hat{S}_{k+1} =
+		\frac{c}{\text{Tr}\left[\tilde{S}_{k+1}^{(\beta)}\right]}
+		\tilde{S}_{k+1}^{(\beta)}
+		\label{eq:fpi_spatial_norm}
+	\end{equation}
+	\begin{equation}
+		\hat{T}_{k+1} =
+		\frac{s}{\text{Tr}\left[\tilde{T}_{k+1}^{(\gamma)}\right]}
+		\tilde{T}_{k+1}^{(\gamma)}
+		\label{eq:fpi_temporal_norm}
+	\end{equation}
+\end{subequations}
+
+$\hat{S}_0$ and $\hat{T}_0$ can be initialized to any positive definite matrix.
+We choose to use the identity matrices $\mathbb{I}^{c\times c}$ and $\mathbb{I}^{s\times s}$.
+After each iteration, all diagonals of $\hat{R}_{k+1}$ are set to their mean
+values to ensure that $\hat{R}_{k+1}$ and $\hat{T}_{k+1}$ are Toeplitz structured.
+
+Xie et al.~\cite{xie2021regularized} show that the LOOCV estimates for the
+optimal values of $\beta_{k+1}$ and $\gamma_{k+1}$ also yield a closed-form
+solution for the Kronecker fixed-point-iteration algorithm:
+
+	\begin{subequations}
+	\begin{equation}
+		\beta_{k+1} =
+		1-
+		\frac{
+			\frac{n}{n-1}\text{Tr}(\tilde{S}_{k+1}^2)
+			- \frac{2}{c}\left[\text{Tr}(\tilde{S}_{k+1})\right]^2
+			+ \frac{1}{c}\text{Tr}(\tilde{S}_{k+1}^2)
+			- \frac{1}{n(n-1)}\sum_{i=1}^n
+			\left[\text{Tr}(X_i\hat{T}_k^+X_i^\intercal)^2\right]
+		}{
+			\frac{n^2-2n}{(n-1)^2}\text{Tr}(\tilde{S}_{k+1}^2)
+			- \frac{2}{c}\left[\text{Tr}(\tilde{S}_{k+1})\right]^2
+			+ \frac{1}{c}\text{Tr}(\tilde{S}_{k+1}^2)
+			+ \frac{1}{n(n-1)^2}\sum_{i=1}^n
+			\left[\text{Tr}(X_i\hat{T}_k^+X_i^\intercal)^2\right]
+		}
+		\label{eq:spatial_shrinkage}
+	\end{equation}
+	\begin{equation}
+		\gamma_{k+1} =
+		1-
+		\frac{
+			\frac{n}{n-1}\text{Tr}(\tilde{T}_{k+1}^2)
+			- \frac{2}{s}\left[\text{Tr}(\tilde{T}_{k+1})\right]^2
+			+ \frac{1}{s}\text{Tr}(\tilde{T}_{k+1}^2)
+			- \frac{1}{n(n-1)}\sum_{i=1}^n
+			\left[\text{Tr}(X_i^\intercal\hat{S}_k^+X_i)^2\right]
+		}{
+			\frac{n^2-2n}{(n-1)^2}\text{Tr}(\tilde{T}_{k+1}^2)
+			- \frac{2}{s}\left[\text{Tr}(\tilde{T}_{k+1})\right]^2
+			+ \frac{1}{s}\text{Tr}(\tilde{T}_{k+1}^2)
+			+ \frac{1}{n(n-1)^2}\sum_{i=1}^n
+			\left[\text{Tr}(X_i^\intercal\hat{S}_k^+X_i)^2\right]
+		}
+		\label{eq:temporal_shrinkage}
+	\end{equation}
+\end{subequations}
+
+The shrinkage parameters $0<\beta_{k+1}<1$ and $0<\gamma_{k+1}<1$ should be
+re-determined after each iteration.
+The Oracle Approximation Shrinkage method can also be used to determine
+$\beta_{k+1}$ and $\gamma_{k+1}$~\cite{chen2010,xie2021regularized} but performs worse for spatiotemporal EEG data since not all assumptions are met.
+
+\subsection{Dataset}
+We use the dataset from~\cite{Wittevrongel2016}, containing P300 oddball EEG
+recordings of 21 healthy subjects since it is a high-quality dataset with a high
+number (32) of electrodes and concurrently recorded EOG responses for ocular artifact rejection.
+Nine targets were arranged on a monitor before the subject during an
+experimental session.
+The subject was asked to pay attention to a cued target for a block
+of stimulations.
+The stimulations in a block are organized in 15 separate subsequent trials.
+A trial is defined as 9 stimulations in which each target is flashed
+precisely once per trial.
+Each target was cued four times, resulting in a dataset consisting of 36 blocks
+(4860 stimulations) per subject.
+Each stimulation will correspond to a single epoch in the preprocessed dataset.
+See~\cite{Wittevrongel2016} for a complete description of the dataset and the recording procedure.
+
+\subsection{Software and preprocessing}
+Data processing and classifier analysis were performed in Python using
+Scikit-Learn (version 1.0.1)~\cite{pedregosa2011scikit} and SciPy (version
+1.7.1)~\cite{2020SciPy-NMeth}.
+The preprocessing pipeline was implemented using the MNE-Python toolbox
+(version 0.24.0)~\cite{GramfortEtAl2013a}.
+The dataset was converted to BIDS-EEG format~\cite{Pernet2019} and managed and
+loaded with MNE-BIDS (version 0.9)~\cite{Appelhoff2019}.
+The Riemannian classifier from \autoref{sec:riemannian} was implemented using
+pyRiemann (version 0.2.7).
+Statistical tests were performed in R (version 4.1.2).
+
+The EEG recorded at 2048Hz was re-referenced off-line to the average of the mastoids.
+The reference electrodes were dropped from the analysis.
+Data were subsequently filtered between 0.5Hz and 16Hz using forward-backward
+filtering with a fourth-order Butterworth IIR filter.
+The EEG signal was corrected for ocular artifacts using Independent Component
+Analysis (ICA) by rejecting components that correlated with the bipolar EOG channels vEOG and hEOG, according to adaptive Z-score thresholding.
+Finally, epochs were cut from 0.1s to 0.6s after stimulus onset.
+No baseline correction was performed since this affects the temporal covariance
+of the data, violating the Toeplitz structure assumption~\cite{Bijma2003}.
+
+\subsection{Classification}
+\subsubsection{Cross-validation scheme per subject}
+We use a variation of grouped fold cross-validation per subject to evaluate the classifiers.
+We apply 4-fold cross-validation by splitting the blocks of each subject into
+four continuous folds.
+Unlike regular cross-validation, we only use a single fold to train the
+classifiers while using the other three folds for validation.
+This scheme results in a training set of 9 blocks of 135 epochs each.
+We chose this approach since we are primarily interested in the performance of the classifiers in the case of low data availability.
+The classification task is to determine the cued target for each block.
+The fraction of correctly predicted cues provides the accuracy of a classifier.
+Data from all trials are used in the training fold, while classifier validation
+is performed multiple times per fold, each time using an increasing amount of
+trials (i.e., using the first trial, using the first two trials, etc. until all 15 trials
+are used).
+For each of the 9 stimulated targets, the averages over the corresponding epochs across
+the utilized trials are used to predict the cued target in that block.
+The target with the maximal classifier score was then chosen as the predicted
+cued target.
+Before training the classifiers, a Z-score normalization transformation was
+developed on the training data to scale all EEG channels to unit variance.
+This transformation was then applied to the validation data.
+
+\subsubsection{Spatiotemporal beamformer classifier}
+Before calculating the spatiotemporal beamformer (STBF), the signal was downsampled to
+32Hz or twice the low-pass frequency 16Hz, resulting in 17 time samples
+between 0.1 and 0.6s. According to the Nyquist Theorem, more samples would not
+contain more information hence the minimum temporal resolution is chosen to reduce
+the dimensionality of the covariance and improve its covariance.
+The activation pattern is the difference between the averages of epochs in response to cued targets and the averages of those in response to non-cued targets.
+We constructed three variations of the spatiotemporal beamformer:
+STBF with empirical covariance estimation (\textsc{stbf-emp}) as in
+\autoref{sec:empirical_covariance}, STBF with
+LOOCV-shrunk covariance estimation (\textsc{stbf-shrunk}) as in
+\autoref{sec:shrunk_covariance}, and STBF with
+Kronecker-Toeplitz structured covariance estimation (\textsc{stbf-struct} )with LOOCV shrinkage for
+the Kronecker factors as in \autoref{sec:structured_covariance}.
+
+\subsubsection{Riemannian geometry classifier}
+\label{sec:riemannian}
+We opted for a Riemannian
+geometry-based classifier to compare our results.
+The Riemannian model (x\textsc{dawn+rg}) uses the xDAWN spatial filter combined
+with Riemannian geometry in tangent space as implemented by Barachant et
+al.~\cite{barachant2014meg}.
+This classifier uses four xDAWN spatial filters and each epoch's empirical spatial covariance matrix.
+The target with the maximum score is the prediction of the cued target.
+x\textsc{dawn+rg} was trained and validated without downsampling using epochs
+at the original sample rate of 2048Hz.
+
+\todo{check chapters/structure paper}
+\todo{check structure Leuven.ai poster}
+\section{The spatiotemporal EEG covariance}
+\section{The single-KP covariance model}
+\section{The sum-of-KP covariance model}
+\section{Decoding performance}
+\section{Discussion}
+\subsection{Extension into the space-time-frequency domain}

@@ -1,0 +1,80 @@
+% Encoding: UTF-8
+
+@MastersThesis{VanDenKerchove2020,
+    author = {Van Den Kerchove, Arne},
+    school = {KU Leuven},
+    title = {Linguistic transcription of {EEG} responses to sequences of visual stimuli},
+    year = {2020},
+    abstract = {This work constructs an algorithm to transcribe event-related potentials (ERPs)
+recorded by EEG in response to a sequence of single-trial stimuli, to a sequence of
+symbols. Each symbol represents a distinct category of ERP shapes. The resulting
+sequence-of-symbols representation is a noise-reduced format for sequences of ERPs
+and can be utilized by pattern mining algorithms to analyze sequential and contextual
+structure in sequences of ERPs. This information would otherwise be lost when
+averaging over multiple EEG trials, which is currently the most popular method for
+reducing noise in ERPs. The algorithm is developed using available EEG recordings
+from N -back experiments, a visual paradigm which produces a sequence of ERPs.
+In order to cope with the remarkably high signal-to-noise ratio, spatio-temporal
+beamforming is applied as a linear filter to extract noise-reduced features from
+single-trial ERPs. This work extends the spatio-temporal beamformer to the spatio-
+temporal multi-component beamformer to capture more information from each ERP.
+Two multi-component beamforming approaches are developed. The first method is
+based on time-window truncated activation patterns, while the second method refines
+the component activation patterns to isolate specific ERP components. Subsequently,
+features extracted by the multi-component-beamformer are categorized in groups,
+which in turn can be represented by a transcribed symbol, using k-medoids clustering.
+The methods are validated by testing the informativeness of extracted features in
+several classification tasks and by inspecting the representative ERPs for each symbol,
+obtained by averaging over all trials in the symbol’s cluster.
+Results show that the multi-component beamformer has the potential to improve
+state-of-the-art performance in target/non-target classification for ERP based Brain-
+Computer Interface paradigms. Visual inspection of symbol representatives shows
+apparent differences in ERP shape for each cluster, indicating that the algorithm can
+capture different types of ERPs in different symbols. However, this method is still
+hindered in its performance and applicability by the large inter-subject variability of
+ERPS, as well as the inherently high noise levels present in single-trial ERPs.},
+}
+
+@Article{Libert2022,
+  author    = {Libert, Arno and Van Den Kerchove, Arne and Wittevrongel, Benjamin and Van Hulle, Marc M.},
+  journal   = {Journal of Neural Engineering},
+  title     = {Analytic beamformer transformation for transfer learning in motion-onset visual evoked potential decoding},
+  year      = {2022},
+  issn      = {1741-2552},
+  month     = apr,
+  number    = {2},
+  pages     = {026040},
+  volume    = {19},
+  abstract  = {Objective. While decoders of electroencephalography-based event-related potentials (ERPs) are routinely tailored to the individual user to maximize performance, developing them on populations for individual usage has proven much more challenging. We propose the analytic beamformer transformation (ABT) to extract phase and/or magnitude information from spatiotemporal ERPs in response to motion-onset stimulation. Approach. We have tested ABT on 52 motion-onset visual evoked potential (mVEP) datasets from 26 healthy subjects and compared the classification accuracy of support vector machine (SVM), spatiotemporal beamformer (stBF) and stepwise linear discriminant analysis (SWLDA) when trained on individual subjects and on a population thereof. Main results. When using phase- and combined phase/magnitude information extracted by ABT, we show significant improvements in accuracy of population-trained classifiers applied to individual users (p {\textless} 0.001). We also show that 450 epochs are needed for a correct functioning of ABT, which corresponds to 2 min of paradigm stimulation. Significance. We have shown that ABT can be used to create population-trained mVEP classifiers using a limited number of epochs. We expect this to pertain to other ERPs or synchronous stimulation paradigms, allowing for a more effective, population-based training of visual BCIs. Finally, as ABT renders recordings across subjects more structurally invariant, it could be used for transfer learning purposes in view of plug-and-play BCI applications.},
+  doi       = {10.1088/1741-2552/ac636a},
+  file      = {:Libert2022 - Analytic Beamformer Transformation for Transfer Learning in Motion Onset Visual Evoked Potential Decoding.pdf:PDF},
+  language  = {en},
+  publisher = {IOP Publishing},
+  url       = {https://dx.doi.org/10.1088/1741-2552/ac636a},
+  urldate   = {2022-11-21},
+}
+
+@Article{VanDenKerchove2022,
+  author    = {Van Den Kerchove, Arne and Libert, Arno and Wittevrongel, Benjamin and Van Hulle, Marc M.},
+  journal   = {Applied Sciences},
+  title     = {Classification of Event-Related Potentials with Regularized
+	       Spatiotemporal {LCMV} Beamforming},
+  year      = {2022},
+  number    = {6},
+  pages     = {2918},
+  volume    = {12},
+  publisher = {MDPI},
+}
+
+@Article{VanDenKerchove2024,
+  author    = {Van Den Kerchove, Arne and Si-Mohammed, Hakim and Van Hulle, M M and Cabestaing, François},
+  journal   = {Journal of Neural Engineering},
+  title     = {Correcting for {ERP} latency jitter improves gaze-independent {BCI} decoding},
+  year      = {2024},
+  issn      = {1741-2552},
+  month     = jul,
+  doi       = {10.1088/1741-2552/ad5ec0},
+  publisher = {IOP Publishing},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
