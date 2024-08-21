@@ -1,1 +1,23 @@
+\usepackage{siunitx}
+% Math declarations
+
 \newtheorem{property}{Property}
+
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+\newcommand{\ten}[1]{\underline{\mathbf{#1}}} % tensor
+\newcommand{\mat}[1]{\mathbf{#1}} % matrix
+\renewcommand{\vec}[1]{\mathbf{#1}} % vector
+\newcommand{\mpr}[2]{\times_{#2} {#1}_{#2}} % tensor mode product
+\newcommand{\mmpr}[1]{\times\left\{#1\right\}} % tensor multi-mode product
+\newcommand{\mmpri}[1]{\times\{#1\}} % inline tensor multi-mode product
+\newcommand{\mmprs}[2]{\times_{-#2}\left\{#1\right\}} % tensor multi-mode product skip
+\newcommand{\mmprsi}[2]{\times_{-#2}\{#1\}} % inline tensor multi-mode product skip
+\newcommand{\ev}[2]{\text{E}\left[#1\right]_{#2}} % expected value
+\newcommand{\R}[1]{\mathbb{R}^{#1}} % real number space
+\DeclareMathOperator*{\argmax}{arg\,max} % argmax
+\DeclareMathOperator*{\argmin}{arg\,min} % argmin
+\DeclareMathOperator{\Tr}{Tr} % trace
+\DeclareMathOperator{\vect}{vec} % vectorization (flattening)
+\DeclareMathOperator{\nmse}{NMSE} % normalized mean square error
+
+% Format p-value

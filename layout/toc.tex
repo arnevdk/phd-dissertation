@@ -6,14 +6,22 @@
 \renewcommand\cftchappagefont{\sffamily}
 \renewcommand\cftsecfont{\sffamily\small}
 \renewcommand\cftsecpagefont{\sffamily}
+\renewcommand\cftsubsecfont{\sffamily\footnotesize}
+\renewcommand\cftsubsecpagefont{\sffamily}
 \makeatletter
 \renewcommand\@cftmaketoctitle{\chapter{\contentsname}}
 \makeatother
-\setcounter{tocdepth}{1}
+%\setcounter{tocdepth}{1}
+
 % Setup LoF
+\renewcommand\cftfigfont{\sffamily\footnotesize}
+\renewcommand\cftfigpagefont{\sffamily\footnotesize}
 \makeatletter
 \renewcommand\@cftmakeloftitle{\chapter{\listfigurename}}
+
 % Setup LoT
+\renewcommand\cfttabfont{\sffamily\footnotesize}
+\renewcommand\cfttabpagefont{\sffamily\footnotesize}
 \makeatletter
 \renewcommand\@cftmakelottitle{\chapter{\listtablename}}
 \makeatother
