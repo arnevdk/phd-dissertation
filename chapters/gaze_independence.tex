@@ -1,0 +1,103 @@
+\chapter{Gaze-independent BCIs}
+\todo{mention partially published}
+\chapter{Gaze-independent BCIs}
+\section{Oculomotor deficits in Locked-in Syndrome}
+\section{Gaze-independent visual BCIs}
+\section{Benefits \& drawbacks of covert attention in BCI operation}
+\section{Electrophysiological correlates of covert attention}
+\section{Compensating for covert attention}
+\todo{spatially vs temporally organized interfaces}
+
+Gaze-independent ERP-based BCIs~\cite{Riccio2012} can be realized in three
+ways.
+Firstly, non-visual stimulation paradigms such as auditory and somatosensory paradigms
+do not rely on gaze redirection but often result in lower information transfer
+rates, increased mental effort and user-dependent variability~\cite{Reichert2020b}.
+Secondly, visual stimulation can be optimized, e.g. such that the stimuli are always
+present in the field of view~\cite{Treder2010,Pires2011,Lees2018}.
+Non-spatial visual attention (feature attention) can also be exploited, such as
+attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
+Alternative visual stimulation paradigms can modulate specific ERP components
+that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
+%These methods, However, can suffer from reduced information
+%transfer rates~\cite{Chennu2013}.
+However, they still rely to some extent on
+eye motor control, often necessitating central gaze fixation.
+
+Firstly, by avoiding visual stimulation entirely and opting for auditory or
+somatosensory stimulation instead.
+However, these alternatives often result in lower information transfer
+rates, increased mental effort and
+user-dependent variability~\cite{Reichert2020b}.
+Secondly, gaze-independence can be achieved through tailored stimulus presentation.
+This can involve enforcing overt VSA by presenting stimuli that fill the field
+of view of the user,
+exploiting visual non-spatial attention, or a combination thereof~\cite{Treder2011}.
+The most common example of non-spatial attention is feature attention, where
+the user directs their attention to an expected property of some of the
+presented stimuli, such as its color, its shape or the symbol it represents~\cite{Zhang2010,Hwang2015,Reichert2020a}.
+In covert VSA scenarios, stimulus paradigms are often fine-tuned to modulate
+specific ERP responses~\cite{Schaeff2012,Xu2022}, increasing the
+signal-to-noise ratio (SNR).
+Some noteworthy examples include the GIBS Block Speller~\cite{Pires2011},
+the GeoSpell interface~\cite{Aloise2012a}, and the RSVP
+speller~\cite{Acqualagna2011,Lees2018}.
+These systems typically require users to focus on a central fixation point while
+selecting peripheral targets.
+However, they often suffer from reduced information
+transfer rates~\cite{Chennu2013}.
+Moreover, they still rely to some extent on
+eye motor control, often necessitating central gaze fixation.
+
+Thirdly, stimuli can be presented in a standard BCI paradigm, but visuospatial attention
+can be decoded separately from gaze direction.
+Earlier work has made advances in decoding lateralized covert
+VSA harnessing the N2pc ERP component~\cite{Thiery2016,Reichert2020b,Wang2022},
+decoding covert VSA shifts from spectral content~\cite{Tonin2013}, or hybrid
+stimulation paradigms~\cite{Egan2017}.
+Since these methods often require a slower stimulation pace than the classical
+ERP BCI paradigm, gaze-independent decoding in fast-paced ERP paradigm stimulation
+remains underexplored.
+\cite{Aloise2012b} aimed to bridge the performance gap between covert and
+overt VSA decoding performance.
+They compared classical linear and non-linear ERP classifiers on a covert
+attention P3 ERP component dataset.
+The results revealed no significant performance improvement in covert VSA
+decoding for any of the investigated decoders.
+\cite{Arico2014} observed higher variability in single-trial P3 peak
+latencies relative to stimulus onset during covert VSA compared to overt VSA.
+This latency variability contributes to reduced covert VSA decoding performance.
+While they proposed an analysis and performance prediction method, they did not provide a
+decoding solution.
+They suggested that compensating for latency jitter could enhance covert VSA
+decoding, but did not actually verify this hypothesis directly.
+Additionally, \cite{hardiansyah2020single} developed a classifier for
+covert VSA ERPs, exploiting single-trial latency features in combination with
+amplitude features for classification with a support vector machine.
+They demonstrated the positive influence of single-trial ERP component latency
+features on covert VSA inference yet did not attempt to correct the amplitude
+features for these latencies.
+\cite{Frenzel2011} introduced a similar protocol to our split VSA
+setting.
+They showed that it is possible to perform split VSA and that, in this
+case, visuospatial attention and gaze direction can separately be decoded using
+classical ERP techniques.
+To the best of our
+knowledge, this is the sole study that investigated split attention in ERP-based BCIs.
+However, \cite{Frenzel2011} considered their interface only for the case
+where the user actively intends to select both targets determined by the gaze
+and the VSA.
+In the split VSA setting considered in our work, we rather instruct the participant to ignore
+the distractor and only attend the cued target, since we are interested in
+decoding the visuospatial attention only.
+
+P3 latency generally falls between 350ms and 600ms~\cite{Luck2014}, but this
+value is heavily dependent on the subject and the task, and can vary from trial
+to trial~\cite{Ouyang2017}.
+The work of \cite{Arico2014}
+illustrates that the variation in single-trial P3 latencies is important in
+gaze-independent decoding and has been hampering covert VSA decoding performance.
+In this work we aim to reprise their hypothesis stating that jitter compensation improves
+covert VSA performance and extend it by developing a decoder and evaluating it
+in a broader range of gaze-independent settings, including split VSA.
+\todo{Check connection}
