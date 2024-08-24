@@ -1,0 +1,85 @@
+
+\chapter{Conclusions \& recommendations}
+\section{General discussion}
+\section{Limitations}
+\section{Future directions}
+\section{Working with patients}
+\section{Conclusion}
+
+\section{Obtained results}
+
+\subsection{Regularized spatiotemporal beamforming}
+We introduced a covariance estimator using adaptive shrinkage (STBF-shrunk) and an estimator
+exploiting prior knowledge about the spatiotemporal nature of the EEG signal
+(STBF-struct).
+We compared these estimators with the original formulation of the
+spatiotemporal (STBF-emp)
+beamformer and a state-of-the-art Riemannian Geometry method (xDAWN+RG) in an off-line P3 detection task on
+an existing dataset.
+Our results show that the structured estimator results in higher accuracy in
+general, and specifically when training data are sparsely available.
+Results can be computed faster and with
+substantially less memory usage.
+Since these algorithms are not paradigm-specific, the conclusions can be
+generalized to other ERP-based BCI settings.
+These results have been published in~\cite{VanDenKerchove2022}.
+
+We have tested our proposed methods and similar methods in gaze-independent and
+covert VSA settings, but we did not observe a relative increase in performance
+in these settings.
+
+%* Preliminary results: BTTDA better than HODA, on par with other state of the
+%art methods and in some situations better (data availability, noise structure)
+
+\subsection{Healthy control study}
+The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
+$26.38\pm3.15$ years.
+This dataset gives us insight in the ERP dynamics in overt, covert and the
+novel split VSA condition, and confirms our hypothesis that P3 jitter has a
+significant impact on performance in covert and split VSA, as well as that the
+amplitude effect observed for covert VSA also holds for split VSA.
+
+We have evaluated our proposed wCBLE algorithm, the baseline CBLE algorithm and
+a state-of-the-art algorithm (tLDA)~\cite{Sosulski2022} that uses similar techniques as our
+proposed STBF-struct method on this dataset as well as a publicly available
+dataset~\cite{Aloise2012} that also contains the overt and covert VSA conditions.
+We evaluated the BCI decoding performance in a single-trial classification experiment,
+as well as in a target selection experiment reflecting BCI operation.
+Performance was significantly different between decoders, but this
+result was significantly dependent on the VSA condition and the dataset.
+While CBLE performed overall on par with the state-of-the art method for both datasets, wCBLE was
+outperformed by tLDA in overt VSA decoding but outperformed
+tLDA for covert VSA.
+For the split attention conditions in the CVSA-ERP
+dataset, wCBLE yielded a significant improvement over CBLE and the
+state-of-the-art method only for d = 1 and d = 3.
+These results were corroborated by analyzing selection accuracy and information
+transfer rate, which showed similar behavior for both datasets, except in overt
+VSA, where accuracy and information transfer rate were not harmed by the lower
+single-trial selection performance of wCBLE.
+
+To further study the gaze-independent performance of these algorithms, transfer
+learning between VSA conditions is studied to simulate conditions where a patient
+can end up in different VSA settings within a BCI operation session due to their
+lack of eye motor control.
+When trained and evaluated on overt VSA data, our proposed wCBLE algorithm results in a significant decrease in performance
+over the state-of-the art tLDA decoder, consistent with the within VSA
+condition results.
+For all other pairs of training and evaluation VSA condition, however, wCBLE
+never yields a significant decrease in performance and often significantly
+outperforms the other methods.
+
+These results show that there is an interest in developing a new class of ERP-BCI
+interfaces for patients that prefer to rest their eyes on a chosen point on the
+screen, so as to avoid the effort of redirecting their eye gaze at different spatial locations on
+the stimulation screen. Furthermore, the performance gain in the split VSA conditions
+and in the between-VSA condition transfer settings are promising for patients with even
+less eye motor control, such as patients experiencing involuntary saccades or
+fatigue. An accurate decoder would allow them to comfortably operate a BCI while
+resting their eyes on whichever portion of the screen they prefer, even when there is
+another target present at that location or this location varies during the course of the
+experiment. Our results show that whenever the eye gaze is directed at a different
+spatial location other than that of the mentally attended target, the wCBLE decoder can
+more accurately discern the locus of mental attention, promoting in this way accurate
+gaze-independent decoding. This comes, however, at the cost of a decreased performance
+compared to overt VSA operation.
