@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\usepackage{enumitem}
 
 % Commands
 \input{math.tex}
@@ -15,6 +16,7 @@
 % Bibliography
 \usepackage[backend=biber]{biblatex}
 \addbibresource{references.bib}
+\addbibresource{publications.bib}
 
 % Title
 \title{\sffamily An EEG-based visual Brain-Computer Interface for gaze-free communication}
@@ -24,7 +26,7 @@
 \begin{document}
 
 % Front matter ================================================================
-%\pagestyle{front}
+\pagestyle{front}
 \frontmatter
 
 \chapter{Preface}
@@ -41,7 +43,7 @@
 
 % Main matter =================================================================
 \mainmatter
-%\pagestyle{main}
+\pagestyle{main}
 
 
 \part{Introduction \& Literature}
@@ -78,16 +80,7 @@ and specifically in gaze-independent settings).
 
 
 \part{Algorithms \& Decoders}
-\input{part2/stbf_struct.tex}
-
-\chapter{Kronecker-sum-structured discriminant analysis}
-\todo{check chapters/structure paper}
-\todo{check structure Leuven.ai poster}
-\section{The spatiotemporal EEG covariance}
-\section{The single-KP covariance model}
-\section{The sum-of-KP covariance model}
-\section{Decoding performance}
-\section{Extension into the space-time-frequency domain}
+\include{chapters/stbf_struct.tex}
 
 \chapter{Tensor discriminant analysis}
 \section{The tensor structure of EEG data}
@@ -135,14 +128,12 @@ and specifically in gaze-independent settings).
 
 
 
-\appendix
 \backmatter
-\chapter{Curriculum vitae}
-\chapter{Publications}
 \chapter{Funding \& acknowledgments}
 \lipsum[1]
 \chapter{Personal contribution}
 \lipsum[2]
 \chapter{Conflict of interest}
 The authors declare no conflict of interest.
+\include{chapters/cv.tex}
 \end{document}
