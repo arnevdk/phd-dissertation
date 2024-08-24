@@ -315,8 +315,8 @@
 	\autoref{fig:kronlda-covs}h) and a temporal component (\autoref{fig:covs}i and
 	\autoref{fig:kronlda-covs}j).
 
-	\begin{figure}[p]
-		\includegraphics[width=\linewidth]{part2/figures/stbf_struct/covs.eps}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
 		\caption{Different estimators of the covariance and inverse covariance
 			of 100 epochs of data from \textit{Subject 01} for channels
 			\textit{Fz}, \textit{Cz}, \textit{Pz}, and \textit{Oz} and time samples between 0.1s and 0.6s.
@@ -567,8 +567,8 @@
 	Hence, only one iteration is used for the \textsc{stbf-struct} classifier, leading to a drastic speed-up of
 	the training process.
 
-	\begin{figure}
-		%\includegraphics[width=\linewidth]{figures/fpi.eps}
+  \begin{figure}
+		\includegraphics[width=\linewidth]{figures/stbf_struct/fpi.eps}
 		\caption{Average cross-validated \textsc{stbf-struct} Accuracy using
 			one trial per block over all 21 subjects
 			relative to the number of iterations used to estimate the Kronecker-Toeplitz structured shrunk
@@ -600,8 +600,8 @@
 	Results validated on one trial are reported in \autoref{tab:p_values_1}, 2-trial results
 	in \autoref{tab:p_values_2}, and 5-trial results in \autoref{tab:p_values_5}.
 
-	\begin{figure}
-		%\includegraphics[width=\linewidth]{figures/accuracy.eps}
+  \begin{figure}
+		\includegraphics[width=\linewidth]{figures/stbf_struct/accuracy.eps}
 		\caption{Accuracy of the different classifiers for all 21 subjects relative to the
 			number of blocks available for training. One block consists of 135
 			epochs and corresponds to 27 seconds of stimulation. Accuracies
@@ -616,7 +616,7 @@
 	\end{figure}
 	\begin{table}[h]
 		\centering
-		\input{part2/stbf_struct_tests_1.tex}
+		\input{chapters/stbf_struct_tests_1.tex}
 		\caption{$p$-values calculated by one-sided paired Wilcoxon rank-sum test with
 			Holm correction using one testing trial for different classifiers
 			and levels of data availability. $p$-values $<0.05$ are considered significant
@@ -624,12 +624,12 @@
 		\label{tab:p_values_1}
 
 		\centering
-		\input{part2/stbf_struct_tests_2.tex}
+		\input{chapters/stbf_struct_tests_2.tex}
 		\caption{$p$-values as in \autoref{tab:p_values_1} averaging over two testing trials.}
 		\label{tab:p_values_2}
 
 		\centering
-		\input{part2/stbf_struct_tests_3.tex}
+		\input{chapters/stbf_struct_tests_3.tex}
 		\caption{$p$-values as in \autoref{tab:p_values_1} averaging over five testing trials.}
 		\label{tab:p_values_5}
 	\end{table}
@@ -659,7 +659,7 @@
 	These results were obtained using a laptop with an Intel® Core™ i7-8750H CPU and 16GB of RAM.
 
 	\begin{figure}
-		%\includegraphics[width=\linewidth]{figures/training_time.eps}
+		\includegraphics[width=\linewidth]{figures/stbf_struct/training_time.eps}
 		\caption{Median fold training time for different classifiers at different spatial
 			resolution levels evaluated over all training folds for all subjects.
 			Error bars represent standard deviation. The training time of \textsc{stbf-shrunk} increases more
@@ -891,6 +891,39 @@
 	It could also be interesting to explore the impact of covariance regularization on transfer learning of the STBF between subjects to alleviate calibration entirely.
 	Finally, it could be insightful to evaluate the proposed algorithms in a
 	real-world on-line BCI setting.
+
+  \todo{Include part kronlda, check notes in journal}
+\section{Introduction}
+
+LCMV struct might be to restrictive
+Toeplitzlda
+MEG paper
+
+\section{Methods}
+\subsection{Spatiotemporal Linear Discriminant Analysis}
+\subsection{The single Kronecker product covariance model}
+\begin{equation}
+	\mat{C} = \mat{S}\otimes\mat{T}
+\end{equation}
+Tapering, Toeplitz and shrinkage
+\subsection{The Kronecker sum covariance model}
+\begin{equation}
+	\mat{C} = \sum_k^{CS}\mat{S}\otimes\mat{T}
+\end{equation}
+pvl, kronpca
+
+\subsection{Kronecker sum covariance estimation}
+\subsection{Classification}
+\section{Results}
+\section{Discussion}
+
+\todo{check chapters/structure paper}
+\todo{check structure Leuven.ai poster}
+\section{The spatiotemporal EEG covariance}
+\section{The single-KP covariance model}
+\section{The sum-of-KP covariance model}
+\section{Decoding performance}
+\section{Extension into the space-time-frequency domain}
 
 	\todo{check chapters/structure paper}
 	\todo{check structure Leuven.ai poster}

@@ -1,8 +1,10 @@
 % Structure
 
 \newenvironment{cvlist}{
-	\begin{description}[font=\normalfont]\setlength\itemsep{0em}}
-		{\end{description}}
+	\begin{description}[font=\normalfont]%\setlength\itemsep{0em}
+}{
+  \end{description}
+}
 
 \newcommand{\cvitem}[2]{\item[#1,] #2}
 
