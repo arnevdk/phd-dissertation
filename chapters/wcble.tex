@@ -312,48 +312,48 @@ in~Section~\ref{sec:robust-latency}.
 	\label{fig:diagram-eval}
 \end{figure*}
 \section{Algorithms}
-
+\todo{insert comments}
 \begin{algorithm}[H]
 	\textsc{Train}
 	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mbfX_n^\mathrm{train}\}_{n=1}^N,
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N,
   \mathbf{l}^\mathrm{train}, \mathcal{C}(\cdot,f, \Pr), s_1, s_2$
   \begin{algorithmic}[1]
 		\State $\theta \gets
-			\mathrm{train}_\mathcal{C}(\{\mbfX_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l})$
-      \algorithmiccomment{Train stage 1}
+			\mathrm{train}_\mathcal{C}(\{\mat{X}_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l})$
+      %\algorithmiccomment{Train stage 1}
 		\For{$n=1\ldots N$}
-      \algorithmiccomment{Feature extraction for stage 2}
+      %\algorithmiccomment{Feature extraction for stage 2}
 		  \For{$s=1\ldots R$}
-      \State $y_{n,s}^\mathrm{train} \gets f(\mbfX_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
+      \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
         \EndFor
         \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[Pr(s|\mbfX_n^\mathrm{train},\theta,\mathrm{target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
 		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[Pr(s|\mbfX_n^\mathrm{train},\theta,\textrm{non-target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
   \textbf{Output:} $\theta,
-  \mbfY^\mathrm{train},
+  \mat{Y}^\mathrm{train},
   \mathbf{s}_\mathrm{target}^\mathrm{train},
   \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
 	\smallskip \hrule \smallskip
 	\textsc{Evaluate}
 	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mbfX_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
   \begin{algorithmic}[1]
 		\For{$m=1\ldots M$}
-      \algorithmiccomment{Feature extraction for stage 2}
+      %\algorithmiccomment{Feature extraction for stage 2}
 		  \For{$s=1\ldots R$}
-      \State $y_{m,s}^\mathrm{test} \gets f(\mbfX_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
+      \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
         \EndFor
         \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[Pr(s|\mbfX_m^\mathrm{test},\theta,\mathrm{target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
 		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[Pr(s|\mbfX_m^\mathrm{test},\theta,\textrm{non-target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
-  \textbf{Output:} $\mbfY^\mathrm{test},
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
   \mathbf{s}_\mathrm{target}^\mathrm{test},
   \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
 
@@ -365,54 +365,54 @@ in~Section~\ref{sec:robust-latency}.
 \begin{algorithm}[H]
 	\textsc{Train}
 	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mbfX_n^\mathrm{train}\}_{n=1}^N, \mathbf{l},
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l},
 		\mathcal{C}(\cdot,f,\Pr), s_1, s_2$
 	\begin{algorithmic}[1]
-		\State $\mbfX'_n \gets \mbfX^\mathrm{train}_n \quad \forall \quad n=1\ldots
+		\State $\mat{X}'_n \gets \mat{X}^\mathrm{train}_n \quad \forall \quad n=1\ldots
     N$
-      \algorithmiccomment{Train stage 1}
+      %\algorithmiccomment{Train stage 1}
 		\Repeat
-		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mbfX'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l}$
+		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l}$
 		\For{$n=1\ldots N$}
     \State  $s_n \gets
-			    \mathrm{median}\left[Pr(s|\mbfX_n',\theta^*,l_n)\right]$
-		\State $\mbfX'_n \gets \mathrm{align}(\mbfX^\mathrm{train}_n, s^*_n)$
+			    \mathrm{median}\left[Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
+		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
 		\EndFor
     \Until{convergence or maximum iterations reached}
-    \For{$n=1\ldots N$}\algorithmiccomment{Feature extraction for stage 2}
+    \For{$n=1\ldots N$}%\algorithmiccomment{Feature extraction for stage 2}
 		  \For{$s=1\ldots R$}
       \State $y_{n,s}^\mathrm{train} \gets
-      f(\mbfX_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
+      f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
         \EndFor
         \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[Pr(s|\mbfX_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
 		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[Pr(s|\mbfX_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
     \EndFor
 
 	\end{algorithmic}
 	\textbf{Output:} $\theta^*,
-  \mbfY^\mathrm{train},
+  \mat{Y}^\mathrm{train},
   \mathbf{s}_\mathrm{target}^\mathrm{train},
   \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
 
 	\smallskip \hrule \smallskip
 	\textsc{Evaluate}
 	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mbfX_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
   \begin{algorithmic}[1]
-		\For{$m=1\ldots M$}\algorithmiccomment{Feature extraction for stage 2}
+		\For{$m=1\ldots M$}%\algorithmiccomment{Feature extraction for stage 2}
 		  \For{$s=1\ldots R$}
       \State $y_{m,s}^\mathrm{test} \gets
-      f(\mbfX_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
+      f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
         \EndFor
         \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[Pr(s|\mbfX_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
 		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[Pr(s|\mbfX_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
+			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
-  \textbf{Output:} $\mbfY^\mathrm{test},
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
   \mathbf{s}_\mathrm{target}^\mathrm{test},
   \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
 	\caption{Classifier-Based Latency Estimation with Woody Iterations}
