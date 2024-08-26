@@ -9,45 +9,27 @@
 \todo{spatially vs temporally organized interfaces}
 
 Gaze-independent ERP-based BCIs~\cite{Riccio2012} can be realized in three
-ways.
-Firstly, non-visual stimulation paradigms such as auditory and somatosensory paradigms
+ways. Firstly, non-visual stimulation paradigms such as auditory and somatosensory paradigms
 do not rely on gaze redirection but often result in lower information transfer
 rates, increased mental effort and user-dependent variability~\cite{Reichert2020b}.
+
 Secondly, visual stimulation can be optimized, e.g. such that the stimuli are always
-present in the field of view~\cite{Treder2010,Pires2011,Lees2018}.
+present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
+Lin2018} or covertly~\cite{Treder2010,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
+the GeoSpell interface~\parencite{Aloise2012}, and the RSVP
+speller~\parencite{Acqualagna2011}.
 Non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
 Alternative visual stimulation paradigms can modulate specific ERP components
 that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
-%These methods, However, can suffer from reduced information
-%transfer rates~\cite{Chennu2013}.
-However, they still rely to some extent on
-eye motor control, often necessitating central gaze fixation.
-
-Firstly, by avoiding visual stimulation entirely and opting for auditory or
-somatosensory stimulation instead.
-However, these alternatives often result in lower information transfer
-rates, increased mental effort and
-user-dependent variability~\cite{Reichert2020b}.
-Secondly, gaze-independence can be achieved through tailored stimulus presentation.
-This can involve enforcing overt VSA by presenting stimuli that fill the field
-of view of the user,
-exploiting visual non-spatial attention, or a combination thereof~\cite{Treder2011}.
-The most common example of non-spatial attention is feature attention, where
-the user directs their attention to an expected property of some of the
-presented stimuli, such as its color, its shape or the symbol it represents~\cite{Zhang2010,Hwang2015,Reichert2020a}.
-In covert VSA scenarios, stimulus paradigms are often fine-tuned to modulate
-specific ERP responses~\cite{Schaeff2012,Xu2022}, increasing the
-signal-to-noise ratio (SNR).
-Some noteworthy examples include the GIBS Block Speller~\cite{Pires2011},
-the GeoSpell interface~\cite{Aloise2012a}, and the RSVP
-speller~\cite{Acqualagna2011,Lees2018}.
 These systems typically require users to focus on a central fixation point while
 selecting peripheral targets.
-However, they often suffer from reduced information
+These methods, However, can suffer too from reduced information
 transfer rates~\cite{Chennu2013}.
-Moreover, they still rely to some extent on
+However, they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
+\todo{advantages
+disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
 
 Thirdly, stimuli can be presented in a standard BCI paradigm, but visuospatial attention
 can be decoded separately from gaze direction.
