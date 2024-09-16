@@ -41,10 +41,12 @@
 
 \include{chapters/preface.tex}
 \chapter{Abstract}
+\include{chapters/abstract.tex}
 \chapter{Samenvatting}
 \tableofcontents
 \listoffigures
 \listoftables
+\chapter{List of abbreviations}
 
 
 
@@ -55,13 +57,12 @@
 
 \part{Introduction \& Literature}
 \includechapter{Brain-Computer Interfaces}{chapters/bci.tex}
-\includechapter{Gaze-independent BCIs}{chapters/gaze_independence.tex}
+\includechapter{Gaze-independent visual BCIs}{chapters/gaze_independence.tex}
 \todo{The role of jitter in gaze-independent ERP decoding}
-\includechapter{Problem statement \& rationale}{chapters/problem_statement.tex}
+%\includechapter{Problem statement \& rationale}{chapters/problem_statement.tex}
 
 \part{Algorithms \& Decoders}
 \includechapter{Kronecker-structured linear decoding}{chapters/stbf_struct.tex}
-\includechapter{Classfier-based Latency Estimation with Woody iterations}{chapters/wcble.tex}
 
 \chapter{Tensor discriminant analysis}
 \section{The tensor structure of EEG data}
@@ -69,6 +70,8 @@
 \section{Block-term Tensor Discriminant Analysis}
 \section{Decoding performance}
 \section{Tensorizations coping with latency jitter}
+
+\includechapter{Classfier-based Latency Estimation with Woody iterations}{chapters/wcble.tex}
 
 \part{Experiments \& Applications}
 \includechapter{Compensating jitter for gaze-independent decoding}{chapters/covert_align.tex}

@@ -2,6 +2,12 @@
 \todo{Shortly describe challenges from the patient point of view, related to
 this thesis}
 
+tetraplegic, locked-in syndrome
+Regaining capabilities and improving QoL
+Start from wolpaw examples, for spelling
+Cite State of the art examples (walk again, speech avatar Metzger, handwriting
+willet, neuralink)
+
 \section{A direct interface to the brain}
 
 Brain-computer interfaces (BCIs) read your mind.
@@ -22,7 +28,7 @@ Optionally, the user can then observe the action of the device and adapt their
 behaviour or brain activity accordingly, closing the loop
 \footnote{
   \textcite{BCISociety2024} has recently formalized this into the
-  following definition of a BCI:
+  following definition:
   \it``A brain-computer interface is a system that measures brain activity and
   converts it in (nearly) real-time into functionally useful outputs to replace,
   restore, enhance, supplement, and/or improve the natural outputs of the brain,
@@ -39,11 +45,11 @@ First of all, we need to identify a signal that is a direct representation of
 what's going on in the brain.
 One might for instance measure the fluctuations in blood flow to specific brain
 regions that are more or less active at a given time, i.e. the
-\textit{haemodynamic signal} with a scanner.
+\emph{hemodynamic signal} with a scanner.
 However, this signal reacts to slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
-A better candidate is the neuronal \textit{action potential}.
+A better candidate is the neuronal \emph{action potential}.
 The brain consists 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The action potential is an electrical pulse occurring when a neuron receives
@@ -51,25 +57,36 @@ input from another neuron and is activated.\todo{kort door de bocht}
 A neuron's action potential, or the combined action potentials of groups of
 synchronized neurons, thus generate an electrical field in and near the brain,
 which can be measured using electrodes.
-Fluctuations in the brain's electrical potential are a much faster and more
-informative signal for our purposes.
-\todo{lower part to section}
-While a myriad of other techniques can be used to measure functional brain
-activity, such as functional ultrasound imaging (fUS) or magnetoencephalograpy
-(MEG), we'll limit ourselves in this work to measuring the electrical field.
-Section~\ref{sec:bci-recording} gives an overview of current recording
-technologies.\todo{make shorter, move part to section}
+Fluctuations in the brain's electrical potential can be faster and more
+informative.\todo{ref section}
 
-\todo{paradigm}
-The brain waves form only one part of the interaction scheme presented
+The recorded brain waves form only one part of the interaction scheme presented
 in Figure~\ref{fig:bci-loop}.
-Most importantly, wee need to know what exactly to look for in this signal.
-For this, the user needs to perform a task which evokes specific activity of
-which it is known that it can be retrieved from the brain signal.
-For example, the imagined movement of an arm is detectable f
+It would make little sense to start digging around at random in all the brain
+activity to try to extract the desired output.
+It would help greatly if we knew what we are looking for.
+For this reason, a BCI operates using a defined \emph{paradigm}, the manner in
+which interaction is performed.
+This usually means that the user is instructed to perform a specific task, like
+attending a specific flickering stimulus.
+We can now exploit background knowledge from prior neuroscientific research
+that the brain response evoked by attended stimuli is different of those
+unattended,
+and determine which one of a set of targets was attended.
+In turn, this can be coupled to an action, like typing the letter shown on the
+stimulus.
+The BCI paradigm comprises, if applicable, the manner of stimulation and the
+exact task performed by the user, and is often closely linked to the manner of
+feedback in the case of a closed-loop system.
+As shown in Section~\ref{sec:bci-paradigms}, there is a wide variety of BCI
+paradigms based on different systems in the brain.
 
-Next, this brain signal needs to be interpreted \emph{in function of} the
-task we want our BCI to perform.\todo{feature extraction}
+The previous points to another component of a successful BCI: the specific
+brain signals related to our paradigm need to be identified within the recorded
+activity.
+This is commonly referred to as \emph{feature extraction}
+In other words, the signal needs to be interpreted \emph{in function of} the
+task we want our BCI to perform.
 The electrical activity of the brain is relatively weak compared to that of the
 environment around us, containing electronic devices and other sources of
 interference.
@@ -117,12 +134,50 @@ changes in behavior or strategy.
 Due to neuroplasticity, the brain's ability to adapt, this can have a positive
 impact on BCI performance and opens the pathway to rehabilitation applications.
 
+\todo{wrap-up}
 
 
 \todo{check excercise session presentation}
 
 \section{Recording technologies}
 \label{sec:bci-recording}
+The brain's activity can be recorded using various neuroimaging
+technologies.
+These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance imaging
+(fMRI) to more portable technologies like accoustic signals obtained by functional ultrasound imaging
+(fUS)~\cite{Zheng2023} and near-infrared spectroscopy
+(fNIRS)~\cite{Borgheai2020}.
+These technologies all measure the hemodynamic signal, which only indirectly
+reflects brain activity.
+Because of the desirable high temporal resolution of
+electrophysiology~\cite{Easttom2021} and
+because of their practicality, we will focus only on methods to record
+electromagnetical activity originating from neuronal action potentials.
+The magnetical field of the brain can be measured using magnetoencephalography
+(MEG)~\cite{Mellinger2007}.
+While MEG is non-invasive and results in high-quality signals, it is relatively
+impractical due to the size of the equipment needed.
+Recent advances have been made using optically pumped magnetometers
+(OPM-MEG)~\cite{Wittevrongel2021}, but this technology still falters outside of
+lab conditions.
+
+As a consequence, the BCI field relies heavily on technologies measuring the
+electrical activity of the brain.
+As mentioned earlier with MEG, an important concept in determining which technology within this group is
+suited for a BCI application is the invasiveness of the technology.
+single-unit recordings
+microelectrode arrays (utah-array, neuralink)
+ecog/µecog
+eeg
+
+EEG cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
+conduction hence low spatial resolution
+what does EEG measure?
+
+
+
+
+
 different recording technologies and level of invasiveness + infographic
 cost, ease of use
 \section{BCI Paradigms}
