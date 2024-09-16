@@ -1,32 +1,15 @@
-\section{Data collection \& preprocessing}
-\section{Results}
-\section{Discussion}
-\todo{check chapters paper}
+\section{Introduction}
 
-\subsubsection{Riemannian Geometry}
-We will compare WCBLE, CBLE and tLDA to Riemannian Geometry
-approaches that rely on spatial covariance as features.
-Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
-performance~\cite{Lotte2018}.
-We implemented two Riemannian Geometry pipelines.
-The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
-filters, projects these covariances to a tangent space and classifies the
-result using $L2$-regularized logistic regression
-(XDAWNCov-TS-LR)~\cite{Cecotti2017}.
-Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
-favorable performance in the presence of single-trial ERP latency jitter.
-Shrunk spatial covariance matrices are estimated from epochs that are
-augmented by concatenating the average target and average non-target ERP as
-extra channels, projected to tangent space and classified using
-$L2$-regularized logistic regression (ERPCov-TS-LR).
+frenzel
+\todo{part about split attention etc from chapter on covert alignment to here}
 
+\section{Materials \& methods}
 
-\subsection{Experiments}
+\subsection{Data collection}
 We evaluate our approach on a
 publicly available dataset and one specifically recorded for this study, designed to
 probe different modalities of covert VSA.
 
-\subsubsection{CVSA-ERP dataset}
 We recorded a dataset to validate our approach.
 The Covert Visuospatial Attention ERP (CVSA-ERP) dataset
 consists of 15 participants, mean age $26.34\pm3.04$ years.
@@ -86,6 +69,91 @@ attended target ($d=1$), there is one other target between the attended target a
 the distractor ($d=2$), or the distractor is opposite to the intended target
 ($d=3$).
 
+\subsubsection{CVSA-ERP dataset}
+EEG for the CVSA-ERP dataset was recorded using a SynAmps RT amplifier
+(Compumedics Neuroscan, Australia) at 2048Hz and 62 Ag/AgCl active electrodes arranged in the
+international 10-10 layout fitted to a standard electrode cap (EASYCAP GmbH,
+Germany), with electrodes located at AFz and FCz as ground and reference respectively.
+Using electrolyte gel, electrode impedances were brought below 5k$\Omega$.
+Electrodes TP9 and TP10, used for off-line re-referencing, were directly
+attached to the skin using stickers for better contact.
+The power line frequency in Belgium is 50 Hz.
+Participant's eye gaze was registered using an EyeLink 1000 Plus eye tracker (SR Research,
+Canada) in non-fixation mode.
+
+Participants signed the informed consent form and were seated at a distance of
+60 cm before a CRT-emulating monitor (VPixx
+Technologies, Canada) operating at a refresh rate of 120Hz, displaying 6
+circular white targets with a diameter of 4.15° visual angle and laid out on a hexagon
+with a radius of 12.28° of visual angle centered on the midpoint of the screen,
+conforming to the interface proposed by \cite{Treder2010} (Figure~\ref{fig:layout_targets}).
+A hexagonal layout interface with an empty center and a low number of targets
+counteracts target crowding and, as long as the subject’s gaze is within the hexagon of
+targets, no other target can be between the subject’s gaze and a covertly
+attended target.
+Targets are full-contrast white and were intensified by scaling them to a
+larger size (5.60° of visual angle, Figure~\ref{fig:layout_intense}) instead of changing the contrast to avoid Troxler-fading\footnote{The optical illusion of disappearing unchanging stimuli
+experienced when visually fixating~\cite{Troxler1804}.}~\cite{Treder2010} in the
+peripheral visual field.
+Stimuli were presented using PsychopPy (version 2023.1.3)~\cite{Peirce2019}.
+
+The participant was instructed to press the space bar when ready for a block
+of stimulations.
+Then, one target was indicated as the cue and the participant
+was instructed to count the number of intensifications of the cued target
+during the following block of stimulations.
+After pressing the space bar again, a blue crosshair appeared, and the subject
+was instructed to fixate their gaze on the blue crosshair for the duration of
+the stimulation block (Figure~\ref{fig:layout_cross_overt} and Figure~\ref{fig:layout_cross_covert}).
+The position of this crosshair determined the VSA condition for this trial:
+overt VSA when the crosshair was at the same location as the cued target,
+covert VSA when the crosshair appeared in the center of the screen, and split
+VSA when the crosshair appeared on a different target than the cued one.
+After pressing the space bar again and a delay of 5 seconds, the stimulation block
+starts.
+All targets were intensified for a duration of 100 ms, in pseudorandom order.
+The inter-stimulus-interval (ISI), the time between the onsets of subsequent intensifications,
+was variable and consisted of a fixed 300ms interval (of which 100ms with an intensified target onscreen)
+with 200ms uniform jitter added, resulting in an ISI
+between 200 and 400 ms.
+Inter-stimulus intervals were jittered to counteract steady-state effects and residue in averaging. A
+longer inter-stimulus interval will increase component amplitude and aid in counteracting temporal
+autocorrelation for a higher statistical test precision.
+In a block of stimulations, each target was intensified a pseudorandom number of times between 10 and 15.
+This led to stimulation blocks with an average duration of 26.25 seconds. After a block of stimulations, an
+input prompt appeared to enter the mentally counted number of intensifications.
+After inputting this number, the subject was allowed to pause until pressing the space bar again.
+In total, six blocks were presented for overt VSA, six blocks for covert VSA, 12 blocks for
+split ($d=1$) VSA, 12 blocks for split ($d=2$) VSA and 6 blocks for split
+($d=3$) VSA, covering all possible combinations of VSA conditions, cued targets and
+crosshair locations.
+The experiment started with five non-recorded practice stimulation blocks, one for
+each of the 5 VSA conditions.
+During these practice blocks, the participant received feedback about their gaze
+position and counting accuracy.
+Counting the instructions and the participant's response to the
+input prompts, a block lasted about 30
+seconds. In sum, the experiment featured approximately 45 minutes of
+stimulation time.
+After blocks 14 and 28, the participant was allowed to take a longer break.
+Including these longer breaks, the experiment lasted approximately one hour.
+\subsubsection{Riemannian Geometry}
+We will compare WCBLE, CBLE and tLDA to Riemannian Geometry
+approaches that rely on spatial covariance as features.
+Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
+performance~\cite{Lotte2018}.
+We implemented two Riemannian Geometry pipelines.
+The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
+filters, projects these covariances to a tangent space and classifies the
+result using $L2$-regularized logistic regression
+(XDAWNCov-TS-LR)~\cite{Cecotti2017}.
+Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
+favorable performance in the presence of single-trial ERP latency jitter.
+Shrunk spatial covariance matrices are estimated from epochs that are
+augmented by concatenating the average target and average non-target ERP as
+extra channels, projected to tangent space and classified using
+$L2$-regularized logistic regression (ERPCov-TS-LR).
+
 \subsubsection{BNCI2014-009 dataset}
 The
 BNCI2014-009\footnote{\url{https://bnci-horizon-2020.eu/database/data-sets}}
@@ -105,7 +173,7 @@ feature attention (the attended letter) are exploited.
 For a detailed description of the paradigm and dataset, we refer
 to \cite{Aloise2012a}.
 
-\subsubsection{Data preprocessing and analysis}
+\subsection{Data preprocessing and analysis}
 Analysis was performed using Python and the MNE software package (version
 1.3.1)~\cite{Gramfort2013}.
 All datasets were band-pass filtered between 0.1Hz and 20Hz with a 4th-order Butterworth filter.

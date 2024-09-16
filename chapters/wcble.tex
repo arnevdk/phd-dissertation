@@ -1,10 +1,189 @@
-\chapter{Woody Classifier-based Latency Estimation}
-\section{Latency estimation and correction}
-\todo{check earlier draft alignment paper}
-\todo{check deleted paragraphs in jitter paper}
-\section{Classifier-based Latency Estimation}
-\section{Classifier-based Latency Estimation with Woody iterations}
-\section{Simulation study}
+\section{Introduction}
+
+\todo{General introduction of why we're doing this}
+
+\subsection{ERP latency jitter}
+
+\subsubsection{Neural origins of latency jitter in the time domain}
+While the classic ERP model assumes a constant ERP response over trials,
+research has shown that cortical evoked potentials show significant
+trial-to-trial jitter~\cite{truccolo2002trial}.
+Experiments show that latency jitter in ERPs is the result of the interacion of
+the evoked activity with ongoing dynamics in the brain~\cite{Hasenstaub2007,
+	kisley1999trial, Curto2009, Arieli1996}.
+
+The latency of an evoked potential is a combination of the modulation of oscillating activity that is
+time-locked, but not necessarily phase-locked to stimulus onset, and a
+delay caused by ongoing neurophysiological processes that are not necessarily related to the task.
+\todo{Check this, \cite{Stokes2016,Mouraux2008}}
+\todo{Read references and check if neural origins and
+	generation model justify approach}
+
+\subsubsection{Implications for ERP analysis}
+The presence of latency jitter introduces multiple issues to ERP analysis, the
+most prominent of which is the smearing effect as illustrated
+in~\autoref{fig:smearing}. In ERP analysis, single-trial ERPs are usually
+averaged per condition to cope with the unfavorable signal-to-noise ratio  When
+averaging over multiple identical signals with jittered latencies, the shape and amplitude of the average do not reflect the properties
+of the original signal. Because the amplitude of the average is lower, the
+signal-to-noise ratio will also be negatively impacted.
+More generally, the smearing effect leads to difficulties interpreting ERP
+results and making inferences about amplitude or latency effects, because these
+are entangled when using averaging~\cite{woody1967characterization, Pfefferbaum1980, McDowell2003, Verleger2005,
+	Roth2007, Walhovd2008, Poli2010, Luck2014}\todo{Review relevance of
+	these references}.
+
+\todo{illustrate smearing effect}
+%\begin{figure}
+%  \todo{smearing effect}
+%	\caption{The smearing effect: averaging over jittered waveforms leads to a spread out
+%		average with a lower amplitude.}
+%	\label{fig:smearing}
+%\end{figure}
+
+\subsubsection{Benefits of latency estimation}
+A common approach to counteract the smearing effect is correcting single-trial
+ERPs for jitter before averaging.\todo{reference} This can be done by estimating the latency of each
+single-trial ERP, and aligning them before averaging.
+Latency estimation has multiple advantages:
+\begin{enumerate*}[label={(\arabic*)}]
+	\item Latency-based ERP alignment can help reveal the true shape and
+	properties like peak amplitude and latency of ERPs across
+	experimental conditions. These are variables of interest for
+	testing electrophysiological an behavioral hypotheses.
+	Additionally, latency estimation allows for the extraction of
+	other descriptors from a set of single-trial ERPs, like
+	amplidute or latency variance~\cite{Hultsch2004}, which can
+	also be of interest as studied variables. For instance, in
+	\cite{Saville2014}, the inter-trial latency variability itself
+	is determined as a correlate of working memory performance.
+	\item Counteracting the smearing effect will boost the signal-to-noise
+	ratio of averaged ERPs by increasing the amplitude of the
+	ERP signal. This in turn can reveal smaller or more jittered ERP components
+	which are otherwise obscured or blurred due to desynchronization.
+	These deblurred templates can then be used for analysis of the ERP
+	waveform, or as templates of the signal of interest in
+	BCIs~\cite{arico2014influence}.
+	%this enables decoders to take into account the relatively low amplitude
+	%earlier components, leading to applications in settings where
+	%information from other components than the P300 need to be exploited,
+	%like covert visual attention paradigms~\cite{arico2014influence,
+	%hardiansyah2020single}.\todo[inline]{rework this to latency features
+	%because smaller visual components might not really be revealed
+	%since they're already time-locked}
+	\item Finally, the introduction of latency estimation and alignment generaly
+	improves BCI classification performance. Single-trial latencies can be
+	used as features to improve classification~\cite{hardiansyah2020single}.
+	Furthermore, compensating for inter-trial differences, especially when
+	extended to inter-subject differences, can aid in transfer learning or
+	generalization across subjects and protocols\cite{Iturrate2014}.
+\end{enumerate*}
+\todo{Read, summarize and cite BCI	references from bibliography}
+
+\subsection{Existing methods for latency estimation and alignment}
+
+\subsubsection{Single-component approaches}
+The most straight-forward method to estimate single-trial latency
+peak-picking. Here, the latency of an ERP is determined as the
+time-point of it's maximum (or minimum) amplitude with relaion to the stimulus
+onset. While straight-forward, this method
+does not perform well in low or negative SNR conditions, unless combined with
+filtering. Filtering can suppress the noise contaminating EEG trials, lowering
+the risk of picking a noise peak instead of a true peak of the ERP. Several filtering approaches have been developed to be used in
+conjuction with peak-picking, in the time domain~\cite{Carlton1980, McCarthy1981,
+	Karjalainen1999, Nishida1999,  Sparacino2002, Georgiadis2005,
+	D’Avanzo2011} and in the time-frequency
+domain~\cite{Quiroga2003, wang2007single,Hu2010,arico2014influence}. Filtering can
+also be done in the spatial domain. The spatial filter can be constructed
+using PCA~\cite{Ouyang2017}, ICA~\cite{townsend1999analyzing, jung2001analysis,
+	Milne2011}, or as a spatial LCMV beamformer~\cite{TREDER2016279}.
+
+A generally more preferred approach than
+peak-picking is template matching. Woody's algorithm~\cite{woody1967characterization} is a simple and performant latency
+estimation method that is still being used and is considered amongst the more
+performant techniques~\cite{Ouyang2017}. It starts with the average ERP as a
+rough estimation of the aligned template ERP, and iteratively refines this
+template by determining at each step the time point of maximum
+cross-correlation of this template with all single-trial ERPs and aligning them
+on these time points to form the next template.
+Similarily, cross-correlation template matching can be combined with filtering.
+\cite{souloumiac2013improved} uses XDAWN to construct spatial filter before
+template matching the spatially filtered signal. \cite{Iturrate2014} uses a
+spatiotemporal filter. Instead of aligning the
+latencies to obtain the template for the next iteration, weighted averaging can
+also be used~\cite{gasser1983selavco}.
+
+Despite good performance, the iterative scheme of Woody's algorithm has a risk of converging to a local
+optimum. To avoid this, a fitness function can be defined to jointly optimize
+the set of single-trial ERP latencies, which can be optimized with a genetic algorithm~\cite{Pelo2018}.
+
+Methods adapted to handle multiple conditions, useful in BCI setting
+\begin{itemize}
+	\item \cite{Kim2020}
+\end{itemize}
+
+\subsubsection{Multi-component approaches}
+The abovementioned methods do not take into account the fact that  ERPs are multi-component signals. Multiple components can be time-locked to different events or neurophysiological proccess and hence are not necessarily
+time-locked to each other. They each can have different latency
+variabilities. The presence of more than one component can hamper the
+performance of some algorithms, and it often only possible to extract only the
+latencies of the largest component present~\cite{Ouyang2017}. When aligning trials
+to one component and averaging, this will introduce blurring in the other
+components~\cite{Ouyang2020}.
+
+Most of the algorithms above can be adapted to work on multiple ERP components
+by carefully selecting peaks or pre-determined regions of interest.
+\cite{hardiansyah2020single} uses an SNR boosting method, applied to a specific
+time-window for each ERP component to extract a latency per component.
+Methods based on spatial decomposition filters like PCA, ICA or XDAWN can be leveraged
+to utilize multiple of their components as filters, resulting in multiple time
+series where peack picking or Woody's algorithm can be applied. In general,
+however, these algorithms lack an integrated approach to deal with multiple
+ERP components. A clear evaluation is lacking of the performance of these
+methods in
+multi-component settings is lacking.
+
+Some algorithms separate components into stimulus and response locked component clusters based on their
+latency distributions~\cite{jung2001analysis, Takeda2008,
+	Zhang1998, Yin2009}. These algorithms do, however, require a response
+button trigger signal as input to determine the response time, which is
+not always present or applicable in an ERP experiment, especially in
+the case of BCIs.
+The RIDE algorithm~\cite{Ouyang2011, Ouyang2015,
+	Wang2015, Ouyang2016, Ouyang2020} is able to do this without entirely depending on
+the response time, and can separate stimulus-locked, response-locked,
+and multiple central component clusters. Others, like spatial filtering methods that use
+decomposition methods to determine the spatial filter can be be modified to separate
+components.~\cite{Ouyang2017}.
+
+To categorize:\todo{categorize and analyze these references}
+\begin{itemize}
+	\item \cite{Dimitriadis2018}
+	\item \cite{Thornton2008}
+	\item Maximum likelihood~\cite{tuan1987variable, Moecks1988,Puce1994} Maximum likelihood
+	\item \cite{Gratton1989} (no access) Maximum likelihood?
+\end{itemize}
+
+\todo{Explain beamforming}
+
+Finally, the smearing problem can also be overcome by algorithms that are not
+based on ERP component latency estimation, but which use time warping-based methods
+to enhance the shape of the averaged template ERP, like Dynamic Time
+Warping~\cite{486255, wang2001warp, Zoumpoulaki2015}, Correlation-Optimized
+Warping~\cite{Skov2006}, or Fast Variational
+Alignment~\cite{flotho2021fast}. Since these methods work
+fundamentally different from the latency estimation methods, and cannot
+directly be used to extract latency features, we will not further consider them
+in this work.
+
+\subsubsection{Contribution}
+In this work, we introduce a new latency method that leverages data-driven,
+joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
+integrates the spatiotemporal filtering in Woody's template matching iteration
+scheme and can easily be extended to multi-component settings.
+Our method attempts to model the spatial and temporal activation of
+each ERP component, as well as it's latency distribution, and takes into acount the
+spatial and temporal correlation of the EEG background noise.
 
 
 \section{Introduction}
@@ -271,9 +450,26 @@ label.
 Aligning is performed by shifting and zero-padding the signal to the right if
 the latency is negative relative to the time window onset, and to the left if
 positive, by the difference between the latency and the window onset.
-\begin{figure*}
-	\includegraphics[width=\linewidth]{figures/wcble/figure1.pdf}
-	\caption{Schematic representation of the Woody Classifier Based Latency
+%\begin{figure}
+%	\includegraphics[width=\linewidth]{figures/wcble/figure1.pdf}
+%	\caption{Schematic representation of the Woody Classifier Based Latency
+%    Estimation training phase.
+%    (1) The first-stage spatiotemporal binary classifier is trained on a set of
+%    epochs.
+%    (2) It is	then applied to time-shifted copies of the epochs to obtain scores
+%    and class probabilities	over time.
+%    (3) The medians of these probability distributions are assumed the class
+%    latencies.
+%    (4) The epochs are aligned to their corresponding	class latencies by
+%    shifting in time such that all latencies fall at the same moment.
+%    (5) The spatiotemporal classifier is then retrained on the aligned epochs
+%    for a	next iteration.
+%    (6) After the iterative process halts, the scores and	latencies obtained
+%    from the last iteration are used to train the second-stage
+%		classifier.}
+%	\label{fig:diagram-train}
+%\end{figure}
+\fullpagefig{figures/wcble/figure1.pdf}{Schematic representation of the Woody Classifier Based Latency
     Estimation training phase.
     (1) The first-stage spatiotemporal binary classifier is trained on a set of
     epochs.
@@ -287,9 +483,7 @@ positive, by the difference between the latency and the window onset.
     for a	next iteration.
     (6) After the iterative process halts, the scores and	latencies obtained
     from the last iteration are used to train the second-stage
-		classifier.}
-	\label{fig:diagram-train}
-\end{figure*}
+    classifier.}{fig:diagram-train}
 The process halts after a fixed amount of iterations or when the estimated set
 of latencies has been encountered before, indicating it ended up in a loop.
 In the end, the procedure should result in enhanced classifier parameters $\theta^*$,
@@ -300,19 +494,16 @@ We can then apply the classifier with enhanced parameters $\theta^*$ in a CBLE
 manner to unseen epochs as illustrated in Figure~\ref{fig:diagram-eval} to obtain a
 vector of scores over time as in~Section~\ref{sec:cble} and the estimated latencies as
 in~Section~\ref{sec:robust-latency}.
-\begin{figure*}
-	\includegraphics[width=\linewidth]{figures/wcble/figure2.pdf}
-	\caption{Schematic representation of the Woody Classifier Based Latency
+\fullpagefig{figures/wcble/figure2.pdf}{Schematic representation of the Woody Classifier Based Latency
     Estimation test phase. (1) The
 		first-stage	spatiotemporal binary classifier obtained from the training phase is
 		applied to time-shifted copies of the epochs to obtain scores and class probabilities
 		over time. (2) The medians of these probability distributions are assumed
 		as the new class latencies. (3) The scores and class latencies are input to the
-		trained second-stage classifier, which predicts the label of the epochs.}
-	\label{fig:diagram-eval}
-\end{figure*}
+    trained second-stage classifier, which predicts the label of the epochs.}{fig:diagram-eval}
 \section{Algorithms}
-\todo{insert comments}
+\todo{Pr not italic}
+\todo{re-insert comments}
 \begin{algorithm}[H]
 	\textsc{Train}
 	\smallskip \hrule \smallskip

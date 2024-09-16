@@ -1,17 +1,102 @@
-\chapter{Gaze-independent BCIs}
 \todo{mention partially published}
-\chapter{Gaze-independent BCIs}
-\section{Oculomotor deficits in Locked-in Syndrome}
-\section{Gaze-independent visual BCIs}
-\section{Benefits \& drawbacks of covert attention in BCI operation}
-\section{Electrophysiological correlates of covert attention}
-\section{Compensating for covert attention}
 \todo{spatially vs temporally organized interfaces}
+\todo{talk about covert shifts in spatial attention alpha}
 
-Gaze-independent ERP-based BCIs~\cite{Riccio2012} can be realized in three
+\section{The gaze-dependence problem}
+
+One of the goals of Brain-computer interfacing is establishing a communication
+channel that does not rely on speech or
+muscular activity~\cite{Naci2012,Chaudhary2016}, which in turn can provide
+solutions to paralyzed individuals.
+%The quest for performant and affordable solutions is most evident in
+%visual BCIs using the electroencephalogram (EEG), where it has led to a gamut
+%of increasingly sophisticated decoders, tailored to the needs
+%of specific stimulation paradigms and usage contexts.
+
+Traditional visual BCI scenarios require the user to overtly direct their
+visuospatial attention (VSA) and gaze toward the screen target they intend to select.
+In most settings, screen targets are overlaid with non-overlapping, transient
+stimuli that evoke event-related EEG potentials (ERPs).
+The selected target can be decoded from these ERPs, as is the case for the
+oddball paradigm where observing a rare but attended stimulus evokes a P3 ERP
+component.
+However, a critical challenge arises when users rely solely or in part on covert
+VSA, which involves directing visuospatial attention without corresponding eye gaze.
+In these cases, classical solutions often fall short of the widely accepted
+80\% target selection accuracy threshold deemed necessary for a comfortable user
+experience~\cite{Brunner2010,Frenzel2011,Treder2010,Ron2019,Neeling2019},
+calling for alternative, gaze-independent solutions.
+
+In this work, we will use the term \emph{gaze-independent} meaning
+\emph{‘dealing explicitly with the fact that a user cannot control their
+gaze.'}
+In the context of a visual BCI, this means that the user's
+visuospatial attention and their gaze do not necessarily coincide.
+Gaze-independent paradigms are particularly
+promising for individuals with impaired eye motor control, such as those
+suffering from specific types or stages of Amyotrophic Lateral Sclerosis (ALS),
+Multiple Sclerosis (MS), stroke, or brain stem
+stroke.
+For these patients, gazing directly at a screen target may be uncomfortable, impractical,
+or even impossible.
+Hence, assistive devices that rely on eye tracking are often inefficient for
+them.
+Consequently, while BCIs hold great promise for these individuals, conventional
+gaze-dependent BCI solutions do not meet their needs due to the absence of gaze
+control. Therefore, the development of decoding strategies that account for covert
+VSA becomes crucial in the pursuit of high-performance gaze independent
+BCIs.
+
+\section{Incidence of eye motor impairment}
+Table~\ref{tab:incidence} reports the relatively high frequencies of
+eye motor problems, which can range from involuntary eye movements to control
+issues and even to partial or complete ophtalmoplegia.
+\begin{table}
+	\centering
+	\begin{tabular}{@{}|l|rrrrr|r|@{}}
+		\hline
+		         & ALS  & MS   & Stroke  &
+		DMD      & SMA  & LiS                           \\ \hline
+		Minor    & 50\% & 31\% & 40-70\% & + & - &      \\
+		Severe   & 33\% & 3\%  & +       & - & - & 98\% \\
+		Complete & 17\% & -    & +       & - & - & 2\%  \\
+		\hline
+	\end{tabular}
+	\caption{Incidence of eye motor impairment in Brain-Computer Interface target
+		populations: (ALS: Amyotrophic Lateral Sclerosis, MS: Multiple Sclerosis,
+		DMD: Duchenne's Muscular Dystrophy, SMA: Spinal Muscular Atrophy, LiS:
+		Locked-In-Syndrome).}\label{tab:incidence}
+\end{table}
+\todo{document methodology}
+\todo{find more references, fill out}
+\todo{
+Patients with
+Totally locked in/locked in with eye motor issues due to
+Brain stem stroke
+ALS
+MS
+Motor and eye motor impairments due to neurotrauma (tetraplegia)
+...
+}
+
+\todo{define eye motor issues}
+\todo{systematic review of prevalences and prevalences of eye motor issues per disorder}
+\todo{
+cite{Guo2022}
+cite{Prasad2010}
+cite{Serra2018}
+cite{Bogousslavsky1987}
+cite{Castelnovo2016}
+cite{Polet2020}
+}
+
+\section{Gaze-independent BCI paradigms}
+\label{sec:gaze-independence-paradigms}
+Gaze-independent ERP-based BCIs~\cite{Riccio2012, Aloise2012} can be realized in three
 ways. Firstly, non-visual stimulation paradigms such as auditory and somatosensory paradigms
 do not rely on gaze redirection but often result in lower information transfer
 rates, increased mental effort and user-dependent variability~\cite{Reichert2020b}.
+\todo{insert table from riccio in text as numbers, not as table}
 
 Secondly, visual stimulation can be optimized, e.g. such that the stimuli are always
 present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
@@ -22,14 +107,24 @@ Non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
 Alternative visual stimulation paradigms can modulate specific ERP components
 that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
-These systems typically require users to focus on a central fixation point while
-selecting peripheral targets.
-These methods, However, can suffer too from reduced information
+Nevertheless, these methods, can suffer too from reduced information
 transfer rates~\cite{Chennu2013}.
-However, they still rely to some extent on
+Furthermore, these systems typically require users to focus on a central fixation point while
+selecting peripheral targets.
+This entails that they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
-\todo{advantages
-disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
+\todo{advantages disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
+\todo{
+Firstly, by avoiding visual
+stimulation entirely and opting for auditory or somatosensory stimulation instead.
+However, these alternatives often result in lower information transfer rates,
+increased mental effort and variable outcomes for different users.
+Secondly, gaze-independence can
+be achieved by adapting the interface to display stimuli such that they
+are always in the center of the field of view, by exploiting visual
+non-spatial attention (feature attention), or a combination thereof.
+These interfaces suffer equally from reduced information transfer rates.
+}
 
 Thirdly, stimuli can be presented in a standard BCI paradigm, but visuospatial attention
 can be decoded separately from gaze direction.
@@ -59,6 +154,7 @@ amplitude features for classification with a support vector machine.
 They demonstrated the positive influence of single-trial ERP component latency
 features on covert VSA inference yet did not attempt to correct the amplitude
 features for these latencies.
+\todo{Should we already mention Frenzel here?}
 \cite{Frenzel2011} introduced a similar protocol to our split VSA
 setting.
 They showed that it is possible to perform split VSA and that, in this

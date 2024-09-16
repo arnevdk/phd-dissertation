@@ -4,7 +4,6 @@
 % Preamble ====================================================================
 \pdfminorversion=7
 \usepackage{todonotes}
-\usepackage{lipsum}
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{booktabs}
@@ -40,12 +39,9 @@
 \pagestyle{front}
 \frontmatter
 
-\chapter{Preface}
-\lipsum[1]
+\include{chapters/preface.tex}
 \chapter{Abstract}
-\lipsum[2-4]
 \chapter{Samenvatting}
-\lipsum[5-7]
 \tableofcontents
 \listoffigures
 \listoftables
@@ -62,7 +58,6 @@
 \includechapter{Gaze-independent BCIs}{chapters/gaze_independence.tex}
 \todo{The role of jitter in gaze-independent ERP decoding}
 \includechapter{Problem statement \& rationale}{chapters/problem_statement.tex}
-\chapter{linear and multilinear ERP decoding}
 
 \part{Algorithms \& Decoders}
 \includechapter{Kronecker-structured linear decoding}{chapters/stbf_struct.tex}
@@ -76,7 +71,6 @@
 \section{Tensorizations coping with latency jitter}
 
 \part{Experiments \& Applications}
-\includechapter{Interface design \& experimental setup}{chapters/interface.tex}
 \includechapter{Compensating jitter for gaze-independent decoding}{chapters/covert_align.tex}
 \todo{Integrating gaze-tracking data}
 \includechapter{Patient cases}{chapters/patients.tex}
@@ -85,9 +79,7 @@
 \backmatter%
 \pagestyle{front}
 \chapter{Funding \& acknowledgments}
-\lipsum[1]
 \chapter{Personal contribution}
-\lipsum[2]
 \chapter{Conflict of interest}
 The authors declare no conflict of interest.
 \include{chapters/cv.tex}

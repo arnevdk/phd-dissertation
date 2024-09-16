@@ -1,14 +1,145 @@
-\todo{chapters don't nicely follow imrad structure. Is this  problem?}
-\todo{concern: is a bit in between formula 1 and formula 2}
-\section{Rationale}
-\todo{people helped and societal impact medical vs recreational}
-\todo{figure BCI loop}
-\todo{definition bci society}
-\section{Overview \& state-of-the-art}
-\subsection{Recording technologies}
-\subsection{BCI paradigms}
-\subsection{Decoders}
-~\cite{Review of classification techniques}
+
+\todo{Shortly describe challenges from the patient point of view, related to
+this thesis}
+
+\section{A direct interface to the brain}
+
+Brain-computer interfaces (BCIs) read your mind.
+BCIs are an entertaining subject with many futuristic and more established
+applications.
+Devices processing direct inputs from the central nervous system can be
+useful for rehabilitation, medical diagnosis or treatment.
+They have always been especially promising as assistive technology for
+paralyzed patients limited in their communication ability. \todo{expand more on this last
+sentence, put patients first in introduction}
+Furthermore, they bring a new paradigm to human-computer interaction,
+especially when paired with virtual or augmented reality.
+
+Simply put, a BCI records the user's brain activity, then extracts some
+relevant output from this brain activity and couples this output to a function
+of a device.
+Optionally, the user can then observe the action of the device and adapt their
+behaviour or brain activity accordingly, closing the loop
+\footnote{
+  \textcite{BCISociety2024} has recently formalized this into the
+  following definition of a BCI:
+  \it``A brain-computer interface is a system that measures brain activity and
+  converts it in (nearly) real-time into functionally useful outputs to replace,
+  restore, enhance, supplement, and/or improve the natural outputs of the brain,
+  thereby changing the ongoing interactions between the brain and its external or
+  internal environments. It may additionally modify brain activity using targeted
+  delivery of stimuli to create functionally useful inputs to the
+  brain.''
+}.
+
+\fullpagefig{figures/bci/bci_loop.pdf}{The Brain-Computer Interfacing loop.}{fig:bci-loop}
+
+Let's break this definition down and focus on the separatate representing what is happening in the brain
+is the neuronal \textit{action potential}.
+The brain consists 86 billion neurons, which are highly interconnected cells that are
+the smallest units of information processing.
+The action potential is an electrical pulse occurring when a neuron receives
+input from another neuron and is activated.\todo{kort door de bocht}
+A neuron's action potential, or the combined action potentials of groups of
+synchronized neurons, thus generate an electrical field in and near the brain,
+which can be measured using electrodes.
+Fluctuations in the brain's electrical potential are a much faster and more
+informative signal for our purposes.
+\todo{lower part to section}
+While a myriad of other techniques can be used to measure functional brain
+activity, such as functional ultrasound imaging (fUS) or magnetoencephalograpy
+(MEG), we'll limit ourselves in this work to measuring the electrical field.
+Section~\ref{sec:bci-recording} gives an overview of current recording
+technologies.\todo{make shorter, move part to section}
+
+\todo{paradigm}
+The brain waves form only one part of the interaction scheme presented
+in Figure~\ref{fig:bci-loop}.
+Most importantly, wee need to know what exactly to look for in this signal.
+For this, the user needs to perform a task which evokes specific activity of
+which it is known that it can be retrieved from the brain signal.
+For example, the imagined movement of an arm is detectable f
+
+Next, this brain signal needs to be interpreted \emph{in function of} the
+task we want our BCI to perform.\todo{feature extraction}
+The electrical activity of the brain is relatively weak compared to that of the
+environment around us, containing electronic devices and other sources of
+interference.
+Furthermore, the brain is continuously processing information and carrying out
+`background tasks', all of which generate their own electrical signals.
+On the other hand, the brain activity we are interested in exploiting often
+originates from a specific functional system within the brain, and its activity
+might not be easily discerned from all other neural and environmental activity,
+akin to trying to listen to a single speaker in a noise environment where
+everyone is shouting over each other.
+Some obvious sources of interference can be easily filtered out, but to obtain
+a good measure reflecting only the activity that is relevant for a given BCI
+problem.
+This problem is called \emph{decoding} and is often solved through supervised
+machine learning.
+Section~\label{sec:bci-decoding} takes a closer look at some common and
+state-of-the art techniques.
+A machine learning algorithm can use some training data for which the performed
+tasks are known, and learn to recognize these tasks in new data.
+The training data can be either obtained from the BCI user themselves or from
+other users.
+In the first case, the user would perform a short calibration session before
+using the BCI, where they are instructed to perform a known task.
+This calibration session can be eliminated by training the decoder on
+preexisting labeled data from other sessions and users, but this is harder due
+to the variability between subjects and sessions.\todo{make shorter, move part
+to section}
+
+Finally, the loop can be closed by coupling this output can be coupled to a
+device or actuator.
+There are two aspects to this.
+On the one hand, the BCI gains its function by allowing the user to interact
+with their environment.
+On the other hand, the actions performed by the BCI can themselves influence
+the user's brain activity, creating an adaptive system.
+A direct form of closed-loop BCI is the use of a neurostimulator.
+Examples of this are deep brain stimulation to mitigate the symptoms of
+Parkinson's disease, or the cochlear implant as an auditive prosthesis.
+More indirectly modulation can be achieved by sensory stimulation.
+This can involve specific, paradigm-related sensory input, like haptic feedback when a
+movement BCI detects an intended action, or simply presenting selected actions
+back to the user.
+The user's brain will then adapt through reinforcement learning, causing
+changes in behavior or strategy.
+Due to neuroplasticity, the brain's ability to adapt, this can have a positive
+impact on BCI performance and opens the pathway to rehabilitation applications.
+
+
+
+\todo{check excercise session presentation}
+
+\section{Recording technologies}
+\label{sec:bci-recording}
 different recording technologies and level of invasiveness + infographic
+cost, ease of use
+\section{BCI Paradigms}
+\label{sec:bci-paradigms}
+\fullpagefig{figures/bci/paradigms.eps}{caption}{fig:bci-paradigms}
+
+\section{Decoders}
+\label{sec:bci-decoders}
+evaluated on
+information transfer rate,
+roc auc,
+accuracy
+
+Calibration, transfer learning, riemannian geometry, (multi)-linear techniques,
+paper fabien lotte
+
 active/reactive/passive + infographic
-\section{Visual Event-Related Potential based BCIs}
+
+
+\section{A case study: the visual oddball ERP paradigm}
+\subsection{stimulation}
+\subsection{The event-related potential}
+\todo{figure of P3 matrix}
+P300 and other components
+\todo{figure of ERP components}
+\subsection{Decoding ERPs}
+tLDA, beamforming
+Linear decoding techniques

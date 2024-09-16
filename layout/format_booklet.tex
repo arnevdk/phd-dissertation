@@ -3,3 +3,25 @@
 \usepackage{float}
 \floatplacement{figure}{p}
 \floatplacement{table}{p}
+
+\usepackage{incgraph}
+\usepackage{tikz}
+%\newcommand{\fullpagefig}[3]{
+%  \incgraph[
+%    overlay={
+%    }
+%  ]{#1}
+%}
+\definecolor{lightgray}{HTML}{ECECEC}
+
+\usepackage[usenames,x11names,dvipsnames,svgnames]{xcolor}
+\usetikzlibrary{backgrounds}
+\newcommand{\fullpagefig}[3]{%
+  \igrcenter{\igrboxset{\includegraphics{#1}}%
+  \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
+  \igrboxtikzcenter%
+  %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
+  \node[above right,text width=10cm] at ([xshift=1cm,yshift=1cm]page.south west){{\captionof{figure}{#2}}};
+  \end{tikzpicture}}
+  \label{#3}
+}
