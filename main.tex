@@ -14,6 +14,7 @@
 
 % Commands
 \input{math.tex}
+\input{acronyms.tex}
 \newcommand{\includechapter}[2]{
   \chapter{#1}
   \begin{refsection}
@@ -23,20 +24,20 @@
   \clearpage
 }
 
+\newcommand{\comment}[1]{
+  \todo[color=yellow]{#1}
+}
+
 % Bibliography
 \usepackage[backend=biber]{biblatex}
 \addbibresource{references.bib}
 \addbibresource{publications.bib}
 
 % Title
-\title{\sffamily An EEG-based visual Brain-Computer Interface for gaze-free communication}
-\author{ir. Arne Van Den Kerchove}
-
 
 \begin{document}
 
 % Front matter ================================================================
-\pagestyle{front}
 \frontmatter
 
 \include{chapters/preface.tex}
@@ -46,14 +47,10 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\chapter{List of abbreviations}
-
-
+\printacronyms[name=List of acronyms]
 
 % Main matter =================================================================
 \mainmatter%
-\pagestyle{main}
-
 
 \part{Introduction \& Literature}
 \includechapter{Brain-Computer Interfaces}{chapters/bci.tex}
@@ -65,11 +62,7 @@
 \includechapter{Kronecker-structured linear decoding}{chapters/stbf_struct.tex}
 
 \chapter{Tensor discriminant analysis}
-\section{The tensor structure of EEG data}
-\section{Higher-order Discriminant Analysis}
-\section{Block-term Tensor Discriminant Analysis}
-\section{Decoding performance}
-\section{Tensorizations coping with latency jitter}
+\todo{add Tensorizations coping with latency jitter}
 
 \includechapter{Classfier-based Latency Estimation with Woody iterations}{chapters/wcble.tex}
 
@@ -80,7 +73,6 @@
 \includechapter{Conclusion \& recommendations}{chapters/conclusion.tex}
 
 \backmatter%
-\pagestyle{front}
 \chapter{Funding \& acknowledgments}
 \chapter{Personal contribution}
 \chapter{Conflict of interest}

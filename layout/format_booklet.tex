@@ -21,9 +21,17 @@
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
   %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
-  \node[above right,text width=10cm] at ([xshift=1cm,yshift=1cm]page.south west){{\captionof{figure}{#2}}};
+  \node[above right,text width=10cm,align=justify] at ([xshift=1cm,yshift=1cm]page.south west){{\captionof{figure}{#2}}};
   \end{tikzpicture}}
   \label{#3}
 }
-
+\newcommand{\fullpagefigct}[3]{%
+  \igrcenter{\igrboxset{\includegraphics{#1}}%
+  \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
+  \igrboxtikzcenter%
+  %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
+  \node[below right,text width=10cm,align=justify] at ([xshift=1cm,yshift=-1cm]page.north west){{\captionof{figure}{#2}}};
+  \end{tikzpicture}}
+  \label{#3}
+}
 \renewcommand{\arraystretch}{1.5}

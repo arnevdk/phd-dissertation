@@ -2,30 +2,35 @@
 \todo{Shortly describe challenges from the patient point of view, related to
 this thesis}
 
+Locked-in -\> communicate
+Paraplegic -\> walk again
+Imagine that
 tetraplegic, locked-in syndrome
-Regaining capabilities and improving QoL
+Regaining capabilities and improving quality of life
 Start from wolpaw examples, for spelling
 Cite State of the art examples (walk again, speech avatar Metzger, handwriting
 willet, neuralink)
 
 \section{A direct interface to the brain}
-
-Brain-computer interfaces (BCIs) read your mind.
-BCIs are an entertaining subject with many futuristic and more established
+\comment{This section describes a bci in layman's terms, without too much
+scientific background, jargon and literature, in the following sections of this
+chapter a more scientific style is used}
+A \ac{bci} reads your mind.
+\ac{bci}s are an entertaining subject with many futuristic and more established
 applications.
 Devices processing direct inputs from the central nervous system can be
 useful for rehabilitation, medical diagnosis or treatment.
 They have always been especially promising as assistive technology for
 paralyzed patients limited in their communication ability. \todo{expand more on this last
-sentence, put patients first in introduction}
+sentence, put patients first in introduction, see above}
 Furthermore, they bring a new paradigm to human-computer interaction,
 especially when paired with virtual or augmented reality.
 
-Simply put, a BCI records the user's brain activity, then extracts some
+Simply put, a \ac{bci} records the user's brain activity, then extracts some
 relevant output from this brain activity and couples this output to a function
 of a device.
 Optionally, the user can then observe the action of the device and adapt their
-behaviour or brain activity accordingly, closing the loop
+behavior or brain activity accordingly, closing the loop
 \footnote{
   \textcite{BCISociety2024} has recently formalized this into the
   following definition:
@@ -38,14 +43,20 @@ behaviour or brain activity accordingly, closing the loop
   brain.''
 }.
 
-\fullpagefig{figures/bci/bci_loop.pdf}{The Brain-Computer Interfacing loop.}{fig:bci-loop}
+\fullpagefigct{figures/bci/bci_loop.pdf}{The \ac{bci}loop.
+The user interacts with the \ac{bci} through a \ac{bci} paradigm, in this case involving
+visual stimulation. Neural signals are recorded, and neurophysiological features
+related to the paradigm are extracted. Using machine learning, a decision can
+then be made based on these features, which can be presented back to the user.
+In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
+}{fig:bci-loop}
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of
 what's going on in the brain.
-One might for instance measure the fluctuations in blood flow to specific brain
-regions that are more or less active at a given time, i.e. the
-\emph{hemodynamic signal} with a scanner.
+Section~\ref{sec:bci-recording} gives an overview of the available options.
+One might for instance measure the fluctuations in bloodflow to specific brain
+regions that are more or less active at a given time with a scanner.
 However, this signal reacts to slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
@@ -53,19 +64,20 @@ A better candidate is the neuronal \emph{action potential}.
 The brain consists 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The action potential is an electrical pulse occurring when a neuron receives
-input from another neuron and is activated.\todo{kort door de bocht}
+input from another neuron and is activated.\todo{gross oversimplification,not
+entirely true}
 A neuron's action potential, or the combined action potentials of groups of
 synchronized neurons, thus generate an electrical field in and near the brain,
 which can be measured using electrodes.
 Fluctuations in the brain's electrical potential can be faster and more
-informative.\todo{ref section}
+informative.
 
 The recorded brain waves form only one part of the interaction scheme presented
 in Figure~\ref{fig:bci-loop}.
 It would make little sense to start digging around at random in all the brain
 activity to try to extract the desired output.
 It would help greatly if we knew what we are looking for.
-For this reason, a BCI operates using a defined \emph{paradigm}, the manner in
+For this reason, a \ac{bci} operates using a defined \emph{paradigm}, the manner in
 which interaction is performed.
 This usually means that the user is instructed to perform a specific task, like
 attending a specific flickering stimulus.
@@ -75,18 +87,18 @@ unattended,
 and determine which one of a set of targets was attended.
 In turn, this can be coupled to an action, like typing the letter shown on the
 stimulus.
-The BCI paradigm comprises, if applicable, the manner of stimulation and the
+The \ac{bci} paradigm comprises, if applicable, the manner of stimulation and the
 exact task performed by the user, and is often closely linked to the manner of
 feedback in the case of a closed-loop system.
-As shown in Section~\ref{sec:bci-paradigms}, there is a wide variety of BCI
+As shown in Section~\ref{sec:bci-paradigms}, there is a wide variety of \ac{bci}
 paradigms based on different systems in the brain.
 
-The previous points to another component of a successful BCI: the specific
+The previous points to another component of a successful \ac{bci}: the specific
 brain signals related to our paradigm need to be identified within the recorded
 activity.
 This is commonly referred to as \emph{feature extraction}
 In other words, the signal needs to be interpreted \emph{in function of} the
-task we want our BCI to perform.
+task we want our \ac{bci} to perform.
 The electrical activity of the brain is relatively weak compared to that of the
 environment around us, containing electronic devices and other sources of
 interference.
@@ -98,7 +110,7 @@ might not be easily discerned from all other neural and environmental activity,
 akin to trying to listen to a single speaker in a noise environment where
 everyone is shouting over each other.
 Some obvious sources of interference can be easily filtered out, but to obtain
-a good measure reflecting only the activity that is relevant for a given BCI
+a good measure reflecting only the activity that is relevant for a given \ac{bci}
 problem.
 This problem is called \emph{decoding} and is often solved through supervised
 machine learning.
@@ -106,10 +118,10 @@ Section~\label{sec:bci-decoding} takes a closer look at some common and
 state-of-the art techniques.
 A machine learning algorithm can use some training data for which the performed
 tasks are known, and learn to recognize these tasks in new data.
-The training data can be either obtained from the BCI user themselves or from
+The training data can be either obtained from the \ac{bci} user themselves or from
 other users.
 In the first case, the user would perform a short calibration session before
-using the BCI, where they are instructed to perform a known task.
+using the \ac{bci}, where they are instructed to perform a known task.
 This calibration session can be eliminated by training the decoder on
 preexisting labeled data from other sessions and users, but this is harder due
 to the variability between subjects and sessions.\todo{make shorter, move part
@@ -118,21 +130,21 @@ to section}
 Finally, the loop can be closed by coupling this output can be coupled to a
 device or actuator.
 There are two aspects to this.
-On the one hand, the BCI gains its function by allowing the user to interact
+On the one hand, the \ac{bci} gains its function by allowing the user to interact
 with their environment.
-On the other hand, the actions performed by the BCI can themselves influence
+On the other hand, the actions performed by the \ac{bci} can themselves influence
 the user's brain activity, creating an adaptive system.
-A direct form of closed-loop BCI is the use of a neurostimulator.
+A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
 Examples of this are deep brain stimulation to mitigate the symptoms of
 Parkinson's disease, or the cochlear implant as an auditive prosthesis.
 More indirectly modulation can be achieved by sensory stimulation.
 This can involve specific, paradigm-related sensory input, like haptic feedback when a
-movement BCI detects an intended action, or simply presenting selected actions
+movement \ac{bci} detects an intended action, or simply presenting selected actions
 back to the user.
 The user's brain will then adapt through reinforcement learning, causing
 changes in behavior or strategy.
 Due to neuroplasticity, the brain's ability to adapt, this can have a positive
-impact on BCI performance and opens the pathway to rehabilitation applications.
+impact on \ac{bci} performance and opens the pathway to rehabilitation applications.
 
 \todo{wrap-up}
 
@@ -141,6 +153,9 @@ impact on BCI performance and opens the pathway to rehabilitation applications.
 
 \section{Recording technologies}
 \label{sec:bci-recording}
+
+\todo{why is spatial resolution good}
+
 The brain's activity can be recorded using various neuroimaging
 technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance imaging
@@ -161,18 +176,60 @@ Recent advances have been made using optically pumped magnetometers
 (OPM-MEG)~\cite{Wittevrongel2021}, but this technology still falters outside of
 lab conditions.
 
-As a consequence, the BCI field relies heavily on technologies measuring the
+As a consequence, the \ac{bci} field relies heavily on the
 electrical activity of the brain.
-As mentioned earlier with MEG, an important concept in determining which technology within this group is
-suited for a BCI application is the invasiveness of the technology.
-single-unit recordings
-microelectrode arrays (utah-array, neuralink)
-ecog/µecog
-eeg
+As mentioned earlier with MEG, an important concept in determining which
+technology is suited for a \ac{bci} application is the \emph{invasiveness} of the technology.
+As illustrated in Figure~\ref{fig:recording-modalities}, invasive electrodes can often measure a very specific brain region and can result in better signal quality, at the cost of the risks
+involved with brain surgery.
+\fullpagefigct{figures/bci/recording_modalities.pdf}{
+	Different electrophysiology recording modalities and \\
+	their respective position in a cross-section of the skull. \\
+	There is a trade-off between invasiveness and  \\
+	spatial resolution.
+}{fig:recording-modalities}
+\todo{find better figure with permission to reuse and without unnecessary
+modalities}
 
-EEG cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
+Specifically, invasive methods come with an increased \emph{spatial resolution},
+meaning they can extract a signal from a specific brain region or even a set of
+neurons of interest.
+Generally, penetrating microelectrodes are considered to have the highest
+spatial resolution.
+Microelectrodes can measure the Local Field Potential (LFP), the extracellular
+potential of a small group of neurons, or even intracellular single neuron
+action potential spikes.
+They come in single-electrode form, or, more popularily, in microelectrode
+arrays.
+Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
+NeuraLink implant~\cite{Musk2019}.
+
+Larger implanted electrodes are referred to as intracranial ac{eeg} (iac{eeg}).
+Depth electrodes such as those used in stereo-ac{eeg} \ac{bci}~\cite{Wu2024} tasks
+and closed-loop adaptive control for Deep Brain Stimulation to mitigate
+Parkinson's disease symptoms~\cite{Arlotti2018}.
+Since these still penetrate the cortex, electrodes that sit on top of the
+cortex are more popular, as they are considered less invasive.
+Electrocorticography (ECoG) is a powerful method
+with many applications in \ac{bci}~\cite{Schalk2011} and epilepsy diagnosis.
+Newer developments like micro-ECoG (µECoG)~\cite{Shokoueinejad2019} with a
+higher number of smaller electrodes per surface area allow for more precise
+measurements.
+
+Some impressive recent breakthroughs\todo{cite} have been realized using
+invasive mictroelectrode arrays and µECoG.
+Recent advances in recording technology focus on improving implant durability and
+lifetime\todo{cite flexible}, or on balancing the invasiveness tradeoff by
+finding new, minimally invasive ways to record from closer to the cortex.
+The Synchron Stentrode~\cite{Mitchell2023}, for instance, can be delivered
+through the bloodstream via a catheter, removing the need for open brain
+surgery.
+However
+
+
+ac{eeg} cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
 conduction hence low spatial resolution
-what does EEG measure?
+what does ac{eeg} measure?
 
 
 
@@ -180,9 +237,30 @@ what does EEG measure?
 
 different recording technologies and level of invasiveness + infographic
 cost, ease of use
-\section{BCI Paradigms}
+\section{\ac{bci} Paradigms}
 \label{sec:bci-paradigms}
 \fullpagefig{figures/bci/paradigms.eps}{caption}{fig:bci-paradigms}
+\todo{cite A comprehensive review of ac{eeg}-based brain–computer interface
+paradigms}
+passive:
+also monitoring for diagnostic purposes
+emotion recognition
+neurofeedback
+
+active:
+motor imagery
+imagined speech
+
+reactive:
+
+somatosensory:
+
+auditory:
+ERP/oddball, steady state
+
+
+visual paradigms:
+SSVEP, cVEP, mVEP, VEP/P300/Oddball
 
 \section{Decoders}
 \label{sec:bci-decoders}

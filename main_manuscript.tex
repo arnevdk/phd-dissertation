@@ -1,2 +1,15 @@
 \documentclass[a4,oneside]{book}
+
+\usepackage{amssymb}
+
+
+\newcommand{\fullpagefig}[3]{
+  \begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{#1}
+    \caption{#2}
+    \label{#3}
+  \end{figure}
+}
+\newcommand\fullpagefigct\fullpagefig
 \input{main.tex}
