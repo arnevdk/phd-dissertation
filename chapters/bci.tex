@@ -1,6 +1,9 @@
-
+Independent home use of a brain-computer interface by people with
+amyotrophic lateral sclerosis.
 \todo{Shortly describe challenges from the patient point of view, related to
 this thesis}
+\todo{do something with Wolpaw (2018) Independent home use of a brain-computer interface by people with
+amyotrophic lateral sclerosis.}
 
 Locked-in -\> communicate
 Paraplegic -\> walk again
@@ -10,6 +13,8 @@ Regaining capabilities and improving quality of life
 Start from wolpaw examples, for spelling
 Cite State of the art examples (walk again, speech avatar Metzger, handwriting
 willet, neuralink)
+
+\todo{put focus on communication BCI}
 
 \section{A direct interface to the brain}
 \comment{This section describes a bci in layman's terms, without too much
@@ -131,7 +136,7 @@ Finally, the loop can be closed by coupling this output can be coupled to a
 device or actuator.
 There are two aspects to this.
 On the one hand, the \ac{bci} gains its function by allowing the user to interact
-with their environment.
+with their environment.\todo{put focus on communication BCI}
 On the other hand, the actions performed by the \ac{bci} can themselves influence
 the user's brain activity, creating an adaptive system.
 A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
@@ -154,7 +159,9 @@ impact on \ac{bci} performance and opens the pathway to rehabilitation applicati
 \section{Recording technologies}
 \label{sec:bci-recording}
 
-\todo{why is spatial resolution good}
+\todo{why is spatial resolution a good thing}
+\todo{explain with each method what it actually is (e.g. electrodes placed
+at...)}
 
 The brain's activity can be recorded using various neuroimaging
 technologies.
@@ -210,33 +217,43 @@ and closed-loop adaptive control for Deep Brain Stimulation to mitigate
 Parkinson's disease symptoms~\cite{Arlotti2018}.
 Since these still penetrate the cortex, electrodes that sit on top of the
 cortex are more popular, as they are considered less invasive.
-Electrocorticography (ECoG) is a powerful method
+\ac{ecog} is a powerful method
 with many applications in \ac{bci}~\cite{Schalk2011} and epilepsy diagnosis.
 Newer developments like micro-ECoG (µECoG)~\cite{Shokoueinejad2019} with a
 higher number of smaller electrodes per surface area allow for more precise
 measurements.
 
-Some impressive recent breakthroughs\todo{cite} have been realized using
-invasive mictroelectrode arrays and µECoG.
-Recent advances in recording technology focus on improving implant durability and
-lifetime\todo{cite flexible}, or on balancing the invasiveness tradeoff by
-finding new, minimally invasive ways to record from closer to the cortex.
+Some impressive recent breakthroughs in speech and motor \ac{bci} for communication
+\todo{cite} have been realized using
+invasive mictroelectrode arrays~\cite{Willett2021} and high-density
+\Ac{ecog}\cite{Metzger2023}.
+Furthermore, recent advances in recording technology focus on improving implant
+durability and resolution\todo{cite flexible}, and on balancing the invasiveness
+tradeoff by finding new, minimally invasive ways to record from closer to the cortex.
 The Synchron Stentrode~\cite{Mitchell2023}, for instance, can be delivered
 through the bloodstream via a catheter, removing the need for open brain
 surgery.
-However
+However, surveys~\cite{Huggins2011, Huggins2015, Branco2021} in different
+potential communication \ac{bci} user groups consistently show that non-invasive
+recording methods are preferred over implanted electrodes, unless the added value of invasive BCI is
+sufficiently large~\cite{Kageyama2020}.\todo{due to what reasons}
+This provides justification for focusing part of the current research effort on
+non-invasive BCI.
 
+\Ac{eeg} is a de facto non-invasive electrophysiology standard, in clinical
+neurology practice as well as in \ac{bci} research.
+Developed in 1924, it is cheap, relatively practical and can offers a
+temporal resolution.
 
-ac{eeg} cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
+outside skull, environmental/electrical noise, volume conduction activity from
+everywhere in the brain.
+
+cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
 conduction hence low spatial resolution
 what does ac{eeg} measure?
 
-
-
-
-
-different recording technologies and level of invasiveness + infographic
 cost, ease of use
+
 \section{\ac{bci} Paradigms}
 \label{sec:bci-paradigms}
 \fullpagefig{figures/bci/paradigms.eps}{caption}{fig:bci-paradigms}

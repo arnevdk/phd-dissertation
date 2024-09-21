@@ -2,6 +2,8 @@
 \todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
 
+\section{The gaze-dependence problem}
+
 \todo{define eye motor issues}
 \todo{systematic review of prevalences and prevalences of eye motor issues per disorder}
 \todo{
@@ -13,23 +15,36 @@ cite{Castelnovo2016}
 cite{Polet2020}
 }
 
-\section{The gaze-dependence problem}
 
 One of the goals of Brain-computer interfacing is establishing a communication
-channel that does not rely on speech or
-muscular activity~\cite{Naci2012,Chaudhary2016}, which in turn can provide
-solutions to paralyzed individuals.
+channel that does not rely on speech or muscular activity~\cite{Naci2012,Chaudhary2016},
+which in turn can provide solutions to paralyzed individuals.
 In the strictest interpretation, this also means that an interface should not
-rely on the control of eye muscles which allow the subject to redirect their
-gaze or stare at a target.
+rely on the control of eye muscles used to redirect the gaze or for blinking.
+\todo{patients suffering paralysis due to damage to the CNS (stroke, spinal
+chord injury, tbi) or neurodegenerative diseases}
 
 In fact, many patients in the BCI target population can suffer to some extent
 from eye motor disability, requiring BCIs adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
-eye motor problems, which can range from minor (nystagmus, other tremors, gaze
-fatigue or discomfort, \ldots), to severe (partial ophtalmoplegia, involuntary
-movements, impaired pursuit, \ldots) and even complete ophtalmoplegia.
-issues and even to partial or complete ophtalmoplegia.
+eye motor problems, which can range from minor (nystagmus
+\footnote{
+Involuntary, rhythmic, and repetitive eye movements recognizable by their
+consistent directionality (horizontal, vertical, or rotational).
+}, other eye tremors
+\footnote{
+These can include square-wave jerks, saccadic intrusions, microtremors or
+microsaccades while resting or fixating the gaze.
+}, gaze fixation fatigue or discomfort, \ldots), to severe (partial ophtalmoplegia
+\footnote{
+Weakness or limited paralysis of one or more of the muscles that control eye
+movement, leading to restricted eye motion, but not complete paralysis.
+Often, a specific movement direction (up-down, left-right) is preserved.
+}, involuntary movements, impaired pursuit, \ldots) and even complete
+ophtalmoplegia\footnote{Full eye movement paralysis.} or eye motor paresis.
+This not only has an effect on the patients' vision and coordination, but also
+on their ability to operate a visual \ac{bci}.
+
 \begin{table}[h]
   \sffamily
   \footnotesize
@@ -43,30 +58,69 @@ issues and even to partial or complete ophtalmoplegia.
 	\caption{Incidence of eye motor impairment in selected BCI target
 		patient populations. (ALS: Amyotrophic Lateral Sclerosis, MS: Multiple Sclerosis,
 		DMD: Duchenne's Muscular Dystrophy, SMA: Spinal Muscular Atrophy, LiS:
-		Locked-In-Syndrome).}\label{tab:incidence}
+		Locked-In-Syndrome). $+$: frequent, $-$: infrequent.}\label{tab:incidence}
 \end{table}
-Among the most affected patients are ALS patients, especially those suffering
-from bulbar onset ALS~\cite{Guo2022}.
-Stroke, brain-stem and cerebellar stroke.
-Furthermore, patients with Locked-in Syndrome
-\footnote{Multiple definitions of Locked-in Syndrome are encountered in
-BCI and neurological literature. Some definitions include only
-tetraplegic patients without eye movements used for communications. Others distinguish Complete
-Locked-in Syndrome (CLIS) with full body paralysis, including no eye motor
-control at all, from a LiS state with some preserved eye movements or minor
-motor output.
+\todo{include FA}
+
+Among the most affected patients are stroke patients~\cite{Pollock2011}, mostly
+due to brain-stem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
+\todo{summarize and cite Rowe2019}
+These patients can suffer from severe or complete eye motor impairment immediately
+immediately from the onset of their condition.
+In \ac{als}, a progressive disease, oculomotor issues are also fairly common.
+Although eye movement is often cited as one of the longest preserved
+capabilities in \ac{als}, \textcite{Guo2022} show that minor issues are still
+fairly common,
+especially for patients with bulbar onset \ac{als}.
+Furthermore \textcite{Hayashi1991} show that, as these patients are supported to beyond
+respiratory failure, the disease progression will eventually also involve
+paralysis of the eye muscles.
+Various forms of eye movement abnormalities also occur often and are especially well studied in
+\ac{ms}~\cite{Mueri1985,Prasad2010,Castelnovo2016,Serra2018,Polet2020}.
+These abnormalities can be minor or severe, seldom progressing to complete
+paralysis.
+However, \ac{ms} often comes with vision loss, further complicating interaction
+with visual \acp{bci}
+\todo{FA}
+Patients from other neurodegenerative diseases like
+\ac{sma}~\cite{Anagnostou2021} and \ac{dmd}~\cite{Lui2001} are
+sometimes also interested in \ac{bci} use, but their eye motor capabilities
+mostly preserved.
+
+\newcommand\fnlis{\footnote{
+Multiple definitions of \ac{lis} are encountered in
+BCI and neurological literature.
+Some definitions include only tetraplegic patients without eye movements used
+for communications.
+Others distinguish Complete Locked-in Syndrome (CLIS) with full body paralysis,
+including no eye motor control at all, from a \ac{lis} state with some preserved eye
+movements or minor motor output.
 While some definitions only include patients who suffered stroke or traumatic
-brain injury to the brain stem, it can also generally refer to the state of full body paralysis
-or loss of muscle tone, combined with the inability to speak, such as occurs in
-late stage ALS.
-In clinical reality, every tetraplegic patient has their
-unique set of preserved capabilities.}
+brain injury to specific regions in the brain (midbrain, brainstem,
+cerebellum),
+it can also generally refer to the state of full body paralysis
+or loss of muscle tone incurred in neurodegenerative diseases, combined with
+the inability to speak, such as occurs in late stage ALS.
+In clinical reality, every tetraplegic patient has their own unique set of
+preserved capabilities and from an solution-oriented \ac{bci} engineering point
+of view, the etiology of the symptoms can be abstracted away.
+}}
+
+
+Ultimately, patients with \ac{lis} from one of the main
+\ac{bci}.
+In this work, we'll define \ac{lis} patients as those a situation of (near)
+complete paralysis and difficulties or the inability to communicate without
+assistive technology, combined with severe or complete eye motor
+impairment\fnlis.
+\todo{from a solution engineering point of view, the etiology does not matter that
+much}.
 \todo{fill out which definition we use, wolpaw criteria}
 \todo{cite studies per pathology}
-Gaze-independent paradigms are particularly
-promising for individuals with impaired eye motor control, such as those
-suffering from specific types or stages of Amyotrophic Lateral Sclerosis (ALS),
-Multiple Sclerosis (MS), (brain stem) stroke or Friedreich's Ataxia (FA)
+\todo{check definition in Wolpaw\&Wolpbaw Brain-Computer Interfaces: Principles
+and Practice}
+\Ac{lis} patients are are (nearly) completely paralyzed and have
+effort communicating without assistive technology.
 
 Traditional visual BCI scenarios require the user to overtly direct their
 visuospatial attention (VSA) and gaze toward the screen target they intend to select.
@@ -277,15 +331,15 @@ visuospatial ERP-based BCI and improving ERP decoding performance (in general
 and specifically in gaze-independent settings).}
 
 
-\subsection{Approach}
+\section{Approach}
 
-\subsubsection{Interface design}
+\subsection{Interface design}
 
 \todo{Overt, covert, split, free, illustration from poster}
 \todo{clear definitions}
 
 
-\subsubsection{Decoders}
+\subsection{Decoders}
 
 During this PhD, we explored different lines in decoding strategies,
 trying to tackle several problems that arise from gaze-independence, such as
@@ -338,7 +392,7 @@ method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
 
 \todo{Tensor discriminant analysis}
 
-\subsubsection{Experiments}
+\subsection{Experiments}
 \todo{Healthy participant study}
 We designed a visual oddball interface that helps us study and adapt
 to the effects of eye motor impairment on the ERP, when using existing state-of-the-art
