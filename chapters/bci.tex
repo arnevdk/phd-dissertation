@@ -360,21 +360,26 @@ If decoders tailored to a specific user that keep the calibration session as
 short as possible are of interest, not enough training data is available to
 properly train a deep learning model.
 
-
 Usually, a decoder makes a prediction for a given \emph{trial} while operating
 the \ac{bci}.
 A trial is the smallest unit on which a selection decision can be made, for
 instance be one imagined movement, or one repetition of flashing all targets
 in a visual \ac{erp} \ac{bci}.
 Some valuable metrics to asses decoder performance in the classification case
-are accuracy,
-concept of trial
-accuracy
+are accuracy and \ac{rocauc}.
+Accuracy can be obtained from the correctness of predicted trial selection as
+\begin{equation}
+  \text{accuracy} = \frac{\text{TP}+\text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}}
+\end{equation}
+with TP and TN the numbers of true positives and negatives and FP and FP the
+numbers of false positives and negatives.
+\Ac{rocauc} is also a measure of classifier predictive power, but is more
+suited for evaluation of classification of single epochs of data and in the
+presence of imbalanced data, e.g. when
+comparing single \ac{erps}.
+Higer \ac{rocauc} usually translates to a higher target selection accuracy.
 
-single erp responses: roc auc, higher roc auc usually results in higher
-accuracy
-
-Finall, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
+Finally, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
 in general, is \ac{itr}.
 \Ac{itr} reflects how fluently a \ac{bci} can be used for communication and can
 be calculated as
