@@ -27,12 +27,18 @@
 \newcommand{\comment}[1]{
   \todo[color=yellow]{#1}
 }
+\newcommand*\elide{\textup{[\,\dots]}}
 
 % Bibliography
+\usepackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
 \addbibresource{references.bib}
 \addbibresource{publications.bib}
 
-% Title
+% Set bibliography font size
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+\usepackage[inline]{enumitem}
 
 \begin{document}
 

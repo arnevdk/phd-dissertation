@@ -11,5 +11,23 @@
     \label{#3}
   \end{figure}
 }
+\newcommand{\figpane}[3]{
+  \begin{subfigure}[t]{.45\textwidth}
+        \includegraphics[width=\textwidth]{#1}
+        \caption{#2}
+        \label{#3}
+    \end{subfigure}
+}
+\newcommand{\fourpanefig}[6]{
+    \begin{figure}
+      #1\hfill#2
+
+      #3\hfill#4
+
+    \caption{#5}
+    \label{#6}
+    \end{figure}
+}
+
 \newcommand\fullpagefigct\fullpagefig
 \input{main.tex}

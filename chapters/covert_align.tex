@@ -1,4 +1,35 @@
+\emph{This chapter has been published as part of~\textcite{VanDenKerchove2024}}
+
 \section{Introduction}
+
+\cite{Arico2014} observed higher variability in single-trial P3 peak
+latencies relative to stimulus onset during covert VSA compared to overt VSA.
+This latency variability contributes to reduced covert VSA decoding performance.
+While they proposed an analysis and performance prediction method, they did not provide a
+decoding solution.
+They suggested that compensating for latency jitter could enhance covert VSA
+decoding, but did not actually verify this hypothesis directly.
+Additionally, \cite{hardiansyah2020single} developed a classifier for
+covert VSA ERPs, exploiting single-trial latency features in combination with
+amplitude features for classification with a support vector machine.
+They demonstrated the positive influence of single-trial ERP component latency
+features on covert VSA inference yet did not attempt to correct the amplitude
+features for these latencies.
+\todo{Should we already mention Frenzel here?}
+\cite{Frenzel2011} introduced a similar protocol to our split VSA
+setting.
+They showed that it is possible to perform split VSA and that, in this
+case, visuospatial attention and gaze direction can separately be decoded using
+classical ERP techniques.
+To the best of our
+knowledge, this is the sole study that investigated split attention in ERP-based BCIs.
+However, \cite{Frenzel2011} considered their interface only for the case
+where the user actively intends to select both targets determined by the gaze
+and the VSA.
+In the split VSA setting considered in our work, we rather instruct the participant to ignore
+the distractor and only attend the cued target, since we are interested in
+decoding the visuospatial attention only.
+
 
 frenzel
 \todo{part about split attention etc from chapter on covert alignment to here}
@@ -10,12 +41,13 @@ We evaluate our approach on a
 publicly available dataset and one specifically recorded for this study, designed to
 probe different modalities of covert VSA.
 
+\subsubsection{CVSA-ERP dataset}
+
 We recorded a dataset to validate our approach.
 The Covert Visuospatial Attention ERP (CVSA-ERP) dataset
 consists of 15 participants, mean age $26.34\pm3.04$ years.
 This study was approved by the Ethics Commission of University Hospital Leuven
 (S62547).
-\ref{app:dataset} details the stimulation and recording procedure.
 Each subject performed different VSA conditions (overt, covert and split),
 illustrated in Figure~\ref{fig:interface}.
 Using a hexagonal layout interface, similar to the visual Hex-o-Spell proposed
@@ -69,7 +101,6 @@ attended target ($d=1$), there is one other target between the attended target a
 the distractor ($d=2$), or the distractor is opposite to the intended target
 ($d=3$).
 
-\subsubsection{CVSA-ERP dataset}
 EEG for the CVSA-ERP dataset was recorded using a SynAmps RT amplifier
 (Compumedics Neuroscan, Australia) at 2048Hz and 62 Ag/AgCl active electrodes arranged in the
 international 10-10 layout fitted to a standard electrode cap (EASYCAP GmbH,

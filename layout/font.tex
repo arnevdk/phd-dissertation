@@ -16,7 +16,7 @@
 \usepackage{afterpage}
 \titleformat{\part}[display]{\pagecolor{white}\vskip10em\centering\bfseries}{\sffamily\Large\partname\
 	\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
-\titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titleformat{\chapter}[display]{\bfseries}{\color{accent1}\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\sffamily\bfseries}{\thesubsubsection}{1em}{}
@@ -25,7 +25,3 @@
 % Setup captions
 \usepackage[font={footnotesize, sf},labelfont=bf]{caption}
 \captionsetup{justification=justified,singlelinecheck=off}
-
-% Set bibliography font size
-\usepackage[backend=biber]{biblatex}
-\renewcommand*{\bibfont}{\footnotesize}

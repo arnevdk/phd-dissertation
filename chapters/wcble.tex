@@ -1,4 +1,22 @@
+\todo{mention published}
 \section{Introduction}
+
+Single-trial ERP latency jitter introduces a problem in ERP analysis:
+the \textit{smearing effect} occurs when aggregating over multiple identical
+signals with different latencies.
+A familiar example of this happens when averaging over jittered epochs for ERP
+analysis.
+In the presence of jitter, the shape and amplitude of the average do not
+reflect the properties of the original signal.
+As the smearing effect reduces the amplitude of the average,
+it negatively impacts the signal-to-noise ratio (SNR).
+The smearing effect equally impacts the SNR of information captured by a
+classifier's parameters when training with a procedure that does not account for
+this jitter, and thus also affects its performance~\cite{Thompson2012}.
+Hence, effective latency estimation and jitter compensation can contribute to higher
+decoding performance.
+%In this work, we propose a latency estimation and alignment strategy based on
+%the method proposed by \cite{Thompson2012}.
 
 \todo{General introduction of why we're doing this}
 
@@ -80,9 +98,9 @@ Latency estimation has multiple advantages:
 \end{enumerate*}
 \todo{Read, summarize and cite BCI	references from bibliography}
 
-\subsection{Existing methods for latency estimation and alignment}
+\section{Literature}
 
-\subsubsection{Single-component approaches}
+\subsection{Single-component approaches}
 The most straight-forward method to estimate single-trial latency
 peak-picking. Here, the latency of an ERP is determined as the
 time-point of it's maximum (or minimum) amplitude with relaion to the stimulus
@@ -122,7 +140,7 @@ Methods adapted to handle multiple conditions, useful in BCI setting
 	\item \cite{Kim2020}
 \end{itemize}
 
-\subsubsection{Multi-component approaches}
+\subsection{Multi-component approaches}
 The abovementioned methods do not take into account the fact that  ERPs are multi-component signals. Multiple components can be time-locked to different events or neurophysiological proccess and hence are not necessarily
 time-locked to each other. They each can have different latency
 variabilities. The presence of more than one component can hamper the
@@ -176,33 +194,8 @@ fundamentally different from the latency estimation methods, and cannot
 directly be used to extract latency features, we will not further consider them
 in this work.
 
-\subsubsection{Contribution}
-In this work, we introduce a new latency method that leverages data-driven,
-joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
-integrates the spatiotemporal filtering in Woody's template matching iteration
-scheme and can easily be extended to multi-component settings.
-Our method attempts to model the spatial and temporal activation of
-each ERP component, as well as it's latency distribution, and takes into acount the
-spatial and temporal correlation of the EEG background noise.
+\todo{check overlap with:
 
-
-\section{Introduction}
-Single-trial ERP latency jitter introduces a problem in ERP analysis:
-the \textit{smearing effect} occurs when aggregating over multiple identical
-signals with different latencies.
-A familiar example of this happens when averaging over jittered epochs for ERP
-analysis.
-In the presence of jitter, the shape and amplitude of the average do not
-reflect the properties of the original signal.
-As the smearing effect reduces the amplitude of the average,
-it negatively impacts the signal-to-noise ratio (SNR).
-The smearing effect equally impacts the SNR of information captured by a
-classifier's parameters when training with a procedure that does not account for
-this jitter, and thus also affects its performance~\cite{Thompson2012}.
-Hence, effective latency estimation and jitter compensation can contribute to higher
-decoding performance.
-%In this work, we propose a latency estimation and alignment strategy based on
-%the method proposed by \cite{Thompson2012}.
 
 The most straightforward latency estimation method is \textit{peak picking}.
 Peak picking determines the latency of an ERP as the time point of its maximum
@@ -253,6 +246,11 @@ Alignment~\cite{Flotho2021}. Since these methods are fundamentally
 different from latency estimation methods,
 we will not further consider them in this work.
 
+
+}
+
+\subsection{Contribution}
+
 Most of these methods suffer from a common drawback: they cannot be used in a
 decoding scheme to improve performance for incoming epochs with unknown
 class labels that contain either a target or non-target ERP response.
@@ -284,9 +282,18 @@ classify jittered ERPs.
 We adapt the CBLE to an iterative method akin to Woody's scheme that can better
 compensate for jitter, to improve covert VSA decoding performance.
 
-\section{Materials and Methods}
-\subsection{Decoders}
-\subsubsection{Classifier-based Latency Estimation}
+\todo{remove lcmv}
+In this work, we introduce a new latency method that leverages data-driven,
+joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
+integrates the spatiotemporal filtering in Woody's template matching iteration
+scheme and can easily be extended to multi-component settings.
+Our method attempts to model the spatial and temporal activation of
+each ERP component, as well as it's latency distribution, and takes into acount the
+spatial and temporal correlation of the EEG background noise.
+
+\section{Methods}
+
+\subsection{Classifier-based Latency Estimation}
 \label{sec:cble}
 
 Consider a training set of $N$ EEG epochs with $C$ channels of $S$
@@ -341,7 +348,7 @@ Therefore, we opt to use the variant of Linear Discriminant Analysis with block-
 regularized covariance matrix (tLDA) proposed by \cite{Sosulski2022}, as the first-stage
 classifier and logistic regression as second stage.
 
-\subsubsection{Robust CBLE latency features}
+\subsection{Robust CBLE latency features}
 \label{sec:robust-latency}
 The ERP decoding method based on CBLE introduced by \cite{Mowla2017} does
 not make use of the extracted latencies, only passing score matrix $\mat{Y}$ on
@@ -419,7 +426,7 @@ For the non-target case, the median approach tends towards the center of a
 near-uniform distribution, resulting in a more consistent latency estimate over
 trials as compared to the minimum approach.
 
-\subsubsection{Classifier-based Latency Estimation with Woody
+\subsection{Classifier-based Latency Estimation with Woody
 	Iterations}
 To improve performance over CBLE, we propose a new algorithm inspired both by
 CBLE and the aforementioned Woody iteration scheme (WCBLE).
@@ -450,25 +457,6 @@ label.
 Aligning is performed by shifting and zero-padding the signal to the right if
 the latency is negative relative to the time window onset, and to the left if
 positive, by the difference between the latency and the window onset.
-%\begin{figure}
-%	\includegraphics[width=\linewidth]{figures/wcble/figure1.pdf}
-%	\caption{Schematic representation of the Woody Classifier Based Latency
-%    Estimation training phase.
-%    (1) The first-stage spatiotemporal binary classifier is trained on a set of
-%    epochs.
-%    (2) It is	then applied to time-shifted copies of the epochs to obtain scores
-%    and class probabilities	over time.
-%    (3) The medians of these probability distributions are assumed the class
-%    latencies.
-%    (4) The epochs are aligned to their corresponding	class latencies by
-%    shifting in time such that all latencies fall at the same moment.
-%    (5) The spatiotemporal classifier is then retrained on the aligned epochs
-%    for a	next iteration.
-%    (6) After the iterative process halts, the scores and	latencies obtained
-%    from the last iteration are used to train the second-stage
-%		classifier.}
-%	\label{fig:diagram-train}
-%\end{figure}
 \fullpagefig{figures/wcble/figure1.pdf}{Schematic representation of the Woody Classifier Based Latency
     Estimation training phase.
     (1) The first-stage spatiotemporal binary classifier is trained on a set of
@@ -504,6 +492,7 @@ in~Section~\ref{sec:robust-latency}.
 \section{Algorithms}
 \todo{Pr not italic}
 \todo{re-insert comments}
+
 \begin{algorithm}[H]
 	\textsc{Train}
 	\smallskip \hrule \smallskip
@@ -552,7 +541,6 @@ in~Section~\ref{sec:robust-latency}.
 	\label{alg:cble}
 \end{algorithm}
 
-\newpage
 \begin{algorithm}[H]
 	\textsc{Train}
 	\smallskip \hrule \smallskip
@@ -609,3 +597,9 @@ in~Section~\ref{sec:robust-latency}.
 	\caption{Classifier-Based Latency Estimation with Woody Iterations}
 	\label{alg:wcble}
 \end{algorithm}
+
+\section{Results}
+
+\section{Discussion}
+
+\section{Conclusion}

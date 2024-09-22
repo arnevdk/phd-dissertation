@@ -2,5 +2,6 @@ black: #262321
 grey: #8D807A
 lightgrey: #ececec
 lightbrown:
-accent1: #F29018
-accent2: #F63D1E
+accent1: F29018
+accent2: F63D1E
+accent3: 78479d

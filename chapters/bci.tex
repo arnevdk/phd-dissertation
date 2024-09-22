@@ -5,15 +5,15 @@ this thesis}
 \todo{do something with Wolpaw (2018) Independent home use of a brain-computer interface by people with
 amyotrophic lateral sclerosis.}
 
+\todo{
 Locked-in -\> communicate
 Paraplegic -\> walk again
-Imagine that
 tetraplegic, locked-in syndrome
 Regaining capabilities and improving quality of life
 Start from wolpaw examples, for spelling
-Cite State of the art examples (walk again, speech avatar Metzger, handwriting
+Cite some catchy state of the art examples (walk again, speech avatar Metzger, handwriting
 willet, neuralink)
-
+}
 \todo{put focus on communication BCI}
 
 \section{A direct interface to the brain}
@@ -48,7 +48,7 @@ behavior or brain activity accordingly, closing the loop
   brain.''
 }.
 
-\fullpagefigct{figures/bci/bci_loop.pdf}{The \ac{bci}loop.
+\fullpagefigct{figures/bci/bci_loop.pdf}{The \ac{bci} loop.
 The user interacts with the \ac{bci} through a \ac{bci} paradigm, in this case involving
 visual stimulation. Neural signals are recorded, and neurophysiological features
 related to the paradigm are extracted. Using machine learning, a decision can
@@ -101,6 +101,7 @@ paradigms based on different systems in the brain.
 The previous points to another component of a successful \ac{bci}: the specific
 brain signals related to our paradigm need to be identified within the recorded
 activity.
+\todo{preprocessing}
 This is commonly referred to as \emph{feature extraction}
 In other words, the signal needs to be interpreted \emph{in function of} the
 task we want our \ac{bci} to perform.
@@ -119,20 +120,12 @@ a good measure reflecting only the activity that is relevant for a given \ac{bci
 problem.
 This problem is called \emph{decoding} and is often solved through supervised
 machine learning.
-Section~\label{sec:bci-decoding} takes a closer look at some common and
-state-of-the art techniques.
-A machine learning algorithm can use some training data for which the performed
-tasks are known, and learn to recognize these tasks in new data.
-The training data can be either obtained from the \ac{bci} user themselves or from
-other users.
-In the first case, the user would perform a short calibration session before
-using the \ac{bci}, where they are instructed to perform a known task.
-This calibration session can be eliminated by training the decoder on
-preexisting labeled data from other sessions and users, but this is harder due
-to the variability between subjects and sessions.\todo{make shorter, move part
-to section}
+Useful information that is encoded in the brain signal by the paradigm,
+can be retrieved from it by the decoder.
+Section~\label{sec:bci-decoding} takes a closer look at some common decoding
+techniques.
 
-Finally, the loop can be closed by coupling this output can be coupled to a
+Finally, the loop can be closed by coupling this to a
 device or actuator.
 There are two aspects to this.
 On the one hand, the \ac{bci} gains its function by allowing the user to interact
@@ -240,29 +233,58 @@ sufficiently large~\cite{Kageyama2020}.\todo{due to what reasons}
 This provides justification for focusing part of the current research effort on
 non-invasive BCI.
 
-\Ac{eeg} is a de facto non-invasive electrophysiology standard, in clinical
+\Ac{eeg} is the de facto non-invasive electrophysiology standard, in clinical
 neurology practice as well as in \ac{bci} research.
-Developed in 1924, it is cheap, relatively practical and can offers a
-temporal resolution.
+Developed in 1924, it is cheap, relatively practical and can offers great
+temporal resolution up to thousands of Hz.
+As it is easily applicable on the outside of the scalp, many practical
+consumer grade \ac{eeg} headsets exist in the form (often wireless) electrode
+caps or helmets.
+Current consumer systems can feature dry electrodes, but clinical and
+research systems often use electrolyte gel to reduce impedance for improved signal
+quality, which slightly decreases practicality.
+Nevertheless, it is the most accessible \ac{bci} technology for both patients
+and researchers.
 
-outside skull, environmental/electrical noise, volume conduction activity from
-everywhere in the brain.
+The major drawback of \ac{eeg} is its poor spatial resolution.
+The electrodes are large and sit on the outside of the scalp, relatively far
+away from the cortex.
+Furthermore, the layers of skull and cerebrospinal fluid in between can
+attenuate the signal and cause volume conduction, which results in electrodes
+measuring a mixture of activity from sources elsewhere in the brain.
+In addition to picking up brain activity other than that of the region of
+interest, \ac{eeg} also records other artifacts, from the
+environment, the power supply, nearby electrical equipment or the user's muscle
+movements.
+Combined, this means that \ac{eeg} is inherently noisy.
 
-cheap and practical, non-invasive, high-temporal resolution, but noise, suffers from volume
-conduction hence low spatial resolution
-what does ac{eeg} measure?
-
-cost, ease of use
+Despite its noisy nature \Ac{eeg} is the recording methodology of choice for
+our \ac{bci} because of its wide acceptance by patients.
+To counteract the noise present in our recording, we must on the one hand evoke
+strong, informative brain signals using a suited \ac{bci} \emph{paradigm}, and on th
+other hand pick a suited \emph{decoder} which can isolate the signal of
+interest and filter out the noise.
 
 \section{\ac{bci} Paradigms}
 \label{sec:bci-paradigms}
-\fullpagefig{figures/bci/paradigms.eps}{caption}{fig:bci-paradigms}
+\fullpagefig{figures/bci/paradigms.eps}{A \ac{bci} paradigm defines which brain
+activity will be used for control. They can be categorized in \emph{active},
+\emph{reactive} and \emph{passive} paradigms, depending on their reliance on
+external stimulation and active participation required from the user.
+Adapted from~\textcite{Muehl2014}.
+}{fig:bci-paradigms}
+\todo{check premissions}
 \todo{cite A comprehensive review of ac{eeg}-based brain–computer interface
 paradigms}
 passive:
 also monitoring for diagnostic purposes
 emotion recognition
 neurofeedback
+error potentials
+cannot easily be used for fast communication
+synchronous <-> asynchronous
+
+\cite{Xu2021}
 
 active:
 motor imagery
@@ -270,34 +292,125 @@ imagined speech
 
 reactive:
 
-somatosensory:
+somatosensory evoked potentials (cite jimmy)
 
 auditory:
 ERP/oddball, steady state
 
 
 visual paradigms:
+more performant since it allows us to use our visual system, the most adapted
+sensory system in humans
 SSVEP, cVEP, mVEP, VEP/P300/Oddball
+high ssvep itr
+
+hybrid
 
 \section{Decoders}
 \label{sec:bci-decoders}
-evaluated on
-information transfer rate,
-roc auc,
+
+After extracting features, machine learning algorithms can perform \ac{bci}
+decoding.
+This is usually based on
+some training data for which the performed tasks are known, by recognize the
+activity evoked by the task in recorded data.
+The training data can be either obtained from the \ac{bci} user themselves or from
+other users.
+In the first case, the user would perform a short calibration session before
+using the \ac{bci}, where they are instructed to perform a known task.
+This calibration session can be eliminated by training the decoder on
+preexisting labeled data from other sessions and users, but this is harder due
+to the variability between subjects and sessions.\todo{make shorter, move part
+to section}
+
+\todo{regression/classification}
+\todo{for communication, we want classification, focus on classification
+further down the line}
+
+If the goal is to eliminate the per-session calibration, one can also use a
+decoder pre-trained on an existing dataset of the same task.
+This is complicated by large variability in measured brain response between subjects
+and even between different sessions within the same
+subject~\cite{Guger2009,Saha2020}.
+Therefore, pre-trained decoders must either be trained on a very large, diverse
+sample of subjects, or some form of transfer learning must be applied.
+Nevertheless, in practice pre-trained models or models using transfer learning often still
+require some per session fine-tuning, which still necessitates some
+calibration.
+Instead, rather opt for keeping the calibration time as short as possible by using
+an algorithm that can learn from very few training samples.
+This can work well, but requires strong regularization~\cite{VanDenKerchove2022}.
+
+\textcite{Lotte2018, Xu2021} present a relatively recent overview of state-of-the art
+decoder algorithms.
+Classic linear methods, such as \ac{csp} feature extraction for
+motor imagery~\cite{Park2017} and \ac{cca} for \ac{ssvep}~\cite{Nakanishi2017},
+and \ac{lda} for \ac{erp} classification~\cite{Sosulski2022} still perform
+relatively well, given some regularizing constraints or extensions.
+Multi-linear techniques exploiting the tensor structure of neural signals are
+also promising.
+Riemannian Geometry~\cite{Barachant2014} is a popular and robust new strategy,
+Furthermore, they lend themselves well to application like adaptive
+learning~\cite{Benaroch2021} or transfer learning~\cite{Zanini2017}
+Riemannian Geometry classifiers are often considered the current
+state-of-the-art.
+Finally, deep learning\todo{Bhuvaneshwari2021} is also sometimes considered, albeit only when large
+training datasets are available.
+If decoders tailored to a specific user that keep the calibration session as
+short as possible are of interest, not enough training data is available to
+properly train a deep learning model.
+
+
+Usually, a decoder makes a prediction for a given \emph{trial} while operating
+the \ac{bci}.
+A trial is the smallest unit on which a selection decision can be made, for
+instance be one imagined movement, or one repetition of flashing all targets
+in a visual \ac{erp} \ac{bci}.
+Some valuable metrics to asses decoder performance in the classification case
+are accuracy,
+concept of trial
 accuracy
 
-Calibration, transfer learning, riemannian geometry, (multi)-linear techniques,
-paper fabien lotte
+single erp responses: roc auc, higher roc auc usually results in higher
+accuracy
 
-active/reactive/passive + infographic
+Finall, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
+in general, is \ac{itr}.
+\Ac{itr} reflects how fluently a \ac{bci} can be used for communication and can
+be calculated as
+\begin{equation}
+	\text{ITR} = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
+\end{equation}
+\Ac{itr} is expressed in bits/s and is dependent on $N$, the number of
+different options that can be selected per trial, $P$, the selection accuracy
+of the decoder, and $Q$, the number of trials per second.
+The parameters $N$, $P$ and $Q$ of this formula give us some insight in the
+building blocks a successful, high-\ac{itr} \ac{bci}.
+To improve performance, we can aim to
+\todo{enumerate}
+\begin{enumerate*}[label={\arabic*})]
+\item increase $N$ by selecting a paradigm and interface that offer a
+broad range of informative selections per trial,
+\item increase $P$ by engineering more performant machine learning methods for
+decoding, and
+\item increase $Q$ by selecting a paradigm and allows fast stimulation or
+responses.
+\end{enumerate*}
 
 
 \section{A case study: the visual oddball ERP paradigm}
-\subsection{stimulation}
-\subsection{The event-related potential}
+good choice because it scores high on the parameters above
+\subsection{Stimulation}
 \todo{figure of P3 matrix}
+\todo{cite P300 literature, first example and current sota}
+\subsection{The event-related potential}
 P300 and other components
+does not only rely on P300, but also heavily dependent on visual early
+components, hence we'll refer to it under the more generall oddball ERP
+paradigm
 \todo{figure of ERP components}
+\subsection{Preprocessing and feature extraction}
+referencing, filtering, epoching, baselining
 \subsection{Decoding ERPs}
 tLDA, beamforming
 Linear decoding techniques

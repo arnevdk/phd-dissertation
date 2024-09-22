@@ -23,13 +23,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.90266355"
-     inkscape:cx="140.14081"
-     inkscape:cy="383.86395"
-     inkscape:window-width="1920"
-     inkscape:window-height="1043"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:zoom="2.5531181"
+     inkscape:cx="305.11711"
+     inkscape:cy="243.81951"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="1920"
+     inkscape:window-y="270"
      inkscape:window-maximized="1"
      inkscape:current-layer="g3" />
   <defs
@@ -89,26 +89,26 @@
          d="M 80.000009,76.026413 V 163.97359"
          id="path1-5" />
       <rect
-         style="fill:#ffffff;fill-opacity:1;stroke:#f29018;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#f29018;stroke-width:1.02983;stroke-dasharray:none;stroke-opacity:1"
          id="rect3"
-         width="33.51379"
-         height="33.51379"
-         x="40.355152"
-         y="80.355141" />
+         width="34.513481"
+         height="34.513481"
+         x="39.340546"
+         y="79.34053" />
       <rect
-         style="fill:#ffffff;fill-opacity:1;stroke:#f63d1e;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#f63d1e;stroke-width:1.02803;stroke-dasharray:none;stroke-opacity:1"
          id="rect3-7"
-         width="33.51379"
-         height="33.51379"
-         x="86.193008"
-         y="80.41275" />
+         width="34.45335"
+         height="34.45335"
+         x="86.207024"
+         y="79.459183" />
       <rect
-         style="fill:#ffffff;fill-opacity:1;stroke:#78479d;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#78479d;stroke-width:1.0145;stroke-dasharray:none;stroke-opacity:1"
          id="rect3-2"
-         width="80.171608"
-         height="33.094673"
-         x="39.32563"
-         y="126.13934" />
+         width="81.334259"
+         height="33.574612"
+         x="39.332882"
+         y="125.65215" />
       <text
          xml:space="preserve"
          style="font-size:3.88056px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#ffffff;fill-opacity:1;stroke:#f63d1e;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
@@ -176,6 +176,172 @@
            x="139.38713"
            y="123.57642"
            id="tspan8">dependent</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="105.34218"
+         y="139.08975"
+         id="text5-2-1-3"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="105.34218"
+           y="139.08975"
+           id="tspan7-6">error</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="105.34218"
+           y="142.89975"
+           id="tspan2">detection</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="96.867363"
+         y="93.206726"
+         id="text5-2-1-3-9"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="96.867363"
+           y="93.206726"
+           id="tspan2-9">P300</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="56.324474"
+         y="90.831215"
+         id="text5-2-1-3-9-4"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.324474"
+           y="90.831215"
+           id="tspan2-9-4">motor</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.324474"
+           y="94.641212"
+           id="tspan11">imagery</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="56.608139"
+         y="101.61426"
+         id="text5-2-1-3-9-4-3"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.608139"
+           y="101.61426"
+           id="tspan11-7">imagined</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.608139"
+           y="105.42426"
+           id="tspan12">speech</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="96.943329"
+         y="103.82854"
+         id="text5-2-1-3-9-5"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="96.943329"
+           y="103.82854"
+           id="tspan2-9-9">SSVEP</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="109.61702"
+         y="93.188896"
+         id="text5-2-1-3-9-5-1"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="109.61702"
+           y="93.188896"
+           id="tspan2-9-9-0">cVEP</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="109.09327"
+         y="103.81226"
+         id="text5-2-1-3-9-5-1-2"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="109.09327"
+           y="103.81226"
+           id="tspan2-9-9-0-1">mVEP</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="56.498844"
+         y="139.02386"
+         id="text5-2-1-3-5"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.498844"
+           y="139.02386"
+           id="tspan7-6-9">attention</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="56.498844"
+           y="142.83386"
+           id="tspan3">monitoring</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#8f827d;fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+         x="79.991486"
+         y="149.96378"
+         id="text5-2-1-3-5-9"><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="79.991486"
+           y="149.96378"
+           id="tspan7-6-9-1">emotion</tspan><tspan
+           sodipodi:role="line"
+           style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#262321;fill-opacity:1;stroke:none;stroke-width:1"
+           x="79.991486"
+           y="153.77377"
+           id="tspan1">recognition</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:end;text-anchor:end;fill:#f63d1e;fill-opacity:1;stroke-width:0.2;stroke-linecap:square"
+         x="93.151352"
+         y="86.944267"
+         id="text9"><tspan
+           sodipodi:role="line"
+           id="tspan9"
+           style="stroke-width:0.2"></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#f29018;fill-opacity:1;stroke-width:0.2;stroke-linecap:square"
+         x="41.122303"
+         y="83.694542"
+         id="text10"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           style="font-weight:bold;text-align:start;text-anchor:start;fill:#f29018;fill-opacity:1;stroke-width:0.2"
+           x="41.122303"
+           y="83.694542">active BCI</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#f63d1e;fill-opacity:1;stroke-width:0.2;stroke-linecap:square"
+         x="119.07613"
+         y="83.694542"
+         id="text10-5"><tspan
+           sodipodi:role="line"
+           id="tspan10-0"
+           style="font-weight:bold;text-align:end;text-anchor:end;fill:#f63d1e;fill-opacity:1;stroke-width:0.2"
+           x="119.07613"
+           y="83.694542">reactive BCI</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;line-height:1.2;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';text-align:start;text-anchor:start;fill:#78479d;fill-opacity:1;stroke-width:0.2;stroke-linecap:square"
+         x="41.122303"
+         y="157.29559"
+         id="text10-8"><tspan
+           sodipodi:role="line"
+           id="tspan10-5"
+           style="font-weight:bold;text-align:start;text-anchor:start;fill:#78479d;fill-opacity:1;stroke-width:0.2"
+           x="41.122303"
+           y="157.29559">passive BCI</tspan></text>
     </g>
   </g>
 </svg>
