@@ -6,7 +6,7 @@ This chapter, except Sections~\ref{sec:wcble/intro},
 \section{Introduction}
 \label{sec:wcble/intro}
 
-Visual oddball \acp{bci} establish communication with paralyzed
+\Ac{eeg}-based visual oddball \acp{bci} establish communication with paralyzed
 individuals by decoding \acp{erp} obtained from time-modulated flashing
 stimuli.
 These \acp{erp} consist of multiple \ac{erp}-components, peaks and troughs in
@@ -79,7 +79,6 @@ the within-class scatter matrix, which will then also be affected.
 Hence, effective latency estimation and jitter compensation can contribute to higher
 decoding performance.
 
-
 \subsubsection{Benefits of latency estimation}
 A common approach to counteract the smearing effect is to correct single-trial
 \ac{erp}s for jitter before averaging.\todo{reference}
@@ -101,9 +100,9 @@ Latency estimation has multiple advantages:
 	ratio of averaged \ac{erp}s by increasing the amplitude of the
 	\ac{erp} signal. This in turn can reveal smaller or more jittered \ac{erp}
   components which would otherwise obscured or blurred due to desynchronization.
-	These deblurred templates can then be used for analysis of the \ac{erp}
+    These \emph{deblurred} templates can then be used for analysis of the \ac{erp}
 	waveform, or as templates of the signal of interest in
-	BCIs~\cite{arico2014influence}.
+	BCIs~\cite{Arico2014}.
 	%this enables decoders to take into account the relatively low amplitude
 	%earlier components, leading to applications in settings where
 	%information from other components than the P300 need to be exploited,
@@ -111,74 +110,89 @@ Latency estimation has multiple advantages:
 	%hardiansyah2020single}.\todo[inline]{rework this to latency features
 	%because smaller visual components might not really be revealed
 	%since they're already time-locked}
-	\item Finally, the introduction of latency estimation and alignment generaly
-	improves BCI classification performance. Single-trial latencies can be
-	used as features to improve classification~\cite{hardiansyah2020single}.
+	\item Finally, the introduction of latency estimation and alignment generally
+	improves BCI classification performance.
+  Single-trial latencies can be	used as features to improve
+  classification~\cite{Hardiansyah2020}.
 	Furthermore, compensating for inter-trial differences, especially when
-	extended to inter-subject differences, can aid in transfer learning or
+	extended to inter-session or inter-subject differences, can aid in transfer learning or
 	generalization across subjects and protocols\cite{Iturrate2014}.
 \end{enumerate*}
-\todo{Read, summarize and cite BCI	references from bibliography}
 
 \section{Literature}
 
 \subsection{Single-component approaches}
 \label{sec:wcble/literature/single-comp}
 
-The most straight-forward method to estimate single-trial latency
-peak-picking. Here, the latency of an \ac{erp} is determined as the
-time-point of it's maximum (or minimum) amplitude with relaion to the stimulus
-onset. While straight-forward, this method
-does not perform well in low or negative SNR conditions, unless combined with
-filtering. Filtering can suppress the noise contaminating EEG trials, lowering
-the risk of picking a noise peak instead of a true peak of the \ac{erp}. Several filtering approaches have been developed to be used in
-conjuction with peak-picking, in the time domain~\cite{Carlton1980, McCarthy1981,
-	Karjalainen1999, Nishida1999,  Sparacino2002, Georgiadis2005,
-	D’Avanzo2011} and in the time-frequency
-domain~\cite{Quiroga2003, wang2007single,Hu2010,arico2014influence}. Filtering can
+The most straight-forward method to estimate single-trial latency is
+\emph{peak picking}
+Here, the latency of an \ac{erp} is determined as the
+time-point of it's maximum (or minimum) amplitude relative to stimulus
+onset.
+While straight-forward, this method does not perform well in low or negative
+\ac{snr} conditions, unless combined with filtering.
+Filtering can suppress the noise contaminating \ac{eeg} trials, lowering
+the risk of picking a noise peak instead of a true peak of the \ac{erp}.
+Several filtering approaches have been developed to be used in
+conjuction with peak-picking, in the time domain~\cite{
+  Carlton1980, McCarthy1981, Karjalainen1999, Nishida1999,  Sparacino2002,
+  Georgiadis2005,	D’Avanzo2011}
+and in the time-frequency domain~\cite{
+  Quiroga2003, Wang2007,Hu2010}.
+The aforementioned analysis and performance prediction method proposed
+by \cite{Arico2014} estimates the single-trial P3 latencies of attended
+epochs by P3 peak-picking after filtering in the time-frequency domain, and
+corrects for jitter by temporally aligning all target epochs to the average
+latency, i.e., by shifting the epochs in time such that the P3 peaks all fall
+at the same time instance.
+Filtering can
 also be done in the spatial domain. The spatial filter can be constructed
-using PCA~\cite{Ouyang2017}, ICA~\cite{townsend1999analyzing, jung2001analysis,
-	Milne2011}, or as a spatial LCMV beamformer~\cite{TREDER2016279}.
+using \ac{pca}~\cite{Ouyang2017}, ICA~\cite{Townsend1999, Jung2001,
+	Milne2011}, or as a spatial LCMV beamformer~\cite{Treder2016}.
 
-A generally more preferred approach than
-peak-picking is template matching. Woody's algorithm~\cite{woody1967characterization} is a simple and performant latency
-estimation method that is still being used and is considered amongst the more
-performant techniques~\cite{Ouyang2017}. It starts with the average \ac{erp} as a
-rough estimation of the aligned template \ac{erp}, and iteratively refines this
-template by determining at each step the time point of maximum
-cross-correlation of this template with all single-trial \ac{erp}s and aligning them
+Template matching is generally preferred to peak picking.
+The algorithm proposed by \textcite{Woody1967} in 1976 is a simple and elegant
+latency estimation method that is still being used and is even
+considered amongst the more performant techniques for \acp{erp}~\cite{Ouyang2017}.
+It starts with an average \ac{erp} as a rough estimation of the aligned template
+\ac{erp}, and iteratively refines this template by determining at each step the time point of maximum
+cross-correlation of this template with all single-trial \acp{erp} and aligning them
 on these time points to form the next template.
 Similarily, cross-correlation template matching can be combined with filtering.
-\cite{souloumiac2013improved} uses XDAWN to construct spatial filter before
+\cite{Souloumiac2013} uses XDAWN to construct spatial filter before
 template matching the spatially filtered signal. \cite{Iturrate2014} uses a
 spatiotemporal filter. Instead of aligning the
 latencies to obtain the template for the next iteration, weighted averaging can
-also be used~\cite{gasser1983selavco}.
+also be used~\cite{Gasser1983}.
+\todo{cite Thornton2008 hierarchical woody?}
 
 Despite good performance, the iterative scheme of Woody's algorithm has a risk of converging to a local
-optimum. To avoid this, a fitness function can be defined to jointly optimize
+optimum.
+To avoid this, a fitness function can be defined to jointly optimize
 the set of single-trial \ac{erp} latencies, which can be optimized with a genetic algorithm~\cite{Pelo2018}.
-
-Methods adapted to handle multiple conditions, useful in BCI setting
-\begin{itemize}
-	\item \cite{Kim2020}
-\end{itemize}
+Alternative methods are based on graph
+optimization~\cite{Dimitriadis2018}, hidden process models~\cite{Kim2020} or by fitting an \ac{erp} model with
+maximum likelihood estimation~\cite{Gratton1989, Tuan1987, Moecks1988,Puce1994}.
 
 \subsection{Multi-component approaches}
 \label{sec:wcble/literature/multi-comp}
-The abovementioned methods do not take into account the fact that  \ac{erp}s are multi-component signals. Multiple components can be time-locked to different events or neurophysiological proccess and hence are not necessarily
-time-locked to each other. They each can have different latency
-variabilities. The presence of more than one component can hamper the
-performance of some algorithms, and it often only possible to extract only the
+In the previous section, we have abstracted away the fact that \ac{erp}s are
+multi-component signals, which is not taking into account by the aforementioned
+methods.
+Multiple components can be time-locked to different events or neurophysiological
+proccess and therefore are not necessarily time-locked to each other. They
+each can have different latency variabilities.
+The presence of more than one component can hamper the
+performance of some latency estimation algorithms, and it often only possible to extract only the
 latencies of the largest component present~\cite{Ouyang2017}. When aligning trials
 to one component and averaging, this will introduce blurring in the other
 components~\cite{Ouyang2020}.
 
 Most of the algorithms above can be adapted to work on multiple \ac{erp} components
 by carefully selecting peaks or pre-determined regions of interest.
-\cite{hardiansyah2020single} uses an SNR boosting method, applied to a specific
+\cite{Hardiansyah2020} uses an \ac{snr} boosting method, applied to a specific
 time-window for each \ac{erp} component to extract a latency per component.
-Methods based on spatial decomposition filters like PCA, ICA or XDAWN can be leveraged
+Methods based on spatial decomposition filters like \ac{pca}, ICA or XDAWN can be leveraged
 to utilize multiple of their components as filters, resulting in multiple time
 series where peack picking or Woody's algorithm can be applied. In general,
 however, these algorithms lack an integrated approach to deal with multiple
@@ -187,94 +201,32 @@ methods in
 multi-component settings is lacking.
 
 Some algorithms separate components into stimulus and response locked component clusters based on their
-latency distributions~\cite{jung2001analysis, Takeda2008,
-	Zhang1998, Yin2009}. These algorithms do, however, require a response
+latency distributions~\cite{Jung2001, Takeda2008,	Zhang1998, Yin2009}.
+These algorithms do, however, require a response
 button trigger signal as input to determine the response time, which is
 not always present or applicable in an \ac{erp} experiment, especially in
 the case of BCIs.
-The RIDE algorithm~\cite{Ouyang2011, Ouyang2015,
-	Wang2015, Ouyang2016, Ouyang2020} is able to do this without entirely depending on
-the response time, and can separate stimulus-locked, response-locked,
-and multiple central component clusters. Others, like spatial filtering methods that use
-decomposition methods to determine the spatial filter can be be modified to separate
-components.~\cite{Ouyang2017}.
-
-To categorize:\todo{categorize and analyze these references}
-\begin{itemize}
-	\item \cite{Dimitriadis2018}
-	\item \cite{Thornton2008}
-	\item Maximum likelihood~\cite{tuan1987variable, Moecks1988,Puce1994} Maximum likelihood
-	\item \cite{Gratton1989} (no access) Maximum likelihood?
-\end{itemize}
-
-\todo{Explain beamforming}
+The RIDE algorithm~\cite{Ouyang2011, Ouyang2015,	Wang2015, Ouyang2016, Ouyang2020}
+is able to do this without entirely relying on the response time, and can
+separate stimulus-locked, response-locked, and multiple central component clusters.
+Others, like spatial filtering methods that use decomposition methods to
+determine the spatial filter can be be modified to separate
+components~\cite{Ouyang2017}.
 
 Finally, the smearing problem can also be overcome by algorithms that are not
 based on \ac{erp} component latency estimation, but which use time warping-based methods
 to enhance the shape of the averaged template \ac{erp}, like Dynamic Time
 Warping~\cite{486255, wang2001warp, Zoumpoulaki2015}, Correlation-Optimized
 Warping~\cite{Skov2006}, or Fast Variational
-Alignment~\cite{flotho2021fast}. Since these methods work
+Alignment~\cite{flotho2021fast}.
+These methods work
 fundamentally different from the latency estimation methods, and cannot
-directly be used to extract latency features, we will not further consider them
-in this work.
-
-\todo{check overlap with:
-
-
-The most straightforward latency estimation method is \textit{peak picking}.
-Peak picking determines the latency of an \ac{erp} as the time point of its maximum
-(or minimum for negative components) amplitude relative to stimulus
-onset.
-While easy to implement, this method does not perform well in low or negative
-SNR conditions because of the risk of picking a noise-related peak, unless
-combined with strong filtering in the space, time or frequency
-domains~\cite{Avanzo2011,Arico2014,TREDER2016279,Ouyang2017}.
-The aforementioned analysis and performance prediction method proposed
-by \cite{Arico2014} estimates the single-trial P3 latencies of attended
-epochs by P3 peak-picking after filtering in the time-frequency domain, and
-corrects for jitter by temporally aligning all target epochs to the average
-latency, i.e., by shifting the epochs in time such that the P3 peaks all fall
-at the same time instance.
-Due to the risk of picking noise peaks, template matching is generally
-preferred.
-Woody's algorithm~\cite{woody1967characterization} is a simple and performant
-latency estimation method that is considered to be among
-the most performant ones~\cite{Ouyang2017}.
-Woody's scheme starts with a template that approximates the expected response,
-e.g. the average target \ac{erp}, and iteratively enhances the SNR of this template by determining at
-each iteration the time point of maximum cross-correlation of the template
-with all single-trial \ac{erp}s, and aligning them based on these latencies to form
-the template for the next iteration.
-The final, enhanced template can then be cross-correlated again to retrieve an
-accurate estimation of single-trial latencies.
-Similar to peak-picking, cross-correlation template matching can be combined
-with a spatial filter such as XDAWN~\cite{souloumiac2013improved} or a
-spatiotemporal filter \cite{Iturrate2014}.
-More recent work achieves good performance in latency estimation using residue
-iteration~\cite{Ouyang2017}, genetic
-algorithms~\cite{Pelo2018}, a hidden process model~\cite{Kim2020} or
-graph-based network analysis~\cite{Dimitriadis2018}.
-
-When multiple clusters of \ac{erp} components are not time-locked to
-each other, aligning to the latency of one cluster might introduce more jitter
-in other component clusters, further decreasing the SNR~\cite{Ouyang2020}.
-
-
-Finally, algorithms that use time
-warping-based methods instead of explicit \ac{erp} component latency estimation can
-also overcome the smearing problem.
-Examples that have been applied to \ac{erp}s are Dynamic Time
-Warping~\cite{Casarotto2005,486255,wang2001warp,Zoumpoulaki2015},
-Correlation-Optimized Warping~\cite{Skov2006}, or Fast Variational
-Alignment~\cite{Flotho2021}. Since these methods are fundamentally
-different from latency estimation methods,
-we will not further consider them in this work.
-
-
-}
+directly be used to extract latency features.
 
 \subsection{Contribution}
+
+\todo{cite Kim2020 used to analyze the difference between target and
+non-target}
 
 Most of these methods suffer from a common drawback: they cannot be used in a
 decoding scheme to improve performance for incoming epochs with unknown
@@ -624,7 +576,11 @@ in~Section~\ref{sec:robust-latency}.
 \end{algorithm}
 
 \section{Results}
+simulation study
+refer to later chapter for use on real erp data
 
 \section{Discussion}
 
 \section{Conclusion}
+Current work is focusing on the extension to multi-component algorithm, in a
+similar fashion to ouyang
