@@ -15,7 +15,6 @@ Cite some catchy state of the art examples (walk again, speech avatar Metzger, h
 willet, neuralink)
 }
 \todo{put focus on communication BCI}
-
 \section{A direct interface to the brain}
 \comment{This section describes a bci in layman's terms, without too much
 scientific background, jargon and literature, in the following sections of this
@@ -146,11 +145,12 @@ impact on \ac{bci} performance and opens the pathway to rehabilitation applicati
 
 \todo{wrap-up}
 
-
 \todo{check excercise session presentation}
 
 \section{Recording technologies}
 \label{sec:bci-recording}
+\todo{make sure every part ends with a motivation for why we chose our
+approach}
 
 \todo{why is spatial resolution a good thing}
 \todo{explain with each method what it actually is (e.g. electrodes placed
@@ -199,7 +199,7 @@ spatial resolution.
 Microelectrodes can measure the Local Field Potential (LFP), the extracellular
 potential of a small group of neurons, or even intracellular single neuron
 action potential spikes.
-They come in single-electrode form, or, more popularily, in microelectrode
+They come in single-electrode form, or, more popularly, in microelectrode
 arrays.
 Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
 NeuraLink implant~\cite{Musk2019}.
@@ -235,8 +235,8 @@ non-invasive BCI.
 
 \Ac{eeg} is the de facto non-invasive electrophysiology standard, in clinical
 neurology practice as well as in \ac{bci} research.
-Developed in 1924, it is cheap, relatively practical and can offers great
-temporal resolution up to thousands of Hz.
+Developed in 1924~\cite{Berger1929}, it is cheap and relatively practical and
+can offer great temporal resolution up to thousands of Hz.
 As it is easily applicable on the outside of the scalp, many practical
 consumer grade \ac{eeg} headsets exist in the form (often wireless) electrode
 caps or helmets.
@@ -267,13 +267,49 @@ interest and filter out the noise.
 
 \section{\ac{bci} Paradigms}
 \label{sec:bci-paradigms}
-\fullpagefig{figures/bci/paradigms.eps}{A \ac{bci} paradigm defines which brain
-activity will be used for control. They can be categorized in \emph{active},
-\emph{reactive} and \emph{passive} paradigms, depending on their reliance on
-external stimulation and active participation required from the user.
-Adapted from~\textcite{Muehl2014}.
+
+The \ac{bci} paradigm~\cite{Xu2021} is the key to translating brain activity into useful
+output commands, since it defines which neural responses will be elicited and
+captured.
+A paradigm can be loosely seen as \emph{a way of interacting with the
+\ac{bci}}.
+According to \textcite{Zander2011}, they can be arranged by their reliance on
+external stimulation and the engagement of the user as shown in
+Figure~\ref{fig:bci-paradigms}.
+
+\fullpagefig{figures/bci/paradigms.eps}{
+  A \ac{bci} paradigm defines which brain activity will be used for control.
+  They can be categorized in \emph{active}, \emph{reactive} and \emph{passive}
+  paradigms, depending on their reliance on external stimulation and active
+  participation required from the user.
+  Adapted from~\textcite{Muehl2014}.
 }{fig:bci-paradigms}
-\todo{check premissions}
+
+Paradigms that require little active participation of the user like
+redirecting attention or initiating imagined actions are classified as passive
+\ac{bci}.
+From the user's point of view, this concept is probably the most attractive,
+since their intentions or cognitive state state would be inferred from just
+their brain activity.
+However, without active user participation, it can be hard to establish reliable
+communication or control.
+Therefore, passive \ac{bci} are currently more suited to tasks like
+emotion or affect monitoring~\cite{Torres2020,Libert2019}, workload
+monitoring~\cite{Zanetti2021} or, more dependent on stimulation, error
+detection~\cite{SiMohammed2020}.
+
+Furthermore, active paradigms make it easier to quickly collect training data for
+supervized machine learning since the conditions can be more easily controlled
+by the user or the stimulation.
+
+active
+
+reactive
+works for most people
+high effort, unintuitive and low expressive power compared to movement and
+speech~\cite{Zander2011}, which are more natural and can be emulated with active bci
+
+\todo{check permissions}
 \todo{cite A comprehensive review of ac{eeg}-based brain–computer interface
 paradigms}
 passive:
@@ -283,8 +319,9 @@ neurofeedback
 error potentials
 cannot easily be used for fast communication
 synchronous <-> asynchronous
-
-\cite{Xu2021}
+Again, asynchronous is preferred by users because it is more intuitive and
+comfortable to use, but it is far easier to decode synchronous responses since
+it is known when to expect a response and when a decision should be made.
 
 active:
 motor imagery
@@ -292,11 +329,10 @@ imagined speech
 
 reactive:
 
-somatosensory evoked potentials (cite jimmy)
+somatosensory evoked potentials~\cite{Petit2021} (cite jimmy)
 
 auditory:
 ERP/oddball, steady state
-
 
 visual paradigms:
 more performant since it allows us to use our visual system, the most adapted
@@ -376,7 +412,7 @@ numbers of false positives and negatives.
 \Ac{rocauc} is also a measure of classifier predictive power, but is more
 suited for evaluation of classification of single epochs of data and in the
 presence of imbalanced data, e.g. when
-comparing single \ac{erps}.
+comparing single \acp{erp}.
 Higer \ac{rocauc} usually translates to a higher target selection accuracy.
 
 Finally, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
@@ -406,6 +442,7 @@ responses.
 \section{A case study: the visual oddball ERP paradigm}
 good choice because it scores high on the parameters above
 \subsection{Stimulation}
+comfortable, preferred over SSVEP, similar ITR is this true?
 \todo{figure of P3 matrix}
 \todo{cite P300 literature, first example and current sota}
 \subsection{The event-related potential}

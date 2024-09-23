@@ -8,7 +8,11 @@
 
 \todo{define eye motor issues}
 
-One of the goals of Brain-computer interfacing is establishing a communication
+\todo{Algemeen: in begin uitleggen dat de ziektes er niet veel toe doen en dat
+het gaat over verlamde personen, verlies van spierkracht en coördinatie en dus
+gehinded in communicatie, helemaal in begin van chapter 1 duidelijk maken dat
+het om deze patiënten gaat}
+One of the goals of brain-computer interfacing is establishing a communication
 channel that does not rely on speech or muscular activity~\cite{Naci2012,Chaudhary2016},
 which in turn can provide solutions to paralyzed individuals.
 In the strictest interpretation, this also means that an interface should not
@@ -16,7 +20,7 @@ rely on the control of eye muscles used to redirect the gaze or for blinking.
 \todo{patients suffering paralysis due to damage to the CNS (stroke, spinal
 chord injury, tbi) or neurodegenerative diseases}
 
-In fact, many patients in the BCI target population can suffer to some extent
+In fact, many patients in the BCI target population suffer to some extent
 from eye motor disability, requiring BCIs adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
 eye motor problems, which can range from minor (nystagmus
@@ -25,16 +29,16 @@ Involuntary, rhythmic, and repetitive eye movements recognizable by their
 consistent directionality (horizontal, vertical, or rotational).
 }, other eye tremors
 \footnote{
-These can include square-wave jerks, saccadic intrusions, microtremors or
+These can include square-wave jerks, saccadic intrusions, microtremors, or
 microsaccades while resting or fixating the gaze.
 }, gaze fixation fatigue or discomfort, \ldots), to severe (partial ophtalmoplegia
 \footnote{
 Weakness or limited paralysis of one or more of the muscles that control eye
 movement, leading to restricted eye motion, but not complete paralysis.
 Often, a specific movement direction (up-down, left-right) is preserved.
-}, involuntary movements, impaired pursuit, \ldots) and even complete
+}, involuntary movements, impaired pursuit, \ldots), and even complete
 ophtalmoplegia\footnote{Full eye movement paralysis.} or eye motor paresis.
-This not only has an effect on the patients' vision and coordination, but also
+This not only has an effect on vision and coordination but also
 on their ability to operate a visual \ac{bci}.
 
 \begin{table}[h]
@@ -42,29 +46,30 @@ on their ability to operate a visual \ac{bci}.
   \footnotesize
 	\centering
 	\begin{tabular}{@{}l|rrrrr|r@{}}
-              & \bfseries ALS  & \bfseries MS   & \bfseries Stroke  &\bfseries DMD &\bfseries SMA  &\bfseries LiS  \\ \hline
+    & \bfseries \acs{als} & \bfseries \acs{ms}   & \bfseries Stroke &\bfseries\acs{dmd} &\bfseries \acs{sma} &\bfseries \acs{lis} \\ \hline
 		\bfseries Minor    & 50\% & 31\% & 40-70\% & + & - &      \\
 		\bfseries Severe   & 33\% & 3\%  & +       & - & - & 98\% \\
 		\bfseries Complete & 17\% & -    & +       & - & - & 2\%  \\
 	\end{tabular}
 	\caption{Incidence of eye motor impairment in selected BCI target
-		patient populations. (ALS: Amyotrophic Lateral Sclerosis, MS: Multiple Sclerosis,
-		DMD: Duchenne's Muscular Dystrophy, SMA: Spinal Muscular Atrophy, LiS:
-		Locked-In-Syndrome). $+$: frequent, $-$: infrequent.}\label{tab:incidence}
+    patient populations. (\acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
+    \acl{dmd}, \acs{sma}: \acl{sma}, \acs{lis}: \acl{lis}).
+    $+$: frequent, $-$: infrequent.}
+    \label{tab:incidence}
 \end{table}
 \todo{include FA}
 
 Among the most affected patients are stroke patients~\cite{Pollock2011}, mostly
-due to brain-stem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
+due to brainstem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
 \todo{summarize and cite Rowe2019}
-These patients can suffer from severe or complete eye motor impairment immediately
+These patients might suffer from severe or complete eye motor impairment
 immediately from the onset of their condition.
 In \ac{als}, a progressive disease, oculomotor issues are also fairly common.
 Although eye movement is often cited as one of the longest preserved
 capabilities in \ac{als}, \textcite{Guo2022} show that minor issues are still
 fairly common,
 especially for patients with bulbar onset \ac{als}.
-Furthermore \textcite{Hayashi1991} show that, as these patients are supported to beyond
+Furthermore, \textcite{Hayashi1991} show that, as these patients are supported beyond
 respiratory failure, the disease progression will eventually also involve
 paralysis of the eye muscles.
 Various forms of eye movement abnormalities also occur often and are especially well studied in
@@ -72,11 +77,11 @@ Various forms of eye movement abnormalities also occur often and are especially 
 These abnormalities can be minor or severe, seldom progressing to complete
 paralysis.
 However, \ac{ms} often comes with vision loss, further complicating interaction
-with visual \acp{bci}
+with visual \acp{bci}.
 \todo{FA}
-Patients from other neurodegenerative diseases like
+Patients suffering from other neurodegenerative diseases like
 \ac{sma}~\cite{Anagnostou2021} and \ac{dmd}~\cite{Lui2001} are
-sometimes also interested in \ac{bci} use, but their eye motor capabilities
+sometimes also interested in \ac{bci} use, but their eye motor capabilities are
 mostly preserved.
 
 \newcommand\fnlis{\footnote{
@@ -88,7 +93,7 @@ Others distinguish Complete Locked-in Syndrome (CLIS) with full body paralysis,
 including no eye motor control at all, from a \ac{lis} state with some preserved eye
 movements or minor motor output.
 While some definitions only include patients who suffered stroke or traumatic
-brain injury to specific regions in the brain (midbrain, brainstem,
+brain injury to specific regions in the brain (midbrain, brainstem, or
 cerebellum)~\cite{Smith2005},
 it can also generally refer to the state of full body paralysis
 or loss of muscle tone incurred in neurodegenerative diseases, combined with
@@ -113,31 +118,37 @@ This group is much larger than the first.
 The third class of potential BCI users, which is the largest of all,
 includes those who still retain (and can be expected to continue to
 retain) substantial neuromuscular control, particularly speech and/or
-hand control, and can, therefore, operate a wide range of assistive com-
-munication and control devices.''
+hand control, and can, therefore, operate a wide range of assistive
+communication and control devices.''
 }}
 
 
 Together, some of these patients constitute the \ac{lis} patient group, which
 forms one of the main \ac{bci} target populations.
-In this work, we'll define \ac{lis} patients as those a situation of (near)
+In this work, we'll define \ac{lis} patients as those in a situation of (near)
 complete paralysis and difficulties or the inability to communicate without
-assistive technology, corresponding corresponds to classes one and two defined by
+assistive technology
+This corresponds to classes one and two defined by
 \textcite{Wolpaw2006}\fnwolpawcrit.
-Additionally some degree of severe or complete eye motor impairment is ususally
+Additionally, some degree of severe or complete eye motor impairment is usually
 necessary to qualify as locked-in\fnlis.
 Since this work is concerned with gaze-impaired patients, we will adopt this
-interpretation.
+interpretation into our definition.
 Case study reports~\cite{Patterson1986} show that the population of locked-in
 patients with complete eye motor paralysis is very small.
-Hence, it would be interesting to focus efforts in \ac{bci} development on the
-larger population of \ac{lis} patients that  currently slip through the cracks
-of the current assistive technology offer.
-These are the patients that require assistance to communicate independently,
-which is crucial to retaining an acceptable quality of life, but whose severe
-eye motor impairment prevents them from using eye tracking based solutions.
-
+Hence, it would be interesting to focus \ac{bci} development efforts on the
+larger population of \ac{lis} patients with severe eye motor impairment that
+currently slip through the cracks of the assistive technology offer.
+These are the patients whose severe eye motor impairment prevents them from
+using eye tracking based solutions.
+They currently use their remaining motor control to
+communicate by indicating symbols on a letterboard with great effort,
+or signal with upwards eye movements or blinks to confirm prompted letters.
+They require a caregiver or relative to interpret their signals, and crave
+the ability to communicate independently which is crucial to retaining an
+acceptable quality of life.
 \todo{order of concepts in next two paragraphs can be tweaked}
+
 This leads us to what we'll call the \emph{gaze-dependence problem in visual
 BCI}:
 Traditional visual BCI scenarios require the user to overtly direct their both
@@ -250,11 +261,9 @@ user's brain activity, as sketched in Figure~\ref{fig:bci}.
 However, visual BCIs cannot operate efficiently when the user does not direct
 their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
 
-This leads to an often unadressed paradox: the BCI target population consists
-of patients who suffer from pathologies like Amyotrophic Lateral Sclerosis
-(ALS), Multiple Sclerosis (MS), stroke (specifically
-brain-stem stroke) or traumatic brain injury, which can lead to several degrees
-of paralysis, or even to Locked-in Syndrome (LiS), the complete loss of muscle
+This leads to the often unadressed gaze-dependence paradox: the BCI target
+population consists of patients who suffer from various degrees
+of paralysis, or even from Locked-in Syndrome (LiS), the complete loss of muscle
 control with preserved consciousness.
 While BCIs are most attractive as a solution for these patients
 compared to other assistive technologies like eye-tracking, studies often
