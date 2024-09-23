@@ -1,35 +1,45 @@
-\todo{mention published}
+This chapter, except Sections~\ref{sec:wcble/intro},
+\ref{sec:wcble/literature/single-comp} and
+\ref{sec:wcble/literature/multi-comp}
+\todo{properly assess which paragraphs were published and which not}
+
 \section{Introduction}
+\label{sec:wcble/intro}
 
-Single-trial ERP latency jitter introduces a problem in ERP analysis:
-the \textit{smearing effect} occurs when aggregating over multiple identical
-signals with different latencies.
-A familiar example of this happens when averaging over jittered epochs for ERP
-analysis.
-In the presence of jitter, the shape and amplitude of the average do not
-reflect the properties of the original signal.
-As the smearing effect reduces the amplitude of the average,
-it negatively impacts the signal-to-noise ratio (SNR).
-The smearing effect equally impacts the SNR of information captured by a
-classifier's parameters when training with a procedure that does not account for
-this jitter, and thus also affects its performance~\cite{Thompson2012}.
-Hence, effective latency estimation and jitter compensation can contribute to higher
-decoding performance.
-%In this work, we propose a latency estimation and alignment strategy based on
-%the method proposed by \cite{Thompson2012}.
+Visual oddball \acp{bci} establish communication with paralyzed
+individuals by decoding \acp{erp} obtained from time-modulated flashing
+stimuli.
+These \acp{erp} consist of multiple \ac{erp}-components, peaks and troughs in
+\ac{erp} waveform.
+These components each have their own distinct amplitude and latency.
+\Ac{erp} component latency can reflect a wide range of cognitive,
+neurophysiological and clinical properties, that can be confounding factors in
+the development of \acp{bci}.\todo{cite}
+Latency is often assessed as the latency of \ac{erp} components in a subject
+average or grand average.
+Latencies of non-averaged, single-trial \ac{erp} waveforms could capture even more
+relevant information, yet they are very hard to measure due to low \ac{snr} of
+single trial \acp{erp}.
+Within session variability of \ac{erp} latency, or \ac{erp} latency
+\emph{jitter} has been shown to influence \ac{bci}
+accuracy~\cite{Thompson2012}.
+This effect is especially prominent when bringing \ac{bci} development from the
+lab to the clinical setting with patients in the intended target population.
+\textcite{Zisk2021} showed that patients with \ac{als} have significantly
+increased ERP jitter.
+\textcite{Arico2014} show that latency jitter negatively affects \ac{bci}
+performance, and disproportionally so when the user is not directly gazing at
+intended targets, such as is the case for for gaze-impaired patients.
 
-\todo{General introduction of why we're doing this}
+\subsection{\Ac{erp} latency jitter}
 
-\subsection{ERP latency jitter}
-
-\subsubsection{Neural origins of latency jitter in the time domain}
-While the classic ERP model assumes a constant ERP response over trials,
+\subsubsection{Neural origins of latency jitter}
+While the classic \ac{erp} model assumes a constant \ac{erp} response over trials,
 research has shown that cortical evoked potentials show significant
-trial-to-trial jitter~\cite{truccolo2002trial}.
-Experiments show that latency jitter in ERPs is the result of the interacion of
+trial-to-trial jitter~\cite{Truccolo2002}.
+Experiments show that latency jitter in \ac{erp}s is the result of the interacion of
 the evoked activity with ongoing dynamics in the brain~\cite{Hasenstaub2007,
-	kisley1999trial, Curto2009, Arieli1996}.
-
+	Kisley1999, Curto2009, Arieli1996}.
 The latency of an evoked potential is a combination of the modulation of oscillating activity that is
 time-locked, but not necessarily phase-locked to stimulus onset, and a
 delay caused by ongoing neurophysiological processes that are not necessarily related to the task.
@@ -37,49 +47,61 @@ delay caused by ongoing neurophysiological processes that are not necessarily re
 \todo{Read references and check if neural origins and
 	generation model justify approach}
 
-\subsubsection{Implications for ERP analysis}
-The presence of latency jitter introduces multiple issues to ERP analysis, the
+\subsubsection{Implications for \ac{erp} analysis}
+
+The presence of latency jitter introduces multiple issues to \ac{erp} analysis, the
 most prominent of which is the smearing effect as illustrated
-in~\autoref{fig:smearing}. In ERP analysis, single-trial ERPs are usually
-averaged per condition to cope with the unfavorable signal-to-noise ratio  When
-averaging over multiple identical signals with jittered latencies, the shape and amplitude of the average do not reflect the properties
-of the original signal. Because the amplitude of the average is lower, the
-signal-to-noise ratio will also be negatively impacted.
-More generally, the smearing effect leads to difficulties interpreting ERP
+in~\autoref{fig:smearing}. In \ac{erp} analysis, single-trial \ac{erp}s are usually
+averaged per condition to cope with the unfavorable \ac{snr}?
+When averaging over multiple identical signals with jittered latencies, the shape
+and amplitude of the average do not reflect the properties
+of the original signal.
+Because the amplitude of the average is lower, the \ac{snr} will also be negatively impacted.
+More generally, the smearing effect leads to difficulties interpreting \ac{erp}
 results and making inferences about amplitude or latency effects, because these
-are entangled when using averaging~\cite{woody1967characterization, Pfefferbaum1980, McDowell2003, Verleger2005,
+are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell2003, Verleger2005,
 	Roth2007, Walhovd2008, Poli2010, Luck2014}\todo{Review relevance of
 	these references}.
 
 \todo{illustrate smearing effect}
-%\begin{figure}
-%  \todo{smearing effect}
-%	\caption{The smearing effect: averaging over jittered waveforms leads to a spread out
-%		average with a lower amplitude.}
-%	\label{fig:smearing}
-%\end{figure}
+
+The smearing effect equally impacts the \ac{snr} of information captured by a
+classifier's parameters when training with a procedure that does not account for
+this jitter, and thus also affects its performance~\cite{Thompson2012}.
+As an illustrative example, think of an \ac{lda} \ac{erp} classifier that uses
+class averages over \ac{erp} epochs to construct its between-class scatter
+matrix.
+These per-class averages will be affected by the smearing effect and will be
+less effective templates for \ac{erp} retrieval.
+Similarly, the noise model in \ac{lda}'s  assumes stationarity and subtracts
+the class-wise averages from the signal to calculate
+the within-class scatter matrix, which will then also be affected.
+Hence, effective latency estimation and jitter compensation can contribute to higher
+decoding performance.
+
 
 \subsubsection{Benefits of latency estimation}
-A common approach to counteract the smearing effect is correcting single-trial
-ERPs for jitter before averaging.\todo{reference} This can be done by estimating the latency of each
-single-trial ERP, and aligning them before averaging.
+A common approach to counteract the smearing effect is to correct single-trial
+\ac{erp}s for jitter before averaging.\todo{reference}
+This can be done by estimating the latency of each
+single-trial \ac{erp}, and aligning them before averaging.
 Latency estimation has multiple advantages:
 \begin{enumerate*}[label={(\arabic*)}]
-	\item Latency-based ERP alignment can help reveal the true shape and
-	properties like peak amplitude and latency of ERPs across
+	\item Latency-based \ac{erp} alignment can help reveal the true shape and
+	properties like peak amplitude and latency of \ac{erp}s across
 	experimental conditions. These are variables of interest for
 	testing electrophysiological an behavioral hypotheses.
 	Additionally, latency estimation allows for the extraction of
-	other descriptors from a set of single-trial ERPs, like
+	other descriptors from a set of single-trial \ac{erp}s, like
 	amplidute or latency variance~\cite{Hultsch2004}, which can
-	also be of interest as studied variables. For instance, in
-	\cite{Saville2014}, the inter-trial latency variability itself
-	is determined as a correlate of working memory performance.
+	also be of interest as studied variables.
+  For instance, in the work of \textcite{Saville2014}, the inter-trial latency
+  variability itself is determined as a correlate of working memory performance.
 	\item Counteracting the smearing effect will boost the signal-to-noise
-	ratio of averaged ERPs by increasing the amplitude of the
-	ERP signal. This in turn can reveal smaller or more jittered ERP components
-	which are otherwise obscured or blurred due to desynchronization.
-	These deblurred templates can then be used for analysis of the ERP
+	ratio of averaged \ac{erp}s by increasing the amplitude of the
+	\ac{erp} signal. This in turn can reveal smaller or more jittered \ac{erp}
+  components which would otherwise obscured or blurred due to desynchronization.
+	These deblurred templates can then be used for analysis of the \ac{erp}
 	waveform, or as templates of the signal of interest in
 	BCIs~\cite{arico2014influence}.
 	%this enables decoders to take into account the relatively low amplitude
@@ -101,13 +123,15 @@ Latency estimation has multiple advantages:
 \section{Literature}
 
 \subsection{Single-component approaches}
+\label{sec:wcble/literature/single-comp}
+
 The most straight-forward method to estimate single-trial latency
-peak-picking. Here, the latency of an ERP is determined as the
+peak-picking. Here, the latency of an \ac{erp} is determined as the
 time-point of it's maximum (or minimum) amplitude with relaion to the stimulus
 onset. While straight-forward, this method
 does not perform well in low or negative SNR conditions, unless combined with
 filtering. Filtering can suppress the noise contaminating EEG trials, lowering
-the risk of picking a noise peak instead of a true peak of the ERP. Several filtering approaches have been developed to be used in
+the risk of picking a noise peak instead of a true peak of the \ac{erp}. Several filtering approaches have been developed to be used in
 conjuction with peak-picking, in the time domain~\cite{Carlton1980, McCarthy1981,
 	Karjalainen1999, Nishida1999,  Sparacino2002, Georgiadis2005,
 	D’Avanzo2011} and in the time-frequency
@@ -119,10 +143,10 @@ using PCA~\cite{Ouyang2017}, ICA~\cite{townsend1999analyzing, jung2001analysis,
 A generally more preferred approach than
 peak-picking is template matching. Woody's algorithm~\cite{woody1967characterization} is a simple and performant latency
 estimation method that is still being used and is considered amongst the more
-performant techniques~\cite{Ouyang2017}. It starts with the average ERP as a
-rough estimation of the aligned template ERP, and iteratively refines this
+performant techniques~\cite{Ouyang2017}. It starts with the average \ac{erp} as a
+rough estimation of the aligned template \ac{erp}, and iteratively refines this
 template by determining at each step the time point of maximum
-cross-correlation of this template with all single-trial ERPs and aligning them
+cross-correlation of this template with all single-trial \ac{erp}s and aligning them
 on these time points to form the next template.
 Similarily, cross-correlation template matching can be combined with filtering.
 \cite{souloumiac2013improved} uses XDAWN to construct spatial filter before
@@ -133,7 +157,7 @@ also be used~\cite{gasser1983selavco}.
 
 Despite good performance, the iterative scheme of Woody's algorithm has a risk of converging to a local
 optimum. To avoid this, a fitness function can be defined to jointly optimize
-the set of single-trial ERP latencies, which can be optimized with a genetic algorithm~\cite{Pelo2018}.
+the set of single-trial \ac{erp} latencies, which can be optimized with a genetic algorithm~\cite{Pelo2018}.
 
 Methods adapted to handle multiple conditions, useful in BCI setting
 \begin{itemize}
@@ -141,7 +165,8 @@ Methods adapted to handle multiple conditions, useful in BCI setting
 \end{itemize}
 
 \subsection{Multi-component approaches}
-The abovementioned methods do not take into account the fact that  ERPs are multi-component signals. Multiple components can be time-locked to different events or neurophysiological proccess and hence are not necessarily
+\label{sec:wcble/literature/multi-comp}
+The abovementioned methods do not take into account the fact that  \ac{erp}s are multi-component signals. Multiple components can be time-locked to different events or neurophysiological proccess and hence are not necessarily
 time-locked to each other. They each can have different latency
 variabilities. The presence of more than one component can hamper the
 performance of some algorithms, and it often only possible to extract only the
@@ -149,15 +174,15 @@ latencies of the largest component present~\cite{Ouyang2017}. When aligning tria
 to one component and averaging, this will introduce blurring in the other
 components~\cite{Ouyang2020}.
 
-Most of the algorithms above can be adapted to work on multiple ERP components
+Most of the algorithms above can be adapted to work on multiple \ac{erp} components
 by carefully selecting peaks or pre-determined regions of interest.
 \cite{hardiansyah2020single} uses an SNR boosting method, applied to a specific
-time-window for each ERP component to extract a latency per component.
+time-window for each \ac{erp} component to extract a latency per component.
 Methods based on spatial decomposition filters like PCA, ICA or XDAWN can be leveraged
 to utilize multiple of their components as filters, resulting in multiple time
 series where peack picking or Woody's algorithm can be applied. In general,
 however, these algorithms lack an integrated approach to deal with multiple
-ERP components. A clear evaluation is lacking of the performance of these
+\ac{erp} components. A clear evaluation is lacking of the performance of these
 methods in
 multi-component settings is lacking.
 
@@ -165,7 +190,7 @@ Some algorithms separate components into stimulus and response locked component 
 latency distributions~\cite{jung2001analysis, Takeda2008,
 	Zhang1998, Yin2009}. These algorithms do, however, require a response
 button trigger signal as input to determine the response time, which is
-not always present or applicable in an ERP experiment, especially in
+not always present or applicable in an \ac{erp} experiment, especially in
 the case of BCIs.
 The RIDE algorithm~\cite{Ouyang2011, Ouyang2015,
 	Wang2015, Ouyang2016, Ouyang2020} is able to do this without entirely depending on
@@ -185,8 +210,8 @@ To categorize:\todo{categorize and analyze these references}
 \todo{Explain beamforming}
 
 Finally, the smearing problem can also be overcome by algorithms that are not
-based on ERP component latency estimation, but which use time warping-based methods
-to enhance the shape of the averaged template ERP, like Dynamic Time
+based on \ac{erp} component latency estimation, but which use time warping-based methods
+to enhance the shape of the averaged template \ac{erp}, like Dynamic Time
 Warping~\cite{486255, wang2001warp, Zoumpoulaki2015}, Correlation-Optimized
 Warping~\cite{Skov2006}, or Fast Variational
 Alignment~\cite{flotho2021fast}. Since these methods work
@@ -198,7 +223,7 @@ in this work.
 
 
 The most straightforward latency estimation method is \textit{peak picking}.
-Peak picking determines the latency of an ERP as the time point of its maximum
+Peak picking determines the latency of an \ac{erp} as the time point of its maximum
 (or minimum for negative components) amplitude relative to stimulus
 onset.
 While easy to implement, this method does not perform well in low or negative
@@ -217,9 +242,9 @@ Woody's algorithm~\cite{woody1967characterization} is a simple and performant
 latency estimation method that is considered to be among
 the most performant ones~\cite{Ouyang2017}.
 Woody's scheme starts with a template that approximates the expected response,
-e.g. the average target ERP, and iteratively enhances the SNR of this template by determining at
+e.g. the average target \ac{erp}, and iteratively enhances the SNR of this template by determining at
 each iteration the time point of maximum cross-correlation of the template
-with all single-trial ERPs, and aligning them based on these latencies to form
+with all single-trial \ac{erp}s, and aligning them based on these latencies to form
 the template for the next iteration.
 The final, enhanced template can then be cross-correlated again to retrieve an
 accurate estimation of single-trial latencies.
@@ -231,15 +256,15 @@ iteration~\cite{Ouyang2017}, genetic
 algorithms~\cite{Pelo2018}, a hidden process model~\cite{Kim2020} or
 graph-based network analysis~\cite{Dimitriadis2018}.
 
-When multiple clusters of ERP components are not time-locked to
+When multiple clusters of \ac{erp} components are not time-locked to
 each other, aligning to the latency of one cluster might introduce more jitter
 in other component clusters, further decreasing the SNR~\cite{Ouyang2020}.
 
 
 Finally, algorithms that use time
-warping-based methods instead of explicit ERP component latency estimation can
+warping-based methods instead of explicit \ac{erp} component latency estimation can
 also overcome the smearing problem.
-Examples that have been applied to ERPs are Dynamic Time
+Examples that have been applied to \ac{erp}s are Dynamic Time
 Warping~\cite{Casarotto2005,486255,wang2001warp,Zoumpoulaki2015},
 Correlation-Optimized Warping~\cite{Skov2006}, or Fast Variational
 Alignment~\cite{Flotho2021}. Since these methods are fundamentally
@@ -253,16 +278,16 @@ we will not further consider them in this work.
 
 Most of these methods suffer from a common drawback: they cannot be used in a
 decoding scheme to improve performance for incoming epochs with unknown
-class labels that contain either a target or non-target ERP response.
+class labels that contain either a target or non-target \ac{erp} response.
 They can be used offline on a set of labeled epochs for testing hypotheses
 concerning latency and jitter, for aligning templates, or for BCI performance
-prediction, but not for ERP classification.
+prediction, but not for \ac{erp} classification.
 While some of the aforementioned methods could be adapted to perform
 classification tasks, few studies investigate how to exploit this latency estimation
 for jitter-resistant decoding.
-\cite{hardiansyah2020single} incorporated single-trial latencies in
+\cite{Hardiansyah2020} incorporated single-trial latencies in
 classification by peak-picking within a given
-ERP time window, unaware of the class of the epoch under investigation.
+\ac{erp} time window, unaware of the class of the epoch under investigation.
 The Classifier-Based Latency Estimation (CBLE) algorithm introduced
 by \cite{Thompson2012} also explicitly applies latency estimation in a
 decoding setting.
@@ -272,13 +297,13 @@ Later, its output was successfully adapted to compensate for jitter to improve d
 
 Time series classification algorithms~\cite{Abanda2019}
 that are robust to jitter can be used in a decoding setting,
-but, in general, have scarcely been applied to ERP decoding.
+but, in general, have scarcely been applied to \ac{erp} decoding.
 Data augmentation involving jittering the training
 data~\cite{Krell2018,Zisk2022} and Riemannian Geometry methods using spatial
 covariances as features~\cite{Aydarkhanov2020} have both been shown
-to perform well in the presence of ERP jitter.
+to perform well in the presence of \ac{erp} jitter.
 In this work, we opted to apply CBLE because it has successfully been applied to
-classify jittered ERPs.
+classify jittered \ac{erp}s.
 We adapt the CBLE to an iterative method akin to Woody's scheme that can better
 compensate for jitter, to improve covert VSA decoding performance.
 
@@ -288,7 +313,7 @@ joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. Th
 integrates the spatiotemporal filtering in Woody's template matching iteration
 scheme and can easily be extended to multi-component settings.
 Our method attempts to model the spatial and temporal activation of
-each ERP component, as well as it's latency distribution, and takes into acount the
+each \ac{erp} component, as well as it's latency distribution, and takes into acount the
 spatial and temporal correlation of the EEG background noise.
 
 \section{Methods}
@@ -327,7 +352,7 @@ $\mathbf{y}=[y_1\,\ldots\,y_R]^T \in\mathbb{R}^R$ such that
 	\label{eq:score}
 \end{equation}
 with $R = S-(s_2-s_1)$.
-To leverage CBLE for ERP classification, the score vectors $\mathbf{y}$ can be
+To leverage CBLE for \ac{erp} classification, the score vectors $\mathbf{y}$ can be
 arranged in matrices $\mat{Y}^\mathrm{train}\in\mathbb{R}^{N\times R}$ and $\mat{Y}^\mathrm{test}\in\mathbb{R}^{M\times R}$.
 These can be further classified by training a \textit{second-stage} classifier on
 $\mat{Y}^\mathrm{train}$ and class labels $\mathbf{l}^\mathrm{train}$.
@@ -336,21 +361,21 @@ For classification, we follow the approach of \cite{Mowla2017}, using a
 maximum-level hierarchical Daubechies-4 wavelet transform to reduce
 dimensionality before classification with the second-stage classifier.
 In the CBLE-decoder, it is this wavelet transform that decreases the sensitivity
-to latency differences, actively compensating for ERP latency jitter.
+to latency differences, actively compensating for \ac{erp} latency jitter.
 
 When using a simple spatiotemporal linear classifier as first-stage classifier,
 CBLE is equivalent to the first iteration of Woody's algorithm with the
 spatiotemporal classifier weights as template.
 \cite{Thompson2012}, \cite{Mowla2017} and \cite{Mowla2020} show
 that CBLE is relatively independent of the first-stage classifier for BCI
-accuracy prediction and for ERP classification.
+accuracy prediction and for \ac{erp} classification.
 Therefore, we opt to use the variant of Linear Discriminant Analysis with block-Toeplitz
 regularized covariance matrix (tLDA) proposed by \cite{Sosulski2022}, as the first-stage
 classifier and logistic regression as second stage.
 
 \subsection{Robust CBLE latency features}
 \label{sec:robust-latency}
-The ERP decoding method based on CBLE introduced by \cite{Mowla2017} does
+The \ac{erp} decoding method based on CBLE introduced by \cite{Mowla2017} does
 not make use of the extracted latencies, only passing score matrix $\mat{Y}$ on
 to the second-stage classifier.
 %Furthermore, previous CBLE works~\cite{Thompson2012,Mowla2020} only used these
@@ -366,7 +391,7 @@ classifying unseen data.
 The CBLE latency estimate is defined only for target epochs as
 $s_\mathrm{target}=\argmax_s{y_s}$.
 This is the point in time where the target class reaches largest separation
-from the background noise and non-target class, indicating the target ERP is
+from the background noise and non-target class, indicating the target \ac{erp} is
 most likely to occur here.
 However, in a classifier test phase, it is not known a priori whether an
 unseen epoch is a target or a non-target epoch.
@@ -382,12 +407,12 @@ useful in decoding.
 In a similar manner to the target latency, the non-target latency could be defined
 as~$s_\mathrm{non-target}=\argmin_s{y_s}$.
 However, this is problematic since it is not evident how to estimate
-latency of e.g. a P3 ERP component for a non-target epoch, since the
+latency of e.g. a P3 \ac{erp} component for a non-target epoch, since the
 non-target class is characterized by the absence of this component.
-%\footnote{Depending on the stimulation and experimental design, ERP components can be present in one experimental
+%\footnote{Depending on the stimulation and experimental design, \ac{erp} components can be present in one experimental
 %	condition or class and missing in another, or appear in multiple classes
 %	at different amplitudes. In the latter case, it could be possible
-%	to estimate the latency of an ERP in the conditions where it appears, but if
+%	to estimate the latency of an \ac{erp} in the conditions where it appears, but if
 %	its amplitude is lower or negligible in some conditions, latency estimates
 %	will be less accurate, hence this case is still problematic.}.
 In fact, $y$ can have multiple local minima or entirely lack distinct peaks for
@@ -432,7 +457,7 @@ To improve performance over CBLE, we propose a new algorithm inspired both by
 CBLE and the aforementioned Woody iteration scheme (WCBLE).
 Instead of using CBLE to estimate the features of a second-stage classifier
 directly, CBLE latency estimation is used as a step in a Woody iteration scheme.
-While the Woody algorithm iteratively enhances the SNR of an ERP template to
+While the Woody algorithm iteratively enhances the SNR of an \ac{erp} template to
 cross-correlate with the data, WCBLE iteratively re-estimates the parameters of
 the first-stage classifier.
 To improve convergence and perform well in a classification setting, WCBLE

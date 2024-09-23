@@ -251,12 +251,25 @@ away from the cortex.
 Furthermore, the layers of skull and cerebrospinal fluid in between can
 attenuate the signal and cause volume conduction, which results in electrodes
 measuring a mixture of activity from sources elsewhere in the brain.
+This also has a negative effect on spectral resolution.
 The noise problem mentioned earlier is also prominently present in \ac{eeg}
 recordings.
 In addition to picking up brain activity other than that of the region of
 interest, \ac{eeg} also records other artifacts, from the environment, the power
 supply, nearby electrical equipment, or the user's muscle movements.
 Combined, this means \ac{eeg} is inherently noisy.
+\todo{citations from 'Decoding covert speech from eeg-a cromprehensive review
+EEG has lower signal-to-noise ratio (SNR) than the other
+modalities. It is almost always corrupted by artifacts such as
+muscular artifacts (Eberle et al., 2012; Liu, 2019).
+• EEG has limited spectral and spatial resolution (Peled et al.,
+2001; Lakshmi et al., 2014).
+• Recording EEG for longer duration is challenging since the
+conductive gel or the saline solution applied for reducing the
+electrode impedance dries up over time, thus increasing the
+electrode impedance (Guger et al., 2012; Xu et al., 2018a).
+• A trained personnel is required for placing the EEG
+electrode cap}
 
 Despite its noisy nature, \ac{eeg} is the recording methodology of choice for
 our \ac{bci} because of its wide acceptance by patients.
@@ -268,9 +281,9 @@ filter out the noise.
 \section{\ac{bci} paradigms}
 \label{sec:bci-paradigms}
 
-The \ac{bci} paradigm~\cite{Xu2021} is the key to translating brain activity into useful
+The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
 output commands, since it defines which neural responses will be elicited and
-captured.
+captured as features.
 A paradigm can be loosely seen as \emph{a way of interacting with the
 \ac{bci}}.
 According to \textcite{Zander2011}, they can be arranged by their reliance on
@@ -279,15 +292,16 @@ Figure~\ref{fig:bci-paradigms}.
 
 \fullpagefig{figures/bci/paradigms.eps}{
   A \ac{bci} paradigm defines which brain activity will be used for control.
-  They can be categorized in \emph{active}, \emph{reactive} and \emph{passive}
+  They can be categorized in active, reactive and passive
   paradigms, depending on their reliance on external stimulation and active
   participation required from the user.
   Adapted from~\textcite{Muehl2014}.
 }{fig:bci-paradigms}
+\todo{check permissions}
 
 Paradigms that require little active participation of the user like
-redirecting attention or initiating imagined actions are classified as passive
-\ac{bci}.
+redirecting attention or initiating imagined actions are classified as \emph{passive
+\ac{bci}}.
 From the user's point of view, this concept is probably the most attractive,
 since their intentions or cognitive state state would be inferred from just
 their brain activity.
@@ -296,51 +310,92 @@ communication or control.
 Therefore, passive \ac{bci} are currently more suited to tasks like
 emotion or affect monitoring~\cite{Torres2020,Libert2019}, workload
 monitoring~\cite{Zanetti2021} or, more dependent on stimulation, error
-detection~\cite{SiMohammed2020}.
-
+detection~\cite{SiMohammed2020}.\todo{mention neurofeedback}
 Furthermore, active paradigms make it easier to quickly collect training data for
 supervized machine learning since the conditions can be more easily controlled
 by the user or the stimulation.
 
-active
+Paradigms with high active participation can be split up in \emph{active
+\ac{bci}} and \emph{reactive \ac{bci}}.
+Active \ac{bci} paradigms encode endogenous activity initiated by the user,
+such as imagined movement or imagined speech.
+These tasks can encode complex information, but current non-invasive
+communication methods often limit the considered domain to a few movement
+directions to control a cursor, or a few words~\cite{Panachakel2021}.
+Invasive recordings are necessary for decoding more complex encoded
+like natural speech~\cite{Metzger2023} or meaningful motor trajectories, like handwritten
+symbols~\cite{Willett2021} or sign language.
+Active paradigms are also subject to large inter-subject variability due to the
+complexity of the performed tasks.
+Imagined speech or movements can be performed in a multitude of ways, which
+can each have different neural representations for separate individuals.
+This can make it hard to adapt the \ac{bci} to specific individuals, causing
+poor performance and giving rise to the concept of \ac{bci}
+illiteracy~\cite{Allison2010}\footnote{
+  \cite{Becker2022,Thompson2019}
+}.
+\todo{footnote on how this just means it needs to be more adapted,
+inclusivity, harmful to progress, paraphrase abstracts of articles}
 
-reactive
-works for most people
-high effort, unintuitive and low expressive power compared to movement and
-speech~\cite{Zander2011}, which are more natural and can be emulated with active bci
 
-\todo{check permissions}
-\todo{cite A comprehensive review of ac{eeg}-based brain–computer interface
-paradigms}
-passive:
-also monitoring for diagnostic purposes
-emotion recognition
-neurofeedback
-error potentials
-cannot easily be used for fast communication
-synchronous <-> asynchronous
+Reactive \ac{bci} take another approach, by giving the user a discrete set of
+sensory stimulations and decoding towards which stimulus the user's attention
+was directed.
+Compared to active \ac{bci}, reactive paradigms usually require higher effort
+and can induce fatigue due to the constant stimulation.
+These paradigms are also somewhat less intuitive compared to e.g. speech, and
+their expressive power is limited by how many different stimuli can effectively
+presented and attended within a reasonable timeframe.
+Nevertheless, reactive \ac{bci} work well with \ac{eeg} recordings, and, most
+importantly, they work for most people~\cite{Allison2010a,Edlinger2014}.
+
+Reactive \ac{bci} can be realized in multiple ways, depending on the
+stimulation used.
+Some examples include the following:
+In the steady-state somatosensory evoked potentials paradigm~\cite{Petit2021},
+the user can attend to one of multiple vibrotactile stimulations in different
+limbs, which encodes the information of the attended limb in the brain signal.
+In auditory paradigms, information can be modulated by the volume, tone, pitch,
+spatial origin of presented sounds, to which the user can
+attend~\cite{Kaongoen2017}.
+Most common are the visual paradigms.
+These can be more performant since they allows the user to use their visual
+system, one of the most adapted sensory system in humans.
+
+The major visual paradigms comprise
+\ac{ssvep}, \ac{cvep}, oddball and \ac{mvep} type interfaces.
+In \ac{ssvep}, information is modulated by the frequency of a stimulus attended
+among many that each flicker continuously at different
+frequencies~\cite{Chen2021}.
+In \ac{cvep}, the stimuli flicker instead with distinct on-of patterns, which can
+be correlated with the brain activity to retrieve the attended stimulus.
+Instead of stimulating all possible selections at once, the oddball paradigm
+stimulates them one by one with single flashing.\todo{reference}
+Since the times of stimulation of each target is known by the interface,
+information is modulated by time of stimulation, and times where an attention
+response can be found correspond to selected targets.
+\Ac{mvep} is usually similarly time modulated, but stimuli make sudden
+movements in specific directions instead of flashing.
+Information is then also carried by movement
+direction~\cite{Libert2021a,Libert2022}.
+
+
+The \ac{bci} paradigms mentioned above can also be combined to gain performance.
+Straightforward examples are activating or deactivating \ac{ssvep} stimulation
+with a motor command~\cite{Neeling2019}, or combining multiple visual paradigms by stimulating
+along multiple dimensions at once.
+\textcite{Han2023} recently used this strategy, combining frequancy and phase
+coding in \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an
+efficient \ac{bci} where one of 200 targets can be accurately selected with
+only 800ms of stimulation.
+Finally, paradigms can be implemented in a \emph{synchronous} or
+\emph{asynchronous} manner.
+Asynchronous \ac{bci} constantly decodes the signal looking for the response of
+interest, while in synchronous \ac{bci} decisions are made (and eventual
+stimulation takes place) at predetermined time points.
 Again, asynchronous is preferred by users because it is more intuitive and
 comfortable to use, but it is far easier to decode synchronous responses since
-it is known when to expect a response and when a decision should be made.
-
-active:
-motor imagery
-imagined speech
-
-reactive:
-
-somatosensory evoked potentials~\cite{Petit2021} (cite jimmy)
-
-auditory:
-ERP/oddball, steady state
-
-visual paradigms:
-more performant since it allows us to use our visual system, the most adapted
-sensory system in humans
-SSVEP, cVEP, mVEP, VEP/P300/Oddball
-high ssvep itr
-
-hybrid
+it is known when to expect a response and if a decision should be made.
 
 \section{Decoders}
 \label{sec:bci-decoding}
@@ -437,18 +492,39 @@ responses.
 \end{enumerate*}
 
 
-\section{A case study: the visual oddball ERP paradigm}
+\section{A case study: the visual oddball paradigm}
+
+The visual oddball paradigm is a reactive, stimulus-dependent, synchronous
+\ac{bci} paradigm.
 good choice because it scores high on the parameters above
+well established, good research, first application cite
+Flashing in various configurations, such as row-colum or in groups,
+
+
 \subsection{Stimulation}
 comfortable, preferred over SSVEP, similar ITR is this true?
 \todo{figure of P3 matrix}
 \todo{cite P300 literature, first example and current sota}
+
 \subsection{The event-related potential}
-P300 and other components
-does not only rely on P300, but also heavily dependent on visual early
-components, hence we'll refer to it under the more generall oddball ERP
-paradigm
+
+Because of this, the oddball paradigm is often referred to as the P300
+paradigm.
+However, due to equal importance of other \ac{erp} components than the P3 in
+decoding as we will show later, this could be considered a bit of a misnomer
+and we will stick to the oddball paradigm naming.
+
+P300 and other components, explain function (Luck)
+
 \todo{figure of ERP components}
+
+\subsubsection{P1}
+\subsubsection{N1}
+\subsubsection{P2}
+\subsubsection{N2}
+\subsubsection{P3}
+\subsubsection{Late negativity}
+
 \subsection{Preprocessing and feature extraction}
 referencing, filtering, epoching, baselining
 \subsection{Decoding ERPs}

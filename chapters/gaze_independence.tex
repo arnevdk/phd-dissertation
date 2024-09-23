@@ -1,4 +1,4 @@
-\emph{Parts of Section~\ref{sec:gaze-independence} have been published in \textcite{VanDenKerchove2024}.}
+\emph{Parts of Section~\ref{sec:gaze-independence} have been published by \textcite{VanDenKerchove2024}.}
 
 \todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
@@ -20,8 +20,8 @@ rely on the control of eye muscles used to redirect the gaze or for blinking.
 \todo{patients suffering paralysis due to damage to the CNS (stroke, spinal
 chord injury, tbi) or neurodegenerative diseases}
 
-In fact, many patients in the BCI target population suffer to some extent
-from eye motor disability, requiring BCIs adapted to their condition.
+In fact, many patients in the \ac{bci} target population suffer to some extent
+from eye motor disability, requiring \ac{bci}s adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
 eye motor problems, which can range from minor (nystagmus
 \footnote{
@@ -51,7 +51,7 @@ on their ability to operate a visual \ac{bci}.
 		\bfseries Severe   & 33\% & 3\%  & +       & - & - & 98\% \\
 		\bfseries Complete & 17\% & -    & +       & - & - & 2\%  \\
 	\end{tabular}
-	\caption{Incidence of eye motor impairment in selected BCI target
+	\caption{Incidence of eye motor impairment in selected \ac{bci} target
     patient populations. (\acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
     \acl{dmd}, \acs{sma}: \acl{sma}, \acs{lis}: \acl{lis}).
     $+$: frequent, $-$: infrequent.}
@@ -86,7 +86,7 @@ mostly preserved.
 
 \newcommand\fnlis{\footnote{
 Multiple definitions of \ac{lis} are encountered in
-BCI and neurological literature.
+\ac{bci} and neurological literature.
 Some definitions include only tetraplegic patients without eye movements used
 for communications.
 Others distinguish Complete Locked-in Syndrome (CLIS) with full body paralysis,
@@ -108,14 +108,14 @@ of view, the etiology of the symptoms can be abstracted away.
 due to end-stage ALS or severe cerebral palsy), who have no remaining
 useful neuromuscular control of any sort, including no eye movement.
 \elide\ This class is very small. \elide\
-The second class of potential BCI users comprises those who retain
+The second class of potential \ac{bci} users comprises those who retain
 a very limited capacity for neuromuscular control. This group includes
 people who retain some useful eye movement or enough limb muscle
 function to operate a single-switch system. Such control is often slow,
 unreliable, or easily fatigued.
 This group is much larger than the first.
 \elide\
-The third class of potential BCI users, which is the largest of all,
+The third class of potential \ac{bci} users, which is the largest of all,
 includes those who still retain (and can be expected to continue to
 retain) substantial neuromuscular control, particularly speech and/or
 hand control, and can, therefore, operate a wide range of assistive
@@ -150,44 +150,44 @@ acceptable quality of life.
 \todo{order of concepts in next two paragraphs can be tweaked}
 
 This leads us to what we'll call the \emph{gaze-dependence problem in visual
-BCI}:
-Traditional visual BCI scenarios require the user to overtly direct their both
+\ac{bci}}:
+Traditional visual \ac{bci} scenarios require the user to overtly direct their both
 \ac{vsa} and gaze toward the screen target they intend to select.
 For our purposes, screen targets are overlaid with non-overlapping, transient
 stimuli that evoke event-related  potentials \acp{erp} in the \ac{eeg}.
 The selected target can be decoded from these \acp{erp}, as is the case for the
-oddball paradigm where observing a rare but attended stimulus evokes a P3 ERP
+oddball paradigm where observing a rare but attended stimulus evokes a P3 \ac{erp}
 component.
 However, a critical challenge arises when users rely solely or in part on covert
 VSA, which involves directing visuospatial attention without corresponding eye gaze.
 In these cases, classical solutions often fall short of the widely accepted
-80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,Ron2019} deemed necessary for a comfortable user
+80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,RonAngevin2019} deemed necessary for a comfortable user
 experience~\cite{Neeling2019}, calling for alternative, gaze-independent
 solutions.
 
 In this work, we will use the term \emph{gaze-independent} meaning
 \emph{‘dealing explicitly with the fact that a user cannot control their
 gaze.'}
-In the context of a visual BCI, this means that the user's
+In the context of a visual \ac{bci}, this means that the user's
 visuospatial attention and their gaze do not necessarily coincide.
 For patients with eye motor impairment, gazing directly at a screen target may
 be uncomfortable, impractical, or even impossible.
 Hence, assistive devices that rely on eye tracking are often inefficient for
 them.
-Consequently, while BCIs hold great promise for these individuals, conventional
-gaze-dependent BCI solutions do not meet their needs due to the absence of gaze
+Consequently, while \ac{bci}s hold great promise for these individuals, conventional
+gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
 control. Therefore, the development of decoding strategies that account for covert
 VSA becomes crucial in the pursuit of high-performance gaze independent
-BCIs.
+\ac{bci}s.
 
 
 
-\section{Gaze-independent BCI paradigms}
+\section{Gaze-independent \ac{bci} paradigms}
 \label{sec:gaze-independence}
 
-Gaze-independent ERP-based BCIs~\cite{Riccio2012, Aloise2012} can be realized in three
+Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
 ways.
-Firstly, active BCI communication paradigms relying on endogenous activation from the user
+Firstly, active \ac{bci} communication paradigms relying on endogenous activation from the user
 do not rely on sensory stimulation.
 Examples of this are imagined movement or imagined speech paradigms.
 These paradigms can yield very high information transfer
@@ -207,7 +207,7 @@ the GeoSpell interface~\parencite{Aloise2012}, and the RSVP
 speller~\parencite{Acqualagna2011}.
 Non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
-Alternative visual stimulation paradigms can modulate specific ERP components
+Alternative visual stimulation paradigms can modulate specific \ac{erp} components
 that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
 Nevertheless, these methods, can suffer too from reduced information
 transfer rates~\cite{Chennu2013}.
@@ -217,20 +217,20 @@ This entails that they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
 \todo{advantages disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
 
-Thirdly, stimuli can be presented in a standard BCI paradigm, but visuospatial
+Thirdly, stimuli can be presented in a standard \ac{bci} paradigm, but visuospatial
 attention can be decoded separately from gaze direction.
-\cite{Aloise2012b} aimed to bridge the performance gap between covert and
+\textcite{Aloise2012} aimed to bridge the performance gap between covert and
 overt VSA decoding performance.
-They compared classical linear and non-linear ERP classifiers on a covert
-attention P3 ERP component dataset.
+They compared classical linear and non-linear \ac{erp} classifiers on a covert
+attention P3 \ac{erp} component dataset.
 The results revealed no significant performance improvement in covert VSA
 decoding for any of the investigated decoders.
 More recent work has made advances in decoding lateralized covert
-VSA harnessing the N2pc ERP component~\cite{Thiery2016,Reichert2020b,Wang2022},
+VSA harnessing the N2pc \ac{erp} component~\cite{Thiery2016,Reichert2020b,Wang2022},
 decoding covert VSA shifts from spectral content~\cite{Tonin2013}, or hybrid
 stimulation paradigms~\cite{Egan2017}.
 Since these methods often require a slower stimulation pace than the classical
-ERP BCI paradigm, gaze-independent decoding in the fast-paced reactive ERP paradigm
+\ac{erp} \ac{bci} paradigm, gaze-independent decoding in the fast-paced reactive \ac{erp} paradigm
 leveraging spatial attention remains underexplored.
 
 \todo{check funding proposal}
@@ -241,46 +241,46 @@ leveraging spatial attention remains underexplored.
 
 \subsection{Objectives}
 
-Brain-Computer Interfaces (BCIs) decode brain activity with the aim to establish a direct communication
+Brain-Computer Interfaces (\ac{bci}s) decode brain activity with the aim to establish a direct communication
 pathway bypassing speech and other forms of muscular activity. They have raised great hopes for patients
-devoid of these abilities, for whom BCIs can provide a means to communicate or to
+devoid of these abilities, for whom \ac{bci}s can provide a means to communicate or to
 control devices.
 The quest for performant and affordable solutions is most evident in
-visual BCIs based on the electroencephalogram (EEG), where it has led to a gamut of increasingly sophisticated decoders
+visual \ac{bci}s based on the electroencephalogram (EEG), where it has led to a gamut of increasingly sophisticated decoders
 and paradigms tailored to the needs of specific stimulation paradigms and
 use contexts.
-An effective and proven method is the visual event-related potential (ERP)-based
+An effective and proven method is the visual event-related potential (\ac{erp})-based
 oddball interface.
 Here, targets are shown in short pulses on a computer screen.
-Each time the user observes a target, an ERP is evoked, the presence of which can be
+Each time the user observes a target, an \ac{erp} is evoked, the presence of which can be
 detected in the EEG-signal.
-The ERP consists of multiple components, of which some are modulated by the
+The \ac{erp} consists of multiple components, of which some are modulated by the
 attention of the user, specifically the N2 and the P3 component.
 Decoding this modulation allows for information transfer controlled by the
 user's brain activity, as sketched in Figure~\ref{fig:bci}.
-However, visual BCIs cannot operate efficiently when the user does not direct
+However, visual \ac{bci}s cannot operate efficiently when the user does not direct
 their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
 
-This leads to the often unadressed gaze-dependence paradox: the BCI target
+This leads to the often unadressed gaze-dependence paradox: the \ac{bci} target
 population consists of patients who suffer from various degrees
 of paralysis, or even from Locked-in Syndrome (LiS), the complete loss of muscle
 control with preserved consciousness.
-While BCIs are most attractive as a solution for these patients
+While \ac{bci}s are most attractive as a solution for these patients
 compared to other assistive technologies like eye-tracking, studies often
 report bad performance in patient populations precisely due to the lack of adequate eye motor
 control, or patients with gaze impairments are excluded.
-Different degrees of eye motor impairment can render visual BCIs
+Different degrees of eye motor impairment can render visual \ac{bci}s
 uncomfortable or outright impossible to use.
-When operating a visual BCI, the usual rapid series of forced saccades followed
+When operating a visual \ac{bci}, the usual rapid series of forced saccades followed
 by fixation is tiring over time, even for healthy control subjects.
 A suitable alternative would allow the user to keep their eyes in an at-rest
-position of their choice while operating the BCI.
-This points to the need for gaze-independent BCIs.
+position of their choice while operating the \ac{bci}.
+This points to the need for gaze-independent \ac{bci}s.
 
-The general goal of this PhD is to tackle the gaze-dependence in visual BCIs.
+The general goal of this PhD is to tackle the gaze-dependence in visual \ac{bci}s.
 \todo{refer to ITRs from previous chapter}
-Section{sec:gaze-independence} showed that visual BCI paradigms form
-a good candidate for a performant gaze-independent BCI.
+Section{sec:gaze-independence} showed that visual \ac{bci} paradigms form
+a good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.
 We make a distinction here between spatially organized interfaces, where
@@ -290,16 +290,16 @@ Presentation\todo{cite},
 where targets or small sets of targets are shown consecutively.
 Traditionally, spatially organized interfaces have a higher information transfer
 rate, but are also more gaze-dependent than temporally organized interfaces.
-In such an interface, stimuli can be presented in a standard BCI paradigm, but
+In such an interface, stimuli can be presented in a standard \ac{bci} paradigm, but
 visuospatial attention can be decoded separately from the position of gaze,
 which do not necessarily need to coincide.
 
 This leads us to adopt a specific approach: improve the performance of a
-spatially organized visual oddball ERP-based brain
+spatially organized visual oddball \ac{erp}-based brain
 computer interface by using a suited decoding strategy.
 Hence, our working hypothesis is as follows:
 \begin{quote}
-	\textit{A spatially organized visual oddball ERP BCI with a suited decoder
+	\textit{A spatially organized visual oddball \ac{erp} \ac{bci} with a suited decoder
 		can achieve a similar transfer rate in patient
 		populations with eye motor deficits than other gaze-independent alternatives
     described in literature.}
@@ -307,7 +307,7 @@ Hence, our working hypothesis is as follows:
 
 To achieve our goal, we innovate on decoder development and interface design,
 and we collect data from healthy control subjects, which allow us to test our decoders.
-Finally, the findings of these experiments will be leveraged to develop a BCI
+Finally, the findings of these experiments will be leveraged to develop a \ac{bci}
 for patient use, which will be tested in a case-based patient study in which
 both performance and user comfort will be evaluated.
 
@@ -315,7 +315,7 @@ This specific hypothesis is embedded within a broader goal of enabling
 effective communication for eye-motor impaired \ac{lis} patients.
 Ultimately, we wish to design a comfortable interface that allows them to maximally exploit
 their residual gaze capabilities, by leveraging a non-invasive, high-\ac{itr}
-BCI on the one hand, and on the other hand improving \ac{erp} decoding performance
+\ac{bci} on the one hand, and on the other hand improving \ac{erp} decoding performance
 in general.
 
 \section{Approach}
@@ -327,7 +327,7 @@ in general.
 \todo{clear definitions, table from paper}
 
 First, we designed a visual oddball interface that helps us study and adapt
-to the effects of eye motor impairment on the ERP, when using existing state-of-the-art
+to the effects of eye motor impairment on the \ac{erp}, when using existing state-of-the-art
 decoders and on our own proposed decoders.
 Using a hexagonal lay-out interface, similar to the visual Hex-o-Spell proposed
 \textcite{Treder2010}, we present six flashing circular targets
@@ -357,7 +357,7 @@ In the overt case, users gaze at the cued
 target they are also mentally attending; in the covert case, users
 gaze at the center of the screen while mentally attending to the cued target.
 Finally, we introduce a VSA condition that is understudied in the context of
-gaze-independent BCI development: split VSA.
+gaze-independent \ac{bci} development: split VSA.
 In split VSA, the user mentally focuses on one cued target while gazing at
 another (the distractor).
 
@@ -368,26 +368,26 @@ investigate the effect of gaze control on \ac{bci} performance.
 
 During this PhD, we explored different lines in decoding strategies,
 trying to tackle several problems that arise from gaze-independence, such as
-the lack or decrease in amplitude of specific ERP components, and the increased
+the lack or decrease in amplitude of specific \ac{erp} components, and the increased
 non-stationarity of the signal.
 As mentioned, state-of-the-art decoders have poor performance in covert attention
 settings.
 The general goal is thus to design a machine learning classifier that represents
-the ERP signal in a specific way, such that it becomes more robust to the problems
+the \ac{erp} signal in a specific way, such that it becomes more robust to the problems
 occurring in covert attention conditions.
 
 \subsubsection{Regularized spatiotemporal beamforming}
 Due to the lack of the N2 component and decrease of amplitude of the
 P3 component in covert attention
-settings~\cite{Treder2010}, the signal-to-noise ratio (SNR) of
-the ERP is lower than in overt attention settings.
+settings~\cite{Treder2010}, the \ac{snr} of
+the \ac{erp} is lower than in overt attention settings.
 Therefore, a straightforward way to reach satisfactory
-gaze-independent decoding performance, might be by increasing overall ERP
+gaze-independent decoding performance, might be by increasing overall \ac{erp}
 decoding performance. A more accurate classifier could yield relative
 improvements in those settings where performance is not yet near the achievable
 maximum.
 
-Therefore, we have improved upon an in-house developed, state-of-the art ERP
+Therefore, we have improved upon an in-house developed, state-of-the art \ac{erp}
 decoder, the spatiotemporal beamformer~\cite{Wittevrongel2016}, by reformulating
 this classifier as a linear discrimination problem and
 imposing regularizing constraints by structuring the noise covariance matrix
@@ -411,18 +411,18 @@ in a broader range of gaze-independent settings, including split VSA.
 \todo{check overlap}
 
 Literature shows that better covert attention performance can be achieved by
-counteracting the non-stationarity of the P3 ERP component in covert
+counteracting the non-stationarity of the P3 \ac{erp} component in covert
 attention settings~\cite{Arico2014}.
-This can be done by estimating the latency of each single-trial ERP and aligning
+This can be done by estimating the latency of each single-trial \ac{erp} and aligning
 the P3 peaks to all fall at the same moment.
 The resulting aligned data and the set of latencies can then be used to train a
 classifier that is more robust to jitter.
 
 Existing latency estimation methods are either not applicable to the
 classification problem of labeling unseen data, or are not robust enough to
-deal with the low SNR of the ERP.
+deal with the low \ac{snr} of the \ac{erp}.
 Classifier-based Latency Estimation (CBLE)~\cite{Mowla2017} is a technique that can leverage
-ERP latency estimation in a decoding setting, but our results show that it
+\ac{erp} latency estimation in a decoding setting, but our results show that it
 yields no improvement in gaze-independent settings.
 We improved upon this technique and extended it to a probabilistic, iterative
 method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
@@ -434,14 +434,14 @@ method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
 \subsubsection{Healthy control study}
 In a first series of experiments, we recorded data with this interface from healthy participants.
 The goal of these experiments is to benchmark
-gaze-independent ERP decoding algorithms.
-We denote this dataset as the Covert Visuospatial Attention ERP dataset
-(CVSA-ERP)
+gaze-independent \ac{erp} decoding algorithms.
+We denote this dataset as the Covert Visuospatial Attention \ac{erp} dataset
+(CVSA-\ac{erp})
 This study was approved by the Ethics Commission of University Hospital Leuven
 (S62547).
 To simulate the dissociation between the eye gaze (visual attention) and the
 intended target (mental attention) which could occur in patients with hampered eye
-motor control, healthy participants are cued to operate the BCI in specific
+motor control, healthy participants are cued to operate the \ac{bci} in specific
 \ac{vsa} conditions.
 
 
