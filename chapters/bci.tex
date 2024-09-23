@@ -23,7 +23,7 @@ A \ac{bci} reads your mind.
 \ac{bci}s are an entertaining subject with many futuristic and more established
 applications.
 Devices processing direct inputs from the central nervous system can be
-useful for rehabilitation, medical diagnosis or treatment.
+useful for rehabilitation and medical diagnosis or treatment.
 They have always been especially promising as assistive technology for
 paralyzed patients limited in their communication ability. \todo{expand more on this last
 sentence, put patients first in introduction, see above}
@@ -61,7 +61,7 @@ what's going on in the brain.
 Section~\ref{sec:bci-recording} gives an overview of the available options.
 One might for instance measure the fluctuations in bloodflow to specific brain
 regions that are more or less active at a given time with a scanner.
-However, this signal reacts to slowly to reflect the real-time activity that is
+However, this signal reacts too slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
 A better candidate is the neuronal \emph{action potential}.
@@ -109,16 +109,15 @@ environment around us, containing electronic devices and other sources of
 interference.
 Furthermore, the brain is continuously processing information and carrying out
 `background tasks', all of which generate their own electrical signals.
-On the other hand, the brain activity we are interested in exploiting often
-originates from a specific functional system within the brain, and its activity
-might not be easily discerned from all other neural and environmental activity,
-akin to trying to listen to a single speaker in a noise environment where
+On the other hand, the activity of interest in often
+originates from a specific functional system within the brain.
+This activity might not easily be discerned from all other neural and
+environmental activity.
+Compare this to trying to listen to a single speaker at a noisy party where
 everyone is shouting over each other.
-Some obvious sources of interference can be easily filtered out, but to obtain
-a good measure reflecting only the activity that is relevant for a given \ac{bci}
-problem.
-This problem is called \emph{decoding} and is often solved through supervised
-machine learning.
+Some obvious sources of interference can be easily filtered out by
+\emph{preprocessing}, but the problem of retrieving or \emph{decoding} only the
+relevant signal is often solved through supervised machine learning.
 Useful information that is encoded in the brain signal by the paradigm,
 can be retrieved from it by the decoder.
 Section~\label{sec:bci-decoding} takes a closer look at some common decoding
@@ -129,19 +128,20 @@ device or actuator.
 There are two aspects to this.
 On the one hand, the \ac{bci} gains its function by allowing the user to interact
 with their environment.\todo{put focus on communication BCI}
-On the other hand, the actions performed by the \ac{bci} can themselves influence
-the user's brain activity, creating an adaptive system.
+On the other hand, the actions performed by the \ac{bci} can themselves alter
+the user's cognitive state or brain activity, creating an adaptive system.
 A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
 Examples of this are deep brain stimulation to mitigate the symptoms of
-Parkinson's disease, or the cochlear implant as an auditive prosthesis.
-More indirectly modulation can be achieved by sensory stimulation.
-This can involve specific, paradigm-related sensory input, like haptic feedback when a
-movement \ac{bci} detects an intended action, or simply presenting selected actions
+Parkinson's disease, or the cochlear implant as a hearing prosthesis.
+More indirectly, modulation can be achieved by sensory stimulation.
+This involves specific, paradigm-related sensory input, like haptic selection
+feedback for movement \ac{bci}, or simply presenting selected actions
 back to the user.
 The user's brain will then adapt through reinforcement learning, causing
 changes in behavior or strategy.
-Due to neuroplasticity, the brain's ability to adapt, this can have a positive
-impact on \ac{bci} performance and opens the pathway to rehabilitation applications.
+Neuroplasticity, the brain's ability to adapt and reinforce specific neural
+pathways, can have a positive impact on \ac{bci} performance and gives rise to
+rehabilitation applications.
 
 \todo{wrap-up}
 
@@ -162,11 +162,10 @@ These can range from brain scans~\cite{Weiskopf2004} using functional magnetic r
 (fMRI) to more portable technologies like accoustic signals obtained by functional ultrasound imaging
 (fUS)~\cite{Zheng2023} and near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
-These technologies all measure the hemodynamic signal, which only indirectly
+The technologies above all measure the hemodynamic signal, which only indirectly
 reflects brain activity.
-Because of the desirable high temporal resolution of
-electrophysiology~\cite{Easttom2021} and
-because of their practicality, we will focus only on methods to record
+Because of the desirable high temporal resolution~\cite{Easttom2021} and
+practicality electrophysiology, we will focus only on methods to record
 electromagnetical activity originating from neuronal action potentials.
 The magnetical field of the brain can be measured using magnetoencephalography
 (MEG)~\cite{Mellinger2007}.
@@ -210,7 +209,7 @@ and closed-loop adaptive control for Deep Brain Stimulation to mitigate
 Parkinson's disease symptoms~\cite{Arlotti2018}.
 Since these still penetrate the cortex, electrodes that sit on top of the
 cortex are more popular, as they are considered less invasive.
-\ac{ecog} is a powerful method
+\Ac{ecog} is a powerful method
 with many applications in \ac{bci}~\cite{Schalk2011} and epilepsy diagnosis.
 Newer developments like micro-ECoG (µECoG)~\cite{Shokoueinejad2019} with a
 higher number of smaller electrodes per surface area allow for more precise
@@ -233,14 +232,14 @@ sufficiently large~\cite{Kageyama2020}.\todo{due to what reasons}
 This provides justification for focusing part of the current research effort on
 non-invasive BCI.
 
-\Ac{eeg} is the de facto non-invasive electrophysiology standard, in clinical
+\Ac{eeg} is the de facto non-invasive electrophysiology standard in clinical
 neurology practice as well as in \ac{bci} research.
-Developed in 1924~\cite{Berger1929}, it is cheap and relatively practical and
-can offer great temporal resolution up to thousands of Hz.
+Developed since 1924~\cite{Berger1929}, it is cheap and relatively practical and
+offer great temporal resolution up to thousands of Hz.
 As it is easily applicable on the outside of the scalp, many practical
-consumer grade \ac{eeg} headsets exist in the form (often wireless) electrode
+consumer-grade \ac{eeg} headsets exist in the form (often wireless) electrode
 caps or helmets.
-Current consumer systems can feature dry electrodes, but clinical and
+Current consumer systems sometimes feature dry electrodes, but clinical and
 research systems often use electrolyte gel to reduce impedance for improved signal
 quality, which slightly decreases practicality.
 Nevertheless, it is the most accessible \ac{bci} technology for both patients
@@ -252,20 +251,21 @@ away from the cortex.
 Furthermore, the layers of skull and cerebrospinal fluid in between can
 attenuate the signal and cause volume conduction, which results in electrodes
 measuring a mixture of activity from sources elsewhere in the brain.
+The noise problem mentioned earlier is also prominently present in \ac{eeg}
+recordings.
 In addition to picking up brain activity other than that of the region of
-interest, \ac{eeg} also records other artifacts, from the
-environment, the power supply, nearby electrical equipment or the user's muscle
-movements.
-Combined, this means that \ac{eeg} is inherently noisy.
+interest, \ac{eeg} also records other artifacts, from the environment, the power
+supply, nearby electrical equipment, or the user's muscle movements.
+Combined, this means \ac{eeg} is inherently noisy.
 
-Despite its noisy nature \Ac{eeg} is the recording methodology of choice for
+Despite its noisy nature, \ac{eeg} is the recording methodology of choice for
 our \ac{bci} because of its wide acceptance by patients.
 To counteract the noise present in our recording, we must on the one hand evoke
-strong, informative brain signals using a suited \ac{bci} \emph{paradigm}, and on th
-other hand pick a suited \emph{decoder} which can isolate the signal of
-interest and filter out the noise.
+strong, informative brain signals using a suited \ac{bci} paradigm, and on the
+other hand pick a suited decoder which can isolate the signal of interest and
+filter out the noise.
 
-\section{\ac{bci} Paradigms}
+\section{\ac{bci} paradigms}
 \label{sec:bci-paradigms}
 
 The \ac{bci} paradigm~\cite{Xu2021} is the key to translating brain activity into useful
@@ -343,12 +343,12 @@ high ssvep itr
 hybrid
 
 \section{Decoders}
-\label{sec:bci-decoders}
+\label{sec:bci-decoding}
 
-After extracting features, machine learning algorithms can perform \ac{bci}
+After preprocessing and extracting features, machine learning algorithms can perform \ac{bci}
 decoding.
 This is usually based on
-some training data for which the performed tasks are known, by recognize the
+some training data for which the performed tasks are known, by recognizing the
 activity evoked by the task in recorded data.
 The training data can be either obtained from the \ac{bci} user themselves or from
 other users.
@@ -385,13 +385,13 @@ and \ac{lda} for \ac{erp} classification~\cite{Sosulski2022} still perform
 relatively well, given some regularizing constraints or extensions.
 Multi-linear techniques exploiting the tensor structure of neural signals are
 also promising.
-Riemannian Geometry~\cite{Barachant2014} is a popular and robust new strategy,
+Riemannian Geometry~\cite{Barachant2014} is a popular and robust new strategy.
 Furthermore, they lend themselves well to application like adaptive
-learning~\cite{Benaroch2021} or transfer learning~\cite{Zanini2017}
+learning~\cite{Benaroch2021} or transfer learning~\cite{Zanini2017}.
 Riemannian Geometry classifiers are often considered the current
 state-of-the-art.
-Finally, deep learning\todo{Bhuvaneshwari2021} is also sometimes considered, albeit only when large
-training datasets are available.
+Finally, deep learning~\cite{Bhuvaneshwari2021} is also sometimes considered,
+albeit only when sufficiently large training datasets are available.
 If decoders tailored to a specific user that keep the calibration session as
 short as possible are of interest, not enough training data is available to
 properly train a deep learning model.
@@ -403,17 +403,15 @@ instance be one imagined movement, or one repetition of flashing all targets
 in a visual \ac{erp} \ac{bci}.
 Some valuable metrics to asses decoder performance in the classification case
 are accuracy and \ac{rocauc}.
-Accuracy can be obtained from the correctness of predicted trial selection as
-\begin{equation}
-  \text{accuracy} = \frac{\text{TP}+\text{TN}}{\text{TP}+\text{TN}+\text{FP}+\text{FN}}
-\end{equation}
-with TP and TN the numbers of true positives and negatives and FP and FP the
-numbers of false positives and negatives.
+Accuracy is calculated as the proportion of correct selections to all
+selections made.
+It should be carefully interpreted in the presence of imbalanced data and always compared to the
+random chance accuracy level in the presence of more than two possible
+selections per trial.
 \Ac{rocauc} is also a measure of classifier predictive power, but is more
 suited for evaluation of classification of single epochs of data and in the
-presence of imbalanced data, e.g. when
-comparing single \acp{erp}.
-Higer \ac{rocauc} usually translates to a higher target selection accuracy.
+presence of imbalanced data, e.g. when comparing single \acp{erp}.
+Higher \ac{rocauc} usually translates to a higher target selection accuracy.
 
 Finally, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
 in general, is \ac{itr}.
