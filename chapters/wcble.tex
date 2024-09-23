@@ -37,7 +37,7 @@ intended targets, such as is the case for for gaze-impaired patients.
 While the classic \ac{erp} model assumes a constant \ac{erp} response over trials,
 research has shown that cortical evoked potentials show significant
 trial-to-trial jitter~\cite{Truccolo2002}.
-Experiments show that latency jitter in \ac{erp}s is the result of the interacion of
+Experiments show that latency jitter in \acp{erp} is the result of the interacion of
 the evoked activity with ongoing dynamics in the brain~\cite{Hasenstaub2007,
 	Kisley1999, Curto2009, Arieli1996}.
 The latency of an evoked potential is a combination of the modulation of oscillating activity that is
@@ -51,7 +51,7 @@ delay caused by ongoing neurophysiological processes that are not necessarily re
 
 The presence of latency jitter introduces multiple issues to \ac{erp} analysis, the
 most prominent of which is the smearing effect as illustrated
-in~\autoref{fig:smearing}. In \ac{erp} analysis, single-trial \ac{erp}s are usually
+in~\autoref{fig:smearing}. In \ac{erp} analysis, single-trial \acp{erp} are usually
 averaged per condition to cope with the unfavorable \ac{snr}?
 When averaging over multiple identical signals with jittered latencies, the shape
 and amplitude of the average do not reflect the properties
@@ -81,28 +81,28 @@ decoding performance.
 
 \subsubsection{Benefits of latency estimation}
 A common approach to counteract the smearing effect is to correct single-trial
-\ac{erp}s for jitter before averaging.\todo{reference}
+\acp{erp} for jitter before averaging.\todo{reference}
 This can be done by estimating the latency of each
 single-trial \ac{erp}, and aligning them before averaging.
 Latency estimation has multiple advantages:
 \begin{enumerate*}[label={(\arabic*)}]
 	\item Latency-based \ac{erp} alignment can help reveal the true shape and
-	properties like peak amplitude and latency of \ac{erp}s across
+	properties like peak amplitude and latency of \acp{erp} across
 	experimental conditions. These are variables of interest for
 	testing electrophysiological an behavioral hypotheses.
 	Additionally, latency estimation allows for the extraction of
-	other descriptors from a set of single-trial \ac{erp}s, like
+	other descriptors from a set of single-trial \acp{erp}, like
 	amplidute or latency variance~\cite{Hultsch2004}, which can
 	also be of interest as studied variables.
   For instance, in the work of \textcite{Saville2014}, the inter-trial latency
   variability itself is determined as a correlate of working memory performance.
 	\item Counteracting the smearing effect will boost the signal-to-noise
-	ratio of averaged \ac{erp}s by increasing the amplitude of the
+	ratio of averaged \acp{erp} by increasing the amplitude of the
 	\ac{erp} signal. This in turn can reveal smaller or more jittered \ac{erp}
   components which would otherwise obscured or blurred due to desynchronization.
     These \emph{deblurred} templates can then be used for analysis of the \ac{erp}
 	waveform, or as templates of the signal of interest in
-	BCIs~\cite{Arico2014}.
+	\acp{bci}~\cite{Arico2014}.
 	%this enables decoders to take into account the relatively low amplitude
 	%earlier components, leading to applications in settings where
 	%information from other components than the P300 need to be exploited,
@@ -111,7 +111,7 @@ Latency estimation has multiple advantages:
 	%because smaller visual components might not really be revealed
 	%since they're already time-locked}
 	\item Finally, the introduction of latency estimation and alignment generally
-	improves BCI classification performance.
+	improves \ac{bci} classification performance.
   Single-trial latencies can be	used as features to improve
   classification~\cite{Hardiansyah2020}.
 	Furthermore, compensating for inter-trial differences, especially when
@@ -176,7 +176,7 @@ maximum likelihood estimation~\cite{Gratton1989, Tuan1987, Moecks1988,Puce1994}.
 
 \subsection{Multi-component approaches}
 \label{sec:wcble/literature/multi-comp}
-In the previous section, we have abstracted away the fact that \ac{erp}s are
+In the previous section, we have abstracted away the fact that \acp{erp} are
 multi-component signals, which is not taking into account by the aforementioned
 methods.
 Multiple components can be time-locked to different events or neurophysiological
@@ -205,7 +205,7 @@ latency distributions~\cite{Jung2001, Takeda2008,	Zhang1998, Yin2009}.
 These algorithms do, however, require a response
 button trigger signal as input to determine the response time, which is
 not always present or applicable in an \ac{erp} experiment, especially in
-the case of BCIs.
+the case of \acp{bci}.
 The RIDE algorithm~\cite{Ouyang2011, Ouyang2015,	Wang2015, Ouyang2016, Ouyang2020}
 is able to do this without entirely relying on the response time, and can
 separate stimulus-locked, response-locked, and multiple central component clusters.
@@ -216,9 +216,9 @@ components~\cite{Ouyang2017}.
 Finally, the smearing problem can also be overcome by algorithms that are not
 based on \ac{erp} component latency estimation, but which use time warping-based methods
 to enhance the shape of the averaged template \ac{erp}, like Dynamic Time
-Warping~\cite{486255, wang2001warp, Zoumpoulaki2015}, Correlation-Optimized
+Warping~\cite{Gupta1996, Wang2001, Zoumpoulaki2015}, Correlation-Optimized
 Warping~\cite{Skov2006}, or Fast Variational
-Alignment~\cite{flotho2021fast}.
+Alignment~\cite{Flotho2021}.
 These methods work
 fundamentally different from the latency estimation methods, and cannot
 directly be used to extract latency features.
@@ -232,7 +232,7 @@ Most of these methods suffer from a common drawback: they cannot be used in a
 decoding scheme to improve performance for incoming epochs with unknown
 class labels that contain either a target or non-target \ac{erp} response.
 They can be used offline on a set of labeled epochs for testing hypotheses
-concerning latency and jitter, for aligning templates, or for BCI performance
+concerning latency and jitter, for aligning templates, or for \ac{bci} performance
 prediction, but not for \ac{erp} classification.
 While some of the aforementioned methods could be adapted to perform
 classification tasks, few studies investigate how to exploit this latency estimation
@@ -240,12 +240,13 @@ for jitter-resistant decoding.
 \cite{Hardiansyah2020} incorporated single-trial latencies in
 classification by peak-picking within a given
 \ac{erp} time window, unaware of the class of the epoch under investigation.
-The Classifier-Based Latency Estimation (CBLE) algorithm introduced
+The \ac{cble} algorithm introduced
 by \cite{Thompson2012} also explicitly applies latency estimation in a
 decoding setting.
-\cite{Thompson2012} initially formulated CBLE as an off-line performance prediction method.
-Later, its output was successfully adapted to compensate for jitter to improve decoder performance%
-~\cite{Mowla2017,Zisk2022}.
+\cite{Thompson2012} initially formulated \ac{cble} as an off-line performance
+prediction method.
+Later, its output was successfully adapted to compensate for jitter to improve
+decoder performance~\cite{Mowla2017,Zisk2022}.
 
 Time series classification algorithms~\cite{Abanda2019}
 that are robust to jitter can be used in a decoding setting,
@@ -254,19 +255,10 @@ Data augmentation involving jittering the training
 data~\cite{Krell2018,Zisk2022} and Riemannian Geometry methods using spatial
 covariances as features~\cite{Aydarkhanov2020} have both been shown
 to perform well in the presence of \ac{erp} jitter.
-In this work, we opted to apply CBLE because it has successfully been applied to
-classify jittered \ac{erp}s.
-We adapt the CBLE to an iterative method akin to Woody's scheme that can better
+In this work, we opted to apply \ac{cble} because it has successfully been applied to
+classify jittered \acs{erp}.
+We adapt the \ac{cble} to an iterative method akin to Woody's scheme that can better
 compensate for jitter, to improve covert VSA decoding performance.
-
-\todo{remove lcmv}
-In this work, we introduce a new latency method that leverages data-driven,
-joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
-integrates the spatiotemporal filtering in Woody's template matching iteration
-scheme and can easily be extended to multi-component settings.
-Our method attempts to model the spatial and temporal activation of
-each \ac{erp} component, as well as it's latency distribution, and takes into acount the
-spatial and temporal correlation of the EEG background noise.
 
 \section{Methods}
 
@@ -283,7 +275,7 @@ We assume that the sampling period is $T$, i.e. that the sample with index $s$ i
 In the following, we use the matrix slicing notation to denote row or column intervals extracted from a matrix.
 For instance, $\mat{X}[:,s_1:s_2]$ denotes all columns of $\mat{X}$ with indices between $s_1$ (included) and $s_2$ (excluded).
 
-CBLE, summarized in Algorithm~\ref{alg:cble}, works by training a
+\ac{cble}, summarized in Algorithm~\ref{alg:cble}, works by training a
 \textit{first-stage} classifier $\mathcal{C}(\theta,f)$
 defined within a time period $[s_1:s_2]$ with a set of parameters $\theta$ and a
 decision function $f(\mat{X}[:,s_1:s_2],\theta) \rightarrow
@@ -304,7 +296,7 @@ $\mathbf{y}=[y_1\,\ldots\,y_R]^T \in\mathbb{R}^R$ such that
 	\label{eq:score}
 \end{equation}
 with $R = S-(s_2-s_1)$.
-To leverage CBLE for \ac{erp} classification, the score vectors $\mathbf{y}$ can be
+To leverage \ac{cble} for \ac{erp} classification, the score vectors $\mathbf{y}$ can be
 arranged in matrices $\mat{Y}^\mathrm{train}\in\mathbb{R}^{N\times R}$ and $\mat{Y}^\mathrm{test}\in\mathbb{R}^{M\times R}$.
 These can be further classified by training a \textit{second-stage} classifier on
 $\mat{Y}^\mathrm{train}$ and class labels $\mathbf{l}^\mathrm{train}$.
@@ -312,35 +304,35 @@ However, the resulting score-over-time vectors per epoch still suffer from jitte
 For classification, we follow the approach of \cite{Mowla2017}, using a
 maximum-level hierarchical Daubechies-4 wavelet transform to reduce
 dimensionality before classification with the second-stage classifier.
-In the CBLE-decoder, it is this wavelet transform that decreases the sensitivity
+In the \ac{cble}-decoder, it is this wavelet transform that decreases the sensitivity
 to latency differences, actively compensating for \ac{erp} latency jitter.
 
 When using a simple spatiotemporal linear classifier as first-stage classifier,
-CBLE is equivalent to the first iteration of Woody's algorithm with the
+\ac{cble} is equivalent to the first iteration of Woody's algorithm with the
 spatiotemporal classifier weights as template.
 \cite{Thompson2012}, \cite{Mowla2017} and \cite{Mowla2020} show
-that CBLE is relatively independent of the first-stage classifier for BCI
+that \ac{cble} is relatively independent of the first-stage classifier for \ac{bci}
 accuracy prediction and for \ac{erp} classification.
 Therefore, we opt to use the variant of Linear Discriminant Analysis with block-Toeplitz
 regularized covariance matrix (tLDA) proposed by \cite{Sosulski2022}, as the first-stage
 classifier and logistic regression as second stage.
 
-\subsection{Robust CBLE latency features}
+\subsection{Robust \ac{cble} latency features}
 \label{sec:robust-latency}
-The \ac{erp} decoding method based on CBLE introduced by \cite{Mowla2017} does
+The \ac{erp} decoding method based on \ac{cble} introduced by \cite{Mowla2017} does
 not make use of the extracted latencies, only passing score matrix $\mat{Y}$ on
 to the second-stage classifier.
-%Furthermore, previous CBLE works~\cite{Thompson2012,Mowla2020} only used these
-%latencies to correlate them with neurophysiological processes or to predict
-%decoder performance.
-We noticed that, while CBLE performance was unaffected, the classification
+Furthermore, previous \ac{cble} works~\cite{Thompson2012,Mowla2020} only used these
+latencies to correlate them with neurophysiological processes or to predict
+decoder performance.
+We noticed that, while \ac{cble} performance was unaffected, the classification
 performance of our proposed method can be improved if the estimated
 latencies are also made available as features to the second-stage classifier,
 after a square transform for linear separability~\cite{Thompson2012}.
 
-These latency features give rise to the following issue when
+However, including these latency features give rise to the following issue when
 classifying unseen data.
-The CBLE latency estimate is defined only for target epochs as
+The \ac{cble} latency estimate is defined only for target epochs as
 $s_\mathrm{target}=\argmax_s{y_s}$.
 This is the point in time where the target class reaches largest separation
 from the background noise and non-target class, indicating the target \ac{erp} is
@@ -361,12 +353,12 @@ as~$s_\mathrm{non-target}=\argmin_s{y_s}$.
 However, this is problematic since it is not evident how to estimate
 latency of e.g. a P3 \ac{erp} component for a non-target epoch, since the
 non-target class is characterized by the absence of this component.
-%\footnote{Depending on the stimulation and experimental design, \ac{erp} components can be present in one experimental
-%	condition or class and missing in another, or appear in multiple classes
-%	at different amplitudes. In the latter case, it could be possible
-%	to estimate the latency of an \ac{erp} in the conditions where it appears, but if
-%	its amplitude is lower or negligible in some conditions, latency estimates
-%	will be less accurate, hence this case is still problematic.}.
+\footnote{Depending on the stimulation and experimental design, \ac{erp} components can be present in one experimental
+	condition or class and missing in another, or appear in multiple classes
+	at different amplitudes. In the latter case, it could be possible
+	to estimate the latency of an \ac{erp} in the conditions where it appears, but if
+	its amplitude is lower or negligible in some conditions, latency estimates
+	will be less accurate, hence this case is still problematic.}.
 In fact, $y$ can have multiple local minima or entirely lack distinct peaks for
 non-targets, rendering the minimum estimate meaningless.
 
@@ -376,7 +368,7 @@ This robust estimation method yields latencies that
   \item are more meaningful as input for the second-stage
     classifier, and
   \item lead to smoother convergence in our proposed iterative alignment scheme
-    for WCBLE, which heavily relies on exact latency estimation.
+    for W\ac{cble}, which heavily relies on exact latency estimation.
 \end{enumerate*}
 Assume classifier $\mathcal{C}(\theta,f,\Pr)$ now can also output a probability
 per class $\Pr(l|
@@ -403,22 +395,21 @@ For the non-target case, the median approach tends towards the center of a
 near-uniform distribution, resulting in a more consistent latency estimate over
 trials as compared to the minimum approach.
 
-\subsection{Classifier-based Latency Estimation with Woody
-	Iterations}
-To improve performance over CBLE, we propose a new algorithm inspired both by
-CBLE and the aforementioned Woody iteration scheme (WCBLE).
-Instead of using CBLE to estimate the features of a second-stage classifier
-directly, CBLE latency estimation is used as a step in a Woody iteration scheme.
+\subsection{\acl{wcble}}
+To improve performance over \ac{cble}, we propose a new algorithm inspired both by
+\ac{cble} and the aforementioned Woody iteration scheme termed \ac{wcble}.
+Instead of using \ac{cble} to estimate the features of a second-stage classifier
+directly, \ac{cble} latency estimation is used as a step in a Woody iteration scheme.
 While the Woody algorithm iteratively enhances the SNR of an \ac{erp} template to
-cross-correlate with the data, WCBLE iteratively re-estimates the parameters of
+cross-correlate with the data, W\ac{cble} iteratively re-estimates the parameters of
 the first-stage classifier.
-To improve convergence and perform well in a classification setting, WCBLE
+To improve convergence and perform well in a classification setting, W\ac{cble}
 aligns both targets and non-targets to their corresponding estimated latencies.
 
-The WCBLE algorithm is presented in Algorithm~\ref{alg:wcble}.
+The W\ac{cble} algorithm is presented in Algorithm~\ref{alg:wcble}.
 Its training phase is visualized in~Figure~\ref{fig:diagram-train}.
 The initial training epochs $\{\mat{X}_n^{(1)}\}_{n=1}^N$ are set to $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N$.
-At every iteration, classifier $\mathcal{C}$ is trained like in CBLE:
+At every iteration, classifier $\mathcal{C}$ is trained like in \ac{cble}:
 \begin{equation}
   \theta^{(i)} =
   \mathrm{train}_\mathcal{C}(\{\mat{X}^{(i-1)}_n[:,s_1:s_2]\}_{n=1}^N,\mathbf{l}^\mathrm{train})
@@ -455,7 +446,7 @@ In the end, the procedure should result in enhanced classifier parameters $\thet
 closer to those when there would be no jitter between epochs.
 Note that using the median approach for robust latency estimation results in a
 smoother yet longer convergence process compared to the maximum/minimum approach.
-We can then apply the classifier with enhanced parameters $\theta^*$ in a CBLE
+We can then apply the classifier with enhanced parameters $\theta^*$ in a \ac{cble}
 manner to unseen epochs as illustrated in Figure~\ref{fig:diagram-eval} to obtain a
 vector of scores over time as in~Section~\ref{sec:cble} and the estimated latencies as
 in~Section~\ref{sec:robust-latency}.
@@ -577,9 +568,52 @@ in~Section~\ref{sec:robust-latency}.
 
 \section{Results}
 simulation study
+equatin snr
+\subsection{Data simulation}
+To verify our approach, we simulated 32 channel \ac{eeg} data with standard
+10-20 electrode positions using the \textttt{simulate_evoked} method of the
+MNE (version 1.8)~\cite{Gramfort2013} software package.
+\Ac{erps} were generated by projecting a source time course in a dipole in the
+left hemisphere to the scalp electrodes using a boundary element method forward
+model~\cite{Mosher1999} MNE's \texttt{fsaverage} source space and anatomy.
+We refer to~\textcite{Gramfort2014} for implementation details.
+Pink noise generated using an infinite impulse response filter with transfer
+function $\frac{B(z)}{A(z)} = \frac{1}{1 -1z^{-1}+0.15z^-2}$.
+
+figure
+Three kinds of source time courses, gaussian, a
+morlet wavelet and a sine wave, to study the algorithm's behavior for different
+waveforms.
+equations with parameters
+full simulation fig for wavelet
+
+For each source time course,
+pink noise is generated at all sources? and projected to the scalp
+
+\subsection{Latency estimation}
+cble with prob/median
+wcble with prob+median
+cble with max
+wcble with max
+
+CV/LOOCV?
+\subsection{Classification}
 refer to later chapter for use on real erp data
 
 \section{Discussion}
+\todo{mention cross validation}
+\todo{remove lcmv}
+In this work, we introduce a new latency method that leverages data-driven,
+joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
+integrates the spatiotemporal filtering in Woody's template matching iteration
+scheme and can easily be extended to multi-component settings.
+Our method attempts to model the spatial and temporal activation of
+each \ac{erp} component, as well as it's latency distribution, and takes into acount the
+spatial and temporal correlation of the EEG background noise.
+
+with lda, it is in the single class case equal to shifting a spatiotemporal
+lcmv beamformer over the epochs and can be used to extract latencies.
+multiclass:
 
 \section{Conclusion}
 Current work is focusing on the extension to multi-component algorithm, in a
