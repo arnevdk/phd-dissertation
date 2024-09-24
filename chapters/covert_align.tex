@@ -169,22 +169,6 @@ seconds. In sum, the experiment featured approximately 45 minutes of
 stimulation time.
 After blocks 14 and 28, the participant was allowed to take a longer break.
 Including these longer breaks, the experiment lasted approximately one hour.
-\subsubsection{Riemannian Geometry}
-We will compare WCBLE, CBLE and tLDA to Riemannian Geometry
-approaches that rely on spatial covariance as features.
-Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
-performance~\cite{Lotte2018}.
-We implemented two Riemannian Geometry pipelines.
-The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
-filters, projects these covariances to a tangent space and classifies the
-result using $L2$-regularized logistic regression
-(XDAWNCov-TS-LR)~\cite{Cecotti2017}.
-Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
-favorable performance in the presence of single-trial ERP latency jitter.
-Shrunk spatial covariance matrices are estimated from epochs that are
-augmented by concatenating the average target and average non-target ERP as
-extra channels, projected to tangent space and classified using
-$L2$-regularized logistic regression (ERPCov-TS-LR).
 
 \subsubsection{BNCI2014-009 dataset}
 The
@@ -204,6 +188,26 @@ This results in a specific setting where both visuospatial attention and
 feature attention (the attended letter) are exploited.
 For a detailed description of the paradigm and dataset, we refer
 to \cite{Aloise2012a}.
+
+\subsubsection{Decoders}
+We will compare \ac{wcble} and \ac{cble} ad described in
+Section~\ref{sec:wcble/methods}, with their base classifier and tLDA and with
+Riemannian Geometry
+approaches that rely on spatial covariance as features.
+Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
+performance~\cite{Lotte2018}.
+We implemented two Riemannian Geometry pipelines.
+The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
+filters, projects these covariances to a tangent space and classifies the
+result using $L2$-regularized logistic regression
+(XDAWNCov-TS-LR)~\cite{Cecotti2017}.
+Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
+favorable performance in the presence of single-trial ERP latency jitter.
+Shrunk spatial covariance matrices are estimated from epochs that are
+augmented by concatenating the average target and average non-target ERP as
+extra channels, projected to tangent space and classified using
+$L2$-regularized logistic regression (ERPCov-TS-LR).
+
 
 \subsection{Data preprocessing and analysis}
 Analysis was performed using Python and the MNE software package (version

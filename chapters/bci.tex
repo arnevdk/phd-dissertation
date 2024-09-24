@@ -191,7 +191,7 @@ at...)}
 The brain's activity can be recorded using various neuroimaging
 technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance imaging
-(fMRI) to more portable technologies like accoustic signals obtained by functional ultrasound imaging
+(fMRI) to more portable technologies like acoustic signals obtained by functional ultrasound imaging
 (fUS)~\cite{Zheng2023} and near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
 The technologies above all measure the hemodynamic signal, which only indirectly
@@ -268,12 +268,16 @@ non-invasive BCI.
 neurology practice as well as in \ac{bci} research.
 Developed since 1924~\cite{Berger1929}, it is cheap and relatively practical and
 offer great temporal resolution up to thousands of Hz.
+\Ac{eeg} measures the electrical potential over time at a given electrode relative to a
+reference electrode in volt (V), often on the scale of microvolt ($\mu$V).
 As it is easily applicable on the outside of the scalp, many practical
 consumer-grade \ac{eeg} headsets exist in the form (often wireless) electrode
 caps or helmets.
 Current consumer systems sometimes feature dry electrodes, but clinical and
-research systems often use electrolyte gel to reduce impedance for improved signal
-quality, which slightly decreases practicality.
+research systems often use active electrodes with preamplifiers and
+electrolyte gel to reduce impedance for improved signal
+quality, which slightly decreases practicality, since they require a trained
+professional to properly administer.
 Nevertheless, it is the most accessible \ac{bci} technology for both patients
 and researchers.
 
@@ -368,7 +372,7 @@ illiteracy~\cite{Allison2010}\footnote{
 }.
 \todo{footnote on how this just means it needs to be more adapted,
 inclusivity, harmful to progress, paraphrase abstracts of articles}
-
+\todo{user training more than with reactive, task instruction}
 
 Reactive \ac{bci} take another approach, by giving the user a discrete set of
 sensory stimulations and decoding towards which stimulus the user's attention
@@ -538,6 +542,8 @@ use~\cite{Wolpaw2018}.
 \subsection{Stimulation paradigm}
 One by one, visual elements on a computer screen are \emph{intensified} for a
 short period of time by changing in color, brightness or size.
+Intensifcations of different targets are usually 100-200ms apart and last for about
+100ms~\cite{Sellers2006a}.
 On each flash observed by the user, specific brain activity is elicited.
 If one of these intensified elements is rare with respect to the others, i.e. it is the
 \emph{odd-one out} or \emph{oddball}, this brain activity is altered.
@@ -557,37 +563,53 @@ selections, giving rise to the classic
 P300 matrix speller of~\cite{Farwell1988}.
 Other optimizations increase response \ac{snr}, like using flashing face
 images as intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
-stimuli~\cite{Treder2011};
+stimuli~\cite{Treder2011}.
+The number of targets in a visual oddball \ac{bci}is limited by the crowding
+effect, which imposes a limit on how close targets can be to each other while
+not distracting the user's attention~\cite{Sellers2006a,Li2010}.
+This may be overcome by making hierarchical selections of stimuli representing
+groups of selections~\cite{Treder2010}.
 
-Sometimes Flashing in various configurations, such as row-column or in groups,
-other flashing patterns
-faces, feature attention
-visual hex-o-spell
+Together with \ac{ssvep}, oddball paradigms are most frequently used in visual
+\ac{bci}.
+There are however indications that users prefer oddball stimulation over
+\ac{ssvep} which can cause eye strain and fatigue due to the continuous
+oscillatory stimulation of all targets at once~\cite{Xu2021}.
+Furthermore, \ac{ssvep} relies more on directing the gaze at the intended
+target than oddball, detracting from the concept of control independent from
+muscle movement.
 
-comfortable, preferred over SSVEP, similar ITR is this true?
-\todo{figure of P3 matrix}
-\todo{cite P300 literature, first example and current sota}
+\todo{four pane figure:
+  photo of someone using a P300 bci
+  P300 matrix interface
+  simplified figure of ERP components
+  full spatiotemporal ERP response
+}
 
 \subsection{The event-related potential}
 
-
-later compoentns P3 more attention/cognitive more centrally in the brain
-
-Because of this, the oddball paradigm is often referred to as the P300
-paradigm.
-However, due to equal importance of other \ac{erp} components than the P3 in
-decoding as we will show later, this could be considered a bit of a misnomer
-and we will stick to the oddball paradigm naming.
-
-mention VEPs more from visual system occipitally
-
+The time-domain response ellicited immediately after intensification of a
+stimulus is the visual \ac{erp}~\cite{Luck2014}.
+An \ac{erp} is a waveform consisting of multiple components, of wich some are
+modulated by whether the stimulus was an oddball or not.
+Components are positive peaks and negative troughs in the \ac{erp} waveform.
+They following a naming scheme according to their polarity (Negative or
+Positive) and their latency (e.g. 3 or 300ms).
+The component most prominently modulated by attention is called the P300 or P3
+(positive deflection after $\pm$300ms) and oddball paradigms are therefore
+frequently referred to as P300 paradigms.
+However, due to the equally important contribution of other \ac{erp}
+components than the P3 in decoding as we will show later, this could be
+considered a bit of a misnomer and we will stick to the oddball paradigm naming.
 P300 and other components, explain function (Luck)
+Which components, at what amplitude and latency they are evoked varies per
+person and depends on the exact details of the stimulation.
 
-\todo{figure of ERP components}
+In general, earlier components, such as the \acp{vep}, are more tied to sensory
+information processing and less modulated by attention, while later components
+are more related to attention and cognitive processes.
 
-which components, at what amplitude and latency they are evoked varies per
-person and depends on the type of intensification
-
+\textcite{Luck2013}
 \subsubsection{P1}
 \subsubsection{N1}
 \subsubsection{P2}
