@@ -1,32 +1,64 @@
-Independent home use of a brain-computer interface by people with
-amyotrophic lateral sclerosis.
-\todo{Shortly describe challenges from the patient point of view, related to
-this thesis}
-\todo{do something with Wolpaw (2018) Independent home use of a brain-computer interface by people with
-amyotrophic lateral sclerosis.}
+\todo{comments liesel paradigms}
+People suffering from heavy paralysis or disability due to
+neurodegenenerative diseases, stroke, traumatic brain or spine injury
+become entirely reliant on caregivers or family members in their day to day
+routine.
+Wouldn't it be great if we could help them regain some quality of life by
+making them more independent?
 
-\todo{
-Locked-in -\> communicate
-Paraplegic -\> walk again
-tetraplegic, locked-in syndrome
-Regaining capabilities and improving quality of life
-Start from wolpaw examples, for spelling
-Cite some catchy state of the art examples (walk again, speech avatar Metzger, handwriting
-willet, neuralink)
-}
+The most basic ability any independent human being needs, is interaction with
+their environment.
+In it's core essence, this is the ability to communicate your intentions,
+emotions, frustrations or thoughts to someone or something, which then might
+act upon them.
+For an able-bodied person, physical interaction happens through body movements
+and communication is usually done through speech and body language, which
+both require sending signals through the body's nervous system to control
+muscles.
+Not everyone has this capability.
+
+The key problem for heavily paralyzed patients is that the mind wants to go
+where the body can't follow.
+Couldn't we therefore design a system that directly interacts with the mind?
+This system can then form an interface between the mind and any kind of
+technology, like a robot arm or speech synthesizer, interacting with the world
+on the user's behalf.
+If the mind's seat is in the brain, and we want to interface this to a digital
+control process, such a device becomes the \ac{bci}\footnote{Sometimes also
+termed brain-machine interface (BMI) when coupled to a physical actuator, like
+a robot arm or an exoskeleton. The term \ac{bci} is usually preferred for
+assistive technology and communication devices.}.
+A \ac{bci} directly couples actions in the `real world' to the mental state of
+the user.
+A \ac{bci} reads your mind.
+
+Starting in the 1970's from methods to establish minimal brain activity
+(yes/no, left/right, ...)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
+into sophisticated interaction schemes that restore or enhance many capabilities
+by bypassing part of the nervous system and muscle control.
+By now, classic \acp{bci} methods have matured outside the lab setting and can be
+used as assistive communication technology by patients with impaired
+speech~\cite{Wolpaw2018}.
+Impressive cutting edge examples of experimental \acp{bci} include a brain-spine
+interface allowing a paraplegic patient to walk again\cite{Lorach2023},
+a \ac{bci} translating internal speech to a facial avatar speaking the imagined
+text~\cite{Metzger2023}, and fast communication through decoding imagined
+handwritten symbols~\cite{Willett2021}.
+Recently, the idea has also gained popular traction through Elon Musk's
+Neuralink~\cite{Musk2019} initiative, which imagines a multipurpose \ac{bci}.
+
 \todo{put focus on communication BCI}
+
 \section{A direct interface to the brain}
 \comment{This section describes a bci in layman's terms, without too much
 scientific background, jargon and literature, in the following sections of this
 chapter a more scientific style is used}
-A \ac{bci} reads your mind.
 \ac{bci}s are an entertaining subject with many futuristic and more established
 applications.
 Devices processing direct inputs from the central nervous system can be
-useful for rehabilitation and medical diagnosis or treatment.
-They have always been especially promising as assistive technology for
-paralyzed patients limited in their communication ability. \todo{expand more on this last
-sentence, put patients first in introduction, see above}
+useful for rehabilitation and medical diagnosis or treatment, but
+have always been especially promising as assistive technology for
+paralyzed patients limited in their communication ability.
 Furthermore, they bring a new paradigm to human-computer interaction,
 especially when paired with virtual or augmented reality.
 
@@ -481,7 +513,6 @@ of the decoder, and $Q$, the number of trials per second.
 The parameters $N$, $P$ and $Q$ of this formula give us some insight in the
 building blocks a successful, high-\ac{itr} \ac{bci}.
 To improve performance, we can aim to
-\todo{enumerate}
 \begin{enumerate*}[label={\arabic*})]
 \item increase $N$ by selecting a paradigm and interface that offer a
 broad range of informative selections per trial,
@@ -492,21 +523,55 @@ responses.
 \end{enumerate*}
 
 
-\section{A case study: the visual oddball paradigm}
+\section{A case study: the visual oddball \ac{bci}}
 
-The visual oddball paradigm is a reactive, stimulus-dependent, synchronous
-\ac{bci} paradigm.
-good choice because it scores high on the parameters above
-well established, good research, first application cite
-Flashing in various configurations, such as row-colum or in groups,
+The visual oddball paradigm is a \emph{reactive}, \emph{stimulus-dependent},
+\emph{synchronous} \ac{bci} paradigm with all the benefits and drawbacks
+Nevertheless, it can score relatively high on the \ac{itr} parameters established above.
+The brain response of interest is the visual \ac{erp}, which can be accurately
+measured and decoded from non-invasive \ac{eeg} signals with a relatively low
+computational effort and short calibration time.
+First established by~\cite{Farwell1988} in 1988, it well supported by literature
+and has been proven to work for patients in day-to-day home
+use~\cite{Wolpaw2018}.
 
+\subsection{Stimulation paradigm}
+One by one, visual elements on a computer screen are \emph{intensified} for a
+short period of time by changing in color, brightness or size.
+On each flash observed by the user, specific brain activity is elicited.
+If one of these intensified elements is rare with respect to the others, i.e. it is the
+\emph{odd-one out} or \emph{oddball}, this brain activity is altered.
+A stimulus can be rare either due to its inherent properties like color or
+location
+Crucially, this is also the case if it is `marked' as rare by the user, e.g.
+by paying explicit attention to only a given stimulus and not the others or
+counting how many times it flashes.
+If these visual elements represent letters, and we know the timing of the
+intensifications of each letter, we can now establish communication by detecting
+for which letter an oddball response was present in the brain signal at its
+time of intensification.
 
-\subsection{Stimulation}
+\Ac{itr} in the oddball paradigm is optimized by intensifying
+multiple targets at once in a row-collumnn strategy and using a sequence of
+selections, giving rise to the classic
+P300 matrix speller of~\cite{Farwell1988}.
+Other optimizations increase response \ac{snr}, like using flashing face
+images as intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
+stimuli~\cite{Treder2011};
+
+Sometimes Flashing in various configurations, such as row-column or in groups,
+other flashing patterns
+faces, feature attention
+visual hex-o-spell
+
 comfortable, preferred over SSVEP, similar ITR is this true?
 \todo{figure of P3 matrix}
 \todo{cite P300 literature, first example and current sota}
 
 \subsection{The event-related potential}
+
+
+later compoentns P3 more attention/cognitive more centrally in the brain
 
 Because of this, the oddball paradigm is often referred to as the P300
 paradigm.
@@ -514,9 +579,14 @@ However, due to equal importance of other \ac{erp} components than the P3 in
 decoding as we will show later, this could be considered a bit of a misnomer
 and we will stick to the oddball paradigm naming.
 
+mention VEPs more from visual system occipitally
+
 P300 and other components, explain function (Luck)
 
 \todo{figure of ERP components}
+
+which components, at what amplitude and latency they are evoked varies per
+person and depends on the type of intensification
 
 \subsubsection{P1}
 \subsubsection{N1}
@@ -528,5 +598,8 @@ P300 and other components, explain function (Luck)
 \subsection{Preprocessing and feature extraction}
 referencing, filtering, epoching, baselining
 \subsection{Decoding ERPs}
+
+Usually, snr low and multiple trials necessary
+
 tLDA, beamforming
 Linear decoding techniques
