@@ -1,0 +1,60 @@
+\pdfminorversion=7
+\usepackage{todonotes}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage[inline]{enumitem}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+% Bibliography
+\usepackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{publications.bib}
+
+
+% Commands
+\newcommand{\includechapter}[2]{
+  \chapter{#1}
+  \begin{refsection}
+  \input{#2}
+    \printbibliography[heading=subbibliography]
+  \end{refsection}
+  \clearpage
+}
+
+\newcommand{\comment}[1]{
+  \todo[color=yellow]{#1}
+}
+\newcommand*\elide{\textup{[\,\dots]}}
+
+
+\newcommand{\fullpagefig}[3]{
+  \begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{#1}
+    \caption{#2}
+    \label{#3}
+  \end{figure}
+}
+\newcommand{\figpane}[3]{
+  \begin{subfigure}[t]{.45\textwidth}
+        \includegraphics[width=\textwidth]{#1}
+        \caption{#2}
+        \label{#3}
+    \end{subfigure}
+}
+\newcommand{\fourpanefig}[6]{
+    \begin{figure}
+      #1\hfill#2
+
+      #3\hfill#4
+
+    \caption{#5}
+    \label{#6}
+    \end{figure}
+}
+
+\newcommand\fullpagefigct\fullpagefig

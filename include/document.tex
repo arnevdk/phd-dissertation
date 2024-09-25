@@ -1,45 +1,3 @@
-% ATTENTION: Don't build this, either build main_booklet.tex or
-% main_manuscript.tex
-%
-% Preamble ====================================================================
-\pdfminorversion=7
-\usepackage{todonotes}
-\usepackage{hyperref}
-\usepackage{tabularx}
-\usepackage{booktabs}
-\usepackage[inline]{enumitem}
-\usepackage{subcaption}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-
-% Commands
-\input{math.tex}
-\input{acronyms.tex}
-\newcommand{\includechapter}[2]{
-  \chapter{#1}
-  \begin{refsection}
-  \input{#2}
-    \printbibliography[heading=subbibliography]
-  \end{refsection}
-  \clearpage
-}
-
-\newcommand{\comment}[1]{
-  \todo[color=yellow]{#1}
-}
-\newcommand*\elide{\textup{[\,\dots]}}
-
-% Bibliography
-\usepackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
-\addbibresource{references.bib}
-\addbibresource{publications.bib}
-
-% Set bibliography font size
-\renewcommand*{\bibfont}{\footnotesize}
-
-
-\usepackage[inline]{enumitem}
-
 \begin{document}
 
 % Front matter ================================================================
@@ -87,4 +45,5 @@ Hakim, Marie,Etienne, Philip Van Damme  }
 \chapter{Conflict of interest}
 The authors declare no conflict of interest.
 \include{chapters/cv.tex}
+
 \end{document}

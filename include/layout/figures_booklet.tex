@@ -1,26 +1,9 @@
-\usepackage[paperheight=240mm,paperwidth=160mm]{geometry}
-
-\usepackage{float}
-\floatplacement{figure}{p}
-\floatplacement{table}{p}
-
 \usepackage{incgraph}
 \usepackage{tikz}
-%\newcommand{\fullpagefig}[3]{
-%  \incgraph[
-%    overlay={
-%    }
-%  ]{#1}
-%}
-\definecolor{lightgray}{HTML}{ECECEC}
 
-\usepackage[usenames,x11names,dvipsnames,svgnames]{xcolor}
 \usetikzlibrary{backgrounds}
 
-% TODO: refactor to separate file and prevent double coding with manuscript and
-% booklet format
-
-\newcommand{\fullpagefig}[3]{%
+\renewcommand{\fullpagefig}[3]{%
   \igrcenter{\igrboxset{\includegraphics{#1}}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
@@ -29,7 +12,7 @@
   \end{tikzpicture}}
   \label{#3}
 }
-\newcommand{\fullpagefigct}[3]{%
+\renewcommand{\fullpagefigct}[3]{%
   \igrcenter{\igrboxset{\includegraphics{#1}}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
@@ -39,8 +22,7 @@
   \label{#3}
 }
 
-\usepackage{subcaption}
-\newcommand{\figpane}[3]{
+\renewcommand{\figpane}[3]{
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{#1}
         \caption{#2}
@@ -49,7 +31,7 @@
 }
 
 % TODO nice spacing and background
-\newcommand{\fourpanefig}[6]{
+\renewcommand{\fourpanefig}[6]{
     \begin{figure}
       #1\hfill#2
 
@@ -59,4 +41,3 @@
     \label{#6}
     \end{figure}
 }
-\renewcommand{\arraystretch}{1.5}
