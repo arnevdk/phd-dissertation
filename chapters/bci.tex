@@ -1,4 +1,9 @@
 \todo{comments liesel paradigms}
+\todo{spellcheck}
+\todo{are all acronyms defined}
+\todo{fix all latex warnings to make sure no refs are missing (or grep on that
+specific warning}
+
 People suffering from severe paralysis or disability due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
 become entirely reliant on caregivers or family members in their day to day
@@ -9,11 +14,10 @@ making them more independent?
 The most basic ability any independent human being needs, is interaction with
 their environment.
 In it's core essence, this is the ability to communicate your intentions,
-emotions, frustrations or thoughts to someone or something, which then might
-act upon them.
+emotions, frustrations or thoughts such that they might be acted on.
 For an able-bodied person, physical interaction happens through body movements
-and communication is usually done through speech and body language, which
-both require sending signals through the body's nervous system to control
+while communication is usually done through speech and body language
+Both require sending signals through the body's nervous system to control
 muscles.
 Not everyone has this capability.
 
@@ -44,7 +48,7 @@ a \ac{bci} translating internal speech to a facial avatar speaking the imagined
 text~\cite{Metzger2023}, and fast communication through decoding imagined
 handwritten symbols~\cite{Willett2021}.
 Recently, the idea has also gained popular traction through Elon Musk's
-Neuralink~\cite{Musk2019} initiative, which imagines a multipurpose \ac{bci}.
+NeuraLink~\cite{Musk2019} initiative, which imagines a multipurpose \ac{bci}.
 
 \todo{put focus on communication BCI}
 
@@ -61,7 +65,7 @@ especially when paired with virtual or augmented reality.
 
 Simply put, a \ac{bci} records the user's brain activity, extracts some
 relevant output from this brain activity and couples this output to a function
-of a device.
+of a device.\todo{refer to fig loop}
 Optionally, the user can then observe the action of the device and adapt their
 behavior or brain activity accordingly, closing the loop
 \footnote{%
@@ -98,13 +102,13 @@ activity of a specific brain region
 However, this signal reacts too slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
-A better candidate is the neuronal \emph{action potential}.
+A better candidate is the neuronal electrical activity.
 The brain consists 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
-The action potential is an electrical pulse occurring when a neuron receives
-input from another neuron and is activated.\todo{gross oversimplification,not
-entirely true}
-A neuron's action potential, or the combined action potentials of groups of
+The \emph{action potential} and its related \emph{postsynaptic potential}
+is an electrical pulse occurring when a neuron receives
+input from another neuron and is activated.
+The firing of a neuron, or the combined firing of groups of
 synchronized neurons, thus generate an electrical field in and near the brain,
 which can be measured using electrodes.
 Fluctuations in the brain's electrical potential can be faster and more
@@ -128,7 +132,7 @@ in Figure~\cite{fig:bci/loop}.
 The \ac{bci} paradigm comprises, if applicable, the manner of stimulation and the
 exact task performed by the user, and is often closely linked to the manner of
 feedback in the case of a closed-loop system.
-As shown in Section~\ref{sec:bci-paradigms}, there is a wide variety of \ac{bci}
+As shown in Section~\ref{sec:bci/paradigms}, there is a wide variety of \ac{bci}
 paradigms based on different systems in the brain.
 
 The previous points to another component of a successful \ac{bci}: the specific
@@ -154,8 +158,10 @@ Some obvious sources of interference can be easily filtered out by
 relevant signal is generally hard.
 Nevertheless, we can attempt to solve it through supervised machine learning.
 Useful information that is encoded in the brain signal by the paradigm,
-can be retrieved from it by the decoder.
-Section~\label{sec:bci-decoding} takes a closer look at some common decoding
+can be retrieved from it by the decoder.\todomvh{the decoder needs to take into
+account the control facilities of the application (degrees of freedom, serial
+/parallel nature, reactive/active...).}
+Section~\ref{sec:bci/decoding} takes a closer look at some common decoding
 techniques.
 
 Finally, the loop can be closed by coupling this to a
@@ -169,8 +175,10 @@ A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
 Examples of this are deep brain stimulation to mitigate the symptoms of
 Parkinson's disease, or the cochlear implant as a hearing prosthesis.
 More indirectly, modulation can be achieved by sensory stimulation.
-This involves specific, paradigm-related sensory input, like haptic selection
-feedback for movement \ac{bci}, or simply presenting selected actions
+This involves specific, paradigm-related sensory input, like haptic
+feedback\todomvh{or tactile feedback:S.N. Flesher et al., “A brain-computer
+interface that evokes tactile sensations improves robotic arm control,”
+Science, vol. 372, no. 6544, pp. 831-836, 2021. } for movement \ac{bci}, or simply presenting selected actions
 back to the user.
 The user's brain will then adapt through reinforcement learning, causing
 changes in behavior or strategy.
@@ -195,7 +203,7 @@ The brain's activity can be recorded using various neuroimaging
 technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance imaging
 (fMRI) to more portable technologies like acoustic signals obtained by functional ultrasound imaging
-(fUS)~\cite{Zheng2023} and near-infrared spectroscopy
+(fUS)~\cite{Zheng2023}\todomvh{non-invasive but not necessarily fUS...} and near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
 The technologies above all measure the hemodynamic signal, which only indirectly
 reflects brain activity.
@@ -204,16 +212,17 @@ practicality electrophysiology, we will focus only on methods to record
 electromagnetical activity originating from neuronal action potentials.
 The magnetical field of the brain can be measured using magnetoencephalography
 (MEG)~\cite{Mellinger2007}.
-While MEG is non-invasive and results in high-quality signals, it is relatively
-impractical due to the size of the equipment needed.
+While MEG is non-invasive and results in high-quality signals, the necessary
+equipment is rather expensive and impractical.
 Recent advances have been made using optically pumped magnetometers
 (OPM-MEG)~\cite{Wittevrongel2021}, but this technology still falters outside of
 lab conditions.
 
 As a consequence, the \ac{bci} field relies heavily on the
 electrical activity of the brain.
-As mentioned earlier with MEG, an important concept in determining which
-technology is suited for a \ac{bci} application is the \emph{invasiveness} of the technology.
+As touched upon earlier,the \emph{invasiveness} of the technology forms an
+important concept in determining its suitability for a given application and
+patient.
 As illustrated in Figure~\ref{fig:bci/recording}, invasive electrodes can often measure a very specific brain region and can result in better signal quality, at the cost of the risks
 involved with brain surgery.
 
@@ -241,7 +250,7 @@ action potential spikes.
 They come in single-electrode form, or, more popularly, in microelectrode
 arrays.
 Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
-NeuraLink implant~\cite{Musk2019}.
+NeuraLink implant~\cite{Musk2019}.\todomvh{+ Neuropixels 2}
 
 Larger implanted electrodes are referred to as intracranial ac{eeg} (i\ac{eeg}).
 Depth electrodes such as those used in stereo-ac{eeg} \ac{bci}~\cite{Wu2024} tasks
@@ -257,17 +266,16 @@ measurements.
 
 Some impressive recent breakthroughs in speech and motor \ac{bci} for communication
 \todo{cite} have been realized using
-invasive mictroelectrode arrays~\cite{Willett2021} and high-density
-\Ac{ecog}\cite{Metzger2023}.
+invasive mictroelectrode arrays~\cite{Willett2021} and $\mu$\Ac{ecog}\cite{Metzger2023}.
 Furthermore, recent advances in recording technology focus on improving implant
 durability and resolution\todo{cite flexible}, and on balancing the invasiveness
 tradeoff by finding new, minimally invasive ways to record from closer to the cortex.
 The Synchron Stentrode~\cite{Mitchell2023}, for instance, can be delivered
 through the bloodstream via a catheter, removing the need for open brain
 surgery.
-However, surveys~\cite{Huggins2011, Huggins2015, Branco2021} in different
+Nevertheless, surveys~\cite{Huggins2011, Huggins2015, Branco2021} in different
 potential communication \ac{bci} user groups consistently show that non-invasive
-recording methods are preferred over implanted electrodes, unless the added value of invasive BCI is
+technology is preferred over implanted electrodes, unless the added value of invasive BCI is
 sufficiently large~\cite{Kageyama2020}.\todo{due to what reasons}
 This provides justification for focusing part of the current research effort on
 non-invasive BCI.
@@ -323,16 +331,16 @@ other hand pick a suited decoder which can isolate the signal of interest and
 filter out the noise.
 
 \section{\ac{bci} paradigms}
-\label{sec:bci-paradigms}
+\label{sec:bci/paradigms}
 
 The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
-output commands, since it defines which neural responses will be elicited and
+output actions, since it defines which neural responses will be elicited and
 captured as features.
 A paradigm can be loosely seen as \emph{a way of interacting with the
 \ac{bci}}.
 According to \textcite{Zander2011}, they can be arranged by their reliance on
 external stimulation and the engagement of the user as shown in
-Figure~\ref{fig:bci-paradigms}.
+Figure~\ref{fig:bci/paradigms}.
 
 \fullpagefig{%
   \input{figures/bci/paradigms.tikz.tex}
@@ -342,10 +350,11 @@ Figure~\ref{fig:bci-paradigms}.
   paradigms, depending on their reliance on external stimulation and active
   participation required from the user.
   Adapted from~\textcite{Muehl2014}.
-}{
-  fig:bci-paradigms
+}{%
+  fig:bci/paradigms
 }
 \todo{check permissions}
+\todo{above Zander and Kothe was mentioned.}
 
 Paradigms that require little active participation of the user like
 redirecting attention or initiating imagined actions are classified as \emph{passive
@@ -359,7 +368,9 @@ Therefore, passive \ac{bci} are currently more suited to tasks like
 emotion or affect monitoring~\cite{Torres2020,Libert2019}, workload
 monitoring~\cite{Zanetti2021} or, more dependent on stimulation, error
 detection~\cite{SiMohammed2020}.\todo{mention neurofeedback}
-Furthermore, active paradigms make it easier to quickly collect training data for
+Furthermore, active paradigms\todo{"active" is used in a fuzzy way: active BCI is self-paced, reactive is in response to a cued event. Further down that becomes more clear.
+The "active participation": is needed in both cases as shown in Fig. 1.3.
+I suggest to say active participation} make it easier to quickly collect training data for
 supervized machine learning since the conditions can be more easily controlled
 by the user or the stimulation.
 
@@ -372,26 +383,25 @@ communication methods often limit the considered domain to a few movement
 directions to control a cursor, or a few words~\cite{Panachakel2021}.
 Invasive recordings are necessary for decoding more complex encoded
 like natural speech~\cite{Metzger2023} or meaningful motor trajectories, like handwritten
-symbols~\cite{Willett2021} or sign language.
+symbols~\cite{Willett2021} or sign language~\cite{Branco2017}.
 Active paradigms are also subject to large inter-subject variability due to the
 complexity of the performed tasks.
 Imagined speech or movements can be performed in a multitude of ways, which
 can each have different neural representations for separate individuals.
 This can make it hard to adapt the \ac{bci} to specific individuals, causing
 poor performance and giving rise to the concept of \ac{bci}
-illiteracy~\cite{Allison2010}\footnote{
+illiteracy~\cite{Allison2010}\footnote{%
   \cite{Becker2022,Thompson2019}
 }.
 \todo{footnote on how this just means it needs to be more adapted,
 inclusivity, harmful to progress, paraphrase abstracts of articles}
 \todo{user training more than with reactive, task instruction}
 
-Reactive \ac{bci} take another approach, by providing the user a discrete set of
-sensory stimulations and decoding towards which stimulus the user's attention
-was directed.
+Reactive \ac{bci} take another approach, by providing a discrete set of
+sensory stimulations towards which the user's attention can directed.
 Compared to active \ac{bci}, reactive paradigms usually require higher effort
 and can induce fatigue due to the constant stimulation.
-These paradigms are also somewhat less intuitive compared to e.g. speech, and
+These paradigms are also somewhat less intuitive compared to e.g.\ speech, and
 their expressive power is limited by how many different stimuli can effectively
 presented and attended within a reasonable timeframe.
 Nevertheless, reactive \ac{bci} work well with \ac{eeg} recordings, and, most
@@ -408,7 +418,7 @@ spatial origin of presented sounds, to which the user can
 attend~\cite{Kaongoen2017}.
 Most common are the visual paradigms.
 These can be more performant since they allows the user to use their visual
-system, one of the most adapted sensory system in humans.
+system, one of the most evolved sensory system in humans.
 
 The major visual paradigms rely on
 \ac{ssvep}, \ac{cvep}, oddball and \ac{mvep} brain responses.
@@ -435,17 +445,8 @@ along multiple dimensions at once.
 coding in \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an
 efficient \ac{bci} where one of 200 targets can be accurately selected with
 only 800ms of stimulation.
-Finally, paradigms can be implemented in a \emph{synchronous} or
-\emph{asynchronous} manner.
-Asynchronous \ac{bci} constantly decodes the signal looking for the response of
-interest, while in synchronous \ac{bci} decisions are made (and eventual
-stimulation takes place) at predetermined time points.
-Again, asynchronous is preferred by users because it is more intuitive and
-comfortable to use, but it is far easier to decode synchronous responses since
-it is known when to expect a response and if a decision should be made.
-
 \section{Decoders}
-\label{sec:bci-decoding}
+\label{sec:bci/decoding}
 
 After preprocessing and extracting features, machine learning algorithms can perform \ac{bci}
 decoding.
@@ -486,7 +487,7 @@ motor imagery~\cite{Park2017} and \ac{cca} for \ac{ssvep}~\cite{Nakanishi2017},
 and \ac{lda} for \ac{erp} classification~\cite{Sosulski2022} still perform
 relatively well, given some regularizing constraints or extensions.
 Multi-linear techniques exploiting the tensor structure of neural signals are
-also promising.
+also promising~\cite{Lotte2018}.
 Riemannian Geometry~\cite{Barachant2014} is a popular and robust new strategy.
 Furthermore, they lend themselves well to application like adaptive
 learning~\cite{Benaroch2021} or transfer learning~\cite{Zanini2017}.
@@ -512,9 +513,11 @@ random chance accuracy level in the presence of more than two possible
 selections per trial.
 Alternatively, \ac{rocauc} is also a measure of classifier predictive power, but is more
 suited for evaluation of classification of single epochs of data and in the
-presence of imbalanced data, e.g. when comparing single \acp{erp}.
+presence of imbalanced data, e.g.\ when comparing single \acp{erp}.
 Higher \ac{rocauc} usually translates to a higher target selection accuracy.
 
+\todomvh{"trial" could  be confused with intensification rounds e.g.}
+\todo{remove trial alltogether}
 Finally, an important concept in the evaluation of a \ac{bci} decoder, and of \acp{bci}
 in general, is \ac{itr}.
 \Ac{itr} reflects how fluently a \ac{bci} can be used for communication and can
@@ -523,7 +526,9 @@ be calculated as
 	\text{ITR} = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
 \end{equation}
 \Ac{itr} is expressed in bits/s and is dependent on $N$, the number of
-different options that can be selected per trial, $P$, the selection accuracy
+different options that can be selected per trial\footnote{Given that selections
+are independent on each other. This formula requires some adaptations in the
+case of sequential or hierarchical selection.}, $P$, the selection accuracy
 of the decoder, and $Q$, the number of trials per second.
 The parameters $N$, $P$ and $Q$ of this formula give us some insight in the
 building blocks a successful, high-\ac{itr} \ac{bci}.
@@ -541,7 +546,7 @@ responses.
 \section{A case study: the visual oddball \ac{bci}}
 
 The visual oddball paradigm is a \emph{reactive}, \emph{stimulus-dependent},
-\emph{synchronous} \ac{bci} paradigm with all the benefits and drawbacks
+\ac{bci} paradigm with all the benefits and drawbacks
 Nevertheless, it can score relatively high on the \ac{itr} parameters established above.
 The brain response of interest is the visual \ac{erp}, which can be accurately
 measured and decoded from non-invasive \ac{eeg} signals with a relatively low
@@ -570,8 +575,7 @@ time of intensification.
 
 \Ac{itr} in the oddball paradigm is optimized by intensifying
 multiple targets at once in a row-collumnn strategy and using a sequence of
-selections, giving rise to the classic
-P300 matrix speller of~\cite{Farwell1988}.
+selections, giving rise to the classic matrix speller of~\cite{Farwell1988}.
 Other optimizations increase response \ac{snr}, like using flashing face
 images as intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
 stimuli~\cite{Treder2011}.

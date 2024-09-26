@@ -9,21 +9,21 @@ by~\textcite{VanDenKerchove2024}
 individuals by decoding \acp{erp} obtained from time-modulated flashing
 stimuli.
 These \acp{erp} consist of multiple \ac{erp}-components, peaks and troughs in
-\ac{erp} waveform.
+\ac{erp} waveform.\todomvh{refer to image in bci chapter}
 These components each have their own distinct amplitude and latency.
 \Ac{erp} component latency can reflect a wide range of cognitive,
 neurophysiological and clinical properties, that can be confounding factors in
 the development of \acp{bci}.\todo{cite}
-Latency is often assessed as the latency of \ac{erp} components in a subject
-average or grand average.
-Latencies of non-averaged, single-trial \ac{erp} waveforms could capture even more
+Latency is often assessed as the timing of an \ac{erp} component peak, obtained
+after averaging over trials.
+Latencies of non-averaged, single-trial \acp{erp} should capture even more
 relevant information, yet they are very hard to measure due to low \ac{snr} of
 single trial \acp{erp}.
-Within session variability of \ac{erp} latency, or \ac{erp} latency
-\emph{jitter} has been shown to influence \ac{bci}
+Within-session variability of \ac{erp} latency, called \ac{erp} latency
+\emph{jitter}, has been shown to influence \ac{bci}
 accuracy~\cite{Thompson2012}.
 This effect is especially prominent when bringing \ac{bci} development from the
-lab to the clinical setting with patients in the intended target population.
+lab to the clinical setting with patients in the target population.
 \textcite{Zisk2021} showed that patients with \ac{als} have significantly
 increased ERP jitter.
 \textcite{Arico2014} show that latency jitter negatively affects \ac{bci}
@@ -36,15 +36,15 @@ intended targets, such as is the case for for gaze-impaired patients.
 While the classic \ac{erp} model assumes a constant \ac{erp} response over trials,
 research has shown that cortical evoked potentials show significant
 trial-to-trial jitter~\cite{Truccolo2002}.
-Experiments show that latency jitter in \acp{erp} is the result of the interacion of
+Experiments show that latency jitter in \acp{erp} is the result of the interaction of
 the evoked activity with ongoing dynamics in the brain~\cite{Hasenstaub2007,
 	Kisley1999, Curto2009, Arieli1996}.
-The latency of an evoked potential is a combination of the modulation of oscillating activity that is
-time-locked, but not necessarily phase-locked to stimulus onset, and a
-delay caused by ongoing neurophysiological processes that are not necessarily related to the task.
-\todo{Check this, \cite{Stokes2016,Mouraux2008}}
-\todo{Read references and check if neural origins and
-	generation model justify approach}
+According to the Firefly model of event-related activity~\cite{Burgess2012},
+the latency of an evoked potential results from a combination of the modulation
+of oscillating activity that is time-locked, but not necessarily phase-locked to stimulus onset,
+and a delay caused by ongoing neurophysiological processes that are not necessarily related to the task
+\cite{Stokes2016,Mouraux2008}.
+\todo{substantiate}
 
 \subsubsection{Implications for \ac{erp} analysis}
 
@@ -52,7 +52,7 @@ The presence of latency jitter introduces multiple issues to \ac{erp} analysis, 
 most prominent of which is the smearing effect as illustrated
 in~\autoref{fig:smearing}. In \ac{erp} analysis, single-trial \acp{erp} are usually
 averaged per condition to cope with the unfavorable \ac{snr}?
-When averaging over multiple identical signals with jittered latencies, the shape
+When averaging over multiple identical responses with jittered latencies, the shape
 and amplitude of the average do not reflect the properties
 of the original signal.
 Because the amplitude of the average is lower, the \ac{snr} will also be negatively impacted.
@@ -128,7 +128,7 @@ The most straight-forward method to estimate single-trial latency is
 Here, the latency of an \ac{erp} is determined as the
 time-point of it's maximum (or minimum) amplitude relative to stimulus
 onset.
-While straight-forward, this method does not perform well in low or negative
+While straight-forward, this method does not perform well in low
 \ac{snr} conditions, unless combined with filtering.
 Filtering can suppress the noise contaminating \ac{eeg} trials, lowering
 the risk of picking a noise peak instead of a true peak of the \ac{erp}.
@@ -470,7 +470,6 @@ in~Section~\ref{sec:robust-latency}.
 }{%
   fig:diagram-eval
 }
-\section{Algorithms}
 \todo{Pr not italic}
 \todo{re-insert comments}
 

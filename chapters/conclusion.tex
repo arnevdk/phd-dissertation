@@ -6,13 +6,13 @@
 
 \subsection{Obtained results}
 
-\subsubsection{Regularized spatiotemporal beamforming}
+\subsubsection{\ac{erp} decoders}
 We introduced a covariance estimator using adaptive shrinkage (STBF-shrunk) and an estimator
 exploiting prior knowledge about the spatiotemporal nature of the EEG signal
 (STBF-struct).
 We compared these estimators with the original formulation of the
 spatiotemporal (STBF-emp)
-beamformer and a state-of-the-art Riemannian Geometry method (xDAWN+RG) in an off-line P3 detection task on
+beamformer and a state-of-the-art Riemannian Geometry method (XDAWN+RG) in an off-line P3 detection task on
 an existing dataset.
 Our results show that the structured estimator results in higher accuracy in
 general, and specifically when training data are sparsely available.
@@ -26,16 +26,20 @@ We have tested our proposed methods and similar methods in gaze-independent and
 covert VSA settings, but we did not observe a relative increase in performance
 in these settings.
 
+\todo{tensor}
+\todo{wcble}
+
 %* Preliminary results: BTTDA better than HODA, on par with other state of the
 %art methods and in some situations better (data availability, noise structure)
 
-\subsubsection{Healthy control study}
+\subsubsection{Gaze-independent \ac{bci} healthy controls}
 The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
 $26.38\pm3.15$ years.
 This dataset gives us insight in the ERP dynamics in overt, covert and the
 novel split VSA condition, and confirms our hypothesis that P3 jitter has a
 significant impact on performance in covert and split VSA, as well as that the
-amplitude effect observed for covert VSA also holds for split VSA.
+amplitude effect\todomvh{not the right word, maybe the effect of covert VSA on
+ERP...} observed for covert VSA also holds for split VSA.
 
 We have evaluated our proposed wCBLE algorithm, the baseline CBLE algorithm and
 a state-of-the-art algorithm (tLDA)~\cite{Sosulski2022} that uses similar techniques as our
@@ -81,6 +85,8 @@ spatial location other than that of the mentally attended target, the wCBLE deco
 more accurately discern the locus of mental attention, promoting in this way accurate
 gaze-independent decoding. This comes, however, at the cost of a decreased performance
 compared to overt VSA operation.
+
+\subsection{Patient case studies}
 
 \section{Limitations}
 

@@ -1,5 +1,4 @@
-\emph{Parts of Sections~\ref{sec:gaze-dependence} and~\ref{sec:gaze-independence}
-have been published by \textcite{VanDenKerchove2024}.}
+\emph{Parts of Sections~\ref{sec:gaze-dependence} and~\ref{sec:gaze-independence} have been published by \textcite{VanDenKerchove2024}.}
 
 \todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
@@ -25,15 +24,15 @@ In fact, many patients in the \ac{bci} target population suffer to some extent
 from eye motor disability, requiring \ac{bci}s adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
 eye motor problems, which can range from minor (nystagmus
-\footnote{%
+\footnote{
 Involuntary, rhythmic, and repetitive eye movements recognizable by their
 consistent directionality (horizontal, vertical, or rotational).
 }, other eye tremors
-\footnote{%
+\footnote{
 These can include square-wave jerks, saccadic intrusions, microtremors, or
 microsaccades while resting or fixating the gaze.
 }, gaze fixation fatigue or discomfort, \ldots), to severe (partial ophtalmoplegia
-\footnote{%
+\footnote{
 Weakness or limited paralysis of one or more of the muscles that control eye
 movement, leading to restricted eye motion, but not complete paralysis.
 Often, a specific movement direction (up-down, left-right) is preserved.
@@ -246,25 +245,22 @@ and paradigms tailored to the needs of specific stimulation paradigms and
 use contexts.
 An effective and proven method is the visual event-related potential (\ac{erp})-based
 oddball interface.
-Here, targets are shown in short flashes on a computer screen.
+Here, targets are shown in short pulses on a computer screen.
 Each time the user observes a target, an \ac{erp} is evoked, the presence of which can be
 detected in the EEG-signal.
 The \ac{erp} consists of multiple components, of which some are modulated by the
 attention of the user, specifically the N2 and the P3 component.
 Decoding this modulation allows for information transfer controlled by the
-user's brain activity, as sketched in Figure~\ref{fig:bci-loop}.
+user's brain activity, as sketched in Figure~\ref{fig:bci}.
 However, visual \ac{bci}s cannot operate efficiently when the user does not direct
 their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
-\todomvh{I am wondering whether goal statements and patient target groups
-should be addressed in chapter 1.}
 
 This leads to the often unadressed gaze-dependence paradox: the \ac{bci} target
 population consists of patients who suffer from various degrees
 of paralysis, or even from Locked-in Syndrome (LiS), the complete loss of muscle
 control with preserved consciousness.
 While \ac{bci}s are most attractive as a solution for these patients
-compared to other assistive technologies like eye-tracking\todomvh{but with eye
-control while the previous sentence points are absence of it}., studies often
+compared to other assistive technologies like eye-tracking, studies often
 report bad performance in patient populations precisely due to the lack of adequate eye motor
 control, or patients with gaze impairments are excluded.
 Different degrees of eye motor impairment can render visual \ac{bci}s
@@ -277,7 +273,7 @@ This points to the need for gaze-independent \ac{bci}s.
 
 The general goal of this PhD is to tackle the gaze-dependence in visual \ac{bci}s.
 \todo{refer to ITRs from previous chapter}
-Section~\ref{sec:gaze-independence} showed that visual \ac{bci} paradigms form
+Section{sec:gaze-independence} showed that visual \ac{bci} paradigms form
 a good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.
@@ -309,6 +305,7 @@ Finally, the findings of these experiments will be leveraged to develop a \ac{bc
 for patient use, which will be tested in a case-based patient study in which
 both performance and user comfort was be evaluated.\todo{was this actually
 done?}
+
 
 This specific hypothesis is embedded within a broader goal of enabling
 effective communication for eye-motor impaired \ac{lis} patients.
@@ -386,7 +383,6 @@ Finally, we introduce a VSA condition that is understudied in the context of
 gaze-independent \ac{bci} development: split VSA.
 In split VSA, the user mentally focuses on one cued target while gazing at
 another (the distractor).
-\todomvh{+ "free" condition in Fig. 21.}
 
 The option to dissociate gaze and visuospatial attention will allow us to
 investigate the effect of gaze control on \ac{bci} performance.
@@ -404,14 +400,15 @@ the \ac{erp} signal in a specific way, such that it becomes more robust to the p
 occurring in covert attention conditions.
 
 \subsubsection{Regularized spatiotemporal beamforming}
-Due to the decreased amplitude of the N1 and P3 components in covert attention
+Due to the lack of the N2 component and decrease of amplitude of the
+P3 component in covert attention
 settings~\cite{Treder2010}, the \ac{snr} of
 the \ac{erp} is lower than in overt attention settings.
 Therefore, a straightforward way to reach satisfactory
 gaze-independent decoding performance, might be by increasing overall \ac{erp}
 decoding performance. A more accurate classifier could yield relative
 improvements in those settings where performance is not yet near the achievable
-maximum.\todomvh{?? how to find out what is the maximum?}
+maximum.
 
 Therefore, we have improved upon an in-house developed, state-of-the art \ac{erp}
 decoder, the spatiotemporal beamformer~\cite{Wittevrongel2016}, by reformulating
@@ -419,8 +416,8 @@ this classifier as a linear discrimination problem and
 imposing regularizing constraints by structuring the noise covariance matrix
 (STBF-struct).
 Furthermore, these regularizing constraints impose temporal stationarity on
-the background noise, yielding insights for our next\todomvh{next? more specificaly?}
-efforts to cope with the non-stationarity of the P3 signal component.
+the background noise, which is of use in our next efforts to cope with the
+non-stationarity of the P3 signal component.
 
 \subsubsection{Classifier-based Latency Estimation with Woody iterations}
 
@@ -454,7 +451,6 @@ We improved upon this technique and extended it to a probabilistic, iterative
 method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
 
 \subsubsection{Tensor discriminant analysis}
-\todo{todo}
 
 \subsection{Experiments}
 
@@ -473,8 +469,6 @@ motor control, healthy participants are cued to operate the \ac{bci} in specific
 
 
 \subsubsection{Patient case study}
-
-\todo{todo}
 \todo{mention multi-center patient study case studies in cooperation
 After data collection from healthy participants and decoder development, we
 will carry out a patient study using a similar interface.
