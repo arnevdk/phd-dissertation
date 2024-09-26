@@ -79,13 +79,18 @@ behavior or brain activity accordingly, closing the loop
   brain.''
 }.
 
-\fullpagefigct{figures/bci/bci_loop.pdf}{The \ac{bci} loop.
-The user interacts with the \ac{bci} through a \ac{bci} paradigm, in this case involving
-visual stimulation. Neural signals are recorded, and neurophysiological features
-related to the paradigm are extracted. Using machine learning, a decision can
-then be made based on these features, which can be presented back to the user.
-In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
-}{fig:bci-loop}
+\fullpagefigct{%
+  \includegraphics[width=\paperwidth]{figures/bci/bci_loop.pdf}
+}{%
+  The \ac{bci} loop.
+  The user interacts with the \ac{bci} through a \ac{bci} paradigm, in this case involving
+  visual stimulation. Neural signals are recorded, and neurophysiological features
+  related to the paradigm are extracted. Using machine learning, a decision can
+  then be made based on these features, which can be presented back to the user.
+  In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
+}{%
+  fig:bci/loop
+}
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of
@@ -109,7 +114,7 @@ Fluctuations in the brain's electrical potential can be faster and more
 informative.
 
 The recorded brain waves form only one part of the interaction scheme presented
-in Figure~\ref{fig:bci-loop}.
+in Figure~\ref{fig:bci/loop}.
 It would make little sense to start digging around at random in all the brain
 activity to try to extract the desired output.
 It would help greatly if we knew what we are looking for.
@@ -211,14 +216,19 @@ As a consequence, the \ac{bci} field relies heavily on the
 electrical activity of the brain.
 As mentioned earlier with MEG, an important concept in determining which
 technology is suited for a \ac{bci} application is the \emph{invasiveness} of the technology.
-As illustrated in Figure~\ref{fig:recording-modalities}, invasive electrodes can often measure a very specific brain region and can result in better signal quality, at the cost of the risks
+As illustrated in Figure~\ref{fig:bci/recording}, invasive electrodes can often measure a very specific brain region and can result in better signal quality, at the cost of the risks
 involved with brain surgery.
-\fullpagefigct{figures/bci/recording_modalities.pdf}{%
+
+\fullpagefigct{%
+  \includegraphics[width=\paperwidth]{figures/bci/recording_modalities.pdf}
+}{%
 	Different electrophysiology recording modalities and \\
 	their respective position in a cross-section of the skull. \\
 	There is a trade-off between invasiveness and  \\
 	spatial resolution.
-}{fig:recording-modalities}
+}{%
+  fig:bci/recording
+}
 \todo{find better figure with permission to reuse and without unnecessary
 modalities}
 
@@ -326,13 +336,17 @@ According to \textcite{Zander2011}, they can be arranged by their reliance on
 external stimulation and the engagement of the user as shown in
 Figure~\ref{fig:bci-paradigms}.
 
-\fullpagefig{figures/bci/paradigms.eps}{
+\fullpagefig{%
+  \input{figures/bci/paradigms.tikz.tex}
+}{%
   A \ac{bci} paradigm defines which brain activity will be used for control.
   They can be categorized in active, reactive and passive
   paradigms, depending on their reliance on external stimulation and active
   participation required from the user.
   Adapted from~\textcite{Muehl2014}.
-}{fig:bci-paradigms}
+}{
+  fig:bci-paradigms
+}
 \todo{check permissions}
 
 Paradigms that require little active participation of the user like
@@ -586,39 +600,115 @@ muscle movement.
   full spatiotemporal ERP response
 }
 
+
 \subsection{The event-related potential}
 
-The time-domain response ellicited immediately after intensification of a
-stimulus is the visual \ac{erp}~\cite{Luck2014}.
-An \ac{erp} is a waveform consisting of multiple components, of wich some are
-modulated by whether the stimulus was an oddball or not.
-Components are positive peaks and negative troughs in the \ac{erp} waveform.
-They following a naming scheme according to their polarity (Negative or
-Positive) and their latency (e.g. 3 or 300ms).
-The component most prominently modulated by attention is called the P300 or P3
-(positive deflection after $\pm$300ms) and oddball paradigms are therefore
-frequently referred to as P300 paradigms.
-However, due to the equally important contribution of other \ac{erp}
-components than the P3 in decoding as we will show later, this could be
-considered a bit of a misnomer and we will stick to the oddball paradigm naming.
-P300 and other components, explain function (Luck)
-Which components, at what amplitude and latency they are evoked varies per
-person and depends on the exact details of the stimulation.
+The time-domain response elicited immediately after the intensification of a
+stimulus is known as the visual \ac{erp}~\cite{Luck2014}.
+An \ac{erp} is a waveform consisting of multiple components.
+Some of these components are modulated by whether the stimulus was an
+oddball or not.
+These components appear as positive peaks and negative troughs in the \ac{erp}
+waveform.
+They follow a naming scheme based on polarity (Negative or Positive) and
+latency (e.g., N2 or N200 for a negative component after $\pm200$ ms).
+The component most prominently modulated by attention is called the P3
+(positive deflection after $\pm300$ ms).
+Therefore, oddball paradigms are frequently referred to as P300 paradigms.
+However, due to the equally important contributions of other \ac{erp}
+components in decoding, as we will show later, this could be considered a
+misnomer.
+Thus, we will adhere to the oddball paradigm naming.
 
-In general, earlier components, such as the \acp{vep}, are more tied to sensory
-information processing and less modulated by attention, while later components
-are more related to attention and cognitive processes.
+The visual \ac{erp} components primarily include P1, N1, P2, N2, and P3.
+Each component is characterized by specific latency, amplitude, and neural
+origins.
+These factors influence the perception of visual stimuli and attentional
+mechanisms~\cite{Luck2013}.
 
-\textcite{Luck2013}
-\subsubsection{P1}
-\subsubsection{N1}
-\subsubsection{P2}
-\subsubsection{N2}
-\subsubsection{P3}
-\subsubsection{Late negativity}
+\paragraph{P1}
+The P1 component occurs approximately 100 ms after stimulus presentation.
+This component reflects initial visual processing and is primarily linked to
+activity in the primary visual cortex.
+P1 is particularly sensitive to gaze fixation, where the gaze is directed
+toward a stimulus.
+When a stimulus is fixated on, the amplitude of P1 increases, reflecting the
+enhanced processing of that visual input.
+In contrast, P1 shows less modulation when stimuli are attended to via
+attention without direct gaze.
 
-\subsection{Preprocessing and feature extraction}
-referencing, filtering, epoching, baselining
+\paragraph{N1}
+The N1 component peaks around 150 to 200 ms post-stimulus.
+It represents an extension of sensory processing related to both gaze fixation
+and attention.
+For attended stimuli, the amplitude is greater, indicating prioritization for
+further cognitive processing.
+This highlights a more selective form of attention allocation, demonstrating
+the impact of both types of attention on visual processing.
+
+\paragraph{P2}
+The P2 component occurs between 200 to 300 ms.
+It reflects higher-order processing, particularly in contexts demanding
+stimulus evaluation and feature detection.
+P2 is sensitive to attention.
+When participants actively engage with specific features or categories of
+stimuli, P2 shows increased amplitude.
+Conversely, P2 may be less responsive when gaze is not directed toward the
+stimulus but attention is still maintained.
+
+\paragraph{N2}
+Peaking around 200 to 350 ms, the N2 component is associated with cognitive
+control processes such as conflict monitoring and inhibition.
+It is particularly pronounced in tasks requiring differentiation between
+competing stimuli.
+N2 reflects the allocation of attentional resources required to resolve
+conflicts, irrespective of whether the gaze is directly on the competing
+stimuli or not.
+Higher amplitudes in N2 are seen when cognitive demands increase, indicating
+the influence of attention strategies.
+
+\paragraph{P3}
+The P3 component is elicited in oddball paradigms and peaks around 300 ms
+post-stimulus.
+It reflects attentional engagement and the processing of rare or unexpected
+events.
+The P3 is typically subdivided into two subcomponents: P3a and P3b.
+The P3a is associated with the allocation of attention to novel or unexpected
+stimuli, indicating the initial detection of a change in the environment.
+It is particularly responsive to stimuli that capture attention, whether
+through gaze fixation or attention.
+P3a typically exhibits a frontal distribution and peaks earlier than P3b.
+
+Conversely, the P3b relates to the evaluation of the stimulus.
+It involves the updating of cognitive resources in response to task relevance.
+This subcomponent is typically observed over parietal regions.
+P3b is elicited when participants must process the stimulus meaningfully,
+often requiring a decision or response.
+Both P3a and P3b amplitudes are sensitive to the probability of occurrence
+and the participant's attentional focus, showing how attentional strategies
+affect cognitive processing.
+
+\paragraph{Late Positive Potential (LPP)}
+The LPP is a later component occurring beyond 400 ms.
+Sustained attention and emotional processing of stimuli are reflected in the
+LPP.
+Typically enhanced for emotionally salient or motivationally relevant
+information, LPP serves as an indicator of cognitive appraisal beyond mere
+recognition tasks.
+This component can be influenced by attention when the participant evaluates
+the emotional significance of stimuli, even if gaze is not directed at them.
+
+In summary, ERP components such as P1, N1, P2, N2, P3, and LPP collectively
+elucidate the neural underpinnings of visual processing and attentional
+mechanisms.
+These components not only inform the design of an effectiv oddball BCI system
+but also enhance our understanding of the cognitive processes involved in visual
+attention.
+This includes both gaze fixation and attention.
+Understanding these components is essential for optimizing BCI protocols and
+improving user interaction, particularly in contexts involving visual oddball
+tasks.
+
 \subsection{Decoding ERPs}
 
 Usually, snr low and multiple trials necessary

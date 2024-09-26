@@ -1,5 +1,5 @@
 \todo{comments liesel}
-Sections~\ref{sec:wcble/literature/contrib} were published \ref{sec:wcble/methods}
+Sections~\ref{sec:wcble/literature/contrib} and~\ref{sec:wcble/methods} were published
 by~\textcite{VanDenKerchove2024}
 
 \section{Introduction}
@@ -426,21 +426,27 @@ label.
 Aligning is performed by shifting and zero-padding the signal to the right if
 the latency is negative relative to the time window onset, and to the left if
 positive, by the difference between the latency and the window onset.
-\fullpagefig{figures/wcble/figure1.pdf}{Schematic representation of the Woody Classifier Based Latency
-    Estimation training phase.
-    (1) The first-stage spatiotemporal binary classifier is trained on a set of
-    epochs.
-    (2) It is	then applied to time-shifted copies of the epochs to obtain scores
-    and class probabilities	over time.
-    (3) The medians of these probability distributions are assumed the class
-    latencies.
-    (4) The epochs are aligned to their corresponding	class latencies by
-    shifting in time such that all latencies fall at the same moment.
-    (5) The spatiotemporal classifier is then retrained on the aligned epochs
-    for a	next iteration.
-    (6) After the iterative process halts, the scores and	latencies obtained
-    from the last iteration are used to train the second-stage
-    classifier.}{fig:diagram-train}
+\fullpagefig{%
+  \includegraphics[width=\textwidth]{figures/wcble/figure1.pdf}
+}{%
+  Schematic representation of the Woody Classifier Based Latency
+  Estimation training phase.
+  (1) The first-stage spatiotemporal binary classifier is trained on a set of
+  epochs.
+  (2) It is	then applied to time-shifted copies of the epochs to obtain scores
+  and class probabilities	over time.
+  (3) The medians of these probability distributions are assumed the class
+  latencies.
+  (4) The epochs are aligned to their corresponding	class latencies by
+  shifting in time such that all latencies fall at the same moment.
+  (5) The spatiotemporal classifier is then retrained on the aligned epochs
+  for a	next iteration.
+  (6) After the iterative process halts, the scores and	latencies obtained
+  from the last iteration are used to train the second-stage
+  classifier.
+}{%
+  fig:diagram-train
+}
 The process halts after a fixed amount of iterations or when the estimated set
 of latencies has been encountered before, indicating it ended up in a loop.
 In the end, the procedure should result in enhanced classifier parameters $\theta^*$,
@@ -451,13 +457,19 @@ We can then apply the classifier with enhanced parameters $\theta^*$ in a \ac{cb
 manner to unseen epochs as illustrated in Figure~\ref{fig:diagram-eval} to obtain a
 vector of scores over time as in~Section~\ref{sec:cble} and the estimated latencies as
 in~Section~\ref{sec:robust-latency}.
-\fullpagefig{figures/wcble/figure2.pdf}{Schematic representation of the Woody Classifier Based Latency
-    Estimation test phase. (1) The
-		first-stage	spatiotemporal binary classifier obtained from the training phase is
-		applied to time-shifted copies of the epochs to obtain scores and class probabilities
-		over time. (2) The medians of these probability distributions are assumed
-		as the new class latencies. (3) The scores and class latencies are input to the
-    trained second-stage classifier, which predicts the label of the epochs.}{fig:diagram-eval}
+\fullpagefig{
+  \includegraphics[width=\textwidth]{figures/wcble/figure2.pdf}
+}{%
+  Schematic representation of the Woody Classifier Based Latency
+  Estimation test phase. (1) The
+	first-stage	spatiotemporal binary classifier obtained from the training phase is
+	applied to time-shifted copies of the epochs to obtain scores and class probabilities
+	over time. (2) The medians of these probability distributions are assumed
+	as the new class latencies. (3) The scores and class latencies are input to the
+  trained second-stage classifier, which predicts the label of the epochs.
+}{%
+  fig:diagram-eval
+}
 \section{Algorithms}
 \todo{Pr not italic}
 \todo{re-insert comments}
@@ -633,7 +645,7 @@ target epoch ranging from 0 to -31dB, with
 A sample of the simulated evoked data is displayed in Figures~\ref{fig:wcble/sim-sine}.
 %\fullpagefig{figures/wcble/simulated-gaussian.pdf}{}{fig:wcble/sim-gaussian}
 %\fullpagefig{figures/wcble/simulated-morlet.pdf}{}{fig:wcble/sim-morlet}
-\fullpagefig{figures/wcble/simulated-sine.pdf}{}{fig:wcble/sim-sine}
+\fullpagefig{\includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}}{}{fig:wcble/sim-sine}
 \todo{Properly align plots and label axes}
 
 \todo{figure}

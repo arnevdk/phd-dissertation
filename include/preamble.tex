@@ -7,6 +7,7 @@
 \usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{pgfplots}
 
 
 % Bibliography
@@ -34,14 +35,14 @@
 \newcommand{\fullpagefig}[3]{
   \begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{#1}
+    #1
     \caption{#2}
     \label{#3}
   \end{figure}
 }
 \newcommand{\figpane}[3]{
   \begin{subfigure}[t]{.45\textwidth}
-        \includegraphics[width=\textwidth]{#1}
+        #1
         \caption{#2}
         \label{#3}
     \end{subfigure}
@@ -58,3 +59,5 @@
 }
 
 \newcommand\fullpagefigct\fullpagefig
+
+% Layout

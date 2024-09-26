@@ -1,0 +1,39 @@
+\begin{tikzpicture}[scale=\textwidth/2cm]
+    \pgfmathsetmacro{\margin}{.1}
+    \pgfmathsetmacro{\center}{.5+.5*\margin}
+    \pgfmathsetmacro{\textspacing}{.15}
+
+    % Draw axes
+    \draw[darkgray, very thick, <->] ({-(1+\margin)}, 0) -- ({1+\margin},0);
+    \draw[darkgray, very thick, <->] (0,{-(1+\margin)}) -- (0,{1+\margin});
+
+    % Draw rectangles
+    \draw[draw=accent1, fill=white, very thick] ({-\margin}, \margin) rectangle (-1,1);
+    \draw[draw=accent2, fill=white, very thick] (\margin, \margin) rectangle (1,1);
+    \draw[draw=accent3, fill=white, very thick] (-1, {-\margin}) rectangle (1,-1);
+
+    %% Add text
+    \node[color=accent1, align=left,font=\bfseries, anchor=north west] at  (-1,1){active};
+    \node[color=accent2, align=left,font=\bfseries, anchor=north east] at  (1,1){reactive};
+    \node[color=accent3, align=left,font=\bfseries, anchor=south west] at  (-1,-1){passive};
+
+    \node[color=darkgray, align=center,font=\bfseries, anchor=north] at (0,{-(1+\margin)}) {passive};
+    \node[color=darkgray, align=center,font=\bfseries, anchor=south] at (0,{1+\margin}) {active};
+    \node[color=darkgray, align=center,font=\bfseries, anchor=east] at ({-(1+\margin)}, 0) {stimulus\\independent};
+    \node[color=darkgray, align=center,font=\bfseries, anchor=west] at ({1+\margin},0) {stimulus\\dependent};
+
+    %% Text in rectangles
+    \node[align=center] at ({-\center}, {\center+\textspacing}) {motor\\imagery};
+    \node[align=center] at ({-\center}, {\center-\textspacing}) {imagined\\speech};
+
+    \node[align=center] at ({\center+\textspacing}, {\center+\textspacing}) {P300};
+    \node[align=center] at ({\center+\textspacing}, {\center-\textspacing}) {SSVEP};
+    \node[align=center] at ({\center-\textspacing}, {\center+\textspacing}) {cVEP};
+    \node[align=center] at ({\center-\textspacing}, {\center-\textspacing}) {mVEP};
+
+    %% More text
+    \node[align=center] at (\center, {-\center}) {error\\potentials};
+    \node[align=center] at ({-\center}, {-\center}) {attention\\monitoring};
+    \node[align=center] at (-.25, -.8) {emotion\\monitoring};
+    \node[align=center] at (.25, -.8) {media induced\\emotion recognition};
+\end{tikzpicture}

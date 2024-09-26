@@ -4,7 +4,8 @@
 \usetikzlibrary{backgrounds}
 
 \renewcommand{\fullpagefig}[3]{%
-  \igrcenter{\igrboxset{\includegraphics{#1}}%
+  \color{muteblack}
+  \igrcenter{\igrboxset{#1}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
   %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
@@ -13,7 +14,8 @@
   \label{#3}
 }
 \renewcommand{\fullpagefigct}[3]{%
-  \igrcenter{\igrboxset{\includegraphics{#1}}%
+  \color{muteblack}
+  \igrcenter{\igrboxset{#1}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
   %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
@@ -24,7 +26,7 @@
 
 \renewcommand{\figpane}[3]{
     \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{#1}
+        #1
         \caption{#2}
         \label{#3}
     \end{subfigure}
