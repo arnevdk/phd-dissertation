@@ -3,7 +3,6 @@
 
 out
 build
-*.fif
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:
