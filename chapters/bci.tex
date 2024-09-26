@@ -1,6 +1,6 @@
 \todo{comments liesel paradigms}
-People suffering from heavy paralysis or disability due to
-neurodegenenerative diseases, stroke, traumatic brain or spine injury
+People suffering from severe paralysis or disability due to
+neurodegenenerative disease, stroke, traumatic brain or spine injury
 become entirely reliant on caregivers or family members in their day to day
 routine.
 Wouldn't it be great if we could help them regain some quality of life by
@@ -23,8 +23,7 @@ Couldn't we therefore design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of
 technology, like a robot arm or speech synthesizer, interacting with the world
 on the user's behalf.
-If the mind's seat is in the brain, and we want to interface this to a digital
-control process, such a device becomes the \ac{bci}\footnote{Sometimes also
+Such a device is the \ac{bci}\footnote{Sometimes also
 termed brain-machine interface (BMI) when coupled to a physical actuator, like
 a robot arm or an exoskeleton. The term \ac{bci} is usually preferred for
 assistive technology and communication devices.}.
@@ -32,10 +31,10 @@ A \ac{bci} directly couples actions in the `real world' to the mental state of
 the user.
 A \ac{bci} reads your mind.
 
-Starting in the 1970's from methods to establish minimal brain activity
-(yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
+Starting in the 1970's from methods to establish basic communication from
+minimal brain activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
 into sophisticated interaction schemes that restore or enhance many capabilities
-by bypassing part of the nervous system and muscle control.
+by bypassing defective parts of the nervous or muscle system.
 By now, classic \acp{bci} methods have matured outside the lab setting and can be
 used as assistive communication technology by patients with impaired
 speech~\cite{Wolpaw2018}.
@@ -50,10 +49,8 @@ Neuralink~\cite{Musk2019} initiative, which imagines a multipurpose \ac{bci}.
 \todo{put focus on communication BCI}
 
 \section{A direct interface to the brain}
-\comment{This section describes a bci in layman's terms, without too much
-scientific background, jargon and literature, in the following sections of this
-chapter a more scientific style is used}
-\ac{bci}s are an entertaining subject with many futuristic and more established
+
+Brain-computer interfacing is an entertaining subject with many futuristic and more established
 applications.
 Devices processing direct inputs from the central nervous system can be
 useful for rehabilitation and medical diagnosis or treatment, but
@@ -62,7 +59,7 @@ paralyzed patients limited in their communication ability.
 Furthermore, they bring a new paradigm to human-computer interaction,
 especially when paired with virtual or augmented reality.
 
-Simply put, a \ac{bci} records the user's brain activity, then extracts some
+Simply put, a \ac{bci} records the user's brain activity, extracts some
 relevant output from this brain activity and couples this output to a function
 of a device.
 Optionally, the user can then observe the action of the device and adapt their
@@ -96,8 +93,8 @@ Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of
 what's going on in the brain.
 Section~\ref{sec:bci-recording} gives an overview of the available options.
-One might for instance measure the fluctuations in bloodflow to specific brain
-regions that are more or less active at a given time with a scanner.
+One might for instance measure the fluctuations in bloodflow to establish the
+activity of a specific brain region
 However, this signal reacts too slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
@@ -126,8 +123,8 @@ We can now exploit background knowledge from prior neuroscientific research
 that the brain response evoked by attended stimuli is different of those
 unattended,
 and determine which one of a set of targets was attended.
-In turn, this can be coupled to an action, like typing the letter shown on the
-stimulus.
+In turn, this can be coupled to an action, like typing the inteded letter A or B
+in Figure~\cite{fig:bci/loop}.
 The \ac{bci} paradigm comprises, if applicable, the manner of stimulation and the
 exact task performed by the user, and is often closely linked to the manner of
 feedback in the case of a closed-loop system.
@@ -135,7 +132,7 @@ As shown in Section~\ref{sec:bci-paradigms}, there is a wide variety of \ac{bci}
 paradigms based on different systems in the brain.
 
 The previous points to another component of a successful \ac{bci}: the specific
-brain signals related to our paradigm need to be identified within the recorded
+brain signatures related to our paradigm need to be identified within the recorded
 activity.
 \todo{preprocessing}
 This is commonly referred to as \emph{feature extraction}
@@ -145,16 +142,17 @@ The electrical activity of the brain is relatively weak compared to that of the
 environment around us, containing electronic devices and other sources of
 interference.
 Furthermore, the brain is continuously processing information and carrying out
-`background tasks', all of which generate their own electrical signals.
+`background tasks', all of which generate their own brain activity.
 On the other hand, the activity of interest in often
-originates from a specific functional system within the brain.
-This activity might not easily be discerned from all other neural and
+originates from a specific region or network within the brain.
+This activity might not easily be discerned from all other brain and
 environmental activity.
 Compare this to trying to listen to a single speaker at a noisy party where
 everyone is shouting over each other.
 Some obvious sources of interference can be easily filtered out by
 \emph{preprocessing}, but the problem of retrieving or \emph{decoding} only the
-relevant signal is often solved through supervised machine learning.
+relevant signal is generally hard.
+Nevertheless, we can attempt to solve it through supervised machine learning.
 Useful information that is encoded in the brain signal by the paradigm,
 can be retrieved from it by the decoder.
 Section~\label{sec:bci-decoding} takes a closer look at some common decoding
@@ -245,7 +243,7 @@ arrays.
 Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
 NeuraLink implant~\cite{Musk2019}.
 
-Larger implanted electrodes are referred to as intracranial ac{eeg} (iac{eeg}).
+Larger implanted electrodes are referred to as intracranial ac{eeg} (i\ac{eeg}).
 Depth electrodes such as those used in stereo-ac{eeg} \ac{bci}~\cite{Wu2024} tasks
 and closed-loop adaptive control for Deep Brain Stimulation to mitigate
 Parkinson's disease symptoms~\cite{Arlotti2018}.
@@ -287,7 +285,7 @@ Current consumer systems sometimes feature dry electrodes, but clinical and
 research systems often use active electrodes with preamplifiers and
 electrolyte gel to reduce impedance for improved signal
 quality, which slightly decreases practicality, since they require a trained
-professional to properly administer.
+individual to properly administer.
 Nevertheless, it is the most accessible \ac{bci} technology for both patients
 and researchers.
 
@@ -388,7 +386,7 @@ illiteracy~\cite{Allison2010}\footnote{
 inclusivity, harmful to progress, paraphrase abstracts of articles}
 \todo{user training more than with reactive, task instruction}
 
-Reactive \ac{bci} take another approach, by giving the user a discrete set of
+Reactive \ac{bci} take another approach, by providing the user a discrete set of
 sensory stimulations and decoding towards which stimulus the user's attention
 was directed.
 Compared to active \ac{bci}, reactive paradigms usually require higher effort
@@ -412,8 +410,8 @@ Most common are the visual paradigms.
 These can be more performant since they allows the user to use their visual
 system, one of the most adapted sensory system in humans.
 
-The major visual paradigms comprise
-\ac{ssvep}, \ac{cvep}, oddball and \ac{mvep} type interfaces.
+The major visual paradigms rely on
+\ac{ssvep}, \ac{cvep}, oddball and \ac{mvep} brain responses.
 In \ac{ssvep}, information is modulated by the frequency of a stimulus attended
 among many that each flicker continuously at different
 frequencies~\cite{Chen2021}.
@@ -421,9 +419,8 @@ In \ac{cvep}, the stimuli flicker instead with distinct on-of patterns, which ca
 be correlated with the brain activity to retrieve the attended stimulus.
 Instead of stimulating all possible selections at once, the oddball paradigm
 stimulates them one by one with single flashing.\todo{reference}
-Since the times of stimulation of each target is known by the interface,
-information is modulated by time of stimulation, and times where an attention
-response can be found correspond to selected targets.
+Since the times of stimulation of each target is known, and time-points at
+which an attention signature is detected to selected targets.
 \Ac{mvep} is usually similarly time modulated, but stimuli make sudden
 movements in specific directions instead of flashing.
 Information is then also carried by movement
@@ -506,14 +503,14 @@ the \ac{bci}.
 A trial is the smallest unit on which a selection decision can be made, for
 instance be one imagined movement, or one repetition of flashing all targets
 in a visual \ac{erp} \ac{bci}.
-Some valuable metrics to asses decoder performance in the classification case
-are accuracy and \ac{rocauc}.
+Accuracy is a valuable metrics to asses decoder performance in the classification
+case.
 Accuracy is calculated as the proportion of correct selections to all
 selections made.
 It should be carefully interpreted in the presence of imbalanced data and always compared to the
 random chance accuracy level in the presence of more than two possible
 selections per trial.
-\Ac{rocauc} is also a measure of classifier predictive power, but is more
+Alternatively, \ac{rocauc} is also a measure of classifier predictive power, but is more
 suited for evaluation of classification of single epochs of data and in the
 presence of imbalanced data, e.g. when comparing single \acp{erp}.
 Higher \ac{rocauc} usually translates to a higher target selection accuracy.
@@ -565,7 +562,7 @@ A stimulus can be rare either due to its inherent properties like color or
 location
 Crucially, this is also the case if it is `marked' as rare by the user, e.g.
 by paying explicit attention to only a given stimulus and not the others or
-counting how many times it flashes.
+counting how many times it occurs.
 If these visual elements represent letters, and we know the timing of the
 intensifications of each letter, we can now establish communication by detecting
 for which letter an oddball response was present in the brain signal at its
@@ -601,7 +598,7 @@ muscle movement.
 }
 
 
-\subsection{The event-related potential}
+\subsection{The \acf{erp}}
 
 The time-domain response elicited immediately after the intensification of a
 stimulus is known as the visual \ac{erp}~\cite{Luck2014}.
