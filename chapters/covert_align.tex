@@ -541,25 +541,25 @@ method is not evaluated on unseen data, as opposed to ours.
 %It might be harder to improve upon tLDA in overt VSA due to its high
 %performance.
 
-Finally, we argue that the increased performance of WCBLE is partly due to the
-fact that
-tLDA is a suitable first-stage classifier.
-Firstly, imposing a Toeplitz-covariance structure strongly regularizes the
-problem~\cite{Sosulski2022,VanDenKerchove2022}, at the benefit of decoding performance.
-Secondly, this method has a synergy with CBLE since both make the same
-assumption about the short-time stationary of the EEG background noise
-within an epoch.
-CBLE does not retrain the first-stage classifier for each time shift, but
-rather trains it once within the given window.
-After training, the classifier parameters represent some information about the
-expected ERP waveform and background noise.
-By applying the trained classifier to different time shifts, it assumes this
-ERP waveform can be shifted in time, but since the classifier's information about
-the background noise was only obtained from the initial window, CBLE assumes
-its properties do not vary throughout the epoch.
-The block-Toeplitz covariance structure of tLDA also assumes that the
-background noise represented by this covariance after subtracting the class
-averages is stationary within the epoch~\cite{Sosulski2022}.
+%Finally, we argue that the increased performance of WCBLE is partly due to the
+%fact that
+%tLDA is a suitable first-stage classifier.
+%Firstly, imposing a Toeplitz-covariance structure strongly regularizes the
+%problem~\cite{Sosulski2022,VanDenKerchove2022}, at the benefit of decoding performance.
+%Secondly, this method has a synergy with CBLE since both make the same
+%assumption about the short-time stationary of the EEG background noise
+%within an epoch.
+%CBLE does not retrain the first-stage classifier for each time shift, but
+%rather trains it once within the given window.
+%After training, the classifier parameters represent some information about the
+%expected ERP waveform and background noise.
+%By applying the trained classifier to different time shifts, it assumes this
+%ERP waveform can be shifted in time, but since the classifier's information about
+%the background noise was only obtained from the initial window, CBLE assumes
+%its properties do not vary throughout the epoch.
+%The block-Toeplitz covariance structure of tLDA also assumes that the
+%background noise represented by this covariance after subtracting the class
+%averages is stationary within the epoch~\cite{Sosulski2022}.
 
 We found that CBLE did not improve gaze-independent decoding performance
 significantly and also did not increase performance over its first-stage

@@ -79,7 +79,7 @@ stc = "sine"
 height_ratios = []
 for _ in range(len(snrs)):
     height_ratios.extend([3, 1])  # Closer together for image+timeseries
-    height_ratios.append(0.75)
+    height_ratios.append(0.8)
 gridspec_kw = dict(height_ratios=height_ratios, hspace=0)
 shape = (len(height_ratios), len(jitters))
 fig, axs = plt.subplots(
@@ -120,10 +120,11 @@ for j, snr in enumerate(snrs):
         ax_ts.set_ylim([-10, 10])
         ax_ts.set_yticks([])
 
+        ax_ts.set_yticks([-5, 5])
+        if k:
+            ax_ts.set_yticklabels([])
         ax_ts.set_xticks([-2, -1, 0, 1, 2])
         if j == len(snrs) - 1:
-            ax_ts.set_yticklabels([])
-        else:
             ax_ts.set_xlabel("Time (s)")
 
 fig.savefig(f"figures/wcble/simulated-{stc}.pdf", **savefig_kws)

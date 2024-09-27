@@ -17,22 +17,6 @@
 \addbibresource{publications.bib}
 
 
-% Commands
-\newcommand{\includechapter}[2]{
-  \chapter{#1}
-  \begin{refsection}
-  \input{#2}
-    \printbibliography[heading=subbibliography]
-  \end{refsection}
-  \clearpage
-}
-
-
-\newcommand{\todomvh}[1]{
-  \todo[color=yellow]{#1}
-}
-\newcommand*\elide{\textup{[\,\dots]}}
-
 % PGF
 % Matplotlib used the following preamble
 \def\mathdefault#1{#1}

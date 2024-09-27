@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dissertation}[2024/09/27 Dissertation style]
+
+\DeclareOption{booklet}{\def\packageoptionBooklet{true}}
+\DeclareOption{manuscript}{\def\packageoptionManuscript{true}}
+\ProcessOptions\relax
+
+\RequirePackage{xcolor}
+\RequirePackage{incgraph}
+\RequirePackage{tikz}
+
+
+% Colors ======================================================================
+
+\definecolor{accent1}{HTML}{F29018}
+\definecolor{accent2}{HTML}{F63D1E}
+\definecolor{accent3}{HTML}{78479d}
+%\definecolor{lightgray}{HTML}{CECECE}
+\definecolor{lightgray}{HTML}{E0E0E0}
+\definecolor{darkgray}{HTML}{8D807A}
+\definecolor{muteblack}{HTML}{262321}
+% Extra accent brownish?
+
+% Commands ====================================================================
+
+% Include chapter with refsection bibliography
+\newcommand{\includechapter}[2]{
+  \chapter{#1}
+  \begin{refsection}
+  \input{#2}
+    \printbibliography[heading=subbibliography]
+  \end{refsection}
+  \clearpage
+}
+
+% Define todos
+\newcommand{\todomvh}[1]{\todo[color=yellow]{#1}}
+\newcommand{\todohsm}[1]{\todo[color=blue]{#1}}
+\newcommand{\todofc}[1]{\todo[color=red]{#1}}
+
+% Define text commands
+\newcommand*\elide{\textup{[\,\dots]}}
+
+% Figure placement ============================================================
+
+\usetikzlibrary{backgrounds}
+
+
+\usepackage{graphicx}   % For including images
+\usepackage{afterpage}  % To change the pagestyle after the figure
+
+
+%\newcommand{\fullpagefig}[3]{%
+%  \igrcenter{\igrboxset{#1}%
+%  \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
+%  \igrboxtikzcenter%
+%  %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
+%  \node[above right,text width=10cm,align=justify] at ([xshift=1cm,yshift=1cm]page.south west){{\captionof{figure}{#2}}};
+%  \end{tikzpicture}}
+%  \label{#3}
+%}
+%\newcommand{\fullpagefigct}[3]{%
+%  \igrcenter{\igrboxset{#1}%
+%  \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
+%  \igrboxtikzcenter%
+%  %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
+%  \node[below right,text width=10cm,align=justify] at ([xshift=1cm,yshift=-1cm]page.north west){{\captionof{figure}{#2}}};
+%  \end{tikzpicture}}
+%  \label{#3}
+%}
+%
+
+\newcommand{\figpane}[3]{
+    \begin{subfigure}{.45\textwidth}
+        #1
+        \caption{#2}
+        \label{#3}
+    \end{subfigure}
+}
+
+\newcommand{\fourpanefig}[6]{
+    \begin{figure}
+      #1\hfill#2\\\bigskip
+      #3\hfill#4
+    \caption{#5}
+    \label{#6}
+    \end{figure}
+}
+
+% Booklet formatting ==========================================================
+\ifx\packageoptionBooklet\undefined\else
+  % Booklet option selected
+  \newcommand{\fullpagefig}[3]{%
+    \begin{figure}[p]
+      \centering
+      #1
+      \caption{#2}
+      \label{#3}
+    \end{figure}
+  }
+  \newcommand{\fullpagefigct}{\fullpagefig}
+\fi
+
+% Manuscript formatting =======================================================
+\ifx\packageoptionManuscript\undefined\else
+  % Manuscript option selected
+
+  % Line numbers
+  \RequirePackage{lineno}
+  \linenumbers
+
+  \newcommand{\fullpagefig}[3]{%
+    \begin{figure}
+      #1
+      \caption{#2}
+      \label{#3}
+    \end{figure}
+  }
+  \newcommand{\fullpagefigct}{\fullpagefig}
+
+\fi

@@ -342,17 +342,17 @@ According to \textcite{Zander2011}, they can be arranged by their reliance on
 external stimulation and the engagement of the user as shown in
 Figure~\ref{fig:bci/paradigms}.
 
-\fullpagefig{%
-  \input{figures/bci/paradigms.tikz.tex}
-}{%
-  A \ac{bci} paradigm defines which brain activity will be used for control.
-  They can be categorized in active, reactive and passive
-  paradigms, depending on their reliance on external stimulation and active
-  participation required from the user.
-  Adapted from~\textcite{Muehl2014}.
-}{%
-  fig:bci/paradigms
-}
+%\fullpagefig{%
+%  \input{figures/bci/paradigms.tikz.tex}
+%}{%
+%  A \ac{bci} paradigm defines which brain activity will be used for control.
+%  They can be categorized in active, reactive and passive
+%  paradigms, depending on their reliance on external stimulation and active
+%  participation required from the user.
+%  Adapted from~\textcite{Muehl2014}.
+%}{%
+%  fig:bci/paradigms
+%}
 \todo{check permissions}
 \todo{above Zander and Kothe was mentioned.}
 

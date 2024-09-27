@@ -579,17 +579,8 @@ in~Section~\ref{sec:robust-latency}.
 \end{algorithm}
 
 \section{Results}
-
-
-%Four settings are evaluated to assess both the impact of the iterative Woody
-%procedure and the extraction of robust latency features.
-%These are CBLE-median and WCBLE-median, where the median of the latency
-%probability distribution is used as latency estimate, and CBLE-peak and
-%WCBLE-peak, where the maximum of the score output is used as latency estimate.
-
-\todo{
-refer to later chapter for use on real erp data
-}
+\label{sec:wcble/results}
+\todo{refer to later chapter for results on real data}
 \subsection{Data simulation}
 To verify our approach, we simulated 16 channel \ac{eeg} data with standard
 10-20 electrode positions using the \texttt{simulate\_evoked} method of the
@@ -644,7 +635,14 @@ target epoch ranging from 0 to -31dB, with
 A sample of the simulated evoked data is displayed in Figures~\ref{fig:wcble/sim-sine}.
 %\fullpagefig{figures/wcble/simulated-gaussian.pdf}{}{fig:wcble/sim-gaussian}
 %\fullpagefig{figures/wcble/simulated-morlet.pdf}{}{fig:wcble/sim-morlet}
-\fullpagefig{\includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}}{}{fig:wcble/sim-sine}
+\fullpagefig{%
+  \includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}
+}{%
+  Simulated target and non-target evoked data. Targets contain a sine wave
+  pulse jittered by $\sigma$. 32 EEG channels with pink
+  spatiotemporal noise were simulated using a forward head model, channel C3 is
+  plotted here.
+}{fig:wcble/sim-sine}
 \todo{Properly align plots and label axes}
 
 \subsection{Latency estimation}
@@ -657,16 +655,15 @@ For both \ac{cble} and \ac{wcble}, target latencies where extracted in a
 fitting the model.
 \Ac{wcble}'s maximum iteration number was set to 64.
 Results are presented in Figure~\ref{fig:wcble/results/latency}.
+A 95\ confidence intervals on each measure was obtained through bootstrapping
+with 1000 permutations.
 
-\begin{figure}
-  \sansmath
+\begin{figure}[!ht]
   \input{figures/wcble/fig_latency.pgf} \\
   \input{figures/wcble/fig_accuracy.pgf}
   \caption{align results}
   \label{fig:wcble/results/latency}
 \end{figure}
-\todo{invert x axis}
-\todo{caption}
 \todo{properly label axes}
 \todo{discuss results}
 
@@ -683,31 +680,100 @@ anymore and both methods get overtaken by the strong presence of noise.
 
 \subsection{Classification}
 \todo{refer to figure}
-Similar to the previous experiment, classification accuracy between target and
-non-target epochs is assessed.
+Analogous to the previous experiment, 10-fold cross-validated classification
+accuracy between target and non-target epochs was assessed.
+Here, \ac{wcble} was compared to \ac{cble}, but both also to their base classifier
+\ac{tlda}.
+\Ac{cble} and \ac{wcble} classifiers were implemented as described
+in~\ref{sec:wcble/methods}, with both the wavelet transformed score time series
+and square transformed latencies as input to a second-stage logistic regression
+classifier with $L_2$-norm regularization ($C=0.2$).
+\todo{ref figure}
 
+The classification accuracy of both \ac{tlda} and \ac{cble} decreases with
+$\$sigma$ and \ac{snr}, but \ac{cble} outperforms \ac{tlda}.
+This difference is particularily large when $\sigma$ is higher ($\sigma=0.2$
+and $\sigma=0.3$) and \ac{snr} is not yet high.
+\Ac{wcble} always scored better than \ac{cble} and \ac{wcble}, except for
+$\sigma=0.1$ and $\text{\ac{snr}} <27\text{db}$, at which point both \ac{cble}
+and \ac{wcble} performed at chance level.
+When considering the accuracy of \ac{wcble}, we see that it shows more of a
+plateau as \ac{snr} increases.
 \todo{insert results figure and discuss}
 
-\section{Discussion}
 
+\section{Discussion \& conclusion}
+In this work, we introduced a new \ac{erp} latency estimation and decoding
+method that applies a spatiotemporal classification iteratively along the time
+dimension of the data, refining the dataset at each iteration by aligning
+trials.
+The algorithm combines \acf{cble} with Woody's template matching iteration
+scheme and is therefore named \acf{wcble}.
+Our method attempts to model the spatial and temporal activation of
+each \ac{erp} component, as well as it's latency distribution.
+Through the firs-stage classifier, it takes into acount the
+spatial and temporal structure of EEG background noise and the trials from the
+classes to discriminate.
+\section{Conclusion}
+
+The key finding of the simulation study presented
+in~\ref{sec:wcble/results} is that \ac{wcble} is robust to higher evoked
+potential jitter and lower \ac{snr} than \ac{cble}.
+It could therefore be a better candidate to apply in \ac{erp} analysis and
+decoding in those cases where jittered \ac{erp} data is of interest.
 Reason that accuracy latency estimation plateaus and accuracy drops for cble,
 but that both plateau for wcble, is because of the alignment
+As  the noise increases beyond a certain threshold, the improvement vanishes.
+At this point, both methods perform poorly in both tasks, so if latencies
+cannot be properly estimated, no increase in classification performance can be
+gained by aligning in \ac{wcble}.
 
-\todo{mention cross validation}
-\todo{remove lcmv}
+As shown, the proposed method is suitable for \ac{bci} decoding setting
+as well as single-trial \ac{erp} latency analyses.
+In the case where there is only one data class present, the first-stage
+classifier can be replaced by a spatiotemporal filter.
+Instead of outputting a classification score, this filter should now output a
+metric representing the presence of a template response in the signal.
+A suiting candidate is the spatiotemporal
+\ac{lcmv}-beamformer~\cite{VanVliet2015}\todo{refer chapter}.
+The activation pattern can be set to the average of the set of trials to
+analyze, and it can be refined at each \ac{wcble} iteration by taking the
+average of aligned trials.
 
-\todo{In this work, we introduce a new latency method that leverages data-driven,
-joint spatiotemporal filtering based on the LCMV beamformer~\cite{Vliet2016}. The algorithm
-integrates the spatiotemporal filtering in Woody's template matching iteration
-scheme and can easily be extended to multi-component settings.
-Our method attempts to model the spatial and temporal activation of
-each \ac{erp} component, as well as it's latency distribution, and takes into acount the
-spatial and temporal correlation of the EEG background noise.}
+Finally, we argue that \ac{tlda} is a suitable first-stage classifier.
+Firstly, imposing a Toeplitz-covariance structure strongly regularizes the
+problem~\cite{Sosulski2022,VanDenKerchove2022}, at the benefit of decoding performance.
+Secondly, this method has a synergy with CBLE since both make the same
+assumption about the short-time stationary of the EEG background noise
+within an epoch.
+CBLE does not retrain the first-stage classifier for each time shift, but
+rather trains it once within the given window.
+After training, the classifier parameters represent some information about the
+expected ERP waveform and background noise.
+By applying the trained classifier to different time shifts, it assumes this
+ERP waveform can be shifted in time, but since the classifier's information about
+the background noise was only obtained from the initial window, CBLE assumes
+its properties do not vary throughout the epoch.
+The block-Toeplitz covariance structure of \ac{tlda} also assumes that the
+background noise represented by this covariance after subtracting the class
+averages is stationary within the epoch~\cite{Sosulski2022}.
 
-\todo{with lda, it is in the single class case equal to shifting a spatiotemporal
-lcmv beamformer over the epochs and can be used to extract latencies.
-multiclass:}
 
-\section{Conclusion}
-Current work is focusing on the extension to multi-component algorithm, in a
-similar fashion to ouyang
+The main limitation of the proposed method is its supposed lack to handle
+multi-component \ac{erp} data.
+In real \ac{erp} analysis settings, multiple components are usually present,
+and each component has a distinct contribution to class discriminatbility and
+latency distribution.
+A single-component method will yield issues in interpretability and convergence
+in the presence of other components, as it can `lock-on' to a given component
+cluster and flatten out the others.
+This can be avoided, however, by the choice of a proper region of interest
+isolating solely the component of interest.
+Current work focuses on extending \ac{wcble} to a multi-component setting, on
+the one hand to performance latency estimation and decoding performance on real
+\ac{erp} data and on the other hand to apply it as an \ac{erp} component
+separation method in the fashion of~\textcite{Oyang2017}.
+
+The proposed implementation in theory also supports processing multi-class
+data, but the convergence and correctness of the \ac{wcble} solution is yet to
+be properly studied for this case.
