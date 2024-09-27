@@ -8,6 +8,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{pgfplots}
+\usepackage{sansmath}
 
 
 % Bibliography
@@ -26,38 +27,18 @@
   \clearpage
 }
 
+
 \newcommand{\todomvh}[1]{
   \todo[color=yellow]{#1}
 }
 \newcommand*\elide{\textup{[\,\dots]}}
 
+% PGF
+% Matplotlib used the following preamble
+\def\mathdefault#1{#1}
+\everymath=\expandafter{\the\everymath\displaystyle}
 
-\newcommand{\fullpagefig}[3]{
-  \begin{figure}[p]
-    \centering
-    #1
-    \caption{#2}
-    \label{#3}
-  \end{figure}
-}
-\newcommand{\figpane}[3]{
-  \begin{subfigure}[t]{.45\textwidth}
-        #1
-        \caption{#2}
-        \label{#3}
-    \end{subfigure}
-}
-\newcommand{\fourpanefig}[6]{
-    \begin{figure}
-      #1\hfill#2
-
-      #3\hfill#4
-
-    \caption{#5}
-    \label{#6}
-    \end{figure}
-}
-
-\newcommand\fullpagefigct\fullpagefig
-
-% Layout
+\ifdefined\pdftexversion\else  % non-pdftex case.
+  \usepackage{fontspec}
+\fi
+\makeatletter\@ifpackageloaded{underscore}{}{\usepackage[strings]{underscore}}\makeatother

@@ -1,11 +1,14 @@
 \usepackage{incgraph}
 \usepackage{tikz}
-
+\usepackage{wrapfig}
 \usetikzlibrary{backgrounds}
 
-\renewcommand{\fullpagefig}[3]{%
-  \color{muteblack}
-  \igrcenter{\igrboxset{#1}%
+\renewenvironment{figure}
+  {\begin{figure*}\sansmath\color{darkgray}}  % Start of figure, applying \sansmath
+  {\end{figure*}}  % End of figure
+
+\newcommand{\fullpagefig}[3]{%
+  \igrcenter{\igrboxset{\sansmath#1}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
   %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
@@ -13,9 +16,8 @@
   \end{tikzpicture}}
   \label{#3}
 }
-\renewcommand{\fullpagefigct}[3]{%
-  \color{muteblack}
-  \igrcenter{\igrboxset{#1}%
+\newcommand{\fullpagefigct}[3]{%
+  \igrcenter{\igrboxset{\sansmath#1}%
   \begin{tikzpicture}[background rectangle/.style={fill=lightgray}, show background rectangle]]%
   \igrboxtikzcenter%
   %\draw[help lines] (0,0) grid (\igrBoxWidth,\igrBoxHeight);
@@ -24,7 +26,7 @@
   \label{#3}
 }
 
-\renewcommand{\figpane}[3]{
+\newcommand{\figpane}[3]{
     \begin{subfigure}{.45\textwidth}
         #1
         \caption{#2}
@@ -33,7 +35,7 @@
 }
 
 % TODO nice spacing and background
-\renewcommand{\fourpanefig}[6]{
+\newcommand{\fourpanefig}[6]{
     \begin{figure}
       #1\hfill#2
 

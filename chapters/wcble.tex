@@ -647,10 +647,8 @@ A sample of the simulated evoked data is displayed in Figures~\ref{fig:wcble/sim
 \fullpagefig{\includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}}{}{fig:wcble/sim-sine}
 \todo{Properly align plots and label axes}
 
-\todo{figure}
-
 \subsection{Latency estimation}
-
+\todo{refer to figure}
 We compared our proposed \ac{wcble} algorithm to \ac{cble} on a latency
 estimation task using the pearson correlation coefficient $\rho$\todo{equation} at different
 jitter and \ac{snr} levels.
@@ -661,7 +659,9 @@ fitting the model.
 Results are presented in Figure~\ref{fig:wcble/results/latency}.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{figures/wcble/fig_latency.pdf}
+  \sansmath
+  \input{figures/wcble/fig_latency.pgf} \\
+  \input{figures/wcble/fig_accuracy.pgf}
   \caption{align results}
   \label{fig:wcble/results/latency}
 \end{figure}
@@ -670,14 +670,28 @@ Results are presented in Figure~\ref{fig:wcble/results/latency}.
 \todo{properly label axes}
 \todo{discuss results}
 
+As the \ac{snr} decreases, both \ac{cble} and \ac{wcble} can accurately
+estimate evoked potential latencies up to a given threshold. After this
+threshold, correlation between estimated and ground-truth latencies will start
+decreasing.
+However, we notice that this threshold occurs later for \ac{wcble} than for
+\ac{cble} for all evaluated jitter levels, indicating that \ac{wcble} is more
+robust in the presence of pink spatiotemporal noise.
+At around -28dB, \ac{wcble} does not significantly outperform \ac{cble}
+anymore and both methods get overtaken by the strong presence of noise.
+
 
 \subsection{Classification}
+\todo{refer to figure}
 Similar to the previous experiment, classification accuracy between target and
 non-target epochs is assessed.
 
 \todo{insert results figure and discuss}
 
 \section{Discussion}
+
+Reason that accuracy latency estimation plateaus and accuracy drops for cble,
+but that both plateau for wcble, is because of the alignment
 
 \todo{mention cross validation}
 \todo{remove lcmv}

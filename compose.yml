@@ -1,0 +1,13 @@
+---
+services:
+  dissertation:
+    build:
+      context: .
+      dockerfile: Containerfile
+    volumes:
+      - $HOME/.latexmkrc:/root/.latexmkrc:Z
+      - $HOME/.texmf/tex/latex/local:/root/texmf/tex/latex:Z
+      - $PWD:/workdir:Z
+      - /tmp/nvim.arne:/tmp/nvim.arne:Z
+      - $HOME/.cache/matplotlib:/root/.cache/matplotlib:Z
+    stdin_open: true
