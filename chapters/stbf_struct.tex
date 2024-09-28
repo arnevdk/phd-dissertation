@@ -180,7 +180,7 @@
 	\end{equation}
 
 	The Moore-Penrose pseudoinverse $^+$, ensures a solution exists when $\hat{C}_\text{emp}$ is singular.
-	\autoref{fig:kronlda-covs}a and \autoref{fig:covs}b respectively show examples of the
+	\autoref{fig:kronlda-covs}a and \autoref{fig:kronlda-covs}b respectively show examples of the
 	empirical estimators of the covariance and the inverse covariance matrices.
 	The empirical estimator suffers from performance and
 	stability issues if the number of epochs $n$ used or estimation is not much larger than the number of features $cs$~\cite{Stein1956,Khatri1987}.
@@ -208,7 +208,7 @@
 	Analogous to L2 regularization of the beamforming problem,
 	shrinkage reduces the ratio between the smallest and largest eigenvalues
 	of the covariance matrix by strengthening the diagonal.
-	\autoref{fig:kronlda-covs}c and \autoref{fig:covs}d respectively show examples of the
+	\autoref{fig:kronlda-covs}c and \autoref{fig:kronlda-covs}d respectively show examples of the
 	shrunk estimator of the covariance and the inverse covariance matrices.
 
 	Earlier work~\cite{Libert2021} applied shrinkage regularization to ERP
@@ -310,7 +310,7 @@
 	\autoref{fig:kronlda-covs}e and \autoref{fig:covs}f respectively show examples of the
 	structured covariance and inverse covariance estimators,
 	consisting of a spatial Kronecker factor (\autoref{fig:kronlda-covs}g and
-	\autoref{fig:kronlda-covs}h) and a temporal component (\autoref{fig:covs}i and
+	\autoref{fig:kronlda-covs}h) and a temporal component (\autoref{fig:kronlda-covs}i and
 	\autoref{fig:kronlda-covs}j).
 
 	\begin{figure}
@@ -332,7 +332,7 @@
 	\todo{method pvl}
 
 	The Kronecker approach has shown significant performance yields in different linear spatiotemporal EEG and MEG
-	applications~\cite{DeMunck2002,Huizenga2002,6408231,GonzalezNavarro2016,GonzalezNavarro2017}.
+	applications~\cite{DeMunck2002,Huizenga2002,Beltrachini2013,GonzalezNavarro2016,GonzalezNavarro2017}.
 	Van Vliet \& Salmelin~\cite{Vliet2020} have applied a Kronecker-structured covariance estimator to ERP classification with linear models in a post-hoc fashion.
 	Our work goes further by embedding the Kronecker structure in the
 	spatiotemporal beamformer training process, using a data-adaptive shrinkage
@@ -348,7 +348,7 @@
 	variance to ensure the fixed point iteration converges.
 	Finally, shrinkage can also be introduced in the Fixed Point Iteration to
 	improve stability and achieve more robust
-	regularization~\cite{Wiesel2012,Greenewald2014,6408231, Breloy2016}.
+	regularization~\cite{Wiesel2012,Greenewald2014,Beltrachini2013, Breloy2016}.
 	The spatial and temporal covariance matrices are shrunk at every fixed-point
 	iteration with shrinkage factors $\beta_k$ and $\gamma_k$ before matrix
 	inversion in the
@@ -556,7 +556,7 @@
 	As a stopping criterion, one could impose a threshold on the difference in
 	outcome of successive steps, e.g., based on the covariance norm or the
 	classifier accuracy.
-	However, few iterations or even just one~\cite{castaneda2014estimation} suffice to achieve satisfactory performance in practice.
+	However, few iterations or even just one~\cite{Castaneda2014} suffice to achieve satisfactory performance in practice.
 
 	\autoref{fig:iterations} confirms these results for the \textsc{stbf-struct} classifier.
 	Using more than one fixed-point iteration does not significantly improve the
@@ -587,7 +587,7 @@
 	We evaluate the performance of all classifiers for different levels of
 	available training data and apply the cross-validation procedure nine times (the number of blocks in the training fold) for all subjects, keeping the
 	corresponding number of blocks in the training folds and dropping the rest.
-	\autoref{fig:accuracy} and \autoref{ap:accuracy_ap} show each classifier's
+	\autoref{fig:accuracy} and \autoref{fig:accuracy_ap} show each classifier's
 	accuracy relative to the data availability.
 	We statistically compare the two newly proposed classifiers,
 	\textsc{stbf-struct} and \textsc{stbf-shrunk}, for different levels of training
@@ -605,7 +605,7 @@
 			epochs and corresponds to 27 seconds of stimulation. Accuracies
 			are shown for the evaluation settings averaging over 1, 2, and
 			3 trials of testing stimuli.
-			\autoref{ap:accuracy_ap} contains results for all numbers of trials.
+			\autoref{fig:accuracy_ap} contains results for all numbers of trials.
 			While \textsc{stbf-emp} is unstable when little training data
 			are available,
 			regularization of the covariance matrix (\textsc{stbf-shrunk} and

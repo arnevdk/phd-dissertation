@@ -33,7 +33,7 @@ a robot arm or an exoskeleton. The term \ac{bci} is usually preferred for
 assistive technology and communication devices.}.
 A \ac{bci} directly couples actions in the `real world' to the mental state of
 the user.
-A \ac{bci} reads your mind.
+%A \ac{bci} reads your mind.
 
 Starting in the 1970's from methods to establish basic communication from
 minimal brain activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
@@ -84,8 +84,9 @@ behavior or brain activity accordingly, closing the loop
   \includegraphics[width=\textwidth]{figures/bci/bci_loop.pdf}
 }{%
   The \ac{bci} loop.
-  The user interacts with the \ac{bci} through a \ac{bci} paradigm, in this case involving
-  visual stimulation. Neural signals are recorded, and neurophysiological features
+  The user interacts with the \ac{bci} via a specific paradigm, in this case involving
+  visual stimulation.
+  Electrical neural signals are recorded, and neurophysiological features
   related to the paradigm are extracted. Using machine learning, a decision can
   then be made based on these features, which can be presented back to the user.
   In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
@@ -103,7 +104,7 @@ However, this signal reacts too slowly to reflect the real-time activity that is
 of interest for our purposes, and it carries little information other than the
 brain regions where it is originating.
 A better candidate is the neuronal electrical activity.
-The brain consists 86 billion neurons, which are highly interconnected cells that are
+The brain contains 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The \emph{action potential} and its related \emph{postsynaptic potential}
 is an electrical pulse occurring when a neuron receives
@@ -111,7 +112,7 @@ input from another neuron and is activated.
 The firing of a neuron, or the combined firing of groups of
 synchronized neurons, thus generate an electrical field in and near the brain,
 which can be measured using electrodes.
-Fluctuations in the brain's electrical potential can be faster and more
+Fluctuations in the brain's electrical activity are be faster and more
 informative.
 
 The recorded brain waves form only one part of the interaction scheme presented
@@ -139,7 +140,7 @@ The previous points to another component of a successful \ac{bci}: the specific
 brain signatures related to our paradigm need to be identified within the recorded
 activity.
 \todo{preprocessing}
-This is commonly referred to as \emph{feature extraction}
+This is commonly referred to as \emph{feature extraction}.
 In other words, the signal needs to be interpreted \emph{in function of} the
 task we want our \ac{bci} to perform.
 The electrical activity of the brain is relatively weak compared to that of the
@@ -147,7 +148,7 @@ environment around us, containing electronic devices and other sources of
 interference.
 Furthermore, the brain is continuously processing information and carrying out
 `background tasks', all of which generate their own brain activity.
-On the other hand, the activity of interest in often
+On the other hand, the activity of interest often
 originates from a specific region or network within the brain.
 This activity might not easily be discerned from all other brain and
 environmental activity.
@@ -185,6 +186,7 @@ changes in behavior or strategy.
 Neuroplasticity, the brain's ability to adapt and reinforce specific neural
 pathways, can have a positive impact on \ac{bci} performance and gives rise to
 rehabilitation applications.
+\todo{is every section referred to?}
 
 \todo{wrap-up}
 
@@ -252,7 +254,7 @@ arrays.
 Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
 NeuraLink implant~\cite{Musk2019}.\todomvh{+ Neuropixels 2}
 
-Larger implanted electrodes are referred to as intracranial ac{eeg} (i\ac{eeg}).
+Larger implanted electrodes are referred to as intracranial \ac{eeg} (i\ac{eeg}).
 Depth electrodes such as those used in stereo-ac{eeg} \ac{bci}~\cite{Wu2024} tasks
 and closed-loop adaptive control for Deep Brain Stimulation to mitigate
 Parkinson's disease symptoms~\cite{Arlotti2018}.
@@ -283,11 +285,11 @@ non-invasive BCI.
 \Ac{eeg} is the de facto non-invasive electrophysiology standard in clinical
 neurology practice as well as in \ac{bci} research.
 Developed since 1924~\cite{Berger1929}, it is cheap and relatively practical and
-offer great temporal resolution up to thousands of Hz.
+offers great temporal resolution up to thousands of Hz.
 \Ac{eeg} measures the electrical potential over time at a given electrode relative to a
 reference electrode in volt (V), often on the scale of microvolt ($\mu$V).
 As it is easily applicable on the outside of the scalp, many practical
-consumer-grade \ac{eeg} headsets exist in the form (often wireless) electrode
+consumer-grade \ac{eeg} headsets exist in the form of (often wireless) electrode
 caps or helmets.
 Current consumer systems sometimes feature dry electrodes, but clinical and
 research systems often use active electrodes with preamplifiers and
@@ -417,7 +419,7 @@ In auditory paradigms, information can be modulated by the volume, tone, pitch,
 spatial origin of presented sounds, to which the user can
 attend~\cite{Kaongoen2017}.
 Most common are the visual paradigms.
-These can be more performant since they allows the user to use their visual
+These can be more performant since they allow the user to use their visual
 system, one of the most evolved sensory system in humans.
 
 The major visual paradigms rely on
@@ -441,7 +443,7 @@ The \ac{bci} paradigms mentioned above can also be combined to gain performance.
 Straightforward examples are activating or deactivating \ac{ssvep} stimulation
 with a motor command~\cite{Neeling2019}, or combining multiple visual paradigms by stimulating
 along multiple dimensions at once.
-\textcite{Han2023} recently used this strategy, combining frequancy and phase
+\textcite{Han2023} recently used this strategy, combining frequency and phase
 coding in \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an
 efficient \ac{bci} where one of 200 targets can be accurately selected with
 only 800ms of stimulation.
@@ -538,7 +540,7 @@ To improve performance, we can aim to
 broad range of informative selections per trial,
 \item increase $P$ by engineering more performant machine learning methods for
 decoding, and
-\item increase $Q$ by selecting a paradigm and allows fast stimulation or
+\item increase $Q$ by selecting a paradigm that allows fast stimulation or
 responses.
 \end{enumerate*}
 
@@ -546,12 +548,12 @@ responses.
 \section{A case study: the visual oddball \ac{bci}}
 
 The visual oddball paradigm is a \emph{reactive}, \emph{stimulus-dependent},
-\ac{bci} paradigm with all the benefits and drawbacks
+\ac{bci} paradigm with all the benefits and drawbacks.
 Nevertheless, it can score relatively high on the \ac{itr} parameters established above.
 The brain response of interest is the visual \ac{erp}, which can be accurately
 measured and decoded from non-invasive \ac{eeg} signals with a relatively low
-computational effort and short calibration time.
-First established by~\cite{Farwell1988} in 1988, it well supported by literature
+computational effort and short calibration timeand .
+First established by~\cite{Farwell1988} in 1988, it is well supported by literature
 and has been proven to work for patients in day-to-day home
 use~\cite{Wolpaw2018}.
 
@@ -564,7 +566,7 @@ On each flash observed by the user, specific brain activity is elicited.
 If one of these intensified elements is rare with respect to the others, i.e. it is the
 \emph{odd-one out} or \emph{oddball}, this brain activity is altered.
 A stimulus can be rare either due to its inherent properties like color or
-location
+location.
 Crucially, this is also the case if it is `marked' as rare by the user, e.g.
 by paying explicit attention to only a given stimulus and not the others or
 counting how many times it occurs.
@@ -574,12 +576,12 @@ for which letter an oddball response was present in the brain signal at its
 time of intensification.
 
 \Ac{itr} in the oddball paradigm is optimized by intensifying
-multiple targets at once in a row-collumnn strategy and using a sequence of
+multiple targets at once in a row-collumn strategy and using a sequence of
 selections, giving rise to the classic matrix speller of~\cite{Farwell1988}.
 Other optimizations increase response \ac{snr}, like using flashing face
 images as intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
 stimuli~\cite{Treder2011}.
-The number of targets in a visual oddball \ac{bci}is limited by the crowding
+The number of targets in a visual oddball \ac{bci} is limited by the crowding
 effect, which imposes a limit on how close targets can be to each other while
 not distracting the user's attention~\cite{Sellers2006a,Li2010}.
 This may be overcome by making hierarchical selections of stimuli representing
@@ -614,7 +616,12 @@ waveform.
 They follow a naming scheme based on polarity (Negative or Positive) and
 latency (e.g., N2 or N200 for a negative component after $\pm200$ ms).
 The component most prominently modulated by attention is called the P3
-(positive deflection after $\pm300$ ms).
+(positive deflection after $\pm300$ ms).\todo{add footnote about how ms naming
+is maybe not suited, especially since this work focuses on the fact that there
+is a lot of variability in the timings for visual potentials. the short naming
+scheme builds on 'the first negative component', 'the first positive
+component', and for the visual oddball erp this ordening more or less coincides
+with the timings.}
 Therefore, oddball paradigms are frequently referred to as P300 paradigms.
 However, due to the equally important contributions of other \ac{erp}
 components in decoding, as we will show later, this could be considered a

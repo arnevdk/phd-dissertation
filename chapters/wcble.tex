@@ -28,7 +28,7 @@ lab to the clinical setting with patients in the target population.
 increased ERP jitter.
 \textcite{Arico2014} show that latency jitter negatively affects \ac{bci}
 performance, and disproportionally so when the user is not directly gazing at
-intended targets, such as is the case for for gaze-impaired patients.
+intended targets, such as is the case for gaze-impaired patients.
 
 \subsection{\Ac{erp} latency jitter}
 
@@ -50,7 +50,7 @@ and a delay caused by ongoing neurophysiological processes that are not necessar
 
 The presence of latency jitter introduces multiple issues to \ac{erp} analysis, the
 most prominent of which is the smearing effect as illustrated
-in~\autoref{fig:smearing}. In \ac{erp} analysis, single-trial \acp{erp} are usually
+in~\autoref{fig:wcble/smearing}. In \ac{erp} analysis, single-trial \acp{erp} are usually
 averaged per condition to cope with the unfavorable \ac{snr}?
 When averaging over multiple identical responses with jittered latencies, the shape
 and amplitude of the average do not reflect the properties
@@ -61,6 +61,15 @@ results and making inferences about amplitude or latency effects, because these
 are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell2003, Verleger2005,
 	Roth2007, Walhovd2008, Poli2010, Luck2014}\todo{Review relevance of
 	these references}.
+
+\begin{figure}[t]
+  \centering
+  \input{figures/wcble/smearing.tikz.tex}
+  \caption{The smearing effect. When obtaining an \ac{erp} template through
+  averaging, high jitter causes a decrease in peak amplitude and a deformation
+  of the shape of the waveform.}
+  \label{fig:wcble/smearing}
+\end{figure}
 
 \todo{illustrate smearing effect}
 
@@ -123,12 +132,12 @@ Latency estimation has multiple advantages:
 \subsection{Single-component approaches}
 \label{sec:wcble/literature/single-comp}
 
-The most straight-forward method to estimate single-trial latency is
+The simplest method to estimate single-trial latency is
 \emph{peak picking}
 Here, the latency of an \ac{erp} is determined as the
 time-point of it's maximum (or minimum) amplitude relative to stimulus
 onset.
-While straight-forward, this method does not perform well in low
+While straightforward, this method does not perform well in low
 \ac{snr} conditions, unless combined with filtering.
 Filtering can suppress the noise contaminating \ac{eeg} trials, lowering
 the risk of picking a noise peak instead of a true peak of the \ac{erp}.
@@ -179,7 +188,7 @@ In the previous section, we have abstracted away the fact that \acp{erp} are
 multi-component signals, which is not taking into account by the aforementioned
 methods.
 Multiple components can be time-locked to different events or neurophysiological
-proccess and therefore are not necessarily time-locked to each other. They
+processes and therefore are not necessarily time-locked to each other. They
 each can have different latency variabilities.
 The presence of more than one component can hamper the
 performance of some latency estimation algorithms, and it often only possible to extract only the
@@ -195,9 +204,8 @@ Methods based on spatial decomposition filters like \ac{pca}, ICA or XDAWN can b
 to utilize multiple of their components as filters, resulting in multiple time
 series where peack picking or Woody's algorithm can be applied. In general,
 however, these algorithms lack an integrated approach to deal with multiple
-\ac{erp} components. A clear evaluation is lacking of the performance of these
-methods in
-multi-component settings is lacking.
+\ac{erp} components. A clear evaluation of the performance of these
+methods in multi-component settings is lacking.
 
 Some algorithms separate components into stimulus and response locked component clusters based on their
 latency distributions~\cite{Jung2001, Takeda2008,	Zhang1998, Yin2009}.
@@ -714,7 +722,6 @@ each \ac{erp} component, as well as it's latency distribution.
 Through the firs-stage classifier, it takes into acount the
 spatial and temporal structure of EEG background noise and the trials from the
 classes to discriminate.
-\section{Conclusion}
 
 The key finding of the simulation study presented
 in~\ref{sec:wcble/results} is that \ac{wcble} is robust to higher evoked

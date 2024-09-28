@@ -100,7 +100,7 @@ it can also generally refer to the state of full body paralysis
 or loss of muscle tone incurred in neurodegenerative diseases, combined with
 the inability to speak, such as occurs in late stage ALS.
 In clinical reality, every tetraplegic patient has their own unique set of
-preserved capabilities and from an solution-oriented \ac{bci} engineering point
+preserved capabilities and from a solution-oriented \ac{bci} engineering point
 of view, the etiology of the symptoms can be abstracted away.
 }}
 
@@ -120,9 +120,9 @@ This group is much larger than the first.
 
 Together, some of these patients constitute the \ac{lis} patient group, which
 forms one of the main \ac{bci} target populations.
-In this work, we'll define \ac{lis} patients as those in a situation of (near)
+In this work, we define \ac{lis} patients as those in a situation of (near)
 complete paralysis and difficulties or the inability to communicate without
-assistive technology
+assistive technology.
 This corresponds to classes one and two defined by
 \textcite{Wolpaw2006}\fnwolpawcrit.
 Additionally, some degree of severe or complete eye motor impairment is usually
@@ -144,12 +144,12 @@ the ability to communicate independently which is crucial to retaining an
 acceptable quality of life.
 \todo{order of concepts in next two paragraphs can be tweaked}
 
-This leads us to what we'll call the \emph{gaze-dependence problem in visual
+This leads us to what we call the \emph{gaze-dependence problem in visual
 \ac{bci}}:
 Traditional visual \ac{bci} scenarios require the user to overtly direct their both
 \ac{vsa} and gaze toward the screen target they intend to select.
 For our purposes, screen targets are overlaid with non-overlapping, transient
-stimuli that evoke event-related  potentials \acp{erp} in the \ac{eeg}.
+stimuli that evoke \acp{erp} in the \ac{eeg}.
 The selected target can be decoded from these \acp{erp}, as is the case for the
 oddball paradigm where observing a rare but attended stimulus evokes a P3 \ac{erp}
 component.
@@ -204,7 +204,7 @@ Non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
 Alternative visual stimulation paradigms can modulate specific \ac{erp} components
 that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
-Nevertheless, these methods, can suffer too from reduced information
+Nevertheless, these methods can suffer too from reduced information
 transfer rates~\cite{Chennu2013}.
 Furthermore, these systems typically require users to focus on a central fixation point while
 selecting peripheral targets.
@@ -217,7 +217,7 @@ attention can be decoded separately from gaze direction.
 \textcite{Aloise2012} aimed to bridge the performance gap between covert and
 overt VSA decoding performance.
 They compared classical linear and non-linear \ac{erp} classifiers on a covert
-attention P3 \ac{erp} component dataset.
+attention oddball \ac{erp} paradigm dataset.
 The results revealed no significant performance improvement in covert VSA
 decoding for any of the investigated decoders.
 More recent work has made advances in decoding lateralized covert
@@ -252,7 +252,7 @@ detected in the EEG-signal.
 The \ac{erp} consists of multiple components, of which some are modulated by the
 attention of the user, specifically the N2 and the P3 component.
 Decoding this modulation allows for information transfer controlled by the
-user's brain activity, as sketched in Figure~\ref{fig:bci-loop}.
+user's brain activity, as sketched in Figure~\ref{fig:bci/loop}.
 However, visual \ac{bci}s cannot operate efficiently when the user does not direct
 their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
 \todomvh{I am wondering whether goal statements and patient target groups
@@ -421,6 +421,8 @@ imposing regularizing constraints by structuring the noise covariance matrix
 Furthermore, these regularizing constraints impose temporal stationarity on
 the background noise, yielding insights for our next\todomvh{next? more specificaly?}
 efforts to cope with the non-stationarity of the P3 signal component.
+\todofc{conclue with something like "this approach has been published in ... and
+will be described in chapter XXX}
 
 \subsubsection{Classifier-based Latency Estimation with Woody iterations}
 
@@ -452,6 +454,8 @@ Classifier-based Latency Estimation (CBLE)~\cite{Mowla2017} is a technique that 
 yields no improvement in gaze-independent settings.
 We improved upon this technique and extended it to a probabilistic, iterative
 method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
+\todo{conclue with something like "this approach has been published in ... and
+will be described in chapter XXX}
 
 \subsubsection{Tensor discriminant analysis}
 \todo{todo}
@@ -470,9 +474,12 @@ To simulate the dissociation between the eye gaze (visual attention) and the
 intended target (mental attention) which could occur in patients with hampered eye
 motor control, healthy participants are cued to operate the \ac{bci} in specific
 \ac{vsa} conditions.
-
+\todofc{conclue with something like "this approach has been published in ...
+and will be described in chapter XXX}
 
 \subsubsection{Patient case study}
+\todofc{conclue with something like "this approach has been published in ...
+and will be described in chapter XXX}
 
 \todo{todo}
 \todo{mention multi-center patient study case studies in cooperation
