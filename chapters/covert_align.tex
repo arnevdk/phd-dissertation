@@ -133,6 +133,7 @@ larger size (5.60° of visual angle, Figure~\ref{fig:layout_intense}) instead of
 experienced when visually fixating~\cite{Troxler1804}.}~\cite{Treder2010} in the
 peripheral visual field.
 Stimuli were presented using PsychopPy (version 2023.1.3)~\cite{Peirce2019}.
+\todo{figures}
 
 The participant was instructed to press the space bar when ready for a block
 of stimulations.
@@ -148,13 +149,14 @@ covert VSA when the crosshair appeared in the center of the screen, and split
 VSA when the crosshair appeared on a different target than the cued one.
 After pressing the space bar again and a delay of 5 seconds, the stimulation block
 starts.
+
 All targets were intensified for a duration of 100 ms, in pseudorandom order.
 The inter-stimulus-interval (ISI), the time between the onsets of subsequent intensifications,
 was variable and consisted of a fixed 300ms interval (of which 100ms with an intensified target onscreen)
 with 200ms uniform jitter added, resulting in an ISI
 between 200 and 400 ms.
-Inter-stimulus intervals were jittered to counteract steady-state effects and residue in averaging. A
-longer inter-stimulus interval will increase component amplitude and aid in counteracting temporal
+\Acp{isi} were jittered to counteract steady-state effects and residue in averaging. A
+longer \ac{isi} will increase component amplitude and aid in counteracting temporal
 autocorrelation for a higher statistical test precision.
 In a block of stimulations, each target was intensified a pseudorandom number of times between 10 and 15.
 This led to stimulation blocks with an average duration of 26.25 seconds. After a block of stimulations, an
@@ -164,6 +166,7 @@ In total, six blocks were presented for overt VSA, six blocks for covert VSA, 12
 split ($d=1$) VSA, 12 blocks for split ($d=2$) VSA and 6 blocks for split
 ($d=3$) VSA, covering all possible combinations of VSA conditions, cued targets and
 crosshair locations.
+
 The experiment started with five non-recorded practice stimulation blocks, one for
 each of the 5 VSA conditions.
 During these practice blocks, the participant received feedback about their gaze
@@ -214,7 +217,7 @@ analysis (Fz, FCz, Cz, CPz, Pz, Oz, F3, F4, C3, C4, CP3, CP4, P3, P4, PO7 and
 PO8).
 
 \subsubsection{Decoders}
-We will compare \ac{wcble} and \ac{cble} ad described in
+We will compare \ac{wcble} and \ac{cble} as described in
 Section~\ref{sec:wcble/methods}, with their base classifier and tLDA and with
 Riemannian Geometry
 approaches that rely on spatial covariance as features.
@@ -223,14 +226,14 @@ performance~\cite{Lotte2018}.
 We implemented two Riemannian Geometry pipelines.
 The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
 filters, projects these covariances to a tangent space and classifies the
-result using $L2$-regularized logistic regression
+result using $L_2$-regularized logistic regression
 (XDAWNCov-TS-LR)~\cite{Cecotti2017}.
 Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
 favorable performance in the presence of single-trial ERP latency jitter.
 Shrunk spatial covariance matrices are estimated from epochs that are
 augmented by concatenating the average target and average non-target ERP as
 extra channels, projected to tangent space and classified using
-$L2$-regularized logistic regression (ERPCov-TS-LR).
+$L_2$-regularized logistic regression (ERPCov-TS-LR).
 
 To evaluate performance, 6-fold cross-validation without shuffling was performed for both
 datasets.
@@ -309,6 +312,7 @@ CBLE failed to significantly outperform its first-stage classifier tLDA in all
 evaluated VSA conditions.
 Table~\ref{tab:single_trial_full} reports all single-trial classification scores for all considered models, datasets
 and conditions.
+\todo{table?}
 
 Figure~\ref{fig:block_evaluation} shows the cross-validated BCI selection
 accuracy on the BNCI2014-009 and the CVSA-ERP dataset for all investigated
@@ -340,7 +344,7 @@ They observed a 5.63\%pt. accuracy increase with 1-10 selection repetitions over
 step-wise Linear Discriminant Analysis  (SWLDA) for 6 ALS patients, whose SWLDA
 performance also suffered from jitter.
 Note that interpretation of this comparison may be challenging due to differences in
-interface design (number of targets, inter-stimulus interval), subject population,
+interface design (number of targets, \ac{isi}), subject population,
 EEG recording procedure and available training data.
 
 
