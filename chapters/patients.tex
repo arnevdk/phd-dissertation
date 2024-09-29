@@ -2,34 +2,53 @@
 
 Communication BCIs have a target population consisting of patients in various
 stages of paralysis or \ac{lis}, often suffering from oculomotor impairments.
-This reduces their performance operating visual oddball \ac{bci}s, since they
+This reduces their performance operating visual oddball \ac{bci}s (see
+section\todo{ref section} for an overview), since they
 are presumed unable to comfortably redirect their gaze at the desired target,
-i.e., perform overt \ac{vsa}.
+i.e., perform overt \ac{vsa}.\todo{cite some visual gaze-independent bci}
 They might more naturally operate in covert \ac{vsa}, where the gaze and
 \ac{vsa} do not coincide.
-Several studies show that performance drops in covert VSA \todo{[2, 1], our
+Several studies show that performance drops when not fixating the intended
+target~\cite{Brunner2010, Frenzel2011,
+Treder2010, RonAngevin2019, VanDenKerchove2024} \todo{[2, 1], our
 study}, necessitating gaze-independent solutions.
-Our previous study, presented in chapter \todo{ref chapter}, indicates gaze-independent performance can be
-improved in healthy subjects using a suited decoding strategy.
 
+Usually, they aim to improve gaze-independent \ac{bci} by optimizing
+performance in cued covert \ac{vsa}.
 These studies build on the assumption that patients with eye motor impairment
-would feel comfortable operating
-Visual paradigms
+would feel comfortable operating an interface in pure covert \ac{vsa} with
+central fixation.
+One could argue that a \ac{bci} that is only verified to work when a central
+fixation is maintained, could also be considered gaze-dependent.
+This does not account for the residual eye motor capabilities of most severly
+paralyzed or locked-in patients and the comfort they experience while
+performing the gaze fixation.
 
-Need for verification in patients, cite different characteristics, differences
+Our previous study, presented in chapter \todo{ref chapter}  partially tried to account for this
+and showed gaze-independent performance can be improved
+improved in healthy subjects using a suited decoding strategy.
+Yet, there is a strong need for verification of results obtained in healthy
+samples.
+It is a striking constatation that studies reporting on
+gaze-independent visual \ac{bci} in patients that are actually eye-motor
+impaired are very few.
+in patients, cite different characteristics, differences
 in setting, environment and equipment,
-\todo{goal is class 1, but challenging to perform research experiments and to
-recruit, cite wolpaw}
-
-
-problems eye tracking
-
-Literature for visual \ac{bci} in eye motor impaired patients is sparse.
 \todo{List conclusions of Peters2020 (severely eye motor impaired als patients
 able to use a hex-o-spell)}
 
+Eventually, one of the end goals of this research line is to develop
+gaze-independent \ac{bci} for patients that
+are fully locked-in and have no option left than to use a \ac{bci}.
+However, this group is very small and it is often a challenge to recruit them
+into a study and perform experiments with them~\cite{Wolpaw2006}.
+Patients with less severe paralysis or in less progressed disease stages that struggle with
+eye-tracking technology could also benefit from
+solutions tailored to their specific situation.
+
 Therefore, we aim to apply the concepts from earlier work an literature to
-patients with motor impairment and, in addition, eye motor impairment.
+patients with various degrees motor impairment and various
+degrees of eye motor impairment.
 The objectives of this case study are as follows:
 \begin{enumerate*}
   \item Explore capabilities and experienced comfort of eye motor impaired
@@ -52,9 +71,8 @@ To qualify for inclusion, patients must
 \begin{enumerate}
 	\item be at least 18 years old and no older than 60
 	years,
-  \item belong to class 2 or 3 according the \ac{bci}
-	patient selection criteria presented by~\textcite{Wolpaw2006},\label{item:patients/inclusion/wolpaw}
-  \todo{specific cutoff based on vision}
+  \item belong to class 2 or 3 according the \ac{bci}	patient selection criteria
+    presented by~\textcite{Wolpaw2006},\label{item:patients/inclusion/wolpaw}
   \item have limitations to the extent or comfort of their eye motor control\label{item:patients/inclusion/oculomotor}
 \end{enumerate}
 Patients were excluded if they
@@ -115,6 +133,9 @@ partial ophthalmoplegia immediately from onset.
 Table~\ref{tab:patients/patients} lists the included patients and their
 diagnoses.
 
+\todo{check Usability and Workload of Access Technology for People With Severe
+Motor Impairment: A Comparison of Brain-Computer Interfacing and Eye Tracking}
+
 \begin{table}[t]
   \centering
   \footnotesize
@@ -124,6 +145,11 @@ diagnoses.
   }
   \label{tab:patients/patients}
 \end{table}
+\todo{Replace with classification according to 40. Kübler A, Birbaumer N.
+Brain-computer interfaces and communication in paralysis: extinction of goal
+directed thinking in completely paralysed patients? Clin Neurophysiol.
+2008;119:2658-2666.}
+\todo{include year of diagnosis}
 
 \subsection{Eye tracking and eye motor examination}
 
@@ -176,14 +202,14 @@ We refer to section~\ref{sec:covert-align/stimulation} for the exact details.
 
 To adapt the interface for the patient setting, the number of blocks was
 decreased to 6 per \ac{vsa} setting.
-An additional \ac{free \ac{vsa}} condition was introduced.
+An additional \emph{free \ac{vsa}} condition was introduced.
 Here, the patient was instructed to perform the task as they deemed most
 comfortable.
 The cued \emph{split attention} setting proposed
 by~\textcite{VanDenKerchove2024} is not studied here, since we are interested
 in natural \ac{vsa} operation settings for gaze-impaired patients.
 If the patient was not fully paralyzed, they were instructed not to move the head.
-\Ac{isi} was increased to\tod{number} to decrease task difficulty.
+\Ac{isi} was increased to\todo{number} to decrease task difficulty.
 The experiment alsy started with a training block in each condition, where the
 patient was instructed with feedback on their performance to make sure they
 understood and were able to perform the task.
