@@ -1,24 +1,296 @@
 \section{Introduction}
 
 Communication BCIs have a target population consisting of patients in various
-stages of paralysis or Locked-in Syndrome, often suffering from oculomotor im-
-pairments. This reduces their performance operating visual event-related poten-
-tial (ERP) BCIs, since they are unable to comfortably redirect their gaze at the de-
-sired target, i.e., overt visuospatial attention (VSA). Instead, they are forced to op-
-erate in covert VSA, where the gaze and VSA do not coincide. Several studies show
-that performance drops in covert VSA [2, 1], necessitating gaze-independent so-
-lutions. Our previous study [3] indicates gaze-independent performance can be
-improved in healthy subjects using a suited decoding strategy. Currently, we aim
-to verify this in patients.
+stages of paralysis or \ac{lis}, often suffering from oculomotor impairments.
+This reduces their performance operating visual oddball \ac{bci}s, since they
+are presumed unable to comfortably redirect their gaze at the desired target,
+i.e., perform overt \ac{vsa}.
+They might more naturally operate in covert \ac{vsa}, where the gaze and
+\ac{vsa} do not coincide.
+Several studies show that performance drops in covert VSA \todo{[2, 1], our
+study}, necessitating gaze-independent solutions.
+Our previous study, presented in chapter \todo{ref chapter}, indicates gaze-independent performance can be
+improved in healthy subjects using a suited decoding strategy.
 
-https://www.nature.com/articles/s44222-024-00239-5
+These studies build on the assumption that patients with eye motor impairment
+would feel comfortable operating
+Visual paradigms
+
+Need for verification in patients, cite different characteristics, differences
+in setting, environment and equipment,
+\todo{goal is class 1, but challenging to perform research experiments and to
+recruit, cite wolpaw}
+
+
+problems eye tracking
+
+Literature for visual \ac{bci} in eye motor impaired patients is sparse.
+\todo{List conclusions of Peters2020 (severely eye motor impaired als patients
+able to use a hex-o-spell)}
+
+Therefore, we aim to apply the concepts from earlier work an literature to
+patients with motor impairment and, in addition, eye motor impairment.
+The objectives of this case study are as follows:
+\begin{enumerate*}
+  \item Explore capabilities and experienced comfort of eye motor impaired
+    patients,
+  \item evaluate the performance of a gaze-independent visual \ac{bci} in patients
+  \item verify if this performance can be improved with a suitable decoding
+    strategy.
+\end{enumerate*}
+
 
 \section{Materials \& methods}
 \subsection{Patient recruitment}
-\subsection{Eye motor examination}
+Patients were recruited from across the Neuromuscular Reference center at
+University Hospital Leuven (Leuven, Belgium), TRAINM Neuro Rehab Clinics
+(Antwerp, Belgium), the Neurorehabilitation Unit at University Hospital Lille
+(Lille, France) and a specialized care home (France).
+Experiments were performed under the supervision of their treating physician.
+Patients were recruited based on the following criteria.
+To qualify for inclusion, patients must
+\begin{enumerate}
+	\item be at least 18 years old and no older than 60
+	years,
+  \item belong to class 2 or 3 according the \ac{bci}
+	patient selection criteria presented by~\textcite{Wolpaw2006},\label{item:patients/inclusion/wolpaw}
+  \todo{specific cutoff based on vision}
+  \item have limitations to the extent or comfort of their eye motor control\label{item:patients/inclusion/oculomotor}
+\end{enumerate}
+Patients were excluded if they
+\begin{enumerate}
+  \item have a diagnosis of a major medical condition, including any major
+    neurological or psychiatric disorder other than those of interest based on
+    inclusion criteria~\ref{item:patients/inclusion/wolpaw}
+    and~\ref{item:patients/inclusion/oculomotor}\label{item:patients/exclusion/medical}
+  \item have a predisposition to or have a history of any kind of epileptic seizures,
+    including photosensitive epilepsy,\label{item:patients/exclusion/epilepsy}
+  \item have a severe loss in vision or hearing, that would significantly impair
+        participation in the experiment,\label{item:patients/exclusion/vision}
+  \item are currently using specific psychoactive medications or substances that could affect the out-
+        come.\label{item:patients/exclusion/cognitive}
+  \item be able to understand the experiment instructions and cooperate,
+  \item have any other limitations preventing them from performing the given task.
+\end{enumerate}
+
+In total, 11 patients were contacted, of which 1 \ac{ms} patient was excluded based on
+criterion~\ref{item:patients/exclusion/vision}, 1 \ac{tbi} patient on
+both~\ref{item:patients/exclusion/epilepsy}
+and~\ref{item:patients/exclusion/cognitive}, and one stroke patient based
+on~\ref{item:patients/exclusion/medical}
+One further stroke patient was excluded due to technical
+difficulties during the experimental session.
+Vision was assessed using a LogMAR chart~\cite{Bailey1976}.
+
+Ultimately, 7 patients were retained.
+Of these, one patient was diagnosed from bulbar-onset \ac{als}.
+\ac{als} is a neurodegenerative disease affecting the motor neurons, leading to
+progressive loss of motor function.
+This initially results in general weakness and loss of muscle tone, but
+eventually results in full body paralysis.\todo{cite}
+Although speech and especially eye movements are usually preserved until the
+later stages of the disease progression, the bulbar-onset variant is
+characterized by an early loss of speech and an increased involvement of eye
+motor symptoms~\cite{Guo2022}\todo{which?}.
+Furthermore, one of the goals of \ac{bci} is to support \ac{als} patients whose
+life span has been extended with life support with and assistive technology to
+ensure quality of life.
+In these very progressed stages of \ac{als}, eye movement will eventually also
+be affected~\cite{Hayashi1991}.
+
+Three other patients were diagnosed with \ac{fa}, a neurodegenerative
+disease affecting the
+spinal cord, peripheral nervous system and cerebellum.
+\ac{fa} results in an impairing loss of muscle coordination.
+In progressed stages, the disease can present with nystagmus, saccadic
+intrusions and gaze dysmetria~\cite{Cook2017}.
+
+The final three patients were stroke patients.
+Brain stem and cerebellar stroke can often lead to forms of \ac{lis}, and
+various eye motor disorders are common depending on the exact location
+~\cite{Bogousslavsky1987, Moncayo2009}.
+Stroke can lead to some of the more severe impairments like ophthalmoplegia or
+partial ophthalmoplegia immediately from onset.
+
+Table~\ref{tab:patients/patients} lists the included patients and their
+diagnoses.
+
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \input{chapters/patients_table.tex}
+  \caption{Presentation of included patients including their diagnosis and
+  capabilities. (Trach.: patient underwent a tracheotomy, Cls.: classification according to~\textcite{Wolpaw2006}).
+  }
+  \label{tab:patients/patients}
+\end{table}
+
+\subsection{Eye tracking and eye motor examination}
+
+Self-reported eye motor abnormalities were recorded.
+Patients were asked for, the paralysis or inability to move in a given
+direction of one or both eyes, the inability to pursue an object to specific
+positions, discomfort or fatigue fixating at specific positions or in general
+when performing visual tasks and eye tremors while fixating, resting or
+pursuing.
+
+Additionaly, we implemented and performed the automated NeuroEye eye movement
+test proposed by~\textcite{Hassan2022}.
+This test is based on calibration-free eye tracking.
+\todo{say which part we used and which part not}
+\todo{motivation and text and references Juliette}
+\todo{Limited in what it can tell us (check paper)}
 \todo{include eye test document juliette}
+Table~\ref{tab:patients/eye} details their eye motor impairments and vision of
+included patients.
+Patient PA1 had the mildest impairment, only reporting fatigue when fixating
+for prolonged times.
+Eye motor function of subjects PC2 and PC3 were most severly affected.
+Patient PC2 was only able to look up and down, and patient PC3 only retained
+partial movement of the right eye, while the left eye was permanently closed.
+
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \input{chapters/patients_table_eye.tex}
+  \caption{Vision and eye motor impairment for included patients.
+  Eye motor impairment was assessed with a combination of self-reported issues
+  by the subject and the NeuroEye~\cite{Hasan2022} test.
+  LogMAR: lower is better.}
+  \label{tab:patients/eye}
+\end{table}
+
+
+Eye tracking throughout the experimental session was performed using the Tobii~\todo{model, make}
+portable eye tracker.
+\todo{describe analysis during experiment}
+
+\subsection{\Ac{bci} stimulation}
+
+The \ac{bci} stimulation procedure was based on the
+Hex-o-Spell~\cite{Treder2010} implementation presented
+by~\textcite{VanDenKerchove2024}.
+Similar to this study, the task consists of counting the flashes of a cued
+target among all flashing targets.
+We refer to section~\ref{sec:covert-align/stimulation} for the exact details.
+
+To adapt the interface for the patient setting, the number of blocks was
+decreased to 6 per \ac{vsa} setting.
+An additional \ac{free \ac{vsa}} condition was introduced.
+Here, the patient was instructed to perform the task as they deemed most
+comfortable.
+The cued \emph{split attention} setting proposed
+by~\textcite{VanDenKerchove2024} is not studied here, since we are interested
+in natural \ac{vsa} operation settings for gaze-impaired patients.
+If the patient was not fully paralyzed, they were instructed not to move the head.
+\Ac{isi} was increased to\tod{number} to decrease task difficulty.
+The experiment alsy started with a training block in each condition, where the
+patient was instructed with feedback on their performance to make sure they
+understood and were able to perform the task.
+
+\fourpanefig{%
+  \figpane{\includegraphics[width=\textwidth]{figures/patients/PD01a-obfuscated.jpg}}{A
+  patient with the stimulation and recording setup.}{fig:patients/photos/side}
+}{%
+  \figpane{\includegraphics[width=\textwidth]{figures/patients/PD01b-obfuscated.jpg}}{subcaption}{fig:patients/photos/front}
+}{%
+  the interface
+}{%
+  4
+}{%
+  caption
+}{fig:patients/photos}
+
+Mention change in ISI
+Mention less rounds
+
 \subsection{Data collection \& preprocessing}
+
+\todo{check checklist}
 \subsection{BCI Decoding}
-\todo{Define structure patient results/discussion}
+
 \section{Outcomes}
+
+\subsection{Eye tracking analysis}
+
+PC2 reported that he was unable to fixate the lower two targets, and th
+
+\fullpagefig{%
+  \includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
+}{%
+  Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}
+  conditions.
+  Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
+  near the middle of the screen, and PC4 near the bottom.
+}{%
+  fig:patients/gaze
+}
+
+
+\subsection{Decoding performance}
+
+\begin{figure}[t]
+  \input{figures/patients/fig_decode.pgf}
+\end{figure}
+\todo{check if percentages or 0-1 accuracy and roc-auc}
+
+For PB2 and PC4 performing covertly, was free decoding higher than covert
+decoding?
+
+\subsection{Cross-condition calibration}
+
+| indication of fatigue, cinsistency within free case
+| closer to overt or to covert by looking at eye tracker
+|
+| will learn
+| split up per target
+|
+| Findings:
+| 1. Some patients prefer to do covert (check performance results for them),
+|    analyze distance to target
+| 2. covert attention can be improved using WCBLE for all subjects, but not to
+| the
+|    level of overt covert attention works best when training in overt
+| attention
+| s this also true for patients preferring covert?
+| 3. free performs on par (in all subjects?), opens debate of necessity of
+|    gaze-independence BCIs
+| 4. covert attention works best when training in overt attention. Is this also
+|    true for patients preferring covert?
+
+2024-09-18 04:39:35 PM can more overt attention epochs closer to
+| mention problem can't know if patient shifted or eye tracker shifted
+| (difficult mobile gaze tracker)
+| overt lower because can't perform
+
 \section{Discussion}
+
+patients 2 are progressing towards 3
+
+Limitations
+
+Limited sample of patients, FA maybe not most interesting group to represent
+real BCI users
+
+interpreting eye tracker results hard because of inaccuracy eye tracker for eye
+motor impaired patients. Redo with more advanced stationary eye tracker and
+head rest.
+
+advanced eye tracking equipment is necessary
+
+user comfort was not objectively measured using established questionnaires
+
+Further work
+Comparing with a sample of non-gaze impaired patients with  neuromuscular
+disability DMD
+On-line session with these patients
+
+In a follow up study, we aim to revisit these patients with an on-line system
+to be able to calculate a realistic \ac{itr} and measure their user experience.
+
+\section{Conclusion}
+
+\todo{https://sci-hub.ru/https://ieeexplore.ieee.org/abstract/document/1642754}
+\todo{https://www.sciencedirect.com/science/article/abs/pii/B9780444639349000020}
+\todo{BCI principles and practice chapter 19}
+\todo{https://www.nature.com/articles/s44222-024-00239-5}

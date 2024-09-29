@@ -1,10 +1,25 @@
+\epigraph{%
+  ``\elide\ This begs the question: if a patient had reliable control
+  over their eye gaze, why would one aim to facilitate communication with that
+  patient via a BCI? It would be far simpler and more efficient to use an
+  eye-tracking system.
+  And even if a BCI were the preferred or only available option for some reason,
+  designs requiring eye gaze control could not be used
+  by patients with severe motor impairment, as these patients
+  cannot direct their gaze.
+  Because these are the patients who have the greatest need for BCIs, it is
+  important that accurate gaze-independent BCIs exist.''
+}{%
+  \textcite{Egan2017}
+}
+
 \emph{Parts of Sections~\ref{sec:gaze-dependence} and~\ref{sec:gaze-independence}
 have been published by \textcite{VanDenKerchove2024}.}
 
 \todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
 
-\section{The gaze-dependence problem}
+\section{The gaze-dependence problem}%
 \label{sec:gaze-dependence}
 
 \todo{define eye motor issues}
@@ -59,6 +74,8 @@ on their ability to operate a visual \ac{bci}.
     \label{tab:incidence}
 \end{table}
 \todo{include FA}
+\todo{cite Abnormal Oculomotor Functions in Amyotrophic Lateral Sclerosis 10.3988/jcn.2018.14.4.464}
+\todo{cite Neuro-Ophthalmologic Manifestations of Amyotrophic Lateral Sclerosis}
 
 Among the most affected patients are stroke patients~\cite{Pollock2011}, mostly
 due to brainstem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
@@ -156,24 +173,25 @@ component.
 However, a critical challenge arises when users rely solely or in part on covert
 VSA, which involves directing visuospatial attention without corresponding eye gaze.
 In these cases, classical solutions often fall short of the widely accepted
-80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,RonAngevin2019} deemed necessary for a comfortable user
-experience~\cite{Neeling2019}, calling for alternative, gaze-independent
+80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,RonAngevin2019} deemed necessary for a comfortable user experience~\cite{Neeling2019}, calling for alternative, gaze-independent
 solutions.
+
+To summarize: for patients with eye motor impairment, gazing directly at a screen target may
+be uncomfortable, impractical, or even impossible.
+Hence, assistive devices that rely on eye tracking are often inefficient for
+them.
+Consequently, while \ac{bci}s hold great promise for these individuals, conventional
+gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
+control.
+Therefore, the development of decoding strategies that account for covert
+VSA becomes crucial in the pursuit of high-performance gaze-independent
+\ac{bci}s.
 
 In this work, we will use the term \emph{gaze-independent} meaning
 \emph{‘dealing explicitly with the fact that a user cannot control their
 gaze.'}
 In the context of a visual \ac{bci}, this means that the user's
 visuospatial attention and their gaze do not necessarily coincide.
-For patients with eye motor impairment, gazing directly at a screen target may
-be uncomfortable, impractical, or even impossible.
-Hence, assistive devices that rely on eye tracking are often inefficient for
-them.
-Consequently, while \ac{bci}s hold great promise for these individuals, conventional
-gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
-control. Therefore, the development of decoding strategies that account for covert
-VSA becomes crucial in the pursuit of high-performance gaze independent
-\ac{bci}s.
 
 
 
@@ -192,7 +210,8 @@ with invasive recording.
 Non-visual reactive paradigms that use e.g. auditory and somatosensory
 stimulation do not rely on gaze redirection exist but also result in lower information transfer
 rates compared to visual paradigms.
-Furthermore, they can suffer from increased mental effort in operation and user-dependent variability~\cite{Reichert2020b}.
+Furthermore, they can suffer from increased mental effort in operation and
+user-dependent variability~\cite{Severens2014,Reichert2020b}.
 \todo{insert table from riccio in text as numbers, not as table}
 
 Secondly, current visual stimulation paradigms can be optimized, e.g. such that
@@ -332,6 +351,7 @@ Using a hexagonal lay-out interface, similar to the visual Hex-o-Spell proposed
 \textcite{Treder2010}, we present six flashing circular targets
 (without letters or symbols) to the participant while the EEG and
 electro-oculogram (EOG) are recorded, as well as eye gaze using eye tracking.
+\todo{chosen because gaze-independent optimized and Peters2020}
 
 The interface can be operated in different VSA conditions as illustrated in
 Figure~\ref{fig:gaze-vsa}.
