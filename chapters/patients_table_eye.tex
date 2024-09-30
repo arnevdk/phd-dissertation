@@ -1,13 +1,30 @@
- \begin{tabular}{lll}
-  \toprule
-  \textbf{ID} & \textbf{Oculomotor impairment} & \textbf{Vision (LogMAR)} \\ \midrule
-  PA1  & fixation fatigue & 0.0 \\
-  PB1  & impaired pursuit, fixation fatigue, fixation discomfort, tremor & 0.0 \\
-  PB2  & fixation fatigue, fixation discomfort, tremor & 0.6 \\
-  PB4  & impaired pursuit, fixation fatigue, fixation discomfort, tremor & 0.2 \\
-  PC2  & \makecell[l]{partial ophthalmoplegia (up-down preserved), \\ fixation
-  fatigue, fixation discomfort, tremor} & \makecell[l]{0.0, diplopia corrected \\ with prism glass)} \\
-  PC3  & \makecell[l]{right ophthalmoplegia, left partial ophthalmoplegia, \\ fixation fatigue, fixation discomfort, tremor} & 0.7, right eye closed \\
-  PC4  & deviation of the left eye & 0.6 \\
-  \bottomrule
+% \begin{tabular}{lll}
+%  \toprule
+%  \textbf{ID} & \textbf{Oculomotor impairment} & \textbf{Vision (LogMAR)} \\ \midrule
+%  PA1  & fixation fatigue & 0.0 \\
+%  PB1  & impaired pursuit, fixation fatigue, fixation discomfort, tremor & 0.0 \\
+%  PB2  & fixation fatigue, fixation discomfort, tremor & 0.6 \\
+%  PB4  & impaired pursuit, fixation fatigue, fixation discomfort, tremor & 0.2 \\
+%  PC2  & \makecell[l]{partial ophthalmoplegia (up-down preserved), \\ fixation
+%  fatigue, fixation discomfort, tremor} & \makecell[l]{0.0, diplopia corrected \\ with prism glass)} \\
+%  PC3  & \makecell[l]{right ophthalmoplegia, left partial ophthalmoplegia, \\ fixation fatigue, fixation discomfort, tremor} & 0.7, right eye closed \\
+%  PC4  & deviation of the left eye & 0.6 \\
+%  \bottomrule
+%\end{tabular}
+\footnotesize
+\let\oldarraystretch\arraystretch
+\renewcommand{\arraystretch}{2}
+\newcommand{\skill}{\cellcolor{lightgray}}
+\newcommand{\noskill}{\cellcolor{accent1}\textcolor{muteblack}{\BigCross}}
+\newcommand{\snoskill}{\cellcolor{accent2}\textcolor{muteblack}{\BigDiamondshape}}
+\begin{tabular}{r|ccccccc}
+                          & PA1      & PB1      & PB2       & PB4      & PC2       & PC3       & PC4 \\ \hline
+  Visual fixation         & \noskill & \noskill & \noskill  & \noskill & \noskill  & \noskill  & \noskill \\
+  Eyelid function         & \skill   & \skill   & \skill    & \skill   & \noskill  & \noskill  & \skill \\
+  Ocular motility         & \skill   & \noskill & \skill    & \noskill & \snoskill & \snoskill & \noskill\\
+  Binocular vision        & \skill   & \skill   & \skill    & \skill   & \noskill  & \snoskill & \snoskill \\
+  Field of vision         & \skill   & \skill   & \skill    & \skill   & \skill    & \noskill  & \noskill \\
+  Visual perception       & \skill   & \skill   & \skill    & \skill   & \skill    & \skill    & \skill\\
+  Involuntary movement    & \skill   & \noskill & \noskill  & \noskill & \noskill  & \noskill  & \skill \\ \hline
+  Visual acuity (logMAR)  & 0.0      & 0.0      & 0.6       & 0.2      & 0.0       & 0.7  & 0.6\\
 \end{tabular}
