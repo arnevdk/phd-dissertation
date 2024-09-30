@@ -1,4 +1,5 @@
 \section{Introduction}
+\todo{rename patient to bci user and participant}
 
 Communication BCIs have a target population consisting of patients in various
 stages of paralysis or \ac{lis}, often suffering from oculomotor impairments.
@@ -9,9 +10,8 @@ i.e., perform overt \ac{vsa}.\todo{cite some visual gaze-independent bci}
 They might more naturally operate in covert \ac{vsa}, where the gaze and
 \ac{vsa} do not coincide.
 Several studies show that performance drops when not fixating the intended
-target~\cite{Brunner2010, Frenzel2011,
-Treder2010, RonAngevin2019, VanDenKerchove2024} \todo{[2, 1], our
-study}, necessitating gaze-independent solutions.
+target~\cite{Brunner2010, Frenzel2011, Treder2010, RonAngevin2019,
+VanDenKerchove2024}, necessitating gaze-independent solutions.
 
 Usually, they aim to improve gaze-independent \ac{bci} by optimizing
 performance in cued covert \ac{vsa}.
@@ -140,8 +140,11 @@ Motor Impairment: A Comparison of Brain-Computer Interfacing and Eye Tracking}
   \centering
   \footnotesize
   \input{chapters/patients_table.tex}
-  \caption{Presentation of included patients including their diagnosis and
-  capabilities. (Trach.: patient underwent a tracheotomy, Cls.: classification according to~\textcite{Wolpaw2006}).
+  \caption[Presentation of included patients including their diagnosis and
+  capabilities.]{Presentation of included patients including their diagnosis and
+  capabilities.
+  (Trach.: patient underwent a tracheotomy, Cls.: classification according
+  to~\textcite{Wolpaw2006}).
   }
   \label{tab:patients/patients}
 \end{table}
@@ -179,13 +182,13 @@ partial movement of the right eye, while the left eye was permanently closed.
   \centering
   \footnotesize
   \input{chapters/patients_table_eye.tex}
-  \caption{Vision and eye motor impairment for included patients.
+  \caption[Vision and eye motor impairment for included patients.]{%
+  Vision and eye motor impairment for included patients.
   Eye motor impairment was assessed with a combination of self-reported issues
-  by the subject and the NeuroEye~\cite{Hasan2022} test.
+  by the subject and the NeuroEye~\cite{Hassan2022} test.
   LogMAR: lower is better.}
   \label{tab:patients/eye}
 \end{table}
-
 
 Eye tracking throughout the experimental session was performed using the Tobii~\todo{model, make}
 portable eye tracker.

@@ -1,0 +1,186 @@
+%
+%Equations~\ref{eq:hoda-backward} and~\ref{eq:hoda-forward} can be expressed in fuction
+%of sample $n$ as
+%\begin{subequations}
+%	\label{eq:proj-n}
+%	\begin{align}
+%		\ten{G}(n) & = \ten{X}(n)\mmpr{\mat{U}}
+%		\label{eq:proj-back-n}                                                   \\
+%		\ten{X}(n) & = \ten{G}(n)\mmpr{\mat{A}^\intercal}+\ten{\mathbfcal{E}}(n)
+%		\label{eq:proj-fwd-n}
+%	\end{align}
+%\end{subequations}
+%%We write Equations~\ref{eq:proj-back-n} and~\ref{eq:proj-fwd-n} respectively
+%%as their unfolded multi-mode products for mode $k$
+%%\begin{subequations}
+%%	\label{eq:proj-unfold}
+%%	\begin{align}
+%%		%https://www5.in.tum.de/persons/huckle/tensor-kurs_1.pdf
+%%		\mat{G}_k(n) & =
+%%		\mat{U}_n\mat{X}_n(n)\left(\mat{U}_1\otimes\mat{U}_2\otimes\cdots\otimes\mat{U}_{k-1}\otimes\mat{U}_{k+1}\otimes\cdots\otimes\mat{U}_K\right)
+%%		\label{eq:proj-back-unfold} \\
+%%		\mat{X}_k(n) & =
+%%		\mat{A}_n^\intercal\mat{G}_n(n)\left(\mat{A}^\intercal_1\otimes\mat{A}^\intercal_2\otimes\cdots\otimes\mat{A}^\intercal_{k-1}\otimes\mat{A}^\intercal_{k+1}\otimes\cdots\otimes\mat{A}^\intercal_K\right)
+%%		+ \mat{\mathbfcal{E}}_k(n)
+%%		\label{eq:proj-fwd-unfold}
+%%	\end{align}
+%%\end{subequations}
+%%According to Theorem 1 in~\cite{Haufe2014}, the activation patterns defining the
+%%unfolded forward model in Equation~\ref{eq:proj-fwd-unfold} corresponding to the
+%%unfolded backward model in Equation~\ref{eq:proj-back-unfold} is given by
+%%\begin{align}
+%%	\mat{A}_k = \mat{\Sigma}_{\mat{X}_k}\mat{U}_k
+%%\end{align}
+%Let us now express these backward and forward models in their vectorized forms:
+%\begin{subequations}
+%	\label{eq:proj-n}
+%	\begin{align}
+%		\vec{g}(n) & = \vec{x}(n)\left(\bigotimes_k^K\mat{U}_k\right)
+%		\label{eq:proj-back-vec}                                                  \\
+%		\vec{x}(n) & = \vec{g}(n)\left(\bigotimes_k^K\mat{A}_k^\intercal\right) +
+%		\vec{\boldsymbol\epsilon}(n)
+%		\label{eq:proj-fwd-vec}
+%	\end{align}
+%\end{subequations}
+%Since $\bigotimes_k^K\mat{U}_k$ is a Kronecker product of orthogonal matrices,
+%which itself is orthogonal, the activation pattern
+%$\mat{B}\in\mathbb{R}^{\prod_k^KD_k\times\prod_k^Kr_k} $ of a vectorized forward model
+%corresponding to Equation~\ref{eq:proj-back-vec} is given according
+%to~\cite{Haufe2014} as
+%\begin{align*}
+%	\mat{B} & =
+%	\mat{\Sigma}_\vec{x}\left(\bigotimes_k^K\mat{U}_k\right)\mat{\Sigma}_\vec{g}^{-1} \\
+%	        & =
+%	\mat{\Sigma}_\vec{x}\left(\bigotimes_k^K\mat{U}_k\right)\left[\left(\bigotimes_k^K\mat{U}_k\right)^\intercal\mat{\Sigma_\vec{x}}\left(\bigotimes_k^K\mat{U}_k\right)\right]^{-1}
+%\end{align*}
+%
+%Because \textsc{hoda} assumes the data covariance can be expressed as a
+%Kronecker product of mode-$k$ covariances
+%$\mat{\Sigma}_{\mat{X}_k}$\todo{citation  needed}, we get
+%\begin{align*}
+%	\mat{B} & =
+%	\left(\bigotimes_k^K\mat{\Sigma}_{\mat{X}_k}\right)\left(\bigotimes_k^K\mat{U}_k\right)
+%  \\
+%          & \quad \cdot
+%          \left[\left(\bigotimes_k^K\mat{U}_k\right)^\intercal\left(\bigotimes_k^K\mat{\Sigma}_{\mat{X}_k}\right)\left(\bigotimes_k^K\mat{U}_k\right)\right]^{-1}
+%	\\
+%	        &
+%	=\left(\bigotimes_k^K\mat{\Sigma}_{\mat{X}_k}\right)\left(\bigotimes_k^K\mat{U}_k\right)\left(\bigotimes_k^K\mat{U}_k^\intercal\mat{\Sigma}_{\mat{X}_k}\mat{U}_k\right)^{-1} \\
+%	        &
+%	=\left(\bigotimes_k^K\mat{\Sigma}_{\mat{X}_k}\right)\left(\bigotimes_k^K\mat{U}_k\right)\left[\bigotimes_k^K\left(\mat{U}_k^\intercal\mat{\Sigma}_{\mat{X}_k}\mat{U}_k\right)^{-1}\right]
+%	\\
+%	        & = \bigotimes_k^K \mat{\Sigma}_{\mat{X}_k}
+%	\mat{U}_k\left(\mat{U}_k^\intercal\mat{\Sigma}_{\mat{X}_k}\mat{U}_k\right)^{-1}
+%\end{align*}
+%and finally
+%\begin{align*}
+%  \mat{A}_k = \mat{\Sigma}_{\mat{X}_k}
+%	\mat{U}_k\left(\mat{U}_k^\intercal\mat{\Sigma}_{\mat{X}_k}\mat{U}_k\right)^{-1}
+%\qquad\blacksquare
+%\end{align*}
+
+
+
+%Our proof follows the structure laid out in \cite{Haufe2014} (Appendix A).
+%In the general case when $r_k<D_k$, $\mat{U}_k$ are not square and hence non-invertible.
+%The backward and forward projections given by
+%Equations~\ref{eq:hoda-backward} and~\ref{eq:hoda-forward} can be expressed in fuction
+%of sample $n$ as
+%\begin{equation}
+%	\ten{G}(n) = \ten{X}(n)\mmpr{\mat{U}}
+%	\label{eq:proj-back-n}
+%\end{equation}
+%and
+%\begin{equation}
+%	\ten{X}(n) = \ten{G}(n)\mmpr{\mat{A}^\intercal}+\ten{\mathbfcal{E}}(n)
+%	\label{eq:proj-fwd-n}
+%\end{equation}
+%respectively, with unkown error term $\ten{\mathbfcal{E}}(n)$.
+%
+%Plugging the forward projection in Equation~\ref{eq:proj-fwd-n} into the backward projection in
+%Equation~\ref{eq:proj-back-n} gives
+%\begin{align*}
+%	\ten{G}(n) & = \ten{X}(n)\mmpr{\mat{U}}                           \\
+%	           & = (\ten{G}(n)\mmpr{\mat{A}^\intercal} +
+%	\ten{\mathbfcal{E}}(n))\mmpr{\mat{U}}                             \\
+%	           & = \ten{G}(n)\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}} +
+%	\ten{\mathbfcal{E}}(n)\mmpr{\mat{U}}
+%\end{align*}
+%Taking the tensor outer product on the left with $\ten{G}$ yields
+%\begin{align*}
+%	\ten{G}(n)\otimes\ten{G}(n) & = \ten{G}(n)\otimes\ten{G}(n)\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}} \\
+%	                            & \quad +	\ten{G}(n)\otimes\ten{\mathbfcal{E}}(n)\mmpr{\mat{U}}
+%\end{align*}
+%and when taking the expected value over samples
+%\begin{align*}
+%	 & \ev{\ten{G}(n)\otimes\ten{G}(n)}{n}                                                \\
+%	 & \quad = \ev{\ten{G}(n)\otimes\ten{G}(n)\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}}}{n} \\
+%	 & \quad\quad + \ev{\ten{G}(n)\otimes\ten{\mathbfcal{E}}(n)\mmpr{\mat{U}}}{n}       \\
+%	 & \quad = \ev{\ten{G}(n)\otimes\ten{G}(n)}{n}\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}} \\
+%	 & \quad\quad +  \ev{\ten{G}(n)\otimes\ten{\mathbfcal{E}}(n)}{n}\mmpr{\mat{U}}
+%\end{align*}
+%To find a forward projection that is corresponding to the backward projection,
+%ensuring any variation explained by the projections is maximally captured in the
+%activation patterns, we assume
+%\begin{equation}
+%	\ev{\ten{G}(n)\otimes\ten{\mathbfcal{E}}(n)}{n} = 0
+%	\label{eq:uncorr}
+%\end{equation}
+%yielding
+%\begin{align*}
+%	 & \ev{\ten{G}(n)\otimes\ten{G}(n)}{n}                                                \\
+%	 & \quad = \ev{\ten{G}(n)\otimes\ten{G}(n)}{n}\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}}
+%\end{align*}
+%Since the covariance tensor of the latent tensor,
+%$\ev{\ten{G}(n)\otimes\ten{G}(n)}{n}$,
+%has full tensor rank due to the linear independance of columns in projection
+%matrices $\mat{U}_k$, and it exists in $\mathbb{R}^{r_1\times r_1\times
+%		r_2\times \ldots\times r_K\times r_1\times r_2\times \ldots\times r_K}$, its tensor inverse exists and we derive
+%\begin{equation}
+%	\ten{I} = \ten{I}\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}}
+%	\label{eq:identity}
+%\end{equation}
+%
+%Plugging in the backward projection in Equation~\ref{eq:proj-back-n} into the
+%forward projection in Equation~\ref{eq:proj-fwd-n} gives
+%\begin{align*}
+%	\ten{X}(n) & = \ten{G}(n)\mmpr{\mat{A^\intercal}}+\ten{\mathbfcal{E}}(n)   \\
+%	           & = \ten{X}(n)\mmpr{U}\mmpr{A^\intercal}+\ten{\mathbfcal{E}}(n)
+%\end{align*}
+%From here, we can write $\ten{\mathbfcal{E}}(n)$ as
+%\begin{align*}
+%	\ten{\mathbfcal{E}}(n) & = \ten{X}(n) -	\ten{X}(n)\mmpr{\mat{U}}\mmpr{\mat{A}^\intercal} \\	                       & =	\ten{X}(n)(\ten{I}-\ten{I}\mmpr{\mat{U}}\mmpr{\mat{A}^\intercal})
+%\end{align*}
+%If we mutiply both sides with matrices $\mat{U}_k$, we obtain
+%\begin{align*}
+%	 & \ten{\mathbfcal{E}}(n)\mmpr{\mat{U}}                                                                   \\
+%	 & \quad =  \ten{X}(n)(\ten{I}-\ten{I}\mmpr{\mat{U}}\mmpr{\mat{A}^\intercal})\mmpr{\mat{U}}              \\
+%	 & \quad =	\ten{X}(n)(\ten{I}\mmpr{\mat{U}}-\ten{I}\mmpr{\mat{U}}\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}})
+%\end{align*}
+%and by Equation~\ref{eq:identity}
+%\begin{equation}
+%	\ten{\mathbfcal{E}}(n)\mmpr{\mat{U}} =
+%	\ten{X}(n)(\ten{I}\mmpr{\mat{U}}-\ten{I}\mmpr{\mat{U}})
+%	= 0
+%\end{equation}
+%
+%
+%From Equations~\ref{eq:proj-fwd-n} and~\ref{eq:uncorr}
+%\begin{align*}
+%	\ten{\Sigma}_{\ten{X}} & =	\ten{\Sigma}_{\ten{G}}\times_{1,2,\ldots,K}\{\mat{A}^\intercal\}
+%	\times_{K+1,K+2,\ldots,2K}\{\mat{A}^\intercal\}                                             \\
+%	                       & \quad+ \ten{\Sigma}_{\ten{\mathbfcal{E}}}
+%\end{align*}
+%leading to
+%\begin{align*}
+%	 & \ten{\Sigma}_{\ten{X}}\mmpr{\mat{U}}\ten{\Sigma}_{\ten{G}}^{-1}                                                 \\
+%	 & \quad =(\{\mat{A}^\intercal\}\times\ten{\Sigma}_{\ten{G}}\mmpr{\mat{A}^\intercal} +
+%	\ten{\Sigma}_{\ten{\mathbfcal{E}}})\mmpr{\mat{U}}\ten{\Sigma}_{\ten{G}}^{-1}                                       \\
+%	 & \quad=
+%	\{\mat{A}^\intercal\}\times\ten{\Sigma}_{\ten{G}}\mmpr{\mat{A}^\intercal}\mmpr{\mat{U}}\ten{\Sigma}_{\ten{G}}^{-1} \\
+%	 & \quad\quad + \ten{\Sigma}_{\ten{\mathbfcal{E}}}\mmpr{\mat{U}}\ten{\Sigma}_{\ten{G}}^{-1}                      \\
+%	 & \quad= \{\mat{A}^\intercal\}\times\ten{\Sigma}_{\ten{G}}\ten{\Sigma}_{\ten{G}}^{-1}
+%	+ \ten{\Sigma}_{\ten{\mathbfcal{E}}}\mmpr{\mat{U}}\ten{\Sigma}_{\ten{G}}^{-1}                                      \\
+%	 & \quad= \ten{I}\mmpr{\mat{A}^\intercal} + 0\ten{\Sigma}_{\ten{G}}^{-1}                                          \\
+%	 & \quad= \ten{I}\mmpr{\mat{A}^\intercal}
+%\end{align*}

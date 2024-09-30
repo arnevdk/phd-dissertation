@@ -1,10 +1,12 @@
-\todo{comments liesel paradigms}
+\todo{comments liesel paradigms})
 \todo{spellcheck}
 \todo{are all acronyms defined}
 \todo{fix all latex warnings to make sure no refs are missing (or grep on that
-specific warning}
+specific warning)}
 \todo{uniform ref or autoref}
 \todo{don't capitalize figure, table, algorithm,...}
+\todo{define short captions for tables and figures}
+\todo{fix lacheck/chktex notifications}
 
 People suffering from severe paralysis or disability due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
@@ -15,7 +17,7 @@ making them more independent?
 
 The most basic ability any independent human being needs, is interaction with
 their environment.
-In it's core essence, this is the ability to communicate your intentions,
+In its core essence, this is the ability to communicate your intentions,
 emotions, frustrations or thoughts such that they might be acted on.
 For an able-bodied person, physical interaction happens through body movements
 while communication is usually done through speech and body language
@@ -23,7 +25,7 @@ Both require sending signals through the body's nervous system to control
 muscles.
 Not everyone has this capability.
 
-The key problem for heavily paralyzed patients is that the mind wants to go
+The key problem for severely paralyzed patients is that the mind wants to go
 where the body can't follow.
 Couldn't we therefore design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of
@@ -31,20 +33,21 @@ technology, like a robot arm or speech synthesizer, interacting with the world
 on the user's behalf.
 Such a device is the \ac{bci}\footnote{Sometimes also
 termed brain-machine interface (BMI) when coupled to a physical actuator, like
-a robot arm or an exoskeleton. The term \ac{bci} is usually preferred for
-assistive technology and communication devices.}.
-A \ac{bci} directly couples actions in the `real world' to the mental state of
+a robot arm or an exoskeleton.
+The term \ac{bci} is usually preferred for
+assistive technology and communication devices.
+},
+a system that directly couples actions in the `real world' to the mental state of
 the user.
-%A \ac{bci} reads your mind.
 
 Starting in the 1970's from methods to establish basic communication from
 minimal brain activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
 into sophisticated interaction schemes that restore or enhance many capabilities
 by bypassing defective parts of the nervous or muscle system.
-By now, classic \acp{bci} methods have matured outside the lab setting and can be
-used as assistive communication technology by patients with impaired
-speech~\cite{Wolpaw2018}.
-Impressive cutting edge examples of experimental \acp{bci} include a brain-spine
+By now, classic \acp{bci} methods are starting to mature outside the lab
+setting and can be used as assistive communication technology by patients with
+impaired speech~\cite{Wolpaw2018,Milekovic2018}.
+Impressive cutting edge examples of experimental use include a brain-spine
 interface allowing a paraplegic patient to walk again\cite{Lorach2023},
 a \ac{bci} translating internal speech to a facial avatar speaking the imagined
 text~\cite{Metzger2023}, and fast communication through decoding imagined
@@ -52,25 +55,27 @@ handwritten symbols~\cite{Willett2021}.
 Recently, the idea has also gained popular traction through Elon Musk's
 NeuraLink~\cite{Musk2019} initiative, which imagines a multipurpose \ac{bci}.
 
-\todo{put focus on communication BCI}
+In general, devices processing direct inputs from the central nervous system
+are useful for rehabilitation and medical diagnosis or treatment.
+Additionally, they bring a new paradigm to human-computer interaction,
+especially when paired with virtual or augmented reality.\todo{cite}
+Ultimatly, they have always been especially promising as assistive technology for
+paralyzed patients limited in their communication ability.
+It is this \ac{bci} controlled communication is where our focus lies,
+as it offers a transformative means for individuals with severe motor
+impairments to regain functional independence to write and speak through
+assistive technology.
+This allows them to talk to their loved ones and caregivers, exercise hobbies
+and makes many aspects of daily life more accessible.
+
 
 \section{A direct interface to the brain}
 
-Brain-computer interfacing is an entertaining subject with many futuristic and more established
-applications.
-Devices processing direct inputs from the central nervous system can be
-useful for rehabilitation and medical diagnosis or treatment, but
-have always been especially promising as assistive technology for
-paralyzed patients limited in their communication ability.
-Furthermore, they bring a new paradigm to human-computer interaction,
-especially when paired with virtual or augmented reality.
-
 Simply put, a \ac{bci} records the user's brain activity, extracts some
 relevant output from this brain activity and couples this output to a function
-of a device.\todo{refer to fig loop}
+of a device as illustrated in Figure~\ref{fig:bci/loop}
 Optionally, the user can then observe the action of the device and adapt their
-behavior or brain activity accordingly, closing the loop
-\footnote{%
+behavior or brain activity accordingly, closing the loop\footnote{%
   \textcite{BCISociety2024} has recently formalized this into the
   following definition:
   \it``A brain-computer interface is a system that measures brain activity and
@@ -131,7 +136,7 @@ that the brain response evoked by attended stimuli is different of those
 unattended,
 and determine which one of a set of targets was attended.
 In turn, this can be coupled to an action, like typing the inteded letter A or B
-in Figure~\cite{fig:bci/loop}.
+in Figure~\ref{fig:bci/loop}.
 The \ac{bci} paradigm comprises, if applicable, the manner of stimulation and the
 exact task performed by the user, and is often closely linked to the manner of
 feedback in the case of a closed-loop system.
@@ -141,7 +146,6 @@ paradigms based on different systems in the brain.
 The previous points to another component of a successful \ac{bci}: the specific
 brain signatures related to our paradigm need to be identified within the recorded
 activity.
-\todo{preprocessing}
 This is commonly referred to as \emph{feature extraction}.
 In other words, the signal needs to be interpreted \emph{in function of} the
 task we want our \ac{bci} to perform.
@@ -157,13 +161,11 @@ environmental activity.
 Compare this to trying to listen to a single speaker at a noisy party where
 everyone is shouting over each other.
 Some obvious sources of interference can be easily filtered out by
-\emph{preprocessing}, but the problem of retrieving or \emph{decoding} only the
+\emph{preprocessing} (see Section~\ref{sec:bci/preprocessing}), but the problem of retrieving or \emph{decoding} only the
 relevant signal is generally hard.
 Nevertheless, we can attempt to solve it through supervised machine learning.
 Useful information that is encoded in the brain signal by the paradigm,
-can be retrieved from it by the decoder.\todomvh{the decoder needs to take into
-account the control facilities of the application (degrees of freedom, serial
-/parallel nature, reactive/active...).}
+can be retrieved from it by the decoder.
 Section~\ref{sec:bci/decoding} takes a closer look at some common decoding
 techniques.
 
@@ -171,17 +173,17 @@ Finally, the loop can be closed by coupling this to a
 device or actuator.
 There are two aspects to this.
 On the one hand, the \ac{bci} gains its function by allowing the user to interact
-with their environment.\todo{put focus on communication BCI}
+with their environment.
+For a communication system, this means coupling the decoded information to
+e.g.\ a virtual keyboard or speech synthesizer.
 On the other hand, the actions performed by the \ac{bci} can themselves alter
 the user's cognitive state or brain activity, creating an adaptive system.
 A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
 Examples of this are deep brain stimulation to mitigate the symptoms of
 Parkinson's disease, or the cochlear implant as a hearing prosthesis.
 More indirectly, modulation can be achieved by sensory stimulation.
-This involves specific, paradigm-related sensory input, like haptic
-feedback\todomvh{or tactile feedback:S.N. Flesher et al., “A brain-computer
-interface that evokes tactile sensations improves robotic arm control,”
-Science, vol. 372, no. 6544, pp. 831-836, 2021. } for movement \ac{bci}, or simply presenting selected actions
+This involves specific, paradigm-related sensory input, like tactile
+feedback for movement \ac{bci}~\cite{Flesher2021}, or simply presenting selected actions
 back to the user.
 The user's brain will then adapt through reinforcement learning, causing
 changes in behavior or strategy.
@@ -191,23 +193,22 @@ rehabilitation applications.
 \todo{is every section referred to?}
 
 \todo{wrap-up}
-
-\todo{check excercise session presentation}
+\todo{make shorter}
 
 \section{Recording technologies}
 \label{sec:bci-recording}
-\todo{make sure every part ends with a motivation for why we chose our
-approach}
-
 \todo{why is spatial resolution a good thing}
 \todo{explain with each method what it actually is (e.g.\ electrodes placed
 at...)}
+\todo{make sure every part ends with a short summary motivation for why we chose our
+approach}
+
 
 The brain's activity can be recorded using various neuroimaging
 technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance imaging
 (fMRI) to more portable technologies like acoustic signals obtained by functional ultrasound imaging
-(fUS)~\cite{Zheng2023}\todomvh{non-invasive but not necessarily fUS...} and near-infrared spectroscopy
+(fUS)~\cite{Zheng2023} and near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
 The technologies above all measure the hemodynamic signal, which only indirectly
 reflects brain activity.
@@ -240,8 +241,6 @@ involved with brain surgery.
 }{%
   fig:bci/recording
 }
-\todo{find better figure with permission to reuse and without unnecessary
-modalities}
 
 Specifically, invasive methods come with an increased \emph{spatial resolution},
 meaning they can extract a signal from a specific brain region or even a set of
@@ -254,7 +253,8 @@ action potential spikes.
 They come in single-electrode form, or, more popularly, in microelectrode
 arrays.
 Well-known examples are the Utah array~\cite{Maynard1997} and the more recent
-NeuraLink implant~\cite{Musk2019}.\todomvh{+ Neuropixels 2}
+NeuraLink implant~\cite{Musk2019} and IMEC's Neuropixels
+2.0~\cite{Steinmetz2021}.
 
 Larger implanted electrodes are referred to as intracranial \ac{eeg} (i\ac{eeg}).
 Depth electrodes such as those used in stereo-ac{eeg} \ac{bci}~\cite{Wu2024} tasks
@@ -269,10 +269,10 @@ higher number of smaller electrodes per surface area allow for more precise
 measurements.
 
 Some impressive recent breakthroughs in speech and motor \ac{bci} for communication
-\todo{cite} have been realized using
+have been realized using
 invasive mictroelectrode arrays~\cite{Willett2021} and $\mu$\Ac{ecog}\cite{Metzger2023}.
 Furthermore, recent advances in recording technology focus on improving implant
-durability and resolution\todo{cite flexible}, and on balancing the invasiveness
+durability and resolution~\cite{Steinmetz2021}, and on balancing the invasiveness
 tradeoff by finding new, minimally invasive ways to record from closer to the cortex.
 The Synchron Stentrode~\cite{Mitchell2023}, for instance, can be delivered
 through the bloodstream via a catheter, removing the need for open brain
@@ -334,7 +334,7 @@ strong, informative brain signals using a suited \ac{bci} paradigm, and on the
 other hand pick a suited decoder which can isolate the signal of interest and
 filter out the noise.
 
-\section{\ac{bci} paradigms}
+\section{\Ac{bci} paradigms}
 \label{sec:bci/paradigms}
 
 The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
@@ -449,26 +449,65 @@ along multiple dimensions at once.
 coding in \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an
 efficient \ac{bci} where one of 200 targets can be accurately selected with
 only 800ms of stimulation.
-\section{Decoders}
+
+\section{Preprocessing}
+\label{sec:bci/preprocessing}
+\todo{preprocessing}
+EEG preprocessing is a critical step in brain-computer interface (BCI) systems, as it
+significantly improves the quality of the recorded data for subsequent analysis and
+classification. Common preprocessing techniques in BCI systems include
+rereferencing, band-pass and notch filtering, and \ac{ica}.
+
+Rereferencing is an essential first step, where the potential of each EEG channel is
+recalculated relative to a common reference point, such as the average of all
+electrodes (common average reference) or a selected neutral set of electrodes.
+This technique helps reduce noise common across all channels, improving signal clarity
+and enhancing the accuracy of subsequent processing steps.
+
+Band-pass filtering is then usually applied to isolate the frequency ranges of interest by
+removing frequencies that are too high or too low to contain relevant neural signals.
+Band-pass filters eliminate slow drifts and high-frequency noise, such as
+muscle artifacts or environmental electrical interference, improving the
+\ac{snr}.
+Additionally, notch filtering can be  used to remove strong power line
+interference\footnote{Typically at 50Hz in Europe}.
+This interference can heavily contaminate EEG recordings and even leak through
+when outside the passband of a previous filter.
+Notch filtering efficiently attenuates this narrowband noise without affecting
+the surrounding frequencies.
+
+Finally, to address artifacts like eye blinks and saccades that can significantly
+distort the EEG signal, \ac{ica} is
+performed~\cite{Delorme2007}.
+\Ac{ica} is a blind source separation technique that decomposes the EEG data into
+statistically independent components. Components corresponding to eye movements
+, blinks and other bodily or environmental artifacts can be identified, either
+visually tased on their characteristic topographies and time courses, or
+statistically, and then removed.
+This leads to cleaner data for subsequent processing, especially in the case of
+visual \ac{bci} paradigms.
+Since eye movement plays a role in the paradigm, it can strongly be present in
+the signal and correlate with the task, forming a confounding factor for
+studying control based solely on brain activity.
+
+Together, these preprocessing steps ensure that only the relevant neural signals are
+passed on to the feature extraction and classification stages in BCI applications,
+improving the accuracy and reliability of the system.
+
+\section{Decoders}%
 \label{sec:bci/decoding}
 
 After preprocessing and extracting features, machine learning algorithms can perform \ac{bci}
 decoding.
-This is usually based on
-some training data for which the performed tasks are known, by recognizing the
-activity evoked by the task in recorded data.
+Machine learning decoders use some training data for which the performed tasks
+are known, and learn to recognize the activity elicited by the task in recorded data.
 The training data can be either obtained from the \ac{bci} user themselves or from
 other users.
 In the first case, the user would perform a short calibration session before
 using the \ac{bci}, where they are instructed to perform a known task.
 This calibration session can be eliminated by training the decoder on
 preexisting labeled data from other sessions and users, but this is harder due
-to the variability between subjects and sessions.\todo{make shorter, move part
-to section}
-
-\todo{regression/classification}
-\todo{for communication, we want classification, focus on classification
-further down the line}
+to the variability between subjects and sessions.
 
 If the goal is to eliminate the per-session calibration, one can also use a
 decoder pre-trained on an existing dataset of the same task.
@@ -484,8 +523,25 @@ Instead, rather opt for keeping the calibration time as short as possible by usi
 an algorithm that can learn from very few training samples.
 This can work well, but requires strong regularization~\cite{VanDenKerchove2022}.
 
+Decoder choice is heavily dependent on constraints set by the paradigm and the
+application.
+The number of output degrees of features, the serial or parallel nature of
+performed tasks, whether the paradigm is active or reactive, etc.\ all need to
+be taken into account.
+On of these choices is to solve a \emph{regression} or \emph{classification}
+problem.
+In regression, a continuous output variable is predicted for a new sample,
+while classification attempts to sort it into one of a set of discrete classes.
+Regression can be useful in \acp{bci} in applications like mapping imagined
+movement to an external robot arm.
+For communication \acp{bci}, however, conveying information in a symbolic
+manner is often of interest.
+Many applications resemble virtual keyboards or map a user's actions to
+discrete words, predefined actions or letters for full control.
+Hence, such problems often present themselves as classification tasks.
+
 \textcite{Lotte2018, Xu2021} present a relatively recent overview of state-of-the art
-decoder algorithms.
+classification algorithms for decoding.
 Classic linear methods, such as \ac{csp} feature extraction for
 motor imagery~\cite{Park2017} and \ac{cca} for \ac{ssvep}~\cite{Nakanishi2017},
 and \ac{lda} for \ac{erp} classification~\cite{Sosulski2022} still perform
@@ -712,6 +768,11 @@ This includes both gaze fixation and attention.
 Understanding these components is essential for optimizing BCI protocols and
 improving user interaction, particularly in contexts involving visual oddball
 tasks.
+
+\subsection{Preprocessing}
+In addition to (ref) epoching
+baseline correction, but not in decoding (cite)
+
 
 \subsection{Decoding ERPs}
 

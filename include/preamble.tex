@@ -12,6 +12,8 @@
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{epigraph}
+\usepackage{expl3}
+\usepackage{float}
 
 
 % Bibliography
@@ -30,8 +32,12 @@
 \fi
 \makeatletter\@ifpackageloaded{underscore}{}{\usepackage[strings]{underscore}}\makeatother
 
-
+% Set list names
 \renewcommand{\listfigurename}{List of figures}
 \renewcommand{\listtablename}{List of tables}
 
+% Setup epigraph
 \setlength{\epigraphwidth}{.66\textwidth}
+
+% Define algorithm environment
+\newfloat{algorithm}{t}{lop}

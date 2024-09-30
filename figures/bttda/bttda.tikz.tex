@@ -1,0 +1,34 @@
+\begin{tikzpicture}[y=-1cm]
+	\TensorThree{$\ten{X}$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
+
+  \node at (3.15,0.5,0) {$\approx$};
+
+	\begin{scope}[shift={(6.2,0)}]
+	  \begin{scope}[shift={(-0.0707, -0.0707)}]
+      \MatrixSkewed{$\mat{A}_1^{(1)}$}{$r_1^{(1)}$}{$D_1$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(-0.1,0)}]
+      \MatrixLeft{$\mat{A}_2^{(1)}$}{$r_2^{(1)}$}{$D_2$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(0,1.1)}]
+      \MatrixBelow{$\mat{A}_3^{(1)}$}{$r_3^{(1)}$}{$D_3$}{1}{2}
+    \end{scope}
+      \TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+  \end{scope}
+
+  \node at (8.30,0.5,0) {$+\cdots+$};
+
+	\begin{scope}[shift={(11.85,0)}]
+	  \begin{scope}[shift={(-0.0707, -0.0707)}]
+      \MatrixSkewed{$\mat{A}_1^{(B)}$}{$r_1^{(B)}$}{$D_1$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(-0.1,0)}]
+      \MatrixLeft{$\mat{A}_2^{(B)}$}{$r_2^{(B)}$}{$D_2$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(0,1.1)}]
+      \MatrixBelow{$\mat{A}_3^{(B)}$}{$r_3^{(B)}$}{$D_3$}{1}{2}
+    \end{scope}
+      \TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+  \end{scope}
+
+\end{tikzpicture}

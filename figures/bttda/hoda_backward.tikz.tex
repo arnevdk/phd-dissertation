@@ -1,0 +1,16 @@
+\begin{tikzpicture}[y=-1cm]
+	\TensorThree{$\ten{X}$}{}{}{}{2}{2}{2}
+	\begin{scope}[shift={(-0.0707, -0.0707)}]
+    \MatrixSkewed{$\mat{U}_1$}{$D_1$}{$r_1$}{1}{2}
+  \end{scope}
+	\begin{scope}[shift={(-0.1,0)}]
+    \MatrixLeft{$\mat{U}_2$}{$D_2$}{$r_2$}{1}{2}
+  \end{scope}
+	\begin{scope}[shift={(0,2.1)}]
+    \MatrixBelow{$\mat{U}_3$}{$D_3$}{$r_3$}{2}{1}
+  \end{scope}
+  \node at (3.20,0.5,0) {$=$};
+	\begin{scope}[shift={(4,0)}]
+	\TensorThree{$\ten{G}$}{$r_1$}{$r_2$}{$r_3$}{1}{1}{1}
+  \end{scope}
+\end{tikzpicture}
