@@ -68,10 +68,13 @@ on their ability to operate a visual \ac{bci}.
 		\bfseries Severe   & 33\% & 3\%  & +       & - & - & 98\% \\
 		\bfseries Complete & 17\% & -    & +       & - & - & 2\%  \\
 	\end{tabular}
-	\caption{Incidence of eye motor impairment in selected \ac{bci} target
-    patient populations. (\acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
-    \acl{dmd}, \acs{sma}: \acl{sma}, \acs{lis}: \acl{lis}).
-    $+$: frequent, $-$: infrequent.}
+  \caption[Incidence of eye motor impairment in selected \ac{bci} target
+    patient populations.]{%
+      Incidence of eye motor impairment in selected \ac{bci} target
+      patient populations. (\acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
+      \acl{dmd}, \acs{sma}: \acl{sma}, \acs{lis}: \acl{lis}).
+      $+$: frequent, $-$: infrequent.
+    }
     \label{tab:incidence}
 \end{table}
 \todo{include FA}
@@ -213,7 +216,10 @@ visuospatial attention and their gaze do not necessarily coincide.
 \section{Gaze-independent \ac{bci} paradigms}
 \label{sec:gaze-independence}
 \todohsm{rename to state of the art in gaze-independent bci. Address more systematically.}
+\todo{in a paragraph describe each approach and its up and downsides}
+\todo{move form copied introduction}
 
+\subsection{Gaze-independent modalities}
 Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
 ways.
 Firstly, active \ac{bci} communication paradigms relying on endogenous activation from the user
@@ -235,10 +241,11 @@ eye motor capabilities were effectively impaired.
 
 \todo{insert table from riccio in text as numbers, not as table}
 
+\subsection{Gaze-independent visual stimulation}
 This leads us to the second approach, current visual stimulation paradigms can be optimized, e.g. such that
 the stimuli are always present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
 Lin2018} or covertly~\cite{,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
-the GeoSpell interface~\parencite{Aloise2012}, and the RSVP
+the GeoSpell interface~\parencite{Aloise2012}, and the \ac{rsvp}
 speller~\parencite{Acqualagna2011}.
 Non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
@@ -252,6 +259,7 @@ This entails that they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
 \todo{advantages disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
 
+\subsection{Gaze-independent decoding}
 Thirdly, stimuli can be presented in a standard \ac{bci} paradigm, but visuospatial
 attention can be decoded separately from gaze direction.
 \textcite{Aloise2012} aimed to bridge the performance gap between covert and
@@ -324,8 +332,7 @@ While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.
 We make a distinction here between spatially organized interfaces, where
 multiple targets are displayed at the same time at different spatial locations,
-and temporally organized interfaces, like Rapid Serial Visual
-Presentation\todo{cite},
+and temporally organized interfaces, like \ac{rsvp}\todo{cite},
 where targets or small sets of targets are shown consecutively.
 Traditionally, spatially organized interfaces have a higher information transfer
 rate, but are also more gaze-dependent than temporally organized interfaces.
@@ -378,50 +385,48 @@ electro-oculogram (EOG) are recorded, as well as eye gaze using eye tracking.
 
 The interface can be operated in different VSA conditions as illustrated in
 Figure~\ref{fig:gaze-vsa}.
-\fourpanefig{%
-  \figpane{%
+
+\begin{figure}
+  \begin{subfigure}{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_overt.eps}
-  }{%
-    \emph{Overt \ac{vsa}}.
-    Gaze and \ac{vsa} coincide on a target.
-  }{%
-    fig:gaze/vsa/overt
-  }
-}{%
-  \figpane{%
+    \caption[Overt \ac{vsa}]{%
+      \emph{overt} \ac{vsa}.
+      Gaze and \ac{vsa} coincide on a target.
+    }
+    \label{fig:gaze/vsa/overt}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_covert.eps}
-  }{%
-    \emph{Covert \ac{vsa}}.
-    Gaze rests on the center of the screen, while \ac{vsa} is directed towards a target.
-  }{%
-    fig:gaze/vsa/covert
-  }
-}{%
-  \figpane{%
+    \caption[Covert \ac{vsa}]{%
+      \emph{Covert} \ac{vsa}.
+      Gaze rests on the center of the screen, while \ac{vsa} is directed towards a target.
+    }
+    \label{fig:gaze/vsa/covert}
+  \end{subfigure}
+
+  \begin{subfigure}{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_split.eps}
-  }{%
-    \emph{Split \ac{vsa}}.
-    \Ac{vsa} is directed towards a target, while the gaze rests on another.
-  }{%
-    fig:gaze/vsa/split
-  }
-}{%
-  \figpane{%
+    \caption[Split \ac{vsa}]{%
+      \emph{Split} \ac{vsa}.
+      \Ac{vsa} is directed towards a target, while the gaze rests on another.
+    }
+    \label{fig:gaze/vsa/overt}
+  \end{subfigure}\hfill%
+   \begin{subfigure}{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_free.eps}
-  }{%
-    \emph{Free \ac{vsa}}.
-    The user is free to direct their gaze as they deem most comfortable
-    All previous \ac{vsa} conditions are possible.
-  }{%
-    fig:gaze/vsa/free
+    \caption[Free \ac{vsa}]{%
+      \emph{Free} \ac{vsa}.
+      Gaze and \ac{vsa} coincide on a target.
+      The user is free to direct their gaze as they deem most comfortable
+      All previous \ac{vsa} conditions are possible.
+    }
+    \label{fig:gaze/vsa/overt}
+  \end{subfigure}\hfill%
+  \caption[\Ac{vsa} conditions]{%
+    \Ac{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
   }
-}{%
-  \Ac{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
-}{%
-  fig:gaze-vsa
-}
-
-
+  \label{fig:gaze-vsa}
+\end{figure}
 In the overt case, users gaze at the cued
 target they are also mentally attending; in the covert case, users
 gaze at the center of the screen while mentally attending to the cued target.

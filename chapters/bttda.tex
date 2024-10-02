@@ -182,7 +182,8 @@ visualized in Figure~\ref{fig:HODA-backward}.
 \begin{figure}[t]
 	\centering
 	\input{figures/bttda/HODA_backward.tikz.tex}
-	\caption{A visualization of the multilinear projection obtained by Higher Order
+  \caption[The \ac{hoda} backward projection.]{%
+    A visualization of the multilinear projection obtained by Higher Order
     Discriminant Analysis (HODA) applied to a third-order tensor
     sample $\ten{X}$ with shape $(D_1,D_2, D_3)$.
 		HODA finds projection matrices $\mat{U}_k$ such that maximal
@@ -218,7 +219,7 @@ somewhere that the shape (r1,r2,...rK) is fixed a priori, no?}
 \end{equation}
 which can be solved by the iterative algorithm in Algorithm~\ref{alg:HODA}.
 \begin{algorithm}
-	\caption{Higher order Discriminant Analysis (HODA) backward solution}
+  \caption[The \ac{hoda} backward solution.]{The \ac{hoda} backward solution.}
 	\label{alg:HODA}
 	\input{chapters/bttda/alg_HODA.tex}
 \end{algorithm}
@@ -322,7 +323,7 @@ and error term $\ten{\mathbfcal{E}}$.
 \begin{figure}[t]
 	\centering
 	\input{figures/bttda/HODA_forward.tikz.tex}
-	\caption{The forward projection for HODA. By calculating activation
+  \caption[The \ac{hoda} forward projection.]{The forward projection for HODA. By calculating activation
 		patterns $A_k$, the original tensor $\ten{X}$ can approximately be
 		reconstructed from projected latent tensor $\ten{G}$. $A_k$ are chosen such
 		that the variability captured in the latent tensor is maximally expressed in
@@ -367,7 +368,7 @@ $\mat{A}_k$ is lower than a predetermined threshold.
 The full algorithm to determine the HODA forward projection is listed
 in Algorithm~\ref{alg:HODA-fw}.
 \begin{algorithm}
-	\caption{Higher order Discriminant Analysis (HODA) forward solution}
+  \caption[The \ac{hoda} forward solution.]{The \ac{hoda} forward solution.}
 	\label{alg:HODA-fw}
 	\input{chapters/bttda/alg_HODA_fw.tex}
 \end{algorithm}
@@ -402,7 +403,7 @@ Figure~\ref{fig:BTTDA} further illustrates the BTTDA model.
 \begin{figure*}[t]
 	\centering
 	\input{figures/bttda/BTTDA.tikz.tex}
-	\caption{A forward model for Block-Term Tensor Discriminant Analysis
+  \caption[A forward model for \ac{bttda}.]{A forward model for Block-Term Tensor Discriminant Analysis
 		(BTTDA). BTTDA can extract more features
 		than HODA by iteratively finding a latent tensor $\ten{G}^{(b)}$ in a
 		deflation scheme.
@@ -422,7 +423,7 @@ BTTDA to be useful as a feature extraction method.
 The extracted features represented by the latent tensors $\ten{G}^{(b)}$ can be
 computed through a deflation scheme summarized in Algorithm~\ref{alg:BTTDA}.
 \begin{algorithm}
-	\caption{Block-term Tensor Discriminant Analysis (BTTDA)}
+  \caption{\Ac{bttda}.}
 	\label{alg:BTTDA}
 	\input{chapters/bttda/alg_bttda.tex}
 \end{algorithm}
@@ -497,7 +498,7 @@ The area under the receiver operating characteristic curve (ROC-AUC) for
 classification of extracted feature vectors after feature selection is used as
 cross-validation score.
 \begin{algorithm}
-	\caption{Greedy model selection}
+  \caption[The greedy model selection procedure.]{Greedy model selection}
 	\label{alg:model-selection}
 	\input{chapters/bttda/alg_model_selection.tex}
 \end{algorithm}
@@ -687,7 +688,8 @@ NMSE is calculated as
 \end{equation}
 \begin{figure*}[t]
 	\input{figures/bttda/blocks.pgf}
-	\caption{Normalized Mean Square Error (NMSE) (left), and difference in
+  \caption[Analysis of NMSE and classification score per block.]{%
+    Normalized Mean Square Error (NMSE) (left), and difference in
     classification score for the training and validation for the ERP datasets
     (top row) and the MI dataset (bottom row)	of the greedy model selection
     procedure (right), as a function of the number of BTTDA blocks $b$.
@@ -772,7 +774,8 @@ BTTDA blocks.
 \begin{figure*}[t]
 	\includegraphics[width=\linewidth]{figures/bttda/forward_block-0.png}
 	\includegraphics[width=\linewidth]{figures/bttda/forward_block-1.png}
-	\caption{Spatial (left two columns) and temporal (middle column) activation patterns and
+  \caption[Extracted \ac{bttda} activation patterns.]{%
+    Spatial (left two columns) and temporal (middle column) activation patterns and
 		condition contrasts (right column) obtained after forward projection of the latent
 		features for 2 blocks (row 1 and row 2) of rank $(2,2)$ of BTTDA
 		fit on the full dataset BNCI2014-008.

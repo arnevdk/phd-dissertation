@@ -66,7 +66,7 @@ are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell200
 \begin{figure}[t]
   \centering
   \input{figures/wcble/smearing.tikz.tex}
-  \caption{The smearing effect. When obtaining an \ac{erp} template through
+  \caption[The smearing effect.]{The smearing effect. When obtaining an \ac{erp} template through
   averaging, high jitter causes a decrease in peak amplitude and a deformation
   of the shape of the waveform.}
   \label{fig:wcble/smearing}
@@ -438,8 +438,9 @@ positive, by the difference between the latency and the window onset.
 \fullpagefig{%
   \includegraphics[width=\textwidth]{figures/wcble/figure1.pdf}
 }{%
-  Schematic representation of the Woody Classifier Based Latency
-  Estimation training phase.
+  Schematic representation of the \ac{wcble} training phase.
+}{%
+  Schematic representation of the \ac{wcble} training phase.
   (1) The first-stage spatiotemporal binary classifier is trained on a set of
   epochs.
   (2) It is	then applied to time-shifted copies of the epochs to obtain scores
@@ -468,6 +469,9 @@ vector of scores over time as in~Section~\ref{sec:cble} and the estimated latenc
 in~Section~\ref{sec:robust-latency}.
 \fullpagefig{
   \includegraphics[width=\textwidth]{figures/wcble/figure2.pdf}
+
+}{%
+  Schematic representation of the \ac{wcble} test phase.
 }{%
   Schematic representation of the Woody Classifier Based Latency
   Estimation test phase. (1) The
@@ -526,7 +530,7 @@ in~Section~\ref{sec:robust-latency}.
   \mathbf{s}_\mathrm{target}^\mathrm{test},
   \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
 
-	\caption{Classifier-Based Latency Estimation}
+  \caption{\Ac{cble}}
 	\label{alg:cble}
 \end{algorithm}
 
@@ -583,7 +587,7 @@ in~Section~\ref{sec:robust-latency}.
   \textbf{Output:} $\mat{Y}^\mathrm{test},
   \mathbf{s}_\mathrm{target}^\mathrm{test},
   \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
-	\caption{Classifier-Based Latency Estimation with Woody Iterations}
+  \caption{\ac{wcble}}
 	\label{alg:wcble}
 \end{algorithm}
 
@@ -647,6 +651,8 @@ A sample of the simulated evoked data is displayed in Figures~\ref{fig:wcble/sim
 \fullpagefig{%
   \includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}
 }{%
+  Simulated target and non-target evoked data.
+}{%
   Simulated target and non-target evoked data. Targets contain a sine wave
   pulse jittered by $\sigma$. 32 EEG channels with pink
   spatiotemporal noise were simulated using a forward head model, channel C3 is
@@ -671,7 +677,7 @@ with 1000 permutations.
 \begin{figure}[!ht]
   \input{figures/wcble/fig_latency.pgf} \\
   \input{figures/wcble/fig_accuracy.pgf}
-  \caption{align results}
+  \caption{caption}
   \label{fig:wcble/results/latency}
 \end{figure}
 \todo{properly label axes}

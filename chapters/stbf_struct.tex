@@ -18,12 +18,6 @@
   \emph{This chapter, except section~\ref{sec:stbf-struct-kronlda}, was
   published by~\textcite{VanDenKerchove2022}}.
 
-
-	\todo{Rename to LDA}
-	\todo{Work Kronecker sum in}
-	\todo{Add results over time vs toeplitzlda}
-	\todo{Introductory part on LCMV beamforming to intro}
-
 	\section{Introduction}
 
 	%Brain-computer interfaces (BCIs) establish a direct communication pathway
@@ -315,7 +309,7 @@
 
 	\begin{figure}
 		\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
-		\caption{Different estimators of the covariance and inverse covariance
+    \caption[Estimated covariance and inverse covariance.]{Different estimators of the covariance and inverse covariance
 			of 100 epochs of data from \textit{Subject 01} for channels
 			\textit{Fz}, \textit{Cz}, \textit{Pz}, and \textit{Oz} and time samples between 0.1s and 0.6s.
 			Regularized estimators of the inverse covariance exhibit less extreme values and have a sparser structure.
@@ -327,9 +321,6 @@
 			(\textbf{i,j}) Temporal Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.}
 		\label{fig:kronlda-covs}
 	\end{figure}
-	\todo{visualize kronecker sum}
-	\todo{visualize kronpca decomp pvl}
-	\todo{method pvl}
 
 	The Kronecker approach has shown significant performance yields in different linear spatiotemporal EEG and MEG
 	applications~\cite{DeMunck2002,Huizenga2002,Beltrachini2013,GonzalezNavarro2016,GonzalezNavarro2017}.
@@ -567,7 +558,8 @@
 
   \begin{figure}
 		\includegraphics[width=\linewidth]{figures/stbf_struct/fpi.eps}
-		\caption{Average cross-validated \textsc{stbf-struct} Accuracy using
+    \caption[Average cross-validated \textsc{stbf-struct} accuracy]{%
+      Average cross-validated \textsc{stbf-struct} accuracy using
 			one trial per block over all 21 subjects
 			relative to the number of iterations used to estimate the Kronecker-Toeplitz structured shrunk
 			covariance. Error bars represent the first and third quartiles. The
@@ -600,7 +592,8 @@
 
   \begin{figure}
 		\includegraphics[width=\linewidth]{figures/stbf_struct/accuracy.eps}
-		\caption{Accuracy of the different classifiers for all 21 subjects relative to the
+    \caption[Clasifier accuracy in function of available training data.]{%
+      Accuracy of the different classifiers for all 21 subjects relative to the
 			number of blocks available for training. One block consists of 135
 			epochs and corresponds to 27 seconds of stimulation. Accuracies
 			are shown for the evaluation settings averaging over 1, 2, and
@@ -615,7 +608,9 @@
 	\begin{table}[h]
 		\centering
 		\input{chapters/stbf_struct_tests_1.tex}
-		\caption{$p$-values calculated by one-sided paired Wilcoxon rank-sum test with
+    \caption[Statistical significance of differences in classifier performance (1 repetition).]{%
+      Statistical significance of differences in classifier performance.
+      $p$-values calculated by one-sided paired Wilcoxon rank-sum test with
 			Holm correction using one testing trial for different classifiers
 			and levels of data availability. $p$-values $<0.05$ are considered significant
 			and marked in grey.}
@@ -623,12 +618,14 @@
 
 		\centering
 		\input{chapters/stbf_struct_tests_2.tex}
-		\caption{$p$-values as in \autoref{tab:p_values_1} averaging over two testing trials.}
+		\caption[Statistical significance of differences in classifier performance (2 repetitions).]{%
+      $p$-values as in \autoref{tab:p_values_1} averaging over two testing trials.}
 		\label{tab:p_values_2}
 
 		\centering
 		\input{chapters/stbf_struct_tests_3.tex}
-		\caption{$p$-values as in \autoref{tab:p_values_1} averaging over five testing trials.}
+    \caption[Statistical significance of differences in classifier performance (5 repetitions).]{%
+      $p$-values as in \autoref{tab:p_values_1} averaging over five testing trials.}
 		\label{tab:p_values_5}
 	\end{table}
 	\unskip
@@ -658,7 +655,7 @@
 
 	\begin{figure}
 		\includegraphics[width=\linewidth]{figures/stbf_struct/training_time.eps}
-		\caption{Median fold training time for different classifiers at different spatial
+    \caption[Classifier training time.]{Median fold training time for different classifiers at different spatial
 			resolution levels evaluated over all training folds for all subjects.
 			Error bars represent standard deviation. The training time of \textsc{stbf-shrunk} increases more
 			steeply with resolution compared to \textsc{stbf-struct}.
@@ -866,7 +863,6 @@
 	%	weights
 	%	and linked neurophysiological hypotheses.
 
-	\todo{Remove mentions of interpretability}
 
   \subsection{Extension to \ac{lda}}
   \label{sec:stbf-struct-kronlda}
@@ -894,11 +890,12 @@
 	Finally, it could be insightful to evaluate the proposed algorithms in a
 	real-world on-line BCI setting.
 
-  \todo{Include part kronlda, check notes in journal}
+
 \todo{
-LCMV struct might be to restrictive
-Toeplitzlda
-MEG paper}
+in conclusion: LCMV struct might be to restrictive
+Toeplitzlda MEG paper}
+
+\todo{in conclusion: extension to the TFR domain}
 %\begin{equation}
 %	\mat{C} = \mat{S}\otimes\mat{T}
 %\end{equation}
@@ -907,8 +904,3 @@ MEG paper}
 %\begin{equation}
 %	\mat{C} = \sum_k^{CS}\mat{S}\otimes\mat{T}
 %\end{equation}
-\todo{pvl, kronpca}
-
-\todo{check chapters/structure paper}
-\todo{check structure Leuven.ai poster}
-\todo{extension to the TFR domain}

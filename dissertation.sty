@@ -70,32 +70,17 @@
 %}
 %
 
-\newcommand{\figpane}[3]{
-    \begin{subfigure}{.45\textwidth}
-        #1
-        \caption{#2}
-        \label{#3}
-    \end{subfigure}
-}
-
-\newcommand{\fourpanefig}[6]{
-    \begin{figure}
-      #1\hfill#2\\\bigskip
-      #3\hfill#4
-    \caption{#5}
-    \label{#6}
-    \end{figure}
-}
+% TODO: Move formatting to documentclass
 
 % Booklet formatting ==========================================================
 \ifx\packageoptionBooklet\undefined\else
   % Booklet option selected
-  \newcommand{\fullpagefig}[3]{%
+  \newcommand{\fullpagefig}[4]{%
     \begin{figure}[p]
       \centering
       #1
-      \caption{#2}
-      \label{#3}
+      \caption[#2]{#3}
+      \label{#4}
     \end{figure}
   }
   \newcommand{\fullpagefigct}{\fullpagefig}
@@ -109,13 +94,13 @@
   \RequirePackage{lineno}
   \linenumbers
 
-  \newcommand{\fullpagefig}[3]{%
-    \begin{figure}
+  \newcommand{\fullpagefig}[4]{%
+    \begin{figure}[p]
+      \centering
       #1
-      \caption{#2}
-      \label{#3}
+      \caption[#2]{#3}
+      \label{#4}
     \end{figure}
   }
   \newcommand{\fullpagefigct}{\fullpagefig}
-
 \fi
