@@ -1,73 +1,90 @@
 \section{Introduction}
 \todo{rename patient to bci user and participant}
 
-Communication BCIs have a target population consisting of patients in various
-stages of paralysis or \ac{lis},
-severe motor impairment
-\todo{cite and discuss Usability and Workload of Access
-Technology for People With Severe Motor
-Impairment: A Comparison of Brain-
-Computer Interfacing and Eye Trackin}
+BCIs for communication assistive technology~\cite{Millan2010}
+have a target population consisting of patients people with \ac{sspi}.
 
-often suffering from oculomotor impairments.
-can introduce problems in bci ~\cite{Brain-computer interface (BCI) evaluation
-in people with amyotrophic lateral sclerosis}, discuss als example
+Yet, there is a large comorbidity between \ac{sspi}, and eye motor impairment~\cite{FriedOken2020}.
+Impairments such as nystagmus (uncontrolled eye movements), diplopia (double
+vision), and ophthalmoplegia (eye paralysis) can significantly hinder
+the ability to use visual BCIs. These impairments make it difficult for
+individuals to focus on or track visual stimuli accurately, reducing their
+performance with BCIs that rely on visual cues~\cite{McCane2014,FriedOken2020,Pasqualotto2015}.
+Unfortunately, it is again for this group that eye tracking solutions also
+perform poorly, making them more reliant on potential developments in \ac{bci}
+that do not rely on eye gaze.
 
-\todo{. As with eye tracking SGDs, visual
-and oculomotor impairments may limit PALS’s performance
-with visual BCI systems (Fried-Oken et al., 2020). Although
-}
+Eye motor impairments are presumed to reduce performance in operating visual
+oddball \ac{bci}s (see section\todo{ref section} for an overview), since users
+cannot comfortably redirect their gaze at the desired target,
+i.e., perform overt \ac{vsa}.
+This is usually circumvented by designing gaze-independent~
+\acp{bci}~\cite{Riccio2012}.
+These interfaces either avoid visual stimulation, or exploit some form of
+covert \ac{vsa}, where the gaze and \ac{vsa} do not coincide.
 
-\cite{FriedOken2020}
-
-This reduces their performance operating visual oddball \ac{bci}s (see
-section\todo{ref section} for an overview), since they
-are presumed unable to comfortably redirect their gaze at the desired target,
-i.e., perform overt \ac{vsa}.\todo{cite some visual gaze-independent bci}
-They might more naturally operate in covert \ac{vsa}, where the gaze and
-\ac{vsa} do not coincide.
-Several studies show that performance drops when not fixating the intended
-target~\cite{Brunner2010, Frenzel2011, Treder2010, RonAngevin2019,
-VanDenKerchove2024}, necessitating gaze-independent solutions.
-
-Usually, they aim to improve gaze-independent \ac{bci} by optimizing
-performance in cued covert \ac{vsa}.
+Several studies with visual oddball \acp{bci} show that performance drops when not fixating the intended
+target~\cite{Brunner2010, Treder2010, RonAngevin2019}, necessitating
+gaze-independent solutions.
 These studies build on the assumption that patients with eye motor impairment
 would feel comfortable operating an interface in pure covert \ac{vsa} with
 central fixation.
 One could argue that a \ac{bci} that is only verified to work when a central
 fixation is maintained, could also be considered gaze-dependent.
-This does not account for the residual eye motor capabilities of most severly
-paralyzed or locked-in patients and the comfort they experience while
-performing the gaze fixation.
+This does not account for the residual eye motor capabilities of most people
+with \ac{sspi}, the (dis)comfort they experience while
+performing gaze fixation and other confounding factors due to their eye
+motility or vision.
 
-Our previous study, presented in chapter \todo{ref chapter}  partially tried to account for this
-and showed gaze-independent performance can be improved
-improved in healthy subjects using a suited decoding strategy.
-Yet, there is a strong need for verification of results obtained in healthy
-samples.
 It is a striking constatation that studies reporting on
-gaze-independent visual \ac{bci} in patients that are actually eye-motor
+gaze-independent visual \ac{bci} with people with \ac{sspi} and eye-motor
 impaired are very few.
-in patients, cite different characteristics, differences
-in setting, environment and equipment,
-\todo{List conclusions of Peters2020 (severely eye motor impaired als patients
-able to use a hex-o-spell)}
-\todo{discuss Lesenfants2014}
-\todo{discuss Marchetti2013}
+Results are usually different than those obtained with healthy control
+participants in the lab, due to difference in capabilities, brain
+response, equipment and environment.
+
+\textcite{Lesenfants2014} tested a gaze-independent \ac{ssvep} \ac{bci} in six
+participants with \ac{lis} yet only exceeded chance level accuracy in two.
+More recently, \textcite{Peters2020} performed a trial with a
+interface with two participants with late-stage \ac{als} and visual impairment.
+Their system showed high accuracy, outperforming an eye tracking alternative.
+It would be of interest to verify if such results can be verified with other
+patient groups and visual oddball \acp{bci}.
+
+\textcite{Severens2014} evaluated the visual Hex-o-Spell~\cite{Treder2010} on 5
+participants with \ac{als} and showed that this visual oddball interface optimized
+for gaze-independence can outperform a tactile gaze-independent \ac{bci}.
+While this speaks to the power of visual paradigms even in groups that are
+expected to have eye motor impairment, they did not verify the gaze direction
+of participants during the experiment.
+It was suggested that patients were performing overtly.
+Participants with \ac{als} also had a substantially lower accuracy patients lower than healthy
+(58\% vs 88\%).
+
+
+Our previous study, presented in chapter \todo{ref chapter} also used the
+visual Hex-o-Spell interface~\cite{VanDenKerchove2024}.
+This work partially accounted for the idea that gaze impaired patients might
+not full rely on central gaze fixation and evaluates settings that are not
+strictly dependent on this.
+We showed gaze-independent performance can be improved
+improved in healthy subjects using a suited decoding strategy.
+that accounts for latency jitter in covert \ac{vsa} responses improves
+Yet, there is a strong need for verification of these result in an applied
+setting with people with \ac{sspi}.
+
+\todo{discuss \cite{FriedOken2020}}
 
 Eventually, one of the end goals of this research line is to develop
-gaze-independent \ac{bci} for patients that
-are fully locked-in and have no option left than to use a \ac{bci}.
+gaze-independent \ac{bci} for peopl that are fully locked-in and have no option left than to use a \ac{bci}.
 However, this group is very small and it is often a challenge to recruit them
 into a study and perform experiments with them~\cite{Wolpaw2006}.
 Patients with less severe paralysis or in less progressed disease stages that struggle with
 eye-tracking technology could also benefit from
 solutions tailored to their specific situation.
-
 Therefore, we aim to apply the concepts from earlier work an literature to
-patients with various degrees motor impairment and various
-degrees of eye motor impairment.
+people with \ac{sspi} and various degrees motor impairment in a visuall oddball
+\ac{bci}.
 The objectives of this case study are as follows:
 \begin{enumerate*}
   \item Explore capabilities and experienced comfort of eye motor impaired
@@ -98,7 +115,7 @@ Patients were excluded if they
 \begin{enumerate}
   \item have a diagnosis of a major medical condition, including any major
     neurological or psychiatric disorder other than those of interest based on
-    inclusion criteria~\ref{item:patients/inclusion/wolpaw}
+    inclusion criteria~\ref{item:patients/inclusion/wolpaw},
     and~\ref{item:patients/inclusion/oculomotor}\label{item:patients/exclusion/medical}
   \item have a predisposition to or have a history of any kind of epileptic seizures,
     including photosensitive epilepsy,\label{item:patients/exclusion/epilepsy}
@@ -144,7 +161,7 @@ intrusions and gaze dysmetria~\cite{Cook2017}.
 
 The final three patients were stroke patients.
 Brain stem and cerebellar stroke can often lead to forms of \ac{lis}, and
-various eye motor disorders are common depending on the exact location
+various eye motor disorders are common depending on the exact etiology
 ~\cite{Bogousslavsky1987, Moncayo2009}.
 Stroke can lead to some of the more severe impairments like ophthalmoplegia or
 partial ophthalmoplegia immediately from onset.
@@ -162,7 +179,7 @@ Motor Impairment: A Comparison of Brain-Computer Interfacing and Eye Tracking}
   \caption[Presentation of included patients including their diagnosis and
   capabilities.]{Presentation of included patients including their diagnosis and
   capabilities.
-  (Trach.: patient underwent a tracheotomy, Cls.: classification according
+  (Trach.: patient underwent a tracheostomy, Cls.: classification according
   to~\textcite{Wolpaw2006}).
   }
   \label{tab:patients/patients}
@@ -173,49 +190,55 @@ directed thinking in completely paralysed patients? Clin Neurophysiol.
 2008;119:2658-2666.}
 \todo{include year of diagnosis}
 
-\subsection{Eye tracking and eye motor examination}
+\subsection{Visual skills and eye tracking and eye motor examination}
 
-Self-reported eye motor abnormalities were recorded.
-Patients were asked for, the paralysis or inability to move in a given
-direction of one or both eyes, the inability to pursue an object to specific
-positions, discomfort or fatigue fixating at specific positions or in general
-when performing visual tasks and eye tremors while fixating, resting or
-pursuing.
+Self-reported eye motor and visual abnormalities were recorded according to the
+relevant visual \ac{bci} skills presented by~\textcite{FriedOken2020}.
+These include visual acuity, visual fixation, eyelid function, ocular motility
+, binocuar vision and field of vision.
+Additionally, participants were asked about eye tremors (nystagmus or other) and
+other involuntary eye movements.
 
-Self-reported according to cite.
-Additionally, the participants were asked if they experienced any tremors like
-nystagmus or other (larger) involuntary eye movements.
-
-Additionaly, we implemented and performed the automated NeuroEye eye movement
-test proposed by~\textcite{Hassan2022}.
+As an objective metric, we implemented and performed the automated NeuroEye eye movement
+test proposed by~\textcite{Hassan2022} using calibration-free eye tracking to
+check if it revealed any further eye motor abnormalities.
+This was not the case.
 This test is based on calibration-free eye tracking.
 \todo{say which part we used and which part not}
 \todo{motivation and text and references Juliette}
 \todo{Limited in what it can tell us (check paper)}
 \todo{include eye test document juliette}
+
 Table~\ref{tab:patients/eye} details their eye motor impairments and vision of
 included patients.
+All participants reported some degree of fatigue or discomfort when fixating.
 Patient PA1 had the mildest impairment, only reporting fatigue when fixating
 for prolonged times.
-Eye motor function of subjects PC2 and PC3 were most severly affected.
-Patient PC2 was only able to look up and down, and patient PC3 only retained
-partial movement of the right eye, while the left eye was permanently closed.
+The \ac{fa} patients were mostly affected by eye tremors and impaired pursuit.
+Eye motor function of participants PC2, PC3, and PC3 were most severly affected.
+Participant PC2 was only able to look up and down and had a deviation in the
+left eye causing diplopia, but this was corrected by a prism glass.
+Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
+Participant PC4 had one deviated eye with a corneal abcess affecting the motility
+and vision in the right eye, and suffered reduced motility in the left.
+\todo{go through notes again}
 
 \begin{table}[t]
   \centering
   \footnotesize
   \input{chapters/patients_table_eye.tex}
-  \caption[Vision and eye motor impairment for included patients.]{%
-  Vision and eye motor impairment for included patients.
-  Eye motor impairment was assessed with a combination of self-reported issues
-  by the subject and the NeuroEye~\cite{Hassan2022} test.
-  LogMAR: lower is better.}
+  \caption[Visual skills of the included participants.]{%
+  Visual skills of the included participants.
+  Visual~\ac{bci} skills~\cite{FriedOken2020}
+  was assessed with a combination of self-reported issues
+  by the subject and the NeuroEye~\cite{Hassan2022} test. \BigCross\
+  impaired, \BigDiamondshape\ severely impaired. Visual acuity in logMAR, lower
+  is better.}
   \label{tab:patients/eye}
 \end{table}
 
-Eye tracking throughout the experimental session was performed using the Tobii~\todo{model, make}
-portable eye tracker.
-\todo{describe analysis during experiment}
+Finally, we also record gaze position throughout the experimental session, to
+register the participant's gaze relative to the stimulated \ac{bci} targets.
 
 \subsection{\Ac{bci} stimulation}
 
@@ -223,21 +246,32 @@ The \ac{bci} stimulation procedure was based on the
 Hex-o-Spell~\cite{Treder2010} implementation presented
 by~\textcite{VanDenKerchove2024}.
 Similar to this study, the task consists of counting the flashes of a cued
-target among all flashing targets.
-We refer to section~\ref{sec:covert-align/stimulation} for the exact details.
+target among 6 round, flashing targets laid out in a hexagonal pattern in the
+field of view of the user.
+We refer to section~\ref{sec:covert-align/stimulation} for implementation details.
 
-To adapt the interface for the patient setting, the number of blocks was
-decreased to 6 per \ac{vsa} setting.
+3 different \ac{vsa} settings were explored
+In overt \ac{vsa}, the participant was instructed to fixate the cued target, or
+try to the maximum extent of their visual skill, even if experiencing slight
+discomfort.
+In covert \ac{vsa}, the participant was instructed to fixate the center of the
+screen, also to the extent of their ability.
 An additional \emph{free \ac{vsa}} condition was introduced.
 Here, the patient was instructed to perform the task as they deemed most
 comfortable.
+This allows us to investigate the user's natural way of operating the \ac{bci}
+given their individual set of visual skills.
+If the participant was not fully paralyzed, they were instructed not to move the head.
 The cued \emph{split attention} setting proposed
 by~\textcite{VanDenKerchove2024} is not studied here, since we are interested
-in natural \ac{vsa} operation settings for gaze-impaired patients.
-If the patient was not fully paralyzed, they were instructed not to move the head.
+in natural \ac{vsa} operation settings for gaze-impaired individuals.
+
+To make the interface suitable for use by individuals with
+\ac{sspi}~\cite{FriedOken2020}, the
+number of blocks was decreased to 6 per \ac{vsa} setting.
 \Ac{isi} was increased to\todo{number} to decrease task difficulty.
-The experiment alsy started with a training block in each condition, where the
-patient was instructed with feedback on their performance to make sure they
+The experiment also started with a training block in each condition, where the
+participant was instructed with feedback on their performance to make sure they
 understood and were able to perform the task.
 
 \fourpanefig{%
@@ -253,19 +287,65 @@ understood and were able to perform the task.
   caption
 }{fig:patients/photos}
 
-Mention change in ISI
-Mention less rounds
-
 \subsection{Data collection \& preprocessing}
 
-\todo{check checklist}
-\subsection{BCI Decoding}
+During the recording session, patients were positioned in their wheelchair in front of a table.
+Stimuli were presented on a laptop \todo{model, make} placed at \todo{distance}
+A Cedrus StimTracker \todo{make} ensured synchronization of stimuli with the
+recorded \ac{eeg}.
+Eye tracking throughout was performed using the Tobii~\todo{model, make}
+portable eye tracker placed at the bottom of the laptop screen.
+
+\Ac{eeg} was recorded at 1000Hz using the Neuroscan Neuvo  portable amplifier (Compumedics Neuroscan,
+Australia) connected to a second laptop for registration
+The \ac{eeg} headset used 18 active AgCl electrodes (EASYCAP GmbH, Germany) placed on a cap
+according to the international 10-20 layout.
+Using electrolyte gel, electrode impedances were reduced below 10k$\Omega$
+Additionally, the \ac{eog} was recorded.
+
+The \ac{eeg} was band-pass filtered between 0.5 and 16Hz.
+Bad channels were rejected using on the RANSAC algorithm~\cite{Fischler1981}
+and visual inspection.
+Next, the \ac{eeg} was rereferenced to the average of mastoid electrodes TP9
+and TP10, and \ac{ica} was performed to reject artifactual components based on
+correlation with the \ac{eog} or by visual inspection.
+Epochs are cut from -0.1 to 0.9s relative to stimulus onse, no baseline
+correction was performed.
+
+Eye tracking data was cleaned by fusing left and right gaze into one channel
+for the horizontal and vertical gaze position.
+If both were present for a given sample, the fused channel was the mean of both
+values.
+If at a given sample either the left or the right eye was not detected for a
+given channel, the value of the other one was adopted.
+If both were missing, the gaze position remains unset at that time point and no
+interpolation is performed.
+
+\subsection{BCI decoding}
+
+
+\todo{shortly describe WCBLE}
+\todo{shortly describe tLDA}
+\todo{shortly describe xdawncov+ts+LDA}
 
 \section{Outcomes}
 
 \subsection{Eye tracking analysis}
+\label{sec:patients/outcomes/gaze}
 
-PC2 reported that he was unable to fixate the lower two targets, and th
+First, we aimed to shed more light on the actual capabilities of gaze impaired
+individuals with respect to performing overt \ac{vsa} and central gaze
+fixation, as well as investigate how relevant these two settings are when the
+gaze is not cued.
+Figure~\ref{fig:patients/gaze} maps gaze position relative to the stimuli
+across conditions.
+These results should be interpreted with care, since the eye tracker to some
+degree relies on functioning eye motility.
+The participant's position
+relative due the eye tracker might have shifted throughout the experimental
+session despite our best efforts, e.g.\ because they needed aspiration of their
+tracheostomy.
+
 
 \fullpagefig{%
   \includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
@@ -277,65 +357,185 @@ PC2 reported that he was unable to fixate the lower two targets, and th
 }{%
   fig:patients/gaze
 }
+\todo{explaine crosses}
 
+PA1 had relatively intact gaze control and was able to correctly perform the
+cued overt and covert settings.
+When gaze was uncued he fixated the cued target.
+This was also mostly the case for PB1, although eye tracking revealed that he
+chose not to perform central gaze fixation when cued in at least one of the
+stimulation blocks. We were unable to record his gaze near the bottom left
+stimulus position, either due to eye tracker failure or because the participant
+was not comfortable fixating this position.
+Eye tracker calibration did not succeed for subject PB4, but given
+transformations of gaze positions to the stimulus space, thy
 
-\subsection{Decoding performance}
+PB2 was able to perform overt \ac{vsa} and central fixation to some extent,
+yet eye tracking, but gaze position distributions shows a larger spread than
+for PA1 and PB1.
+The distribution in free \ac{vsa}, however, showed that she prefered to attend
+stimuli covertly when the gaze was uncued.
+This was confirmed by the participant.
+
+The overt and central gaze fixation settings were also not properly adapted to
+particpant PC4.
+In free \ac{vsa} eye tracker results show that his gaze was usually near the
+bottom two targets, indicating some degree of covert or split \ac{vsa}.
+
+It was technically impossible to register gaze position with the Tobii
+\todo{model} for participants PC2 and PC3 since they both had one eye that was
+occluded respectively by the prism glass and the eyelid.
+Both participants reported they could not fixate some of the
+stimuli.
+
+\subsection{\Ac{bci} decoding performance}
+
+Figure~\ref{fig:patients/decode} shows single-trial
+\ac{rocauc} in the evaluated \ac{vsa} settings fort the different decoders.
+Scores were obtained using 6-fold cross-validation where folds corresponded to
+stimulation blocks.
 
 \begin{figure}[t]
   \input{figures/patients/fig_decode.pgf}
+  \caption[%
+    Decoding performance in different \ac{vsa} settings.
+  ]{%
+    Decoding performance in different \ac{vsa} settings reported as
+    single-trial \ac{rocauc}.
+    Free \ac{vsa} is generally on par with overt \ac{vsa}.
+    Performance in covert \ac{vsa} with central gaze fixation is lower, but can
+    be improved with the \ac{wcble} decoder.
+    95\% confidence intervals were calculated using 1000 bootstrapping
+    repetitions.
+  }
+  \label{fig:patients/decode}
 \end{figure}
+\todo{rename subjects}
 \todo{check if percentages or 0-1 accuracy and roc-auc}
 
-For PB2 and PC4 performing covertly, was free decoding higher than covert
-decoding?
+In overt \ac{vsa}, evaluated decoders performed about equal on average
+(\ac{wcble} 75.58\%, XDAWNCov+TS+LDA 74.24\%, tLDA 75.99\%).
+In covert \ac{vsa} with cued central gaze fixation, performance deteriorates
+but \ac{wcble} can significantly improve performance over its base classifier
+\ac{tlda} in this condition
+(\ac{wcble} 62.49\%, XDAWNCov+TS+LDA 59.42\%, tLDA 59.05\%).
+Decoding performance for this task was at chance level for participants PB4 and
+PC3.
+
+However, \Ac{wcble} did not improve \ac{tlda} in free \ac{vsa} free \ac{vsa}, but
+XDAWNCov+TS+LDA performance was slightly lower here (although not
+significantly).
+(\ac{wcble} 74.15\%, XDAWNCov+TS+LDA 71.88\%, tLDA 74.27\%).
+More interestingly, we notice that performances of gaze impaired individuals
+with \ac{sspi} in free \ac{vsa} are close to those in overt \ac{vsa}.
+A substantial decrease in performance from overt to free is present for
+subjects PC3 and PC4.
+For PB2, who also relied on covert \ac{vsa} during the uncued free \ac{vsa}
+setting, there was no decrease in performance.
 
 \subsection{Cross-condition calibration}
+\label{sec:patients/outcomes/cross}
 
-| indication of fatigue, cinsistency within free case
-| closer to overt or to covert by looking at eye tracker
-|
-| will learn
-| split up per target
-|
-| Findings:
-| 1. Some patients prefer to do covert (check performance results for them),
-|    analyze distance to target
-| 2. covert attention can be improved using WCBLE for all subjects, but not to
-| the
-|    level of overt covert attention works best when training in overt
-| attention
-| s this also true for patients preferring covert?
-| 3. free performs on par (in all subjects?), opens debate of necessity of
-|    gaze-independence BCIs
-| 4. covert attention works best when training in overt attention. Is this also
-|    true for patients preferring covert?
-
-2024-09-18 04:39:35 PM can more overt attention epochs closer to
-| mention problem can't know if patient shifted or eye tracker shifted
-| (difficult mobile gaze tracker)
-| overt lower because can't perform
+\todo{input and describe graph}
 
 \section{Discussion}
 
-patients 2 are progressing towards 3
+Due to the heterogenous nature of the participant's conditions, it is hard to support
+claims about significance of presented results.
+This study should therefore be seen as a collection of case studies,
+highlighting different obstacles encountered in developing gaze-independent
+visual oddball \acp{bci} for individuals with \ac{sspi} and gaze impairment.
+Nevertheless, we would like to highlight some general aspects that might be
+of interest for the further development of this class of \acp{bci}.
 
-Limitations
+True gaze-indepedent visual \acp{bci} should not rely on gaze fixation.
+Hence our analysis centers around the free \ac{vsa} condition.
+Eye tracking results presented in section~\ref{sec:patients/outcomes/gaze}
+confirm our assumption that voluntary covert \ac{vsa} can
+occur in individuals with \ac{sspi} and gaze impairment.
+We have also confirmed part of the results from~\textcite{VanDenKerchove2024} presented in
+chapter\todo{ref} that state that decoding of covert \ac{vsa} with central gaze
+fixation can be improved by accounting for latency jitter, and showed that this
+holds for individuals with \ac{sspi} and gaze impairment.
 
-Limited sample of patients, FA maybe not most interesting group to represent
-real BCI users
+Contradicting our assumptions, however, we have shown that this does not
+necessarily improve covert \ac{vsa} when gaze fixation is not cued.
+One possible explanation for this is that actively performing central gaze fixation
+increases task load.
+This in turn reduced overall performance, even though the participant might
+otherwise also have performed covert \ac{vsa}, but would not be occupied by
+maintaining strict central gaze fixation.
+These extended task demands are not present in the free \ac{vsa} condition, so
+there is less performance to be gained here.
+Furthermore cued central gaze fixation combined with counting flashing stimuli
+in the visual periphery, is an explicit example of a dual task.
+Dual tasks have been shown to increase P3 latency
+jitter~\cite{Polich2007,Arico2014, VanDenKerchove2024}
+which is what \ac{wcble} accounts for.
+Hence,increased P3 jitter might be more related to maintaining central gaze fixation
+than to the actual covert \ac{vsa} aspect.
 
-interpreting eye tracker results hard because of inaccuracy eye tracker for eye
+The seamingly stable performance across overt and free \ac{vsa} could be
+misinterpreted as an indication that the Hex-o-Spell \ac{bci} already works
+well for patients with \ac{sspi} and gaze impairment, and no optimization is
+needed.
+However, we assume that overt \ac{vsa} performance was also decreased in some
+subjects or for some blocks if the participant was not able to comfortably
+perform the task.
+Nevertheless, the large difference between free \ac{vsa} and covert \ac{vsa}
+with central gaze fixation, is food for thought about the applicability of
+solutions developed with central fixation in mind.
+
+Individuals with all but the most severe gaze impairments will probably retain
+some degree of gaze direction in visual \ac{bci} operation, which can
+drastically boost performance.
+Subject PB2 exemplifies this: his free \ac{vsa} performance is on par with
+This is also supported by our results on cross contidion calibration
+
+\todo{discuss that training in overt always increases covert/free, focus on
+increased P3 amplitude and relying on visual components, also propose this
+strategy if possible}
+
+\section{Limitations}
+
+Despite results that prompt reflection on gaze-independent \ac{bci} approaches,
+there are some limitations to the presented results that need to be
+addressed in current and future work.
+
+First and foremost, this study works with a limited sample of patients which
+does not represent the full spectrum of individuals with \ac{sspi} and their
+oculomotor impairment.
+\Ac{fa} patients met the inclusion criteria, but they are usually not
+considered as one of the typical interest groups of \ac{bci} communication assistive
+technology, partly due to the rarity, and partly due to the disease
+progression.
+It would be most interesting to verify these results with individuals with
+\ac{lis} and no eye movement capability at all.
+
+
+Another limiting factor are the difficulties in correctly interpreting eye tracker
+results in studies with eye motor impaired patients.
+If eye tracking at all is possible, it is not guaranteed that the user is able
+to perform the calibration procedure succesfully.
+Further experiments should be carried out with a stationary eye tracker with
+more advanced capabilities, although systems using a head fixator or headrest
+should be avoided.
+This is not practical when working with
+wheelchair-bound individuals who might have undergone a tracheostomy.
+hard because of inaccuracy eye tracker for eye
 motor impaired patients. Redo with more advanced stationary eye tracker and
 head rest.
 
-advanced eye tracking equipment is necessary
+In this study, user comfort in the different conditions was not objectively
+measured.
+Rather, it was assumed that patients operated most comfortably in the free
+\ac{vsa} condition.
+In order to properly contextualize performance results, they should be coupled
+with a measure of user comfort and percieved effort, like the NASA Task Load
+Index~\cite{Hart2006}.
+Performance might after all be traded off for user comfort.
+Eye motor disability can also have been assessed more objectively, using \todo{
 
-user comfort was not objectively measured using established questionnaires
-
-Further work
-Comparing with a sample of non-gaze impaired patients with  neuromuscular
-disability DMD
-On-line session with these patients
 
 The Coma Recovery Scale
 Revised (CRS-R) [73] provides standardized procedures for admin-
@@ -345,11 +545,42 @@ State University College of Optometry (NSUCO) Oculomotor Test
 [74] provides specific procedural techniques as well as scoring cri-
 teria, which allows for uniform description of the accuracy and
 ability of pursuit and saccade skills for adults and children.
+}
 
-In a follow up study, we aim to revisit these patients with an on-line system
-to be able to calculate a realistic \ac{itr} and measure their user experience.
+Finally, the parameters stimulation procedure
+from~\textcite{VanDenKerchove2024} were adapted to make the counting task
+accessible to the participants with \ac{sspi} and gaze impairment.
+The number of repetitions or \ac{isi} were however not optimized to achieve
+maximal \ac{itr}.
+An interface that aims to maximize \ac{itr} could necessitate more and faster
+gaze redirections, which might result in different conclusions regarding the
+comfort and the effect of visual skill.
 
 \section{Conclusion}
+
+To summarize, we present our three main findings.
+\begin{enumerate*}
+  \item We have confirmed that some individuals with \ac{sspi} and gaze
+    impairment find it more comfortable to operate a visual gaze-independent
+    \ac{bci} relying on covert \acf{vsa}.
+  \item We have shown that covert \acf{vsa} with central gaze fixation can be
+    improved by a suitable decoding strategy, namely the \acf{wcble} decoder,
+    but this does not hold true if central gaze fixation is not imposed.
+  \item We have shown that covert \ac{vsa} \todo{with or
+    without imposed gaze fixation} decoding can alternatively be improved by
+    using a calibration session with attempted overt \ac{vsa}.
+\end{enumerate*}
+
+In general, this study shows that approaches tailored to the individuals visual
+skills are necessary and that a thorough rethinking of the approach to
+designing gaze-independent visual \acp{bci} is an area of concern.
+Future work includes comparing these results with a sample of non-gaze impaired
+participants with \ac{sspi}
+and carrying out repeated on-line sessions with these patients with built-in feedback to
+properly assess \ac{itr} and learning effects, and obtain realistic measures of percieved effort,
+comfort and performance.
+
+
 
 \todo{https://sci-hub.ru/https://ieeexplore.ieee.org/abstract/document/1642754}
 \todo{https://www.sciencedirect.com/science/article/abs/pii/B9780444639349000020}

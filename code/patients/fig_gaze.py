@@ -61,11 +61,17 @@ for i, (subject, sub) in enumerate(subjects.items()):
         axs[i, j].set_axis_off()
         for target in ["center", 0, 1, 2, 3, 4, 5]:
             pos = get_target_pos(target)
+            if condition=='overt':
+                c=colors["lightgray"] if target == "center" else colors["accent1"]
+            elif condition=='covert':
+                c=colors["accent1"] if target == "center" else colors["lightgray"]
+            elif condition == 'free':
+                c=colors["lightgray"]
             axs[i, j].scatter(
                 pos[0],
                 pos[1],
                 s=50,
-                c=colors["accent2"] if target == "center" else colors["accent1"],
+                c=c,
                 marker="+",
                 linewidth=0.5,
             )

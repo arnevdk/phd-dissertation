@@ -12,6 +12,7 @@
 }{%
   \textcite{Egan2017}
 }
+\todohsm{move introduction of paper to paper}
 
 \emph{Parts of Sections~\ref{sec:gaze-dependence} and~\ref{sec:gaze-independence}
 have been published by \textcite{VanDenKerchove2024}.}
@@ -211,6 +212,7 @@ visuospatial attention and their gaze do not necessarily coincide.
 
 \section{Gaze-independent \ac{bci} paradigms}
 \label{sec:gaze-independence}
+\todohsm{rename to state of the art in gaze-independent bci. Address more systematically.}
 
 Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
 ways.
@@ -221,16 +223,21 @@ These paradigms can yield very high information transfer
 rates~\cite{Willett2021,Metzger2023}, both due to their intuitiveness and the
 complexity that can be captured in commands, but often only do so when paired
 with invasive recording.
-Non-visual reactive paradigms that use e.g. auditory and somatosensory
+Non-visual reactive paradigms that use e.g. auditory and
+somatosensory\todo{cite some}
 stimulation do not rely on gaze redirection exist but also result in lower information transfer
 rates compared to visual paradigms.
 Furthermore, they can suffer from increased mental effort in operation and
 user-dependent variability~\cite{Severens2014,Reichert2020b}.
+\textcite{Severens2014} showed that the visual Hex-o-Spell~\cite{Treder2010}
+outperformed a somatosensory alternative in participants with \ac{als} whose
+eye motor capabilities were effectively impaired.
+
 \todo{insert table from riccio in text as numbers, not as table}
 
-Secondly, current visual stimulation paradigms can be optimized, e.g. such that
+This leads us to the second approach, current visual stimulation paradigms can be optimized, e.g. such that
 the stimuli are always present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
-Lin2018} or covertly~\cite{Treder2010,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
+Lin2018} or covertly~\cite{,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
 the GeoSpell interface~\parencite{Aloise2012}, and the RSVP
 speller~\parencite{Acqualagna2011}.
 Non-spatial visual attention (feature attention) can also be exploited, such as
@@ -273,16 +280,13 @@ features
 
 \subsection{Objectives}
 
+\todohsm{ move next two paragraphs to introduction, more context than objectives}
 Brain-Computer Interfaces (\ac{bci}s) decode brain activity with the aim to establish a direct communication
 pathway bypassing speech and other forms of muscular activity. They have raised great hopes for patients
 devoid of these abilities, for whom \ac{bci}s can provide a means to communicate or to
 control devices.
-The quest for performant and affordable solutions is most evident in
-visual \ac{bci}s based on the electroencephalogram (EEG), where it has led to a gamut of increasingly sophisticated decoders
-and paradigms tailored to the needs of specific stimulation paradigms and
-use contexts.
-An effective and proven method is the visual event-related potential (\ac{erp})-based
-oddball interface.
+An effective and proven method is the \ac{eeg}-based visual event-related potential (\ac{erp})-based
+oddball interface~\cite{Wolpaw2018,Severens2020}.
 Here, targets are shown in short flashes on a computer screen.
 Each time the user observes a target, an \ac{erp} is evoked, the presence of which can be
 detected in the EEG-signal.
@@ -295,7 +299,7 @@ their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
 \todomvh{I am wondering whether goal statements and patient target groups
 should be addressed in chapter 1.}
 
-This leads to the often unadressed gaze-dependence paradox: the \ac{bci} target
+This leads to the often underadressed gaze-dependence paradox: the \ac{bci} target
 population consists of patients who suffer from various degrees
 of paralysis, or even from Locked-in Syndrome (LiS), the complete loss of muscle
 control with preserved consciousness.
@@ -333,6 +337,7 @@ This leads us to adopt a specific approach: improve the performance of a
 spatially organized visual oddball \ac{erp}-based brain
 computer interface by using a suited decoding strategy.
 Hence, our working hypothesis is as follows:
+\todo{rewrite, this is not what we tested in the patient paper after all}
 \begin{quote}
 	\textit{A spatially organized visual oddball \ac{erp} \ac{bci} with a suited decoder
 		can achieve a similar transfer rate in patient
@@ -357,6 +362,7 @@ in general.
 \section{Approach}
 
 \subsection{Interface design}
+\todohsm{rename data collection. start with decoder design, second section data collection with experiments}
 
 \todo{mention, free, split, frenzel}
 \todo{clear definitions, table from paper}

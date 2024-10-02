@@ -3,6 +3,7 @@
 
 out
 build
+figures/patients/fig_gaze.pgf
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:

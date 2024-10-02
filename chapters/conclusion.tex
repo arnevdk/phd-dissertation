@@ -3,11 +3,12 @@
 \todo{BCI principles and practice chapter 19}
 \todo{https://www.nature.com/articles/s44222-024-00239-5}
 
-\section{General discussion}
+\section{Contributions}
 
-\subsection{Obtained results}
+\todo{come back on hypothesis}
 
-\subsubsection{\ac{erp} decoders}
+
+\subsection{Developed \Ac{erp} decoders}
 We introduced a covariance estimator using adaptive shrinkage (STBF-shrunk) and an estimator
 exploiting prior knowledge about the spatiotemporal nature of the EEG signal
 (STBF-struct).
@@ -33,7 +34,7 @@ in these settings.
 %* Preliminary results: BTTDA better than HODA, on par with other state of the
 %art methods and in some situations better (data availability, noise structure)
 
-\subsubsection{Gaze-independent \ac{bci} healthy controls}
+\subsection{Gathered datasets}
 The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
 $26.38\pm3.15$ years.
 This dataset gives us insight in the ERP dynamics in overt, covert and the
@@ -41,6 +42,12 @@ novel split VSA condition, and confirms our hypothesis that P3 jitter has a
 significant impact on performance in covert and split VSA, as well as that the
 amplitude effect\todomvh{not the right word, maybe the effect of covert VSA on
 ERP...} observed for covert VSA also holds for split VSA.
+
+\todo{describe patients dataset}
+
+
+
+\subsection{Investigated gaze-independence visual \acsp{bci}}
 
 We have evaluated our proposed wCBLE algorithm, the baseline CBLE algorithm and
 a state-of-the-art algorithm (tLDA)~\cite{Sosulski2022} that uses similar techniques as our
@@ -72,6 +79,9 @@ For all other pairs of training and evaluation VSA condition, however, wCBLE
 never yields a significant decrease in performance and often significantly
 outperforms the other methods.
 
+
+
+
 These results show that there is an interest in developing a new class of ERP-BCI
 interfaces for patients that prefer to rest their eyes on a chosen point on the
 screen, so as to avoid the effort of redirecting their eye gaze at different spatial locations on
@@ -93,9 +103,11 @@ selects a target while not wanting to give any input. Decoding of mental attenti
 gaze, with the option of having visual attention without mental attention,
 would counteract this.}
 
-\subsection{Patient case studies}
 
 \section{Limitations}
+
+hard to evaluate experience in long term home use
+unify clinical side and bci development side
 
 very small group of interest, but available right now, no implantation needed,
 
@@ -110,19 +122,30 @@ communication.
 characterized by publication date, but might indicate it is of interest to
 heavily focus this research now on applied 'vraagstukken' with patients
 
-\section{Current \& future work}
-multicomponent alignment approach
-hankel tensors to cope with jitter
-select best classifier using eye tracking
 
 \section{Recommendations}
 \subsection{Working with patients}
+gaze independent visual, can be good current existing solution
+take into accounrecommendations of \textcite{FriedOken2020}
+
 immediately move to patients and on-line implementation, to be able to report
 interpretable metrics
 permanent working collaboration as a lab
 
-start from patients
-use all available signals
+In a mature field like visual bci, start from patients.
+avoid situations where a problem is solved that doesn't pose itself in a
+patient population
+use all available capabilities and signals
+
+%Have attention for the emotional impact
+
 \subsection{Linear decoding methods}
+
+
+\section{Current \& future work}
+multicomponent alignment approach
+hankel tensors to cope with jitter
+select best classifier using eye tracking
+expand on patient experiemnts
 
 \section{Conclusion}

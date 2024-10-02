@@ -8,9 +8,12 @@ specific warning)}
 \todo{define short captions for tables and figures}
 \todo{fix lacheck/chktex notifications}
 \todo{use terminology individuals with severe
-speech and physical impairments (SSPI)}
+speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
+\todohsm{more subtitles}
+\todofc{double check statements about what has been published 'for the sake of clarity, the introduction has been mofed to"}
+\todofc{chapters should look more like full papers}
 
-People suffering from severe paralysis or disability due to
+People with severe physical impairment due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
 become entirely reliant on caregivers or family members in their day to day
 routine.
@@ -28,7 +31,7 @@ muscles.
 Not everyone has this capability.
 
 The key problem for severely paralyzed patients is that the mind wants to go
-where the body can't follow.
+where the body cannot follow.
 Couldn't we therefore design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of
 technology, like a robot arm or speech synthesizer, interacting with the world
@@ -49,7 +52,7 @@ by bypassing defective parts of the nervous or muscle system.
 By now, classic \acp{bci} methods are starting to mature outside the lab
 setting and can be used as assistive communication technology by patients with
 impaired speech~\cite{Wolpaw2018,Milekovic2018}.
-Impressive cutting edge examples of experimental use include a brain-spine
+Impressive cutting edge experimental examples include a brain-spine
 interface allowing a paraplegic patient to walk again\cite{Lorach2023},
 a \ac{bci} translating internal speech to a facial avatar speaking the imagined
 text~\cite{Metzger2023}, and fast communication through decoding imagined
@@ -72,6 +75,10 @@ and makes many aspects of daily life more accessible.
 
 
 \section{A direct interface to the brain}
+\todohsm{Start with state of the art before theses.}
+\todohsm{objectives at the end of chapter 1}
+\todohsm{Introduction part: chapter 1 rationale, chapter 2: literature/sota}
+\todohsm{make less verbose}
 
 Simply put, a \ac{bci} records the user's brain activity, extracts some
 relevant output from this brain activity and couples this output to a function
@@ -105,7 +112,7 @@ behavior or brain activity accordingly, closing the loop\footnote{%
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of
-what's going on in the brain.
+what is going on in the brain.
 Section~\ref{sec:bci-recording} gives an overview of the available options.
 One might for instance measure the fluctuations in bloodflow to establish the
 activity of a specific brain region
@@ -129,8 +136,7 @@ in Figure~\ref{fig:bci/loop}.
 It would make little sense to start digging around at random in all the brain
 activity to try to extract the desired output.
 It would help greatly if we knew what we are looking for.
-For this reason, a \ac{bci} operates using a defined \emph{paradigm}, the manner in
-which interaction is performed.
+A \ac{bci} operates according to a specified paradigm, which defines the method by which interaction is conducted.
 This usually means that the user is instructed to perform a specific task, like
 attending a specific flickering stimulus.
 We can now exploit background knowledge from prior neuroscientific research
@@ -139,7 +145,7 @@ unattended,
 and determine which one of a set of targets was attended.
 In turn, this can be coupled to an action, like typing the inteded letter A or B
 in Figure~\ref{fig:bci/loop}.
-The \ac{bci} paradigm comprises, if applicable, the manner of stimulation and the
+The \ac{bci} paradigm comprises the manner of stimulation (if applicable) and the
 exact task performed by the user, and is often closely linked to the manner of
 feedback in the case of a closed-loop system.
 As shown in Section~\ref{sec:bci/paradigms}, there is a wide variety of \ac{bci}
@@ -215,8 +221,9 @@ These can range from brain scans~\cite{Weiskopf2004} using functional magnetic r
 The technologies above all measure the hemodynamic signal, which only indirectly
 reflects brain activity.
 Because of the desirable high temporal resolution~\cite{Easttom2021} and
-practicality electrophysiology, we will focus only on methods to record
-electromagnetical activity originating from neuronal action potentials.
+practicality of electrophysiology, we will focus only on methods to record
+electromagnetical activity originating from neuronal action potentials and
+postsynaptic potentials.
 The magnetical field of the brain can be measured using magnetoencephalography
 (MEG)~\cite{Mellinger2007}.
 While MEG is non-invasive and results in high-quality signals, the necessary
@@ -227,7 +234,7 @@ lab conditions.
 
 As a consequence, the \ac{bci} field relies heavily on the
 electrical activity of the brain.
-As touched upon earlier,the \emph{invasiveness} of the technology forms an
+The \emph{invasiveness} of the technology forms an
 important concept in determining its suitability for a given application and
 patient.
 As illustrated in Figure~\ref{fig:bci/recording}, invasive electrodes can often measure a very specific brain region and can result in better signal quality, at the cost of the risks
@@ -336,8 +343,9 @@ strong, informative brain signals using a suited \ac{bci} paradigm, and on the
 other hand pick a suited decoder which can isolate the signal of interest and
 filter out the noise.
 
-\section{\Ac{bci} paradigms}
+\section{Paradigms}
 \label{sec:bci/paradigms}
+\todohsm{bring more structure, more subtitles}
 
 The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
 output actions, since it defines which neural responses will be elicited and
@@ -367,7 +375,7 @@ redirecting attention or initiating imagined actions are classified as \emph{pas
 \ac{bci}}.
 From the user's point of view, this concept is probably the most attractive,
 since their intentions or cognitive state state would be inferred from just
-their brain activity.
+their brain activity.\todohsm{in "passive bci", the user is not supposed to express "intentions". ragher start with active "}
 However, without active user participation, it can be hard to establish reliable
 communication or control.
 Therefore, passive \ac{bci} are currently more suited to tasks like
@@ -397,15 +405,28 @@ can each have different neural representations for separate individuals.
 This can make it hard to adapt the \ac{bci} to specific individuals, causing
 poor performance and giving rise to the concept of \ac{bci}
 illiteracy~\cite{Allison2010}\footnote{%
-  \cite{Becker2022,Thompson2019}
+Recently, the concept of BCI illiteracy is increasingly being seen as outdated.
+Instead of attributing poor performance to the user's inherent limitations,
+critiques point out that the issue lies more with the design of the
+systems themselves. BCI systems often fail to account for individual
+variability in brain anatomy and cognitive strategies. As a result, what has
+been labeled as "illiteracy" may, in fact, be a reflection of systems that are
+not flexible enough to adapt to different users. This perspective
+shifts the responsibility to the individual, rather than recognizing that
+better, more adaptive systems could overcome many of these performance
+challenges, thus standing in the way of progress.
+Moreover, the term ``illiteracy'' itself carries negative
+connotations, implying a user deficiency that reinforces normative assumptions,
+when in reality, a more inclusive approach to design could enhance BCI
+accessibility for a wider range of individuals. This evolving view calls for a
+reframing of the problem, focusing on improving the adaptability of BCIs rather
+than labeling users as illiterate~\cite{Becker2022,Thompson2019}.
 }.
-\todo{footnote on how this just means it needs to be more adapted,
-inclusivity, harmful to progress, paraphrase abstracts of articles}
 \todo{user training more than with reactive, task instruction}
 
 Reactive \ac{bci} take another approach, by providing a discrete set of
 sensory stimulations towards which the user's attention can directed.
-Compared to active \ac{bci}, reactive paradigms usually require higher effort
+Compared to active \ac{bci}, reactive paradigms usually require more effort\todohsm{is this the case?}
 and can induce fatigue due to the constant stimulation.
 These paradigms are also somewhat less intuitive compared to e.g.\ speech, and
 their expressive power is limited by how many different stimuli can effectively
@@ -605,7 +626,7 @@ responses.
 \end{enumerate*}
 
 
-\section{A case study: the visual oddball \ac{bci}}
+\section{A case study: the visual oddball \acs{bci}}
 
 The visual oddball paradigm is a \emph{reactive}, \emph{stimulus-dependent},
 \ac{bci} paradigm with all the benefits and drawbacks.

@@ -20,6 +20,7 @@ df_avg = df.copy()
 df_avg["subject"] = "avg."
 df = pd.concat([df, df_avg], ignore_index=True)
 
+pdb.set_trace()
 
 fg = sns.catplot(
     data=df,
