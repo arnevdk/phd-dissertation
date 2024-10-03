@@ -275,7 +275,7 @@ are first learned on a training dataset  with known class labels.
 Next, these projections are used to extract latent tensors from the
 tensors in the training dataset.
 These latent training tensors are then reshaped (\emph{vectorized}) into feature vectors
-$\vec{g} =  \vect(\ten{G})$ and used to train a decision classifier with the corresponding class labels.
+$\mat{g} =  \vect(\ten{G})$ and used to train a decision classifier with the corresponding class labels.
 At the evaluation stage, the projections learned from the training dataset are
 used to extract latent tensors from an unseen test dataset with unknown class
 labels, which can also be vectorized and passed on to the trained decision
@@ -445,7 +445,7 @@ with $\ten{\mathbfcal{E}}^{(1)}=\ten{X}$.
 The resulting latent tensors can be vectorized and concatenated into
 one single feature vector per input tensor
 \begin{equation}
-	\vec{g}
+	\mat{g}
 	=\left[\vect\left(\ten{G}^{(1)}\right)\
 		\vect\left(\ten{G}^{(2)}\right)\
 		\cdots\

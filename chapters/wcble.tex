@@ -63,7 +63,7 @@ are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell200
 	Roth2007, Walhovd2008, Poli2010, Luck2014}\todo{Review relevance of
 	these references}.
 
-\begin{figure}[t]
+\begin{figure}
   \centering
   \input{figures/wcble/smearing.tikz.tex}
   \caption[The smearing effect.]{The smearing effect. When obtaining an \ac{erp} template through
@@ -674,12 +674,12 @@ Results are presented in Figure~\ref{fig:wcble/results/latency}.
 A 95\ confidence intervals on each measure was obtained through bootstrapping
 with 1000 permutations.
 
-\begin{figure}[!ht]
-  \input{figures/wcble/fig_latency.pgf} \\
+\begin{figure}[H]
   \input{figures/wcble/fig_accuracy.pgf}
   \caption{caption}
   \label{fig:wcble/results/latency}
 \end{figure}
+
 \todo{properly label axes}
 \todo{uniform fonts with rest of document}
 \todo{correct width}
@@ -697,7 +697,7 @@ anymore and both methods get overtaken by the strong presence of noise.
 
 
 \subsection{Classification}
-\todo{refer to figure}
+
 Analogous to the previous experiment, 10-fold cross-validated classification
 accuracy between target and non-target epochs was assessed.
 Here, \ac{wcble} was compared to \ac{cble}, but both also to their base classifier
@@ -707,6 +707,13 @@ in~\ref{sec:wcble/methods}, with both the wavelet transformed score time series
 and square transformed latencies as input to a second-stage logistic regression
 classifier with $L_2$-norm regularization ($C=0.2$).
 \todo{ref figure}
+
+\begin{figure}
+  \input{figures/wcble/fig_accuracy.pgf}
+  \caption{caption}
+  \label{fig:wcble/results/accuracy}
+\end{figure}
+
 
 The classification accuracy of both \ac{tlda} and \ac{cble} decreases with
 $\$sigma$ and \ac{snr}, but \ac{cble} outperforms \ac{tlda}.

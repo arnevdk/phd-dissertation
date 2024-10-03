@@ -14,13 +14,10 @@
 }
 \todohsm{move introduction of paper to paper}
 
-\emph{Parts of Sections~\ref{sec:gaze-dependence} and~\ref{sec:gaze-independence}
-have been published by \textcite{VanDenKerchove2024}.}
-
 \todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
 
-\section{The gaze-dependence problem}%
+\section{Eye motor impairment in individuals with \acs{sspi}}%
 \label{sec:gaze-dependence}
 
 \todo{define eye motor issues}
@@ -29,16 +26,18 @@ have been published by \textcite{VanDenKerchove2024}.}
 het gaat over verlamde personen, verlies van spierkracht en coördinatie en dus
 gehinded in communicatie, helemaal in begin van chapter 1 duidelijk maken dat
 het om deze patiënten gaat}
-One of the goals of brain-computer interfacing is establishing a communication
-channel that does not rely on speech or muscular activity~\cite{Naci2012,Chaudhary2016},
-which in turn can provide solutions to paralyzed individuals.
-In the strictest interpretation, this also means that an interface should not
-rely on the control of eye muscles used to redirect the gaze or for blinking.
-\todo{patients suffering paralysis due to damage to the CNS (stroke, spinal
-chord injury, tbi) or neurodegenerative diseases}
 
-In fact, many patients in the \ac{bci} target population suffer to some extent
-from eye motor disability, requiring \ac{bci}s adapted to their condition.
+One of the goals of brain-computer interfacing is establishing a communication
+channel that does not rely on speech or muscular activity which in turn can
+provide solutions to individuals with \ac{sspi}.
+In the strictest interpretation, this then means that an interface should not
+rely on the control of eye muscles used to redirect the gaze or for blinking.
+It is exactly this potential of \acp{bci} that makes them suitable as assistive
+communication devices.
+\todo{to the CNS (stroke, spinal chord injury, tbi) or neurodegenerative diseases}
+
+Unfortunately, many individuals in the \ac{bci} target population suffer to
+some extent from eye motor disability, requiring \ac{bci}s adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
 eye motor problems, which can range from minor (nystagmus
 \footnote{%
@@ -128,8 +127,8 @@ for communications.
 Others distinguish Complete Locked-in Syndrome (CLIS) with full body paralysis,
 including no eye motor control at all, from a \ac{lis} state with some preserved eye
 movements or minor motor output.
-While some definitions only include patients who suffered stroke or traumatic
-brain injury to specific regions in the brain (midbrain, brainstem, or
+While some definitions only include stroke or \ac{tbi} patients with damage to
+specific regions in the brain (midbrain, brainstem, or
 cerebellum)~\cite{Smith2005},
 it can also generally refer to the state of full body paralysis
 or loss of muscle tone incurred in neurodegenerative diseases, combined with
@@ -152,24 +151,21 @@ unreliable, or easily fatigued.
 This group is much larger than the first.
 }}
 
-
-Together, some of these patients constitute the \ac{lis} patient group, which
-forms one of the main \ac{bci} target populations.
+The most severely impaired of these patients toghether constitute the \ac{lis}
+patient group, which forms one of the main \ac{bci} target populations.
 In this work, we define \ac{lis} patients as those in a situation of (near)
-complete paralysis and difficulties or the inability to communicate without
-assistive technology.
+complete paralysis and difficulties or the inability to communicate independently,
+even with assistive technology.
 This corresponds to classes one and two defined by
 \textcite{Wolpaw2006}\fnwolpawcrit.
 Additionally, some degree of severe or complete eye motor impairment is usually
 necessary to qualify as locked-in\fnlis.
-Since this work is concerned with gaze-impaired patients, we will adopt this
-interpretation into our definition.
 Case study reports~\cite{Patterson1986} show that the population of locked-in
 patients with complete eye motor paralysis is very small.
 Hence, it would be interesting to focus \ac{bci} development efforts on the
-larger population of \ac{lis} patients with severe eye motor impairment that
-currently slip through the cracks of the assistive technology offer.
-These are the patients whose severe eye motor impairment prevents them from
+larger population of individuals with \ac{sspgi} that currently slip through
+the cracks of the assistive technology offer.
+These are individuals whose severe eye motor impairment prevents them from
 using eye tracking based solutions.
 They currently use their remaining motor control to
 communicate by indicating symbols on a letterboard with great effort,
@@ -177,45 +173,43 @@ or signal with upwards eye movements or blinks to confirm prompted letters.
 They require a caregiver or relative to interpret their signals, and crave
 the ability to communicate independently which is crucial to retaining an
 acceptable quality of life.
-\todo{order of concepts in next two paragraphs can be tweaked}
 
-This leads us to what we call the \emph{gaze-dependence problem in visual
-\ac{bci}}:
-Traditional visual \ac{bci} scenarios require the user to overtly direct their both
+\begin{figure}
+  \input{figures/gaze_independence/lis_venn.tikz.tex}
+  \caption[Venn diagram of potential users of \ac{bci} assistive technology.]{%
+    Venn diagram of potential users of assistive technology.
+    Patients with \acf{sspi} are the general target population.
+    If eye gaze-based solutions are not properly suited for an individual,
+    they have \acf{sspgi}.
+    Individuals with \ac{lis} have no muscular control left, or is is very limited,
+    such as the ability communicate through a binary switching system.
+    \Acp{bci} are especially relevant for the last two groups.
+  }
+  \caption{fig:gaze_independence/venn}
+\end{figure}
+
+This brings us back to the gaze-dependence problem in visual \ac{bci}:
+Traditional visual \ac{bci} scenarios require the user to \emph{overtly} direct both their
 \ac{vsa} and gaze toward the screen target they intend to select.
-For our purposes, screen targets are overlaid with non-overlapping, transient
-stimuli that evoke \acp{erp} in the \ac{eeg}.
-The selected target can be decoded from these \acp{erp}, as is the case for the
-oddball paradigm where observing a rare but attended stimulus evokes a P3 \ac{erp}
-component.
-However, a critical challenge arises when users rely solely or in part on covert
-VSA, which involves directing visuospatial attention without corresponding eye gaze.
+However, a critical challenge arises when users rely solely or in part on
+\emph{covert} \ac{vsa}, which involves directing \ac{vsa} without corresponding
+eye gaze.
 In these cases, classical solutions often fall short of the widely accepted
-80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,RonAngevin2019} deemed necessary for a comfortable user experience~\cite{Neeling2019}, calling for alternative, gaze-independent
+80\% target selection accuracy threshold~\cite{Brunner2010,Frenzel2011,Treder2010,RonAngevin2019}
+deemed necessary for a comfortable user experience~\cite{Neeling2019}, calling for alternative, gaze-independent
 solutions.
-
-To summarize: for patients with eye motor impairment, gazing directly at a screen target may
-be uncomfortable, impractical, or even impossible.
-Hence, assistive devices that rely on eye tracking are often inefficient for
-them.
-Consequently, while \ac{bci}s hold great promise for these individuals, conventional
-gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
-control.
-Therefore, the development of decoding strategies that account for covert
-VSA becomes crucial in the pursuit of high-performance gaze-independent
-\ac{bci}s.
 
 In this work, we will use the term \emph{gaze-independent} meaning
 \emph{‘dealing explicitly with the fact that a user cannot control their
 gaze.'}
 In the context of a visual \ac{bci}, this means that the user's
 visuospatial attention and their gaze do not necessarily coincide.
+There are multiple approaches to implement gaze-independence in a \ac{bci}.
+The next section highlights some noteworhy examples.
 
-
-
-\section{Gaze-independent \ac{bci} paradigms}
+\section{State-of-the-art}
 \label{sec:gaze-independence}
-\todohsm{rename to state of the art in gaze-independent bci. Address more systematically.}
+\todohsm{Address more systematically.}
 \todo{in a paragraph describe each approach and its up and downsides}
 \todo{move form copied introduction}
 
@@ -284,47 +278,22 @@ attention using hybrid N2pc and SSVEP
 features
 }
 
-\section{Problem statement}
+\section{Research objectives}
 
-\subsection{Objectives}
+To summarize: for patients with eye motor impairment, gazing directly at a screen target may
+be uncomfortable, impractical, or even impossible.
+Hence, assistive devices that rely on eye tracking are often inefficient for
+them.
+Consequently, while \ac{bci}s hold great promise for these individuals, conventional
+gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
+control.
+Therefore, the development of decoding strategies that account for covert
+VSA becomes crucial in the pursuit of high-performance gaze-independent
+\ac{bci}s.
 
-\todohsm{ move next two paragraphs to introduction, more context than objectives}
-Brain-Computer Interfaces (\ac{bci}s) decode brain activity with the aim to establish a direct communication
-pathway bypassing speech and other forms of muscular activity. They have raised great hopes for patients
-devoid of these abilities, for whom \ac{bci}s can provide a means to communicate or to
-control devices.
-An effective and proven method is the \ac{eeg}-based visual event-related potential (\ac{erp})-based
-oddball interface~\cite{Wolpaw2018,Severens2020}.
-Here, targets are shown in short flashes on a computer screen.
-Each time the user observes a target, an \ac{erp} is evoked, the presence of which can be
-detected in the EEG-signal.
-The \ac{erp} consists of multiple components, of which some are modulated by the
-attention of the user, specifically the N2 and the P3 component.
-Decoding this modulation allows for information transfer controlled by the
-user's brain activity, as sketched in Figure~\ref{fig:bci/loop}.
-However, visual \ac{bci}s cannot operate efficiently when the user does not direct
-their gaze onto the desired target~\cite{Brunner2010, Frenzel2011}.
-\todomvh{I am wondering whether goal statements and patient target groups
-should be addressed in chapter 1.}
 
-This leads to the often underadressed gaze-dependence paradox: the \ac{bci} target
-population consists of patients who suffer from various degrees
-of paralysis, or even from Locked-in Syndrome (LiS), the complete loss of muscle
-control with preserved consciousness.
-While \ac{bci}s are most attractive as a solution for these patients
-compared to other assistive technologies like eye-tracking\todomvh{but with eye
-control while the previous sentence points are absence of it}., studies often
-report bad performance in patient populations precisely due to the lack of adequate eye motor
-control, or patients with gaze impairments are excluded.
-Different degrees of eye motor impairment can render visual \ac{bci}s
-uncomfortable or outright impossible to use.
-When operating a visual \ac{bci}, the usual rapid series of forced saccades followed
-by fixation is tiring over time, even for healthy control subjects.
-A suitable alternative would allow the user to keep their eyes in an at-rest
-position of their choice while operating the \ac{bci}.
-This points to the need for gaze-independent \ac{bci}s.
-
-The general goal of this PhD is to tackle the gaze-dependence in visual \ac{bci}s.
+The general goal of this PhD is to tackle the gaze-dependence in problem in the
+visual oddball \ac{bci}.
 \todo{refer to ITRs from previous chapter}
 Section~\ref{sec:gaze-independence} showed that visual \ac{bci} paradigms form
 a good candidate for a performant gaze-independent \ac{bci}.
@@ -387,7 +356,7 @@ The interface can be operated in different VSA conditions as illustrated in
 Figure~\ref{fig:gaze-vsa}.
 
 \begin{figure}
-  \begin{subfigure}{.45\textwidth}
+  \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_overt.eps}
     \caption[Overt \ac{vsa}]{%
       \emph{overt} \ac{vsa}.
@@ -395,7 +364,7 @@ Figure~\ref{fig:gaze-vsa}.
     }
     \label{fig:gaze/vsa/overt}
   \end{subfigure}\hfill%
-  \begin{subfigure}{.45\textwidth}
+  \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_covert.eps}
     \caption[Covert \ac{vsa}]{%
       \emph{Covert} \ac{vsa}.
@@ -404,7 +373,7 @@ Figure~\ref{fig:gaze-vsa}.
     \label{fig:gaze/vsa/covert}
   \end{subfigure}
 
-  \begin{subfigure}{.45\textwidth}
+  \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_split.eps}
     \caption[Split \ac{vsa}]{%
       \emph{Split} \ac{vsa}.
@@ -412,7 +381,7 @@ Figure~\ref{fig:gaze-vsa}.
     }
     \label{fig:gaze/vsa/overt}
   \end{subfigure}\hfill%
-   \begin{subfigure}{.45\textwidth}
+   \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_free.eps}
     \caption[Free \ac{vsa}]{%
       \emph{Free} \ac{vsa}.

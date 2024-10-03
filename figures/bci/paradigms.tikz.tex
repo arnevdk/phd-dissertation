@@ -1,8 +1,14 @@
-\begin{tikzpicture}[scale=\textwidth/2cm]
-    \pgfmathsetmacro{\margin}{.1}
-    \pgfmathsetmacro{\center}{.5+.5*\margin}
-    \pgfmathsetmacro{\textspacing}{.15}
-
+\sffamily
+\begin{tikzpicture}[
+    scale=\textwidth/2cm,
+    %remember picture,
+    %overlay
+  ]
+  \useasboundingbox (-1,-1.25) rectangle (1,1);
+  \pgfmathsetmacro{\margin}{.1}
+  \pgfmathsetmacro{\center}{.5+.5*\margin}
+  \pgfmathsetmacro{\textspacing}{.15}
+  %\begin{scope}[shift={(1,1.2)}]
     % Draw axes
     \draw[darkgray, very thick, <->] ({-(1+\margin)}, 0) -- ({1+\margin},0);
     \draw[darkgray, very thick, <->] (0,{-(1+\margin)}) -- (0,{1+\margin});
@@ -38,4 +44,5 @@
     \node[align=center] at ({-\center}, {-\center}) {attention\\monitoring};
     \node[align=center] at (-.25, -.8) {emotion\\monitoring};
     \node[align=center] at (.25, -.8) {media induced\\emotion recognition};
+  %\end{scope}
 \end{tikzpicture}
