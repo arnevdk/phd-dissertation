@@ -1,53 +1,42 @@
-\documentclass[tikz]{standalone}
-\usepackage{pgfplots}
+\documentclass{standalone}
+\usepackage{dissertation}
+\input{chapters/bttda/tensorviz.tex}
+
 \begin{document}
-\sffamily
-\footnotesize
-\begin{tikzpicture}
-    \begin{axis}[
-        width=\textwidth,
-        height=0.6180\textwidth,
-        scale only axis,
-        xlabel={Time (ms)},
-        ylabel={Potential ($\mu$V)},
-        axis x line=middle,
-	ylabel near ticks,
-	xlabel near ticks,
-        ymin=-5, ymax=8,
-        enlarge x limits=false,
-        enlarge y limits=false,
-        smooth,
-        every axis plot/.append style={very thick, accent1}, % Set the line color to accent1
-        ytick={-5,0,5}, % Y-ticks at -5, 0, 5
-        xtick={200,400,600}, % X-ticks at 200, 400, 600, 800
-        axis line style={darkgray}, % Set the axis line color to darkgray
-        tick style={darkgray}, % Set the tick color to darkgray
-        tick label style={darkgray} % Set the tick label color to darkgray
-    ]
-    % ERP waveform using cubic splines for smooth connection
-    \addplot[
-        smooth,
-        tension=0.5
-    ] coordinates {
-        (0, 0)     % Starting point
-        (50, 0)    % Pre-P1
-        (80, 2)    % P1
-        (115, -3)  % N1
-        (160, 3)   % P2
-        (220, 1)   % N2
-        (400, 7)   % P3
-        (650, 1)   % LPP (Late Positive Potential)
-        (800, 1)   % End point
-    };
+\begin{tikzpicture}[y=-1cm]
+    \draw[help lines] (-3,-3) grid (20,6);
+    \fill[red] (0,0) circle (2pt);
 
-    % Annotations for the components
-    \node[anchor=south, color=darkgray] at (axis cs:80,2) {P1};
-    \node[anchor=north, color=darkgray] at (axis cs:115,-3) {N1};
-    \node[anchor=south, color=darkgray] at (axis cs:160,3) {P2};
-    \node[anchor=west, color=darkgray] at (axis cs:220,1) {N2};
-    \node[anchor=south, color=darkgray] at (axis cs:400,7) {P3};
-    \node[anchor=south west, color=darkgray] at (axis cs:650,1) {LPP};
+	  \begin{scope}[shift={(-0.0707, -0.0707)}]
+      \MatrixSkewed{$\mat{A}_1$}{$r_1$}{$D_1$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(-0.1,0)}]
+      \MatrixLeft{$\mat{A}_2$}{$r_2$}{$D_2$}{2}{1}
+    \end{scope}
+	  \begin{scope}[shift={(0,1.1)}]
+      \MatrixBelow{$\mat{A}_3$}{$r_3$}{$D_3$}{1}{2}
+    \end{scope}
+    \TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
 
-    \end{axis}
+    \node at (2,.5){$=$};
+
+	  \begin{scope}[shift={(3,-.5)}]
+    \TensorThree{$\ten{X}^\prime$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
+    \end{scope}
+
+    \node at (6.5,.5){$=$};
+
+	  \begin{scope}[shift={(7.5,-.5)}]
+    \TensorThree{$\ten{X}$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
+    \end{scope}
+
+    \node at (11,.5){$-$};
+
+	  \begin{scope}[shift={(12,-.5)}]
+      \TensorThree{$\ten{\mathbfcal{E}}$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
+    \end{scope}
+
+
+
 \end{tikzpicture}
 \end{document}

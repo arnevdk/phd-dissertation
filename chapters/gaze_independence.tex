@@ -13,17 +13,9 @@
   \textcite{Egan2017}
 }
 
-\todo{talk about covert shifts in spatial attention alpha}
 
-\section{Eye motor impairment in individuals with \acs{sspi}}%
+\section{Eye motor impairment in individuals with \acl{sspi}}%
 \label{sec:gaze-dependence}
-
-\todo{define eye motor issues}
-
-\todo{Algemeen: in begin uitleggen dat de ziektes er niet veel toe doen en dat
-het gaat over verlamde personen, verlies van spierkracht en coördinatie en dus
-gehinded in communicatie, helemaal in begin van chapter 1 duidelijk maken dat
-het om deze patiënten gaat}
 
 One of the goals of brain-computer interfacing is establishing a communication
 channel that does not rely on speech or muscular activity which in turn can
@@ -32,12 +24,15 @@ In the strictest interpretation, this then means that an interface should not
 rely on the control of eye muscles used to redirect the gaze or for blinking.
 It is exactly this potential of \acp{bci} that makes them suitable as assistive
 communication devices.
-\todo{to the CNS (stroke, spinal chord injury, tbi) or neurodegenerative diseases}
 
-Unfortunately, many individuals in the \ac{bci} target population suffer to
-some extent from eye motor disability, requiring \ac{bci}s adapted to their condition.
+\Ac{sspi} is often caused by damage to the central or peripheral nervous
+system, either through congenital diseases (\ac{cp}, \ac{fa}, \ldots),
+neurodegenerative (\ac{als}, \ac{ms}, \ldots) or acquired (stroke and
+\ac{tbi}).
+Many individuals in these groups unfortunately also suffer to
+some extent from eye motor impairment, requiring \ac{bci}s adapted to their condition.
 Table~\ref{tab:incidence} reports the relatively high frequencies of
-eye motor problems, which can range from minor (nystagmus
+eye motor impairment, which can range from minor (nystagmus
 \footnote{%
 Involuntary, rhythmic, and repetitive eye movements recognizable by their
 consistent directionality (horizontal, vertical, or rotational).
@@ -53,66 +48,65 @@ Often, a specific movement direction (up-down, left-right) is preserved.
 }, involuntary movements, impaired pursuit, \ldots), and even complete
 ophtalmoplegia\footnote{Full eye movement paralysis.} or eye motor paresis.
 This not only has an effect on vision and coordination but also
-on their ability to operate a visual \ac{bci}.
+on their ability to operate a visual \ac{bci}~\cite{FriedOken2020}.
 
-\begin{table}[h]
-  \sffamily
-  \footnotesize
-	\centering
-	\begin{tabular}{@{}l|rrrrr|r@{}}
-    & \bfseries \acs{als} & \bfseries \acs{ms}   & \bfseries Stroke &\bfseries\acs{dmd} &\bfseries \acs{sma} &\bfseries \acs{lis} \\ \hline
-		\bfseries Minor    & 50\% & 31\% & 40-70\% & + & - &      \\
-		\bfseries Severe   & 33\% & 3\%  & +       & - & - & 98\% \\
-		\bfseries Complete & 17\% & -    & +       & - & - & 2\%  \\
-	\end{tabular}
-  \caption[Incidence of eye motor impairment in selected \ac{bci} target
+\begin{table}
+  %\sffamily
+  %\footnotesize
+	%\centering
+  \input{chapters/gaze_independence_incidence.tex}
+  \caption[Incidence of eye motor impairment in selected \acs{bci} target
     patient populations.]{%
       Incidence of eye motor impairment in selected \ac{bci} target
-      patient populations. (\acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
-      \acl{dmd}, \acs{sma}: \acl{sma}, \acs{lis}: \acl{lis}).
+      patient populations. \acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
+      \acl{dmd}, \acs{sma}: \acl{sma}, \acs{cp}: \acl{cp}, \acs{lis}: \acl{lis}.
       $+$: frequent, $-$: infrequent.
     }
     \label{tab:incidence}
 \end{table}
-\todo{include FA}
-\todo{cite Abnormal Oculomotor Functions in Amyotrophic Lateral Sclerosis 10.3988/jcn.2018.14.4.464}
-\todo{cite Neuro-Ophthalmologic Manifestations of Amyotrophic Lateral Sclerosis}
 
-\todo{
-14] Fazzi E, Signorini SG, Piana RL, et al. Neuro-ophthalmo-
-logical disorders in cerebral palsy: ophthalmological, oculo-
-motor, and visual aspects. Dev Med Child Neurol. 2012;54:
-730–736.
-[15] Graber M, Challe G, Alexandre MF, et al. Evaluation of the
-visual function of patients with locked-in syndrome: report
-of 13 cases. J Fr Ophtalmol. 2016;39:437–440.
-[16] Moss HE, McCluskey L, Elman L, et al. Cross-sectional evalu-
-ation of clinical neuro-ophthalmic abnormalities in an
-amyotrophic lateral sclerosis population. J Neurol Sci. 2012;
-314:97–101.
-}
-
-Among the most affected patients are stroke patients~\cite{Pollock2011}, mostly
+Among the most  severely affected patients are stroke
+patients~\cite{Pollock2011,Rowe2019}, mostly
 due to brainstem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
-\todo{summarize and cite Rowe2019}
 These patients might suffer from severe or complete eye motor impairment
 from the onset of their condition.
-In \ac{als}, a progressive disease, oculomotor issues are also fairly common.
+Individuals recovering from stroke with severe eye motor impairment are
+Furthermore, those with
+Case study reports~\cite{Patterson1986,Graber2016} show that even in individuals
+with \ac{lis} due to stroke, the group with a complete lack of eye motor
+control is very small.
+
+In \ac{als}, a progressive disease affecting motor neurons, oculomotor issues
+are also fairly common.
 Although eye movement is often cited as one of the longest preserved
-capabilities in \ac{als}, \textcite{Guo2022} show that minor issues are still
-fairly common,
-especially for patients with bulbar onset \ac{als}.
+capabilities in \ac{als}, show that minor issues are still
+fairly common, especially for patients with bulbar onset
+\ac{als}~\cite{Kang2018, Guo2022,Moss2012}.
 Furthermore, \textcite{Hayashi1991} show that, as these patients progress past
 the point of independent breathing, symptoms will eventually also involve
 eye muscle paralysis.
-Various forms of eye movement abnormalities also occur often and are especially well studied in
-\ac{ms}~\cite{Mueri1985,Prasad2010,Castelnovo2016,Serra2018,Polet2020}.
+
+Various forms of eye movement abnormalities also occur often in
+\ac{ms}.
+\ac{ms} is a neurodegenerative disease involving demyelination of nerves.
+Eye motor abnormalities are especially well
+studied~\cite{Mueri1985,Prasad2010,Castelnovo2016,Serra2018,Polet2020} and
+often used as diagnostical tool.
 These abnormalities can be minor or severe, seldom progressing to complete
 paralysis.
 However, \ac{ms} often comes with vision loss, further complicating interaction
 with visual \acp{bci}.
-\todo{FA}
-Patients suffering from other neurodegenerative diseases like
+
+\ac{fa} is a neurodegenerative disease involving loss of coordinated movement.
+This almost always affects eye
+movements~\cite{Fahey2008,Hocking2010,Furman1983}, with various forms of
+involuntary movements and troubles pursuing or fixating targets.
+They also gradually have more troubles speaking, but often retain some muscular
+control.
+
+Some other groups that are heavily affected are \ac{cp}~\cite{Fazzi2012} and
+\ac{fa}~\cite{Fahey2008,Hocking2010,Furman1983}.
+Individuals with some neurodegenerative diseases like
 \ac{sma}~\cite{Anagnostou2021} and \ac{dmd}~\cite{Lui2001} are
 sometimes also interested in \ac{bci} use, but their eye motor capabilities are
 mostly preserved.
@@ -131,9 +125,6 @@ cerebellum)~\cite{Smith2005},
 it can also generally refer to the state of full body paralysis
 or loss of muscle tone incurred in neurodegenerative diseases, combined with
 the inability to speak, such as occurs in late stage ALS.
-In clinical reality, every tetraplegic patient has their own unique set of
-preserved capabilities and from a solution-oriented \ac{bci} engineering point
-of view, the etiology of the symptoms can be abstracted away.
 }}
 
 \newcommand\fnwolpawcrit{\footnote{
@@ -149,28 +140,17 @@ unreliable, or easily fatigued.
 This group is much larger than the first.
 }}
 
-The most severely impaired of these patients toghether constitute the \ac{lis}
-patient group, which forms one of the main \ac{bci} target populations.
-In this work, we define \ac{lis} patients as those in a situation of (near)
-complete paralysis and difficulties or the inability to communicate independently,
-even with assistive technology.
-This corresponds to classes one and two defined by
-\textcite{Wolpaw2006}\fnwolpawcrit.
-Additionally, some degree of severe or complete eye motor impairment is usually
-necessary to qualify as locked-in\fnlis.
-Case study reports~\cite{Patterson1986} show that the population of locked-in
-patients with complete eye motor paralysis is very small.
-Hence, it would be interesting to focus \ac{bci} development efforts on the
-larger population of individuals with \ac{sspgi} that currently slip through
-the cracks of the assistive technology offer.
-These are individuals whose severe eye motor impairment prevents them from
-using eye tracking based solutions.
-They currently use their remaining motor control to
-communicate by indicating symbols on a letterboard with great effort,
-or signal with upwards eye movements or blinks to confirm prompted letters.
-They require a caregiver or relative to interpret their signals, and crave
-the ability to communicate independently which is crucial to retaining an
-acceptable quality of life.
+We believe it is in general not opportune to delve too deep in the underlying
+ophthalmological and neurological pathophysiology for each of the specific
+conditions.
+In clinical reality, every patient different symptoms, which lead to their own
+unique set of preserved capabilities.
+From a solution-oriented \ac{bci} engineering point
+of view, the etiology of the symptoms can be abstracted away.
+Instead of categorizing patients we will refer to these groups as individuals
+with \ac{sspi} and, if eye motor skills are affected,  \ac{sspgi}, in line with
+the terminology used by~\textcite{FrieDOken2020} (see
+Figure~\ref{fig:gaze_independence/venn}).
 
 \begin{figure}
   \input{figures/gaze_independence/lis_venn.tikz.tex}
@@ -185,6 +165,33 @@ acceptable quality of life.
   }
   \label{fig:gaze_independence/venn}
 \end{figure}
+
+The most severely impaired of these patients constitute the \ac{lis}
+patient group, which forms one of the main \ac{bci} interest groups.
+In this work, we use the term \ac{lis} for a situation of (near)
+complete paralysis and difficulties or the inability to communicate independently,
+even with assistive technology.
+This corresponds to classes one and two defined by
+\textcite{Wolpaw2006}\fnwolpawcrit.
+\todo{[15] Graber M, Challe G, Alexandre MF, et al. Evaluation of the
+visual function of patients with locked-in syndrome: report
+of 13 cases. J Fr Ophtalmol. 2016;39:437–440.}
+Hence, some degree of severe or complete eye motor impairment is usually
+necessary to qualify as locked-in\fnlis.
+
+In general, the group of locked-in individuals with complete loss of eye motor
+function is very small.
+Hence, it would be interesting to focus \ac{bci} development efforts on the
+larger population of individuals with \ac{sspgi}  that currently slip through
+the cracks of the assistive technology offer.
+These are individuals whose severe eye motor impairment prevents them from
+using eye tracking based solutions.
+They currently use their remaining motor control to
+communicate by indicating symbols on a letterboard with great effort,
+or signal with upwards eye movements or blinks to confirm prompted letters.
+They require a caregiver or relative to interpret their signals, and crave
+the ability to communicate independently which is crucial to retaining an
+acceptable quality of life.
 
 This brings us back to the gaze-dependence problem in visual \ac{bci}:
 Traditional visual \ac{bci} scenarios require the user to \emph{overtly} direct both their
@@ -207,9 +214,6 @@ The next section highlights some noteworhy examples.
 
 \section{State-of-the-art}
 \label{sec:gaze-independence}
-\todohsm{Address more systematically.}
-\todo{in a paragraph describe each approach and its up and downsides}
-\todo{rewrite}
 
 \subsection{Gaze-independent modalities}
 Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
@@ -221,8 +225,8 @@ These paradigms can yield very high information transfer
 rates~\cite{Willett2021,Metzger2023}, both due to their intuitiveness and the
 complexity that can be captured in commands, but often only do so when paired
 with invasive recording.
-Non-visual reactive paradigms that use e.g. auditory and
-somatosensory\todo{cite some}
+Non-visual reactive paradigms that use e.g. auditory~\cite{Halder2010} and
+somatosensory~\cite{Brouwer2010}
 stimulation do not rely on gaze redirection exist but also result in lower information transfer
 rates compared to visual paradigms.
 While auditory and somatosensory stimulation on its own might yield poor
@@ -237,10 +241,6 @@ operation and from user-dependent variability~\cite{Severens2014,Reichert2020b}.
 outperformed a somatosensory alternative in participants with \ac{als} whose
 eye motor capabilities were effectively impaired.
 
-
-
-\todo{insert table from riccio in text as numbers, not as table}
-
 \subsection{Gaze-independent visual stimulation}
 This leads us to the second approach, current visual stimulation paradigms can be optimized, e.g. such that
 the stimuli are always present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
@@ -253,7 +253,7 @@ The \ac{rsvp} paradigm in particular is a prime contender for a performant gaze-
 a paradigm with subsequently flashing sets of three characters filling the field of view of the user.
 We make a distinction here between spatially organized interfaces, where
 multiple targets are displayed at the same time at different spatial locations,
-and temporally organized interfaces, like \ac{rsvp}\todo{cite},
+and temporally organized interfaces, like \ac{rsvp},
 where targets or small sets of targets are shown consecutively.
 The Hex-o-Spell, Geospell and GIBS Block Speller are spatially organized, while
 variants of the \ac{rsvp} paradigm are temporally organized.
@@ -274,11 +274,12 @@ attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang201
 The \ac{rsvp} speller is already an example of this, relying on the user to
 attend to attend the appearance of the intended character to type.
 Visual stimulation paradigms relying on alternative types of attention
-can modulate specific \ac{erp} components
-that are more sensitive to stimulation in the visual
-periphery~\cite{Schaeff2012,Xu2022}.\todo{discuss Xu2022}
-Nevertheless, these methods can suffer too from reduced information
-transfer rates~\cite{Chennu2013}.
+can modulate specific extra \ac{erp} components that either improve performance
+because the embed extra information in the brain signal~\cite{Xu2022}
+or because they are more sensitive to stimulation in the visual
+periphery~\cite{Schaeff2012}.
+Nevertheless, solely relying on alternative types of attenion can suffer too
+from reduced information transfer rates~\cite{Chennu2013}.
 Furthermore, the previously mentioned systems typically were only tested in
 settings where the user was required to focus on a central fixation point while
 selecting peripheral targets.
@@ -330,7 +331,6 @@ VSA becomes crucial in the pursuit of high-performance gaze-independent
 
 The general goal of this PhD is to tackle the gaze-dependence in problem in the
 visual oddball \ac{bci}.
-\todo{refer to ITRs from previous chapter}
 Section~\ref{sec:gaze-independence} showed that visual \ac{bci} paradigms form
 a good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
@@ -339,48 +339,131 @@ In such an interface, stimuli can be presented in a standard \ac{bci} paradigm, 
 visuospatial attention can be decoded separately from the position of gaze,
 which do not necessarily need to coincide.
 
-This leads us to adopt a specific approach: improve the performance of a
+This leads us to adopt a specific approach: \emph{improve the performance of a
 spatially organized visual oddball \ac{erp}-based brain
-computer interface by using a suited decoding strategy.
-Hence, our working hypothesis is as follows:
-\todo{rewrite, this is not what we tested in the patient paper after all}
-\begin{quote}
-	\textit{A spatially organized visual oddball \ac{erp} \ac{bci} with a suited decoder
-		can achieve a similar transfer rate in patient
-		populations with eye motor deficits than other gaze-independent alternatives
-    described in literature.}
-\end{quote}
+computer interface by using a suited decoding strategy}.
+%Hence, our working hypothesis is as follows:
+%\todo{rewrite, this is not what we tested in the patient paper after all}
+%\begin{quote}
+%	\textit{A spatially organized visual oddball \ac{erp} \ac{bci} with a suited decoder
+%		can achieve a similar transfer rate in patient
+%		populations with eye motor deficits than other gaze-independent alternatives
+%    described in literature.}
+%\end{quote}
 
-To achieve our goal, we innovate on decoder development and interface design,
-and we collect data from healthy control subjects, which allow us to test our decoders.
-Finally, the findings of these experiments will be leveraged to develop a \ac{bci}
-for patient use, which will be tested in a case-based patient study in which
-both performance and user comfort was be evaluated.\todo{was this actually
-done?}
+To achieve our goal, we chose a suitable interface and innovate on decoder
+development.
+We collect data from healthy control subjects, which allow us to test our decoders.
+Finally, the findings of these experiments will be verified in experiments with
+individuals with \ac{sspgi}, including individuals with \ac{lis} evaluating
+both performance and comfort.
 
-This specific hypothesis is embedded within a broader goal of enabling
+This specific target is embedded within a broader goal of enabling
 effective communication for eye-motor impaired \ac{lis} patients.
 Ultimately, we wish to design a comfortable interface that allows them to maximally exploit
-their residual gaze capabilities, by leveraging a non-invasive, high-\ac{itr}
-\ac{bci} on the one hand, and on the other hand improving \ac{erp} decoding performance
-in general.
+their residual gaze capabilities.
+We believe this can be done with a non-invasive, spatially
+organized visual \acp{bci} with high-\ac{itr}.
+Finally, or efforts also aim to improve hand improving \ac{erp} decoding performance
+in general, which will also contribute to their effectiveness in gaze-dependent
+or gaze-independent settings.
 
 \section{Approach}
 
-\subsection{Interface design}
-\todohsm{rename data collection. start with decoder design, second section data collection with experiments}
+
+\subsection{Decoder design}
+
+During this PhD, we explored different lines in decoding strategies,
+trying to tackle several problems, be it general problems in \ac{erp} decoding
+or those that arise specifically from gaze-independence.
+Examples of this are the lack or decrease in amplitude of specific \ac{erp} components, and the increased
+non-stationarity of the signal.
+As mentioned, state-of-the-art decoders have poor performance in covert attention
+settings.
+The general goal is thus to design a machine learning classifier that represents
+the \ac{erp} signal in a specific way, such that it becomes more robust to the problems
+occurring in covert attention conditions.
+
+\subsubsection{Regularized spatiotemporal beamforming}
+Due to the decreased amplitude of the N1 and P3 components in covert attention
+settings~\cite{Treder2010}, the \ac{snr} of
+the \ac{erp} is lower than in overt attention settings.
+Therefore, a straightforward way to reach satisfactory
+gaze-independent decoding performance, might be by increasing overall \ac{erp}
+decoding performance.
+
+Therefore, we have improved upon an in-house developed, state-of-the art \ac{erp}
+decoder, the spatiotemporal beamformer~\cite{Wittevrongel2016}, by reformulating
+this classifier as a linear discrimination problem and
+imposing regularizing constraints by structuring the noise covariance matrix
+(STBF-struct).
+Furthermore, these regularizing constraints impose temporal stationarity on
+the background noise, yielding insights for our next
+efforts to cope with the non-stationarity of the P3 signal component.
+This approach has been published by~\textcite{VanDenKerchove2022} and will be
+described in Chapter~\ref{sec:stbf-struct}.
+
+\subsubsection{Tensor discriminant analysis}
+\todo{fill in}
+
+\subsubsection{Classifier-based Latency Estimation with Woody iterations}
+The previous two methods were aimed at improving decoding performance, but
+did not (yet) yield results specifically in gaze-independent decoding.
+The following approach is targeted towards improving decoding performance in
+gaze-independent settings by accounting for a known property of the covert
+attention \ac{erp} response.
+
+P3 latency generally falls between 350ms and 600ms~\cite{Luck2014}, but this
+value is heavily dependent on the subject and the task, and can vary from trial
+to trial~\cite{Ouyang2017}.
+The work of \cite{Arico2014} illustrates that the variation in single-trial P3
+latencies is important in gaze-independent decoding and has been hampering covert
+VSA decoding performance.
+We reprised their hypothesis stating that jitter compensation through latency
+estimation and alignment improves
+covert \ac{vsa} performance and extend it by developing a decoder.
+
+Existing latency estimation methods are either not applicable to the
+classification problem of labeling unseen data, or are not robust enough to
+deal with the low \ac{snr} of the \ac{erp}.
+\Ac{cble}~\cite{Mowla2017} is a technique that can leverage
+\ac{erp} latency estimation in a decoding setting, but our results show that it
+yields no improvement in gaze-independent settings.
+We improved upon this technique and extended it to a probabilistic, iterative
+method named \ac{wcble}.
+This approach has been published by~\cite{VanDenKerchove2024} and is presented
+and evaluated on simulated data in Chapter~\ref{sec:wcble}.
+We have also collected datasets to evaluate this approach on real \ac{erp} data
+in gaze-independent settings.
+
+\subsection{Data collection}
+
+\subsubsection{The CVSA-ERP dataset}
+
+In a first series of experiments, we recorded data with this interface from healthy participants.
+The goal of these experiments is to benchmark
+gaze-independent \ac{erp} decoding algorithms.
+We denote this dataset as the Covert Visuospatial Attention \ac{erp} dataset
+(CVSA-\ac{erp})
+This study was approved by the Ethics Commission of University Hospital Leuven
+(S62547).
+To simulate the dissociation between the eye gaze and the
+intended target (\ac{vsa}) which could occur in individuals with gaze
+impairment, healthy participants are cued to operate the \ac{bci} in specific
+\ac{vsa} conditions.
 
 \todo{mention, free, split, frenzel}
-\todo{clear definitions, table from paper}
 
-First, we designed a visual oddball interface that helps us study and adapt
+We chose a visual oddball interface that helps us study and adapt
 to the effects of eye motor impairment on the \ac{erp}, when using existing state-of-the-art
 decoders and on our own proposed decoders.
 Using a hexagonal lay-out interface, similar to the visual Hex-o-Spell proposed
 \textcite{Treder2010}, we present six flashing circular targets
 (without letters or symbols) to the participant while the EEG and
 electro-oculogram (EOG) are recorded, as well as eye gaze using eye tracking.
-\todo{chosen because gaze-independent optimized and Peters2020}
+The Hex-o-Spell was chosen since it is optimiazed for gaze-independent
+performance and because it has already been tested in individuals with
+\ac{sspi} by~\textcite{Severens2014}.
 
 The interface can be operated in different VSA conditions as illustrated in
 Figure~\ref{fig:gaze-vsa}.
@@ -426,6 +509,7 @@ Figure~\ref{fig:gaze-vsa}.
   }
   \label{fig:gaze-vsa}
 \end{figure}
+
 In the overt case, users gaze at the cued
 target they are also mentally attending; in the covert case, users
 gaze at the center of the screen while mentally attending to the cued target.
@@ -433,109 +517,21 @@ Finally, we introduce a VSA condition that is understudied in the context of
 gaze-independent \ac{bci} development: split VSA.
 In split VSA, the user mentally focuses on one cued target while gazing at
 another (the distractor).
-\todomvh{+ "free" condition in Fig. 21.}
+This last option has only scarcely be studied, but completes
+the option s to dissociate gaze and visuospatial attention, which allow us to
+investigate the effect of (the lack of) gaze control on \ac{bci} performance.
+This dataset and performance of our proposed~\ac{wcble} decoder has also been
+published by~\textcite{VanDenKerchove2024} and will be presented in
+Chapter~\ref{sec:covert-align}.
+Performance is also evaluated on a publicly available dataset.
 
-The option to dissociate gaze and visuospatial attention will allow us to
-investigate the effect of gaze control on \ac{bci} performance.
-
-\subsection{Decoders}
-
-During this PhD, we explored different lines in decoding strategies,
-trying to tackle several problems that arise from gaze-independence, such as
-the lack or decrease in amplitude of specific \ac{erp} components, and the increased
-non-stationarity of the signal.
-As mentioned, state-of-the-art decoders have poor performance in covert attention
-settings.
-The general goal is thus to design a machine learning classifier that represents
-the \ac{erp} signal in a specific way, such that it becomes more robust to the problems
-occurring in covert attention conditions.
-
-\subsubsection{Regularized spatiotemporal beamforming}
-Due to the decreased amplitude of the N1 and P3 components in covert attention
-settings~\cite{Treder2010}, the \ac{snr} of
-the \ac{erp} is lower than in overt attention settings.
-Therefore, a straightforward way to reach satisfactory
-gaze-independent decoding performance, might be by increasing overall \ac{erp}
-decoding performance. A more accurate classifier could yield relative
-improvements in those settings where performance is not yet near the achievable
-maximum.\todomvh{?? how to find out what is the maximum?}
-
-Therefore, we have improved upon an in-house developed, state-of-the art \ac{erp}
-decoder, the spatiotemporal beamformer~\cite{Wittevrongel2016}, by reformulating
-this classifier as a linear discrimination problem and
-imposing regularizing constraints by structuring the noise covariance matrix
-(STBF-struct).
-Furthermore, these regularizing constraints impose temporal stationarity on
-the background noise, yielding insights for our next\todomvh{next? more specificaly?}
-efforts to cope with the non-stationarity of the P3 signal component.
-\todofc{conclue with something like "this approach has been published in ... and
-will be described in chapter XXX}
-
-\subsubsection{Classifier-based Latency Estimation with Woody iterations}
-
-P3 latency generally falls between 350ms and 600ms~\cite{Luck2014}, but this
-value is heavily dependent on the subject and the task, and can vary from trial
-to trial~\cite{Ouyang2017}.
-The work of \cite{Arico2014} illustrates that the variation in single-trial P3
-latencies is important in gaze-independent decoding and has been hampering covert
-VSA decoding performance.
-In this work we aim to reprise their hypothesis stating that jitter compensation improves
-covert VSA performance and extend it by developing a decoder and evaluating it
-in a broader range of gaze-independent settings, including split VSA.
-
-\todo{check overlap}
-
-Literature shows that better covert attention performance can be achieved by
-counteracting the non-stationarity of the P3 \ac{erp} component in covert
-attention settings~\cite{Arico2014}.
-This can be done by estimating the latency of each single-trial \ac{erp} and aligning
-the P3 peaks to all fall at the same moment.
-The resulting aligned data and the set of latencies can then be used to train a
-classifier that is more robust to jitter.
-
-Existing latency estimation methods are either not applicable to the
-classification problem of labeling unseen data, or are not robust enough to
-deal with the low \ac{snr} of the \ac{erp}.
-Classifier-based Latency Estimation (CBLE)~\cite{Mowla2017} is a technique that can leverage
-\ac{erp} latency estimation in a decoding setting, but our results show that it
-yields no improvement in gaze-independent settings.
-We improved upon this technique and extended it to a probabilistic, iterative
-method named Classifier-based Latency Estimation with Woody iterations (wCBLE).
-\todo{conclue with something like "this approach has been published in ... and
-will be described in chapter XXX}
-
-\subsubsection{Tensor discriminant analysis}
-\todo{todo}
-
-\subsection{Experiments}
-
-\subsubsection{Healthy control study}
-In a first series of experiments, we recorded data with this interface from healthy participants.
-The goal of these experiments is to benchmark
-gaze-independent \ac{erp} decoding algorithms.
-We denote this dataset as the Covert Visuospatial Attention \ac{erp} dataset
-(CVSA-\ac{erp})
-This study was approved by the Ethics Commission of University Hospital Leuven
-(S62547).
-To simulate the dissociation between the eye gaze (visual attention) and the
-intended target (mental attention) which could occur in patients with hampered eye
-motor control, healthy participants are cued to operate the \ac{bci} in specific
-\ac{vsa} conditions.
-\todofc{conclue with something like "this approach has been published in ...
-and will be described in chapter XXX}
-
-\subsubsection{Patient case study}
-\todofc{conclue with something like "this approach has been published in ...
-and will be described in chapter XXX}
-
-\todo{todo}
+\subsubsection{Case studies with gaze-impaired individuals}
+\todo{fill in}
 \todo{mention multi-center patient study case studies in cooperation
 After data collection from healthy participants and decoder development, we
-will carry out a patient study using a similar interface.
+have carry out a patient study using a similar interface.
 The goal of the patient study is to evaluate the influence of eye motor
 deficits in patient populations on existing state-of-the-art decoders and on
 our proposed decoding methods.
 }
-\todo{update with current results}
-
-\todo{refer to chapters}
+The results of this study are presented in chapter~\ref{sec:patients}.

@@ -15,6 +15,7 @@ speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
 \todo{uniform vsa condition vsa setting}
 \todo{acronyms written in full every new chapter and in captions}
 \todo{search for ??}
+\todo{acro usage in chapters}
 
 People with \ac{sspi} due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
@@ -354,7 +355,7 @@ filter out the noise.
 \section{Paradigms}
 \label{sec:bci/paradigms}
 
-\subsection{Active \& passive \ac{bci}}
+\subsection{Active \& passive \acsp{bci}}
 
 The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
 output actions, since it defines which neural responses will be elicited and
@@ -434,7 +435,7 @@ reframing of the problem, focusing on improving the adaptability of BCIs rather
 than labeling users as illiterate~\cite{Becker2022,Thompson2019}.
 }.
 
-\subsection{Reactive \ac{bci}}
+\subsection{Reactive \acsp{bci}}
 Reactive \ac{bci} take another approach, by providing a discrete set of
 sensory stimulations towards which the user's attention can directed.
 Compared to active \ac{bci}, reactive paradigms can more easily induce fatigue
@@ -845,15 +846,16 @@ used to normalize the response.
 The epochs contain values representing the voltage of a specific channel relative to the
 reference at a specific time relative to the stimulus.
 In \ac{erp} classification, they are usually directly used as features, by
-concatenating all channels in the matrix format epoch $X$ into one feature
-vector s.t.\ $\mat{x} = \mat\vec(X)$.
+concatenating all channels in the matrix format epoch $\mat{X}$ into one feature
+vector s.t.\ $\mat{x} = \mat\vec(\mat{X})$.
 
 \subsection{Decoders}
-Several techniques are suited to decode~\ac{erps}.
+\todo{averaging over trials}
+Several techniques are suited to decode~\acp{erp}.
 Below are some methods that can achieve state-of-the art performance and are
 relevant to this work.
 
-\subsubsection{\Acs{lcmv} beamforming}
+\subsubsection{\Acf{lcmv} beamforming}
 Linear decoding techniques such as the \ac{lcmv}
 beamformer~\cite{Wittevrongel2016} generally work well for
 classifying \ac{erp} epochs.
@@ -879,7 +881,7 @@ This is then solved by  method of Lagrange multipliers as
 \end{equation}
 with $\mat{C}$ the background covariance.
 
-\subsubsection{\Ac{lda}}
+\subsubsection{\Acf{lda}}
 \Ac{lda} is a more well-known method that is, int fact, nearly equivalent to
 \ac{lcmv} beamforming~\cite{Treder2016} under certain conditions.
 It assumes normally distributed data with a different mean per class but a
@@ -907,18 +909,20 @@ shrinkage.
 Regularization can also be performed by retaining structure in the data, such
 as is the case for the multilinear methods presented by~\textcite{Lotte2018}.
 
-\subsubsection{\Ac{tlda}}
+\subsubsection{\Acf{tlda}}
 
 Another example of this is \ac{tlda}~\cite{Sosulski2022}, which assumes temporal
-stationarity on the background noise to regularize the between-class covariance
-matrix of \ac{lda}
+stationarity on the background noise to regularize the problem.
+It does this by imposing a block-Toeplitz structure to the between-class covariance
+matrix of \ac{lda}, such that every temporal covariance block corresponding to
+a channel has the structure
 \begin{equation}
-  \mat{S}_\text{w} = \begin{bmatrix}
-s_0 & s_1 & s_2 & \cdots & s_{n-1} \\
-s_1 & s_0 & s_1 & \cdots & s_{n-2} \\
-s_2 & s_1 & s_0 & \cdots & s_{n-3} \\
+  \mat{S}_\text{w}^(c) = \begin{bmatrix}
+s_0 & s_1 & s_2 & \cdots & s_{k-1} \\
+s_1 & s_0 & s_1 & \cdots & s_{k-2} \\
+s_2 & s_1 & s_0 & \cdots & s_{k-3} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
-s_{n-1} & s_{n-2} & s_{n-3} & \cdots & s_0
+s_{k-1} & s_{k-2} & s_{k-3} & \cdots & s_0
 \end{bmatrix}
 \end{equation}
 This method is simple yet effective reaching state-of-the-art decoding
@@ -951,8 +955,8 @@ classifier, or they can be projected to the tangent space.
 This is a euclidean space that locally approximates the Riemannian distance,
 which allows us to apply regular machine learning methods like an SVM or
 \ac{lda}.
-The tangent space is obtained
-To enhance classifications of \ac{erps} which rely on time domain information
+The tangent space is obtained\todo{tangent space}.
+To enhance classifications of \acp{erp} which rely on time domain information
 which would otherwise be lost in the spatial representation of the extracted
 feature, the class averages can be concatenated as additional channels to the
 epochs, embedding the temporal structure in the feature~\cite{Barachant2014}.
@@ -965,7 +969,7 @@ Interesting and complex challenges arise when applying these concepts outside
 of the lab in augmented and assistive communication technologies for patients
 with \acp{sspi}.
 
-\todo{wrap-up}
+\section{The gaze-dependence problem}
 
 In a nutshell, we can state that \acp{bci} decode brain activity with the aim to
 establish a direct communication pathway bypassing speech and other forms of

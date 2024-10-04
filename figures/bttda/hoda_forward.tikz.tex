@@ -1,7 +1,4 @@
 \begin{tikzpicture}[y=-1cm]
-	\TensorThree{$\ten{X}$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
-  \node at (3.15,0.5,0) {$\approx$};
-	\begin{scope}[shift={(6,0)}]
 	  \begin{scope}[shift={(-0.0707, -0.0707)}]
       \MatrixSkewed{$\mat{A}_1$}{$r_1$}{$D_1$}{2}{1}
     \end{scope}
@@ -11,6 +8,13 @@
 	  \begin{scope}[shift={(0,1.1)}]
       \MatrixBelow{$\mat{A}_3$}{$r_3$}{$D_3$}{1}{2}
     \end{scope}
-	    \TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
-  \end{scope}
+    \TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
+
+    \node at (2,.5){$=$};
+
+	  \begin{scope}[shift={(3,-.5)}]
+      \TensorThree{$\hat{\ten{X}}$}{$D_1$}{$D_2$}{$D_3$}{2}{2}{2}
+    \end{scope}
+
+
 \end{tikzpicture}
