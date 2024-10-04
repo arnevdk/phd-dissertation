@@ -20,6 +20,7 @@
 \RequirePackage{expl3}
 \RequirePackage[geometry]{ifsym}
 \RequirePackage{todonotes}
+\RequirePackage{sansmath}
 
 % Preamble
 \input{include/acronyms.tex}
@@ -41,12 +42,17 @@
 
 
 % Include chapter with refsection bibliography
+%\newcommand{\includechapter}[2]{
+%  \chapter{#1}
+%  \begin{refsection}
+%  \input{#2}
+%    \printbibliography[heading=subbibliography]
+%  \end{refsection}
+%  \clearpage
+%}
 \newcommand{\includechapter}[2]{
   \chapter{#1}
-  \begin{refsection}
   \input{#2}
-    \printbibliography[heading=subbibliography]
-  \end{refsection}
   \clearpage
 }
 

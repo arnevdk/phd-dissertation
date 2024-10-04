@@ -12,9 +12,7 @@
 }{%
   \textcite{Egan2017}
 }
-\todohsm{move introduction of paper to paper}
 
-\todo{spatially vs temporally organized interfaces}
 \todo{talk about covert shifts in spatial attention alpha}
 
 \section{Eye motor impairment in individuals with \acs{sspi}}%
@@ -181,11 +179,11 @@ acceptable quality of life.
     Patients with \acf{sspi} are the general target population.
     If eye gaze-based solutions are not properly suited for an individual,
     they have \acf{sspgi}.
-    Individuals with \ac{lis} have no muscular control left, or is is very limited,
+    Individuals with \ac{lis} have no muscular control left, or is it is very limited,
     such as the ability communicate through a binary switching system.
     \Acp{bci} are especially relevant for the last two groups.
   }
-  \caption{fig:gaze_independence/venn}
+  \label{fig:gaze_independence/venn}
 \end{figure}
 
 This brings us back to the gaze-dependence problem in visual \ac{bci}:
@@ -211,7 +209,7 @@ The next section highlights some noteworhy examples.
 \label{sec:gaze-independence}
 \todohsm{Address more systematically.}
 \todo{in a paragraph describe each approach and its up and downsides}
-\todo{move form copied introduction}
+\todo{rewrite}
 
 \subsection{Gaze-independent modalities}
 Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
@@ -227,11 +225,19 @@ Non-visual reactive paradigms that use e.g. auditory and
 somatosensory\todo{cite some}
 stimulation do not rely on gaze redirection exist but also result in lower information transfer
 rates compared to visual paradigms.
-Furthermore, they can suffer from increased mental effort in operation and
-user-dependent variability~\cite{Severens2014,Reichert2020b}.
+While auditory and somatosensory stimulation on its own might yield poor
+\ac{itr} \textcite{Yin2016} that it can provide added value in gaze-independent
+settings when coupled with oddball stimulation in a hybrid paradigm.
+Their solution using the P3 components of bimodal stimulation reached an \ac{itr} of 14.94bits/min.
+In general, their approach is interesting since they follow a philosophy that
+relies on establishing as many communication pathways as possible.
+Yet, auditory and somatosensory \acp{bci} suffer from increased mental effort in
+operation and from user-dependent variability~\cite{Severens2014,Reichert2020b}.
 \textcite{Severens2014} showed that the visual Hex-o-Spell~\cite{Treder2010}
 outperformed a somatosensory alternative in participants with \ac{als} whose
 eye motor capabilities were effectively impaired.
+
+
 
 \todo{insert table from riccio in text as numbers, not as table}
 
@@ -241,17 +247,43 @@ the stimuli are always present in the field of view either overtly~\cite{Acquala
 Lin2018} or covertly~\cite{,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
 the GeoSpell interface~\parencite{Aloise2012}, and the \ac{rsvp}
 speller~\parencite{Acqualagna2011}.
-Non-spatial visual attention (feature attention) can also be exploited, such as
+The \ac{rsvp} paradigm in particular is a prime contender for a performant gaze-independent
+\ac{bci}.
+\textcite{Lin2018} reported an average online \ac{itr} of 20.259 bits/min using
+a paradigm with subsequently flashing sets of three characters filling the field of view of the user.
+We make a distinction here between spatially organized interfaces, where
+multiple targets are displayed at the same time at different spatial locations,
+and temporally organized interfaces, like \ac{rsvp}\todo{cite},
+where targets or small sets of targets are shown consecutively.
+The Hex-o-Spell, Geospell and GIBS Block Speller are spatially organized, while
+variants of the \ac{rsvp} paradigm are temporally organized.
+\textcite{Lin2018} follow the philosophy that spatially organized interface
+have historically shown not to perform well in the presence of gaze impairment.
+However, we argue that, spatially organized interfaces in general have a much higher
+\ac{itr} in healthy controls.
+For instance, a regular matrix-based speller can achive an \ac{itr} to up to
+30bits/min.
+With the right set of adaptations, spatial attention could potentionally also
+bring added value to individuals with \ac{sspgi}.
+While spatial interfaces are indeed more gaze-dependent than temporal
+interfaces they also provide an extra channel that can be used to transfer
+information, i.e.\ the location of the stimulus.
+
+As an alternative to spatial attention, non-spatial visual attention (feature attention) can also be exploited, such as
 attention to stimulus color, shape or symbol~\cite{Zhang2010,Treder2011,Hwang2015}.
-Alternative visual stimulation paradigms can modulate specific \ac{erp} components
-that are more sensitive to stimulation in the visual periphery~\cite{Schaeff2012,Xu2022}.
+The \ac{rsvp} speller is already an example of this, relying on the user to
+attend to attend the appearance of the intended character to type.
+Visual stimulation paradigms relying on alternative types of attention
+can modulate specific \ac{erp} components
+that are more sensitive to stimulation in the visual
+periphery~\cite{Schaeff2012,Xu2022}.\todo{discuss Xu2022}
 Nevertheless, these methods can suffer too from reduced information
 transfer rates~\cite{Chennu2013}.
-Furthermore, these systems typically require users to focus on a central fixation point while
+Furthermore, the previously mentioned systems typically were only tested in
+settings where the user was required to focus on a central fixation point while
 selecting peripheral targets.
 This entails that they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
-\todo{advantages disadvantages rewrite (requires gaze fixation, low itr, not tested with split attention)}
 
 \subsection{Gaze-independent decoding}
 Thirdly, stimuli can be presented in a standard \ac{bci} paradigm, but visuospatial
@@ -262,21 +294,25 @@ They compared classical linear and non-linear \ac{erp} classifiers on a covert
 attention oddball \ac{erp} paradigm dataset.
 The results revealed no significant performance improvement in covert VSA
 decoding for any of the investigated decoders.
+
 More recent work has made advances in decoding lateralized covert
-VSA harnessing the N2pc \ac{erp} component~\cite{Thiery2016,Reichert2020b,Wang2022},
-decoding covert VSA shifts from spectral content~\cite{Tonin2013}, or hybrid
-stimulation paradigms~\cite{Egan2017}.
-Since these methods often require a slower stimulation pace than the classical
-\ac{erp} \ac{bci} paradigm, gaze-independent decoding in the fast-paced reactive \ac{erp} paradigm
+VSA harnessing the N2pc \ac{erp}
+component~\cite{Thiery2016,Reichert2020b,Wang2022}
+The amplitude of the N2pc component in the contralateral hemisphere, is directly modulated
+by the location of covert \ac{vsa}.
+Another approach is directly decoding covert shifts in \ac{vsa} from spectral
+content~\cite{Tonin2013}.
+These methods are promising, but to date often require a slower stimulation pace than or cannot display as
+many targets as the classical \ac{erp} \ac{bci} paradigms.
+As with the alternative modality approach, they are currently only helpful as
+extra communication channels in a hybrid paradigm.
+\textcite{Xu2016} reached an \ac{itr} of 23.56bits/min by detecting the N2pc
+component while performing \ac{ssvep} stimulation.
+\textcite{Egan2017} also showed an increase in \ac{ssvep} performance by
+concurrently decoding the covert \ac{vsa} shift from spectral content, but
+their study only used a few stimulation targets.
+In general, we can state that gaze-independent decoding in the fast-paced reactive \ac{erp} paradigm
 leveraging spatial attention remains underexplored.
-
-\todo{
-  Complete with refs from
-
-Fast detection of covert visuospatial
-attention using hybrid N2pc and SSVEP
-features
-}
 
 \section{Research objectives}
 
@@ -299,12 +335,6 @@ Section~\ref{sec:gaze-independence} showed that visual \ac{bci} paradigms form
 a good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.
-We make a distinction here between spatially organized interfaces, where
-multiple targets are displayed at the same time at different spatial locations,
-and temporally organized interfaces, like \ac{rsvp}\todo{cite},
-where targets or small sets of targets are shown consecutively.
-Traditionally, spatially organized interfaces have a higher information transfer
-rate, but are also more gaze-dependent than temporally organized interfaces.
 In such an interface, stimuli can be presented in a standard \ac{bci} paradigm, but
 visuospatial attention can be decoded separately from the position of gaze,
 which do not necessarily need to coincide.

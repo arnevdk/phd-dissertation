@@ -1,8 +1,6 @@
 \sffamily
 \begin{tikzpicture}[
     scale=\textwidth/2cm,
-    %remember picture,
-    %overlay
   ]
   \useasboundingbox (-1,-1.25) rectangle (1,1);
   \pgfmathsetmacro{\margin}{.1}
@@ -40,9 +38,9 @@
     \node[align=center] at ({\center-\textspacing}, {\center-\textspacing}) {mVEP};
 
     %% More text
-    \node[align=center] at (\center, {-\center}) {error\\potentials};
-    \node[align=center] at ({-\center}, {-\center}) {attention\\monitoring};
-    \node[align=center] at (-.25, -.8) {emotion\\monitoring};
-    \node[align=center] at (.25, -.8) {media induced\\emotion recognition};
+    \node[align=center] at ({\center-\textspacing}, {-\center+\textspacing})  {error\\potentials};
+    \node[align=center] at ({-\center-\textspacing}, {-\center+\textspacing}) {attention\\monitoring};
+    \node[align=center] at ({-\center+\textspacing}, {-\center-\textspacing}) {emotion\\monitoring};
+    \node[align=center] at ({\center-\textspacing}, {-\center-\textspacing}) {neurofeedback};
   %\end{scope}
 \end{tikzpicture}

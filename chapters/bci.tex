@@ -14,9 +14,9 @@ speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
 \todofc{chapters should look more like full papers}
 \todo{uniform vsa condition vsa setting}
 \todo{acronyms written in full every new chapter and in captions}
-\the\textwidth
+\todo{search for ??}
 
-People with severe physical impairment due to
+People with \ac{sspi} due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
 become entirely reliant on caregivers or family members in their day to day
 routine.
@@ -238,9 +238,11 @@ equipment is rather expensive and impractical.
 Recent advances have been made using optically pumped magnetometers
 (OPM-MEG)~\cite{Wittevrongel2021}, but this technology still falters outside of
 lab conditions.
-
 As a consequence, the \ac{bci} field relies heavily on the
 electrical activity of the brain.
+
+
+\subsection{Invasive electrophysiology}
 The \emph{invasiveness} of the technology forms an
 important concept in determining its suitability for a given application and
 patient.
@@ -308,6 +310,8 @@ sufficiently large~\cite{Kageyama2020}.
 This provides justification for focusing part of the current research effort on
 non-invasive BCI.
 
+\subsection{\Acl{eeg}}
+
 \Ac{eeg} is the de facto non-invasive electrophysiology standard in clinical
 neurology practice as well as in \ac{bci} research.
 Developed since 1924~\cite{Berger1929}, it is cheap and relatively practical and
@@ -325,31 +329,20 @@ individual to properly administer.
 Nevertheless, it is the most accessible \ac{bci} technology for both patients
 and researchers.
 
-The major drawback of \ac{eeg} is its poor spatial resolution.
-The electrodes are large and sit on the outside of the scalp, relatively far
-away from the cortex.
+The major drawback of \ac{eeg} is its poor spatial resolution~\cite{Ferree2001}.
+Since they sit on the outside of the scalp electrodes are large and distance
+relative to the neurons in the cortex they ought to measure.
 Furthermore, the layers of skull and cerebrospinal fluid in between can
-attenuate the signal and cause volume conduction, which results in electrodes
+attenuate the signal and cause volume conduction~\cite{Broek1998}, which results in electrodes
 measuring a mixture of activity from sources elsewhere in the brain.
 This also has a negative effect on spectral resolution.
 The noise problem mentioned earlier is also prominently present in \ac{eeg}
 recordings.
 In addition to picking up brain activity other than that of the region of
 interest, \ac{eeg} also records other artifacts, from the environment, the power
-supply, nearby electrical equipment, or the user's muscle movements.
+supply, nearby electrical equipment, or the user's muscle
+movements~\cite{Urigueen2015}.
 Combined, this means \ac{eeg} is inherently noisy.
-\todo{citations from 'Decoding covert speech from eeg-a cromprehensive review
-EEG has lower signal-to-noise ratio (SNR) than the other
-modalities. It is almost always corrupted by artifacts such as
-muscular artifacts (Eberle et al., 2012; Liu, 2019).
-• EEG has limited spectral and spatial resolution (Peled et al.,
-2001; Lakshmi et al., 2014).
-• Recording EEG for longer duration is challenging since the
-conductive gel or the saline solution applied for reducing the
-electrode impedance dries up over time, thus increasing the
-electrode impedance (Guger et al., 2012; Xu et al., 2018a).
-• A trained personnel is required for placing the EEG
-electrode cap}
 
 Despite its noisy nature, \ac{eeg} is the recording methodology of choice for
 our \ac{bci} because of its wide acceptance by patients.
@@ -360,7 +353,8 @@ filter out the noise.
 
 \section{Paradigms}
 \label{sec:bci/paradigms}
-\todohsm{bring more structure, more subtitles}
+
+\subsection{Active \& passive \ac{bci}}
 
 The \ac{bci} paradigm~\cite{Xu2021,Neeling2019} is the key to translating brain activity into useful
 output actions, since it defines which neural responses will be elicited and
@@ -384,28 +378,26 @@ Figure~\ref{fig:bci/paradigms}.
 }{%
   fig:bci/paradigms
 }
-\todo{check permissions}
-\todo{above Zander and Kothe was mentioned.}
 
 Paradigms that require little active participation of the user like
 redirecting attention or initiating imagined actions are classified as \emph{passive
 \ac{bci}}.
 From the user's point of view, this concept is probably the most attractive,
-since their intentions or cognitive state state would be inferred from just
-their brain activity.\todohsm{in "passive bci", the user is not supposed to express "intentions". ragher start with active "}
+since their cognitive state state would be inferred from just
+their brain activity.
 However, without active user participation, it can be hard to establish reliable
 communication or control.
 Therefore, passive \ac{bci} are currently more suited to tasks like
-emotion or affect monitoring~\cite{Torres2020,Libert2019}, workload
+emotion or affect monitoring~\cite{Torres2020,Libert2019, Muehl2014}, workload
 monitoring~\cite{Zanetti2021} or, more dependent on stimulation, error
-detection~\cite{SiMohammed2020}.\todo{mention neurofeedback}
-Furthermore, active paradigms\todo{"active" is used in a fuzzy way: active BCI is self-paced, reactive is in response to a cued event. Further down that becomes more clear.
-The "active participation": is needed in both cases as shown in Fig. 1.3.
-I suggest to say active participation} make it easier to quickly collect training data for
-supervized machine learning since the conditions can be more easily controlled
+detection~\cite{SiMohammed2020}.
+It also has clinical applications in the form of neurofeedback~\cite{Hammond2011}.
+Nevertheless, active participation facilitates training data collection for
+supervised machine learning since the conditions can be more easily controlled
 by the user or the stimulation.
 
-Paradigms with high active participation can be split up in \emph{active
+
+Paradigms requiring high active participation can be split up in \emph{active
 \ac{bci}} and \emph{reactive \ac{bci}}.
 Active \ac{bci} paradigms encode endogenous activity initiated by the user,
 such as imagined movement or imagined speech.
@@ -417,6 +409,8 @@ like natural speech~\cite{Metzger2023} or meaningful motor trajectories, like ha
 symbols~\cite{Willett2021} or sign language~\cite{Branco2017}.
 Active paradigms are also subject to large inter-subject variability due to the
 complexity of the performed tasks.
+They might require extensive user training and are sensitive to
+correct task instruction.
 Imagined speech or movements can be performed in a multitude of ways, which
 can each have different neural representations for separate individuals.
 This can make it hard to adapt the \ac{bci} to specific individuals, causing
@@ -427,24 +421,24 @@ Instead of attributing poor performance to the user's inherent limitations,
 critiques point out that the issue lies more with the design of the
 systems themselves. BCI systems often fail to account for individual
 variability in brain anatomy and cognitive strategies. As a result, what has
-been labeled as "illiteracy" may, in fact, be a reflection of systems that are
+been labeled as `illiteracy' may, in fact, be a reflection of systems that are
 not flexible enough to adapt to different users. This perspective
 shifts the responsibility to the individual, rather than recognizing that
 better, more adaptive systems could overcome many of these performance
 challenges, thus standing in the way of progress.
-Moreover, the term ``illiteracy'' itself carries negative
+Moreover, the term `illiteracy' itself carries negative
 connotations, implying a user deficiency that reinforces normative assumptions,
 when in reality, a more inclusive approach to design could enhance BCI
 accessibility for a wider range of individuals. This evolving view calls for a
 reframing of the problem, focusing on improving the adaptability of BCIs rather
 than labeling users as illiterate~\cite{Becker2022,Thompson2019}.
 }.
-\todo{user training more than with reactive, task instruction}
 
+\subsection{Reactive \ac{bci}}
 Reactive \ac{bci} take another approach, by providing a discrete set of
 sensory stimulations towards which the user's attention can directed.
-Compared to active \ac{bci}, reactive paradigms usually require more effort\todohsm{is this the case?}
-and can induce fatigue due to the constant stimulation.
+Compared to active \ac{bci}, reactive paradigms can more easily induce fatigue
+due to the constant stimulation.
 These paradigms are also somewhat less intuitive compared to e.g.\ speech, and
 their expressive power is limited by how many different stimuli can effectively
 presented and attended within a reasonable timeframe.
@@ -470,9 +464,10 @@ In \ac{ssvep}, information is modulated by the frequency of a stimulus attended
 among many that each flicker continuously at different
 frequencies~\cite{Chen2021}.
 In \ac{cvep}, the stimuli flicker instead with distinct on-of patterns, which can
-be correlated with the brain activity to retrieve the attended stimulus.
+be correlated with the brain activity to retrieve the attended
+stimulus~\cite{Sun2022}.
 Instead of stimulating all possible selections at once, the oddball paradigm
-stimulates them one by one with single flashing.\todo{reference}
+stimulates them one by one with single flashes~\cite{Pan2022}.
 Since the times of stimulation of each target is known, and time-points at
 which an attention signature is detected to selected targets.
 \Ac{mvep} is usually similarly time modulated, but stimuli make sudden
@@ -491,7 +486,6 @@ only 800ms of stimulation.
 
 \section{Preprocessing}%
 \label{sec:bci/preprocessing}
-\todo{preprocessing}
 EEG preprocessing is a critical step in brain-computer interface (BCI) systems, as it
 significantly improves the quality of the recorded data for subsequent analysis and
 classification. Common preprocessing techniques in BCI systems include
@@ -509,7 +503,7 @@ Band-pass filters eliminate slow drifts and high-frequency noise, such as
 muscle artifacts or environmental electrical interference, improving the
 \ac{snr}.
 Additionally, notch filtering can be  used to remove strong power line
-interference\footnote{Typically at 50Hz in Europe}.
+interference\footnote{Typically at 50Hz in Europe.}.
 This interference can heavily contaminate EEG recordings and even leak through
 when outside the passband of a previous filter.
 Notch filtering efficiently attenuates this narrowband noise without affecting
@@ -535,6 +529,8 @@ improving the accuracy and reliability of the system.
 
 \section{Decoders}%
 \label{sec:bci/decoding}
+
+\subsection{Design principles}
 
 After preprocessing and extracting features, machine learning algorithms can perform \ac{bci}
 decoding.
@@ -578,6 +574,8 @@ manner is often of interest.
 Many applications resemble virtual keyboards or map a user's actions to
 discrete words, predefined actions or letters for full control.
 Hence, such problems often present themselves as classification tasks.
+
+\subsection{Implemetation \& evaluation}
 
 \textcite{Lotte2018, Xu2021} present a relatively recent overview of state-of-the art
 classification algorithms for decoding.
@@ -693,15 +691,30 @@ Furthermore, \ac{ssvep} relies more on directing the gaze at the intended
 target than oddball, detracting from the concept of control independent from
 muscle movement.
 
+\begin{figure}[t]
+  \begin{subfigure}[t]{.45\textwidth}
+  \includegraphics[width=\textwidth, height=\textwidth]{example-image-a}
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/bci/p300.tikz.tex}
+    \caption{The P300 matrix speller interface. Entire rows or columns flash at once.}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/bci/erp.tikz.tex}
+    \caption{The idealized \ac{erp} evoked by an attended stimulation.}
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \includegraphics[width=\textwidth, height=0.6180\textwidth]{example-image-b}
+  \end{subfigure}
+\end{figure}
+
 \todo{four pane figure:
   photo of someone using a P300 bci
-  P300 matrix interface
-  simplified figure of ERP components
   full spatiotemporal ERP response
 }
 
-
-\subsection{The \acf{erp}}
+\subsection{The \acf{erp}}%
 \label{sec:bci/oddball/erp}
 
 The time-domain response elicited immediately after the intensification of a
@@ -714,13 +727,22 @@ waveform.
 They follow a naming scheme based on polarity (Negative or Positive) and
 latency (e.g., N2 or N200 for a negative component after $\pm200$ ms).
 The component most prominently modulated by attention is called the P3
-(positive deflection after $\pm300$ ms).\todo{add footnote about how ms naming
-is maybe not suited, especially since this work focuses on the fact that there
-is a lot of variability in the timings for visual potentials. the short naming
-scheme builds on 'the first negative component', 'the first positive
-component', and for the visual oddball erp this ordening more or less coincides
-with the timings.}
-Therefore, oddball paradigms are frequently referred to as P300 paradigms.
+(positive deflection after $\pm300$ ms)
+some \ac{bci}\footnote{In \ac{erp} analysis,
+components are sometimes referred to with the timing around which they occur
+(e.g.\ N170, negative after 170ms), or by their rank in order of occurrence
+(N1, the first negative component).
+The timing nomenclature is based on average latencies for neurotypical
+individuals, but is seldom correct for specific \ac{bci} user due to the large
+variability across \ac{erp} stimulation paradigms and subjects and can also
+depend on the user's pathology.
+Furthermore, as we will see later, this work focuses specifically on the
+intra-session variability in \ac{erp} latency, explicitly assuming the latencies are not
+fixed.
+Therefore, we adhere to the ranking nomenclature.
+Fortunately, for the visual oddball paradigm, the rankings do roughly
+correspond to their expected timings, i.e.\ P1=P100, N1=N100, etc.}.
+Therefore, oddball paradigms are frequently referred to as P3(00) paradigms.
 However, due to the equally important contributions of other \ac{erp}
 components in decoding, as we will show later, this could be considered a
 misnomer.
@@ -810,21 +832,140 @@ improving user interaction, particularly in contexts involving visual oddball
 tasks.
 
 \subsection{Preprocessing \& feature extraction}
-In addition to (ref) epoching
-baseline correction, but not in decoding (cite)
+For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5Hz
+and 16Hz.
+Re-referencing can be done to average mastoids to highlight the contribution of
+the P3 component.
+In addition to the steps outlined in section~\ref{sec:bci/preprocessing},
+the signal is usually cut into \emph{epochs} for \ac{erp} analysis.
+These are time windows surrounding the stimulus event.
+They usually include some baseline interval before the stimulus, which can be
+used to normalize the response.
+
+The epochs contain values representing the voltage of a specific channel relative to the
+reference at a specific time relative to the stimulus.
+In \ac{erp} classification, they are usually directly used as features, by
+concatenating all channels in the matrix format epoch $X$ into one feature
+vector s.t.\ $\mat{x} = \mat\vec(X)$.
+
+\subsection{Decoders}
+Several techniques are suited to decode~\ac{erps}.
+Below are some methods that can achieve state-of-the art performance and are
+relevant to this work.
+
+\subsubsection{\Acs{lcmv} beamforming}
+Linear decoding techniques such as the \ac{lcmv}
+beamformer~\cite{Wittevrongel2016} generally work well for
+classifying \ac{erp} epochs.
+\Ac{lcmv} beamforming learns a weight vector $\mat{w}$ from a set of epochs that can
+be multiplied with the feature vector of a new epoch to obtain a prediction
+score.
+The weights $\mat{w}$ are obtained by minimizing the variance of the output
+\begin{equation}
+  \argmin_\mat{w}\mat{w}^\intercal\mat{C}
+	\mat{w}^\intercal
+\end{equation}
+under the linear constraint
+\begin{equation}
+	\mat{a}^\intercal\mat{w} = 1
+\end{equation}
+with activation pattern $a$ the difference between the average of the attended epochs and the
+average of the non-attended epochs in the training data.
+This is then solved by  method of Lagrange multipliers as
+\begin{equation}
+	\mat{w} =
+  \frac{\mat{C}^{-1}\mat{a}^\intercal}
+  {\mat{a}\mat{C}^{-1}\mat{a}^\intercal}
+\end{equation}
+with $\mat{C}$ the background covariance.
+
+\subsubsection{\Ac{lda}}
+\Ac{lda} is a more well-known method that is, int fact, nearly equivalent to
+\ac{lcmv} beamforming~\cite{Treder2016} under certain conditions.
+It assumes normally distributed data with a different mean per class but a
+common covariance.
+Similar to \ac{lcmv}-beamforming, \ac{lda} learns a weight vector $\mat{w}$
+that satisfies
+\begin{equation}
+  \argmax_\mat{w}\frac{\mat{w}^\intercal\mat{S}_\text{b}\mat{w}}{\mat{w}^\intercal\mat{S}_\text{w}\mat{w}}
+\end{equation}
+The between-class scatter matrix $\mat{S}_\text{b}$ models the variability
+between the expected responses, the within-class scatter matrix
+$\mat{S}_\text{w}$ the expected noise.
+The optimization criterion corresponds to finding a projection that maximizes
+the spread between classes (signal) while minimizing the spread within classes
+(noise).
+$mat{w}$ can be obtained as eigenvector of
+$\mat{S}_\text{w}^{-1}\mat{S}_\text{b}$ corresponding to the largest eigenvalue.
+
+There is one one caveat with these linear methods, however:
+the amount of values ($=\text{nb. of channels}\times\text{nb. of sampled time points}$)
+is usually relatively high compared to the training dataset, since calibration
+time should be kept minimal.
+Therefore, strong regularization should be applied, such as covariance/scatter
+shrinkage.
+Regularization can also be performed by retaining structure in the data, such
+as is the case for the multilinear methods presented by~\textcite{Lotte2018}.
+
+\subsubsection{\Ac{tlda}}
+
+Another example of this is \ac{tlda}~\cite{Sosulski2022}, which assumes temporal
+stationarity on the background noise to regularize the between-class covariance
+matrix of \ac{lda}
+\begin{equation}
+  \mat{S}_\text{w} = \begin{bmatrix}
+s_0 & s_1 & s_2 & \cdots & s_{n-1} \\
+s_1 & s_0 & s_1 & \cdots & s_{n-2} \\
+s_2 & s_1 & s_0 & \cdots & s_{n-3} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+s_{n-1} & s_{n-2} & s_{n-3} & \cdots & s_0
+\end{bmatrix}
+\end{equation}
+This method is simple yet effective reaching state-of-the-art decoding
+performance.
 
 
-\subsection{Decoding ERPs}
+\subsubsection{Riemannian geometry}
 
-Usually, snr low and multiple trials necessary
+Alternative methods that currently work well include
+non-linear methods include Riemannian geometry~\cite{Barachant2014}.
+Methods leveraging Riemannian geometry use a different feature extraction
+method.
+They do not use the raw epoch values, but rather operate on the spatial
+covariance of an epoch.
+These covariance matrices $C_i$ are symmetric and should have only positive
+eigenvalues, hence they lie on the Riemannian manifold of symmetric positive
+definite matrices, which defined distance metric
+\begin{equation}
+  \delta_\text{R}\left(\mat{C}_1,\mat{C}_2\right)
+  =\left\lVert\log\left(\mat{C}_1^{-\frac{1}{2}} \mat{C}_2 \mat{C}_1^{-\frac{1}{2}}\right)\right\rVert
+\end{equation}
+This geodesic distance metric is naturally suited for this type of data and has
+some desirable properties, like invariance to linear transformations, which
+result in a robustness particularly useful for \ac{bci}
+applications~\cite{Barachant2011}.
 
-tLDA, beamforming
-Linear decoding techniques
+With this distance defined, the epochs can than be either directly be
+classified on the Riemannian manifold using a minimum distance to mean
+classifier, or they can be projected to the tangent space.
+This is a euclidean space that locally approximates the Riemannian distance,
+which allows us to apply regular machine learning methods like an SVM or
+\ac{lda}.
+The tangent space is obtained
+To enhance classifications of \ac{erps} which rely on time domain information
+which would otherwise be lost in the spatial representation of the extracted
+feature, the class averages can be concatenated as additional channels to the
+epochs, embedding the temporal structure in the feature~\cite{Barachant2014}.
+To improve performance even further, the \acp{erp} can be decomposed by a method
+like XDAWN before calculating the extended covariances~\cite{Li2020}.
 
+These decoders define the last building blocks of our visual oddball \ac{bci}.
+Yet, the overview until now has been rather theoretical.
+Interesting and complex challenges arise when applying these concepts outside
+of the lab in augmented and assistive communication technologies for patients
+with \acp{sspi}.
 
 \todo{wrap-up}
-
-\section{The gaze-dependence problem}
 
 In a nutshell, we can state that \acp{bci} decode brain activity with the aim to
 establish a direct communication pathway bypassing speech and other forms of
