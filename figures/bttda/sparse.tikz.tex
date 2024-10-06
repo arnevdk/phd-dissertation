@@ -1,0 +1,34 @@
+\begin{tikzpicture}[x=\textwidth/13, y=-\textwidth/13]
+    \useasboundingbox (0,-1) rectangle (13,3.5);
+    \TensorThree{$\ten{G}$}{}{}{}{3}{3}{3}
+    \node[anchor=north] at (1.5,3) {HODA};
+
+    \begin{scope}[shift={(5,0)}]
+      \TensorThree{}{}{}{}{3}{3}{3}
+      \TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+      \node at (1.5,1.5,-1.5) {$\ddots$};
+      \begin{scope}[shift={(2,2,-2)}]
+      \TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+      \end{scope}
+    \end{scope}
+    \node[anchor=north] at (6.5,3) {BTTDA};
+
+    {\footnotesize
+    \begin{scope}[shift={(10,0)}]
+      \TensorThree{}{}{}{}{3}{3}{3}
+      \TensorThree{$g^{(1)}$}{}{}{}{.5}{.5}{.5}
+      \node at (1.5,1.5,-1.5) {$\ddots$};
+      \begin{scope}[shift={(.5,.5,-.5)}]
+        \TensorThree{$g^{(2)}$}{}{}{}{.5}{.5}{.5}
+      \end{scope}
+      \begin{scope}[shift={(2,2,-2)}]
+        \TensorThree{$g^{(B-1)}$}{}{}{}{.5}{.5}{.5}
+      \end{scope}
+      \begin{scope}[shift={(2.5,2.5,-2.5)}]
+        \TensorThree{$g^{(B)}$}{}{}{}{.5}{.5}{.5}
+      \end{scope}
+    \end{scope}
+    }
+    \node[anchor=north] at (11.5,3) {PARAFACDA};
+
+\end{tikzpicture}

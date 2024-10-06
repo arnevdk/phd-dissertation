@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dissertation}[2024/09/27 Dissertation custom commands]
+
 \RequirePackage{xcolor}
 \RequirePackage{acro}
 \RequirePackage{amsmath}
@@ -22,9 +23,35 @@
 \RequirePackage{todonotes}
 \RequirePackage{sansmath}
 
-% Preamble
+% Preamble ====================================================================
+\pdfminorversion=7
+
 \input{include/acronyms.tex}
 \input{include/math.tex}
+
+
+
+% Bibliography
+\usepackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{publications.bib}
+
+% PGF
+% Matplotlib used the following preamble
+\def\mathdefault#1{#1}
+\everymath=\expandafter{\the\everymath\displaystyle}
+
+\ifdefined\pdftexversion\else  % non-pdftex case.
+  \usepackage{fontspec}
+\fi
+\makeatletter\@ifpackageloaded{underscore}{}{\usepackage[strings]{underscore}}\makeatother
+
+% Set list names
+\renewcommand{\listfigurename}{List of figures}
+\renewcommand{\listtablename}{List of tables}
+
+% Setup epigraph
+\setlength{\epigraphwidth}{.66\textwidth}
 
 
 % Colors ======================================================================
@@ -40,21 +67,6 @@
 
 % Commands ====================================================================
 
-
-% Include chapter with refsection bibliography
-%\newcommand{\includechapter}[2]{
-%  \chapter{#1}
-%  \begin{refsection}
-%  \input{#2}
-%    \printbibliography[heading=subbibliography]
-%  \end{refsection}
-%  \clearpage
-%}
-\newcommand{\includechapter}[2]{
-  \chapter{#1}
-  \input{#2}
-  \clearpage
-}
 
 % Define todos
 \newcommand{\todomvh}[1]{\todo[color=yellow!50]{#1}}

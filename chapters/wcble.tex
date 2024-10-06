@@ -1,7 +1,7 @@
 \label{sec:wcble}
 \todo{comments liesel}
-Sections~\ref{sec:wcble/literature/contrib} and~\ref{sec:wcble/methods} were published
-by~\textcite{VanDenKerchove2024}
+\emph{Sections~\ref{sec:wcble/literature/contrib} and~\ref{sec:wcble/methods} were published
+as part of~\textcite{VanDenKerchove2024}}
 
 \section{Introduction}
 \label{sec:wcble/intro}
@@ -9,13 +9,13 @@ by~\textcite{VanDenKerchove2024}
 
 \Ac{eeg}-based visual oddball \acp{bci} establish communication with paralyzed
 individuals by decoding \acp{erp} obtained from time-modulated flashing
-stimuli.
+stimuli (see Figure~\ref{fig:bci/loop}).
 These \acp{erp} consist of multiple \ac{erp}-components, peaks and troughs in
-\ac{erp} waveform.\todomvh{refer to image in bci chapter}
+\ac{erp} waveform (see Figure~\ref{fig:bci/erp}.
 These components each have their own distinct amplitude and latency.
 \Ac{erp} component latency can reflect a wide range of cognitive,
 neurophysiological and clinical properties, that can be confounding factors in
-the development of \acp{bci}.\todo{cite}
+the development of \acp{bci}~\cite{Luck2014}.
 Latency is often assessed as the timing of an \ac{erp} component peak, obtained
 after averaging over trials.
 Latencies of non-averaged, single-trial \acp{erp} should capture even more
@@ -30,11 +30,12 @@ lab to the clinical setting with patients in the target population.
 increased ERP jitter.
 \textcite{Arico2014} show that latency jitter negatively affects \ac{bci}
 performance, and disproportionally so when the user is not directly gazing at
-intended targets, such as is the case for gaze-impaired patients.
+intended targets, such as is the case for individuals with \ac{sspgi}.
+Therefore, properly accounting for \ac{erp} latency jitter can contribute to
+the development of gaze-independent visual \acp{bci}.
 
-\subsection{\Ac{erp} latency jitter}
 
-\subsubsection{Neural origins of latency jitter}
+\subsection{Neural origins of \ac{erp} latency jitter}
 While the classic \ac{erp} model assumes a constant \ac{erp} response over trials,
 research has shown that cortical evoked potentials show significant
 trial-to-trial jitter~\cite{Truccolo2002}.
@@ -46,9 +47,11 @@ the latency of an evoked potential results from a combination of the modulation
 of oscillating activity that is time-locked, but not necessarily phase-locked to stimulus onset,
 and a delay caused by ongoing neurophysiological processes that are not necessarily related to the task
 \cite{Stokes2016,Mouraux2008}.
-\todo{substantiate}
+If these processes are related to the \ac{bci} task at hand, such as attention
+and visual processing, jitter could have a significant impact on \ac{erp}
+decoding.
 
-\subsubsection{Implications for \ac{erp} analysis}
+\subsection{Implications for \ac{erp} analysis}
 
 The presence of latency jitter introduces multiple issues to \ac{erp} analysis, the
 most prominent of which is the smearing effect as illustrated
@@ -60,9 +63,7 @@ of the original signal.
 Because the amplitude of the average is lower, the \ac{snr} will also be negatively impacted.
 More generally, the smearing effect leads to difficulties interpreting \ac{erp}
 results and making inferences about amplitude or latency effects, because these
-are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell2003, Verleger2005,
-	Roth2007, Walhovd2008, Poli2010, Luck2014}\todo{Review relevance of
-	these references}.
+are entangled when using averaging~\cite{Luck2014}.
 
 \begin{figure}
   \centering
@@ -72,8 +73,6 @@ are entangled when using averaging~\cite{Woody1967, Pfefferbaum1980, McDowell200
   of the shape of the waveform.}
   \label{fig:wcble/smearing}
 \end{figure}
-
-\todo{illustrate smearing effect}
 
 The smearing effect equally impacts the \ac{snr} of information captured by a
 classifier's parameters when training with a procedure that does not account for
@@ -89,9 +88,9 @@ the within-class scatter matrix, which will then also be affected.
 Hence, effective latency estimation and jitter compensation can contribute to higher
 decoding performance.
 
-\subsubsection{Benefits of latency estimation}
-A common approach to counteract the smearing effect is to correct single-trial
-\acp{erp} for jitter before averaging.\todo{reference}
+\subsection{Benefits of latency estimation}
+As we will see later, a common approach to counteract the smearing effect is to correct single-trial
+\acp{erp} for jitter before averaging.
 This can be done by estimating the latency of each
 single-trial \ac{erp}, and aligning them before averaging.
 Latency estimation has multiple advantages:
@@ -163,7 +162,8 @@ using \ac{pca}~\cite{Ouyang2017}, ICA~\cite{Townsend1999, Jung2001,
 Template matching is generally preferred to peak picking.
 The algorithm proposed by \textcite{Woody1967} in 1976 is a simple and elegant
 latency estimation method that is still being used and is even
-considered amongst the more performant techniques for \acp{erp}~\cite{Ouyang2017}.
+considered amongst the more performant techniques for
+\acp{erp}~\cite{Thornton2008, Ouyang2017}.
 It starts with an average \ac{erp} as a rough estimation of the aligned template
 \ac{erp}, and iteratively refines this template by determining at each step the time point of maximum
 cross-correlation of this template with all single-trial \acp{erp} and aligning them
@@ -174,7 +174,6 @@ template matching the spatially filtered signal. \cite{Iturrate2014} uses a
 spatiotemporal filter. Instead of aligning the
 latencies to obtain the template for the next iteration, weighted averaging can
 also be used~\cite{Gasser1983}.
-\todo{cite Thornton2008 hierarchical woody?}
 
 Despite good performance, the iterative scheme of Woody's algorithm has a risk of converging to a local
 optimum.
@@ -235,8 +234,6 @@ directly be used to extract latency features.
 \subsection{Contribution}
 \label{sec:wcble/literature/contrib}
 
-\todo{cite Kim2020 used to analyze the difference between target and
-non-target}
 
 Most of these methods suffer from a common drawback: they cannot be used in a
 decoding scheme to improve performance for incoming epochs with unknown
@@ -484,7 +481,6 @@ in~Section~\ref{sec:robust-latency}.
 }{%
   fig:diagram-eval
 }
-\todo{Pr not italic}
 \todo{re-insert comments}
 
 \begin{algorithm}[H]
@@ -502,9 +498,9 @@ in~Section~\ref{sec:robust-latency}.
       \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
         \EndFor
         \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
 		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
   \textbf{Output:} $\theta,
@@ -522,9 +518,9 @@ in~Section~\ref{sec:robust-latency}.
       \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
         \EndFor
         \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
 		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
   \textbf{Output:} $\mat{Y}^\mathrm{test},
@@ -548,7 +544,7 @@ in~Section~\ref{sec:robust-latency}.
 		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l}$
 		\For{$n=1\ldots N$}
     \State  $s_n \gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
 		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
 		\EndFor
     \Until{convergence or maximum iterations reached}
@@ -558,9 +554,9 @@ in~Section~\ref{sec:robust-latency}.
       f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
         \EndFor
         \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
 		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
     \EndFor
 
 	\end{algorithmic}
@@ -580,9 +576,9 @@ in~Section~\ref{sec:robust-latency}.
       f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
         \EndFor
         \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
 		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
     \EndFor
 	\end{algorithmic}
   \textbf{Output:} $\mat{Y}^\mathrm{test},

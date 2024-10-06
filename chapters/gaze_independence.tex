@@ -1,3 +1,5 @@
+\chapter{Gaze-independent visual \acsp{bci}}
+\label{sec:gaze-independent}
 \epigraph{%
   ``\elide\ This begs the question: if a patient had reliable control
   over their eye gaze, why would one aim to facilitate communication with that
@@ -25,6 +27,7 @@ rely on the control of eye muscles used to redirect the gaze or for blinking.
 It is exactly this potential of \acp{bci} that makes them suitable as assistive
 communication devices.
 
+\subsection{Incidence of eye motor impairment}
 \Ac{sspi} is often caused by damage to the central or peripheral nervous
 system, either through congenital diseases (\ac{cp}, \ac{fa}, \ldots),
 neurodegenerative (\ac{als}, \ac{ms}, \ldots) or acquired (stroke and
@@ -111,6 +114,8 @@ Individuals with some neurodegenerative diseases like
 sometimes also interested in \ac{bci} use, but their eye motor capabilities are
 mostly preserved.
 
+\subsection{Gaze impairment and \acl{lis}}
+
 \newcommand\fnlis{\footnote{
 Multiple definitions of \ac{lis} are encountered in
 \ac{bci} and neurological literature.
@@ -141,16 +146,17 @@ This group is much larger than the first.
 }}
 
 We believe it is in general not opportune to delve too deep in the underlying
-ophthalmological and neurological pathophysiology for each of the specific
-conditions.
+ophthalmological and neurological mechanisms for each of the specific
+conditions, or even the exact symptoms.
 In clinical reality, every patient different symptoms, which lead to their own
-unique set of preserved capabilities.
+unique set of preserved capabilities and visual skills.
 From a solution-oriented \ac{bci} engineering point
 of view, the etiology of the symptoms can be abstracted away.
-Instead of categorizing patients we will refer to these groups as individuals
-with \ac{sspi} and, if eye motor skills are affected,  \ac{sspgi}, in line with
-the terminology used by~\textcite{FrieDOken2020} (see
-Figure~\ref{fig:gaze_independence/venn}).
+Instead of categorizing patients we will refer to those that might benefit from
+\ac{bci} assistive communication technology as with \ac{sspi}, in line with
+the terminology used by~\textcite{FrieDOken2020}.
+If they have eye motor impairment that affects their use of visual \ac{bci} or
+eye tracking solutions, we use the term \ac{sspgi} (see Figure~\ref{fig:gaze_independence/venn}).
 
 \begin{figure}
   \input{figures/gaze_independence/lis_venn.tikz.tex}
@@ -213,7 +219,7 @@ There are multiple approaches to implement gaze-independence in a \ac{bci}.
 The next section highlights some noteworhy examples.
 
 \section{State-of-the-art}
-\label{sec:gaze-independence}
+\label{sec:gaze-independence/sota}
 
 \subsection{Gaze-independent modalities}
 Gaze-independent \ac{erp}-based \ac{bci}s~\cite{Riccio2012, Aloise2012} can be realized in three
@@ -331,7 +337,7 @@ VSA becomes crucial in the pursuit of high-performance gaze-independent
 
 The general goal of this PhD is to tackle the gaze-dependence in problem in the
 visual oddball \ac{bci}.
-Section~\ref{sec:gaze-independence} showed that visual \ac{bci} paradigms form
+Section~\ref{sec:gaze-independence/sota} showed that visual \ac{bci} paradigms form
 a good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.

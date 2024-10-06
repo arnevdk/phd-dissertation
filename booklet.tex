@@ -1,3 +1,43 @@
 \documentclass{booklet}
-\input{include/preamble.tex}
-\input{include/document.tex}
+
+\begin{document}
+% Front matter ================================================================
+\frontmatter
+
+\include{chapters/preface.tex}
+\include{chapters/abstract.tex}
+\include{chapters/abstract_nl.tex}
+\tableofcontents
+\listoffigures
+\listoftables
+\printacronyms[name=List of acronyms]
+
+% Main matter =================================================================
+\mainmatter%
+
+\part{Introduction \& Literature}
+\include{chapters/bci.tex}
+\include{chapters/gaze_independence.tex}
+
+\part{Algorithms \& Decoders}
+\include{chapters/stbf_struct.tex}
+\include{chapters/bttda.tex}
+\todo{discuss Tensorizations coping with latency jitter to make link}
+\include{chapters/wcble.tex}
+
+\part{Experiments \& Applications}
+\include{chapters/covert_align.tex}
+\include{chapters/patients.tex}
+\include{chapters/conclusion.tex}
+\todo{Integrating gaze-tracking data}
+\todo{extension to the space-time-frequency domain}
+
+% Back matter =================================================================
+\backmatter%
+\include{chapters/contribution.tex}
+\include{chapters/funding.tex}
+\include{chapters/conflict.tex}
+\include{chapters/cv.tex}
+
+\printbibliography
+\end{document}

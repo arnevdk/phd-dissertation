@@ -1,12 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{manuscript}[2024/10/02 Dissertation manuscript]
-\LoadClass[a4,oneside]{book}
+\LoadClass[a4paper,oneside]{report}
 
 \RequirePackage{dissertation}
+\RequirePackage[pass]{geometry}
 \RequirePackage{lineno}
 
 % Line numbers
-\linenumbers
 
 % Full page figure
 \setlength{\fullpagefigwidth}{\textwidth}
