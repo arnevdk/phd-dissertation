@@ -4,6 +4,7 @@
 out
 build
 figures/patients/fig_gaze.pgf
+figures/wcble/fig_simulated.pgf
 
 ### LaTeX ###
 ## Core latex/pdflatex auxiliary files:

@@ -3,7 +3,7 @@ import pdb
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from setup import colors, configure_matplotlib_style, savefig_kws
+from setup import colors, configure_matplotlib_style, save_pgf_trim
 
 configure_matplotlib_style()
 
@@ -20,7 +20,16 @@ df_avg = df.copy()
 df_avg["subject"] = "avg."
 df = pd.concat([df, df_avg], ignore_index=True)
 
-pdb.set_trace()
+df = df.replace({
+    'PA01': 'PA1',
+    'PB01': 'PB1',
+    'PB02': 'PB2',
+    'PB04': 'PB4',
+    'PC02': 'PC2',
+    'PC03': 'PC3',
+    'PC04': 'PC4',
+
+})
 
 fg = sns.catplot(
     data=df,
@@ -43,5 +52,4 @@ for ax in fg.axes.flat:
 fg.set_axis_labels("patient", "ROC-AUC")
 fg.set_titles("{col_name} VSA")
 fig = fg.figure
-fig.set_size_inches(6.5, 2)
-fig.savefig("figures/patients/fig_decode.pgf", **savefig_kws)
+save_pgf_trim(fig, fg.axes[0,0], "figures/patients/fig_decode.pgf", height=2)

@@ -593,7 +593,7 @@
 	in \autoref{tab:p_values_2}, and 5-trial results in \autoref{tab:p_values_5}.
 
   \begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/accuracy.eps}
+		\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
     \caption[Clasifier accuracy in function of available training data.]{%
       Accuracy of the different classifiers for all 21 subjects relative to the
 			number of blocks available for training. One block consists of 135
@@ -607,9 +607,11 @@
 			\textsc{stbf-struct}) drastically improves performance.}
 		\label{fig:accuracy}
 	\end{figure}
-	\begin{table}[h]
+  \begin{table}[p]
 		\centering
+    \makebox[\textwidth][c]{%
 		\input{chapters/stbf_struct_tests_1.tex}
+  }
     \caption[Statistical significance of differences in classifier performance (1 repetition).]{%
       Statistical significance of differences in classifier performance.
       $p$-values calculated by one-sided paired Wilcoxon rank-sum test with
@@ -617,15 +619,21 @@
 			and levels of data availability. $p$-values $<0.05$ are considered significant
 			and marked in grey.}
 		\label{tab:p_values_1}
+    \bigskip
 
 		\centering
+    \makebox[\textwidth][c]{%
 		\input{chapters/stbf_struct_tests_2.tex}
+    }
 		\caption[Statistical significance of differences in classifier performance (2 repetitions).]{%
       $p$-values as in \autoref{tab:p_values_1} averaging over two testing trials.}
 		\label{tab:p_values_2}
+    \bigskip
 
 		\centering
+    \makebox[\textwidth][c]{%
 		\input{chapters/stbf_struct_tests_3.tex}
+    }
     \caption[Statistical significance of differences in classifier performance (5 repetitions).]{%
       $p$-values as in \autoref{tab:p_values_1} averaging over five testing trials.}
 		\label{tab:p_values_5}
@@ -656,7 +664,7 @@
 	These results were obtained using a laptop with an Intel® Core™ i7-8750H CPU and 16GB of RAM.
 
 	\begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/training_time.eps}
+		\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
     \caption[Classifier training time.]{Median fold training time for different classifiers at different spatial
 			resolution levels evaluated over all training folds for all subjects.
 			Error bars represent standard deviation. The training time of \textsc{stbf-shrunk} increases more
@@ -866,10 +874,6 @@
 	%	and linked neurophysiological hypotheses.
 
 
-  \subsection{Extension to \ac{lda}}
-  \label{sec:stbf-struct-kronlda}
-  \todo{cite proof (or reiterate)}
-
 	\section{Conclusion}
 	While it is possible to regularize the spatiotemporal LCMV beamformer
 	classifier for ERP detection with other methods such as by employing feature selection,
@@ -893,11 +897,6 @@
 	real-world on-line BCI setting.
 
 
-\todo{
-in conclusion: LCMV struct might be to restrictive
-Toeplitzlda MEG paper}
-
-\todo{in conclusion: extension to the TFR domain}
 %\begin{equation}
 %	\mat{C} = \mat{S}\otimes\mat{T}
 %\end{equation}

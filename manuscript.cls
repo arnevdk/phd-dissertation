@@ -8,6 +8,7 @@
 
 % Line numbers
 
+
 % Full page figure
 \setlength{\fullpagefigwidth}{\textwidth}
 \newcommand{\fullpagefig}[5][bottomleft]{%

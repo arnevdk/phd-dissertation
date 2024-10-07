@@ -1,5 +1,5 @@
+\chapter{\Acs{erp} latency estimation and alignment}
 \label{sec:wcble}
-\todo{comments liesel}
 \emph{Sections~\ref{sec:wcble/literature/contrib} and~\ref{sec:wcble/methods} were published
 as part of~\textcite{VanDenKerchove2024}}
 
@@ -283,7 +283,7 @@ We assume that the sampling period is $T$, i.e. that the sample with index $s$ i
 In the following, we use the matrix slicing notation to denote row or column intervals extracted from a matrix.
 For instance, $\mat{X}[:,s_1:s_2]$ denotes all columns of $\mat{X}$ with indices between $s_1$ (included) and $s_2$ (excluded).
 
-\Ac{cble}, summarized in Algorithm~\ref{alg:cble}, works by training a
+\Ac{cble}, summarized in \autoref{sec:wcble/app/cble-alg}, works by training a
 \textit{first-stage} classifier $\mathcal{C}(\theta,f)$
 defined within a time period $[s_1:s_2]$ with a set of parameters $\theta$ and a
 decision function $f(\mat{X}[:,s_1:s_2],\theta) \rightarrow
@@ -414,7 +414,7 @@ the first-stage classifier.
 To improve convergence and perform well in a classification setting, W\ac{cble}
 aligns both targets and non-targets to their corresponding estimated latencies.
 
-The W\ac{cble} algorithm is presented in Algorithm~\ref{alg:wcble}.
+The W\ac{cble} algorithm is presented in \autoref{sec:wcble/app/wcble-alg}.
 Its training phase is visualized in~Figure~\ref{fig:diagram-train}.
 The initial training epochs $\{\mat{X}_n^{(1)}\}_{n=1}^N$ are set to $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N$.
 At every iteration, classifier $\mathcal{C}$ is trained like in \ac{cble}:
@@ -481,118 +481,15 @@ in~Section~\ref{sec:robust-latency}.
 }{%
   fig:diagram-eval
 }
-\todo{re-insert comments}
-
-\begin{algorithm}[H]
-	\textsc{Train}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N,
-  \mathbf{l}^\mathrm{train}, \mathcal{C}(\cdot,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\State $\theta \gets
-			\mathrm{train}_\mathcal{C}(\{\mat{X}_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l})$
-      %\algorithmiccomment{Train stage 1}
-		\For{$n=1\ldots N$}
-      %\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
-        \EndFor
-        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
-		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\theta,
-  \mat{Y}^\mathrm{train},
-  \mathbf{s}_\mathrm{target}^\mathrm{train},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
-	\smallskip \hrule \smallskip
-	\textsc{Evaluate}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\For{$m=1\ldots M$}
-      %\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
-        \EndFor
-        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
-		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\mat{Y}^\mathrm{test},
-  \mathbf{s}_\mathrm{target}^\mathrm{test},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
-
-  \caption{\Ac{cble}}
-	\label{alg:cble}
-\end{algorithm}
-
-\begin{algorithm}[H]
-	\textsc{Train}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l})
-		\mathcal{C}(\cdot,f,\Pr), s_1, s_2$
-	\begin{algorithmic}[1]
-		\State $\mat{X}'_n \gets \mat{X}^\mathrm{train}_n \quad \forall \quad n=1\ldots
-    N$
-      %\algorithmiccomment{Train stage 1}
-		\Repeat
-		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l}$
-		\For{$n=1\ldots N$}
-    \State  $s_n \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
-		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
-		\EndFor
-    \Until{convergence or maximum iterations reached}
-    \For{$n=1\ldots N$}%\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{n,s}^\mathrm{train} \gets
-      f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
-        \EndFor
-        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
-		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
-    \EndFor
-
-	\end{algorithmic}
-	\textbf{Output:} $\theta^*,
-  \mat{Y}^\mathrm{train},
-  \mathbf{s}_\mathrm{target}^\mathrm{train},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
-
-	\smallskip \hrule \smallskip
-	\textsc{Evaluate}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\For{$m=1\ldots M$}%\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{m,s}^\mathrm{test} \gets
-      f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
-        \EndFor
-        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
-		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\mat{Y}^\mathrm{test},
-  \mathbf{s}_\mathrm{target}^\mathrm{test},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
-  \caption{\ac{wcble}}
-	\label{alg:wcble}
-\end{algorithm}
-
 \section{Results}
 \label{sec:wcble/results}
-\todo{refer to later chapter for results on real data}
-\subsection{Data simulation}
-To verify our approach, we simulated 16 channel \ac{eeg} data with standard
+Since it is hard to obtain ground truth measures of \ac{erp} latencies, we
+first evaluate our approach with synthetic data.
+In \autoref{sec:covert-align}, the proposed algorithm will be applied to real
+\ac{eeg} data.
+
+\subsection{Synthetic data generation}
+To verify our approach, we simulated synthetic 16 channel \ac{eeg} data with standard
 10-20 electrode positions using the \texttt{simulate\_evoked} method of the
 MNE (version 1.8)~\cite{Gramfort2013} software package.
 \Acp{erp} were generated by projecting a sine wave pulse source time course in a dipole in the
@@ -646,22 +543,26 @@ A sample of the simulated evoked data is displayed in Figures~\ref{fig:wcble/sim
 %\fullpagefig{figures/wcble/simulated-gaussian.pdf}{}{fig:wcble/sim-gaussian}
 %\fullpagefig{figures/wcble/simulated-morlet.pdf}{}{fig:wcble/sim-morlet}
 \fullpagefig{%
-  \includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}
+  %\includegraphics[width=\textwidth]{figures/wcble/simulated-sine.pdf}
+  \sffamily
+  \sansmath
+  \inputpgf{figures/wcble}{simulated-sine.pgf}
 }{%
   Simulated target and non-target evoked data.
 }{%
-  Simulated target and non-target evoked data. Targets contain a sine wave
-  pulse jittered by $\sigma$. 32 EEG channels with pink
+  Simulated target (bottom half of epochs) and non-target (top half of epoch) evoked data
+  and their average (red: target, yellow: noon-target, shaded are: standard
+  deviation).
+  Targets contain a sine wave pulse jittered by $\sigma$. 32 EEG channels with pink
   spatiotemporal noise were simulated using a forward head model, channel C3 is
   plotted here.
+
 }{fig:wcble/sim-sine}
-\todo{Properly align plots and label axes}
-\todo{decrease tick size}
+\todo{label x axis}
 
 \subsection{Latency estimation}
-\todo{refer to figure}
 We compared our proposed \ac{wcble} algorithm to \ac{cble} on a latency
-estimation task using the pearson correlation coefficient $\rho$\todo{equation} at different
+estimation task using the pearson correlation coefficient $\rho$ at different
 jitter and \ac{snr} levels.
 For both \ac{cble} and \ac{wcble}, target latencies where extracted in a
 10-fold cross-validation scheme using the robust median latency method after
@@ -671,16 +572,17 @@ Results are presented in Figure~\ref{fig:wcble/results/latency}.
 A 95\ confidence intervals on each measure was obtained through bootstrapping
 with 1000 permutations.
 
-\begin{figure}[H]
-  \input{figures/wcble/fig_accuracy.pgf}
-  \caption{caption}
+\begin{figure}
+  \sffamily\sansmath
+  \input{figures/wcble/fig_latency.pgf}
+  \caption[Synthetic latency estimation results]{Correctness of estimated
+  latency for varying jitter ($\sigma$) and \ac{snr} introduced in synthetic evoked target
+  target data, measured as pearson correlation coefficient $\rho$ between
+  estimated and ground truth latencies.
+  \Ac{wcble} estimates latencies more accurately in the presence of noise and
+  high jitter.}
   \label{fig:wcble/results/latency}
 \end{figure}
-
-\todo{properly label axes}
-\todo{uniform fonts with rest of document}
-\todo{correct width}
-\todo{figure for data generation}
 
 As the \ac{snr} decreases, both \ac{cble} and \ac{wcble} can accurately
 estimate evoked potential latencies up to a given threshold. After this
@@ -703,16 +605,20 @@ Here, \ac{wcble} was compared to \ac{cble}, but both also to their base classifi
 in~\ref{sec:wcble/methods}, with both the wavelet transformed score time series
 and square transformed latencies as input to a second-stage logistic regression
 classifier with $L_2$-norm regularization ($C=0.2$).
-\todo{ref figure}
 
 \begin{figure}
+  \sffamily\sansmath
   \input{figures/wcble/fig_accuracy.pgf}
-  \caption{caption}
+  \caption[Synthetic decoding results]{Decoding performance, measured as binary
+  classification accuracy, for \ac{cble}, \ac{wcble} and their first stage
+  classifier \ac{tlda} for varying introduced jitter ($\sigma$) and \ac{snr} in
+  synthetic evoked target and non-target data.
+  \Ac{wcble} decoding performance is robust to more noise and jitter than the other methods.}
   \label{fig:wcble/results/accuracy}
 \end{figure}
 
 
-The classification accuracy of both \ac{tlda} and \ac{cble} decreases with
+\autoref{fig:wcble/results/accuracy} shows that the classification accuracy of both \ac{tlda} and \ac{cble} decreases with
 $\$sigma$ and \ac{snr}, but \ac{cble} outperforms \ac{tlda}.
 This difference is particularily large when $\sigma$ is higher ($\sigma=0.2$
 and $\sigma=0.3$) and \ac{snr} is not yet high.
@@ -721,7 +627,6 @@ $\sigma=0.1$ and $\text{\ac{snr}} <27\text{db}$, at which point both \ac{cble}
 and \ac{wcble} performed at chance level.
 When considering the accuracy of \ac{wcble}, we see that it shows more of a
 plateau as \ac{snr} increases.
-\todo{insert results figure and discuss}
 
 
 \section{Discussion \& conclusion}
@@ -756,7 +661,8 @@ classifier can be replaced by a spatiotemporal filter.
 Instead of outputting a classification score, this filter should now output a
 metric representing the presence of a template response in the signal.
 A suiting candidate is the spatiotemporal
-\ac{lcmv}-beamformer~\cite{VanVliet2015}\todo{refer chapter}.
+\ac{lcmv}-beamformer~\cite{VanVliet2015} described in
+\autoref{sec:stbf-struct}.
 The activation pattern can be set to the average of the set of trials to
 analyze, and it can be refined at each \ac{wcble} iteration by taking the
 average of aligned trials.
@@ -793,8 +699,122 @@ isolating solely the component of interest.
 Current work focuses on extending \ac{wcble} to a multi-component setting, on
 the one hand to performance latency estimation and decoding performance on real
 \ac{erp} data and on the other hand to apply it as an \ac{erp} component
-separation method in the fashion of~\textcite{Oyang2017}.
+separation method in the fashion of~\textcite{Ouyang2017}.
 
 The proposed implementation in theory also supports processing multi-class
 data, but the convergence and correctness of the \ac{wcble} solution is yet to
 be properly studied for this case.
+
+\clearpage
+\begin{subappendices}
+\section{\Acl{cble} algorithm}
+\label{sec:wcble/app/cble-alg}
+\begin{algorithm}[h]
+	\textsc{Train}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N,
+  \mathbf{l}^\mathrm{train}, \mathcal{C}(\cdot,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\State $\theta \gets
+			\mathrm{train}_\mathcal{C}(\{\mat{X}_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l})$
+      \algorithmiccomment{Train stage 1}
+		\For{$n=1\ldots N$}
+      \algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
+        \EndFor
+        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
+		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\theta,
+  \mat{Y}^\mathrm{train},
+  \mathbf{s}_\mathrm{target}^\mathrm{train},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
+	\smallskip \hrule \smallskip
+	\textsc{Evaluate}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\For{$m=1\ldots M$}
+      \algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
+        \EndFor
+        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
+		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
+  \mathbf{s}_\mathrm{target}^\mathrm{test},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
+
+  \caption{\Ac{cble}}
+	\label{alg:cble}
+\end{algorithm}
+
+\clearpage
+\section{\Acl{wcble} algorithm}
+\label{sec:wcble/app/wcble-alg}
+\begin{algorithm}[h]
+	\textsc{Train}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l})
+		\mathcal{C}(\cdot,f,\Pr), s_1, s_2$
+	\begin{algorithmic}[1]
+		\State $\mat{X}'_n \gets \mat{X}^\mathrm{train}_n \quad \forall \quad n=1\ldots
+    N$
+      \algorithmiccomment{Train stage 1}
+		\Repeat
+		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l}$
+		\For{$n=1\ldots N$}
+    \State  $s_n \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
+		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
+		\EndFor
+    \Until{convergence or maximum iterations reached}
+    \For{$n=1\ldots N$}\algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{n,s}^\mathrm{train} \gets
+      f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
+        \EndFor
+        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
+		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
+    \EndFor
+
+	\end{algorithmic}
+	\textbf{Output:} $\theta^*,
+  \mat{Y}^\mathrm{train},
+  \mathbf{s}_\mathrm{target}^\mathrm{train},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
+
+	\smallskip \hrule \smallskip
+	\textsc{Evaluate}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\For{$m=1\ldots M$}\algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{m,s}^\mathrm{test} \gets
+      f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
+        \EndFor
+        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
+		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
+  \mathbf{s}_\mathrm{target}^\mathrm{test},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
+  \caption{\ac{wcble}}
+	\label{alg:wcble}
+\end{algorithm}
+
+\end{subappendices}

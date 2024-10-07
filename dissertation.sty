@@ -22,9 +22,11 @@
 \RequirePackage[geometry]{ifsym}
 \RequirePackage{todonotes}
 \RequirePackage{sansmath}
+\RequirePackage{appendix}
+\RequirePackage[utf8]{inputenc}
 
 % Preamble ====================================================================
-\pdfminorversion=7
+%\pdfminorversion=7
 
 \input{include/acronyms.tex}
 \input{include/math.tex}
@@ -81,3 +83,37 @@
 
 
 \newlength{\fullpagefigwidth}
+
+\newcommand\inputpgf[2]{{
+\let\pgfimageWithoutPath\pgfimage
+\renewcommand{\pgfimage}[2][]{\pgfimageWithoutPath[##1]{#1/##2}}
+\let\includegraphicsWithoutPath\includegraphics
+\renewcommand{\includegraphics}[2][]{\includegraphicsWithoutPath[##1]{#1/##2}}
+\input{#1/#2}
+}}
+
+% TikZPlotLib===================================================================
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\RequirePackage{pgfplots}
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{%
+  compat=newest,
+  every axis/.style={%
+       scale only axis,
+       enlarge y limits=false,
+       enlarge x limits=false,
+      	label style={darkgray, font=\footnotesize},
+        tick style={darkgray, font=\footnotesize}, % Set the tick color to darkgray
+        tick label style={darkgray}, % Set the tick label color to darkgray
+        axis line style={darkgray}, % Set the axis line color to darkgray
+        title style={color=darkgray},
+        cycle list={
+            {accent1, thick},    % First color (red)
+            {accent2, thick},   % Second color (blue)
+            {accent3, thick},  % Third color (green)
+        },
+  }
+}

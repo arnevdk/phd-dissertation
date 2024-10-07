@@ -3,11 +3,24 @@
 \emph{This chapter has been published as part of~\textcite{VanDenKerchove2024}}
 
 \section{Introduction}
-\todo{mention cble and wcble in methods}
-\todohsm{link with previous chapter and overall goal}
+
+The decoding methods described in \autoref{sec:stbf-struct} and
+\autoref{sec:bttda} are rather general attempts at increasing \ac{erp} decoding accuracy.
+Given the problem statement of this work, we are also interested in targeted
+methods that would specifically advance the development of gaze-independent
+visuall \acp{bci} (see \label{sec:gaze-independence/sota}).
+Methods of directly enhancing gaze-independent decoding through optimizing
+decoder design have not been widely studied (see
+\label{sec:gaze-independence/sota/decoding}).
+We assume that advances in gaze-independent decoding can be made if properties
+of covert \ac{vsa} that affect performance can be identified and, in some way,
+accounted for.
+The latency estimation and alignment approach proposed in \autoref{sec:wcble}
+was specifically designed for this purpose.
 
 \textcite{Arico2014} observed higher variability in single-trial P3 peak
-latencies relative to stimulus onset during covert VSA compared to overt VSA.
+latencies relative to stimulus onset during covert \ac{vsa} compared to overt
+\ac{vsa}.
 This latency variability contributes to reduced covert VSA decoding performance.
 While they proposed an analysis and performance prediction method, they did not provide a
 decoding solution.
@@ -19,9 +32,13 @@ amplitude features for classification with a support vector machine.
 They demonstrated the positive influence of single-trial ERP component latency
 features on covert VSA inference, yet did not attempt to correct the amplitude
 features for these latencies.
-\todo{Should we already mention Frenzel here?}
-\textcite{Frenzel2011} introduced a similar protocol to our split VSA
-setting.
+
+Furthermore, as mentioned in~\autoref{sec:gaze-independence/sota/visual} and
+\autoref{sec:gaze-independence/approach/cvsa-erp},
+our goal is also to explore more flexible gaze-independent settings that the
+usual covert \ac{vsa} with central gaze fixation reported in most literature.
+\textcite{Frenzel2011} introduced a similar protocol to the proposed split
+\ac{vsa} setting (see~\autoref{fig:gaze/vsa/free}).
 They showed that it is possible to perform split VSA and that, in this
 case, visuospatial attention and gaze direction can separately be decoded using
 classical ERP techniques.
@@ -33,20 +50,13 @@ and the VSA.
 In the split VSA setting considered in our work, we rather instruct the participant to ignore
 the distractor and only attend the cued target, since we are interested in
 decoding the visuospatial attention only.
-\todomvh{avoid overlap. it seems already explained in previous sentences. The reader can find details in
-  [6].}
-
-frenzel
-\todo{part about split attention etc from chapter on covert alignment to here}
 
 \section{Materials \& methods}
 
 \subsection{Data collection}
-We evaluate our approach on the
-publicly available BNCI2014-009 dataset~\cite{Aloise2012a} and one specifically recorded for this study, designed to
-probe different modalities of covert VSA.
-\todomvh{first explain BNCI2014-009 using fig. 6.1 or revert the announcement
-in the previous sentence.}
+We evaluate our approach on a dataset specifically recorded for this study, designed to
+probe different modalities of covert VSA, and on the publicly available
+BNCI2014-009 dataset~\cite{Aloise2012a}.
 
 \subsubsection{CVSA-ERP dataset}
 \label{sec:covert-align/stimulation}
@@ -126,19 +136,46 @@ Technologies, Canada) operating at a refresh rate of 120Hz, displaying 6
 circular white targets with a diameter of 4.15° visual angle and laid out on a hexagon
 with a radius of 12.28° of visual angle centered on the midpoint of the screen,
 conforming to the interface proposed by \textcite{Treder2010}
-(Figure~\ref{fig:layout_targets})\todo{figure interface in four panels and
-update all refs below}.
+(\autoref{fig:covert-align/interface/interface})
 A hexagonal layout interface with an empty center and a low number of targets
 counteracts target crowding and, as long as the subject’s gaze is within the hexagon of
 targets, no other target can be between the subject’s gaze and a covertly
 attended target.
 Targets are full-contrast white and were intensified by scaling them to a
-larger size (5.60° of visual angle, Figure~\ref{fig:layout_intense}) instead of changing the contrast to avoid Troxler-fading\footnote{The optical illusion of disappearing unchanging stimuli
+larger size (5.60° of visual angle,
+(\autoref{fig:covert-align/interface/intensification}) instead of changing the contrast to avoid Troxler-fading\footnote{The optical illusion of disappearing unchanging stimuli
 experienced when visually fixating~\cite{Troxler1804}.}~\cite{Treder2010} in the
 peripheral visual field.
 Stimuli were presented using PsychopPy (version 2023.1.3)~\cite{Peirce2019}.
-\todo{figures}
-\todo{figures from ethical protocol Lille}
+
+\begin{figure}
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/covert_align/interface_1.tikz.tex}
+    \caption[The stimulation interface.]{The stimulation interface based on the visual Hex-o-Spell
+    \acs{bci}~\cite{Treder2010}.}
+    \label{fig:covert-align/interface/interface}
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/covert_align/interface_2.tikz.tex}
+    \caption[Intensification.]{When a target is intensified, it is enlarged for
+    a very short time.}
+    \label{fig:covert-align/interface/intensification}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/covert_align/interface_3.tikz.tex}
+    \caption[Gaze fixated on a target.]{In the overt and split \ac{vsa}
+    settings, the
+    participant is cued to fixate on one of the targets.}
+    \label{fig:covert-align/interface/overt}
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/covert_align/interface_4.tikz.tex}
+    \caption[Gaze fixated centrally]{In the covert \ac{vsa} setting, the participant is
+    cued to fixate the center of the interface.}
+    \label{fig:covert-align/interface/covert}
+  \end{subfigure}
+\end{figure}
 
 The participant was instructed to press the space bar when ready for a block
 of stimulations.
@@ -147,7 +184,8 @@ was instructed to count the number of intensifications of the cued target
 during the following block of stimulations.
 After pressing the space bar again, a blue crosshair appeared, and the subject
 was instructed to fixate their gaze on the blue crosshair for the duration of
-the stimulation block (Figure~\ref{fig:layout_cross_overt} and Figure~\ref{fig:layout_cross_covert}).
+the stimulation block (\autoref{fig:covert-align/interface/overt} and
+\autoref{fig:covert-align/interface/overt}).
 The position of this crosshair determined the VSA condition for this trial:
 overt VSA when the crosshair was at the same location as the cued target,
 covert VSA when the crosshair appeared in the center of the screen, and split
@@ -223,7 +261,7 @@ PO8).
 
 \subsubsection{Decoders}
 We will compare \ac{wcble} and \ac{cble} as described in
-Section~\ref{sec:wcble/methods}, with their base classifier and tLDA and with
+\autoref{sec:wcble/methods}, with their base classifier and tLDA and with
 Riemannian Geometry
 approaches that rely on spatial covariance as features.
 Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
@@ -315,9 +353,20 @@ VSA conditions in the CVSA-ERP dataset, but results show a clear trend of
 increase in WCBLE performance over tLDA and CBLE as $d$ increases
 CBLE failed to significantly outperform its first-stage classifier tLDA in all
 evaluated VSA conditions.
-Table~\ref{tab:single_trial_full} reports all single-trial classification scores for all considered models, datasets
+Table~\ref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets
 and conditions.
-\todo{table?}
+
+\begin{table}
+  \centering
+  \makebox[\textwidth][c]{%
+    \input{chapters/covert_align_performance.tex}
+  }
+  \caption{Cross-validated single-trial classification area under the receiver operating characteristic
+curve for all evaluated models, visuospatial attention conditions and
+  datasets.}
+  \label{tab:covert-align/results/single-trial}
+\end{table}
+
 
 Figure~\ref{fig:block_evaluation} shows the cross-validated BCI selection
 accuracy on the BNCI2014-009 and the CVSA-ERP dataset for all investigated

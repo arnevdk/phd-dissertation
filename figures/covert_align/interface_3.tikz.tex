@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+    scale=\textwidth/5cm
+]
+% Rectangle background
+\fill[muteblack] (-2.5,-2) rectangle (2.5,2);
+
+% Hexagon vertices (white circles)
+\fill[white] (1,0) circle (.35);    % Right
+\fill[white] (-1,0) circle (.35);   % Left
+\fill[white] (0.5,0.866) circle (.35); % Top-right
+\fill[white] (-0.5,0.866) circle (.35); % Top-left
+\fill[white] (0.5,-0.866) circle (.35); % Bottom-right
+\fill[white] (-0.5,-0.866) circle (.35); % Bottom-left
+\draw[accent2, ultra thick] (0.9,0) -- (1.1,0);  % Shorter horizontal line
+\draw[accent2, ultra thick] (1,-0.1) -- (1,0.1); % Shorter vertical line
+\end{tikzpicture}

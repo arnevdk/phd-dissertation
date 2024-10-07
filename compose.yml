@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: Containerfile
     volumes:
-      - $HOME/.latexmkrc:/root/.latexmkrc:Z
-      - $HOME/.texmf/tex/latex/local:/root/texmf/tex/latex:Z
-      - $PWD:/workdir:Z
-      - /tmp/nvim.arne:/tmp/nvim.arne:Z
-      - $HOME/.cache/matplotlib:/root/.cache/matplotlib:Z
+      - $HOME/.latexmkrc:/root/.latexmkrc:z
+      - $HOME/.texmf/tex/latex/local:/root/texmf/tex/latex:z
+      - $PWD:/workdir:z
+      - /tmp/nvim.arne:/tmp/nvim.arne:z
+      - $HOME/.cache/matplotlib:/root/.cache/matplotlib:z
     stdin_open: true

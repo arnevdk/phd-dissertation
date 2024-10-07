@@ -154,7 +154,7 @@ From a solution-oriented \ac{bci} engineering point
 of view, the etiology of the symptoms can be abstracted away.
 Instead of categorizing patients we will refer to those that might benefit from
 \ac{bci} assistive communication technology as with \ac{sspi}, in line with
-the terminology used by~\textcite{FrieDOken2020}.
+the terminology used by~\textcite{FriedOken2020}.
 If they have eye motor impairment that affects their use of visual \ac{bci} or
 eye tracking solutions, we use the term \ac{sspgi} (see Figure~\ref{fig:gaze_independence/venn}).
 
@@ -248,6 +248,7 @@ outperformed a somatosensory alternative in participants with \ac{als} whose
 eye motor capabilities were effectively impaired.
 
 \subsection{Gaze-independent visual stimulation}
+\label{sec:gaze-independence/sota/visual}
 This leads us to the second approach, current visual stimulation paradigms can be optimized, e.g. such that
 the stimuli are always present in the field of view either overtly~\cite{Acqualagna2013, Won2018,
 Lin2018} or covertly~\cite{,Pires2011,Lees2018}. Some noteworthy examples include the GIBS Block Speller~\parencite{Pires2011},
@@ -293,6 +294,7 @@ This entails that they still rely to some extent on
 eye motor control, often necessitating central gaze fixation.
 
 \subsection{Gaze-independent decoding}
+\label{sec:gaze-independence/sota/decoding}
 Thirdly, stimuli can be presented in a standard \ac{bci} paradigm, but visuospatial
 attention can be decoded separately from gaze direction.
 \textcite{Aloise2012} aimed to bridge the performance gap between covert and
@@ -445,6 +447,7 @@ in gaze-independent settings.
 \subsection{Data collection}
 
 \subsubsection{The CVSA-ERP dataset}
+\label{sec:gaze-independence/approach/cvsa-erp}
 
 In a first series of experiments, we recorded data with this interface from healthy participants.
 The goal of these experiments is to benchmark
@@ -467,12 +470,12 @@ Using a hexagonal lay-out interface, similar to the visual Hex-o-Spell proposed
 \textcite{Treder2010}, we present six flashing circular targets
 (without letters or symbols) to the participant while the EEG and
 electro-oculogram (EOG) are recorded, as well as eye gaze using eye tracking.
-The Hex-o-Spell was chosen since it is optimiazed for gaze-independent
+The Hex-o-Spell was chosen since it is optimized for gaze-independent
 performance and because it has already been tested in individuals with
 \ac{sspi} by~\textcite{Severens2014}.
 
 The interface can be operated in different VSA conditions as illustrated in
-Figure~\ref{fig:gaze-vsa}.
+Figure~\ref{fig:gaze/vsa}.
 
 \begin{figure}
   \begin{subfigure}[t]{.45\textwidth}
@@ -498,7 +501,7 @@ Figure~\ref{fig:gaze-vsa}.
       \emph{Split} \ac{vsa}.
       \Ac{vsa} is directed towards a target, while the gaze rests on another.
     }
-    \label{fig:gaze/vsa/overt}
+    \label{fig:gaze/vsa/split}
   \end{subfigure}\hfill%
    \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth]{figures/gaze_independence/attention_free.eps}
@@ -508,12 +511,12 @@ Figure~\ref{fig:gaze-vsa}.
       The user is free to direct their gaze as they deem most comfortable
       All previous \ac{vsa} conditions are possible.
     }
-    \label{fig:gaze/vsa/overt}
+    \label{fig:gaze/vsa/free}
   \end{subfigure}\hfill%
   \caption[\Ac{vsa} conditions]{%
     \Ac{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
   }
-  \label{fig:gaze-vsa}
+  \label{fig:gaze/vsa}
 \end{figure}
 
 In the overt case, users gaze at the cued

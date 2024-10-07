@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import tikzplotlib
 from cycler import cycler
 
 mm = 1 / 25.4  # centimeters in inches
@@ -13,7 +14,6 @@ colors = dict(
 )
 
 
-savefig_kws = dict(transparent=True, bbox_inches="tight", pad_inches=0)
 
 
 # Function to configure matplotlib styles
@@ -27,74 +27,94 @@ def configure_matplotlib_style():
         {
             "text.usetex": True,  # use LaTeX to write all text
             "pgf.texsystem": "pdflatex",
+            #"axes.grid": False,  # Disable grid lines
             "pgf.rcfonts": False,
-            #'figure.figsize': (8, 6),                 # Plot size
-            "axes.grid": False,  # Disable grid lines
+            "axes.titlelocation": "left",  # Axis title alignment left
+            "figure.facecolor": "white",  # Background color for the figure
+            "image.cmap": "inferno",  # Set default colormap to Plasma
+            "axes.prop_cycle": cycler(
+                color=custom_color_palette
+            ),  # Custom color palette
+ 
+            "figure.titlesize": 11,  # Figure title font size
+            "figure.titleweight": "bold",  # Figure title bold
+
+            "xtick.direction": "in",  # X-axis ticks inward
+            "ytick.direction": "in",  # Y-axis ticks inward
+            "xtick.major.size": 3,  # Major tick size for x-axis
+            "ytick.major.size": 3,  # Major tick size for y-axis
+ 
+
+            'text.latex.preamble' : "\\usepackage{sansmath}\\sansmath",
             "axes.edgecolor": colors["darkgray"],  # Spine color
             "axes.labelcolor": colors["darkgray"],  # Axis label color
             "axes.titlesize": font_size,  # Axis title font size
             # "axes.titleweight": "bold",  # Axis title bold
-            "axes.titlelocation": "left",  # Axis title alignment left
             "axes.titlecolor": colors["darkgray"],  # Axis title color
             "axes.labelsize": font_size,  # Axis label font size
             "xtick.color": colors["darkgray"],  # X-axis tick color
             "ytick.color": colors["darkgray"],  # Y-axis tick color
             "xtick.labelsize": font_size,  # X-axis tick label size
             "ytick.labelsize": font_size,  # Y-axis tick label size
-            "xtick.direction": "in",  # X-axis ticks inward
-            "ytick.direction": "in",  # Y-axis ticks inward
-            "xtick.major.size": 6,  # Major tick size for x-axis
-            "ytick.major.size": 6,  # Major tick size for y-axis
             "lines.linewidth": 1.5,  # Default line width
             "lines.markersize": 8,  # Default marker size
             "legend.fontsize": font_size,  # Legend font size
-            # "legend.loc": "upper right",  # Legend position
-            "legend.frameon": False,  # No frame around legend
-            "axes.prop_cycle": cycler(
-                color=custom_color_palette
-            ),  # Custom color palette
             "text.color": colors["darkgray"],  # Global text color
-            "figure.facecolor": "white",  # Background color for the figure
-            "figure.titlesize": 11,  # Figure title font size
-            "figure.titleweight": "bold",  # Figure title bold
+            "legend.frameon": False,
             # "figure.titlelocation": "left",  # Figure title alignment left
             # "figure.titlecolor": "#262321",  # Figure title color
-            "image.cmap": "inferno",  # Set default colormap to Plasma
         }
     )
 
 
-textwidth = 469.0
-linewidth = 229.5
-
 # Golden ratio to set aesthetic figure height
-golden_ratio = (5**0.5 - 1) / 2
+inches_per_pt = 1 / 72.27
+textwidth_pt=345
+textwidth_in=textwidth_pt*inches_per_pt
+
+def save_pgf_trim(fig, ax,path, width=textwidth_in, height=None):
+    if height is None:
+        golden_ratio = (5**0.5 - 1) / 2
+        height=width*golden_ratio
+    fig.set_size_inches(width,height)
+    plt.draw()
+    left_margin_in = ax.get_position().x0*width
+    print(left_margin_in)
+    fig.set_size_inches(width+left_margin_in,height)
+    plt.savefig(path, format="pgf")
+    prepend = "\\hspace{-"+str(left_margin_in)+"in}\n"
+    with open(path, 'r') as original:
+        data = original.read()
+    with open(path, 'w') as modified:
+        modified.write(prepend + data)
 
 
-def set_size(width_pt=textwidth, fraction=1, aspect=golden_ratio, subplots=(1, 1)):
-    """Set figure dimensions to sit nicely in our document.
+def remove_tickspec(input_string):
+    # List of lines to remove
+    lines_to_remove = [
+        "xtick style={color=black},",
+        "ytick style={color=black},",
+        "tick align=outside,",
+        "tick pos=left,"
+    ]
+    
+    # Split the input string by lines
+    lines = input_string.splitlines()
+    
+    # Filter out the lines that match any in the list to remove
+    filtered_lines = [line for line in lines if line.strip() not in lines_to_remove]
+    
+    # Join the filtered lines back into a single string
+    output_string = "\n".join(filtered_lines)
+    
+    return output_string
 
-    Parameters
-    ----------
-    width_pt: float
-            Document width in points
-    fraction: float, optional
-            Fraction of the width which you wish the figure to occupy
-    subplots: array-like, optional
-            The number of rows and columns of subplots.
-    Returns
-    -------
-    fig_dim: tuple
-            Dimensions of figure in inches
-    """
-    # Width of figure (in pts)
-    fig_width_pt = width_pt * fraction
-    # Convert from pt to inches
-    inches_per_pt = 1 / 72.27
+def save_tikz(path):
+    tikz_code = tikzplotlib.get_tikz_code(strict=False,
+                                          extra_tikzpicture_parameters=[
+'trim axis group left','trim axis group right'
+                                              ])
+    tikz_code = remove_tickspec(tikz_code)
+    with open(path, 'w') as file:
+        file.write(tikz_code)
 
-    # Figure width in inches
-    fig_width_in = fig_width_pt * inches_per_pt
-    # Figure height in inches
-    fig_height_in = fig_width_in * aspect * (subplots[0] / subplots[1])
-
-    return (fig_width_in, fig_height_in)

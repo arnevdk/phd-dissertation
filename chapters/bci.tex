@@ -17,6 +17,7 @@ speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
 \todo{search for ??}
 \todo{acro usage in chapters}
 \chapter{Brain-computer interfaces}
+\todo{are textcites used when necessary?}
 \label{sec:bci}
 People with \ac{sspi} due to
 neurodegenenerative disease, stroke, traumatic brain or spine injury
@@ -851,7 +852,17 @@ concatenating all channels in the matrix format epoch $\mat{X}$ into one feature
 vector s.t.\ $\mat{x} = \mat\vec(\mat{X})$.
 
 \subsection{Decoders}
-\todo{averaging over trials}
+Due to the unfavorable \ac{snr} of \acp{erp}, it is often not feasible to
+accurately decode the encoded information based on just one example.
+Therefore, classification algorithm are trained on a set of epochs, but are
+often evaluated on an average of multiple epochs.
+These averages are constructed over multiple stimulations of the stimulus
+representing a given selection, enhancing the \ac{snr}.
+The drawback, however, is that performing these multiple stimulations takes
+more time.
+To optimize the \ac{itr}, the trade-off between number of repetitions,
+stimulation speed and decoding performance must be carefully balanced.
+Performant classifiers can shift this balance to the benefit of \ac{itr}.
 Several techniques are suited to decode~\acp{erp}.
 Below are some methods that can achieve state-of-the art performance and are
 relevant to this work.

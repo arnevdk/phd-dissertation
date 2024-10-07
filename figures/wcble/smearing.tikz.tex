@@ -1,14 +1,15 @@
-\begin{tikzpicture}
-    % First subplot (low jitter) positioned relative to center
+\sffamily
+\sansmath
+\begin{tikzpicture}   % First subplot (low jitter) positioned relative to center
     \begin{axis}[
-        at={(-3cm,0cm)}, % Adjust position to the left, closer to the center
+        at={(0,0)}, % Adjust position to the left, closer to the center
         anchor=center,
-        width=7cm, height=6cm,
+        width=.45\textwidth, height=.309\textwidth,
         xmin=20, xmax=80,
         ymin=-0.1, ymax=1.1,
         axis lines=none, % Remove axes
-        title={Low Jitter}, % Add title
-        title style={yshift=-10pt}, % Adjust title position to make it closer to the plot
+        title={low jitter}, % Add title
+        title style={yshift=-10pt, color=muteblack}, % Adjust title position to make it closer to the plot
         ]
         % Plot individual waveforms (low jitter) in darkgray
         \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-50)/5)^2)};
@@ -21,43 +22,43 @@
         \addplot[ultra thick,accent1,domain=20:80,samples=100] {exp(-0.5*((x-50)/5)^2)};
     \end{axis}
 
-    % Second subplot (high jitter) positioned relative to center
-    \begin{axis}[
-        at={(3cm,0cm)}, % Adjust position to the right, closer to the center
-        anchor=center,
-        width=7cm, height=6cm,
-        xmin=20, xmax=80,
-        ymin=-0.1, ymax=1.1,
-        axis lines=none, % Remove axes
-        title={High Jitter}, % Add title
-        title style={yshift=-10pt}, % Adjust title position to make it closer to the plot
-        ]
-        % Plot individual waveforms (high jitter) in darkgray
-        \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-45)/5)^2)};
-        \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-55)/5)^2)};
-        \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-40)/5)^2)};
-        \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-60)/5)^2)};
-        \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-50)/5)^2)};
+   % Second subplot (high jitter) positioned relative to center
+   \begin{axis}[
+      at={(0.55\textwidth,0)}, % Adjust position to the left, closer to the center
+       anchor=center,
+        width=.45\textwidth, height=.309\textwidth,
+       xmin=20, xmax=80,
+       ymin=-0.1, ymax=1.1,
+       axis lines=none, % Remove axes
+       title={high jitter}, % Add title
+       title style={yshift=-10pt, color=muteblack}, % Adjust title position to make it closer to the plot
+       ]
+       % Plot individual waveforms (high jitter) in darkgray
+       \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-45)/5)^2)};
+       \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-55)/5)^2)};
+       \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-40)/5)^2)};
+       \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-60)/5)^2)};
+       \addplot[darkgray,domain=20:80,samples=100] {exp(-0.5*((x-50)/5)^2)};
 
-        % Plot average waveform (high jitter) in accent1 color, very thick
-        \addplot[ultra thick,accent1,domain=20:80,samples=100] {0.2*(exp(-0.5*((x-45)/5)^2) + exp(-0.5*((x-55)/5)^2) + exp(-0.5*((x-40)/5)^2) + exp(-0.5*((x-60)/5)^2) + exp(-0.5*((x-50)/5)^2))};
-    \end{axis}
+       % Plot average waveform (high jitter) in accent1 color, very thick
+       \addplot[ultra thick,accent1,domain=20:80,samples=100] {0.2*(exp(-0.5*((x-45)/5)^2) + exp(-0.5*((x-55)/5)^2) + exp(-0.5*((x-40)/5)^2) + exp(-0.5*((x-60)/5)^2) + exp(-0.5*((x-50)/5)^2))};
+   \end{axis}
 
-    % Unified legend positioned further below the center
-    \node at (0,-5) {\begin{tikzpicture}
-        \begin{axis}[
-            hide axis,
-            xmin=0, xmax=0, ymin=0, ymax=0,
-            legend style={
-	    	draw=none, legend columns=2, /tikz/every even column/.append
-		style={column sep=2cm}
-		}
-            ]
-            \addlegendimage{darkgray,thick}
-            \addlegendentry{Waveforms}
-            \addlegendimage{accent1,ultra thick}
-            \addlegendentry{Average}
-        \end{axis}
-    \end{tikzpicture}};
+   % Unified legend positioned further below the center
+   \node[anchor=center] at (.3\textwidth,-.2\textwidth) {\begin{tikzpicture}
+       \begin{axis}[
+           hide axis,
+           xmin=0, xmax=0, ymin=0, ymax=0,
+           legend style={
+	   	draw=none, legend columns=2, /tikz/every even column/.append
+	 style={column sep=2cm}
+	 }
+           ]
+           \addlegendimage{darkgray,thick}
+           \addlegendentry{Waveforms}
+           \addlegendimage{accent1,ultra thick}
+           \addlegendentry{Average}
+       \end{axis}
+   \end{tikzpicture}};
 \end{tikzpicture}
-\vspace{-5cm}
+%\vspace{-5cm}
