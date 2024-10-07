@@ -147,6 +147,10 @@ Furthermore, we obtained promising results when extending the single
 Kronecker product covariance model to a sum of Kronecker product terms, since
 the \ac{eeg} covariance is probably better expressed by such a
 structure~\cite{Bijma2005}.
+The Kronecker-lda approach has also be extended to the combined
+space-time-frequency domain, where more information can be modeled at the cost
+of increased dimensionality.
+A properly structured covariance model can strongly regularize the problem.
 
 To overcome the limitations introduced by the presence of multiple \ac{erp}
 components to latency estimation, we have also developed a multi-component
@@ -155,7 +159,7 @@ This algorithm should be able to separate mixed \ac{erp} component clusters
 based on their temporal coherence, in a similar maner to~\textcite{Ouyang2017}.
 It could also yield favorable decoding results in a broader range of settings
 than overt \ac{vsa} since it should be able to account for the presence of both
-visual and attentional \ac{erp}components}.
+visual and attentional \ac{erp}components.
 
 In gaze-independence decoding, our current efforts focus on,
 counterintuitively, integrating eye tracking into the decoding strategy.
@@ -346,6 +350,3 @@ encountered further down the road.
 A top-down approach might improve the quality of study outcomes by enabling the
 reporting of realistic, interpretable metrics,
 and take into account the human aspect of working \emph{with} \ac{bci} users.
-
-
-\section{Conclusion}

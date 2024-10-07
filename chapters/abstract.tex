@@ -1,3 +1,36 @@
 \chapter*{Abstract}
-\todo{Main contribution: improve gaze-independent decoding by isolating component
-related to visuospatial attention from visual components}
+Individuals with severe motor impairments, such as those with \ac{lis}
+or eye-motor dysfunction, face substantial challenges when using traditional
+gaze-dependent brain-computer interfaces \acp{bci}.
+These systems require users to direct their gaze toward specific targets, a
+task that becomes unfeasible for individuals with limited or no eye control.
+This work addresses this limitation by developing gaze-independent
+\ac{bci} methods, focusing on improving covert \ac{vsa}, where users can direct
+their attention to a target without corresponding eye movements.
+A key contribution of this work is the compensation for ERP latency jitter, a
+variability that negatively impacts decoding performance in covert \ac{vsa}.
+By handling this jitter, the proposed method enhances communication accuracy
+without requiring gaze control, making \acp{bci} more usable for individuals with
+motor impairments.
+
+Beyond gaze independence, the work also advances general \ac{erp} decoding
+techniques by refining the structure of linear and multilinear estimators.
+These methods improve classification accuracy across a range of \ac{bci}
+conditions, particularly when training data are limited.
+The introduction of structured regularization in both linear and multilinear
+models enhances the interpretability of the classifiers and reduces training
+time and computational complexity.
+This allows for more efficient training and better performance on unseen data,
+contributing to more reliable systems that are adaptable to various contexts and user needs.
+
+The proposed methods were validated in experiments involving both healthy
+individuals and 7 individuals with severe physical impairment and impaired eye-motor control.
+Data were recorded from a control group, as well as from seven individuals with
+gaze impairments.
+These experiments demonstrated the robustness of the novel decoding methods,
+showing that the system could effectively decode covert attention even when
+direct gaze was impossible.
+
+\paragraph{Keywords:} brain-computer interface, gaze independence, covert
+visuospatial attention, event-related potentials, linear decoding, multilinear
+decoding, motor impairment, gaze impairment
