@@ -191,7 +191,7 @@ visualized in Figure~\ref{fig:HODA-backward}.
 \begin{figure}[t]
 	\centering
 	\input{figures/bttda/HODA_backward.tikz.tex}
-  \caption[The \ac{hoda} backward projection.]{%
+  \caption[The \acs{hoda} backward projection.]{%
     A visualization of the multilinear projection obtained by Higher Order
     Discriminant Analysis (HODA) applied to a third-order tensor
     sample $\ten{X}$ with shape $(D_1,D_2, D_3)$.
@@ -274,7 +274,7 @@ The iterative process halts after a fixed amount or iterations, or when the
 update of each $\mat{U}_k$ is lower than a predetermined threshold.
 The full HODA procedure is summarized in Algorithm~\ref{alg:HODA}.
 \begin{algorithm}
-  \caption[The \ac{hoda} backward solution.]{The \ac{hoda} backward solution.}
+  \caption[The \acs{hoda} backward solution.]{The \ac{hoda} backward solution.}
 	\label{alg:HODA}
 	\input{chapters/bttda/alg_HODA.tex}
 \end{algorithm}
@@ -692,7 +692,6 @@ smaller, but no significant differences were found between HODA+LDA,
 PARAFACDA+LDA and BTTDA+LDA.
 
 \subsection{Block contribution}
-\todo{Discuss number of features}
 To analyze the contribution of extra feature blocks extracted by {BTTDA} over
 the first one found by HODA we pick n ERP ($K=2$) dataset
 (BNCI2014-008) and an MI ($K=3$) dataset (BNCI2014-001).
@@ -807,7 +806,7 @@ BTTDA blocks.
 \begin{figure*}[t]
 	\includegraphics[width=\linewidth]{figures/bttda/forward_block-0.png}
 	\includegraphics[width=\linewidth]{figures/bttda/forward_block-1.png}
-  \caption[Extracted \ac{bttda} activation patterns.]{%
+  \caption[Extracted \acs{bttda} activation patterns.]{%
     Spatial (left two columns) and temporal (middle column) activation patterns and
 		condition contrasts (right column) obtained after forward projection of the latent
 		features for 2 blocks (row 1 and row 2) of rank $(2,2)$ of BTTDA

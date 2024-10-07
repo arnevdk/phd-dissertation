@@ -160,7 +160,7 @@ eye tracking solutions, we use the term \ac{sspgi} (see Figure~\ref{fig:gaze_ind
 
 \begin{figure}
   \input{figures/gaze_independence/lis_venn.tikz.tex}
-  \caption[Venn diagram of potential users of \ac{bci} assistive technology.]{%
+  \caption[Venn diagram of potential users of \acs{bci} assistive technology.]{%
     Venn diagram of potential users of assistive technology.
     Patients with \acf{sspi} are the general target population.
     If eye gaze-based solutions are not properly suited for an individual,
@@ -412,11 +412,37 @@ This approach has been published by~\textcite{VanDenKerchove2022} and will be
 described in Chapter~\ref{sec:stbf-struct}.
 
 \subsubsection{Tensor discriminant analysis}
-\todo{fill in}
+
+In the context of \ac{bci} decoding, extracting robust and discriminative
+features from multidimensional neural data is critical.
+Tensor decoding methods offers a powerful approach by preserving the multiway structure
+of \ac{eeg} data while optimizing class separability.
+Unlike traditional methods that flatten data, TDA operates directly on tensors,
+making it particularly suited for \ac{bci} applications, where signals are structured
+across multiple channels and time points.
+
+A widely used method is \ac{hoda}~\cite{Phan2010}, which projects tensors onto subspaces
+optimized for class separation, similar to \ac{lda}, but extended to multidimensional data.
+This method has been applied to various \ac{bci} tasks, including \ac{erp} and
+\ac{mi} decoding, enabling the extraction of class-relevant features while reducing
+the data's dimensionality.
+
+While \ac{hoda} is effective, it is limited by its reliance on a rigid core
+structure, which may not fully capture the complexity of neural data in some
+scenarios. To address this, \ac{bttda}
+introduces a more flexible block-term structure.
+\ac{bttda} iteratively extracts multiple blocks of
+discriminative information, which can help in capturing more complex patterns
+in neural data.
+While \ac{bttda} is not specifically tailored to
+gaze-independent \ac{bci} decoding, specific tensorizations of neural data can
+offer advantages in coping with several obstacles arising from
+gaze-independence.
+The proposed \ac{bttda} method will be discussed in~\autoref{sec:bttda}
 
 \subsubsection{Classifier-based Latency Estimation with Woody iterations}
-The previous two methods were aimed at improving decoding performance, but
-did not (yet) yield results specifically in gaze-independent decoding.
+The previous two methods did not yet yield results specifically in gaze-independent
+decoding.
 The following approach is targeted towards improving decoding performance in
 gaze-independent settings by accounting for a known property of the covert
 attention \ac{erp} response.
@@ -440,7 +466,7 @@ yields no improvement in gaze-independent settings.
 We improved upon this technique and extended it to a probabilistic, iterative
 method named \ac{wcble}.
 This approach has been published by~\cite{VanDenKerchove2024} and is presented
-and evaluated on simulated data in Chapter~\ref{sec:wcble}.
+and evaluated on simulated data in~\autoref{sec:wcble}.
 We have also collected datasets to evaluate this approach on real \ac{erp} data
 in gaze-independent settings.
 
@@ -460,8 +486,6 @@ To simulate the dissociation between the eye gaze and the
 intended target (\ac{vsa}) which could occur in individuals with gaze
 impairment, healthy participants are cued to operate the \ac{bci} in specific
 \ac{vsa} conditions.
-
-\todo{mention, free, split, frenzel}
 
 We chose a visual oddball interface that helps us study and adapt
 to the effects of eye motor impairment on the \ac{erp}, when using existing state-of-the-art
@@ -514,7 +538,7 @@ Figure~\ref{fig:gaze/vsa}.
     \label{fig:gaze/vsa/free}
   \end{subfigure}\hfill%
   \caption[\Ac{vsa} conditions]{%
-    \Ac{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
+    \Acl{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
   }
   \label{fig:gaze/vsa}
 \end{figure}
@@ -535,12 +559,27 @@ Chapter~\ref{sec:covert-align}.
 Performance is also evaluated on a publicly available dataset.
 
 \subsubsection{Case studies with gaze-impaired individuals}
-\todo{fill in}
-\todo{mention multi-center patient study case studies in cooperation
-After data collection from healthy participants and decoder development, we
-have carry out a patient study using a similar interface.
-The goal of the patient study is to evaluate the influence of eye motor
-deficits in patient populations on existing state-of-the-art decoders and on
-our proposed decoding methods.
-}
+\label{sec:patients/approach/casestudies}
+
+After collecting data from healthy participants and developing initial decoders, we conducted
+a patient study with gaze-impaired individuals to evaluate the impact of eye motor deficits
+on \ac{bci} performance.
+This study focused on individuals with \ac{sspgi}, recruited from neurorehabilitation centers
+and specialized care homes, including participants with conditions such as \ac{als}, \ac{fa},
+and stroke.
+
+The primary aim was to assess whether gaze-independent decoding strategies could improve
+\ac{bci} performance in this group.
+We used the visual Hex-o-Spell interface~\cite{Treder2010}, adapting the task by adding a
+free \ac{vsa} setting, where participants could operate the interface without being required
+to fixate their gaze.
+This setting allowed us to investigate how participants with varying eye motor capabilities
+naturally interact with a \ac{bci}, compared to standard overt and covert \ac{vsa} tasks.
+
+The hypothesis was that gaze-independent decoders, such as \ac{wcble}~\cite{VanDenKerchove2024},
+would improve performance in covert and free \ac{vsa} conditions compared to standard
+decoders like \ac{tlda}.
+We aimed to determine if calibration in an overt \ac{vsa} setting could also enhance
+performance in free and covert conditions, leveraging residual eye motor control during
+calibration to improve overall \ac{bci} accuracy for gaze-impaired users.
 The results of this study are presented in chapter~\ref{sec:patients}.

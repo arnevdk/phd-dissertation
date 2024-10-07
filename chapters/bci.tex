@@ -16,6 +16,7 @@ speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
 \todo{acronyms written in full every new chapter and in captions}
 \todo{search for ??}
 \todo{acro usage in chapters}
+
 \chapter{Brain-computer interfaces}
 \todo{are textcites used when necessary?}
 \label{sec:bci}
@@ -102,7 +103,7 @@ behavior or brain activity accordingly, closing the loop\footnote{%
 \fullpagefig[topleft]{%
   \includegraphics[width=\fullpagefigwidth]{figures/bci/bci_loop.pdf}
 }{%
-  The \ac{bci} loop.
+  The \acs{bci} loop.
 }{%
   The \ac{bci} loop.
   The user interacts with the \ac{bci} via a specific paradigm, in this case involving
@@ -371,7 +372,7 @@ Figure~\ref{fig:bci/paradigms}.
 \fullpagefig{%
   \input{figures/bci/paradigms.tikz.tex}
 }{%
-  Overview of \ac{bci} paradigms.
+  Overview of \acs{bci} paradigms.
 }{%
   A \ac{bci} paradigm defines which brain activity will be used for control.
   They can be categorized in active, reactive and passive
@@ -696,7 +697,9 @@ muscle movement.
 
 \begin{figure}[t]
   \begin{subfigure}[t]{.45\textwidth}
-  \includegraphics[width=\textwidth, height=\textwidth]{example-image-a}
+  \includegraphics[width=\textwidth,
+    height=\textwidth]{figures/bci/illustration}
+    \caption{Stimuli are flashed while the \ac{eeg} is recorded}
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/bci/p300.tikz.tex}
@@ -705,7 +708,8 @@ muscle movement.
 
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/bci/erp.tikz.tex}
-    \caption{The idealized \ac{erp} evoked by an attended stimulation.}
+    \caption{The idealized \ac{erp} evoked by an attended stimulation in a
+    single channel.}
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
     \includegraphics[width=\textwidth, height=0.6180\textwidth]{example-image-b}
@@ -717,7 +721,7 @@ muscle movement.
   full spatiotemporal ERP response
 }
 
-\subsection{The \acf{erp}}%
+\subsection{The \acl{erp}}%
 \label{sec:bci/oddball/erp}
 
 The time-domain response elicited immediately after the intensification of a
