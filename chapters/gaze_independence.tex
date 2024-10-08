@@ -33,7 +33,7 @@ neurodegenerative (\ac{als}, \ac{ms}, \ldots) or acquired (stroke and
 \ac{tbi}).
 Many individuals in these groups unfortunately also suffer
 to some extent from eye motor impairment, requiring \acp{bci} adapted to their condition.
-Table~\ref{tab:incidence} reports the relatively high frequencies of
+\Cref{tab:incidence} reports the relatively high frequencies of
 eye motor impairment, which can range from minor (nystagmus,
 \footnote{Involuntary, rhythmic, and repetitive eye movements recognizable by their
 consistent directionality (horizontal, vertical, or rotational).},
@@ -50,7 +50,10 @@ This not only affects vision and coordination but also
 their ability to operate a visual \ac{bci}~\cite{FriedOken2020}.
 
 \begin{table}
+  \centering
+  \makebox[\textwidth][c]{%
   \input{chapters/gaze_independence_incidence.tex}
+  }
   \caption[Incidence of eye motor impairment in selected \acs{bci} target
     patient populations.]{%
       Incidence of eye motor impairment in selected \ac{bci} target
@@ -142,7 +145,7 @@ Instead of categorizing patients, we will refer to those who might benefit from
 \ac{bci} assistive communication technology as having \ac{sspi}, in line with
 the terminology used by~\textcite{FriedOken2020}.
 If they have eye motor impairment that affects their use of visual \ac{bci} or
-eye-tracking solutions, we use the term \ac{sspgi} (see Figure~\ref{fig:gaze_independence/venn}).
+eye-tracking solutions, we use the term \ac{sspgi} (see \cref{fig:gaze_independence/venn}).
 
 \begin{figure}
   \input{figures/gaze_independence/lis_venn.tikz.tex}
@@ -153,7 +156,8 @@ eye-tracking solutions, we use the term \ac{sspgi} (see Figure~\ref{fig:gaze_ind
     they have \acf{sspgi}.
     Individuals with \ac{lis} have no muscular control left, or it is very limited,
     such as the ability to communicate through a binary switching system.
-    \Acp{bci} are especially relevant for the last two groups.
+    \Acp{bci} are especially relevant for the last two groups, as they are not
+    able to use eye tracking solutions.
   }
   \label{fig:gaze_independence/venn}
 \end{figure}
@@ -165,9 +169,6 @@ complete paralysis and difficulties or the inability to communicate independentl
 even with assistive technology.
 This corresponds to classes one and two defined by
 \textcite{Wolpaw2006}\fnwolpawcrit.
-\todo{[15] Graber M, Challe G, Alexandre MF, et al. Evaluation of the
-visual function of patients with locked-in syndrome: report
-of 13 cases. J Fr Ophtalmol. 2016;39:437–440.}
 Hence, some degree of severe or complete eye motor impairment is usually
 necessary to qualify as locked-in\fnlis.
 
@@ -325,7 +326,7 @@ Therefore, the development of decoding strategies that account for covert
 
 The general goal of this PhD is to tackle the gaze-dependence problem in the
 visual oddball \ac{bci}.
-Section~\ref{sec:gaze-independence/sota} showed that visual \ac{bci} paradigms are a
+\Cref{sec:gaze-independence/sota} showed that visual \ac{bci} paradigms are a
 good candidate for a performant gaze-independent \ac{bci}.
 While the central gaze fixation of most visual gaze-independent paradigms still
 relies to some extent on eye motor control, we aim to circumvent this.
@@ -379,15 +380,15 @@ gaze-independent decoding performance may be to increase overall \ac{erp}
 decoding performance.
 
 To address this, we improved upon an in-house developed, state-of-the-art \ac{erp}
-decoder, the spatiotemporal beamformer~\cite{Wittevrongel2016}, by reformulating
+decoder, the \ac{stbf}~\cite{Wittevrongel2016}, by reformulating
 this classifier as a linear discrimination problem and
 imposing regularizing constraints by structuring the noise covariance matrix
-(STBF-struct).
+(\acs{stbf-struct}).
 Furthermore, these regularizing constraints impose temporal stationarity on
 the background noise, yielding insights for our next
 efforts to cope with the non-stationarity of the P3 signal component.
 This approach has been published by~\textcite{VanDenKerchove2022} and will be
-described in \autoref{sec:stbf-struct}.
+described in \cref{sec:stbf-struct}.
 
 \subsubsection{Tensor discriminant analysis}
 
@@ -416,7 +417,7 @@ While \ac{bttda} is not specifically tailored to
 gaze-independent \ac{bci} decoding, specific tensorizations of neural data can
 offer advantages in coping with several obstacles arising from
 gaze-independence.
-The proposed \ac{bttda} method will be discussed in \autoref{sec:bttda}.
+The proposed \ac{bttda} method will be discussed in \cref{sec:bttda}.
 
 \subsubsection{Classifier-based Latency Estimation with Woody iterations}
 
@@ -445,7 +446,7 @@ yields no improvement in gaze-independent settings.
 We improved upon this technique and extended it to a probabilistic, iterative
 method named \ac{wcble}.
 This approach has been published by~\textcite{VanDenKerchove2024} and is presented
-and evaluated on simulated data in \autoref{sec:wcble}.
+and evaluated on simulated data in \cref{sec:wcble}.
 We have also collected datasets to evaluate this approach on real \ac{erp} data
 in gaze-independent settings.
 
@@ -478,7 +479,7 @@ performance and because it has already been tested in individuals with
 \ac{sspi} by~\textcite{Severens2014}.
 
 The interface can be operated in different \ac{vsa} conditions, as illustrated in
-\autoref{fig:gaze/vsa}.
+\cref{fig:gaze/vsa}.
 
 \begin{figure}
   \begin{subfigure}[t]{.45\textwidth}
@@ -534,7 +535,7 @@ the options to dissociate gaze and visuospatial attention, allowing us to
 investigate the effect of (the lack of) gaze control on \ac{bci} performance.
 This dataset and the performance of our proposed \ac{wcble} decoder have also been
 published by \textcite{VanDenKerchove2024} and will be presented in
-\autoref{sec:covert-align}.
+\cref{sec:covert-align}.
 Performance is also evaluated on a publicly available dataset.
 
 \subsubsection{Case studies with gaze-impaired individuals}
@@ -561,4 +562,4 @@ decoders like \ac{tlda}.
 We aimed to determine if calibration in an overt \ac{vsa} setting could also enhance
 performance in free and covert conditions, leveraging residual eye motor control during
 calibration to improve overall \ac{bci} accuracy for gaze-impaired users.
-The results of this study are presented in \autoref{sec:patients}.
+The results of this study are presented in \cref{sec:patients}.

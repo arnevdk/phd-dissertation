@@ -24,6 +24,7 @@
 \RequirePackage{sansmath}
 \RequirePackage{appendix}
 \RequirePackage[utf8]{inputenc}
+\RequirePackage{cleveref}
 
 % Preamble ====================================================================
 %\pdfminorversion=7
@@ -83,6 +84,15 @@
 
 
 \newlength{\fullpagefigwidth}
+
+% Define publicaition list bibliography style
+\makeatletter
+\newcommand\setmaxbibnames[1]{\renewcommand\blx@maxbibnames{#1}}
+\makeatletter
+
+% Redefine \chapter to automatically reset acronyms
+\let\oldchapter\chapter
+\renewcommand{\chapter}{\acresetall\oldchapter}
 
 \newcommand\inputpgf[2]{{
 \let\pgfimageWithoutPath\pgfimage

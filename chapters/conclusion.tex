@@ -3,7 +3,7 @@
 \section{Contributions}
 
 This work aimed to improve the performance of visual gaze-independent \acsp{bci}, in general
-and applied to individuals with eye motor impairment by developing novel decoding
+and when applied to individuals with eye motor impairment, by developing novel decoding
 strategies and evaluating their effectiveness.
 We addressed the limitations of current gaze-dependent \acp{bci} by proposing methods that
 exploit covert \ac{vsa} and reduce the reliance on eye gaze.
@@ -32,7 +32,7 @@ arising from gaze-independent \acp{bci}, yielding robust results under certain c
 Results show that \ac{bttda} and its special sum-of-rank-one structured case
 improved over \ac{hoda} and can reach state-of-the-art decoding performance for
 \acp{erp}.
-This work is submitted as~\textcite{Vandenkerchove2024b}.
+This work is submitted as~\textcite{VanDenKerchove2024}.
 
 Finally, we developed the \acf{wcble} decoder, specifically designed to address
 the challenges posed by P3 latency jitter in covert \ac{vsa} settings.
@@ -47,28 +47,28 @@ to estimate and align \ac{erp} latencies across trials.
 This is performed in such a way that discriminative power of the \ac{erp}
 signal is preserved and enhanced.
 The method has been published in~\textcite{VanDenKerchove2024}.
-We took care to design a method that can be applied to improve decoding, where
+We designed this method to improve decoding where
 unseen incoming test data is not yet known.
 \Ac{wcble} was first tested on synthetic data to evaluate its
 effectiveness under conditions of controlled latency variability and noise.
-These results showed that is is robust to higher noise and jitter compared to
+These results showed that it is robust to higher noise and jitter compared to
 a non-iterative method in a latency estimation task.
 It was also shown that decoding accuracy was higher in high jitter and noise
-settings compared to the non-iterative method and a sate-of-the-art decoder.
+settings compared to the non-iterative method and a state-of-the-art decoder.
 
 \subsection{Gathered datasets}
 The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
 $26.38\pm3.15$ years.
 The dataset was presented in~\textcite{VanDenKerchove2024}.
-The experiment in this dataset implemented a visual odball \ac{bci} with six
+The experiment in this dataset implemented a visual oddball \ac{bci} with six
 circular targets in a hexagonal layout.
 The gaze fixation of participants was carefully controlled to dissociate the
 visuospatial attention of the participant and their eye gaze.
-This allows us to study effects of gaze-independence on \ac{erp} decoding.
-The CVSA-ERP dataset gives us insight in the ERP dynamics in overt, covert and the
+This allowed us to study the effects of gaze-independence on \ac{erp} decoding.
+The CVSA-ERP dataset gives us insight into the ERP dynamics in overt, covert, and the
 novel split VSA condition, and confirms our hypothesis that P3 jitter has a
 significant impact on performance in covert and split VSA.
-It also confirmed the effects of covert \ac{vsa} on \ac{erp} component
+It also confirmed that the effects of covert \ac{vsa} on \ac{erp} component
 amplitude hold for split \ac{vsa}.
 
 Additionally, we gathered data from 7 individuals with \ac{sspgi} with conditions such as
@@ -83,15 +83,15 @@ groups.
 
 \subsection{Investigated gaze-independent visual \acsp{bci}}
 
-We have evaluated our proposed \ac{wcble} algorithm, its non-iterative
-counterpart and state-of-the-art decoders on the CVSA-ERP dataset as well as on a publicly available
+We evaluated our proposed \ac{wcble} algorithm, its non-iterative
+counterpart, and state-of-the-art decoders on the CVSA-ERP dataset as well as on a publicly available
 dataset~\cite{Aloise2012} that also contains the overt and covert VSA conditions.
 We evaluated the BCI decoding performance in a single-trial classification experiment,
 as well as in a target selection experiment reflecting BCI operation.
 Performance was significantly different between decoders, but this
 result was significantly dependent on the \ac{vsa} condition and the dataset.
 While \ac{wcble} was outperformed by the state-of-the-art in overt \ac{vsa}
-decoding, but increased covert \ac{vsa} decoding.
+decoding, it increased covert \ac{vsa} decoding.
 
 For the split attention conditions in the CVSA-ERP
 dataset, \ac{wcble} yielded a significant improvement over CBLE and the
@@ -102,14 +102,14 @@ VSA, where accuracy was not harmed by the lower
 single-trial selection performance of \ac{wcble}.
 
 To further study the gaze-independent performance of these algorithms, transfer
-learning between \ac{vsa} conditions is studied to simulate conditions where an
+learning between \ac{vsa} conditions was studied to simulate conditions where an
 individual with gaze impairment can end up in different \ac{vsa} settings within
-a \ac{bci}operation session due to their lack of proper motor control.
+a \ac{bci} operation session due to their lack of proper motor control.
 When trained and evaluated on overt VSA data, our proposed \ac{wcble} algorithm
-results in a significant decrease in performance compared the state-of-the art,
+results in a significant decrease in performance compared to the state-of-the-art,
 consistent with the within-condition results.
-For all other pairs of training and evaluation VSA condition, however,
-\ac{wcble} was equal or significantly better.
+For all other pairs of training and evaluation VSA conditions, however,
+\ac{wcble} was equal to or significantly better.
 
 Later case studies explored gaze-independent
 \ac{bci} performance in individuals with \ac{sspi} and varying eye motor impairments.
@@ -117,23 +117,23 @@ Participants showed different levels of gaze control, with some using overt
 \ac{vsa}, while others preferred covert \ac{vsa}, resting their gaze and
 mentally attending to targets.
 
-The \ac{wcble} decoder improved decoding accuracy covert
+The \ac{wcble} decoder improved decoding accuracy in covert
 \ac{vsa} settings with cued central gaze fixation.
-This is of interest for gaze-independent decoding, but not as optimal as if the
+This is of interest for gaze-independent decoding, but not as optimal as when the
 gaze fixation was uncued.
-The latter was tested in the free \ac{vsa} settion.
+The latter was tested in the free \ac{vsa} setting.
 Here, participants were generally more comfortable when allowed to use their
 preferred gaze strategy.
 Decoding performance in free \ac{vsa} was often comparable to overt \ac{vsa},
 showing the system's flexibility.
 
 Together, these results show that there is an interest in developing a new class of ERP-BCI
-interfaces for patients that prefer to choose their own gaze strategy, so as to
-avoid the effort of redirecting their eye gaze at different spatial locations
+interfaces for patients that prefer to choose their own gaze strategy, to
+avoid the effort of redirecting their eye gaze to different spatial locations
 on the stimulation screen in manners that might be uncomfortable for them.
 Coincidentally, advances in gaze-independent decoding also build towards a
 solution for the Midas Touch Problem in visual \ac{bci}.
-Here a \ac{bci} user sometimes accidentally selects a target while not wanting
+Here, a \ac{bci} user sometimes accidentally selects a target while not intending
 to give any input.
 Decoding of true intention independent of eye
 gaze, with the option of gazing without paying visuospatial attention to a
@@ -147,113 +147,83 @@ Furthermore, we obtained promising results when extending the single
 Kronecker product covariance model to a sum of Kronecker product terms, since
 the \ac{eeg} covariance is probably better expressed by such a
 structure~\cite{Bijma2005}.
-The Kronecker-lda approach has also be extended to the combined
+The Kronecker-\ac{lda} approach has also been extended to the combined
 space-time-frequency domain, where more information can be modeled at the cost
 of increased dimensionality.
 A properly structured covariance model can strongly regularize the problem.
 
 To overcome the limitations introduced by the presence of multiple \ac{erp}
-components to latency estimation, we have also developed a multi-component
+components in latency estimation, we have also developed a multi-component
 version of the \ac{wcble} algorithm.
 This algorithm should be able to separate mixed \ac{erp} component clusters
-based on their temporal coherence, in a similar maner to~\textcite{Ouyang2017}.
+based on their temporal coherence, in a similar manner to~\textcite{Ouyang2017}.
 It could also yield favorable decoding results in a broader range of settings
-than overt \ac{vsa} since it should be able to account for the presence of both
-visual and attentional \ac{erp}components.
+than overt \ac{vsa}, since it should be able to account for the presence of both
+visual and attentional \ac{erp} components.
 
 In gaze-independence decoding, our current efforts focus on,
 counterintuitively, integrating eye tracking into the decoding strategy.
-Since we are able to explicitly discern overt, covert and split \ac{vsa} from
+Since we are able to explicitly discern overt, covert, and split \ac{vsa} from
 the \ac{erp}, and different decoders perform best in different settings, it
 could be helpful to derive the current setting from the gaze position and the
-\ac{erp} and propose the most suited decoder for a given data point.
-select best classifier using eye tracking
+\ac{erp}, and propose the most suited decoder for a given data point.
+This could allow us to select the best classifier using eye tracking.
 
-We also wish to apply the tensor approach to gaze-inependent decoding.
-The problems introduced by jitter could be accounted for as in \ac{wcble} by
+We also aim to apply the tensor approach to gaze-independent decoding.
+The problems introduced by jitter could be accounted for, as in \ac{wcble}, by
 alignment, but also by other methods that model the possible time shifts.
 In ordering the data as a Hankel tensor\footnote{Adding an extra mode with
-time-shifted copys of the temporal response per channel.}, we should have a
+time-shifted copies of the temporal response per channel.}, we should have a
 data representation that is more robust to jitter, at the cost of increased
 dimensionality.
-This increased dimensionality can than be countered by a tensor method like
+This increased dimensionality can then be countered by a tensor method like
 \ac{hoda} or \ac{bttda}.
 
-Finally, we wish to expand on experimentation with individuals with
+Finally, we wish to expand our experimentation with individuals with
 \acp{sspgi}.
 We aim to revisit the patients with an on-line experiment and comfort
-assessment, to establish the usability of the proposed interface and to be able
-to compare its \ac{itr}  to the state-of-the-art literature.
+assessment to establish the usability of the proposed interface and compare its
+\ac{itr} to the state-of-the-art literature.
+
 
 \section{Limitations and recommendations}
 
 \subsection{Decoding: keep it linear; structure it}
 
 Throughout this thesis, we've noticed that linear or multilinear decoding
-methods consistentcly outperform non-linear methods, like SVMs or those based
-in Riemannian Geometry.
+methods consistently outperform non-linear methods, such as SVMs or those based
+on Riemannian Geometry.
 Within these linear models, regularization (shrinkage, covariance structure,
 tensor structure/rank) is of paramount importance, since neural data is
 inherently multivariate and \ac{bci} calibration time is minimized.
-Proper regularization should impose some specific structure on linear model,
+Proper regularization should impose some specific structure on the linear model,
 ideally reflecting properties of the signal.
-When faced with new problem and few data relative to dimensionality, it is a
+When faced with a new problem and few data relative to dimensionality, it is a
 good first instinct to pick a simple, restrictive structure.
 
-Yet, the brain is a complex organ, hence neural data is not linear in origin and
-these regularizing assumptions based on prior knowledge are probably only
+However, the brain is a complex organ, so neural data is not linear in origin, and
+these regularizing assumptions based on prior knowledge are likely only
 superficially true.
 When optimizing for performance, it will soon become clear that, given a more
 flexible model, there are
 settings where these assumptions can be broken to better describe the ongoing
 interactions.
 For example, spatiotemporal beamforming or \ac{lda} with Kronecker-structured covariance
-improves performance in low sample sizes, but is outperformed by more flexible
-methods, e.g.\ \ac{lda} using a Kronecker-sum covariance model or \ac{tlda}
-if training sample size increases.
-Similarly, \ac{bttda} is more flexible
+improves performance in low sample sizes but is outperformed by more flexible
+methods, such as \ac{lda} using a Kronecker-sum covariance model or \ac{tlda}
+when the training sample size increases.
+Similarly, \ac{bttda} offers more flexibility.
 
 This calls for the development of more flexible (multi-)linear models that still rely on some
-structure, but which are combined with efficient model
-selection, such as proposed by \ac{bttda}.
+structure but are combined with efficient model
+selection, such as those proposed by \ac{bttda}.
 These models try to combine the best of both worlds.
 
-%\subsection{Visual? gaze-independent \ac{bci}}
-%
-%While visual \acp{bci} are often praised for their easy, non-invasive
-%applicability, they are also inherently unreliable, require wearing the
-%\ac{eeg} cap and force continuous stimulation upon the user, all while forming
-%a rather unintuitive method of communication for humans who are used to speech
-%or motor commands.
-%
-%Currently, the group of users that would directly be helped with \emph{only} a
-%gaze-independent visual \ac{bci} is not that large.
-%Even if some eye motor impairment is the most suited strategy for a patient, it will probably be
-%improved if a combination of eye tracking, residual motor control and other
-%biosensors are used.
-%
-%
-%\todo{https://www.nature.com/articles/s44222-024-00239-5}
-%very small group of interest, but available right now, no implantation needed,
-%
-%true power in the future is probably focused on
-%invasive, active paradigms if recording technology and surgical methods
-%improve lowering the risk. orders of magnitude higher itr and more natural
-%communication.
-%will probably become acceptable if risks of implantation and longevity
-%increase.
-%characterized by publication date, but might indicate it is of interest to
-%heavily focus this research now on applied 'vraagstukken' with patients
-%
-%Why limit ourselves to the visual~\ac{bci} decoding problem postulated in this
-%thesis?
-%
-%
 \subsection{Optimize user experience}
-While our work with \ac{bci} users with \ac{sspgi} results in interesting
-preliminary results, it is currently impossible to make claims about the experience in long term
+While our work with \ac{bci} users with \ac{sspgi} resulted in interesting
+preliminary findings, it is currently impossible to make claims about the experience in long-term
 home use of the proposed systems as assistive technology.
-This work focused heavily on classification methods, and solving problem
+This work focused heavily on classification methods and solving problems
 arising from gaze-independence through decoding.
 A natural metric to then evaluate proposed decoders is \ac{erp} classification
 performance.
@@ -262,91 +232,90 @@ However, classification performance is only one aspect of what makes a \ac{bci}
 desirable as assistive technology.
 \Ac{itr} in on-line operation is a better metric, and the ultimate goal
 is user satisfaction.
-The latter can depends on performance, comfort and perception.
-Classification performance is a convenient metric since a researcher can perform a single
+The latter depends on factors such as performance, comfort, and user perception.
+Classification performance is a convenient metric because a researcher can perform a single
 data collection and iterate on the results offline.
-However, this can be too constrictive when seeking the most suited interface
-for a specific (group of users).
+However, this can be too limiting when seeking the most suitable interface
+for a specific group of users.
 
-In the optimal approach, decoder development, paradigm choice and interface
-design should working together, such as is advocated
-by~\textcite{Pan2022} and~\textcite{Fouad2020}, by unifying the engineering and
-the clinical side.
-Performance and abilities are probably depend in such a degree on the user,
-that off-line decoding performance in healthy controls is probably not a great
+The optimal approach should unify decoder development, paradigm choice, and interface
+design, as advocated by~\textcite{Pan2022} and~\textcite{Fouad2020}, by integrating both
+engineering and clinical perspectives.
+Performance and abilities likely depend to a great degree on the user,
+so off-line decoding performance in healthy controls is probably not a good
 predictor of on-line decoding performance and \ac{itr} in individuals with
 \ac{sspi}.
-Incremental gains in performance in decoding for a specific paradigm might
-also be outweighed by how well that paradigm is adapted to the user, factoring in,
-skills and abilities.
-Longitudinal research should follow several patient groups specifically with gaze
-impairment and experiment with specific paradigms, interfaces and decoders for
+Incremental gains in decoding performance for a specific paradigm might
+also be outweighed by how well that paradigm is adapted to the user, factoring in
+their skills and abilities.
+Longitudinal research should follow several patient groups, specifically those with gaze
+impairment, and experiment with specific paradigms, interfaces, and decoders for
 a given \ac{bci} user.
+
 
 \subsection{Work \emph{with} individuals with \acs{sspi}}
 
-A logical point that arising from this is the question of how to setup an
+A logical point arising from this is the question of how to set up an
 effective research project that aims to optimize \ac{bci} user experience, in
-the context of he topics presented in this work.
+the context of the topics presented in this work.
 The patient-research involvement framework postulates that, ideally, individuals with
 \ac{sspi} should be involved at every stage of the research project, from conceptualization
 to evaluation.
-A good rule of thumb is that research should solves problems \emph{with} the
+A good rule of thumb is that research should solve problems \emph{with} the
 users, not \emph{for} them, implying that research projects should start from
-the need of the \ac{bci} user population.
+the needs of the \ac{bci} user population.
 
 Instead of choosing a research target and then moving on to decoder
-development, data collection with healthy controls, patient studies and,
+development, data collection with healthy controls, patient studies, and
 finally, verification in on-line operation, it could be more effective to start
 the other way around.
 In a mature field like visual oddball \ac{bci}, the research project can, after
 a thorough literature review, immediately start with on-line experimentation
 involving individuals with \ac{sspgi} and an adequately chosen, existing \ac{bci} system.
 It should then become apparent where challenges for the envisioned user
-(population) lie.
+population lie.
 As an example, \textcite{FriedOken2020} share an overview of their experiences from this step,
 specifically concerning eye motor impairment in visual \ac{bci}.
 After that, hypotheses can be formed on how to mitigate these challenges
-through interface optimization or choice taking into account the full picture
+through interface optimization or choice, taking into account the full picture
 of the capabilities and skills of the users.
-These hypotheses can then verified in experiments
+These hypotheses can then be verified in experiments
 with the users and/or a population of healthy controls.
 Finally, the decoder can be optimized, only if it is strongly suspected that
 effects will hold in on-line operation.
 
 Unfortunately, this is also probably one of the least practical ways to set up
-a 4-year research project, e.g.\ in the context of doctoral thesis.
+a 4-year research project, such as in the context of a doctoral thesis.
 This approach can only work if the proper facilities can be gathered immediately
-from the start, like ethical approval and access to patients and on-line \acp{bci}
+from the start, such as ethical approval, access to patients, and on-line \acp{bci}
 experimentation systems.
-It is therefore important that research labs keep a working, long-term
-collaboration with patient centers such that new projects can immediately be v
-verified with population, and that interested users can compare multiple systems
-and guide development.
+It is therefore important that research labs maintain a working, long-term
+collaboration with patient centers, so that new projects can immediately be
+verified with the user population. This also allows interested users to compare
+multiple systems and guide development.
 The fact that a user has previous \ac{bci} experience is often seen as a confounding
 factor in off-line studies.
-When the research is in a phase that is heavily dependent on user
-experimentation,
-this is in fact a strength, sinche the user might help the researcher gain
-insight into what works and doesn't work for them, and where research efforts
+When the research is in a phase that heavily depends on user
+experimentation, this is actually a strength, since the user can help the researcher gain
+insight into what works and doesn’t work for them, and where research efforts
 should be focused.
 
-Similarly, there is value in maintaining a working, on-line in house \ac{bci}
+Similarly, there is value in maintaining a working, on-line in-house \ac{bci}
 system that can be iterated upon and adapted if necessary.
 Experiments can be supported by advance calculations of hypothetical
-\ac{itr}, such that performed on-line or off-line experiments reasonably reflect
-real-world operation and no effort is wasted exploring settings that should not
-reach satisfactory performance.
+\ac{itr}, ensuring that on-line or off-line experiments reasonably reflect
+real-world operation, and no effort is wasted exploring settings that will not
+achieve satisfactory performance.
 For example, why study a specific number of repetitions or \ac{isi}, if they
-would not be practical to achieve a high \ac{itr}, but can still influence
+would not be practical to achieve a high \ac{itr}, but could still influence
 decoding performance?
 
 This top-down approach is probably not suited for all types of \ac{bci}
 research.
-Yet, in visual oddbal \ac{bci} where the challenge lies no longer in generating
-a proof of concept but in translating the concept into a useful technology, it
-might help avoid prematurely solving problems that might not necessarily be
-encountered further down the road.
-A top-down approach might improve the quality of study outcomes by enabling the
+Yet, in visual oddball \ac{bci}, where the challenge no longer lies in generating
+a proof of concept but in translating the concept into useful technology, this
+approach might help avoid prematurely solving problems that may not necessarily
+arise further down the road.
+A top-down approach could improve the quality of study outcomes by enabling the
 reporting of realistic, interpretable metrics,
-and take into account the human aspect of working \emph{with} \ac{bci} users.
+and by taking into account the human aspect of working \emph{with} \ac{bci} users.

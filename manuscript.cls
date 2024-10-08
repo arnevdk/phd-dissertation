@@ -14,6 +14,7 @@
 \newcommand{\fullpagefig}[5][bottomleft]{%
   \begin{figure}[p]
     #2
-    \caption[#3]{#4}\label{#5}
+    \caption[#3]{#4}%
+    \label{#5}
   \end{figure}
 }

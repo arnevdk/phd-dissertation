@@ -4,75 +4,74 @@
 
 \section{Introduction}
 
-The decoding methods described in \autoref{sec:stbf-struct} and
-\autoref{sec:bttda} are rather general attempts at increasing \ac{erp} decoding accuracy.
+The decoding methods described in \cref{sec:stbf-struct} and
+\cref{sec:bttda} are general attempts at increasing \ac{erp} decoding accuracy.
 Given the problem statement of this work, we are also interested in targeted
 methods that would specifically advance the development of gaze-independent
-visuall \acp{bci} (see \label{sec:gaze-independence/sota}).
+visual \acp{bci} (see \cref{sec:gaze-independence/sota}).
 Methods of directly enhancing gaze-independent decoding through optimizing
 decoder design have not been widely studied (see
-\label{sec:gaze-independence/sota/decoding}).
+\cref{sec:gaze-independence/sota/decoding}).
 We assume that advances in gaze-independent decoding can be made if properties
-of covert \ac{vsa} that affect performance can be identified and, in some way,
-accounted for.
-The latency estimation and alignment approach proposed in \autoref{sec:wcble}
+of covert \ac{vsa} that affect performance can be identified and accounted for.
+The latency estimation and alignment approach proposed in \cref{sec:wcble}
 was specifically designed for this purpose.
 
 \textcite{Arico2014} observed higher variability in single-trial P3 peak
 latencies relative to stimulus onset during covert \ac{vsa} compared to overt
 \ac{vsa}.
-This latency variability contributes to reduced covert VSA decoding performance.
+This latency variability contributes to reduced covert \ac{vsa} decoding performance.
 While they proposed an analysis and performance prediction method, they did not provide a
 decoding solution.
-They suggested that compensating for latency jitter could enhance covert VSA
-decoding, but did not actually verify this hypothesis directly.
+They suggested that compensating for latency jitter could enhance covert \ac{vsa}
+decoding, but did not verify this hypothesis directly.
 Additionally, \cite{Hardiansyah2020} developed a classifier for
-covert VSA ERPs, exploiting single-trial latency features in combination with
+covert \ac{vsa} \acp{erp}, exploiting single-trial latency features in combination with
 amplitude features for classification with a support vector machine.
-They demonstrated the positive influence of single-trial ERP component latency
-features on covert VSA inference, yet did not attempt to correct the amplitude
+They demonstrated the positive influence of single-trial \ac{erp} component latency
+features on covert \ac{vsa} inference, yet did not attempt to correct the amplitude
 features for these latencies.
 
-Furthermore, as mentioned in~\autoref{sec:gaze-independence/sota/visual} and
-\autoref{sec:gaze-independence/approach/cvsa-erp},
-our goal is also to explore more flexible gaze-independent settings that the
+Furthermore, as mentioned in \cref{sec:gaze-independence/sota/visual} and
+\cref{sec:gaze-independence/approach/cvsa-erp},
+our goal is also to explore more flexible gaze-independent settings than the
 usual covert \ac{vsa} with central gaze fixation reported in most literature.
 \textcite{Frenzel2011} introduced a similar protocol to the proposed split
-\ac{vsa} setting (see~\autoref{fig:gaze/vsa/free}).
-They showed that it is possible to perform split VSA and that, in this
-case, visuospatial attention and gaze direction can separately be decoded using
-classical ERP techniques.
+\ac{vsa} setting (see~\cref{fig:gaze/vsa/free}).
+They showed that it is possible to perform split \ac{vsa} and that, in this
+case, visuospatial attention and gaze direction can be decoded separately using
+classical \ac{erp} techniques.
 To the best of our
-knowledge, this is the sole study that investigated split attention in ERP-based BCIs.
+knowledge, this is the sole study that investigated split attention in \ac{erp}-based \acp{bci}.
 However, \textcite{Frenzel2011} considered their interface only for the case
 where the user actively intends to select both targets determined by the gaze
-and the VSA.
-In the split VSA setting considered in our work, we rather instruct the participant to ignore
-the distractor and only attend the cued target, since we are interested in
+and the \ac{vsa}.
+In the split \ac{vsa} setting considered in our work, we instruct the participant to ignore
+the distractor and only attend to the cued target, as we are interested in
 decoding the visuospatial attention only.
 
 \section{Materials \& methods}
 
 \subsection{Data collection}
 We evaluate our approach on a dataset specifically recorded for this study, designed to
-probe different modalities of covert VSA, and on the publicly available
+probe different modalities of covert \ac{vsa}, and on the publicly available
 BNCI2014-009 dataset~\cite{Aloise2012a}.
 
 \subsubsection{CVSA-ERP dataset}
 \label{sec:covert-align/stimulation}
 
 We recorded a dataset to validate our approach.
-The Covert Visuospatial Attention ERP (CVSA-ERP) dataset
+The Covert Visuospatial Attention \ac{erp} (CVSA-ERP) dataset
 consists of 15 participants, mean age $26.34\pm3.04$ years.
 This study was approved by the Ethics Commission of University Hospital Leuven
 (S62547).
-Each subject performed different VSA conditions (overt, covert and split),
+Each subject performed different \ac{vsa} conditions (overt, covert, and split),
 illustrated in Figure~\ref{fig:interface} (top row).
 Using a hexagonal layout interface, similar to the visual Hex-o-Spell proposed
-by \cite{Treder2010}, we present six flashing targets (without letters or
-symbols) to the participant while the EEG, electrooculogram (EOG), and the
+by \cite{Treder2010}, we presented six flashing targets (without letters or
+symbols) to the participant while the \ac{eeg}, electrooculogram (EOG), and the
 participant's eye gaze using eye tracking were recorded.
-The VSA conditions described in the first row of Figure~\ref{fig:interface} are
+The \ac{vsa} conditions described in the first row of Figure~\ref{fig:interface} are
 considered.
 \begin{figure*}
   \bigskip
@@ -91,62 +90,62 @@ considered.
 	\end{subfigure}%
 
   \caption[Stimulation interfaces and evoked \acsp{erp}.]{
-		\subref{fig:interface} Interfaces and visuospatial attention (VSA)
+		\subref{fig:interface} Interfaces and visuospatial attention (\ac{vsa})
     conditions in the CVSA-ERP and BNCI2014-009 datasets.
-		In the CVSA-ERP oddball BCI interface, screen targets are intensified one after
+		In the CVSA-ERP oddball \ac{bci} interface, screen targets are intensified one after
     the other in pseudorandom order while the participant can either pay overt,
-    covert, or split VSA to the cued target.
-		In the BNCI2014-009 overt VSA interface, entire rows and columns are
+    covert, or split \ac{vsa} to the cued target.
+		In the BNCI2014-009 overt \ac{vsa} interface, entire rows and columns are
 		intensified at once. In its covert counterpart,
 		groups of 6 letters are intensified one after the other, partly relying on
     feature attention.
 		\subref{fig:erps} Contrast between target (color) and non-target, and
-    distractor (gray) and non-target grand average event-related potentials per VSA condition and dataset.
-    Overt VSA yields a strong modulation of the N1 component in both datasets;
-    the P3 amplitude decreases with the degree of split VSA.
-    In split VSA, N1 and P2 are more prominently evoked by the distractor,
+    distractor (gray) and non-target grand average event-related potentials per \ac{vsa} condition and dataset.
+    Overt \ac{vsa} yields a strong modulation of the N1 component in both datasets;
+    the P3 amplitude decreases with the degree of split \ac{vsa}.
+    In split \ac{vsa}, N1 and P2 are more prominently evoked by the distractor,
     while the P3 is evoked by the target.
 	}
 \end{figure*}
 
-In contrast to the protocol proposed by \cite{Frenzel2011}, split VSA was
-performed by instructing the participant to attend the intensifications of the
-cued target, and ignore the intensifications of the distractor target.
+In contrast to the protocol proposed by \cite{Frenzel2011}, split \ac{vsa} was
+performed by instructing the participant to attend to the intensifications of the
+cued target and ignore the intensifications of the distractor target.
 Since we assume there will be an effect depending on the distance between
-attended target and the distractor, we discern three split VSA sub-conditions:
+the attended target and the distractor, we discern three split \ac{vsa} sub-conditions:
 the distractor is either clockwise or counterclockwise directly next to the
 attended target ($d=1$), there is one other target between the attended target and
-the distractor ($d=2$), or the distractor is opposite to the intended target
+the distractor ($d=2$), or the distractor is opposite the intended target
 ($d=3$).
 
-EEG for the CVSA-ERP dataset was recorded using a SynAmps RT amplifier
+\ac{eeg} for the CVSA-ERP dataset was recorded using a SynAmps RT amplifier
 (Compumedics Neuroscan, Australia) at 2048Hz and 62 Ag/AgCl active electrodes arranged in the
 international 10-10 layout fitted to a standard electrode cap (EASYCAP GmbH,
-Germany), with electrodes located at AFz and FCz as ground and reference respectively.
+Germany), with electrodes located at AFz and FCz as ground and reference, respectively.
 Using electrolyte gel, electrode impedances were brought below 5k$\Omega$.
 Electrodes TP9 and TP10, used for off-line re-referencing, were directly
 attached to the skin using stickers for better contact.
 The power line frequency in Belgium is 50 Hz.
-Participant's eye gaze was registered using an EyeLink 1000 Plus eye tracker (SR Research,
+The participant's eye gaze was registered using an EyeLink 1000 Plus eye tracker (SR Research,
 Canada) in non-fixation mode.
 
-Participants signed the informed consent form and were seated at a distance of
-60 cm before a CRT-emulating monitor (VPixx
+Participants signed an informed consent form and were seated at a distance of
+60 cm from a CRT-emulating monitor (VPixx
 Technologies, Canada) operating at a refresh rate of 120Hz, displaying 6
 circular white targets with a diameter of 4.15° visual angle and laid out on a hexagon
 with a radius of 12.28° of visual angle centered on the midpoint of the screen,
 conforming to the interface proposed by \textcite{Treder2010}
-(\autoref{fig:covert-align/interface/interface})
+(\cref{fig:covert-align/interface/interface}).
 A hexagonal layout interface with an empty center and a low number of targets
-counteracts target crowding and, as long as the subject’s gaze is within the hexagon of
+counteracts target crowding, and as long as the subject’s gaze is within the hexagon of
 targets, no other target can be between the subject’s gaze and a covertly
 attended target.
 Targets are full-contrast white and were intensified by scaling them to a
 larger size (5.60° of visual angle,
-(\autoref{fig:covert-align/interface/intensification}) instead of changing the contrast to avoid Troxler-fading\footnote{The optical illusion of disappearing unchanging stimuli
+(\cref{fig:covert-align/interface/intensification}) instead of changing the contrast to avoid Troxler-fading\footnote{The optical illusion of disappearing unchanging stimuli
 experienced when visually fixating~\cite{Troxler1804}.}~\cite{Treder2010} in the
 peripheral visual field.
-Stimuli were presented using PsychopPy (version 2023.1.3)~\cite{Peirce2019}.
+Stimuli were presented using PsychoPy (version 2023.1.3)~\cite{Peirce2019}.
 
 \begin{figure}
   \begin{subfigure}[t]{.45\textwidth}
@@ -171,70 +170,68 @@ Stimuli were presented using PsychopPy (version 2023.1.3)~\cite{Peirce2019}.
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/covert_align/interface_4.tikz.tex}
-    \caption[Gaze fixated centrally]{In the covert \ac{vsa} setting, the participant is
-    cued to fixate the center of the interface.}
+    \caption[Gaze fixated centrally.]{In the covert \ac{vsa} setting, the participant is
+    cued to fixate at the center of the interface.}
     \label{fig:covert-align/interface/covert}
   \end{subfigure}
 \end{figure}
 
 The participant was instructed to press the space bar when ready for a block
 of stimulations.
-Then, one target was indicated as the cue and the participant
+Then, one target was indicated as the cue, and the participant
 was instructed to count the number of intensifications of the cued target
 during the following block of stimulations.
 After pressing the space bar again, a blue crosshair appeared, and the subject
 was instructed to fixate their gaze on the blue crosshair for the duration of
-the stimulation block (\autoref{fig:covert-align/interface/overt} and
-\autoref{fig:covert-align/interface/overt}).
-The position of this crosshair determined the VSA condition for this trial:
-overt VSA when the crosshair was at the same location as the cued target,
-covert VSA when the crosshair appeared in the center of the screen, and split
-VSA when the crosshair appeared on a different target than the cued one.
+the stimulation block (\cref{fig:covert-align/interface/overt} and
+\cref{fig:covert-align/interface/covert}).
+The position of this crosshair determined the \ac{vsa} condition for this trial:
+overt \ac{vsa} when the crosshair was at the same location as the cued target,
+covert \ac{vsa} when the crosshair appeared in the center of the screen, and split
+\ac{vsa} when the crosshair appeared on a different target than the cued one.
 After pressing the space bar again and a delay of 5 seconds, the stimulation block
-starts.
+started.
 
-All targets were intensified for a duration of 100 ms, in pseudorandom order.
-The inter-stimulus-interval (ISI), the time between the onsets of subsequent intensifications,
-was variable and consisted of a fixed 300ms interval (of which 100ms with an intensified target onscreen)
-with 200ms uniform jitter added, resulting in an ISI
+All targets were intensified for a duration of 100 ms in pseudorandom order.
+The inter-stimulus-interval (\ac{isi}), the time between the onsets of subsequent intensifications,
+was variable and consisted of a fixed 300 ms interval (of which 100 ms with an intensified target onscreen)
+with 200 ms of uniform jitter added, resulting in an \ac{isi}
 between 200 and 400 ms.
 \Acp{isi} were jittered to counteract steady-state effects and residue in averaging. A
 longer \ac{isi} will increase component amplitude and aid in counteracting temporal
-autocorrelation for a higher statistical test precision.
+autocorrelation for higher statistical test precision.
 In a block of stimulations, each target was intensified a pseudorandom number of times between 10 and 15.
 This led to stimulation blocks with an average duration of 26.25 seconds. After a block of stimulations, an
 input prompt appeared to enter the mentally counted number of intensifications.
 After inputting this number, the subject was allowed to pause until pressing the space bar again.
-In total, six blocks were presented for overt VSA, six blocks for covert VSA, 12 blocks for
-split ($d=1$) VSA, 12 blocks for split ($d=2$) VSA and 6 blocks for split
-($d=3$) VSA, covering all possible combinations of VSA conditions, cued targets and
+In total, six blocks were presented for overt \ac{vsa}, six blocks for covert \ac{vsa}, 12 blocks for
+split ($d=1$) \ac{vsa}, 12 blocks for split ($d=2$) \ac{vsa}, and 6 blocks for split
+($d=3$) \ac{vsa}, covering all possible combinations of \ac{vsa} conditions, cued targets, and
 crosshair locations.
 
 The experiment started with five non-recorded practice stimulation blocks, one for
-each of the 5 VSA conditions.
+each of the five \ac{vsa} conditions.
 During these practice blocks, the participant received feedback about their gaze
 position and counting accuracy.
 Counting the instructions and the participant's response to the
-input prompts, a block lasted about 30
-seconds. In sum, the experiment featured approximately 45 minutes of
+input prompts, a block lasted about 30 seconds. In sum, the experiment featured approximately 45 minutes of
 stimulation time.
 After blocks 14 and 28, the participant was allowed to take a longer break.
 Including these longer breaks, the experiment lasted approximately one hour.
 
 \subsubsection{BNCI2014-009 dataset}
-The
-BNCI2014-009\footnote{\url{https://bnci-horizon-2020.eu/database/data-sets}}
+The BNCI2014-009\footnote{\url{https://bnci-horizon-2020.eu/database/data-sets}}
 dataset~\cite{Aloise2012a} was used in the analysis performed
-in \cite{Arico2014}.
+by \cite{Arico2014}.
 It contains data from 10 subjects (median age $24.5\pm1.9$
-years)  that performed two spelling tasks illustrated in the second row of
-Figure~\ref{fig:interface}: using the P3 Matrix speller
-interface to exploit overt VSA, and the GeoSpell covert VSA interface.
+years) who performed two spelling tasks illustrated in the second row of
+\cref{fig:interface}: using the P3 Matrix speller
+interface to exploit overt \ac{vsa}, and the GeoSpell covert \ac{vsa} interface.
 To use the GeoSpell interface, the participant gazes at the fixation point at the
 center of the screen, while groups of characters flash simultaneously in a
 circular layout around the fixation point.
 The user directs their visuospatial attention to the location where the intended letter is expected
-to appear, and when it does, a P3 ERP component is expected to be evoked.
+to appear, and when it does, a P3 \ac{erp} component is expected to be evoked.
 This results in a specific setting where both visuospatial attention and
 feature attention (the attended letter) are exploited.
 For a detailed description of the paradigm and dataset, we refer
@@ -244,39 +241,38 @@ to \cite{Aloise2012a}.
 \subsubsection{Preprocessing}
 Analysis was performed using Python and the MNE software package (version
 1.3.1)~\cite{Gramfort2013}.
-All datasets were band-pass filtered between 0.1Hz and 20Hz with a 4th-order Butterworth filter.
+All datasets were band-pass filtered between 0.1 Hz and 20 Hz with a 4th-order Butterworth filter.
 Bad channels in the data were automatically detected using the RANSAC
 method~\cite{Fischler1981} and rejected.
-The recorded EEG was re-referenced
+The recorded \ac{eeg} was re-referenced
 offline to the average of the mastoid electrodes TP9 and TP10.
-Next, the EEG signals were corrected for eye movement artifacts using an
+Next, the \ac{eeg} signals were corrected for eye movement artifacts using
 Independent Component Analysis (ICA).
-Since we have access to EOG data for the CVSA-ERP dataset components correlating
-significantly with the EOG were rejected.
+Since we have access to \ac{eog} data for the CVSA-ERP dataset, components correlating
+significantly with the \ac{eog} were rejected.
 For the BNCI2014-009 dataset, ICA components were manually rejected.
-Finally, the EEG signal is divided into epochs ranging from 100ms before stimulus onset to 700ms after stimulus onset and down-sampled to 128Hz.
+Finally, the \ac{eeg} signal was divided into epochs ranging from 100 ms before stimulus onset to 700 ms after stimulus onset and down-sampled to 128 Hz.
 In both datasets, only 16 channels were kept for
-analysis (Fz, FCz, Cz, CPz, Pz, Oz, F3, F4, C3, C4, CP3, CP4, P3, P4, PO7 and
+analysis (Fz, FCz, Cz, CPz, Pz, Oz, F3, F4, C3, C4, CP3, CP4, P3, P4, PO7, and
 PO8).
 
 \subsubsection{Decoders}
 \label{sec:covert-align/methods/decoders}
-We will compare \ac{wcble} and \ac{cble} as described in
-\autoref{sec:wcble/methods}, with their base classifier and tLDA and with
-Riemannian Geometry
-approaches that rely on spatial covariance as features.
-Together with tLDA, Riemannian Geometry generally reaches state-of-the-art decoding
+We compared \ac{wcble} and \ac{cble} as described in
+\cref{sec:wcble/methods}, with their base classifier \ac{tlda} and with
+Riemannian Geometry approaches that rely on spatial covariance as features.
+Together with \ac{tlda}, Riemannian Geometry generally achieves state-of-the-art decoding
 performance~\cite{Lotte2018}.
 We implemented two Riemannian Geometry pipelines.
-The first one estimates shrunk covariances from the ERPs filtered with 6 XDAWN
-filters, projects these covariances to a tangent space and classifies the
+The first estimates shrunk covariances from the \acp{erp} filtered with 6 XDAWN
+filters, projects these covariances to a tangent space, and classifies the
 result using $L_2$-regularized logistic regression
 (XDAWNCov-TS-LR)~\cite{Cecotti2017}.
-Secondly, we adopt the pipeline from \cite{Aydarkhanov2020}, since their work shows
-favorable performance in the presence of single-trial ERP latency jitter.
-Shrunk spatial covariance matrices are estimated from epochs that are
-augmented by concatenating the average target and average non-target ERP as
-extra channels, projected to tangent space and classified using
+Secondly, we adopted the pipeline from \cite{Aydarkhanov2020}, as their work shows
+favorable performance in the presence of single-trial \ac{erp} latency jitter.
+Shrunk spatial covariance matrices were estimated from epochs that were
+augmented by concatenating the average target and average non-target \ac{erp} as
+extra channels, projected to tangent space, and classified using
 $L_2$-regularized logistic regression (ERPCov-TS-LR).
 
 To evaluate performance, 6-fold cross-validation without shuffling was performed for both
@@ -286,10 +282,9 @@ epochs) and tested on one block (60 epochs) without overlap for CVSA-ERP.
 For each subject and run in the BNCI2014-009 dataset, classifiers
 were trained on five symbol selections (480 epochs) and tested on one symbol
 selection (96 epochs) without overlap at each fold.
-A window ranging from 0ms to 600ms after stimulus onset was used for CBLE and WCBLE.
-With epochs ranging from -100ms to 700ms relative to stimulus onset, this
-allows for extracting latencies ranging from -100ms to +100ms.
-
+A window ranging from 0 ms to 600 ms after stimulus onset was used for \ac{cble} and \ac{wcble}.
+With epochs ranging from -100 ms to 700 ms relative to stimulus onset, this
+allows for extracting latencies ranging from -100 ms to +100 ms.
 
 
 \section{Results}
@@ -301,12 +296,12 @@ We evaluated the BCI decoding performance in a single-trial classification
 experiment, as well as in a target selection experiment reflecting BCI
 operation.
 
-Figure~\ref{fig:single_trial_roc_auc_diff} shows a comparison of areas under the
-Receiver Operating Characteristic curve (ROC-AUC) for all pairs of tLDA, CBLE
-and WCBLE for single-trial classification to investigate the contributions of
-CBLE and WCBLE relative to their first-stage classifier tLDA.
+\Cref{fig:single_trial_roc_auc_diff} shows a comparison of areas under the
+Receiver Operating Characteristic curve (ROC-AUC) for all pairs of \ac{tlda}, \ac{cble},
+and \ac{wcble} for single-trial classification to investigate the contributions of
+\ac{cble} and \ac{wcble} relative to their first-stage classifier \ac{tlda}.
 For this evaluation, epochs were rejected when the peak-to-peak amplitude
-exceeded 800$\mu V$ and, for the CVSA-ERP dataset, if the user's gaze differed more than
+exceeded 800$\mu V$, and for the CVSA-ERP dataset, if the user's gaze differed by more than
 10 degrees of visual angle from the fixation crosshair.
 \begin{figure}
   \bigskip
@@ -332,29 +327,29 @@ exceeded 800$\mu V$ and, for the CVSA-ERP dataset, if the user's gaze differed m
     Our proposed WCBLE decoder outperforms tLDA and CBLE for covert and split
 		($d=3$)	visuospatial attention (VSA). CBLE scores on par with tLDA.
 		\subref{fig:block_evaluation} Cross-validated target selection accuracy for
-    all decoders plotted n function of the number of test repetitions in
+    all decoders plotted as a function of the number of test repetitions in
     different VSA conditions. Significance was determined using one-sided
     (WCBLE $>$ other) Wilcoxon rank-sum tests using False Discovery Rate correction
-    ($*= p<0.05$, $**=p<0.01$, $***=p<0.001$). WCBLE generally achieves highest
+    ($*= p<0.05$, $**=p<0.01$, $***=p<0.001$). WCBLE generally achieves the highest
     covert VSA target selection accuracy.}
 \end{figure}
 Wilcoxon signed-rank tests controlled for multiple comparisons by Benjamini
 and Hochberg's False Discovery Rate procedure (FDR) revealed that
-for the BNCI2014-009 dataset, WCBLE significantly outperformed tLDA
-($\Delta\mathrm{ROC-AUC} = 0.019$, $p=0.004$) and CBLE
-($\Delta\mathrm{ROC-AUC} = 0.016$, $p=0.036$) for covert VSA
-but was significantly outperformed by tLDA in overt VSA decoding
+for the BNCI2014-009 dataset, \ac{wcble} significantly outperformed \ac{tlda}
+($\Delta\mathrm{ROC-AUC} = 0.019$, $p=0.004$) and \ac{cble}
+($\Delta\mathrm{ROC-AUC} = 0.016$, $p=0.036$) for covert \ac{vsa},
+but was significantly outperformed by \ac{tlda} in overt \ac{vsa} decoding
 ($\Delta\mathrm{ROC-AUC}=-0.004$, $p=0.040$).
-For the CVSA-ERP dataset, WCBLE
-also achieved significantly better covert VSA performance than tLDA ($\Delta\mathrm{ROC-AUC}
-	= 0.023$, $p=0.041$) and CBLE ($\Delta\mathrm{ROC-AUC}
-	= 0.036$, $p=0.024$) .
-We found no significant difference in WCBLE performance over tLDA in the split
-VSA conditions in the CVSA-ERP dataset, but results show a clear trend of
-increase in WCBLE performance over tLDA and CBLE as $d$ increases
-CBLE failed to significantly outperform its first-stage classifier tLDA in all
-evaluated VSA conditions.
-Table~\ref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets
+For the CVSA-ERP dataset, \ac{wcble}
+also achieved significantly better covert \ac{vsa} performance than \ac{tlda} ($\Delta\mathrm{ROC-AUC}
+	= 0.023$, $p=0.041$) and \ac{cble} ($\Delta\mathrm{ROC-AUC}
+	= 0.036$, $p=0.024$).
+We found no significant difference in \ac{wcble} performance over \ac{tlda} in the split
+\ac{vsa} conditions in the CVSA-ERP dataset, but results show a clear trend of
+increased \ac{wcble} performance over \ac{tlda} and \ac{cble} as $d$ increases.
+\ac{cble} failed to significantly outperform its first-stage classifier \ac{tlda} in all
+evaluated \ac{vsa} conditions.
+\Cref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets,
 and conditions.
 
 \begin{table}
@@ -363,14 +358,14 @@ and conditions.
     \input{chapters/covert_align_performance.tex}
   }
   \caption{Cross-validated single-trial classification area under the receiver operating characteristic
-curve for all evaluated models, visuospatial attention conditions and
+curve for all evaluated models, visuospatial attention conditions, and
   datasets.}
   \label{tab:covert-align/results/single-trial}
 \end{table}
 
 
-Figure~\ref{fig:block_evaluation} shows the cross-validated BCI selection
-accuracy on the BNCI2014-009 and the CVSA-ERP dataset for all investigated
+\Cref{fig:block_evaluation} shows the cross-validated BCI selection
+accuracy on the BNCI2014-009 and the CVSA-ERP datasets for all investigated
 decoders.
 Accuracy was determined by, for each block, selecting the character with the
 highest (stage-two if applicable) classifier score and comparing it to the cued target.
@@ -378,59 +373,58 @@ Significance was calculated using one-sided Wilcoxon rank-sum tests ($p=0.05$)
 corrected for FDR over decoders.
 For this evaluation, no epochs were rejected to keep the trial-based structure of BCI
 operation intact.
-For all datasets and VSA conditions, CBLE scores approximately on par with tLDA.
-Yet, WCBLE yields an improved decoding accuracy for covert VSA in both
+For all datasets and \ac{vsa} conditions, \ac{cble} scores approximately on par with \ac{tlda}.
+Yet, \ac{wcble} yields an improved decoding accuracy for covert \ac{vsa} in both
 datasets, which is greatest for smaller numbers of repetitions and
 decreases as the number of repetitions increases.
-This covert VSA accuracy increase over tLDA is significant in the BNCI2014-009 dataset
-for 1 and 3 repetitions and in CVSA-ERP for 1-5 and 10 repetitions.
+This covert \ac{vsa} accuracy increase over \ac{tlda} is significant in thdeep q learning tutoriale BNCI2014-009 dataset
+for 1 and 3 repetitions, and in CVSA-ERP for 1-5 and 10 repetitions.
 Furthermore, while we reported a relative decrease in single-trial ROC-AUC for
-WCBLE in overt VSA, this does not seem to result in a consistent decrease in target
+\ac{wcble} in overt \ac{vsa}, this does not seem to result in a consistent decrease in target
 selection accuracy.
-No significant increase of WCBLE over other methods was found in split VSA.
-While Riemannian methods are significantly outperformed by tLDA, CBLE and WCBLE
-in the BNCI2014-009 dataset, they perform approximately on par with tLDA and
-WCBLE in CVSA-ERP.
+No significant increase of \ac{wcble} over other methods was found in split \ac{vsa}.
+While Riemannian methods are significantly outperformed by \ac{tlda}, \ac{cble}, and \ac{wcble}
+in the BNCI2014-009 dataset, they perform approximately on par with \ac{tlda} and
+\ac{wcble} in CVSA-ERP.
 
-Overall, we observed a 5.10\%pt. accuracy increase with WCBLE over
-tLDA for covert VSA in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
+Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
+\ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
 These results compare to the performance gain in \cite{Zisk2022}.
 They observed a 5.63\%pt. accuracy increase with 1-10 selection repetitions over
 step-wise Linear Discriminant Analysis  (SWLDA) for 6 ALS patients, whose SWLDA
 performance also suffered from jitter.
 Note that interpretation of this comparison may be challenging due to differences in
 interface design (number of targets, \ac{isi}), subject population,
-EEG recording procedure and available training data.
-
+\ac{eeg} recording procedure, and available training data.
 
 \subsection{Gaze-independence through cross-condition transfer}
 \label{sec:cross_results}
 To further back our claim of gaze-independence in the case where eye motor
 control cannot be assumed, we evaluate our proposed decoder in a transfer
-learning setting between VSA conditions.
-While performing covert attention requires gaze redirection for each target
-selection, performing covert or split VSA continuously still requires
-sustained gaze fixation, which might not be possible for some patients that
+learning setting between \ac{vsa} conditions.
+While performing overt attention requires gaze redirection for each target
+selection, performing covert or split \ac{vsa} continuously still requires
+sustained gaze fixation, which might not be possible for some patients who
 could benefit from such an application.
 Studying the transfer between conditions simulates what happens
-when the user performs different VSA conditions throughout the
+when the user performs different \ac{vsa} conditions throughout the
 experimental session.
 Furthermore, if our decoder performs well in transfer-learning settings,
-it must capture some information about the ERP responses that is independent of
-the VSA condition, and hence does not depend on gaze redirection to perform
+it must capture some information about the \ac{erp} responses that is independent of
+the \ac{vsa} condition, and hence does not depend on gaze redirection to perform
 these conditions.
-We introduce an additional setting of interest here, namely on a combination of VSA
+We introduce an additional setting of interest here, namely a combination of \ac{vsa}
 conditions, which represents those cases where patients cannot
-redirect their gaze and hence can be in any one of the VSA conditions depending on the
-target they attend.
+redirect their gaze and hence can be in any one of the \ac{vsa} conditions depending on the
+target they attend to.
 For BNCI2014-009, this is implemented as an equal mix of overt and
-covert VSA, for CVSA-ERP the combined condition represents an equal mix of overt,
-covert and split VSA, disregarding parameter $d$.
+covert \ac{vsa}; for CVSA-ERP, the combined condition represents an equal mix of overt,
+covert, and split \ac{vsa}, disregarding parameter $d$.
 
 Figure~\ref{fig:covert_cross_eval} and Figure~\ref{fig:aloise2012_cross_eval} show
-the pair-wise differences in area under the ROC curve ($\Delta$ROC-AUC)
+the pairwise differences in area under the ROC curve ($\Delta$ROC-AUC)
 between the investigated decoders.
-In this evaluation, bad epochs were rejected as in Section~\ref{sec:block_accuracy}.
+In this evaluation, bad epochs were rejected as in \cref{sec:block_accuracy}.
 \begin{figure*}
   \bigskip
 	\begin{subfigure}{\linewidth}
@@ -458,14 +452,14 @@ In this evaluation, bad epochs were rejected as in Section~\ref{sec:block_accura
     Difference in cross-validated area under the receiver
 		operating characteristic curves between Classifier-based Latency Estimation
     (CBLE) and Woody CBLE (WCBLE) across conditions for the CVSA-ERP and
-    BNCI2014-009 datasets respectively.
+    BNCI2014-009 datasets, respectively.
     A decoder is each	time trained on a visuospatial attention (VSA) condition
     and tested on all VSA conditions.
     WCBLE yields an improvement in most
-		non-overt VSA settings, indicating it is more invariant to eye gaze than
-    CBLE and tLDA.
-		\subref{fig:jitter} Jitter characterized as the inter-quartile range (IQR)
-		of target epochs for different VSA conditions. Overt VSA exhibits lower
+		non-overt \ac{vsa} settings, indicating it is more invariant to eye gaze than
+    CBLE and \ac{tlda}.
+		\subref{fig:jitter} Jitter characterized as the interquartile range (IQR)
+		of target epochs for different \ac{vsa} conditions. Overt \ac{vsa} exhibits lower
     jitter than other conditions.
     Significance of differences
     was determined with two-sided Wilcoxon rank-sum tests with False Discovery
@@ -473,181 +467,131 @@ In this evaluation, bad epochs were rejected as in Section~\ref{sec:block_accura
     $***=p<0.001$, $****=p<0.0001$).
 	}
 \end{figure*}
-When comparing CBLE and tLDA, we do not observe large differences in any of the
+When comparing \ac{cble} and \ac{tlda}, we do not observe large differences in any of the
 evaluated settings, similar to the within-subject conditions.
-On the contrary, when considering the comparisons between WCBLE and tLDA, we
-see that performance is on par or greater using WCBLE for most conditions,
-except for within-overt VSA decoding.
+On the contrary, when considering the comparisons between \ac{wcble} and \ac{tlda}, we
+see that performance is on par or greater using \ac{wcble} for most conditions,
+except for within-overt \ac{vsa} decoding.
 
 \section{Discussion}
 
-Figure~\ref{fig:single_trial_roc_auc_diff} shows that WCBLE significantly improves
-covert VSA decoding.
-This is advantageous for the development of a class of ERP-BCI interfaces for
+\cref{fig:single_trial_roc_auc_diff} shows that \ac{wcble} significantly improves
+covert \ac{vsa} decoding.
+This is advantageous for the development of a class of \ac{erp}-\ac{bci} interfaces for
 patients who prefer to rest their gaze on a fixation cross on the screen,
 avoiding the effort of redirecting their eye gaze for every selection.
-Furthermore, the performance gain over the first-stage classifier in the split
-VSA ($d=3$) and between-VSA condition transfer settings are promising for
-patients with even less eye motor control that can experience involuntary eye
-movements or fixation fatigue hence cannot keep their gaze fixed throughout an
-entire BCI operation session.
-WCBLE would allow them to operate a BCI comfortably while directing
+Furthermore, the performance gain over the first-stage classifier in split
+\ac{vsa} ($d=3$) and between-\ac{vsa} condition transfer settings are promising for
+patients with even less eye motor control who may experience involuntary eye
+movements or fixation fatigue and hence cannot keep their gaze fixed throughout an
+entire \ac{bci} operation session.
+\ac{wcble} would allow them to operate a \ac{bci} comfortably while directing
 their gaze to whichever portion of the screen they prefer, even when there is
 another target present or this location varies during the
 course of operation.
-Although WCBLE did not significantly improve overt VSA single-trial decoding,
-Figure~\ref{fig:block_evaluation} shows that this does not negatively impact target
+Although \ac{wcble} did not significantly improve overt \ac{vsa} single-trial decoding,
+\cref{fig:block_evaluation} shows that this does not negatively impact target
 selection accuracy.
-While target selection accuracy also did not improve for split VSA, the
+While target selection accuracy also did not improve for split \ac{vsa}, the
 increase in single-trial performance in split ($d=3$) shows that an iterative
-alignment procedure has the potential to improve over CBLE and its first-stage
-classifier for this case as well.
+alignment procedure has the potential to improve over \ac{cble} and its first-stage
+classifier in this case as well.
 
-%, thereby increasing estimated jitter.
+
 We believe the relative increase in performance of our proposed decoder in covert and
-split VSA, and the lack thereof in overt VSA, could stem from the following:
+split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the following:
 \begin{enumerate*}[label=(\arabic*)]
-	\item Covert and split VSA exhibit higher P3 jitter than overt VSA.
-        In covert and split VSA, participants have to execute a dual task by
+	\item Covert and split \ac{vsa} exhibit higher P3 jitter than overt \ac{vsa}.
+        In covert and split \ac{vsa}, participants have to execute a dual task by
         dissociating their visuospatial attention and gaze fixation.
-        Evidence shows that ERP latency variability is higher when attention is
+        Evidence shows that \ac{erp} latency variability is higher when attention is
         divided~\cite{Polich2007,Arico2014}.
-        \cite{Arico2014} also partly attribute higher latency jitter to the covert VSA
-        task performed in the BNCI2014-009 dataset since the GeoSpell interface
+        \textcite{Arico2014} also partly attribute higher latency jitter to the covert \ac{vsa}
+        task performed in the BNCI2014-009 dataset, since the GeoSpell interface
         requires both spatial and feature attention.
-  \item In overt VSA, the first-stage classifier can rely mostly on the modulation
-        of early visually evoked potentials (VEPs) like N1 than on the
+  \item In overt \ac{vsa}, the first-stage classifier can rely mostly on the modulation
+        of early visually evoked potentials (VEPs) like N1 rather than on the
         P3~\cite{Treder2010}.
-        These VEPs are closely related to visual processing hence exhibit
-        lower jitter, contrary to P3 which is more prone to the effects of
+        These VEPs are closely related to visual processing, hence exhibit
+        lower jitter, contrary to P3, which is more prone to the effects of
         attention and workload~\cite{Hu2010}, reducing the contribution of
         alignment.
   \item This property can also result in the estimation of VEP latencies
-        instead of the P3 latency and WCBLE would in this case fail to
-        increase the P3 SNR, which still could be somewhat jittered in overt
-        VSA.
-  \item Aligning to the P3 will lower the SNR of early VEPs while aligning to
-    VEPs will lower P3 SNR, since they are not time-locked to each other.
-	\item Covert and split VSA ERPs may exhibit lower SNR than overt
-        VSA due to lower P3 amplitudes or even due to the presence of higher P3
+        instead of the P3 latency, and \ac{wcble} would in this case fail to
+        increase the P3 \ac{snr}, which still could be somewhat jittered in overt
+        \ac{vsa}.
+  \item Aligning to the P3 will lower the \ac{snr} of early VEPs, while aligning to
+        VEPs will lower P3 \ac{snr}, since they are not time-locked to each other.
+	\item Covert and split \ac{vsa} \acp{erp} may exhibit lower \ac{snr} than overt
+        \ac{vsa} due to lower P3 amplitudes or even due to the presence of higher P3
         jitter itself.
-        Higher SNR in overt VSA results in higher decoding performance of
+        Higher \ac{snr} in overt \ac{vsa} results in higher decoding performance of
         state-of-the-art classifiers, leaving less room for relative improvement
         in this case.
 \end{enumerate*}
-%When the time window includes multiple ERP components, it is hard to make
-%strong claims on component latency distributions using latencies estimated by
-%CBLE or WCBLE.
-%What is actually measured is the latency of the most discriminatory time shift
-%of an epoch.
 
-Although it is not immediately clear if WCBLE actively corrects for higher P3 jitter
-present in covert and split VSA compared to overt VSA,
-we justify our approach similar to \cite{Hardiansyah2020} by
+Although it is not immediately clear if \ac{wcble} actively corrects for higher P3 jitter
+present in covert and split \ac{vsa} compared to overt \ac{vsa},
+we justify our approach similarly to \cite{Hardiansyah2020} by
 observing that the increased discrimination performance of a machine-learning
 model accounting for jitter forgoes the need for characterizing the underlying
-physiological processes while still objectively quantifying the presence of
+physiological processes, while still objectively quantifying the presence of
 jitter between data classes.
-Furthermore, some evidence points towards higher P3 jitter as the main
+Furthermore, some evidence points toward higher P3 jitter as the main
 contributing factor.
-%Here, the subject using the GeoSpell interface must discriminate between target and
-%non-target trials partly based on the stimulus characteristics
-%(i.e. the selection of characters in their spelling application), compared to
-%discrimination based on spatial location such as is the case in the CVSA-ERP
-While Figure~\ref{fig:erps} shows no visible smearing effect in
-the shape of the ERPs, a more quantitative analysis on latencies in
-Figure~\ref{fig:jitter} indicates the opposite.
-To obtain comparable results across VSA conditions, WCBLE was
-evaluated per session and trained on all combined VSA conditions as in
-Section~\ref{sec:cross_results}.
+While \autoref{fig:erps} shows no visible smearing effect in
+the shape of the \acp{erp}, a more quantitative analysis on latencies in
+\autoref{fig:jitter} indicates the opposite.
+To obtain comparable results across \ac{vsa} conditions, \ac{wcble} was
+evaluated per session and trained on all combined \ac{vsa} conditions as in
+\cref{sec:cross_results}.
 Since all conditions have the P3 in common, the estimated latencies can be
 interpreted as P3 latencies.
-Two-sided Wilcoxon rank-sum tests on jitter, expressed as the inter-quartile
+Two-sided Wilcoxon rank-sum tests on jitter, expressed as the interquartile
 range (IQR) of the estimated latencies of target trials, revealed that overt
-VSA exhibited significantly lower jitter than all other conditions for both datasets.
+\ac{vsa} exhibited significantly lower jitter than all other conditions for both datasets.
 No other significant differences were found.
 $p$-values were corrected for the family-wise error rate using Bonferroni
 correction.
-Additionally \cite{Arico2014} prove that P3 jitter does play a
-non-negligible role in covert VSA by comparing performance between
-overt and covert VSA, while including or excluding early VEPs.
+Additionally, \textcite{Arico2014} prove that P3 jitter does play a
+non-negligible role in covert \ac{vsa} by comparing performance between
+overt and covert \ac{vsa}, while including or excluding early VEPs.
 This analysis showed that the absence of the N1 and other early VEPs is not the
-only factor hampering covert VSA decoding performance.
-However, the large increase in performance for covert VSA in \cite{Arico2014} could also
+only factor hampering covert \ac{vsa} decoding performance.
+However, the large increase in performance for covert \ac{vsa} in \cite{Arico2014} could also
 be explained by overfitting on artifacts amplified by aligning, since their
 method is not evaluated on unseen data, as opposed to ours.
 
-%If most of the jittered discriminatory information stems from the P3 component,
-%WCBLE as a decoder is less sensitive to VEPs and only enhances the P3
-%component.
-%This property can be exploited in gaze-independent decoding to determine
-%visuospatial attention separately from the gaze direction.
+We also argue that \ac{wcble} does not only enhance the P3 signal, but effectively reduces the
+negative impact of noise that would otherwise mask the \ac{erp} response, thereby increasing the
+discriminative ability of the decoder.
+This process likely results in more reliable feature extraction, especially in conditions
+with high jitter.
 
-%In fact, it is not obvious how the alignment employed by WCBLE
-%should result in better performance for overt attention.
-%At each iteration, aligning to the P3 latency reduces the contribution from
-%early visual potentials such as the N1 component not, which are more time-locked to
-%the stimulus presentation than to the P3.
-%These early visual potentials, however, provide a large part of the
-%discriminatory information in overt VSA, while this is less
-%the case in covert attentionConversely, since the N1 component is more closely related to visual processing,
-%and therefore exhibits a lower jitter, aligning to the N1 component might not augment the
-%Another explanation for the lack of overt VSA improvement could be the choice
-%of tLDA as first-stage classifier and comparison method.
-%As a classifier, tLDA can outperform Riemannian Geometry
-%methods~\cite{Sosulski2022}, which is
-%most likely the cause of improvements of WCBLE over \cite{Aydarkhanov2020}.
-%It might be harder to improve upon tLDA in overt VSA due to its high
-%performance.
-
-%Finally, we argue that the increased performance of WCBLE is partly due to the
-%fact that
-%tLDA is a suitable first-stage classifier.
-%Firstly, imposing a Toeplitz-covariance structure strongly regularizes the
-%problem~\cite{Sosulski2022,VanDenKerchove2022}, at the benefit of decoding performance.
-%Secondly, this method has a synergy with CBLE since both make the same
-%assumption about the short-time stationary of the EEG background noise
-%within an epoch.
-%CBLE does not retrain the first-stage classifier for each time shift, but
-%rather trains it once within the given window.
-%After training, the classifier parameters represent some information about the
-%expected ERP waveform and background noise.
-%By applying the trained classifier to different time shifts, it assumes this
-%ERP waveform can be shifted in time, but since the classifier's information about
-%the background noise was only obtained from the initial window, CBLE assumes
-%its properties do not vary throughout the epoch.
-%The block-Toeplitz covariance structure of tLDA also assumes that the
-%background noise represented by this covariance after subtracting the class
-%averages is stationary within the epoch~\cite{Sosulski2022}.
-
-We found that CBLE did not improve gaze-independent decoding performance
+We found that \ac{cble} did not improve gaze-independent decoding performance
 significantly and also did not increase performance over its first-stage
-classifier in overt VSA contrary to what was reported
-by \cite{Mowla2017}.
-While they report that CBLE is relatively independent to the
+classifier in overt \ac{vsa}, contrary to what was reported by \cite{Mowla2017}.
+While they report that \ac{cble} is relatively independent of the
 first-stage classifiers evaluated in their work, it is evident here that
-applying any given classifier in the CBLE scheme does not necessarily increase
+applying any given classifier in the \ac{cble} scheme does not necessarily increase
 its performance.
-In our case, this could be due to characteristics of the tested dataset, e.g.
-the presence of jitter, or the generally higher performance of tLDA as compared to the
+In our case, this could be due to characteristics of the tested dataset, e.g.,
+the presence of jitter or the generally higher performance of \ac{tlda} compared to the
 first-stage classifiers tested by \cite{Mowla2017}, leaving less
 performance to be gained.
 
-
-\cite{Thompson2012} already attempted applying CBLE in an iterative scheme
+\cite{Thompson2012} already attempted applying \ac{cble} in an iterative scheme
 but did not report any results due to convergence issues.
-%Just like the Woody scheme, this algorithm can get stuck in a local optimum or,
-%in unfavorable SNR conditions, even amplify noise.
 We mitigated this by combining the robust latency estimation presented in
-~Section~\ref{sec:robust-latency} with the alignment of both target and non-target
+\cref{sec:robust-latency} with the alignment of both target and non-target
 epochs.
 Aligning only the target epochs containing the jittered P3 component is prone to
-overfitting by aligning non-discriminate noise that is present in both
-classes, such as environment noise, oscillatory background rhythms or
+overfitting by aligning non-discriminative noise that is present in both
+classes, such as environment noise, oscillatory background rhythms, or
 non-modulated VEPs.
-If SNR is low, residual noise varying slightly between classes could dominate
+If \ac{snr} is low, residual noise varying slightly between classes could dominate
 the expected response of the first-stage classifier and subsequently dominate
-WCBLE from the start, preventing convergence to a meaningful solution.
+\ac{wcble} from the start, preventing convergence to a meaningful solution.
 Our procedure circumvents this problem by aligning both classes to the time
 points where the expected separation between classes is greatest.
 This way, noise of which the latencies are estimated in a given iteration will be
@@ -656,10 +600,10 @@ iteration.
 The first-stage classifier can then more easily suppress this noise since it is
 now clear it is present in both classes and non-discriminative.
 This aids the method in converging to a more robust classifier by iteratively
-increasing SNR for both classes and class separation over time.
+increasing \ac{snr} for both classes and class separation over time.
 
 \cite{Zisk2022} addressed P3 jitter in ALS patients by augmenting the training data once
-with time-shifted copies based on CBLE-estimated jitter.
+with time-shifted copies based on \ac{cble}-estimated jitter.
 While we aim to train the first-stage classifier without the effects of jitter
 in its parameters, they do the opposite by intentionally jittering the
 training data.
@@ -670,69 +614,184 @@ argue that our method can cope with more granular latency differences, as
 \cite{Zisk2022} augment the data with just one positive and negative time
 shift.
 
-\textcite{Hardiansyah2020} decoded covert \textcite{vsa} more effectively by
-contributing single-trial latency and amplitude features to decode.
-Contrary to our approach, they did not then correct these amplitude
-features for the jitter in their latencies by e.g. aligning trials to achieve
+\textcite{Hardiansyah2020} decoded covert \ac{vsa} more effectively by
+contributing single-trial latency and amplitude features for decoding.
+Contrary to our approach, they did not correct these amplitude
+features for the jitter in their latencies by, e.g., aligning trials to achieve
 better separability.
-Hence, their approach would not in principle render the classifier more robust
+Hence, their approach would not, in principle, render the classifier more robust
 to jitter.
-Furthermore we incorporated estimated latency features in both CBLE and WCBLE,
-yet only WCBLE improved covert VSA performance.
+Furthermore, we incorporated estimated latency features in both \ac{cble} and \ac{wcble},
+yet only \ac{wcble} improved covert \ac{vsa} performance.
 This shows that the incorporation of latency features is not the only driver of
-covert VSA decoding performance increase.
+covert \ac{vsa} decoding performance increase.
 
 Despite encouraging results, our study faces some limitations that we plan to
 tackle in the future.
-Firstly, multiple ERP components can be time-locked to different neural
-processes, each with their own jitter, hampering the performance of
+Firstly, multiple \ac{erp} components can be time-locked to different neural
+processes, each with its own jitter, hampering the performance of
 single-trial latency estimation and their interpretability.
 Adaptations could be made to incorporate prior time windows or probability
-distributions on the latency of specific ERP components or to simultaneously
-estimate set of multiple component (clusters) latencies per ERP such as in Residue Iteration
+distributions on the latency of specific \ac{erp} components or to simultaneously
+estimate a set of multiple component (clusters) latencies per \ac{erp}, such as in Residue Iteration
 Decomposition~\cite{Ouyang2017}.
 Future efforts should investigate how strong
 spatiotemporal filtering can be combined with methods that allow for a more
-flexible non-stationarity of the ERP like Dynamic Time Warping (DTW) or other
-techniques lent from time series classification, or methods that explicitly model multiple time
-displacements present in one ERP.
+flexible non-stationarity of the \ac{erp}, like Dynamic Time Warping (DTW) or other
+techniques borrowed from time series classification, or methods that explicitly model multiple time
+displacements present in one \ac{erp}.
+
+
 Secondly, performance might be improved by venturing beyond the classical
 target/non-target binary classification problem.
-Due to e.g. the perifoveal stimulus cruciform model~\cite{Vanegas2013}, covert and split VSA
+Due to, for example, the perifoveal stimulus cruciform model~\cite{Vanegas2013}, covert and split \ac{vsa}
 responses might differ based on the relative position in the field of view of
-their related stimulus which could be exploited in a multi-class classification
+their related stimulus, which could be exploited in a multi-class classification
 problem.
-Similarly, explicitly taking into account the characteristic of the distractor ERP
+Similarly, explicitly taking into account the characteristics of the distractor \ac{erp}
 response might have a beneficial effect.
-Thirdly, results were obtained in an off-line and within-session evaluation,
-which does not reflect true BCI operation.
-Using multiple sessions with on-line feedback, the user could optimize their
+Thirdly, results were obtained in an offline and within-session evaluation,
+which does not reflect true \ac{bci} operation.
+Using multiple sessions with online feedback, the user could optimize their
 performance over time by controlling attention or gaze.
 Finally, since this work was conducted with patient applications in mind, we
-should highlight that gaze of participants in the conducted experiments was
+should highlight that the gaze of participants in the conducted experiments was
 cued and fixed, which is per definition impossible for the patients we consider.
 We are currently conducting a patient study to further investigate whether the
-studied VSA conditions are appropriate and to what extent they occur in
-natural patient BCI operation.
-
+studied \ac{vsa} conditions are appropriate and to what extent they occur in
+natural patient \ac{bci} operation.
 
 \section{Conclusion}
-Our aim was to improve gaze-independent BCI performance for spatially
-organized visual event-related potential (ERP) paradigms by using a suited
+
+Our aim was to improve gaze-independent \ac{bci} performance for spatially
+organized visual event-related potential (\ac{erp}) paradigms by using a suitable
 decoder.
-Earlier results on BCI performance in covert visuospatial attention
-(VSA) performance prediction have shown that accounting for single-trial
+Earlier results on \ac{bci} performance in covert visuospatial attention
+(\ac{vsa}) performance prediction have shown that accounting for single-trial
 latency jitter could improve gaze-independent decoding performance.
-We applied Classifier-based Latency Estimation (CBLE) as a decoder robust to latency
-jitter but found no increase in gaze-independent decoding performance.
-To remedy this, we improved CBLE by adapting it into CBLE with Woody
-iterations (WCBLE), an iterative scheme using probabilistic latency estimation.
-Results for WCBLE within and across VSA condition decoding show that
-gaze-independent BCI performance can be improved at the decoding stage.
+We applied Classifier-based Latency Estimation (\ac{cble}) as a decoder robust to latency
+jitter, but found no increase in gaze-independent decoding performance.
+To remedy this, we improved \ac{cble} by adapting it into \ac{cble} with Woody
+iterations (\ac{wcble}), an iterative scheme using probabilistic latency estimation.
+Results for \ac{wcble} within and across \ac{vsa} condition decoding show that
+gaze-independent \ac{bci} performance can be improved at the decoding stage.
 Overt decoding performance was not improved, but our proposed method can
-provide added value for patients who are unable to operate a visual BCI in overt
+provide added value for patients who are unable to operate a visual \ac{bci} in overt
 attention mode.
 Later studies should confirm whether our findings hold in patient
-populations suffering from a variety of eye-motor impairments, and develop a
-solution that is capable of properly handling multiple non-time locked ERP
+populations suffering from a variety of eye-motor impairments and develop a
+solution that is capable of properly handling multiple non-time-locked \ac{erp}
 components.
+
+\clearpage
+\begin{subappendices}
+\section{\Acs{cble} algorithm}
+\label{sec:wcble/app/cble-alg}
+\begin{algorithm}[h]
+	\textsc{Train}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N,
+  \mathbf{l^\mathrm{train}}, \mathcal{C}(\cdot,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\State $\theta \gets
+			\mathrm{train}_\mathcal{C}(\{\mat{X}_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l^\mathrm{train}})$
+      \algorithmiccomment{Train stage 1}
+		\For{$n=1\ldots N$}
+      \algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
+        \EndFor
+        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
+		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\theta,
+  \mat{Y}^\mathrm{train},
+  \mathbf{s}_\mathrm{target}^\mathrm{train},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
+	\smallskip \hrule \smallskip
+	\textsc{Evaluate}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\For{$m=1\ldots M$}
+      \algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
+        \EndFor
+        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
+		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
+  \mathbf{s}_\mathrm{target}^\mathrm{test},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
+
+  \caption{\Acs{cble}}
+	\label{alg:cble}
+\end{algorithm}
+
+\clearpage
+\section{\Acs{wcble} algorithm}
+\label{sec:wcble/app/wcble-alg}
+\begin{algorithm}[h]
+	\textsc{Train}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l^\mathrm{train}},
+		\mathcal{C}(\cdot,f,\Pr), s_1, s_2$
+	\begin{algorithmic}[1]
+		\State $\mat{X}'_n \gets \mat{X}^\mathrm{train}_n \quad \forall \quad n=1\ldots
+    N$
+      \algorithmiccomment{Train stage 1}
+		\Repeat
+		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l^\mathrm{train}})$
+		\For{$n=1\ldots N$}
+    \State  $s_n \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
+		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
+		\EndFor
+    \Until{convergence or maximum iterations reached}
+    \For{$n=1\ldots N$}\algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{n,s}^\mathrm{train} \gets
+      f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
+        \EndFor
+        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
+		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
+    \EndFor
+
+	\end{algorithmic}
+	\textbf{Output:} $\theta^*,
+  \mat{Y}^\mathrm{train},
+  \mathbf{s}_\mathrm{target}^\mathrm{train},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
+
+	\smallskip \hrule \smallskip
+	\textsc{Evaluate}
+	\smallskip \hrule \smallskip
+	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
+  \begin{algorithmic}[1]
+		\For{$m=1\ldots M$}\algorithmiccomment{Feature extraction for stage 2}
+		  \For{$s=1\ldots R$}
+      \State $y_{m,s}^\mathrm{test} \gets
+      f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
+        \EndFor
+        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
+		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
+			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
+    \EndFor
+	\end{algorithmic}
+  \textbf{Output:} $\mat{Y}^\mathrm{test},
+  \mathbf{s}_\mathrm{target}^\mathrm{test},
+  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
+  \caption{\Acs{wcble}}
+	\label{alg:wcble}
+\end{algorithm}
+\end{subappendices}

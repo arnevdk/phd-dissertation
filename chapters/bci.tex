@@ -1,26 +1,20 @@
-\todo{comments liesel paradigms}
-\todo{spellcheck}
-\todo{are all acronyms defined}
-\todo{fix all latex warnings to make sure no refs are missing (or grep on that
-specific warning)}
-\todo{uniform ref or autoref}
-\todo{don't capitalize figure, table, algorithm,...}
-\todo{define short captions for tables and figures}
-\todo{fix lacheck/chktex notifications}
-\todo{use terminology individuals with severe
-speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
-\todohsm{more subtitles}
-\todofc{double check statements about what has been published 'for the sake of clarity, the introduction has been mofed to"}
-\todofc{chapters should look more like full papers}
-\todo{uniform vsa condition vsa setting}
-\todo{acronyms written in full every new chapter and in captions}
-\todo{search for ??}
-\todo{acro usage in chapters}
-\todo{are textcites used when necessary?}
-
-
 \chapter{Brain-computer interfaces}
 \label{sec:bci}
+\todo{search for ??}
+\todofc{double check statements about what has been published 'for the sake of clarity, the introduction has been mofed to"}
+\todo{fix all latex warnings to make sure no refs are missing}
+\todo{uniform ref or cref}
+\todo{consistently terminology individuals with severe
+speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
+\todohsm{more subtitles}
+\todo{uniform vsa condition vsa setting}
+\todo{are all acronyms defined/Acro corectly used in chapters?}
+\todo{acronyms written in full every new chapter and in captions?}
+\todo{are textcites used when necessary?}
+\todo{fix lacheck/chktex notifications}
+\todo{footnot skips a page in wcble chap}
+
+
 People with \ac{sspi} due to neurodegenerative disease, stroke, traumatic brain or spine
 injury become entirely reliant on caregivers or family members in their day-to-day
 routine.
@@ -78,7 +72,7 @@ many aspects of daily life more accessible.
 
 Simply put, a \ac{bci} records the user's brain activity, extracts some relevant output
 from this brain activity, and couples this output to a function of a device as
-illustrated in \autoref{fig:bci/loop}.
+illustrated in \cref{fig:bci/loop}.
 Optionally, the user can then observe the action of the device and adapt their behavior
 or brain activity accordingly, closing the loop\footnote{\textcite{BCISociety2024} has
 recently formalized this into the following definition: \it``A brain-computer interface
@@ -102,20 +96,18 @@ functionally useful inputs to the brain.''}.
   Using machine learning, a decision can then be made based on these features, which can
   be presented back to the user.
   In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
-}{%
-  fig:bci/loop
-}
+}{fig:bci/loop}
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of what is
 going on in the brain.
 Multiple signals can be recorded from the brain, including blood flow and magnetic or
 electrical activity.
-For several reasons laid out in \autoref{sec:bci-recording}, the electrical modality is
+For several reasons laid out in \cref{sec:bci-recording}, the electrical modality is
 especially interesting.
 
 The recorded brain activity forms only one part of the interaction scheme presented in
-\autoref{fig:bci/loop}.
+\cref{fig:bci/loop}.
 It would make little sense to start digging around at random in all the brain activity
 to try to extract the desired output.
 Instead, it would help greatly if we knew which specific activity to look for.
@@ -128,11 +120,11 @@ specific activity in the brain to specific information or actions we want to con
 the \ac{bci}.
 The brain signal now \emph{modulates} this information.
 In turn, the detection of this signal can be coupled to an action, like typing the
-intended letter A or B in \autoref{fig:bci/loop}.
+intended letter A or B in \cref{fig:bci/loop}.
 The \ac{bci} paradigm comprises the manner of stimulation (if applicable) and the exact
 task performed by the user, and is often closely linked to the manner of feedback in the
 case of a closed-loop system.
-As shown in \autoref{sec:bci/paradigms}, there is a wide variety of \ac{bci} paradigms
+As shown in \cref{sec:bci/paradigms}, there is a wide variety of \ac{bci} paradigms
 based on different systems in the brain.
 
 The previous points to another component of a successful \ac{bci}: the specific brain
@@ -148,13 +140,13 @@ activity.
 Compare this to trying to listen to a single speaker at a noisy party where everyone is
 shouting over each other.
 Some obvious sources of interference can be easily filtered out by \emph{preprocessing}
-(see \autoref{sec:bci/preprocessing}) and by choosing the correct representation of the
+(see \cref{sec:bci/preprocessing}) and by choosing the correct representation of the
 signal (i.e., \emph{feature extraction}), but the problem of retrieving or
 \emph{decoding} only the relevant signal is generally hard.
 Nevertheless, we can attempt to solve it through supervised machine learning.
 Useful information that is encoded in the brain signal by the paradigm can be retrieved
 from it by the decoder and interpreted in function of the desired \ac{bci} output.
-\autoref{sec:bci/decoding} takes a closer look at some common decoding techniques.
+\Cref{sec:bci/decoding} takes a closer look at some common decoding techniques.
 
 Finally, the loop can be closed by coupling this to a device or actuator.
 There are two aspects to this.
@@ -230,7 +222,7 @@ brain.
 
 The \emph{invasiveness} of the technology forms an important concept in determining its
 suitability for a given application and patient.
-As illustrated in \autoref{fig:bci/recording}, invasive electrodes can often measure a
+As illustrated in \cref{fig:bci/recording}, invasive electrodes can often measure a
 very specific brain region and can result in better signal quality, at the cost of the
 risks involved with brain surgery.
 
@@ -337,7 +329,7 @@ into useful output actions, since it defines which neural responses will be elic
 captured as features.
 A paradigm can be loosely seen as \emph{a way of interacting with the \ac{bci}}.
 According to \textcite{Zander2011}, they can be arranged by their reliance on external
-stimulation and the engagement of the user as shown in \autoref{fig:bci/paradigms}.
+stimulation and the engagement of the user as shown in \cref{fig:bci/paradigms}.
 
 \fullpagefig{%
   \input{figures/bci/paradigms.tikz.tex}
@@ -574,7 +566,7 @@ in general, is \ac{itr}.
 \Ac{itr} reflects how fluently a \ac{bci} can be used for communication and can be
 calculated as
 \begin{equation}
-	\text{ITR} = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
+  \text{\acs{itr}} = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
 \end{equation}
 \Ac{itr} is expressed in bits/s and is dependent on $N$, the number of different options
 that can be selected per trial\footnote{Given that selections are independent of each
@@ -641,9 +633,10 @@ Furthermore, \ac{ssvep} relies more on directing the gaze at the intended target
 oddball, detracting from the concept of control independent from muscle movement.
 
 \begin{figure}[t]
+  \centering
   \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth, height=\textwidth]{figures/bci/illustration}
-    \caption{Stimuli are flashed while the \ac{eeg} is recorded}
+    \caption{Stimuli are flashed while the \acs{eeg} is recorded.}
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/bci/p300.tikz.tex}
@@ -654,12 +647,8 @@ oddball, detracting from the concept of control independent from muscle movement
     \input{figures/bci/erp.tikz.tex}
     \caption{The idealized \ac{erp} evoked by an attended stimulation in a single
     channel.}
-  \end{subfigure}\hfill%
-  \begin{subfigure}[t]{.45\textwidth}
-    \includegraphics[width=\textwidth, height=0.6180\textwidth]{example-image-b}
-  \end{subfigure}
+  \end{subfigure}%
 \end{figure}
-\todo{full spatiotemporal erp response}
 
 \subsection{The \acl{erp}}
 \label{sec:bci/oddball/erp}
@@ -770,7 +759,7 @@ For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5Hz 
 16Hz.
 Re-referencing can be done to average mastoids to highlight the contribution of the P3
 component.
-In addition to the steps outlined in \autoref{sec:bci/preprocessing}, the signal is
+In addition to the steps outlined in \cref{sec:bci/preprocessing}, the signal is
 usually cut into \emph{epochs} for \ac{erp} analysis.
 These are time windows surrounding the stimulus event.
 They usually include some baseline interval before the stimulus, which can be used to
@@ -892,7 +881,7 @@ Riemannian manifold using a minimum distance to the mean classifier, or they can
 projected to the tangent space.
 This is a Euclidean space that locally approximates the Riemannian distance, which
 allows us to apply regular machine learning methods like an SVM or \ac{lda}.
-The tangent space is obtained\todo{tangent space}.
+%The tangent space is obtained\todo{tangent space}.
 To enhance classifications of \acp{erp} which rely on time-domain information, which
 would otherwise be lost in the spatial representation of the extracted feature, the
 class averages can be concatenated as additional channels to the epochs, embedding the
@@ -914,13 +903,13 @@ They have raised great hopes for individuals devoid of these abilities, for whom
 \acp{bci} can provide a means to communicate or to control devices.
 
 Furthermore, the \ac{eeg}-based visual event-related potential (\ac{erp})-based oddball
-interface is an effective and proven method~\cite{Wolpaw2018,Severens2020}.
+interface is an effective and proven method~\cite{Wolpaw2018,Severens2014}.
 Targets are shown in short flashes on a computer screen that evoke an \ac{erp} when
 observed, which can be detected in the \ac{eeg} signal.
 The \ac{erp} consists of multiple components, some of which are modulated by perception
 and the attention of the user.
 Decoding this modulation allows for information transfer controlled by the user's brain
-activity, as sketched in \autoref{fig:bci/loop}.
+activity, as sketched in \cref{fig:bci/loop}.
 
 However, when carefully examining the properties of the \ac{erp} components, we notice
 that while attention plays a role in the modulation of specific components, some part is
@@ -949,4 +938,4 @@ fixation is tiring over time, even for healthy control subjects.
 A suitable alternative would allow the user to keep their eyes in an at-rest position of
 their choice while operating the \ac{bci}.
 This points to the need for gaze-independent solutions, which we will explore further in
-\autoref{sec:gaze-independence} and the rest of this thesis.
+\cref{sec:gaze-independence} and the rest of this thesis.
