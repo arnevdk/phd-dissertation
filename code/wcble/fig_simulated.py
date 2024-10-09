@@ -79,6 +79,7 @@ def plot_ts(ax, epochs):
     df = df.melt(ignore_index=False, value_name="amplitude")
     sns.lineplot(data=df.reset_index(), x="time", y="amplitude", ax=ax_ts,
                  errorbar='sd')
+    ax.set_xlim([-2,2])
 
 
 stc = "sine"
@@ -90,7 +91,6 @@ gridspec_kw = dict(height_ratios=height_ratios, hspace=0)
 shape = (len(height_ratios), len(jitters))
 fig, axs = plt.subplots(
     *shape,
-    sharex="col",
     sharey="row",
     gridspec_kw=gridspec_kw,
 )
@@ -115,12 +115,18 @@ for j, snr in enumerate(snrs):
             ax_img.set_ylabel("")
         else:
             ax_img.set_ylabel("epochs")
+        ax_img.set_xticks([-2, -1, 0, 1, 2])
+        ax_img.tick_params(axis='x', labelbottom=False)
 
         plot_ts(ax_ts, curr_epochs)
         ax_ts.set_yticks([-10,10])
         ax_ts.set_ylabel('µV')
         ax_ts.set_xticks([-2, -1, 0, 1, 2])
-        ax_ts.set_xlabel("time (s)")
+        if j == len(snrs)-1:
+            ax_ts.set_xlabel("time (s)")
+        else:
+            ax_ts.set_xlabel("")
+            ax_ts.tick_params(axis='x', labelbottom=False)
 
 
 save_pgf_trim(plt.gcf(), axs[0,0], f'figures/wcble/simulated-{stc}.pgf',

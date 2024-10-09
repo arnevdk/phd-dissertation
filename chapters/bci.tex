@@ -1,11 +1,5 @@
 \chapter{Brain-computer interfaces}
 \label{sec:bci}
-\todo{consistently terminology individuals with severe
-speech and physical impairments (SSPI)}
-\todo{uniform vsa condition vsa setting}
-\todo{are all acronyms defined/Acro corectly used in chapters?}
-\todo{footnot skips a page in wcble chap}
-
 
 People with \ac{sspi} due to neurodegenerative disease, stroke, traumatic brain or spine
 injury become entirely reliant on caregivers or family members in their day-to-day
@@ -60,7 +54,6 @@ This allows them to talk to their loved ones and caregivers, exercise hobbies, a
 many aspects of daily life more accessible.
 
 \section{A direct interface to the brain}
-\todohsm{make less verbose}
 
 Simply put, a \ac{bci} records the user's brain activity, extracts some relevant output
 from this brain activity, and couples this output to a function of a device as
@@ -100,45 +93,40 @@ especially interesting.
 
 The recorded brain activity forms only one part of the interaction scheme presented in
 \cref{fig:bci/loop}.
-It would make little sense to start digging around at random in all the brain activity
-to try to extract the desired output.
-Instead, it would help greatly if we knew which specific activity to look for.
-A \ac{bci} operates according to a specified \emph{paradigm}, which defines the method
-by which interaction is conducted.
-This usually means that the user is instructed to perform a specific task, like
-attending a specific flickering stimulus.
-We can now exploit background knowledge from prior neuroscientific research to couple
-specific activity in the brain to specific information or actions we want to convey via
-the \ac{bci}.
+It would be inefficient to search all brain activity randomly for the desired output.
+Instead, knowing the specific activity to target would help significantly.
+A \ac{bci} operates under a specified \emph{paradigm}, which defines how interaction
+is conducted.
+This typically means instructing the user to perform a task, like attending to a
+flickering stimulus.
+Background knowledge from neuroscience research allows us to couple specific brain
+activity with the information or actions conveyed via the \ac{bci}.
 The brain signal now \emph{modulates} this information.
-In turn, the detection of this signal can be coupled to an action, like typing the
-intended letter A or B in \cref{fig:bci/loop}.
-The \ac{bci} paradigm comprises the manner of stimulation (if applicable) and the exact
-task performed by the user, and is often closely linked to the manner of feedback in the
-case of a closed-loop system.
-As shown in \cref{sec:bci/paradigms}, there is a wide variety of \ac{bci} paradigms
-based on different systems in the brain.
+In turn, detecting this signal can trigger an action, like typing the intended letter A
+or B in \cref{fig:bci/loop}.
+The \ac{bci} paradigm includes both the method of stimulation (if applicable) and the
+user's task, and is often closely tied to the feedback mechanism in a closed-loop system.
+As shown in \cref{sec:bci/paradigms}, \ac{bci} paradigms vary widely based on different
+brain systems.
 
-The previous points to another component of a successful \ac{bci}: the specific brain
-signatures related to our paradigm need to be identified within the recorded activity.
-The electrical activity of the brain is relatively weak compared to that of the
-environment around us, containing electronic devices and other sources of interference.
-Furthermore, the brain is continuously processing information and carrying out
-`background tasks,' all of which generate their own brain activity.
-On the other hand, the activity of interest often originates from a specific region or
-network within the brain.
-This activity might not easily be discerned from all other brain and environmental
-activity.
-Compare this to trying to listen to a single speaker at a noisy party where everyone is
-shouting over each other.
-Some obvious sources of interference can be easily filtered out by \emph{preprocessing}
-(see \cref{sec:bci/preprocessing}) and by choosing the correct representation of the
-signal (i.e., \emph{feature extraction}), but the problem of retrieving or
-\emph{decoding} only the relevant signal is generally hard.
-Nevertheless, we can attempt to solve it through supervised machine learning.
-Useful information that is encoded in the brain signal by the paradigm can be retrieved
-from it by the decoder and interpreted in function of the desired \ac{bci} output.
-\Cref{sec:bci/decoding} takes a closer look at some common decoding techniques.
+Another critical component of a successful \ac{bci} is identifying brain signatures
+related to the paradigm within the recorded activity.
+The brain's electrical activity is weak compared to environmental noise from electronic
+devices and interference.
+Additionally, the brain continuously processes information and carries out
+`background tasks', which generate more brain activity.
+The desired activity often originates from specific brain regions or networks.
+This signal can be difficult to isolate from all other brain and environmental activity.
+It is similar to trying to hear a single speaker at a noisy party where everyone is
+shouting.
+Some interference can be filtered out through \emph{preprocessing}
+(see \cref{sec:bci/preprocessing}) and by selecting the correct signal representation
+(i.e., \emph{feature extraction}), but retrieving or \emph{decoding} the relevant signal
+remains challenging.
+Supervised machine learning can help solve this.
+The information encoded in the brain signal can be retrieved by the decoder and used
+to determine the desired \ac{bci} output.
+\Cref{sec:bci/decoding} reviews some common decoding techniques.
 
 Finally, the loop can be closed by coupling this to a device or actuator.
 There are two aspects to this.
@@ -148,11 +136,10 @@ For a communication system, this means coupling the decoded information to, e.g.
 virtual keyboard or speech synthesizer.
 On the other hand, the actions performed by the \ac{bci} can themselves alter the user's
 cognitive state or brain activity, creating an adaptive system.
-A direct form of closed-loop \ac{bci} is the use of a neurostimulator.
-Examples of this are deep brain stimulation to mitigate the symptoms of Parkinson's
-disease, or the cochlear implant as a hearing prosthesis.
-More indirectly, modulation can be achieved by sensory stimulation.
-This involves specific, paradigm-related sensory input, like tactile feedback for
+This happens either directly through electrical neurostimulation, as is the
+case for adaptive deep brain stimulation in Parkinson's disease or for the
+cochlear implant as a hearing aide, or indirectly through sensory stimulation.
+The latter involves specific, paradigm-related, sensory input, like tactile feedback for
 movement \ac{bci}~\cite{Flesher2021}, or simply presenting selected actions back to the
 user.
 The user's brain will then adapt through reinforcement learning, causing changes in
@@ -758,7 +745,7 @@ The epochs contain values representing the voltage of a specific channel relativ
 reference at a specific time relative to the stimulus.
 In \ac{erp} classification, they are usually directly used as features, by concatenating
 all channels in the matrix format epoch $\mat{X}$ into one feature vector such that
-$\mat{x} = \vec(\mat{X})$.
+$\mat{x} = \text{vec}(\mat{X})$.
 
 \subsection{Decoders}
 

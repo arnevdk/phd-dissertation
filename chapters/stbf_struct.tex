@@ -44,14 +44,14 @@
 	%A popular class of \ac{bci} paradigms relies on the evocation
 	%of Event-Related Potentials (\acp{erp}) in the brain in response to visual, auditory, or tactile stimulation, given their low decoding cost and generally short
 	%calibration time before usage~\cite{Gao2014, Kapgate2015}.
-	%The study we report on focuses on the visual P300 oddball \ac{erp} in response to a
+	%The study we report on focuses on the visual P3 oddball \ac{erp} in response to a
 	%rare but attended visual stimulus.
 	%The decoder detects whether this \ac{erp} is present to determine which stimulus
 	%the user attended.
-	%The P300 paradigm has been used extensively in \ac{bci} development and is easy to
+	%The P3 paradigm has been used extensively in \ac{bci} development and is easy to
 	%set up~\cite{Farwell1988, Sellers2006, Barachant2014, Philip2020}.
 
-  There are multiple state-of-the-art P300 classification methods, like
+  There are multiple state-of-the-art P3 classification methods, like
   \acp{svm}~\cite{Tayeb2014}, deep
 	learning models~\cite{Vareka2020,Borra2020}, and Riemannian Geometry
 	classifiers~\cite{Barachant2014}.
@@ -62,7 +62,7 @@
 	this class of \ac{erp} decoding models as it achieves state-of-the-art performance and is fast to train.
 	Earlier work has shown that it is
 	possible to apply the spatiotemporal beamformer to multiple time-locked visual
-  \ac{bci} paradigms, including the P300 oddball paradigm, \ac{ssvep},
+  \ac{bci} paradigms, including the P3 oddball paradigm, \ac{ssvep},
   \ac{cvep}~\cite{Wittevrongel2017a}, \ac{mvep}~\cite{Libert2021}.
 
 	This work shows that the original spatiotemporal
@@ -438,7 +438,7 @@
 	$\beta_{k+1}$ and $\gamma_{k+1}$~\cite{Chen2010,Xie2021} but performs worse for spatiotemporal \ac{eeg} data since not all assumptions are met.
 
 	\subsection{Dataset}
-	We use the dataset from~\textcite{Wittevrongel2016}, containing P300 oddball \ac{eeg}
+	We use the dataset from~\textcite{Wittevrongel2016}, containing P3 oddball \ac{eeg}
 	recordings of 21 healthy subjects since it is a high-quality dataset with a high
 	number (32) of electrodes and concurrently recorded EOG responses for ocular artifact rejection.
 	Nine targets were arranged on a monitor before the subject during an
@@ -844,7 +844,7 @@
 	%	time.
 	%
 	%	As expected, \cref{fig:interpret_weights}b and d exhibit weight around
-	%	the central and parietal regions, where the P300 \ac{erp} component is present.
+	%	the central and parietal regions, where the P3 \ac{erp} component is present.
 	%	Especially the spatial weights of \textsc{stbf-shrunk} in
 	%	\cref{fig:interpret_weights}d correspond to the spatial activation pattern
 	%	in \cref{fig:interpret_weights}a.
@@ -856,7 +856,7 @@
 	%	Meanwhile, these weights are high in the occipital region between 0.1s and 0.2s,
 	%	containing early visual components with relatively low SNR.
 	%	This high weight for the early visual components confirms the results from Treder \& Blankertz~\cite{Treder2010}
-	%	that state that, in addition to the P300, the early N1 and P2 \ac{erp} components
+	%	that state that, in addition to the P3, the early N1 and P2 \ac{erp} components
 	%	are also modulated by oddball attention and contain discriminatory information between
 	%	attended and non-attended stimuli.
 	%
@@ -886,7 +886,7 @@
 	estimator exploiting prior knowledge about the spatiotemporal nature of the \ac{eeg}
 	signal.
 	We compared these estimators with the original spatiotemporal
-	beamformer and a state-of-the-art method in an off-line P300 detection task.
+	beamformer and a state-of-the-art method in an off-line P3 detection task.
 	Our results show that the structured estimator performs better when training data are sparsely available and that it can be computed faster and with substantially less memory usage.
 	Since these algorithms are not paradigm-specific,  the conclusions can be generalized to
 	other \ac{erp}-based \ac{bci} settings.

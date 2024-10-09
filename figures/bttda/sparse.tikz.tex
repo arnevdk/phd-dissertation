@@ -16,17 +16,23 @@
     {\footnotesize
     \begin{scope}[shift={(10,0)}]
       \TensorThree{}{}{}{}{3}{3}{3}
-      \TensorThree{$g^{(1)}$}{}{}{}{.5}{.5}{.5}
+      \node at (.25,.3,-.25) {$g^{(1)}$};
+      \node at (.75,.8,-.75) {$g^{(2)}$};
       \node at (1.5,1.5,-1.5) {$\ddots$};
-      \begin{scope}[shift={(.5,.5,-.5)}]
-        \TensorThree{$g^{(2)}$}{}{}{}{.5}{.5}{.5}
-      \end{scope}
-      \begin{scope}[shift={(2,2,-2)}]
-        \TensorThree{$g^{(B-1)}$}{}{}{}{.5}{.5}{.5}
-      \end{scope}
-      \begin{scope}[shift={(2.5,2.5,-2.5)}]
-        \TensorThree{$g^{(B)}$}{}{}{}{.5}{.5}{.5}
-      \end{scope}
+      \node at (2.25,2.3,-2.25) {$g^{(B-1)}$};
+      \node at (2.75,2.8, -2.75) {$g^{(B)}$};
+
+      %\TensorThree{$g^{(1)}$}{}{}{}{.5}{.5}{.5}
+      %\node at (1.5,1.5,-1.5) {$\ddots$};
+      %\begin{scope}[shift={(.5,.5,-.5)}]
+      %  \TensorThree{$g^{(2)}$}{}{}{}{.5}{.5}{.5}
+      %\end{scope}
+      %\begin{scope}[shift={(2,2,-2)}]
+      %  \TensorThree{$g^{(B-1)}$}{}{}{}{.5}{.5}{.5}
+      %\end{scope}
+      %\begin{scope}[shift={(2.5,2.5,-2.5)}]
+      %  \TensorThree{$g^{(B)}$}{}{}{}{.5}{.5}{.5}
+      %\end{scope}
     \end{scope}
     }
     \node[anchor=north] at (11.5,3) {PARAFACDA};

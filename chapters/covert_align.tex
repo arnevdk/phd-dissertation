@@ -1,6 +1,6 @@
 \chapter{Compensating \acs{erp} jitter for gaze-independence}
 \label{sec:covert-align}
-\emph{This chapter has been published as part of~\textcite{VanDenKerchove2024}.}
+\emph{This chapter was published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
 
@@ -289,15 +289,15 @@ allows for extracting latencies ranging from -100 ms to +100 ms.
 
 \section{Results}
 
-\subsection{BCI decoding performance}
+\subsection{\Acs{bci} decoding performance}
 \label{sec:block_accuracy}
 
-We evaluated the BCI decoding performance in a single-trial classification
-experiment, as well as in a target selection experiment reflecting BCI
+We evaluated the \ac{bci} decoding performance in a single-trial classification
+experiment, as well as in a target selection experiment reflecting \ac{bci}
 operation.
 
-\Cref{fig:single_trial_roc_auc_diff} shows a comparison of areas under the
-Receiver Operating Characteristic curve (ROC-AUC) for all pairs of \ac{tlda}, \ac{cble},
+\Cref{fig:single_trial_roc_auc_diff} shows a comparison of \ac{rocauc}
+for all pairs of \ac{tlda}, \ac{cble},
 and \ac{wcble} for single-trial classification to investigate the contributions of
 \ac{cble} and \ac{wcble} relative to their first-stage classifier \ac{tlda}.
 For this evaluation, epochs were rejected when the peak-to-peak amplitude
@@ -364,22 +364,22 @@ curve for all evaluated models, visuospatial attention conditions, and
 \end{table}
 
 
-\Cref{fig:block_evaluation} shows the cross-validated BCI selection
+\Cref{fig:block_evaluation} shows the cross-validated \ac{bci} selection
 accuracy on the BNCI2014-009 and the CVSA-ERP datasets for all investigated
 decoders.
 Accuracy was determined by, for each block, selecting the character with the
 highest (stage-two if applicable) classifier score and comparing it to the cued target.
 Significance was calculated using one-sided Wilcoxon rank-sum tests ($p=0.05$)
 corrected for FDR over decoders.
-For this evaluation, no epochs were rejected to keep the trial-based structure of BCI
-operation intact.
+For this evaluation, no epochs were rejected to keep the trial-based structure
+of \ac{bci} operation intact.
 For all datasets and \ac{vsa} conditions, \ac{cble} scores approximately on par with \ac{tlda}.
 Yet, \ac{wcble} yields an improved decoding accuracy for covert \ac{vsa} in both
 datasets, which is greatest for smaller numbers of repetitions and
 decreases as the number of repetitions increases.
 This covert \ac{vsa} accuracy increase over \ac{tlda} is significant in thdeep q learning tutoriale BNCI2014-009 dataset
 for 1 and 3 repetitions, and in CVSA-ERP for 1-5 and 10 repetitions.
-Furthermore, while we reported a relative decrease in single-trial ROC-AUC for
+Furthermore, while we reported a relative decrease in single-trial \ac{rocauc} for
 \ac{wcble} in overt \ac{vsa}, this does not seem to result in a consistent decrease in target
 selection accuracy.
 No significant increase of \ac{wcble} over other methods was found in split \ac{vsa}.

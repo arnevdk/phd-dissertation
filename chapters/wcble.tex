@@ -1,7 +1,9 @@
 
 \chapter{\Acs{erp} latency estimation and alignment}
 \label{sec:wcble}
-\emph{Sections~\ref{sec:wcble/literature/contrib} and~\ref{sec:wcble/methods} were published
+\emph{\Cref{sec:wcble/literature/contrib}, \cref{sec:wcble/methods} (including
+\cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
+\cref{sec:wcble/conclusion} were published
 as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
@@ -437,7 +439,7 @@ positive, by the difference between the latency and the window onset.
 }{%
   Schematic representation of the \acs{wcble} training phase.
 }{%
-  Schematic representation of the \ac{wcble} training phase.
+  Schematic representation of the \acf{wcble} training phase.
   (1) The first-stage spatiotemporal binary classifier is trained on a set of
   epochs.
   (2) It is then applied to time-shifted copies of the epochs to obtain scores
@@ -468,8 +470,7 @@ in~\cref{sec:robust-latency}.
 }{%
   Schematic representation of the \acs{wcble} test phase.
 }{%
-  Schematic representation of the Woody Classifier-Based Latency
-  Estimation test phase. (1) The
+  Schematic representation of the \acf{wcble}. (1) The
 	first-stage spatiotemporal binary classifier obtained from the training phase is
 	applied to time-shifted copies of the epochs to obtain scores and class probabilities
 	over time. (2) The medians of these probability distributions are assumed
@@ -531,7 +532,7 @@ A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.
   Simulated target (bottom half of epochs) and non-target (top half of epochs) evoked data
   and their average (red: target, yellow: non-target, shaded area: standard
   deviation).
-  Targets contain a sine wave pulse jittered by $\sigma$. 32 EEG channels with pink
+  Targets contain a sine wave pulse jittered by $\sigma$. 32 \ac{eeg} channels with pink
   spatiotemporal noise were simulated using a forward head model, and channel C3 is
   plotted here.
 }{fig:wcble/sim-sine}
@@ -605,6 +606,7 @@ When considering the accuracy of \ac{wcble}, we see that it shows more of a
 plateau as \ac{snr} increases.
 
 \section{Discussion \& conclusion}
+\label{sec:wcble/conclusion}
 
 In this work, we introduced a new \ac{erp} latency estimation and decoding
 method that applies a spatiotemporal classification iteratively along the time
