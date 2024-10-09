@@ -86,7 +86,6 @@ stc = "sine"
 height_ratios = []
 for _ in range(len(snrs)):
     height_ratios.extend([3, 1])  # Closer together for image+timeseries
-    height_ratios.append(0.5)
 gridspec_kw = dict(height_ratios=height_ratios, hspace=0)
 shape = (len(height_ratios), len(jitters))
 fig, axs = plt.subplots(
@@ -96,23 +95,16 @@ fig, axs = plt.subplots(
     gridspec_kw=gridspec_kw,
 )
 axs = axs.reshape(shape)
-# Hide every third row that is used as a spacer
-for i in range(2, len(axs), 3):
-    for j in range(len(jitters)):  # Loop over columns (since axs is 2D)
-        axs[i, j].axis("off")
 
-for ax in axs[-1,:]:
-    ax.remove()
-
-cbar_ax = fig.add_axes([.92, 0.15, 0.02, 0.1])
+cbar_ax = fig.add_axes([1.02, 0.05, 0.02, 0.1])
 for j, snr in enumerate(snrs):
     for k, jitter in enumerate(jitters):
         prefix = f"{stc}/{snr}/{jitter}"
         print(prefix)
         curr_epochs = epochs[prefix]
 
-        ax_img = axs[j * 3, k]
-        ax_ts = axs[(j * 3) + 1, k]
+        ax_img = axs[j * 2, k]
+        ax_ts = axs[(j * 2) + 1, k]
 
         plot_img(ax_img, curr_epochs, cbar_ax=cbar_ax)
         ax_img.lines[0].remove()
@@ -126,9 +118,10 @@ for j, snr in enumerate(snrs):
 
         plot_ts(ax_ts, curr_epochs)
         ax_ts.set_yticks([-10,10])
-        ax_ts.set_ylabel('$\mu V$')
+        ax_ts.set_ylabel('µV')
         ax_ts.set_xticks([-2, -1, 0, 1, 2])
         ax_ts.set_xlabel("time (s)")
 
-save_pgf_trim(plt.gcf(), axs[1,0], f'figures/wcble/simulated-{stc}.pgf',
+
+save_pgf_trim(plt.gcf(), axs[0,0], f'figures/wcble/simulated-{stc}.pgf',
               height=8)

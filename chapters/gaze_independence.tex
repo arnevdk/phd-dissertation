@@ -27,12 +27,13 @@ It is exactly this potential of \acp{bci} that makes them suitable as assistive
 communication devices.
 
 \subsection{Incidence of eye motor impairment}
+\label{sec:gaze-independent/gaze-dependence/incidence}
 \Ac{sspi} is often caused by damage to the central or peripheral nervous
 system, either through congenital diseases (\ac{cp}, \ac{fa}, \ldots),
 neurodegenerative (\ac{als}, \ac{ms}, \ldots) or acquired (stroke and
 \ac{tbi}).
-Many individuals in these groups unfortunately also suffer
-to some extent from eye motor impairment, requiring \acp{bci} adapted to their condition.
+Many individuals in these groups are unfortunately also afflicted by some form
+of eye motor impairment, requiring \acp{bci} adapted to their condition.
 \Cref{tab:incidence} reports the relatively high frequencies of
 eye motor impairment, which can range from minor (nystagmus,
 \footnote{Involuntary, rhythmic, and repetitive eye movements recognizable by their
@@ -54,34 +55,37 @@ their ability to operate a visual \ac{bci}~\cite{FriedOken2020}.
   \makebox[\textwidth][c]{%
   \input{chapters/gaze_independence_incidence.tex}
   }
-  \caption[Incidence of eye motor impairment in selected \acs{bci} target
-    patient populations.]{%
-      Incidence of eye motor impairment in selected \ac{bci} target
-      patient populations. \acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
+  \caption[Incidence of eye motor impairment in selected \acs{bci} user target
+    populations.]{%
+      Incidence of eye motor impairment in selected \ac{bci} user target
+      populations. \acs{als}: \acl{als}, \acs{ms}: \acl{ms}, \acs{dmd}:
       \acl{dmd}, \acs{sma}: \acl{sma}, \acs{cp}: \acl{cp}, \acs{lis}: \acl{lis}.
       $+$: frequent, $-$: infrequent.
     }
     \label{tab:incidence}
 \end{table}
 
-Among the most severely affected patients are stroke
-patients~\cite{Pollock2011,Rowe2019}, mostly
-due to brainstem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
-These patients might suffer from severe or complete eye motor impairment
-from the onset of their condition.
-Case study reports~\cite{Patterson1986,Graber2016} show that even in individuals
+Among the most affected are those recovering from stroke~\cite{Pollock2011,Rowe2019},
+and most of all those with due to brainstem or cerebellar stroke~\cite{Moncayo2009,Bogousslavsky1987}.
+Stroke can lead to the most severe severe or even complete eye motor impairment
+from the onset of their condition, resulting in the~\ac{lis}.
+However, case study reports~\cite{Patterson1986,Graber2016} show that even in individuals
 with \ac{lis} due to stroke, the group with a complete lack of eye motor
 control is very small.
 
-In \ac{als}, a progressive disease affecting motor neurons, oculomotor issues
-are also fairly common.
+\ac{als} is progressive disease affecting motor neurons.
+This initially results in general weakness and loss of muscle tone, but
+eventually leads to full body paralysis.
 Although eye movement is often cited as one of the longest preserved
 capabilities in \ac{als}, studies show that minor issues are still
-fairly common, especially for patients with bulbar onset
-\ac{als}~\cite{Kang2018, Guo2022,Moss2012}.
-Furthermore, \textcite{Hayashi1991} show that as these patients progress past
+fairly common~\cite{Kang2018, Guo2022,Moss2012}.
+The bulbar-onset variant is characterized by an early loss of speech
+and increased involvement of eye motor symptoms~\cite{Guo2022}.
+Furthermore, \textcite{Hayashi1991} show that as \ac{als} progresses past
 the point of independent breathing, symptoms will eventually also involve
 eye muscle paralysis.
+One of the goals of \ac{bci} has always been to support these individuals to
+ensure quality of life.
 
 Various forms of eye movement abnormalities also occur often in
 \ac{ms}.
@@ -94,9 +98,11 @@ paralysis.
 However, \ac{ms} often comes with vision loss, further complicating interaction
 with visual \acp{bci}.
 
-\Ac{fa} is a neurodegenerative disease involving loss of coordinated movement.
-This almost always affects eye
-movements~\cite{Fahey2008,Hocking2010,Furman1983}, with various forms of
+\Ac{fa} is a neurodegenerative disease affecting the
+spinal cord, peripheral nervous system, and cerebellum, resulting in an
+impairing loss of muscle coordination.
+This almost always heavily affects eye
+movements~\cite{Fahey2008,Hocking2010,Furman1983,Cook2017}, with various forms of
 involuntary movements and trouble pursuing or fixating on targets.
 They also gradually have more trouble speaking but often retain some muscular
 control.
@@ -112,12 +118,12 @@ mostly preserved.
 
 \newcommand\fnlis{\footnote{Multiple definitions of \ac{lis} are encountered in
 \ac{bci} and neurological literature.
-Some definitions include only tetraplegic patients without eye movements used
+Some definitions include only those with tetraplegy without eye movements used
 for communications.
 Others distinguish Complete Locked-in Syndrome (CLIS) with full body paralysis,
 including no eye motor control at all, from a \ac{lis} state with some preserved eye
 movements or minor motor output.
-While some definitions only include stroke or \ac{tbi} patients with damage to
+While some definitions only include stroke or \ac{tbi} with damage to
 specific regions in the brain (midbrain, brainstem, or
 cerebellum)~\cite{Smith2005}, it can also generally refer to the state of full body paralysis
 or loss of muscle tone incurred in neurodegenerative diseases, combined with
@@ -133,15 +139,15 @@ a very limited capacity for neuromuscular control. This group includes
 people who retain some useful eye movement or enough limb muscle
 function to operate a single-switch system. Such control is often slow,
 unreliable, or easily fatigued.
-This group is much larger than the first.''~\cite{Wolpaw2008}}}
+This group is much larger than the first.''~\cite{Wolpaw2006}}}
 
 We believe it is generally not opportune to delve too deeply into the underlying
 ophthalmological and neurological mechanisms for each of the specific
 conditions, or even the exact symptoms.
-In clinical reality, every patient has different symptoms, which lead to their own
+In clinical reality, every \ac{bci} user has different symptoms, which lead to their own
 unique set of preserved capabilities and visual skills.
 From a solution-oriented \ac{bci} engineering point of view, the etiology of the symptoms can be abstracted away.
-Instead of categorizing patients, we will refer to those who might benefit from
+Instead of categorizing users by their etiology, we will refer to those who might benefit from
 \ac{bci} assistive communication technology as having \ac{sspi}, in line with
 the terminology used by~\textcite{FriedOken2020}.
 If they have eye motor impairment that affects their use of visual \ac{bci} or
@@ -162,8 +168,8 @@ eye-tracking solutions, we use the term \ac{sspgi} (see \cref{fig:gaze_independe
   \label{fig:gaze_independence/venn}
 \end{figure}
 
-The most severely impaired of these patients constitute the \ac{lis}
-patient group, which forms one of the main \ac{bci} interest groups.
+The most severely impaired of the user groups above constitute the \ac{lis}
+group, which forms one of the main \ac{bci} interest groups.
 In this work, we use the term \ac{lis} for a situation of (near)
 complete paralysis and difficulties or the inability to communicate independently,
 even with assistive technology.
@@ -313,7 +319,7 @@ leveraging spatial attention remains underexplored.
 
 \section{Research objectives}
 
-To summarize, for patients with eye motor impairment, gazing directly at a screen target may
+To summarize, for individuals with \ac{sspgi}, gazing directly at a screen target may
 be uncomfortable, impractical, or even impossible.
 Hence, assistive devices that rely on eye tracking are often inefficient for
 them.
@@ -345,7 +351,7 @@ individuals with \ac{sspgi}, including individuals with \ac{lis}, evaluating
 both performance and comfort.
 
 This specific target is embedded within a broader goal of enabling
-effective communication for eye-motor impaired \ac{lis} patients.
+effective communication for those with \ac{sspgi}.
 Ultimately, we wish to design a comfortable interface that allows them to maximally exploit
 their residual gaze capabilities.
 We believe this can be done with a non-invasive, spatially
@@ -542,9 +548,9 @@ Performance is also evaluated on a publicly available dataset.
 \label{sec:patients/approach/casestudies}
 
 After collecting data from healthy participants and developing initial decoders, we conducted
-a patient study with gaze-impaired individuals to evaluate the impact of eye motor deficits
+a study with seven individuals with \ac{sspgi} to evaluate the impact of eye motor deficits
 on \ac{bci} performance.
-This study focused on individuals with \ac{sspgi}, recruited from neurorehabilitation centers
+This study recruited participants from neurorehabilitation centers
 and specialized care homes, including participants with conditions such as \ac{als}, \ac{fa},
 and stroke.
 

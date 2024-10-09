@@ -1,6 +1,6 @@
 \chapter{Compensating \acs{erp} jitter for gaze-independence}
 \label{sec:covert-align}
-\emph{This chapter has been published as part of~\textcite{VanDenKerchove2024}}
+\emph{This chapter has been published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
 
@@ -391,8 +391,8 @@ Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
 \ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
 These results compare to the performance gain in \cite{Zisk2022}.
 They observed a 5.63\%pt. accuracy increase with 1-10 selection repetitions over
-step-wise Linear Discriminant Analysis  (SWLDA) for 6 ALS patients, whose SWLDA
-performance also suffered from jitter.
+step-wise Linear Discriminant Analysis  (SWLDA) for 6 participants with
+\ac{als}, whose SWLDA performance also suffered from jitter.
 Note that interpretation of this comparison may be challenging due to differences in
 interface design (number of targets, \ac{isi}), subject population,
 \ac{eeg} recording procedure, and available training data.
@@ -404,7 +404,7 @@ control cannot be assumed, we evaluate our proposed decoder in a transfer
 learning setting between \ac{vsa} conditions.
 While performing overt attention requires gaze redirection for each target
 selection, performing covert or split \ac{vsa} continuously still requires
-sustained gaze fixation, which might not be possible for some patients who
+sustained gaze fixation, which might be impaired in those who
 could benefit from such an application.
 Studying the transfer between conditions simulates what happens
 when the user performs different \ac{vsa} conditions throughout the
@@ -414,7 +414,7 @@ it must capture some information about the \ac{erp} responses that is independen
 the \ac{vsa} condition, and hence does not depend on gaze redirection to perform
 these conditions.
 We introduce an additional setting of interest here, namely a combination of \ac{vsa}
-conditions, which represents those cases where patients cannot
+conditions, which represents those cases where the user cannot
 redirect their gaze and hence can be in any one of the \ac{vsa} conditions depending on the
 target they attend to.
 For BNCI2014-009, this is implemented as an equal mix of overt and
@@ -478,11 +478,11 @@ except for within-overt \ac{vsa} decoding.
 \cref{fig:single_trial_roc_auc_diff} shows that \ac{wcble} significantly improves
 covert \ac{vsa} decoding.
 This is advantageous for the development of a class of \ac{erp}-\ac{bci} interfaces for
-patients who prefer to rest their gaze on a fixation cross on the screen,
+users who prefer to rest their gaze on a fixation cross on the screen,
 avoiding the effort of redirecting their eye gaze for every selection.
 Furthermore, the performance gain over the first-stage classifier in split
 \ac{vsa} ($d=3$) and between-\ac{vsa} condition transfer settings are promising for
-patients with even less eye motor control who may experience involuntary eye
+users with even less eye motor control who may experience involuntary eye
 movements or fixation fatigue and hence cannot keep their gaze fixed throughout an
 entire \ac{bci} operation session.
 \ac{wcble} would allow them to operate a \ac{bci} comfortably while directing
@@ -602,12 +602,12 @@ now clear it is present in both classes and non-discriminative.
 This aids the method in converging to a more robust classifier by iteratively
 increasing \ac{snr} for both classes and class separation over time.
 
-\cite{Zisk2022} addressed P3 jitter in ALS patients by augmenting the training data once
-with time-shifted copies based on \ac{cble}-estimated jitter.
+\cite{Zisk2022} addressed P3 jitter inparticipants \ac{als} by augmenting the
+training data once with time-shifted copies based on \ac{cble}-estimated jitter.
 While we aim to train the first-stage classifier without the effects of jitter
 in its parameters, they do the opposite by intentionally jittering the
 training data.
-As their focus was on ALS patients and inter-session stability, they
+As their focus was on \ac{als} and inter-session stability, they
 did not assess how their method interacts with visuospatial attention.
 We achieved a similar performance gain with our jitter compensation method, but
 argue that our method can cope with more granular latency differences, as
@@ -654,12 +654,13 @@ Thirdly, results were obtained in an offline and within-session evaluation,
 which does not reflect true \ac{bci} operation.
 Using multiple sessions with online feedback, the user could optimize their
 performance over time by controlling attention or gaze.
-Finally, since this work was conducted with patient applications in mind, we
+Finally, since this work was conducted with applications for individuals with
+\ac{sspgi} in mind, we
 should highlight that the gaze of participants in the conducted experiments was
-cued and fixed, which is per definition impossible for the patients we consider.
-We are currently conducting a patient study to further investigate whether the
-studied \ac{vsa} conditions are appropriate and to what extent they occur in
-natural patient \ac{bci} operation.
+cued and fixed, which is per definition impossible for the end user group we consider.
+In \cref{sec:patients}, we present a study to further investigate whether the
+studied \ac{vsa} conditions are appropriate and to what extent they occur when
+individuals with \ac{sspgi} operate a \ac{bci}.
 
 \section{Conclusion}
 
@@ -676,122 +677,9 @@ iterations (\ac{wcble}), an iterative scheme using probabilistic latency estimat
 Results for \ac{wcble} within and across \ac{vsa} condition decoding show that
 gaze-independent \ac{bci} performance can be improved at the decoding stage.
 Overt decoding performance was not improved, but our proposed method can
-provide added value for patients who are unable to operate a visual \ac{bci} in overt
+provide added value for users who are unable to operate a visual \ac{bci} in overt
 attention mode.
-Later studies should confirm whether our findings hold in patient
-populations suffering from a variety of eye-motor impairments and develop a
+Later studies should confirm whether our findings hold in individuals with
+severe physical impairment and a variety of eye-motor impairments, and develop a
 solution that is capable of properly handling multiple non-time-locked \ac{erp}
 components.
-
-\clearpage
-\begin{subappendices}
-\section{\Acs{cble} algorithm}
-\label{sec:wcble/app/cble-alg}
-\begin{algorithm}[h]
-	\textsc{Train}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N,
-  \mathbf{l^\mathrm{train}}, \mathcal{C}(\cdot,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\State $\theta \gets
-			\mathrm{train}_\mathcal{C}(\{\mat{X}_n^\mathrm{train}[:,s_1:s_2]\}_{n=1}^N,\mathbf{l^\mathrm{train}})$
-      \algorithmiccomment{Train stage 1}
-		\For{$n=1\ldots N$}
-      \algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{n,s}^\mathrm{train} \gets f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta)$
-        \EndFor
-        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\mathrm{target})\right]$
-		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\theta,
-  \mat{Y}^\mathrm{train},
-  \mathbf{s}_\mathrm{target}^\mathrm{train},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
-	\smallskip \hrule \smallskip
-	\textsc{Evaluate}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\For{$m=1\ldots M$}
-      \algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{m,s}^\mathrm{test} \gets f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta)$
-        \EndFor
-        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\mathrm{target})\right]$
-		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\mat{Y}^\mathrm{test},
-  \mathbf{s}_\mathrm{target}^\mathrm{test},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
-
-  \caption{\Acs{cble}}
-	\label{alg:cble}
-\end{algorithm}
-
-\clearpage
-\section{\Acs{wcble} algorithm}
-\label{sec:wcble/app/wcble-alg}
-\begin{algorithm}[h]
-	\textsc{Train}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l^\mathrm{train}},
-		\mathcal{C}(\cdot,f,\Pr), s_1, s_2$
-	\begin{algorithmic}[1]
-		\State $\mat{X}'_n \gets \mat{X}^\mathrm{train}_n \quad \forall \quad n=1\ldots
-    N$
-      \algorithmiccomment{Train stage 1}
-		\Repeat
-		\State $\theta^* \gets \mathrm{train}_\mathcal{C}(\{\mat{X}'_n[:,s_1:s_2]\}_0^{N-1},\mathbf{l^\mathrm{train}})$
-		\For{$n=1\ldots N$}
-    \State  $s_n \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n',\theta^*,l_n)\right]$
-		\State $\mat{X}'_n \gets \mathrm{align}(\mat{X}^\mathrm{train}_n, s^*_n)$
-		\EndFor
-    \Until{convergence or maximum iterations reached}
-    \For{$n=1\ldots N$}\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{n,s}^\mathrm{train} \gets
-      f(\mat{X}_n^\mathrm{train}[:,s:s+(s_2-s_1)],\theta^*)$
-        \EndFor
-        \State $s_{n,\mathrm{target}}^\mathrm{train} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\mathrm{target})\right]$
-		    \State $s_{n,\mathrm{non-target}}^\mathrm{train}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_n^\mathrm{train},\theta^*,\textrm{non-target})\right]$
-    \EndFor
-
-	\end{algorithmic}
-	\textbf{Output:} $\theta^*,
-  \mat{Y}^\mathrm{train},
-  \mathbf{s}_\mathrm{target}^\mathrm{train},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{train}$
-
-	\smallskip \hrule \smallskip
-	\textsc{Evaluate}
-	\smallskip \hrule \smallskip
-	\textbf{Input:} $\{\mat{X}_m^\mathrm{test}\}_{m=1}^N, \mathcal{C}(\theta^*,f, \Pr), s_1, s_2$
-  \begin{algorithmic}[1]
-		\For{$m=1\ldots M$}\algorithmiccomment{Feature extraction for stage 2}
-		  \For{$s=1\ldots R$}
-      \State $y_{m,s}^\mathrm{test} \gets
-      f(\mat{X}_n^\mathrm{test}[:,s:s+(s_2-s_1)],\theta^*)$
-        \EndFor
-        \State $s_{m,\mathrm{target}}^\mathrm{test} \gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\mathrm{target})\right]$
-		    \State $s_{m,\mathrm{non-target}}^\mathrm{test}\gets
-			    \mathrm{median}\left[\Pr(s|\mat{X}_m^\mathrm{test},\theta^*,\textrm{non-target})\right]$
-    \EndFor
-	\end{algorithmic}
-  \textbf{Output:} $\mat{Y}^\mathrm{test},
-  \mathbf{s}_\mathrm{target}^\mathrm{test},
-  \mathbf{s}_\mathrm{non-target}^\mathrm{test}$
-  \caption{\Acs{wcble}}
-	\label{alg:wcble}
-\end{algorithm}
-\end{subappendices}

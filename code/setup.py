@@ -76,17 +76,13 @@ def save_pgf_trim(fig, ax,path, width=textwidth_in, height=None):
     if height is None:
         golden_ratio = (5**0.5 - 1) / 2
         height=width*golden_ratio
+    fig.set_constrained_layout(True)
+    print(width)
+    print(height)
     fig.set_size_inches(width,height)
-    # Get the figure DPI (dots per inch)
+    plt.draw()
     dpi = fig.dpi
-    # Get the position of the "left" spine (y axis) using the ax object
-    left_spine_vertices = ax.spines['left'].get_path().vertices
-    # Transform these vertices to figure coordinates (from pixels)
-    left_spine_transformed = ax.spines['left'].get_transform().transform(left_spine_vertices)
-    # Extract the y-coordinate (in pixels) of the bottom-left corner (from left spine)
-    bottom_left_corner_y_pixels = left_spine_transformed[0][1]
-    # Convert y-coordinate from pixels to inches
-    margin_left = bottom_left_corner_y_pixels / dpi
+    margin_left = ax.get_window_extent().x0/dpi
     print(margin_left)
     fig.set_size_inches(width+margin_left,height)
     plt.savefig(path, format="pgf", bbox_inches='tight', pad_inches=0)

@@ -22,7 +22,7 @@ perform poorly, making them more reliant on potential developments in \ac{bci}
 that do not rely on eye gaze.
 
 Eye motor impairments are presumed to reduce performance in operating visual
-oddball \ac{bci}s (see \cref{sec:gaze-independence} for an overview), since users
+oddball \ac{bci}s (see \cref{sec:gaze-independent} for an overview), since users
 cannot comfortably redirect their gaze at the desired target,
 i.e., perform overt \ac{vsa}.
 This is usually circumvented by designing gaze-independent~
@@ -46,7 +46,7 @@ motility.
 It is a striking constatation that studies reporting on
 gaze-independent visual \ac{bci} with people with \ac{sspi} and eye-motor
 impaired are very few.
-Results are usually different than those obtained with healthy control
+Results are usually different from those obtained with healthy control
 participants in the lab, due to difference in capabilities, brain
 response, equipment and environment.
 
@@ -56,8 +56,8 @@ More recently, \textcite{Peters2020} performed a trial with two
 participants with late-stage \ac{als} and visual impairment.
 Their \ac{ssvep} interface was not optimized for gaze-independence, but the
 system showed high accuracy, outperforming an eye tracking alternative.
-It would be of interest to verify if such results can be replicated with other
-patient groups and visual oddball \acp{bci}.
+It would be of interest to verify if such results can be replicated with
+participants with other conditions, and with a visual oddball \acp{bci}.
 
 \textcite{Orhan2012} and \textcite{Oken2014} tested the \ac{rsvp} speller with
 individuals with \ac{lis}.
@@ -78,8 +78,7 @@ This work partially accounted for the idea that \ac{bci} users with \ac{sspgi} m
 not fully rely on central gaze fixation and evaluated settings that are not
 strictly dependent on this.
 We showed gaze-independent performance can be improved in healthy subjects
-using a suited decoding strategy.
-That accounts for latency jitter in covert \ac{vsa} responses.
+using a suited decoding strategy that accounts for latency jitter in covert \ac{vsa} responses.
 Yet, there is a strong need for verification of these results in an applied
 setting with people with \ac{sspi}.
 
@@ -147,35 +146,10 @@ difficulties during the experimental session.
 Vision was assessed using a LogMAR chart~\cite{Bailey1976}.
 
 Ultimately, 7 participants were retained.
-Of these, one participant was diagnosed with bulbar-onset \ac{als}.
-\ac{als} is a neurodegenerative disease affecting the motor neurons, leading to
-progressive loss of motor function.
-This initially results in general weakness and loss of muscle tone, but
-eventually leads to full body paralysis.
-Although speech and especially eye movements are usually preserved until the
-later stages of the disease progression, the bulbar-onset variant is
-characterized by an early loss of speech and an increased involvement of eye
-motor symptoms~\cite{Guo2022}.
-Furthermore, one of the goals of \ac{bci} is to support individuals with \ac{als}
-whose life span has been extended with life support and assistive technology to
-ensure quality of life.
-In these very progressed stages of \ac{als}, eye movement will eventually also
-be affected~\cite{Hayashi1991}.
-
-Three other participants were diagnosed with \ac{fa}, a neurodegenerative
-disease affecting the
-spinal cord, peripheral nervous system, and cerebellum.
-\ac{fa} results in an impairing loss of muscle coordination.
-In progressed stages, the disease can present with nystagmus, saccadic
-intrusions, and gaze dysmetria~\cite{Cook2017}.
-
-The final three participants were recovering from stroke.
-Brain stem and cerebellar stroke can often lead to forms of \ac{lis}, and
-various eye motor disorders are common depending on the exact etiology
-~\cite{Bogousslavsky1987, Moncayo2009}.
-Stroke can lead to some of the more severe impairments like ophthalmoplegia or
-partial ophthalmoplegia immediately from onset.
-
+Of these, one participant was diagnosed with bulbar-onset \ac{als}, three with
+\ac{fa} an three were recovering from stroke.
+We refer to \cref{sec:gaze-independent/gaze-dependence/incidence} for a short
+description of these conditions.
 Table~\ref{tab:patients/patients} lists the included participants and their
 diagnoses.
 
@@ -214,8 +188,8 @@ Self-reported eye motor and visual abnormalities were recorded according to the
 relevant visual \ac{bci} skills presented by~\textcite{FriedOken2020}.
 These include visual acuity, visual fixation, eyelid function, ocular motility,
 binocular vision, and field of vision.
-Additionally, participants were asked about eye tremors (nystagmus or other) and
-other involuntary eye movements.
+Additionally, participants and their caregivers were asked about eye tremors
+(nystagmus or other) and other involuntary eye movements.
 
 As an objective metric, we implemented and performed the automated NeuroEye eye movement
 test proposed by~\textcite{Hassan2022} using calibration-free eye tracking to
@@ -235,7 +209,7 @@ Participant PC2 was only able to look up and down and had a deviation in the
 left eye causing diplopia, but this was corrected by a prism glass.
 Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
 Participant PC4 had one deviated eye with a corneal abscess affecting the motility
-and vision in the right eye, and suffered reduced motility in the left.
+and vision in the right eye, and reducing motility in the left.
 
 \begin{table}[t]
   \centering
@@ -250,6 +224,7 @@ and vision in the right eye, and suffered reduced motility in the left.
   logMAR: lower is better.}
   \label{tab:patients/eye}
 \end{table}
+\todo{where these values corrected for distance?}
 
 Finally, we also recorded gaze position throughout the experimental session to
 register the participant's gaze relative to the stimulated \ac{bci} targets.
@@ -373,9 +348,7 @@ tracheostomy.
   the given condition.
   Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
   near the middle of the screen, and PC4 near the bottom.
-}{%
-  fig:patients/gaze
-}
+}{fig:patients/gaze}
 
 PA1 had relatively intact gaze control and was able to correctly perform the
 cued overt and covert settings.
@@ -386,7 +359,8 @@ stimulation blocks. We were unable to record his gaze near the bottom-left
 stimulus position, either due to eye tracker failure or because the participant
 was not comfortable fixating on this position.
 Eye tracker calibration did not succeed for subject PB4, but given
-transformations of gaze positions to the stimulus space, they were assumed to be overtly performing the task.
+transformation of gaze positions to the stimulus space, they were assumed to
+be overtly performing the free task.
 
 PB2 was able to perform overt \ac{vsa} and central fixation to some extent,
 yet eye tracking shows a larger spread in gaze position compared to

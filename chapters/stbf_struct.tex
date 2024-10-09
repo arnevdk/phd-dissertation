@@ -18,7 +18,7 @@
 % Kronecker-structured LDA ====================================================
 
   \emph{This chapter was
-  published as~\textcite{VanDenKerchove2022}}.
+  published as~\textcite{VanDenKerchove2022}.}
 
 	\section{Introduction}
 
@@ -115,13 +115,11 @@
 		\mat{a}^\intercal\mat{w} = 1
 		\label{eq:linear_constraint}
 	\end{equation}
-
 	These weights minimize the variance of the output of the filter while enhancing
 	the signal characterized by the constraint.
   $\mat{a} = \text{vec}(\mat{A})$ is the data-driven activation pattern, a template
 	of the signal of interest maximizing the difference between two classes of
 	epochs, determined as follows:
-
 	\begin{equation}
 		\mathbf{a} =
 		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_i} -
@@ -131,23 +129,17 @@
 
 	The method of Lagrange multipliers then gives the closed-form solution to the minimization problem posed by
 	\cref{eq:minimum_variance} and \cref{eq:linear_constraint} as:
-
 	\begin{equation}
 		\mat{w} =
     \frac{\mat{C}^{-1}\mat{a}^\intercal}
 		{\mat{a}C^{-1}\mat{a}^\intercal}
 		\label{eq:closed_form}
 	\end{equation}
-
-
-
 	The beamformer can be applied to epochs (unseen or not) as:
-
 	\begin{equation}
 		y_i = \mathbf{w}\mathbf{x}_i
 		\label{eq:apply_beamformer}
 	\end{equation}
-
 	resulting in a scalar output per epoch.
 	The linear constraint in \cref{eq:linear_constraint} ensures that the
 	beamformer maps epochs containing a target response to a score close to one
@@ -157,7 +149,7 @@
 	\subsection{Covariance matrix regularization}
 	While the spatiotemporal beamformer, in theory, achieves optimal separation
 	between target and non-target classes, in analogy to linear discriminant
-  analysis~\cite{Treder201}, it does not always perform well on unseen data.
+  analysis~\cite{Treder2016}, it does not always perform well on unseen data.
 	The main challenge is to find a good estimator for the inverse covariance
   matrix $\mat{C}^{-1}$ since the real underlying covariance matrix generating the data is, in principle, unknown.
 
@@ -166,45 +158,37 @@
 	Earlier spatiotemporal beamformer studies~\cite{Wittevrongel2016,
 		Wittevrongel2016a, Wittevrongel2017, Wittevrongel2017a} use the empirical
 	covariance and inverse covariance calculated as follows:
-
 	\begin{equation}
     \hat{\mat{C}}_\text{emp} =
 		\frac{1}{N-1}\sum^{N}_{i=1}\mat{x}_i\mat{x}_i^\intercal
 		\label{eq:empirical_covariance}
 	\end{equation}
-
-
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\text{emp} = \hat{\mat{C}}_\text{emp}^+
 		\label{eq:empirical_inverse_covariance}
 	\end{equation}
-
 	The Moore-Penrose pseudoinverse $^+$, ensures a solution exists when
   $\hat{\mat{C}}_\text{emp}$ is singular.
 	\cref{fig:kronlda-covs}a and \cref{fig:kronlda-covs}b respectively show examples of the
 	empirical estimators of the covariance and the inverse covariance matrices.
 	The empirical estimator suffers from performance and
-	stability issues if the number of epochs $n$ used or estimation is not much larger than the number of features $cs$~\cite{Stein1956,Khatri1987}.
+	stability issues if the number of epochs $N$ used or estimation is not much larger than the number of features $CS$~\cite{Stein1956,Khatri1987}.
 
 	\subsubsection{Shrunk covariance estimation}
 	\label{sec:shrunk_covariance}
 	The shrinkage covariance estimator creates a better-conditioned inversion matrix problem and generally performs better when applied to unseen data.
 	The estimators for the covariance and inverse covariance are given by:
-
 	\begin{equation}
     \hat{\mat{C}}_\alpha =
     (1-\alpha) \hat{\mat{C}}_\text{emp}
     + \alpha\frac{\text{Tr}(\hat{\mat{C}}_\text{emp})}{CS}\mathbb{I}
 		\label{eq:shrinkage}
 	\end{equation}
-
-
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\alpha =
     \hat{\mat{C}}^+_\alpha
 		\label{eq:shrinkage_inverse}
 	\end{equation}
-
 	with $0<\alpha<1$.
 	Analogous to $L_2$ regularization of the beamforming problem,
 	shrinkage reduces the ratio between the smallest and largest eigenvalues
@@ -226,7 +210,6 @@
 	A more recent estimation method~\cite{Tong2018} emulates a leave-one-out
 	cross-validation (\ac{loocv}) scheme expressed by the data-driven closed-form
 	estimate:
-
 	\begin{equation}
 		\alpha =
 		1-\frac{
@@ -258,26 +241,23 @@
 	product of two smaller
 	matrices~\cite{Munck1992,DeMunck1999,Huizenga2002}, as expressed
 	by:
-
 	\begin{equation}
     \hat{\mat{C}}_\text{struct} = \hat{\mat{S}} \otimes \hat{\mat{T}}
 		\label{eq:kronecker}
 	\end{equation}
-
 	with $\otimes$ the Kronecker product operator.
   $\hat{\mat{S}} \in \mathbb{R}^{C\times C}$ and $\hat{\mat{T}} \in \mathbb{R}^{S\times S}$ respectively correspond to estimators of the spatial and temporal covariance of the data.
 	Furthermore, because the temporal covariance of the \ac{eeg}-signal is
 	stationary (i.e., it is only dependent on interval length between covarying
 	time samples)~\cite{Bijma2003}, it is assumed to have a Toeplitz-matrix structure:
-
 	\begin{equation}
     \hat{\mat{T}}_{i,j} = \hat{\mat{T}}_{i+1,j+1}
 		\label{eq:toeplitz}
 	\end{equation}
-
 	\Cref{prop:inverse_kronecker} then leads to
 	\cref{eq:cov_inverse_kronecker} to estimate the inverse
 	covariance.
+
 	\begin{property}
     $(\mat{U} \otimes \mat{V})^+ = \mat{U}^+ \otimes \mat{V}^+$ for any non-singular
     matrices $\mat{U}$ and $\mat{V}$~\cite{Langville2004}.
@@ -310,7 +290,7 @@
 	Using \cref{eq:closed_form_kronecker} removes the need to calculate the
   full, high dimensional Kronecker product $\hat{\mat{S}}^+\otimes
     \hat{\mat{T}}^+$.
-	\Cref{fig:kronlda-covs}e and \cref{fig:covs}f respectively show examples of the
+	\Cref{fig:kronlda-covs}e and \cref{fig:kronlda-covs}f respectively show examples of the
 	structured covariance and inverse covariance estimators,
 	consisting of a spatial Kronecker factor (\cref{fig:kronlda-covs}g and
 	\cref{fig:kronlda-covs}h) and a temporal component (\cref{fig:kronlda-covs}i and
@@ -452,7 +432,6 @@
 			\label{eq:temporal_shrinkage}
 		\end{equation}
 	\end{subequations}
-
 	The shrinkage parameters $0<\beta_{k+1}<1$ and $0<\gamma_{k+1}<1$ should be
 	re-determined after each iteration.
 	The Oracle Approximation Shrinkage method can also be used to determine
@@ -531,7 +510,7 @@
 	\cref{sec:empirical_covariance}, \ac{stbf} with
 	\ac{loocv}-shrunk covariance estimation (\textsc{stbf-shrunk}) as in
 	\cref{sec:shrunk_covariance}, and \ac{stbf} with
-	Kronecker-Toeplitz structured covariance estimation (\textsc{stbf-struct} )with \ac{loocv} shrinkage for
+	Kronecker-Toeplitz structured covariance estimation (\textsc{stbf-struct}) with \ac{loocv} shrinkage for
 	the Kronecker factors as in \cref{sec:structured_covariance}.
 
 	\subsubsection{Riemannian geometry classifier}
@@ -550,7 +529,7 @@
 	\subsection{Minimum required fixed-point iterations}
 	The fixed point iteration algorithm described
 	in
-  \crefrange{eq:fpi_spatial}{eq:fpi-temporal-norm}
+  \crefrange{eq:fpi_spatial}{eq:fpi_temporal_norm}
   estimates the Kronecker-Toeplitz structured covariance for the
 	\textsc{stbf-struct} classifier.
 	Fixed-point iteration is an iterative procedure starting from (in our case)
@@ -590,7 +569,7 @@
 	We evaluate the performance of all classifiers for different levels of
 	available training data and apply the cross-validation procedure nine times (the number of blocks in the training fold) for all subjects, keeping the
 	corresponding number of blocks in the training folds and dropping the rest.
-	\cref{fig:accuracy} and \cref{fig:accuracy_ap} show each classifier's
+	\Cref{fig:accuracy} and \cref{fig:accuracy_ap} show each classifier's
 	accuracy relative to the data availability.
 	We statistically compare the two newly proposed classifiers,
 	\textsc{stbf-struct} and \textsc{stbf-shrunk}, for different levels of training
@@ -616,6 +595,20 @@
 			\textsc{stbf-struct}) drastically improves performance.}
 		\label{fig:accuracy}
 	\end{figure}
+
+  \fullpagefig{%
+		\includegraphics[width=\textwidth]{figures/stbf_struct/accuracy_app.eps}
+  }{%
+    Accuracy averaging over different numbers of trials.
+  }{%
+    Accuracy of the different classifiers for all 21 subjects relative to the
+		number of blocks available for training. One block consists of 135
+		epochs and corresponds to 27 seconds of stimulation. Accuracies
+		are shown for the evaluation settings averaging over different
+	        numbers of trials, ranging from 1 to 15.
+
+  }{fig:accuracy_ap}
+
   \begin{table}[p]
 		\centering
     \makebox[\textwidth][c]{%
@@ -748,8 +741,8 @@
 	classifiers having insufficient training information to reach
 	satisfactory classification accuracy.
 	When more data are available, \textsc{stbf-struct} reaches significantly better accuracies.
-	Combined with the benefits laid out in  \cref{sec:parameters_complexity} and
-	\cref{sec:interpretability}, this makes it an attractive option for \ac{erp} classification.
+	Combined with the benefits laid out in \cref{sec:parameters_complexity}, this
+  makes it an attractive option for \ac{erp} classification.
 	\textsc{stbf-shrunk} does not show decisive accuracy improvements over
 	\textsc{xdawn+rg} using a few training blocks, but this improves as the training data increases.
 

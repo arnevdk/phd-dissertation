@@ -4,7 +4,7 @@
 
 \RequirePackage{dissertation}
 \RequirePackage[pass]{geometry}
-\RequirePackage{lineno}
+\RequirePackage[modulo]{lineno}
 
 % Line numbers
 

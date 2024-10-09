@@ -1,5 +1,11 @@
-\documentclass[tikz]{standalone}
+\documentclass[a4paper]{report}
 \usepackage{dissertation}
+\usepackage{lipsum}
 \begin{document}
-\input{figures/patients/fig_cross.pgf}
+\lipsum[2]
+\begin{figure}
+  \inputpgf{figures/wcble/}{simulated-sine.pgf}
+  \caption{\lipsum[1]}
+\end{figure}
+\lipsum[2]
 \end{document}

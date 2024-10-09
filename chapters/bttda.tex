@@ -2,7 +2,7 @@
 \chapter{Block-term tensor discriminant analysis}
 \label{sec:bttda}
 \input{chapters/bttda/tensorviz.tex}
-\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}}.
+\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
 
 \section{Introduction}
 
@@ -702,7 +702,10 @@ NMSE is calculated as:
 	{\sum_n^N\left\lVert\ten{X}(n)\right\rVert_F^2}
 \end{equation}
 \begin{figure*}[t]
-	\input{figures/bttda/blocks.pgf}
+  \centering
+  \makebox[\linewidth][c]{
+	  \input{figures/bttda/blocks.pgf}
+  }
   \caption[Analysis of NMSE and classification score per block.]{%
     Normalized Mean Square Error (NMSE) (left), and difference in
     classification score for the training and validation for the ERP datasets
@@ -838,9 +841,10 @@ necessarily result in an optimal set of blocks that group coherent projections
 within the same block, according to some desirable metric.
 Examples of this are sparsity, pattern interpretability, minimal or maximal
 between- or within-block feature correlation, decreasing discriminability, etc.
-Finally, the presented results are limited by our artificial restriction
-that $(r_1=r_2=\ldots=r_k)$ to reduce the computational demand of the presented
-experiments.
+Finally, the completeness of the presented results is limited by the artificial
+restriction in hyperparameter choice.
+We imposed $(r_1=r_2=\ldots=r_k)$ that to reduce the computational demand of
+the performed experiments.
 In a sense, this goes against the proposition of increased model flexibility.
 It might well be that BTTDA in some cases offers little added value over the
 Tucker-structured HODA, when both are given free choice of rank.

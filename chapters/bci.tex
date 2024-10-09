@@ -1,17 +1,9 @@
 \chapter{Brain-computer interfaces}
 \label{sec:bci}
-\todo{search for ??}
-\todofc{double check statements about what has been published 'for the sake of clarity, the introduction has been mofed to"}
-\todo{fix all latex warnings to make sure no refs are missing}
-\todo{uniform ref or cref}
 \todo{consistently terminology individuals with severe
-speech and physical impairments (SSPI), avoid phrasing 'suffering from'}
-\todohsm{more subtitles}
+speech and physical impairments (SSPI)}
 \todo{uniform vsa condition vsa setting}
 \todo{are all acronyms defined/Acro corectly used in chapters?}
-\todo{acronyms written in full every new chapter and in captions?}
-\todo{are textcites used when necessary?}
-\todo{fix lacheck/chktex notifications}
 \todo{footnot skips a page in wcble chap}
 
 
@@ -30,7 +22,7 @@ communication is usually done through speech and body language.
 Both require sending signals through the body's nervous system to control muscles.
 Not everyone has this capability.
 
-The key problem for severely paralyzed patients is that the mind wants to go where the
+The key problem for severely paralyzed individuals is that the mind wants to go where the
 body cannot follow.
 Couldn't we, therefore, design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of technology, like
@@ -46,10 +38,10 @@ activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have graduall
 into sophisticated interaction schemes that restore or enhance many capabilities by
 bypassing defective parts of the nervous or muscle system.
 By now, classic \acp{bci} methods are starting to mature outside the lab setting and can
-be used as assistive communication technology by patients with impaired
+be used as assistive communication technology by individuals with \acl{sspi}.
 speech~\cite{Wolpaw2018,Milekovic2018}.
 Impressive cutting-edge experimental examples include a brain-spine interface allowing a
-paraplegic patient to walk again~\cite{Lorach2023}, a \ac{bci} translating internal
+paraplegic individual to walk again~\cite{Lorach2023}, a \ac{bci} translating internal
 speech to a facial avatar speaking the imagined text~\cite{Metzger2023}, and fast
 communication through decoding imagined handwritten symbols~\cite{Willett2021}.
 Recently, the idea has also gained popular traction through Elon Musk's
@@ -60,7 +52,7 @@ for rehabilitation and medical diagnosis or treatment.
 Additionally, they bring a new paradigm to human-computer interaction, especially when
 paired with virtual or augmented reality~\cite{SiMohammed2017}.
 Ultimately, they have always been especially promising as assistive technology for
-paralyzed patients limited in their communication ability.
+people limited in their communication ability.
 It is this \ac{bci}-controlled communication where our focus lies, as it offers a
 transformative means for individuals with severe motor impairments to regain functional
 independence to write and speak through assistive technology.
@@ -186,7 +178,7 @@ Let us take a look at each of these elements separately in the next section.
 The brain's activity can be recorded using various neuroimaging technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance
 imaging (fMRI) to more portable technologies like acoustic signals obtained by
-functional ultrasound imaging (fUS)~\cite{Zheng2023} and near-infrared spectroscopy
+functional ultrasound imaging (fUS)~\cite{Zheng2023} and functional near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
 
 The technologies above all measure blood flow (the hemodynamic signal), which only
@@ -221,7 +213,7 @@ brain.
 \subsection{Invasive electrophysiology}
 
 The \emph{invasiveness} of the technology forms an important concept in determining its
-suitability for a given application and patient.
+suitability for a given application and user.
 As illustrated in \cref{fig:bci/recording}, invasive electrodes can often measure a
 very specific brain region and can result in better signal quality, at the cost of the
 risks involved with brain surgery.
@@ -234,9 +226,7 @@ risks involved with brain surgery.
 	Various electrophysiology recording technologies and their respective position in a
 	cross-section of the skull.
 	There is a trade-off between invasiveness and spatial resolution.
-}{%
-  fig:bci/recording
-}
+}{fig:bci/recording}
 
 Specifically, invasive methods are less noisy and come with an increased \emph{spatial
 resolution}, meaning they can extract a signal from a specific brain region or even a
@@ -255,8 +245,8 @@ Well-known examples are the Utah array~\cite{Maynard1997}, the more recent Neura
 implant~\cite{Musk2019}, and IMEC's Neuropixels 2.0~\cite{Steinmetz2021}.
 
 Larger implanted electrodes are referred to as intracranial \ac{eeg} (i\ac{eeg}).
-Depth electrodes such as those used in stereo-\ac{eeg} \ac{bci}~\cite{Wu2024} tasks and
-closed-loop adaptive control for Deep Brain Stimulation to mitigate Parkinson's disease
+Depth electrodes, like those found in in stereo-\ac{eeg}, can be used for \ac{bci}~\cite{Wu2024}
+ and other applications, like closed-loop adaptive control for Deep Brain Stimulation to mitigate Parkinson's disease
 symptoms~\cite{Arlotti2018}.
 Depth electrodes are longer rods with multiple electrodes that can extend deeper into
 the brain.
@@ -287,7 +277,7 @@ non-invasive BCI.
 \Ac{eeg} is the de facto non-invasive electrophysiology standard in clinical neurology
 practice as well as in \ac{bci} research.
 Developed since 1924~\cite{Berger1929}, it is cheap and relatively practical and offers
-great temporal resolution up to thousands of Hz.
+great temporal sampling resolution up to thousands of Hz.
 \Ac{eeg} measures the electrical potential over time at a given electrode relative to a
 reference electrode in volts (V), often on the scale of microvolts ($\mu$V).
 As it is easily applicable on the outside of the scalp, many practical consumer-grade
@@ -296,7 +286,7 @@ Current consumer systems sometimes feature dry electrodes, but clinical and rese
 systems often use active electrodes with preamplifiers and electrolyte gel to reduce
 impedance for improved signal quality, which slightly decreases practicality, since they
 require a trained individual to properly administer.
-Nevertheless, it is the most accessible \ac{bci} technology for both patients and
+Nevertheless, it is the most accessible \ac{bci} technology for both users and
 researchers.
 
 The major drawback of \ac{eeg} is its poor spatial resolution~\cite{Ferree2001}.
@@ -313,7 +303,7 @@ electrical equipment, or the user's muscle movements~\cite{Urigueen2015}.
 Combined, this means \ac{eeg} is inherently noisy.
 
 Despite its noisy nature, \ac{eeg} is the recording methodology of choice for our
-\ac{bci} because of its wide acceptance by patients.
+\ac{bci} because of its wide acceptance by users.
 To counteract the noise present in our recording, we must on the one hand evoke strong,
 informative brain activity using a suited \ac{bci} paradigm, and on the other hand pick
 a suited decoder which can isolate the signal of interest and filter out the noise.
@@ -340,9 +330,7 @@ stimulation and the engagement of the user as shown in \cref{fig:bci/paradigms}.
   They can be categorized in active, reactive and passive paradigms, depending on their
   reliance on external stimulation and active participation required from the user.
   Adapted from~\textcite{Muehl2014}.
-}{%
-  fig:bci/paradigms
-}
+}{fig:bci/paradigms}
 
 Paradigms that require little active participation from the user, like redirecting
 attention or initiating imagined actions, are classified as \emph{passive \ac{bci}}.
@@ -511,7 +499,7 @@ This can work well but requires strong regularization~\cite{VanDenKerchove2022}.
 
 Decoder choice is heavily dependent on constraints set by the paradigm and the
 application.
-The number of output degrees of features, the serial or parallel nature of performed
+The number of output degrees of freedom, the serial or parallel nature of performed
 tasks, and whether the paradigm is active or reactive, all need to be taken into
 account.
 One of these choices is whether to solve a \emph{regression} or \emph{classification}
@@ -593,7 +581,7 @@ The brain response of interest is the visual \ac{erp}, which can be accurately m
 and decoded from non-invasive \ac{eeg} signals with a relatively low computational
 effort and short calibration time.
 First established by~\cite{Farwell1988} in 1988, it is well supported by literature and
-has been proven to work for patients in day-to-day home use~\cite{Wolpaw2018}.
+has been proven to work for those with \acl{sspi} in day-to-day home use~\cite{Wolpaw2018}.
 
 \subsection{Stimulation paradigm}
 
@@ -647,6 +635,7 @@ oddball, detracting from the concept of control independent from muscle movement
     \input{figures/bci/erp.tikz.tex}
     \caption{The idealized \ac{erp} evoked by an attended stimulation in a single
     channel.}
+    \label{fig:bci/erp}
   \end{subfigure}%
 \end{figure}
 
@@ -892,7 +881,7 @@ XDAWN before calculating the extended covariances~\cite{Li2020}.
 These decoders define the last building blocks of our visual oddball \ac{bci}.
 Yet, the overview until now has been rather theoretical.
 Interesting and complex challenges arise when applying these concepts outside of the lab
-in augmented and assistive communication technologies for patients with \acp{sspi}.
+in augmented and assistive communication technologies for users with \acl{sspi}.
 
 \section{The gaze-dependence problem}
 
@@ -923,12 +912,13 @@ the user does not direct their gaze onto the desired target~\cite{Brunner2010, F
 This leads to a problem that is not often addressed:
 a visual \ac{bci} is dependent on the gaze of the user, and hence on muscle control.
 This is exactly what \acp{bci} for augmented and assistive technology try to avoid.
-The \ac{bci} target population consists of individuals who suffer from various degrees
-of paralysis, or even from \ac{lis}, the complete loss of muscle control with preserved
+The \ac{bci} target population consists of individuals with severe physical
+impairment due to  with various degrees
+of paralysis, or even with \ac{lis}, the complete loss of muscle control with preserved
 consciousness.
 While \ac{bci}s are most attractive as a solution for individuals with \ac{sspi},
-studies paradoxically often report poor performance in patient populations precisely due
-to the lack of adequate eye motor control.
+studies paradoxically often report poor performance in exactly this group,
+precisely due to their lack of adequate eye motor control.
 Equally often, participants with gaze impairments were excluded from the study.
 
 Different degrees of eye motor impairment can render visual \ac{bci}s uncomfortable or
@@ -938,4 +928,4 @@ fixation is tiring over time, even for healthy control subjects.
 A suitable alternative would allow the user to keep their eyes in an at-rest position of
 their choice while operating the \ac{bci}.
 This points to the need for gaze-independent solutions, which we will explore further in
-\cref{sec:gaze-independence} and the rest of this thesis.
+\cref{sec:gaze-independent} and the rest of this thesis.
