@@ -1,6 +1,0 @@
-seaborn
-mne
-matplotlib<3.6
-numpy<2.0
-webcolors<24.6.0
-tikzplotlib

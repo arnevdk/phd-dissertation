@@ -9,11 +9,10 @@
 
 % Full page figure
 \setlength{\fullpagefigwidth}{\textwidth}
-\newcommand{\fullpagefig}[5][bottomleft]{%
+\newcommand{\fullpagefig}[3][bottomleft]{%
   \begin{figure}[p]
     \thisfloatpagestyle{empty}
     #2
-    \caption[#3]{#4}%
-    \label{#5}
+    #3
   \end{figure}
 }

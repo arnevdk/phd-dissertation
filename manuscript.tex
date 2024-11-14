@@ -3,7 +3,13 @@
 
 % Front matter ================================================================
 
-\input{cover_kul.tex}
+{
+  \newgeometry{margin=1.5cm}
+  \input{cover_kul.tex}
+  \clearpage
+  \input{cover_ulille.tex}
+  \restoregeometry
+}
 \linenumbers
 \include{chapters/abstract.tex}
 \include{chapters/abstract_nl.tex}
@@ -16,7 +22,7 @@
 % Main matter =================================================================
 
 % Intro
-\include{chapters/bci.tex}
+include{chapters/bci.tex}
 \include{chapters/gaze_independence.tex}
 
 % Algorithms

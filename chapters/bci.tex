@@ -71,17 +71,18 @@ functionally useful inputs to the brain.''}.
 \fullpagefig[topleft]{%
   \includegraphics[width=\fullpagefigwidth]{figures/bci/bci_loop.pdf}
 }{%
-  The \acs{bci} loop.
-}{%
-  The \ac{bci} loop.
-  The user interacts with the \ac{bci} via a specific paradigm, in this case involving
-  visual stimulation.
-  Electrical neural signals are recorded, and neurophysiological features related to the
-  paradigm are extracted.
-  Using machine learning, a decision can then be made based on these features, which can
-  be presented back to the user.
-  In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
-}{fig:bci/loop}
+  \caption[The \acs{bci} loop.]{%
+    The \ac{bci} loop.
+    The user interacts with the \ac{bci} via a specific paradigm, in this case involving
+    visual stimulation.
+    Electrical neural signals are recorded, and neurophysiological features related to the
+    paradigm are extracted.
+    Using machine learning, a decision can then be made based on these features, which can
+    be presented back to the user.
+    In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
+  }
+  \label{fig:bci/loop}
+}
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of what is
@@ -208,12 +209,13 @@ risks involved with brain surgery.
 \fullpagefig[topleft]{%
   \includegraphics[width=\fullpagefigwidth]{figures/bci/recording_modalities.pdf}
 }{%
-  Various electrophysiology recording technologies.
-}{%
-	Various electrophysiology recording technologies and their respective position in a
-	cross-section of the skull.
-	There is a trade-off between invasiveness and spatial resolution.
-}{fig:bci/recording}
+  \caption[Various electrophysiology recording technologies.]{%
+	  Various electrophysiology recording technologies and their respective position in a
+	  cross-section of the skull.
+	  There is a trade-off between invasiveness and spatial resolution.
+  }
+  \label{fig:bci/recording}
+}
 
 Specifically, invasive methods are less noisy and come with an increased \emph{spatial
 resolution}, meaning they can extract a signal from a specific brain region or even a
@@ -311,13 +313,14 @@ stimulation and the engagement of the user as shown in \cref{fig:bci/paradigms}.
 \fullpagefig{%
   \input{figures/bci/paradigms.tikz.tex}
 }{%
-  Overview of \acs{bci} paradigms.
-}{%
-  A \ac{bci} paradigm defines which brain activity will be used for control.
-  They can be categorized in active, reactive and passive paradigms, depending on their
-  reliance on external stimulation and active participation required from the user.
-  Adapted from~\textcite{Muehl2014}.
-}{fig:bci/paradigms}
+  \caption[Overview of \acs{bci} paradigms.]{%
+    A \ac{bci} paradigm defines which brain activity will be used for control.
+    They can be categorized in active, reactive and passive paradigms, depending on their
+    reliance on external stimulation and active participation required from the user.
+    Adapted from~\textcite{Muehl2014}.
+  }
+  \label{fig:bci/paradigms}
+}
 
 Paradigms that require little active participation from the user, like redirecting
 attention or initiating imagined actions, are classified as \emph{passive \ac{bci}}.
@@ -744,8 +747,9 @@ normalize the response.
 The epochs contain values representing the voltage of a specific channel relative to the
 reference at a specific time relative to the stimulus.
 In \ac{erp} classification, they are usually directly used as features, by concatenating
-all channels in the matrix format epoch $\mat{X}$ into one feature vector such that
-$\mat{x} = \text{vec}(\mat{X})$.
+all $C$ channels of length $S$ time samples in the matrix format epoch
+$\mat{X}\in\mathbb{R}^{C\times S}$ into one feature vector
+$\mat{x}\in\mathbb{R}^{CS}$ such that $\mat{x} = \text{vec}(\mat{X})$.
 
 \subsection{Decoders}
 
@@ -767,9 +771,10 @@ this work.
 
 Linear decoding techniques such as the \ac{lcmv} beamformer~\cite{Wittevrongel2016}
 generally work well for classifying \ac{erp} epochs.
-\Ac{lcmv} beamforming learns a weight vector $\mat{w}$ from a set of epochs that can be
-multiplied with the feature vector of a new epoch to obtain a prediction score.
-The weights $\mat{w}$ are obtained by minimizing the variance of the output
+\Ac{lcmv} beamforming learns a weight vector $\mat{w}\in\mathbb{R}^{CS}$ from
+a set of epochs that can be multiplied with the feature vector $\mat{x}$ of a
+new epoch to obtain a prediction score.
+The weights are obtained by minimizing the variance of the output
 \begin{equation}
   \argmin_\mat{w}\mat{w}^\intercal\mat{C}
 	\mat{w}^\intercal
@@ -778,15 +783,17 @@ under the linear constraint
 \begin{equation}
 	\mat{a}^\intercal\mat{w} = 1
 \end{equation}
-with activation pattern $\mat{a}$ the difference between the average of the attended
-epochs and the average of the non-attended epochs in the training data.
+with \emph{activation pattern} $\mat{a}\in\mathbb{R}^{CS}$ the difference between the
+average of feature vectores of the attended and non-attended epochs in the
+training data,
+and $\mat{C}\in\mathbb{R}^{CS\times CS}$ the background covariance matrix which
+can be estimated empirically from the training data.
 This is then solved by the method of Lagrange multipliers as
 \begin{equation}
 	\mat{w} =
   \frac{\mat{C}^{-1}\mat{a}^\intercal}
   {\mat{a}\mat{C}^{-1}\mat{a}^\intercal}
 \end{equation}
-with $\mat{C}$ the background covariance.
 
 \subsubsection{\Acf{lda}}
 
@@ -794,13 +801,13 @@ with $\mat{C}$ the background covariance.
 \ac{lcmv} beamforming~\cite{Treder2016} under certain conditions.
 It assumes normally distributed data with a different mean per class but a common
 covariance.
-Similar to \ac{lcmv} beamforming, \ac{lda} learns a weight vector $\mat{w}$ that
-satisfies
+Similar to \ac{lcmv} beamforming, \ac{lda} learns a weight vector
+$\mat{w}\in\mathbb{R}^{CS}$ which satisfies
 \begin{equation}
   \argmax_\mat{w}\frac{\mat{w}^\intercal\mat{S}_\text{b}\mat{w}}{\mat{w}^\intercal\mat{S}_\text{w}\mat{w}}
 \end{equation}
-The between-class scatter matrix $\mat{S}_\text{b}$ models the variability between the
-expected responses, while the within-class scatter matrix $\mat{S}_\text{w}$ models the
+The between-class scatter matrix $\mat{S}_\text{b}\in\mathbb{R}^{CS\times CS}$ models the variability between the
+expected responses, while the within-class scatter matrix $\mat{S}_\text{w}\in\mathbb{R}^{CS\times CS}$ models the
 expected noise.
 The optimization criterion corresponds to finding a projection that maximizes the spread
 between classes (signal) while minimizing the spread within classes (noise).
@@ -820,18 +827,32 @@ case for the multilinear methods presented by~\textcite{Lotte2018}.
 
 Another example of this is \ac{tlda}~\cite{Sosulski2022}, which assumes temporal
 stationarity in the background noise to regularize the problem.
-It does this by imposing a block-Toeplitz structure to the between-class covariance
-matrix of \ac{lda}, such that every temporal covariance block corresponding to a channel
-has the structure
+It does this by imposing a block-Toeplitz structure to the between-class
+scatter $\mat{S}_\text{b}$ matrix of \ac{lda}.
+This means
 \begin{equation}
-  \mat{S}_\text{w}^{(c)} = \begin{bmatrix}
-s_0 & s_1 & s_2 & \cdots & s_{k-1} \\
-s_1 & s_0 & s_1 & \cdots & s_{k-2} \\
-s_2 & s_1 & s_0 & \cdots & s_{k-3} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-s_{k-1} & s_{k-2} & s_{k-3} & \cdots & s_0
+  \mat{S}_\text{w} = \begin{bmatrix}
+    \mat{S}_\text{w}^{(1,1)} & \mat{S}_\text{w}^{(1,2)} & \cdots & \mat{S}_\text{w}^{(1,C)}\\
+    \mat{S}_\text{w}^{(2,1)} & \mat{S}_\text{w}^{(2,2)} & \cdots & \mat{S}_\text{w}^{(2,C)}\\
+    \vdots             & \vdots             & \ddots & \vdots            \\
+    \mat{S}_\text{w}^{(C,1)} & \mat{S}_\text{w}^{(C,2)} & \cdots & \mat{S}_\text{w}^{(C,C)}\\
+  \end{bmatrix}
+\end{equation}
+consists of $C\times C$ temporal scatter matrices
+$\mat{S}_\text{w}^{(c_1,c_2)}\in\mathbb{R}^{S\times S}$
+corresponding to a pair of channels $(c_1,c_2)$, such
+that every temporal scatter matrix has the Toeplitz structure
+\begin{equation}
+  \mat{S}_\text{w}^{(c_1,c_2)} = \begin{bmatrix}
+    s_1^{(c_1,c_2)}  & s_2^{(c_1,c_2)}  & \cdots & s_S^{(c_1,c_2)}  \\
+    s_2^{(c_1,c_2)}  & s_1^{(c_1,c_2)}  & \cdots & s_{S-1}^{(c_1,c_2)}  \\
+    \vdots & \vdots &  \ddots & \vdots \\
+    s_S^{(c_1,c_2)}  & s_{S-1}^{(c_1,c_2)}  & \cdots & s_1^{(c_1,c_2)}
 \end{bmatrix}
 \end{equation}
+The structuring is performed by setting all elements to the average of their
+corresponding block-subdiagonal and subsequently applying shrinkage
+regularization.
 This method is simple yet effective, reaching state-of-the-art decoding performance.
 
 \subsubsection{Riemannian geometry}

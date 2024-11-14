@@ -4,10 +4,15 @@
 % Front matter ================================================================
 \frontmatter
 
+{%
+  \newgeometry{margin=1cm}
+  \input{cover_kul.tex}
+  \restoregeometry%
+}
 \include{chapters/preface.tex}
 \include{chapters/abstract.tex}
 \include{chapters/abstract_nl.tex}
-\include{chapters/abstract_ft.tex}
+\include{chapters/abstract_fr.tex}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -23,17 +28,14 @@
 \part{Algorithms \& Decoders}
 \include{chapters/stbf_struct.tex}
 \include{chapters/bttda.tex}
-\todo{discuss Tensorizations coping with latency jitter to make link}
 \include{chapters/wcble.tex}
 
 \part{Experiments \& Applications}
 \include{chapters/covert_align.tex}
 \include{chapters/patients.tex}
 \include{chapters/conclusion.tex}
-\todo{Integrating gaze-tracking data}
-\todo{extension to the space-time-frequency domain}
 
-% Back matter =================================================================
+%% Back matter =================================================================
 \backmatter%
 \include{chapters/contribution.tex}
 \include{chapters/acknowledgment.tex}

@@ -11,24 +11,32 @@
 \RequirePackage[cmintegrals,cmbraces]{newtxmath}
 \RequirePackage{fancyhdr}
 \RequirePackage{tocloft}
-
+\RequirePackage[font={footnotesize, sf},labelfont=bf]{caption}
+\RequirePackage{opensans}
+\RequirePackage{titlesec}
+\RequirePackage{ebgaramond}
 % Set page size ================================================================
-\RequirePackage[paperheight=240mm,paperwidth=160mm]{geometry}
+\RequirePackage[paperheight=240mm,paperwidth=160mm,bottom=30mm]{geometry}
 
 
 % Full page figure =============================================================
+
+
+
+% Custom command to position the caption in the bottom-right
+
 \setlength{\fullpagefigwidth}{\paperwidth}
-\newcommand{\fullpagefig}[5][bottomleft]{%
+\newcommand{\fullpagefig}[3][bottomleft]{%
     \afterpage{%
-        \clearpage
-        \pagecolor{lightgray} % Set background color
-        \pagestyle{empty}    % Remove headers/footers
-        % Begin the figure
-        \begin{figure}[p]
+       \clearpage
+       \pagecolor{lightgray} % Set background color
+       \pagestyle{empty}    % Remove headers/footers
+       % Begin the figure
+       \begin{figure}[H]
             \centering
             \begin{tikzpicture}[remember picture, overlay]  % Overlay environment
                 % Place the figure content (image, TikZ, PGFPlot, etc.)
-                \node[anchor=center] (image) at (current page.center) {#2};
+                \node[anchor=center,inner sep=0] (image) at (current page.center) {#2};
                 % Overlay caption
                 \ifthenelse{\equal{#1}{bottomleft}}{%
                   \node[
@@ -36,7 +44,7 @@
                       text width=0.5\paperwidth,
                       inner sep=1cm,
                   ] at (current page.south west) {%
-                    \justifying\caption[#3]{#4}\label{#5}
+                    \justifying#3
                   };
                 }{%
                   \node[
@@ -44,7 +52,7 @@
                       text width=0.5\paperwidth,
                       inner sep=1cm,
                   ] at (current page.north west) {%
-                    \justifying\caption[#3]{#4}\label{#5}
+                    \justifying#3
                   };
                 }
             \end{tikzpicture}
@@ -56,33 +64,51 @@
     }
 }
 
+
 % Setup font ===================================================================
 
 % Serif font: Garamond
-\usepackage{ebgaramond-maths}
-%\usepackage{ebgaramond}
+%\usepackage{ebgaramond-maths}
 
 % Sans-serif family: Open-Sans
-\usepackage{opensans}
 \renewcommand{\sffamily}{\opensans}
 
 % Setup titles
-\usepackage{titlesec}
-\usepackage{afterpage}
 \titleformat{\part}[display]{\pagecolor{white}\vskip10em\centering\bfseries}{\sffamily\Large\partname\
 	\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
-\titleformat{\chapter}[display]{\bfseries}{\color{darkgray}\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
+\titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\sffamily\bfseries}{\thesubsubsection}{1em}{}
 %\titlespacing*{\subsubsection}{0pt}{1em}{0pt}
 
 % Setup captions
-\usepackage[font={footnotesize, sf},labelfont=bf]{caption}
 \captionsetup{justification=justified,singlelinecheck=off}
 
 % Set bibliography font size
 \renewcommand*{\bibfont}{\footnotesize}
+
+
+%% Redefine the figure environment
+%\renewenvironment{figure}{%
+%  \begin{figure}\sffamily\sansmath%
+%}{%
+%  \end{figure}
+%}
+%
+%% Redefine the table environment
+%\renewenvironment{table}{%
+%  \begin{table}\sffamily\sansmath%
+%}{%
+%  \end{table}
+%}
+%
+%% Redefine the algorithm environment
+%\renewenvironment{algorithm}{%
+%  \begin{algorithm}\sffamily\sansmath%
+%}{%
+%  \end{algorithm}
+%}
 
 % Setup pagestyle ==============================================================
 

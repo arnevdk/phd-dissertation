@@ -340,15 +340,16 @@ tracheostomy.
 \fullpagefig{%
   \includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
 }{%
-  Distribution of the recorded gaze position.
-}{%
-  Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}
-  conditions.
-  Crosshairs represent stimulus positions, with the orange ones cued during
-  the given condition.
-  Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
-  near the middle of the screen, and PC4 near the bottom.
-}{fig:patients/gaze}
+  \caption[Distribution of the recorded gaze position.]{%
+    Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}
+    conditions.
+    Crosshairs represent stimulus positions, with the orange ones cued during
+    the given condition.
+    Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
+    near the middle of the screen, and PC4 near the bottom.
+  }
+  \label{fig:patients/gaze}
+}
 
 PA1 had relatively intact gaze control and was able to correctly perform the
 cued overt and covert settings.
@@ -385,22 +386,6 @@ stimuli.
 \Cref{fig:patients/decode} shows single-trial
 \ac{rocauc} in the evaluated \ac{vsa} settings for the different decoders.
 
-\begin{figure}[t]
-  \input{figures/patients/fig_decode.pgf}
-  \caption[%
-    Decoding performance in different \acs{vsa} settings.
-  ]{%
-    Decoding performance in different \ac{vsa} settings reported as
-    single-trial \ac{rocauc}.
-    Free \ac{vsa} is generally on par with performance in the overt \ac{vsa}
-    setting.
-    Performance in the covert \ac{vsa} setting with central gaze fixation is lower, but can
-    be improved with the \ac{wcble} decoder.
-    95\% confidence intervals were calculated using 1000 bootstrapping
-    repetitions.
-  }
-  \label{fig:patients/decode}
-\end{figure}
 
 In the overt \ac{vsa} setting, the evaluated decoders performed similarly on average
 (\ac{wcble} 75.58\%, XDAWNCov+TS+LDA 74.24\%, \ac{tlda} 75.99\%).
@@ -423,6 +408,23 @@ subjects PC3 and PC4.
 For PB2, who also relied on covert \ac{vsa} during the uncued free \ac{vsa}
 setting, there was no decrease in performance.
 
+\begin{figure}
+  \input{figures/patients/fig_decode.pgf}
+  \caption[%
+    Decoding performance in different \acs{vsa} settings.
+  ]{%
+    Decoding performance in different \ac{vsa} settings reported as
+    single-trial \ac{rocauc}.
+    Free \ac{vsa} is generally on par with performance in the overt \ac{vsa}
+    setting.
+    Performance in the covert \ac{vsa} setting with central gaze fixation is lower, but can
+    be improved with the \ac{wcble} decoder.
+    95\% confidence intervals were calculated using 1000 bootstrapping
+    repetitions.
+  }
+  \label{fig:patients/decode}
+\end{figure}
+
 \subsection{Cross-condition calibration}
 \label{sec:patients/outcomes/cross}
 
@@ -438,7 +440,7 @@ Note that, according to eye tracking data, participants PB1, PB4, and PC4 did no
 always perform cued central gaze fixation in the covert \ac{vsa} setting,
 which might have affected the results.
 
-\begin{figure}[t]
+\begin{figure}
   \input{figures/patients/fig_cross.pgf}
   \caption[Cross-setting calibration and decoding performance.]{
     Decoding performance when calibrating the \ac{tlda} decoder in a given \ac{vsa}
