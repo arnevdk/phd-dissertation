@@ -12,9 +12,7 @@ colors = dict(
     accent2="#F63D1E",
     accent3="#78479D",
 )
-primary_cmap = "RdBu_r"
-secondary_cmap = "PuOr_r"
-
+diverging_cmap = "RdYlBu_r"
 
 
 
@@ -74,10 +72,11 @@ inches_per_pt = 1 / 72.27
 textwidth_pt=345
 textwidth_in=textwidth_pt*inches_per_pt
 
-def save_pgf_trim(fig, ax,path, width=textwidth_in, height=None):
+def save_pgf_trim(fig, ax,path, width=textwidth_in, height=None, rows=1,
+                  columns=1):
     if height is None:
         golden_ratio = (5**0.5 - 1) / 2
-        height=width*golden_ratio
+        height=rows*width*golden_ratio/columns
     fig.set_constrained_layout(True)
     print(width)
     print(height)

@@ -297,16 +297,64 @@
 	\cref{fig:kronlda-covs}j).
 
 	\begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
+		%\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-0.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-1.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-2.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{minipage}[b]{\textwidth/10}
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-6.eps}
+        \caption{}
+      \end{subfigure}\vfill%
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-7.eps}
+        \caption{}
+      \end{subfigure}\hfill%
+    \end{minipage}
+
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-3.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-4.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-5.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{minipage}[b]{\textwidth/10}
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-8.eps}
+        \caption{}
+      \end{subfigure}\vfill%
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-9.eps}
+        \caption{}
+      \end{subfigure}\hfill%
+    \end{minipage}
+
+
+
     \caption[Estimated covariance and inverse covariance.]{Different estimators of the covariance and inverse covariance
 			of 100 epochs of data from \textit{Subject 01} for channels
 			\textit{Fz}, \textit{Cz}, \textit{Pz}, and \textit{Oz} and time samples between 0.1s and 0.6s.
 			Regularized estimators of the inverse covariance exhibit less extreme values and have a sparser structure.
-			(\textbf{a,b}) Empirical covariance and inverse covariance matrices.
-			(\textbf{c,d}) Shrunk covariance and inverse covariance matrices with $\alpha=0.14$ as
-			determined by the closed-form \ac{loocv} method. (\textbf{e,f}) Kronecker-Toeplitz
+			(\textbf{a,f}) Empirical covariance and inverse covariance matrices.
+			(\textbf{b,g}) Shrunk covariance and inverse covariance matrices with $\alpha=0.14$ as
+			determined by the closed-form \ac{loocv} method. (\textbf{c,h}) Kronecker-Toeplitz
 			structured covariance and inverse covariance matrices.
-			(\textbf{g,h}) Spatial Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.
+			(\textbf{d,e}) Spatial Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.
 			(\textbf{i,j}) Temporal Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.}
 		\label{fig:kronlda-covs}
 	\end{figure}
@@ -540,18 +588,26 @@
 	the training process.
 
   \begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/fpi.eps}
+    \sffamily
+    \sansmath
+    \begin{subfigure}{\linewidth}
+      \input{figures/stbf_struct/fpi-0.pgf}
+      \caption{Results for 1, 2, and 5 trials using only the first block in each
+      training fold for training.}
+    \end{subfigure}
+    \smallskip
+
+    \begin{subfigure}{\linewidth}
+      \input{figures/stbf_struct/fpi-1.pgf}
+      \caption{Results for 1, 2, and 5 trials using all nine training blocks in
+      the training folds.}
+    \end{subfigure}
     \caption[Average cross-validated \textsc{stbf-struct} accuracy]{%
       Average cross-validated \textsc{stbf-struct} accuracy using
 			one trial per block over all 21 subjects
 			relative to the number of iterations used to estimate the Kronecker-Toeplitz structured shrunk
 			covariance. Error bars represent the first and third quartiles. The
-			accuracy does not improve when using more than one iteration.
-			(\textbf{a}) Results for 1, 2, and 5 trials using only the first block in each
-			training fold for training. (\textbf{b}) Results
-			for 1, 2, and 5 trials using
-			all nine training blocks in the training folds.
-		}
+      accuracy does not improve when using more than one iteration.}
 		\label{fig:iterations}
 	\end{figure}
 
