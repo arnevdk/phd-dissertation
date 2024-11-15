@@ -17,7 +17,7 @@
 }
 % Kronecker-structured LDA ====================================================
 
-  \emph{This chapter was
+  \noindent\emph{This chapter was
   published as~\textcite{VanDenKerchove2022}.}
 
 	\section{Introduction}
@@ -86,10 +86,10 @@
 	lowercase letters, fixed scalars with uppercase cursive letters and variable
   scalars with cursive lowercase letters.
 	The epoched \ac{eeg} data with $N$ epochs, $C$ channels, and $S$ samples are
-  represented in epoch format as $\{\mat{X}_i\in\mathbb{R}^{C\times S}\}^N_{i=1}$
+  represented in epoch format as $\{\mat{X}_n\in\mathbb{R}^{C\times S}\}^N_{n=1}$
   or flattened vector format by concatenating all channels for each epoch.
-	Flattening results in $\{\mat{x}_i\in\mathbb{R}^{CS}\}^N_{i=1}$ such that
-  $\mat{x}_i = \text{vec}(\mat{X}_i)$.
+	Flattening results in $\{\mat{x}_n\in\mathbb{R}^{CS}\}^N_{n=1}$ such that
+  $\mat{x}_n = \text{vec}(\mat{X}_n)$.
 	The real covariance matrix of the epochs in vector format is
   denoted by $\mat{C}$, estimators thereof as $\hat{\mat{C}}$.
 
@@ -122,8 +122,8 @@
 	epochs, determined as follows:
 	\begin{equation}
 		\mathbf{a} =
-		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_i} -
-		\frac{1}{|\text{class 2}|}\sum_\text{class 2}\mathbf{x_i}
+		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_n} -
+		\frac{1}{|\text{class 2}|}\sum_\text{class 2}\mathbf{x_n}
 		\label{eq:stbf-struct/ap}
 	\end{equation}
 
@@ -137,7 +137,7 @@
 	\end{equation}
 	The beamformer can be applied to epochs (unseen or not) as:
 	\begin{equation}
-		y_i = \mathbf{w}\mathbf{x}_i
+		y_n = \mathbf{w}\mathbf{x}_n
 		\label{eq:stbf-struct/apply-bf}
 	\end{equation}
 	resulting in a scalar output per epoch.
@@ -160,14 +160,14 @@
 	covariance and inverse covariance calculated as follows:
 	\begin{equation}
     \hat{\mat{C}}_\text{emp} =
-		\frac{1}{N-1}\sum^{N}_{i=1}\mat{x}_i\mat{x}_i^\intercal
+		\frac{1}{N-1}\sum^{N}_{n=1}\mat{x}_n\mat{x}_in\intercal
 		\label{eq:stbf-struct/emp-cov}
 	\end{equation}
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\text{emp} = \hat{\mat{C}}_\text{emp}^+
 		\label{eq:stbf-struct/emp-inv-cov}
 	\end{equation}
-	The Moore-Penrose pseudoinverse $^+$, ensures a solution exists when
+	The Moore-Penrose pseudoinverse, $^+$, ensures a solution exists when
   $\hat{\mat{C}}_\text{emp}$ is singular.
 	\cref{fig:kronlda-covs}a and \cref{fig:kronlda-covs}b respectively show examples of the
 	empirical estimators of the covariance and the inverse covariance matrices.
@@ -204,11 +204,11 @@
 	covariance matrix's dimensionality, and the independence and variance of the
 	data, which can vary across evaluation settings and per session.
 	The optimal value for $\alpha$ can be found with a line search using cross-validation, but this can be a costly procedure.
+
 	Methods exist to estimate an optimal shrinkage value from the data directly.
 	Most notable among these are the Ledoit-Wolf procedure~\cite{Ledoit2004},
 	Rao-Blackwell Ledoit-Wolf~\cite{Chen2010}, and Oracle Approximating Shrinkage~\cite{Chen2010}.
-	A more recent estimation method~\cite{Tong2018} emulates a leave-one-out
-	cross-validation (\ac{loocv}) scheme expressed by the data-driven closed-form
+  A more recent estimation method~\cite{Tong2018} emulates a \ac{loocv} scheme expressed by the data-driven closed-form
 	estimate:
 	\begin{equation}
 		\alpha =
@@ -216,17 +216,16 @@
       \frac{N}{N-1}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
       - \frac{2}{CS}\left[\text{Tr}(\hat{\mat{C}}_\text{emp})\right]^2
       + \frac{1}{CS}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
-			- \frac{1}{N(N-1)}\sum_{i=1}^N||\mat{x}_i||_2^4
+			- \frac{1}{N(N-1)}\sum_{n=1}^N||\mat{x}_n||_2^4
 		}
 		{
       \frac{N^2 -2N}{(N-1)^2}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
       - \frac{2}{CS}\left[\text{Tr}(\hat{\mat{C}}_\text{emp})\right]^2
       + \frac{1}{CS}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
-			+ \frac{1}{N(N-1)^2}\sum_{i=1}^N||\mat{x}_i||_2^4
+			+ \frac{1}{N(N-1)^2}\sum_{n=1}^N||\mat{x}_n||_2^4
 		}
 		\label{eq:loocv}
 	\end{equation}
-
 	We opt for the \ac{loocv} shrinkage estimator because it avoids some of the
 	assumptions made by~\cite{Ledoit2004} and~\cite{Chen2010} and
 	because it generalizes to structured covariance estimation as described in
@@ -273,8 +272,8 @@
 	\cref{eq:stbf-struct/closed-form} can be reformulated more efficiently as
 	\cref{eq:stbf-struct/closed-form-kron}.
 	\begin{property}
-    $(\mat{U}\otimes \mat{V})\cdot\text{vec}(\mat{W}) =
-    \text{vec}(\mat{V}\mat{W}\mat{U}^\intercal)$
+    $(\mat{U}\otimes \mat{V})\cdot\vect(\mat{W}) =
+    \vect(\mat{V}\mat{W}\mat{U}^\intercal)$
     for any matrices $\mat{U}\in\mathbb{R}^{P\times P}$,
     $\mat{V}\in\mathbb{R}^{Q\times Q}$ and $\mat{W}\in\mathbb{R}^{P\times Q}$~\cite{Loan2000}.
 		\label{propr:stbf-struct/kron-multiplication}
@@ -283,7 +282,7 @@
 	\begin{equation}
 		\hat{\mat{w}}_\text{struct} =
     \frac{\hat{\mat{S}}^+\mat{A}^\intercal\hat{\mat{T}}^+}
-    {\mat{a}\cdot\text{vec}(\hat{\mat{S}}^+A^\intercal\hat{\mat{T}}^+)}
+    {\mat{a}\cdot\vect\left(\hat{\mat{S}}^+A^\intercal\hat{\mat{T}}^+\right)}
 		\label{eq:stbf-struct/closed-form-kron}
 	\end{equation}
 
@@ -388,13 +387,13 @@
 		\begin{equation}
       \tilde{\mat{S}}_{k+1} =
 			\frac{1}{N}
-      \sum^N_{i=1}\mat{X}_i^\intercal\hat{\mat{T}}_k^+\mat{X}_i
+      \sum^N_{n=1}\mat{X}_n^\intercal\hat{\mat{T}}_k^+\mat{X}_n
 			\label{eq:stbf-struct/fpi-spatial}
 		\end{equation}
 		\begin{equation}
       \tilde{\mat{T}}_{k+1} =
 			\frac{1}{N}
-      \sum^N_{i=1}\mat{X}_i\hat{\mat{S}}_k^+\mat{X}_i^\intercal
+      \sum^N_{n=1}\mat{X}_n\hat{\mat{S}}_k^+\mat{X}_n^\intercal
 			\label{eq:stbf-struct/fpi-temporal}
 		\end{equation}
 	\end{subequations}
@@ -440,8 +439,8 @@
 			\beta_{k+1} =
 			1-
 			\frac{
-        \frac{N}{N-1}\text{Tr}(\tilde{\hat{S}}_{k+1}^2)
-        - \frac{2}{C}\left[\text{Tr}(\tilde{\mat{S}}_{k+1})\right]^2
+        \frac{N}{N-1}\text{Tr}(\tilde{\mat{\hat{\S}}}_{k+1}^2)
+        - \frac{2}{C}\left[\text{Tr}(\mat{\tilde{S}}_{k+1})\right]^2
         + \frac{1}{C}\text{Tr}(\tilde{\mat{S}}_{k+1}^2)
 				- \frac{1}{N(N-1)}\sum_{i=1}^N
         \left[\text{Tr}(\mat{X}_i\hat{\mat{T}}_k^+\mat{X}_i^\intercal)^2\right]
@@ -460,15 +459,15 @@
 			\frac{
         \frac{N}{N-1}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
         - \frac{2}{S}\left[\text{Tr}(\tilde{\mat{T}}_{k+1})\right]^2
-				+ \frac{1}{S}\text{Tr}(\tilde{T}_{k+1}^2)
-				- \frac{1}{N(N-1)}\sum_{i=1}^N
-        \left[\text{Tr}(\mat{X}_i^\intercal\mat{\mat{S}}_k^+\mat{X}_i)^2\right]
+        + \frac{1}{S}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
+				- \frac{1}{N(N-1)}\sum_{n=1}^N
+        \left[\text{Tr}(\mat{X}_n^\intercal\mat{\mat{S}}_k^+\mat{X}_n)^2\right]
 			}{
         \frac{N^2-2N}{(N-1)^2}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
         - \frac{2}{S}\left[\text{Tr}(\tilde{\mat{T}}_{k+1})\right]^2
         + \frac{1}{S}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
-				+ \frac{1}{N(N-1)^2}\sum_{i=1}^N
-        \left[\text{Tr}(\mat{X}_i^\intercal\hat{\mat{S}}_k^+\mat{X}_i)^2\right]
+				+ \frac{1}{N(N-1)^2}\sum_{n=1}^N
+        \left[\text{Tr}(\mat{X}_n^\intercal\hat{\mat{S}}_k^+\mat{X}_n)^2\right]
 			}
 			\label{eq:stbf-struct/temporal-shrinkage}
 		\end{equation}
@@ -606,8 +605,9 @@
       Average cross-validated \textsc{stbf-struct} accuracy using
 			one trial per block over all 21 subjects
 			relative to the number of iterations used to estimate the Kronecker-Toeplitz structured shrunk
-			covariance. Error bars represent the first and third quartiles. The
-      accuracy does not improve when using more than one iteration.}
+			covariance. Shaded area represents a 95\% confidenced interval obtained
+      through 1000 bootstrapping iterations.
+      Accuracy does not improve when using more than one iteration.}
 		\label{fig:iterations}
 	\end{figure}
 

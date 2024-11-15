@@ -2,7 +2,18 @@
 \chapter{Block-term tensor discriminant analysis}
 \label{sec:bttda}
 \input{chapters/bttda/tensorviz.tex}
-\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
+\epigraph{%
+  ``I journeyed to the market to purchase a cow, its price set at ninety-and-seven coins.
+  Lacking this sum, I therefore borrowed fifty coins from each of my two good friends.
+  With the hundred coins, I paid for the beast and received three coins in change.
+  Of these, I returned one coin each to my companions, keeping one for myself.
+  Now, I owe each friend forty-and-nine coins, and with mine one remaining, the
+  total merely equals ninety-and-nine coins, short of one hundred!
+  Tell me then, kind stranger, whither hath the missing coin gone?''
+}{%
+  Ancient Algerian riddle
+}
+\noindent\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
 
 \section{Introduction}
 
@@ -344,8 +355,8 @@ the noise term and the extracted latent tensors:
 or, equivalently~\cite{Parra2005,Haufe2014},
 \begin{equation}
 	\left\{\mat{A}^*\right\}
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left(\ten{X}(n) - \hat{\ten{X}}(n)\right)^2
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left(\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right)^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left\[\ten{X}(n) - \hat{\ten{X}}(n)\right\]^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left\[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right\]^2
 \end{equation}
 This least squares tensor approximation problem can be solved efficiently using the
 alternating least squares algorithm~\cite{Bentbib2022}, iteratively fixing all but one of the activation patterns such that:
@@ -773,9 +784,10 @@ or on the true underlying structure of the data.
 Alternatively, the enhanced performance could also stem from the modeled data
 covariance.
 Since HODA estimates one within-class scatter matrix
-$S_{-k,\text{w}}\in\mathbb{R}^{D_k\times D_k}$ per mode, its overall
+$\mat{S}_{-k,\text{w}}\in\mathbb{R}^{D_k\times D_k}$ per mode, its overall
 model of the data scatter is determined by these per-mode scatter matrices as a
-Kronecker product $S_{-1,\text{w}}\otimes S_{-2,\text{w}}\otimes\cdots\otimes S_{-K,\text{w}}$, which corresponds to the assumption that the EEG data is
+Kronecker product $\mat{S}_{-1,\text{w}}\otimes
+\mat{S}_{-2,\text{w}}\otimes\cdots\otimes \mat{S}_{-K,\text{w}}$, which corresponds to the assumption that the EEG data is
 drawn from a multilinear normal distribution~\cite{Ohlson2013}.
 However, it is known that the EEG covariance cannot fully be expressed as a
 single Kronecker product, but rather is more accurately modeled by a sum of

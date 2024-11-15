@@ -1,6 +1,8 @@
 \chapter{\Acs{erp} latency estimation and alignment}
 \label{sec:wcble}
-\emph{\Cref{sec:wcble/literature/contrib}, \cref{sec:wcble/methods} (including
+\epigraph{``The sands of time cannot be stopped''}{Brom in \emph{Eragon --
+Christopher Paolini}}
+\noindent\emph{\Cref{sec:wcble/literature/contrib}, \cref{sec:wcble/methods} (including
 \cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
 \cref{sec:wcble/conclusion} were published
 as part of~\textcite{VanDenKerchove2024}.}
@@ -519,7 +521,7 @@ deviations of respectively $\sigma=0.1,0.2,0.3$s.
 The noise was scaled at 32 different noise levels, with the \ac{snr} of a
 target epoch ranging from 0 to -31dB, with
 \begin{equation}
-  \text{SNR} = 10\log_{10}\frac{\text{var}s(t,0)}{\text{var}\left(\text{noise}\right)}
+  \text{SNR} = 10\log_{10}\frac{\text{var}\left\[s(t,0)\right\]}{\text{var}\left(\text{noise}\right)}
 \end{equation}
 
 A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.

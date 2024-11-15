@@ -1,5 +1,6 @@
 \chapter{Brain-computer interfaces}
 \label{sec:bci}
+\epigraph{``My mind controls my reality.''}{Frank Herbert -- Children of Dune}
 
 People with \ac{sspi} due to neurodegenerative disease, stroke, traumatic brain or spine
 injury become entirely reliant on caregivers or family members in their day-to-day
@@ -815,11 +816,10 @@ $\mat{w}$ can be obtained as the eigenvector of
 $\mat{S}_\text{w}^{-1}\mat{S}_\text{b}$ corresponding to the largest eigenvalue.
 
 There is one caveat with these linear methods, however:
-the number of values ($=\text{nb. of channels}\times\text{nb. of sampled time points}$)
-is usually relatively high compared to the training dataset, since calibration time
-should be kept minimal.
-Therefore, strong regularization should be applied, such as covariance/scatter
-shrinkage.
+the number of values ($=C\cdot S$) is usually relatively high compared to the
+size of the training dataset, since calibration time should be kept minimal.
+Therefore, strong regularization, such as covariance/scatter
+shrinkage, should be applied.
 Regularization can also be performed by retaining structure in the data, such as in the
 case for the multilinear methods presented by~\textcite{Lotte2018}.
 
@@ -827,8 +827,8 @@ case for the multilinear methods presented by~\textcite{Lotte2018}.
 
 Another example of this is \ac{tlda}~\cite{Sosulski2022}, which assumes temporal
 stationarity in the background noise to regularize the problem.
-It does this by imposing a block-Toeplitz structure to the between-class
-scatter $\mat{S}_\text{b}$ matrix of \ac{lda}.
+It does this by imposing a block-Toeplitz structure to the within-class
+scatter $\mat{S}_\text{w}$ matrix of \ac{lda}.
 This means
 \begin{equation}
   \mat{S}_\text{w} = \begin{bmatrix}
