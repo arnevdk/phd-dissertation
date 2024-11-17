@@ -176,7 +176,7 @@
 
 	\subsubsection{Shrunk covariance estimation}
 	\label{sec:stbf-struct/methods/shrunk-cov}
-	The shrinkage covariance estimator creates a better-conditioned inversion matrix problem and generally performs better when applied to unseen data.
+	The shrinkage covariance estimator creates a better conditioned inversion matrix problem and generally performs better when applied to unseen data.
 	The estimators for the covariance and inverse covariance are given by:
 	\begin{equation}
     \hat{\mat{C}}_\alpha =
@@ -510,7 +510,9 @@
 	Data were subsequently filtered between 0.5Hz and 16Hz using forward-backward
 	filtering with a fourth-order Butterworth IIR filter.
 	The \ac{eeg} signal was corrected for ocular artifacts using Independent Component
-	Analysis (ICA) by rejecting components that correlated with the bipolar EOG channels vEOG and hEOG, according to adaptive Z-score thresholding.
+	Analysis (ICA) by rejecting components that correlated with the bipolar EOG
+  channels vEOG and hEOG, according to adaptive Z-score
+  thresholding.\todo{details? threshold for rejection?}
 	Finally, epochs were cut from 0.1s to 0.6s after stimulus onset.
 	No baseline correction was performed since this affects the temporal covariance
 	of the data, violating the Toeplitz structure assumption~\cite{Bijma2003}.
@@ -543,7 +545,7 @@
 	32Hz or twice the low-pass frequency 16Hz, resulting in 17 time samples
 	between 0.1 and 0.6s. According to the Nyquist Theorem, more samples would not
 	contain more information hence the minimum temporal resolution is chosen to reduce
-	the dimensionality of the covariance and improve its covariance.
+	the dimensionality of the covariance and improve its condition number.
 	The activation pattern is the difference between the averages of epochs in response to cued targets and the averages of those in response to non-cued targets.
 	We constructed three variations of the spatiotemporal beamformer:
 	\ac{stbf} with empirical covariance estimation (\textsc{stbf-emp}) as in
@@ -582,9 +584,9 @@
 	\cref{fig:iterations} confirms these results for the \textsc{stbf-struct} classifier.
 	Using more than one fixed-point iteration does not significantly improve the
 	accuracy across the amounts of training data and the number of trials
-	used for evaluation.
+  used for evaluation\todo{qualitative}.
 	Hence, only one iteration is used for the \textsc{stbf-struct} classifier, leading to a drastic speed-up of
-	the training process.
+  the training process\todo{qualitative}.
 
   \begin{figure}
     \sffamily
@@ -644,6 +646,8 @@
 			\textsc{stbf-struct}) drastically improves performance.}
 		\label{fig:accuracy}
 	\end{figure}
+  \todo{the legend does not correspond to the text (method names are
+  different)}
 
   \fullpagefig{%
 		\includegraphics[width=\textwidth]{figures/stbf_struct/accuracy_app.eps}
@@ -693,15 +697,17 @@
 
 	The tables show that \textsc{stbf-struct} has a significant advantage over
 	\textsc{stbf-shrunk} when the number of training blocks is low.
-	This effect is present for 1-, 2- and 5-trial evaluation.
+  This effect is present for 1-, 2- and 5-trial evaluation\todo{qualitative}.
 	This advantage decreases (the $p$-value increases) when
-	adding more training blocks.
+  adding more training blocks\todo{qualitative}.
 	Both \textsc{stbf-struct} and \textsc{stbf-shrunk} perform significantly better
-	than \textsc{stbf-emp} for all evaluated settings.
+  than \textsc{stbf-emp} for all evaluated settings\todo{qualitative}.
 	Compared to \textsc{xdawn+rg}, \textsc{stbf-struct} also has significantly
-	higher accuracy in almost all evaluated settings, except when using only one training block.
-	\textsc{stbf-shrunk} does not outperform \textsc{xdawn+rg} when training data is low but gains a significant advantage
-	when using more training data.
+	higher accuracy in almost all evaluated settings, except when using only one
+  training block\todo{qualitative}.
+	\textsc{stbf-shrunk} does not outperform \textsc{xdawn+rg} when training data
+  is low but gains a significant advantage	when using more training
+  data\todo{qualitative}.
 
 	\subsection{Classifier training time}
 	In order to evaluate the training time of the investigated classifiers, the
@@ -724,11 +730,15 @@
 			\textsc{xdawn+rg}.}
 		\label{fig:stbf-struct/training-time}
 	\end{figure}
+  \todo{the legend does not correspond to the text (method names are
+  different)}
+
+
 
 	\cref{fig:stbf-struct/training-time} shows that the training time of
 	\textsc{stbf-struct} increases less steeply than that of \textsc{stbf-shrunk}
 	and \textsc{stbf-emp}. The training time of all three \ac{stbf}-based classifiers is
-	much lower than that of \textsc{xdawn+rg}, which appears nearly constant when using
+  much lower\todo{qualitative} than that of \textsc{xdawn+rg}, which appears nearly constant when using
 	4, 8, 16, or 32 channels.
 
 	\section{Discussion}
@@ -737,7 +747,7 @@
 	As evidenced by \cref{fig:accuracy} and Tables \ref{tab:stbf-struct/p-values-1}-\ref{tab:stbf-struct/p-values-5}, the regularized classifiers \textsc{stbf-shrunk}
 	and \textsc{stbf-struct} significantly improve the classification accuracy
 	compared to the original \textsc{stbf-emp} for all numbers of training blocks
-	indicated.
+  indicated\todo{qualitative}.
 	We believe there are three reasons for this.
 	First and foremost, the empirical covariance matrix in \textsc{stbf-emp} becomes
 	ill-conditioned when the number of available training epochs is smaller than
@@ -772,7 +782,8 @@
 	would yield the best classification accuracy for the unseen data.
 
 	Another observation is the significantly better accuracy score of
-	\textsc{stbf-struct} over \textsc{stbf-shrunk} when the amount of available training data is small.
+	\textsc{stbf-struct} over \textsc{stbf-shrunk} when the amount of available
+  training data is small\todo{qualitative}.
 	This property is an attractive advantage in a \ac{bci} setting since it is desirable to keep the calibration (training) phase as short as possible without losing accuracy.
 	The accuracy advantage of the structured estimator is a consequence of the
 	Kronecker-Toeplitz covariance structure, which is informative for the
@@ -781,19 +792,21 @@
 	the brain with added noise~\cite{Munck1992, DeMunck2002, GonzalezNavarro2017}.
 	Hence, \textsc{stbf-struct} can utilize this prior information to better estimate the inverse
 	covariance.
-	The increase in accuracy for small training set sizes can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:stbf-struct/discussion/param-complex}), increasing the stability of matrix inversions.
+  The increase in accuracy for small training set sizes\todo{qualitative} can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:stbf-struct/discussion/param-complex}), increasing the stability of matrix inversions.
 
 	When compared to the state-of-the-art \textsc{xdawn+rg} classifier, we conclude
 	that \textsc{stbf-struct} reaches similar accuracy when using only one block of
-	training data.
+  training data\todo{qualitative}.
 	The authors suspect this is due to both
 	classifiers having insufficient training information to reach
 	satisfactory classification accuracy.
-	When more data are available, \textsc{stbf-struct} reaches significantly better accuracies.
+	When more data are available, \textsc{stbf-struct} reaches significantly
+  better accuracies\todo{qualitative}.
 	Combined with the benefits laid out in \cref{sec:stbf-struct/discussion/param-complex}, this
   makes it an attractive option for \ac{erp} classification.
 	\textsc{stbf-shrunk} does not show decisive accuracy improvements over
-	\textsc{xdawn+rg} using a few training blocks, but this improves as the training data increases.
+	\textsc{xdawn+rg} using a few training blocks, but this improves as the
+  training data increases\todo{qualitative}.
 
 	\subsection{Time and memory complexity}
 	\label{sec:stbf-struct/discussion/param-complex}
@@ -829,17 +842,21 @@
 	$\mathcal{O}(NS^2S^2+C^3+S^3)$ for the structured estimator of \textsc{stbf-struct}.
 	The results presented in \cref{fig:stbf-struct/training-time} confirm these
 	calculations.
-	It can be observed that the training time of \textsc{stbf-struct} stays low compared to \textsc{stbf-emp} and \textsc{stbf-shrunk} when dimensionality increases.
+	It can be observed that the training time of \textsc{stbf-struct} stays low
+  compared to \textsc{stbf-emp} and \textsc{stbf-shrunk} when dimensionality
+  increases\todo{qualitative}.
 
 	The results shown in \cref{fig:stbf-struct/training-time} also confirm that the
 	\ac{stbf}-based estimators are very fast to train compared to the
-	state-of-the-art estimator \textsc{xdawn+rg}, which confirms the results in~\cite{Wittevrongel2016}.
+	state-of-the-art estimator \textsc{xdawn+rg}, which confirms the results
+  reported by~\textcite{Wittevrongel2016}.
 	Since the training times of all \ac{stbf}-based classifiers are already in
 	the order of tenths of seconds, the question arises whether the
 	improvements achieved by using the structured estimator would be relevant in
 	practice.
 	However, the authors believe that these results could significantly impact some
-	use cases of the spatiotemporal beamformer, like high spatial or temporal resolution \ac{erp} analyses.
+	use cases of the spatiotemporal beamformer, like high spatial or temporal
+  resolution \ac{erp} analyses (e.g., $C>>32, S>>256$).
 	One example is single-trial \ac{erp} analysis with a high-temporal
 	resolution to extract \ac{erp} time features.
 	Such higher-resolution analyses can later be incorporated into an \ac{erp}
@@ -936,7 +953,9 @@
 	signal.
 	We compared these estimators with the original spatiotemporal
 	beamformer and a state-of-the-art method in an off-line P3 detection task.
-	Our results show that the structured estimator performs better when training data are sparsely available and that it can be computed faster and with substantially less memory usage.
+	Our results show that the structured estimator performs better when training
+  data are sparsely available and that it can be computed faster and with
+  substantially less memory usage\todo{qualitative}.
 	Since these algorithms are not paradigm-specific,  the conclusions can be generalized to
 	other \ac{erp}-based \ac{bci} settings.
 

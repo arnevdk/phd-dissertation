@@ -14,9 +14,7 @@ iteration_accuracy["subject"] = iteration_accuracy["subject"].astype(str)
 iteration_accuracy["fold"] = iteration_accuracy["fold"].astype(str)
 
 
-def plot_iteration_lines(
-    data, ax, n_trials="", show_chance_label=False, color="tab:blue"
-):
+def plot_iteration_lines(data, ax, n_trials="", show_chance_label=False):
     sns.lineplot(
         data=data, x="iterations", y="accuracy", ax=ax, marker="s", markersize=3, mew=0
     )
@@ -30,7 +28,7 @@ def plot_iteration_lines(
             fontsize=9,
             xy=(0.9, 1.25 / 9),
             ha="right",
-            va="center",
+            va="bottom",
             xycoords="axes fraction",
             color=colors["darkgray"],
             bbox=dict(facecolor="white", linewidth=0, pad=0),

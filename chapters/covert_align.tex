@@ -1,7 +1,7 @@
 \chapter{Compensating \acs{erp} jitter for gaze-independence}%
 \label{sec:covert-align}
-\epigraph{``You see, but you do not observe!''}{Sherlock Holmes in  \\ \emph{A
-Scandal in Bohemia -- Sr. Arthur C. Doyle}}
+\epigraph{``You see, but you do not observe!''}{Sherlock Holmes in  \\ A
+Scandal in Bohemia -- Sir Arthur Conan Doyle}
 \noindent\emph{This chapter was published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
@@ -21,7 +21,7 @@ was specifically designed for this purpose.
 
 \textcite{Arico2014} observed higher variability in single-trial P3 peak
 latencies relative to stimulus onset during covert \ac{vsa} compared to overt
-\ac{vsa}.
+\ac{vsa}\todo{qualitative, discuss}.
 This latency variability contributes to reduced covert \ac{vsa} decoding performance.
 While they proposed an analysis and performance prediction method, they did not provide a
 decoding solution.
@@ -176,6 +176,8 @@ Stimuli were presented using PsychoPy (version 2023.1.3)~\cite{Peirce2019}.
     cued to fixate at the center of the interface.}%
     \label{fig:covert-align/interface/covert}
   \end{subfigure}
+  \caption[Stimulation interface layout.]{Layout and visual elements of the experimental stimulation
+  interface used in recording the CVSA-ERP dataset.}
 \end{figure}
 
 The participant was instructed to press the space bar when ready for a block
@@ -377,20 +379,20 @@ of \ac{bci} operation intact.
 For all datasets and \ac{vsa} conditions, \ac{cble} scores approximately on par with \ac{tlda}.
 Yet, \ac{wcble} yields an improved decoding accuracy for covert \ac{vsa} in both
 datasets, which is greatest for smaller numbers of repetitions and
-decreases as the number of repetitions increases.
-This covert \ac{vsa} accuracy increase over \ac{tlda} is significant in thdeep q learning tutoriale BNCI2014-009 dataset
-for 1 and 3 repetitions, and in CVSA-ERP for 1-5 and 10 repetitions.
+decreases as the number of repetitions increases.\todo{qualitative}
+This covert \ac{vsa} accuracy increase over \ac{tlda} is significant in the
+BNCI2014-009 dataset for 1 and 3 repetitions, and in CVSA-ERP for 1-5 and 10 repetitions.
 Furthermore, while we reported a relative decrease in single-trial \ac{rocauc} for
 \ac{wcble} in overt \ac{vsa}, this does not seem to result in a consistent decrease in target
-selection accuracy.
+selection accuracy.\todo{qualitative}
 No significant increase of \ac{wcble} over other methods was found in split \ac{vsa}.
 While Riemannian methods are significantly outperformed by \ac{tlda}, \ac{cble}, and \ac{wcble}
 in the BNCI2014-009 dataset, they perform approximately on par with \ac{tlda} and
-\ac{wcble} in CVSA-ERP.
+\ac{wcble} in CVSA-ERP.\todo{qualitative}
 
 Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
 \ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
-These results compare to the performance gain in \cite{Zisk2022}.
+These results compare to the performance gain reported by \textcite{Zisk2022}.
 They observed a 5.63\%pt. accuracy increase with 1-10 selection repetitions over
 step-wise Linear Discriminant Analysis  (SWLDA) for 6 participants with
 \ac{als}, whose SWLDA performance also suffered from jitter.
@@ -469,10 +471,10 @@ In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/result
 	}
 \end{figure*}
 When comparing \ac{cble} and \ac{tlda}, we do not observe large differences in any of the
-evaluated settings, similar to the within-subject conditions.
+evaluated settings, similar to the within-subject conditions.\todo{qualitative}
 On the contrary, when considering the comparisons between \ac{wcble} and \ac{tlda}, we
 see that performance is on par or greater using \ac{wcble} for most conditions,
-except for within-overt \ac{vsa} decoding.
+except for within-overt \ac{vsa} decoding.\todo{qualitative}
 
 \section{Discussion}
 
@@ -502,10 +504,11 @@ classifier in this case as well.
 We believe the relative increase in performance of our proposed decoder in covert and
 split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the following:
 \begin{enumerate*}[label=(\arabic*)]
-	\item Covert and split \ac{vsa} exhibit higher P3 jitter than overt \ac{vsa}.
+  \item Covert and split \ac{vsa} exhibit higher P3 jitter than overt \ac{vsa}.
         In covert and split \ac{vsa}, participants have to execute a dual task by
         dissociating their visuospatial attention and gaze fixation.
-        Evidence shows that \ac{erp} latency variability is higher when attention is
+        Evidence shows that \ac{erp} latency variability is
+        higher when attention is
         divided~\cite{Polich2007,Arico2014}.
         \textcite{Arico2014} also partly attribute higher latency jitter to the covert \ac{vsa}
         task performed in the BNCI2014-009 dataset, since the GeoSpell interface
@@ -530,6 +533,7 @@ split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the foll
         state-of-the-art classifiers, leaving less room for relative improvement
         in this case.
 \end{enumerate*}
+\todo{first item qualitative}
 
 Although it is not immediately clear if \ac{wcble} actively corrects for higher P3 jitter
 present in covert and split \ac{vsa} compared to overt \ac{vsa},
@@ -550,7 +554,8 @@ Since all conditions have the P3 in common, the estimated latencies can be
 interpreted as P3 latencies.
 Two-sided Wilcoxon rank-sum tests on jitter, expressed as the interquartile
 range (IQR) of the estimated latencies of target trials, revealed that overt
-\ac{vsa} exhibited significantly lower jitter than all other conditions for both datasets.
+\ac{vsa} exhibited significantly lower jitter than all other conditions for
+both datasets.\todo{qualitative}
 No other significant differences were found.
 $p$-values were corrected for the family-wise error rate using Bonferroni
 correction.
@@ -559,9 +564,10 @@ non-negligible role in covert \ac{vsa} by comparing performance between
 overt and covert \ac{vsa}, while including or excluding early VEPs.
 This analysis showed that the absence of the N1 and other early VEPs is not the
 only factor hampering covert \ac{vsa} decoding performance.
-However, the large increase in performance for covert \ac{vsa} in \cite{Arico2014} could also
+However, the large increase in performance for covert \ac{vsa} reported by
+\cite{Arico2014}\todo{qualitative} could also
 be explained by overfitting on artifacts amplified by aligning, since their
-method is not evaluated on unseen data, as opposed to ours.
+method is not evaluated on unseen data, as opposed to ours.\todo{qualitative}
 
 We also argue that \ac{wcble} does not only enhance the P3 signal, but effectively reduces the
 negative impact of noise that would otherwise mask the \ac{erp} response, thereby increasing the

@@ -1,0 +1,202 @@
+\documentclass{letter}
+\usepackage[backend=biber]{biblatex}
+\usepackage{todonotes}
+\setuptodonotes{inline}
+
+\addbibresource{references.bib}
+
+\newcommand{\reply}[1]{%
+	\textbf{Response to review comments made by prof. #1}
+
+}
+
+\begin{document}
+
+\signature{
+	Arne Van Den Kerchove \\
+	\texttt{arne.vandenkerchove@kuleuven.be} \\
+	+32 473 32 78 71 \\
+}
+\address{
+	KU Leuven \\
+	Laboratory for Neuro- and Psychophysiology \\
+	Campus Gasthuisberg, O\&N 2 \\
+	Herestraat 49 bus 1021 \\
+	BE-3000 Leuven
+}
+
+\begin{letter}{
+	prof. John Creemers \\
+	KU Leuven \\
+	Doctoral School of Biomedical Sciences \\
+	Campus Gasthuisberg, O\&N 4 \\
+	Herestraat 49 bus 700
+	BE-3000 Leuven
+
+}
+\opening{Dear chair and members of the reading committee}
+
+I would like to extend my sincere gratitude for time and effort you have taken
+to review the manuscript of my PhD dissertation.
+Additionally, I would like to thank you for the insightful, constructive and
+detailed comments you all have provided.
+The following reply contains a point-by-point response to your review comments.
+Attached, you will also find an updated draft of the manuscript and a version
+with indicated changes for your approval.
+
+\reply{Andrea K\"ubler}
+Major comments:
+\begin{enumerate}
+	\item
+\end{enumerate}
+Minor comments:
+\begin{enumerate}
+	\item
+\end{enumerate}
+
+\reply{Fabien Lotte}
+Major comments:
+\begin{enumerate}
+	\item Part of the confusion between active and passive BCI might be due
+	to the poor choice of phrasing ``paradigms that require little active participation from the user, like redirect-
+	ing attention or initiating imagined actions, are classified as passive BCI.''.
+	This has been rewritten to ``in contrast to paradigms that require the user's active participation, for
+	instance through redirecting attention or initiating imagined actions,
+	paradigms free of this requirement are classified as \emph{passive \ac{bci}}''
+	for clarity.
+	Neurofeedback has been reclassified as active BCI in the text and in
+	figure 1.3.
+	\item \todo{Why XDAWN+RG no shrinkage (performed worse), fair
+	comparison of sample rate}
+	\item \todo{report actual accuracies performance stbf in table}
+	\item In the results section of chapter 4, statistical comparisons were
+	only performed between methods for which we evaluated the performance
+	ourselves (HODA, PARAFACDA and BTTDA).
+	Since the MOABB benchmarking framework~\cite{Aristimunha2023} allows for
+	fair comparison of performance metrics reported across different works,
+	the analyses for other comparison methods were not re-run
+	by us as reported, but performances were
+	taken from the MOABB benchmark database~\cite{Chevallier2024}.
+	However, this source provided only the aggregated performance metrics
+	and not the metrics per subject, session and cross-validation fold,
+	hence we could not perform relevant statistical comparison with these
+	comparison models.
+	\item \todo{include table with absolute performances for transfer
+	conditions}
+\end{enumerate}
+Minor comments:
+\todo{minor comments in document}
+\begin{enumerate}
+	\item According to the annotations, typographical errors have been
+	corrected and imprecise or inaccurate statements have been adjusted.
+	The recommended references have been discussed and, where necessary,
+	statements were adapted to accommodate this.
+\end{enumerate}
+
+\reply{Reinhold Scherer}
+Major comments:
+\begin{enumerate}
+	\item \todo{quantify qualitative statements}
+	\item  Mathematical equations and derivations have thoroughly
+	been checked for correctness and notational consistency, and have been
+	corrected throughout the manuscript where necessary.
+	\item As indicated by the reviewer, true on-line experiments with live
+	feedback have indeed not yet be conducted, but were foreseen to take
+	place within the framework of this doctoral study.
+	I agree that these experiments would be valuable to supplement the
+	presented conclusions and are the logical next step.
+	Indeed, the start of experimentation with healthy control participants
+	as well as patient groups, was heavily delayed by the COVID-19 pandemic, as the
+	preparatory research started in September 2019 and I officially
+	enrolled in the the doctoral training programme in January 2020.
+	This restricted not only our access to experiment subjects for a
+	significant period at the start of the PhD, and even longer for
+	vulnerable patient groups, but also shifted priorities for the medical
+	staff at our partner institutions and patient centers.
+	Hence, work early in the PhD mainly focused on the development of
+	computational methods.
+	We are currently starting up true on-line experimentation in cooperation
+	with our partner patient centers, with an adapted interface and experimental protocol.
+	\todo{indicate in manuscript covid}
+	\item Recorded datasets could not be made publicly available since the
+	ethical protocol (Ethics Commission of University Hospital Leuven --
+	S62547 v1.4) for the conducted studies did not include provisions
+	publishing the data.
+\end{enumerate}
+Minor comments:
+\begin{enumerate}
+	\item
+\end{enumerate}
+
+\reply{Maarten De Vos}
+Major comments:
+\begin{enumerate}
+	\item Mathematical equations and derivations have thoroughly
+	been checked for correctness and notational consistency, and have been
+	corrected throughout the manuscript where necessary.
+	The paragraph on Block-Toeplitz linear discriminant analysis (tLDA) in
+	section 1.6.4 has also been corrected, and it was expanded for clarity.
+	Figures 3.1 and 3.2 have been regenerated and relabeled for consistent
+	formatting.
+	\item \todo{replace wilcoxon by delong}
+\end{enumerate}
+Minor comments:
+\begin{enumerate}
+	\item Unsupported claims regarding generalisability have been omitted
+	from the abstract.
+	\item Throughout the manuscript, different EEG band-pass filtering
+	settings have been used.
+	Chapter 1 indicates that ERPs are usually band-pass filtered between
+	0.5 and 16 Hz.
+	These were also the preferred cut-off frequencies for other
+	(unpublished) analyses used during the course of the thesis work, an
+	those used for the analyses in chapter 3.
+	However, ERP datasets evaluated in chapter 4 were band-pass filtered
+	between 1 and 24 Hz, and in chapter 6 between 0.1 and 20 Hz.
+	While there is no general consensus in the field about the optimal
+	cut-off frequencies for P300 detection and ERP analysis in general,
+	these values all fall well within the accepted
+	bounds~\cite{Bougrain2012}.
+	Decisions to deviate from this were made consciously.
+	In chapter 3, filtering between 1 and 24 Hz was applied for consistency
+	with the recommended ERP preprocessing pipeline of the MOABB
+	benchmarking framework~\cite{Aristimunha2023}.
+	This allows for a fair comparison under equal circumstances of the
+	performance of the proposed algorithm with performances of other
+	algorithms reported by the MOABB benchmarking
+	database~\cite{Chevallier2024}.
+	In chapter 6, the low-pass frequency was increased from 16 Hz to 20 Hz,
+	since the analyses in this explicitly involve the short-time effects of
+	latencies of ERP components, and the analysis of faster, early ERP
+	components. A low low-pass frequency would harm the precision of
+	latency effects in the filtered signal.
+	A lower high-pass filter of 0.1 Hz was used here to reveal the
+	influence of the proposed alignment approach on potential
+	slower late components.
+	\item Typographical errors have been corrected throughout the
+	manuscript.
+\end{enumerate}
+
+\reply{Adalberto Simeone}
+Major comments:
+\begin{enumerate}
+	\item \todo{discuss in limitations the impact of letters and future
+	work experiments with an actual usable interface}
+	\todo{mention here plans to go to patients with actual speller
+	interface}
+\end{enumerate}
+Minor comments:
+\begin{enumerate}
+	\item \todo{correct si measurements Hz, mm, cm, V, µV, $\mu$ V}
+	\item \todo{do proper check in textcite, especially in chapter 3}
+	\item \todo{check for contractions and remove we've, isn't, wouldn't}
+\end{enumerate}
+
+
+\textbf{References}
+
+\printbibliography[heading=none]
+
+\closing{Kind regards and thank you in advance,}
+\end{letter}
+\end{document}

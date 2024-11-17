@@ -8,14 +8,18 @@
 
     % Draw the outermost circle for SSPI with ultra thick lines and bold text matching its line color
     \draw[ultra thick, accent1] (0,2) circle (3);
-    \node[text=accent1] at (0,4) {\textbf{\acs{sspi}}};  % Centered bold text with line color
+    \node[text=accent1, text width=15em, anchor=center, align=center] at (0,4)
+    {\small\textbf{severe speech and \\ physical impairment (SSPI)}};  % Centered bold text with line color
 
     % Draw the middle circle for SSPGI with ultra thick lines and bold text matching its line color
     \draw[ultra thick, accent2] (0,1) circle (2);
-    \node[text=accent2] at (0,1.66) {\textbf{\acs{sspgi}}};  % Centered bold text with line color
+    \node[text=accent2, text width=10em, anchor=center, align=center] at
+    (0,2) {\small\textbf{severe speech, \\ physical and gaze \\ impairment
+    (SSPGI)}};  % Centered bold text with line color
 
     % Draw the innermost circle for LIS with ultra thick lines and bold text matching its line color
     \draw[ultra thick, accent3] (0,0) circle (1);
-    \node[text=accent3] at (0,0) {\textbf{\acs{lis}}};  % Centered bold text with line color
+    \node[text=accent3, text width=5em, anchor=center, align=center] at (0,-.1)
+    {\small\textbf{Locked-in \\ Syndrome \\ (LiS)}};  % Centered bold text with line color
 
 \end{tikzpicture}

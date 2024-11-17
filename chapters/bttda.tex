@@ -125,8 +125,8 @@ optimized for discriminability, since they rely on a low-rank common subspace
 between the input and classification labels.
 \textcite{Huang2020} propose a supervised approach for finding multiple discriminant
 multilinear spectral filter terms and apply it to motor imagery BCI, but their
-decomposition is also restricted in flexibility.
-
+decomposition is also restricted in flexibility, since the solution can only
+extract rank $(r_1,r_2,1)$ with mode 3 corresponding to the frequency domain.
 
 \subsection{A block-term structured model for classification}
 
@@ -329,7 +329,7 @@ reconstructed tensor $\hat{\ten{X}}$, and error term $\ten{\mathbfcal{E}}$.
 \begin{figure}[t]
 	\centering
 	\input{figures/bttda/HODA_forward.tikz.tex}
-  \caption[A forward projection for \ac{hoda}.]{The forward projection for HODA.
+  \caption[A forward projection for \acs{hoda}.]{The forward projection for HODA.
     By calculating activation patterns $\mat{A}_k$, the original tensor $\ten{X}$ can approximately be
     reconstructed as $\hat{\ten{X}}$ from projected latent tensor $\ten{G}$.
     The reconstruction is accurate up to an error term $\ten{\mathbfcal{E}}$,
@@ -355,8 +355,8 @@ the noise term and the extracted latent tensors:
 or, equivalently~\cite{Parra2005,Haufe2014},
 \begin{equation}
 	\left\{\mat{A}^*\right\}
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left\[\ten{X}(n) - \hat{\ten{X}}(n)\right\]^2
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left\[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right\]^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \hat{\ten{X}}(n)\right]^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right]^2
 \end{equation}
 This least squares tensor approximation problem can be solved efficiently using the
 alternating least squares algorithm~\cite{Bentbib2022}, iteratively fixing all but one of the activation patterns such that:
@@ -692,14 +692,14 @@ PARAFACDA+LDA and BTTDA+LDA improve upon HODA+LDA, and for BTTDA+LDA this
 difference is significant ($p=0.0269$).
 For the BNCI2014-004 dataset, the performance gap with comparison methods is
 smaller, but no significant differences were found between HODA+LDA,
-PARAFACDA+LDA, and BTTDA+LDA.
+PARAFACDA+LDA, and BTTDA+LDA\todo{qualitative}.
 
 \subsection{Block contribution}
 To analyze the contribution of extra feature blocks extracted by BTTDA over
 the first one found by HODA, we pick an ERP ($K=2$) dataset
 (BNCI2014-008) and an MI ($K=3$) dataset (BNCI2014-001).
 We report within-session ROC-AUC scores for training, validation, and test data as a function
-of the number of blocks increases, shown in \cref{fig:blocks}.
+of the number of blocks, shown in \cref{fig:blocks}.
 Training and validation folds were taken from the model selection procedure.
 Additionally, the Normalized Mean Squared Error (NMSE) is reported for the
 reconstructed from the truncated BTTDA decomposition
@@ -738,8 +738,10 @@ by the exact tensorization method used, i.e., the time-frequency transform in
 this case, which is not the main focus of this work.
 
 Nevertheless, when considering the relative improvement over the original
-HODA model, our results show that BTTDA+LDA performs consistently on par or higher than HODA+LDA.
-The classification score for BTTDA+LDA was also slightly higher than that of
+HODA model, our results show that BTTDA+LDA performs consistently on par or
+higher than HODA+LDA\todo{qualitative}.
+The classification score for BTTDA+LDA was also slightly
+higher\todo{qualitative} than that of
 restricted PARAFACDA+LDA for the ERP datasets and one of the MI datasets, but these
 results were not significant, and further studies with more datasets and
 subjects should show whether this holds.
@@ -896,7 +898,7 @@ Via an accompanying heuristic model selection procedure, \ac{bci} decoders using
 \ac{bttda} feature extraction can significantly outperform decoders based on
 \ac{hoda} and reach state-of-the-art decoding performance on event-related potential
 problems (second-order tensors) and scores on par with or higher than \ac{hoda} in motor
-imagery problems (third-order tensors).
+imagery problems (third-order tensors)\todo{qualitative}.
 Moving from the rigid Tucker tensor structure of \ac{hoda} to the more flexible
 block-term structure shifts the problem from finding optimally constrained
 multilinear projections to model and feature selection.

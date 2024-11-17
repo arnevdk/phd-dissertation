@@ -29,8 +29,9 @@
     \node[color=darkgray, align=center,font=\bfseries, anchor=west] at ({1+\margin},0) {stimulus\\dependent};
 
     %% Text in rectangles
-    \node[align=center] at ({-\center}, {\center+\textspacing}) {motor\\imagery};
-    \node[align=center] at ({-\center}, {\center-\textspacing}) {imagined\\speech};
+    \node[align=center] at ({-\center}, {\center+1.5*\textspacing}) {motor\\imagery};
+    \node[align=center] at ({-\center}, {\center}) {imagined\\speech};
+    \node[align=center] at ({-\center}, {\center-1.5*\textspacing}) {neurofeedback};
 
     \node[align=center] at ({\center+\textspacing}, {\center+\textspacing}) {P300};
     \node[align=center] at ({\center+\textspacing}, {\center-\textspacing}) {SSVEP};
@@ -40,7 +41,7 @@
     %% More text
     \node[align=center] at ({\center+\textspacing}, {-\center+\textspacing})  {error\\potentials};
     \node[align=center] at ({-\center-\textspacing}, {-\center+\textspacing}) {attention\\monitoring};
-    \node[align=center] at ({-\center+\textspacing}, {-\center-\textspacing}) {emotion\\monitoring};
-    \node[align=center] at ({\center-\textspacing}, {-\center-\textspacing}) {neurofeedback};
+    \node[align=center] at ({-\center+\textspacing}, {-\center-\textspacing}) {clinical \\ neuroimaging};
+    \node[align=center] at ({+\center-\textspacing}, {-\center-\textspacing})  {emotion \\ monitoring};
   %\end{scope}
 \end{tikzpicture}

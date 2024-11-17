@@ -1,7 +1,7 @@
 \chapter{\Acs{erp} latency estimation and alignment}
 \label{sec:wcble}
-\epigraph{``The sands of time cannot be stopped''}{Brom in \emph{Eragon --
-Christopher Paolini}}
+\epigraph{``The sands of time cannot be stopped''}{Brom in Eragon --
+Christopher Paolini}
 \noindent\emph{\Cref{sec:wcble/literature/contrib}, \cref{sec:wcble/methods} (including
 \cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
 \cref{sec:wcble/conclusion} were published
@@ -29,8 +29,8 @@ Within-session variability of \ac{erp} latency, called \ac{erp} latency
 accuracy~\cite{Thompson2012}.
 This effect is especially prominent when bringing \ac{bci} development from the
 lab to the clinical setting.
-For instance, \textcite{Zisk2021} showed that \ac{als} results significantly
-increased \ac{erp} jitter.
+For instance, \textcite{Zisk2021} showed that \ac{als} results in significantly
+increased \ac{erp} jitter\todo{qualitative}.
 \textcite{Arico2014} showed that latency jitter negatively affects \ac{bci}
 performance, and disproportionately so when the user is not directly gazing at
 intended targets, such as is the case for individuals with \ac{sspgi}.
@@ -505,7 +505,7 @@ The source time course is defined by the following function:
 \begin{equation}
   s(t,l) =
   \begin{cases}
-    a\sin\left(2\pi f\left(t-l\right)\right) & \text{if  $l-\frac{1}{2f} < t < l-\frac{1}{2f}$} \\
+    a\sin\left(2\pi f\left(t-l\right)\right) & \text{if  $l-\frac{1}{2f} < t < l+\frac{1}{2f}$} \\
     0 & \text{otherwise}
   \end{cases}
 \end{equation}
@@ -521,7 +521,7 @@ deviations of respectively $\sigma=0.1,0.2,0.3$s.
 The noise was scaled at 32 different noise levels, with the \ac{snr} of a
 target epoch ranging from 0 to -31dB, with
 \begin{equation}
-  \text{SNR} = 10\log_{10}\frac{\text{var}\left\[s(t,0)\right\]}{\text{var}\left(\text{noise}\right)}
+  \text{SNR} = 10\log_{10}\frac{\var\left[s(t,0)\right]}{\var\left(\text{noise}\right)}
 \end{equation}
 
 A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.
@@ -600,13 +600,13 @@ classifier with $L_2$-norm regularization ($C=0.2$).
 \Cref{fig:wcble/results/accuracy} shows that the classification accuracy of both \ac{tlda} and \ac{cble}
 decreases with
 $\sigma$ and \ac{snr}, but \ac{cble} outperforms \ac{tlda}.
-This difference is particularly large when $\sigma$ is higher ($\sigma=0.2$
+This difference is particularly large\todo{qualitative} when $\sigma$ is higher ($\sigma=0.2$
 and $\sigma=0.3$) and \ac{snr} is not yet high.
 \Ac{wcble} always scored better than \ac{cble} and \ac{tlda}, except for
 $\sigma=0.1$ and $\text{\ac{snr}} < 27 \text{dB}$, at which point both \ac{cble}
-and \ac{wcble} performed at chance level.
+and \ac{wcble} performed at chance leveltodo{qualitative}.
 When considering the accuracy of \ac{wcble}, we see that it shows more of a
-plateau as \ac{snr} increases.
+plateau as \ac{snr} increases\todo{qualitative}.
 
 \section{Discussion \& conclusion}
 \label{sec:wcble/conclusion}
@@ -625,11 +625,12 @@ classes to discriminate.
 
 The key finding of the simulation study presented
 in \cref{sec:wcble/results} is that \ac{wcble} is robust to higher evoked
-potential jitter and lower \ac{snr} than \ac{cble}.
+potential jitter and lower \ac{snr} than \ac{cble}\todo{qualitative}.
 It could therefore be a better candidate to apply in \ac{erp} analysis and
 decoding in those cases where jittered \ac{erp} data is of interest.
-At a certain noise threshold, both methods begin to fail, but \ac{wcble}
-delivers higher accuracy at intermediate \ac{snr} levels than \ac{cble}, likely due to the iterative alignment process.
+At a certain noise threshold\todo{qualitative}, both methods begin to fail, but \ac{wcble}
+delivers higher accuracy at intermediate \ac{snr} levels than
+\ac{cble}\todo{qualitative}, likely due to the iterative alignment process.
 
 In general, noise beyond a certain level will overwhelm both \ac{cble} and
 \ac{wcble} performance, making it impossible to accurately estimate latencies

@@ -31,10 +31,12 @@ of the user.
 Starting in the 1970s from methods to establish basic communication from minimal brain
 activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
 into sophisticated interaction schemes that restore or enhance many capabilities by
-bypassing defective parts of the nervous or muscle system.
+bypassing defective parts of the nervous or muscle system.\todo{the BCI concetp
+was proposed at that time, but maybe not yet this form of communication. Also,
+this reference is not from the 1970s, you may want to cite the original paper}
 By now, classic \acp{bci} methods are starting to mature outside the lab setting and can
-be used as assistive communication technology by individuals with \acl{sspi}.
-speech~\cite{Wolpaw2018,Milekovic2018}.
+be used as assistive communication technology by individuals with \acl{sspi}
+~\cite{Wolpaw2018,Milekovic2018}.
 Impressive cutting-edge experimental examples include a brain-spine interface allowing a
 paraplegic individual to walk again~\cite{Lorach2023}, a \ac{bci} translating internal
 speech to a facial avatar speaking the imagined text~\cite{Metzger2023}, and fast
@@ -144,7 +146,7 @@ cochlear implant as a hearing aide, or indirectly through sensory stimulation.
 The latter involves specific, paradigm-related, sensory input, like tactile feedback for
 movement \ac{bci}~\cite{Flesher2021}, or simply presenting selected actions back to the
 user.
-The user's brain will then adapt through reinforcement learning, causing changes in
+The user's brain will then adapt through learning, causing changes in
 behavior or strategy.
 Neuroplasticity, the brain's ability to adapt and reinforce specific neural pathways,
 can have a positive impact on \ac{bci} performance and gives rise to rehabilitation
@@ -180,7 +182,7 @@ A better candidate is the neuronal electrical activity.
 The brain contains 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The \emph{action potential} and its related \emph{postsynaptic potential} are electrical
-pulses occurring when a neuron receives input from another neuron and is activated.
+pulses occurring when a neuron receives input from other neurons and is activated.
 The firing of a neuron, or the combined firing of groups of synchronized neurons, thus
 generates an electrical field in and near the brain, which can be measured using
 electrodes.
@@ -225,10 +227,11 @@ This makes it easier to retrieve a signal with a known origin from the brain, wh
 might be leveraged by the paradigm to modulate information.
 Generally, microelectrodes penetrating the cortex are considered to have the highest
 spatial resolution.
-These are needles with a diameter smaller than 10µm and one or multiple electrodes that
+These are needles with a diameter smaller than 10 µm and one or multiple electrodes that
 extend several millimeters into the cortex.
 Microelectrodes can measure the Local Field Potential (LFP), the extracellular potential
-of a small group of neurons, or even intracellular single neuron action potential
+of a small group of neurons,\todo{qualitative}
+or even intracellular single neuron action potential
 spikes.
 They come in single-electrode form, or, more popularly, in microelectrode arrays.
 Well-known examples are the Utah array~\cite{Maynard1997}, the more recent NeuraLink
@@ -237,15 +240,17 @@ implant~\cite{Musk2019}, and IMEC's Neuropixels 2.0~\cite{Steinmetz2021}.
 Larger implanted electrodes are referred to as intracranial \ac{eeg} (i\ac{eeg}).
 Depth electrodes, like those found in in stereo-\ac{eeg}, can be used for \ac{bci}~\cite{Wu2024}
  and other applications, like closed-loop adaptive control for Deep Brain Stimulation to mitigate Parkinson's disease
-symptoms~\cite{Arlotti2018}.
+symptoms~\cite{Arlotti2018}.\todo{qualify size}
 Depth electrodes are longer rods with multiple electrodes that can extend deeper into
 the brain.
 Since these still penetrate the cortex, electrodes that sit on top of the cortex are
 more popular, as they are considered less invasive.
 \Ac{ecog} is a powerful method with many applications in \ac{bci}~\cite{Schalk2011} and
 epilepsy diagnosis.
-Newer developments like micro-ECoG (µECoG)~\cite{Shokoueinejad2019}, with a higher
-number of smaller electrodes per surface area, allow for more precise measurements.
+Newer developments like micro-ECoG (µECoG), with a higher
+number of smaller electrodes per surface area (recording from sites with
+diameter of 10s of micrometers instead of $\pm$ 1 cm)~\cite{Shokoueinejad2019},
+allow for more precise measurements.
 
 Some impressive recent breakthroughs in speech and motor \ac{bci} for communication have
 been realized using invasive microelectrode arrays~\cite{Willett2021} and
@@ -323,8 +328,9 @@ stimulation and the engagement of the user as shown in \cref{fig:bci/paradigms}.
   \label{fig:bci/paradigms}
 }
 
-Paradigms that require little active participation from the user, like redirecting
-attention or initiating imagined actions, are classified as \emph{passive \ac{bci}}.
+In contrast to paradigms that require the user's active participation, for
+instance through redirecting attention or initiating imagined actions,
+paradigms free of this requirement are classified as \emph{passive \ac{bci}}.
 From the user's point of view, this concept is probably the most attractive, since their
 cognitive state would be inferred from just their brain activity.
 However, without active user participation, it can be hard to establish reliable
@@ -332,12 +338,14 @@ communication or control.
 Therefore, passive \ac{bci} are currently more suited to tasks like emotion or affect
 monitoring~\cite{Torres2020,Libert2019, Muehl2014}, workload monitoring~\cite{Zanetti2021},
 or, more dependent on stimulation, error detection~\cite{SiMohammed2020}.
-It also has clinical applications in the form of neurofeedback~\cite{Hammond2011}.
+Clinical applications are found in the diagnosis of a multitude of neurological
+and psychological disorders through various forms of neuroimaging, in resting
+state or while performing a specific task.
 Nevertheless, active participation facilitates training data collection for supervised
 machine learning, since the conditions can be more easily controlled by the user or the
 stimulation.
 
-Paradigms requiring high active participation can be split up into \emph{active
+Paradigms that do require high active participation can be split up into \emph{active
 \ac{bci}} and \emph{reactive \ac{bci}}.
 Active \ac{bci} paradigms encode endogenous activity initiated by the user, such as
 imagined movement or imagined speech.
@@ -347,12 +355,18 @@ cursor, or a few words~\cite{Panachakel2021}.
 Invasive recordings are necessary for decoding more complex encoded activities like
 natural speech~\cite{Metzger2023} or meaningful motor trajectories, like handwritten
 symbols~\cite{Willett2021} or sign language~\cite{Branco2017}.
-Active paradigms are also subject to large inter-subject variability due to the
+Active BCI also has clinical applications in the form of
+neurofeedback~\cite{Hammond2011}, where the user adapts mental strategies to
+perform active self-regulation of their brain activity which is presented to
+them, causing a feedback loop.
+
+Active paradigms are subject to large inter-subject variability due to the
 complexity of the performed tasks.
 They might require extensive user training and are sensitive to correct task
 instruction.
-Imagined speech or movements can be performed in a multitude of ways, which can each
-have different neural representations for separate individuals.
+Imagined speech or movements, or mental strategies in general, can be
+performed in a multitude of ways, which can themselves have different neural
+representations for separate individuals.
 This can make it hard to adapt the \ac{bci} to specific individuals, causing poor
 performance and giving rise to the concept of \ac{bci} illiteracy~\cite{Allison2010}\footnote{%
 Recently, the concept of BCI illiteracy is increasingly being seen as outdated.
@@ -607,7 +621,11 @@ of selections~\cite{Treder2010}.
 Together with \ac{ssvep}, oddball paradigms are most frequently used in visual \ac{bci}.
 There are, however, indications that users prefer oddball stimulation over \ac{ssvep},
 which can cause eye strain and fatigue due to the continuous oscillatory stimulation of
-all targets at once~\cite{Xu2021}.
+all targets at once~\cite{Xu2021}\footnote{
+  Recent work mitigates this by making SSVEP stimulation
+  more comfortable without compormising selection accuracy through
+  high-frequency low-contrast stimulation~\cite{Ladouce2022}.
+}.
 Furthermore, \ac{ssvep} relies more on directing the gaze at the intended target than
 oddball, detracting from the concept of control independent from muscle movement.
 
@@ -925,8 +943,14 @@ impairment due to  with various degrees
 of paralysis, or even with \ac{lis}, the complete loss of muscle control with preserved
 consciousness.
 While \ac{bci}s are most attractive as a solution for individuals with \ac{sspi},
-studies paradoxically often report poor performance in exactly this group,
-precisely due to their lack of adequate eye motor control.
+studies paradoxically often report poor performance in exactly this group.
+This is caused by a multitude of factors, including diminished
+electrophysiological responses and cognitive defects linked to the
+pathophysiology, psychological factors such as the ``extinction of goal directed thinking''
+phenomenon in complete impairment, and, importantly, sensory impairments such as vision and
+oculomotor defects~\cite{Seguin2023}.
+While visual \acp{bci} often rely on visual sensory functions, it is precisely this
+group of patients that could benefit from them, that lacks adequate eye motor control.
 Equally often, participants with gaze impairments were excluded from the study.
 
 Different degrees of eye motor impairment can render visual \ac{bci}s uncomfortable or

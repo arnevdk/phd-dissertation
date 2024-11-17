@@ -23,7 +23,8 @@ We compared these estimators with the original formulation of the
 spatiotemporal (STBF-emp)
 beamformer and a state-of-the-art Riemannian Geometry method (XDAWN+RG) in an off-line P3 detection task on
 an existing dataset.
-Our results show that the structured estimator results in higher accuracy in
+Our results show that the structured estimator results in higher
+accuracy\todo{qualitative} in
 general, and specifically when training data are sparsely available.
 Results can be computed faster and with
 substantially less memory usage.
@@ -57,10 +58,11 @@ We designed this method to improve decoding where
 unseen incoming test data is not yet known.
 \Ac{wcble} was first tested on synthetic data to evaluate its
 effectiveness under conditions of controlled latency variability and noise.
-These results showed that it is robust to higher noise and jitter compared to
-a non-iterative method in a latency estimation task.
-It was also shown that decoding accuracy was higher in high jitter and noise
-settings compared to the non-iterative method and a state-of-the-art decoder.
+These results showed that it is robust to higher noise and jitter\ compared to
+a non-iterative method in a latency estimation task\todo{qualitative}.
+Decoding accuracy was higher in high jitter and noise
+settings compared to the non-iterative method and a state-of-the-art
+decoder\todo{qualitative}.
 
 \subsection{Gathered datasets}
 The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
@@ -97,7 +99,7 @@ as well as in a target selection experiment reflecting BCI operation.
 Performance was significantly different between decoders, but this
 result was significantly dependent on the \ac{vsa} condition and the dataset.
 While \ac{wcble} was outperformed by the state-of-the-art in overt \ac{vsa}
-decoding, it increased covert \ac{vsa} decoding.
+decoding, it increased covert \ac{vsa} decoding.\todo{qualitative}
 
 For the split attention conditions in the CVSA-ERP
 dataset, \ac{wcble} yielded a significant improvement over CBLE and the
@@ -113,9 +115,9 @@ individual with gaze impairment can end up in different \ac{vsa} settings within
 a \ac{bci} operation session due to their lack of proper motor control.
 When trained and evaluated on overt VSA data, our proposed \ac{wcble} algorithm
 results in a significant decrease in performance compared to the state-of-the-art,
-consistent with the within-condition results.
+consistent with the within-condition results.\todo{qualitative}
 For all other pairs of training and evaluation VSA conditions, however,
-\ac{wcble} was equal to or significantly better.
+\ac{wcble} was equal to or significantly better.\todo{qualitative}
 
 Later case studies explored gaze-independent
 \ac{bci} performance in individuals with \ac{sspi} and varying eye motor impairments.
@@ -186,7 +188,7 @@ This increased dimensionality can then be countered by a tensor method like
 \ac{hoda} or \ac{bttda}.
 
 Finally, we wish to expand our experimentation with individuals with
-\acp{sspgi}.
+\ac{sspgi}.
 We aim to revisit the participants with an on-line experiment and comfort
 assessment to establish the usability of the proposed interface and compare its
 \ac{itr} to the state-of-the-art literature.
@@ -196,7 +198,7 @@ assessment to establish the usability of the proposed interface and compare its
 
 \subsection{Decoding: keep it linear; structure it}
 
-Throughout this thesis, we've noticed that linear or multilinear decoding
+Throughout this thesis, we noticed that linear or multilinear decoding
 methods consistently outperform non-linear methods, such as SVMs or those based
 on Riemannian Geometry.
 Within these linear models, regularization (shrinkage, covariance structure,
@@ -295,7 +297,7 @@ a 4-year research project, such as in the context of a doctoral thesis.
 This approach can only work if the proper facilities can be gathered immediately
 from the start, such as ethical approval, access to patients, and on-line \acp{bci}
 experimentation systems.
-It is therefore important that research labs maintain a working, long-term
+It is therefore important that research labs maintain a long-term working
 collaboration with patient centers, so that new projects can immediately be
 verified with the user population. This also allows interested users to compare
 multiple systems and guide development.
@@ -306,9 +308,10 @@ experimentation, this is actually a strength, since the user can help the resear
 insight into what works and doesn’t work for them, and where research efforts
 should be focused.
 
-Similarly, there is value in maintaining a working, on-line in-house \ac{bci}
+Similarly, there is value in maintaining a working, on-line, in-house \ac{bci}
 system that can be iterated upon and adapted if necessary.
-Experiments can be supported by advance calculations of hypothetical
+Given this system's design and data gathered from earlier use, experiments can
+be supported by advance calculations of hypothetical
 \ac{itr}, ensuring that on-line or off-line experiments reasonably reflect
 real-world operation, and no effort is wasted exploring settings that will not
 achieve satisfactory performance.
@@ -324,4 +327,5 @@ approach might help avoid prematurely solving problems that may not necessarily
 arise further down the road.
 A top-down approach could improve the quality of study outcomes by enabling the
 reporting of realistic, interpretable metrics,
-and by taking into account the human aspect of working \emph{with} \ac{bci} users.
+and by taking into account the human aspect of working \emph{with} instead of
+\emph{for} \ac{bci} users.

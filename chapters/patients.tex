@@ -1,6 +1,9 @@
-
 \chapter{Case studies}
 \label{sec:patients}
+\epigraph{I knew there would be a lot of unexpected issues involved with
+patient experiments, but I never thought there would be interference from baby
+goats in the experiment room.}{Juliette}
+
 \section{Introduction}
 
 \Acp{bci} for communication assistive technology~\cite{Millan2010}
@@ -70,7 +73,7 @@ expected to have eye motor impairment, they did not verify the gaze direction
 of participants during the experiment.
 It was suggested that participants were performing overtly.
 Participants with \ac{als} also had a substantially lower accuracy than healthy
-controls (58\% vs 88\%).
+controls (58\% vs. 88\%).
 
 Our previous study, presented in \cref{sec:covert-align} also used the
 visual Hex-o-Spell interface~\cite{VanDenKerchove2024}.
@@ -297,7 +300,7 @@ Next, the \ac{eeg} was re-referenced to the average of mastoid electrodes TP9
 and TP10, and \ac{ica} was performed to reject artifactual components based on
 correlation with the \ac{eog} or by visual inspection.
 Epochs were cut from -0.1 to 0.9s relative to stimulus onset, and no baseline
-correction was performed.
+correction was performed in order to meet the assumptions.
 
 Eye tracking data was cleaned by fusing left and right gaze into one channel
 for the horizontal and vertical gaze position.
@@ -306,7 +309,7 @@ values.
 If at a given sample either the left or the right eye was not detected for a
 given channel, the value of the other one was adopted.
 If both were missing, the gaze position remained unset at that time point, and no
-interpolation was performed.
+interpolation was performed of the employed classifiers.
 
 \subsection{\Acs{bci} decoding}
 
@@ -401,12 +404,12 @@ XDAWNCov+TS+LDA performance was slightly lower here (though not
 significantly).
 (\ac{wcble} 74.15\%, XDAWNCov+TS+LDA 71.88\%, \ac{tlda} 74.27\%).
 More interestingly, we noticed that performances of the decoders in free
-\ac{vsa} were close to those in the overt \ac{vsa}.
+\ac{vsa} were close to those in the overt \ac{vsa}.\todo{qualitative}
 A substantial decrease in performance from the overt setting to the free
 setting was observed for
-subjects PC3 and PC4.
+subjects PC3 and PC4.\todo{qualitative}
 For PB2, who also relied on covert \ac{vsa} during the uncued free \ac{vsa}
-setting, there was no decrease in performance.
+setting, there was no notable decrease in performance.\todo{qualitative}
 
 \begin{figure}
   \input{figures/patients/fig_decode.pgf}
@@ -509,7 +512,7 @@ drastically boost performance.
 Subject PB2 exemplifies this: his free \ac{vsa} performance is on par with his
 overt \ac{vsa} performance, although eye tracking showed that he relied mostly
 on overt \ac{vsa} when cued to do so, and mostly on covert \ac{vsa} when
-gaze was uncued.
+gaze was uncued.\todo{qualitative}
 This is also supported by our results on cross-condition calibration presented
 in \cref{sec:patients/outcomes/cross}, which show that leveraging residual
 eye motor control to fixate targets during the calibration phase can improve
