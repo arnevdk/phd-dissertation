@@ -3,7 +3,8 @@ import matplotlib.cm
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from setup import colors, configure_matplotlib_style, save_pgf_trim
+from setup import (colors, configure_matplotlib_style, save_pgf_trim,
+                   textwidth_in)
 
 configure_matplotlib_style()
 

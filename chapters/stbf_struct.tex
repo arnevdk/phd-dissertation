@@ -632,7 +632,10 @@
 	in \cref{tab:stbf-struct/p-values-2}, and 5-trial results in \cref{tab:stbf-struct/p-values-5}.
 
   \begin{figure}
-		\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
+    %\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
+    \sffamily
+    \sansmath
+    \input{figures/stbf_struct/accuracy.pgf}
     \caption[Clasifier accuracy in function of available training data.]{%
       Accuracy of the different classifiers for all 21 subjects relative to the
 			number of blocks available for training. One block consists of 135
@@ -650,7 +653,9 @@
   different)}
 
   \fullpagefig{%
-		\includegraphics[width=\textwidth]{figures/stbf_struct/accuracy_app.eps}
+    \sffamily
+    \sansmath
+    \input{figures/stbf_struct/accuracy_all.pgf}
   }{%
     \caption[Accuracy averaging over different numbers of trials.]{%
       Accuracy of the different classifiers for all 21 subjects relative to the
