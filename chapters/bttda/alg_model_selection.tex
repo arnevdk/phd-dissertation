@@ -4,10 +4,13 @@
 
   \For{$\textstyle{r=1,2,4,\ldots,\max_kD_k}$}
   \State $r_k \gets \min(r, D_k) \quad \forall k$
-  \State $\sigma^{(b)}_r \gets$ \parbox[t]{5cm}{Cross-validated BTTDA+LDA classification
-  score for $\{\ten{X}(n)\}_n^N$ and $\{c_n\}_n^N$ with ranks
-  $\{(r_1^{(c)},r_2^{(c)},\ldots,r_K^{(c)}) \forall\quad
-c\leq b\}$ and features where $p(i)<\alpha$}
+  \State $\sigma^{(b)}_r \gets$ \parbox[t]{5cm}{%
+    \raggedright
+    Cross-validated BTTDA+LDA classification
+    score for $\{\ten{X}(n)\}_n^N$ and $\{c_n\}_n^N$ with ranks
+    $\{(r_1^{(c)},r_2^{(c)},\ldots,r_K^{(c)}) \forall\quad
+    c\leq b\}$ and features where $p(i)<\alpha$
+  }
   \EndFor
   \State $\textstyle{\sigma^{(b)}_* \gets \max_r\sigma^{(b)}_r}$
   \State $\textstyle{r^{(b)}_* \gets \argmax_r\sigma^{(b)}_r}$

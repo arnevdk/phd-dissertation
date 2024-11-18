@@ -121,7 +121,7 @@ the distractor ($d=2$), or the distractor is opposite the intended target
 ($d=3$).
 
 \ac{eeg} for the CVSA-ERP dataset was recorded using a SynAmps RT amplifier
-(Compumedics Neuroscan, Australia) at 2048Hz and 62 Ag/AgCl active electrodes arranged in the
+(Compumedics Neuroscan, Australia) at 2048 Hz and 62 Ag/AgCl active electrodes arranged in the
 international 10-10 layout fitted to a standard electrode cap (EASYCAP GmbH,
 Germany), with electrodes located at AFz and FCz as ground and reference, respectively.
 Using electrolyte gel, electrode impedances were brought below 5k$\Omega$.
@@ -133,7 +133,7 @@ Canada) in non-fixation mode.
 
 Participants signed an informed consent form and were seated at a distance of
 60 cm from a CRT-emulating monitor (VPixx
-Technologies, Canada) operating at a refresh rate of 120Hz, displaying 6
+Technologies, Canada) operating at a refresh rate of 120 Hz, displaying 6
 circular white targets with a diameter of 4.15° visual angle and laid out on a hexagon
 with a radius of 12.28° of visual angle centered on the midpoint of the screen,
 conforming to the interface proposed by \textcite{Treder2010}
@@ -305,7 +305,7 @@ for all pairs of \ac{tlda}, \ac{cble},
 and \ac{wcble} for single-trial classification to investigate the contributions of
 \ac{cble} and \ac{wcble} relative to their first-stage classifier \ac{tlda}.
 For this evaluation, epochs were rejected when the peak-to-peak amplitude
-exceeded 800$\mu V$, and for the CVSA-ERP dataset, if the user's gaze differed by more than
+exceeded 800 µV, and for the CVSA-ERP dataset, if the user's gaze differed by more than
 10 degrees of visual angle from the fixation crosshair.
 \begin{figure}
   \bigskip
@@ -537,7 +537,7 @@ split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the foll
 
 Although it is not immediately clear if \ac{wcble} actively corrects for higher P3 jitter
 present in covert and split \ac{vsa} compared to overt \ac{vsa},
-we justify our approach similarly to \cite{Hardiansyah2020} by
+we justify our approach in a similar manner to \textcite{Hardiansyah2020} by
 observing that the increased discrimination performance of a machine-learning
 model accounting for jitter forgoes the need for characterizing the underlying
 physiological processes, while still objectively quantifying the presence of
@@ -565,7 +565,7 @@ overt and covert \ac{vsa}, while including or excluding early VEPs.
 This analysis showed that the absence of the N1 and other early VEPs is not the
 only factor hampering covert \ac{vsa} decoding performance.
 However, the large increase in performance for covert \ac{vsa} reported by
-\cite{Arico2014}\todo{qualitative} could also
+\textcite{Arico2014}\todo{qualitative} could also
 be explained by overfitting on artifacts amplified by aligning, since their
 method is not evaluated on unseen data, as opposed to ours.\todo{qualitative}
 
@@ -577,17 +577,17 @@ with high jitter.
 
 We found that \ac{cble} did not improve gaze-independent decoding performance
 significantly and also did not increase performance over its first-stage
-classifier in overt \ac{vsa}, contrary to what was reported by \cite{Mowla2017}.
+classifier in overt \ac{vsa}, contrary to what was reported by \textcite{Mowla2017}.
 While they report that \ac{cble} is relatively independent of the
 first-stage classifiers evaluated in their work, it is evident here that
 applying any given classifier in the \ac{cble} scheme does not necessarily increase
 its performance.
 In our case, this could be due to characteristics of the tested dataset, e.g.,
 the presence of jitter or the generally higher performance of \ac{tlda} compared to the
-first-stage classifiers tested by \cite{Mowla2017}, leaving less
+first-stage classifiers tested by \textcite{Mowla2017}, leaving less
 performance to be gained.
 
-\cite{Thompson2012} already attempted applying \ac{cble} in an iterative scheme
+\textcite{Thompson2012} already attempted applying \ac{cble} in an iterative scheme
 but did not report any results due to convergence issues.
 We mitigated this by combining the robust latency estimation presented in
 \cref{sec:robust-latency} with the alignment of both target and non-target
@@ -609,7 +609,7 @@ now clear it is present in both classes and non-discriminative.
 This aids the method in converging to a more robust classifier by iteratively
 increasing \ac{snr} for both classes and class separation over time.
 
-\cite{Zisk2022} addressed P3 jitter inparticipants \ac{als} by augmenting the
+\textcite{Zisk2022} addressed P3 jitter inparticipants \ac{als} by augmenting the
 training data once with time-shifted copies based on \ac{cble}-estimated jitter.
 While we aim to train the first-stage classifier without the effects of jitter
 in its parameters, they do the opposite by intentionally jittering the
@@ -618,7 +618,7 @@ As their focus was on \ac{als} and inter-session stability, they
 did not assess how their method interacts with visuospatial attention.
 We achieved a similar performance gain with our jitter compensation method, but
 argue that our method can cope with more granular latency differences, as
-\cite{Zisk2022} augment the data with just one positive and negative time
+\textcite{Zisk2022} augment the data with just one positive and negative time
 shift.
 
 \textcite{Hardiansyah2020} decoded covert \ac{vsa} more effectively by

@@ -17,8 +17,9 @@
 }
 % Kronecker-structured LDA ====================================================
 
-  \noindent\emph{This chapter was
-  published as~\textcite{VanDenKerchove2022}.}
+  \noindent\emph{This chapter, except
+  \crefrange{tab:stbf-struct/accuracies/stbf-struct}{tab:stbf-struct/accuracies/xdawn-rg},
+  was published as~\textcite{VanDenKerchove2022}.}
 
 	\section{Introduction}
 
@@ -227,7 +228,7 @@
 		\label{eq:loocv}
 	\end{equation}
 	We opt for the \ac{loocv} shrinkage estimator because it avoids some of the
-	assumptions made by~\cite{Ledoit2004} and~\cite{Chen2010} and
+	assumptions made by \textcite{Ledoit2004} and \textcite{Chen2010} and
 	because it generalizes to structured covariance estimation as described in
 	\cref{sec:stbf-struct/methods/structured-estimation}.
 
@@ -505,9 +506,9 @@
 	pyRiemann (version 0.2.7).
 	Statistical tests were performed in R (version 4.1.2).
 
-	The \ac{eeg} recorded at 2048Hz was re-referenced off-line to the average of the mastoids.
+	The \ac{eeg} recorded at 2048 Hz was re-referenced off-line to the average of the mastoids.
 	The reference electrodes were dropped from the analysis.
-	Data were subsequently filtered between 0.5Hz and 16Hz using forward-backward
+	Data were subsequently filtered between 0.5 Hz and 16 Hz using forward-backward
 	filtering with a fourth-order Butterworth IIR filter.
 	The \ac{eeg} signal was corrected for ocular artifacts using Independent Component
 	Analysis (ICA) by rejecting components that correlated with the bipolar EOG
@@ -545,7 +546,7 @@
 
   \subsubsection{\Acl{stbf} classifier}
 	Before calculating the \ac{stbf}, the signal was downsampled to
-	32Hz or twice the low-pass frequency 16Hz, resulting in 17 time samples
+	32 Hz or twice the low-pass frequency 16 Hz, resulting in 17 time samples
 	between 0.1 and 0.6s. According to the Nyquist Theorem, more samples would not
 	contain more information hence the minimum temporal resolution is chosen to reduce
 	the dimensionality of the covariance and improve its condition number.
@@ -568,7 +569,7 @@
 	This classifier uses four XDAWN spatial filters and each epoch's empirical spatial covariance matrix.
 	The target with the maximum score is the prediction of the cued target.
 	\textsc{xdawn+rg} was trained and validated without downsampling using epochs
-	at the original sample rate of 2048Hz.
+	at the original sample rate of 2048 Hz.
 
 	\section{Results}
 	\subsection{Minimum required fixed-point iterations}
@@ -587,7 +588,7 @@
 	\cref{fig:iterations} confirms these results for the \textsc{stbf-struct} classifier.
 	Using more than one fixed-point iteration does not significantly improve the
 	accuracy across the amounts of training data and the number of trials
-  used for evaluation\todo{qualitative}.
+  used for evaluation.
 	Hence, only one iteration is used for the \textsc{stbf-struct} classifier, leading to a drastic speed-up of
   the  training process.
 
@@ -623,16 +624,16 @@
 	We evaluate the performance of all classifiers for different levels of
 	available training data and apply the cross-validation procedure nine times (the number of blocks in the training fold) for all subjects, keeping the
 	corresponding number of blocks in the training folds and dropping the rest.
-	\Cref{fig:accuracy} and \cref{fig:stbf-struct/accuracy-ap} show each classifier's
-	accuracy relative to the data availability.
+  \Cref{fig:accuracy}, \cref{fig:stbf-struct/accuracy-ap} and
+  \crefrange{tab:stbf-struct/accuracy/stbf-struct}{tab:stbf-struct/accuracy/xdawn-rg}
+  shows each classifier's accuracy relative to the data availability and trials
+  used for agveraging.
 	We statistically compare the two newly proposed classifiers,
-	\textsc{stbf-struct} and \textsc{stbf-shrunk}, for different levels of training
+	\textsc{stbf-struct} and \textsc{stbf-shrunk} with different levels of training
 	data availability using a one-sided paired Wilcoxon rank-sum test with Holm correction for the multiple pairwise comparisons between classifiers.
-	We performed this analysis three times: by only using the first trial of a
-	block, by averaging epochs across the first two trials of a block and across
-	the first five trials of a block.
-	Results validated on one trial are reported in \cref{tab:stbf-struct/p-values-1}, 2-trial results
-	in \cref{tab:stbf-struct/p-values-2}, and 5-trial results in \cref{tab:stbf-struct/p-values-5}.
+	Statistical comparisons were performed for trial
+  \cref{tab:stbf-struct/p-values-1}, two \cref{tab:stbf-struct/p-values-2}
+  and five trials \cref{tab:stbf-struct/p-values-5}.
 
   \begin{figure}
     %\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
@@ -654,18 +655,25 @@
 	\end{figure}
 
 	The tables show that \textsc{stbf-struct} has a significant advantage over
-	\textsc{stbf-shrunk} when the number of training blocks is low.
-  This effect is present for 1-, 2- and 5-trial evaluation\todo{qualitative}.
-	This advantage decreases (the $p$-value increases) when
-  adding more training blocks\todo{qualitative}.
+  \textsc{stbf-shrunk} when the number of training blocks is low, with
+  significance $p=0.005$ and  an accuracy increase of 4,14$\%.$ for a single training block
+  and testing trial.
+  This effect is present for 1-, 2- and 5-trial evaluation, up to 3, 4 and 3
+  blocks respectively, but the advantage decreases when adding more training blocks.
 	Both \textsc{stbf-struct} and \textsc{stbf-shrunk} perform significantly better
-  than \textsc{stbf-emp} for all evaluated settings\todo{qualitative}.
+  than \textsc{stbf-emp} for all evaluated settings, with $p<0.001$ for all number
+  of training blocks and testing trials, with accuracy
+  increase of 6.92 and 2.78$\%.$ respectively for a single training block
+  and testing trial.
 	Compared to \textsc{xdawn+rg}, \textsc{stbf-struct} also has significantly
 	higher accuracy in almost all evaluated settings, except when using only one
-  training block\todo{qualitative}.
+  training block, with significance $p<0.001$ and an accuracy increase of
+  5.20$\%.$ when using all 9 training blocks and 1 testing trial.
 	\textsc{stbf-shrunk} does not outperform \textsc{xdawn+rg} when training data
-  is low but gains a significant advantage	when using more training
-  data\todo{qualitative}.
+  is low (up to 3,3 and 2 blocks respectively for 1, 2 and 5 testing trials),
+  but gains a significant advantage	when using more training data, with
+  significange $p=0.001$ and an accuracy increase of 5.33$\%.$ when using all
+  9 training blocks and 1 testing trial.
 
 	\subsection{Classifier training time}
 	In order to evaluate the training time of the investigated classifiers, the
@@ -691,17 +699,19 @@
 	\end{figure}
 
 	\Cref{fig:stbf-struct/training-time} shows that the training time of
-	\textsc{stbf-struct} has a lower median training time than
-  \textsc{stbf-shrunk}, \textsc{stbf-emp} and \textsc{xdawn+rg} when training
-  on all available data and using 32 channels\todo{qualitative}.
+  \textsc{stbf-struct} has a lower median training time (0.06 s) than
+  \textsc{stbf-shrunk} (0.33 s), \textsc{stbf-emp} (0.30 s) and
+  \textsc{xdawn+rg} (1.04 s) when training
+  on all available data and using 32 channels.
 
 	\section{Discussion}
 
 	\subsection{Classification accuracy}
-	As evidenced by \cref{fig:accuracy} and Tables \ref{tab:stbf-struct/p-values-1}-\ref{tab:stbf-struct/p-values-5}, the regularized classifiers \textsc{stbf-shrunk}
+	As evidenced by \cref{fig:accuracy} and \cref{tab:stbf-struct/p-values},
+  the regularized classifiers \textsc{stbf-shrunk}
 	and \textsc{stbf-struct} significantly improve the classification accuracy
 	compared to the original \textsc{stbf-emp} for all numbers of training blocks
-  indicated\todo{qualitative}.
+  indicated.
 	We believe there are three reasons for this.
 	First and foremost, the empirical covariance matrix in \textsc{stbf-emp} becomes
 	ill-conditioned when the number of available training epochs is smaller than
@@ -737,7 +747,7 @@
 
 	Another observation is the significantly better accuracy score of
 	\textsc{stbf-struct} over \textsc{stbf-shrunk} when the amount of available
-  training data is small\todo{qualitative}.
+  training data is small ($<540$ epochs).
 	This property is an attractive advantage in a \ac{bci} setting since it is desirable to keep the calibration (training) phase as short as possible without losing accuracy.
 	The accuracy advantage of the structured estimator is a consequence of the
 	Kronecker-Toeplitz covariance structure, which is informative for the
@@ -746,21 +756,20 @@
 	the brain with added noise~\cite{Munck1992, DeMunck2002, GonzalezNavarro2017}.
 	Hence, \textsc{stbf-struct} can utilize this prior information to better estimate the inverse
 	covariance.
-  The increase in accuracy for small training set sizes\todo{qualitative} can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:stbf-struct/discussion/param-complex}), increasing the stability of matrix inversions.
+  The increase in accuracy for small training set sizes can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:stbf-struct/discussion/param-complex}), increasing the stability of matrix inversions.
 
 	When compared to the state-of-the-art \textsc{xdawn+rg} classifier, we conclude
 	that \textsc{stbf-struct} reaches similar accuracy when using only one block of
-  training data\todo{qualitative}.
-	The authors suspect this is due to both
-	classifiers having insufficient training information to reach
-	satisfactory classification accuracy.
+  training data, with accuracies of and 34.70\% 32.5\% respectively and $p=0.086$.
+	The authors suspect this is due to both	classifiers having insufficient training
+  information to reach satisfactory classification accuracy.
 	When more data are available, \textsc{stbf-struct} reaches significantly
-  better accuracies\todo{qualitative}.
+  better accuracies.
 	Combined with the benefits laid out in \cref{sec:stbf-struct/discussion/param-complex}, this
   makes it an attractive option for \ac{erp} classification.
 	\textsc{stbf-shrunk} does not show decisive accuracy improvements over
 	\textsc{xdawn+rg} using a few training blocks, but this improves as the
-  training data increases\todo{qualitative}.
+  training data increases.
 
 	\subsection{Time and memory complexity}
 	\label{sec:stbf-struct/discussion/param-complex}
@@ -794,11 +803,8 @@
 	For \textsc{stbf-emp} and \textsc{stbf-shrunk}, the time complexity of this process is $\mathcal{O}(NC^2S^2+C^3S^3)$.
 	Thanks to Property~\ref{prop:stbf-struct/inverse-kronecker}, the complexity can be reduced to
 	$\mathcal{O}(NS^2S^2+C^3+S^3)$ for the structured estimator of \textsc{stbf-struct}.
-	The results presented in \cref{fig:stbf-struct/training-time} confirm these
-	calculations.
-	It can be observed that the training time of \textsc{stbf-struct} stays low
-  compared to \textsc{stbf-emp} and \textsc{stbf-shrunk} when dimensionality
-  increases\todo{qualitative}.
+	The results presented in \cref{fig:stbf-struct/training-time} confirm that
+  \textsc{stbf-struct} is much faster in operation than other classifiers.
 
 	The results shown in \cref{fig:stbf-struct/training-time} also confirm that the
 	\ac{stbf}-based estimators are very fast to train compared to the
@@ -909,7 +915,7 @@
 	beamformer and a state-of-the-art method in an off-line P3 detection task.
 	Our results show that the structured estimator performs better when training
   data are sparsely available and that it can be computed faster and with
-  substantially less memory usage\todo{qualitative}.
+  substantially less memory usage.
 	Since these algorithms are not paradigm-specific,  the conclusions can be generalized to
 	other \ac{erp}-based \ac{bci} settings.
 
@@ -938,19 +944,26 @@
   \footnotesize
   \begin{table}[!h]
 	    \input{chapters/stbf_struct-acc-stbf_kron_toep_shrunk.tex}
-      \caption{Accuracies for \textsc{stbf-struct}.}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for \textsc{stbf-struct}.}
+      \label{tab:stbf-struct/accuracies/stbf-struct}
   \end{table}
   \begin{table}[!h]
 	    \input{chapters/stbf_struct-acc-stbf_loocv.tex}
-      \caption{Accuracies for \textsc{stbf-shrunk}.}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{stbf-shrunk}.}
+      \label{tab:stbf-struct/accuracies/stbf-shrunk}
   \end{table}
   \begin{table}[!h]
 	    \input{chapters/stbf_struct-acc-stbf_emp.tex}
-      \caption{Accuracies for \textsc{stbf-emp}.}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{stbf-emp}.}
+      \label{tab:stbf-struct/accuracies/stbf-emp}
   \end{table}
   \begin{table}[!h]
 	    \input{chapters/stbf_struct-acc-xdawn_rg.tex}
-      \caption{Accuracies for \textsc{xdawn+rg}.}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{xdawn+rg}.}
+      \label{tab:stbf-struct/accuracies/xdawn-rg}
   \end{table}
 
   \clearpage
@@ -979,14 +992,14 @@
 	    \caption{Evaluation on one testing trial.}
       \label{tab:stbf-struct/p-values-1}
     \end{subtable}
-    \bigskip
+    \smallskip
 
     \begin{subtable}{\linewidth}
 	    \input{chapters/stbf_struct_tests_2.tex}
 	    \caption{Evaluation averaging over two testing trials.}
 	    \label{tab:stbf-struct/p-values-2}
     \end{subtable}
-    \bigskip
+    \smallskip
 
     \begin{subtable}{\linewidth}
 	    \input{chapters/stbf_struct_tests_3.tex}
@@ -1001,6 +1014,7 @@
 	    	and levels of data availability. $p$-values $<0.05$ are considered
         significant.
     }
+	  \label{tab:stbf-struct/p-values}
 	\end{table}
 
 \end{subappendices}

@@ -5,7 +5,7 @@
 People with \ac{sspi} due to neurodegenerative disease, stroke, traumatic brain or spine
 injury become entirely reliant on caregivers or family members in their day-to-day
 routine.
-Wouldn't it be great if we could help them regain some quality of life by making them
+Would it not be great if we could help them regain some quality of life by making them
 more independent?
 
 The most basic ability any independent human being needs is interaction with their
@@ -19,7 +19,7 @@ Not everyone has this capability.
 
 The key problem for severely paralyzed individuals is that the mind wants to go where the
 body cannot follow.
-Couldn't we, therefore, design a system that directly interacts with the mind?
+Could we therefore not design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of technology, like
 a robot arm or speech synthesizer, interacting with the world on the user's behalf.
 Such a device is the \ac{bci}\footnote{Sometimes also termed brain-machine interface
@@ -429,7 +429,7 @@ motor command~\cite{Neeling2019}, or combining multiple visual paradigms by stim
 along multiple dimensions at once.
 \textcite{Han2023} recently used this strategy, combining frequency and phase coding in
 \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an efficient \ac{bci}
-where one of 200 targets can be accurately selected with only 800ms of stimulation.
+where one of 200 targets can be accurately selected with only 800 ms of stimulation.
 
 \section{Preprocessing}
 \label{sec:bci/preprocessing}
@@ -451,7 +451,7 @@ by removing frequencies that are too high or too low to contain relevant neural 
 Band-pass filters eliminate slow drifts and high-frequency noise, such as muscle
 artifacts or environmental electrical interference, improving the \ac{snr}.
 Additionally, notch filtering can be used to remove strong power line interference\footnote{%
-Typically at 50Hz in Europe.}.
+Typically at 50 Hz in Europe.}.
 This interference can heavily contaminate \ac{eeg} recordings and even leak through when
 outside the passband of a previous filter.
 Notch filtering efficiently attenuates this narrowband noise without affecting the
@@ -586,15 +586,15 @@ Nevertheless, it can score relatively high on the \ac{itr} parameters establishe
 The brain response of interest is the visual \ac{erp}, which can be accurately measured
 and decoded from non-invasive \ac{eeg} signals with a relatively low computational
 effort and short calibration time.
-First established by~\cite{Farwell1988} in 1988, it is well supported by literature and
+First established by \textcite{Farwell1988} in 1988, it is well supported by literature and
 has been proven to work for those with \acl{sspi} in day-to-day home use~\cite{Wolpaw2018}.
 
 \subsection{Stimulation paradigm}
 
 One by one, visual elements on a computer screen are \emph{intensified} for a short
 period of time by changing in color, brightness, or size.
-Intensifications of different targets are usually 100-200ms apart and last for about
-100ms~\cite{Sellers2006a}.
+Intensifications of different targets are usually 100-200 ms apart and last for about
+100 ms~\cite{Sellers2006a}.
 On each flash observed by the user, specific brain activity is elicited.
 If one of these intensified elements is rare with respect to the others, i.e., it is the
 \emph{odd-one out} or \emph{oddball}, this brain activity is altered.
@@ -609,7 +609,7 @@ intensification.
 
 \Ac{itr} in the oddball paradigm is optimized by intensifying multiple targets at once
 in a row-column strategy and using a sequence of selections, giving rise to the classic
-matrix speller of~\cite{Farwell1988}.
+matrix speller of \textcite{Farwell1988}.
 Other optimizations increase response \ac{snr}, like using flashing face images as
 intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
 stimuli~\cite{Treder2011}.
@@ -662,7 +662,7 @@ N2 or N200 for a negative component after $\pm200$ ms).
 The component most prominently modulated by attention is called the P3 (positive
 deflection after $\pm300$ ms).
 Some \ac{bci}\footnote{In \ac{erp} analysis, components are sometimes referred to with
-the timing around which they occur (e.g., N170, negative after 170ms), or by their rank
+the timing around which they occur (e.g., N170, negative after 170 ms), or by their rank
 in order of occurrence (N1, the first negative component).
 The timing nomenclature is based on average latencies for neurotypical individuals, but
 is seldom correct for specific \ac{bci} users due to the large variability across
@@ -754,8 +754,8 @@ improving user interaction, particularly in contexts involving visual oddball ta
 
 
 \subsection{Preprocessing \& feature extraction}
-For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5Hz and
-16Hz.
+For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5 Hz and
+16 Hz.
 Re-referencing can be done to average mastoids to highlight the contribution of the P3
 component.
 In addition to the steps outlined in \cref{sec:bci/preprocessing}, the signal is

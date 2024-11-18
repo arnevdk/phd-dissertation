@@ -559,8 +559,7 @@ characteristic curve (ROC-AUC).
     datasets (\# Trials), the epoch length (Epoch len.), the sampling
 		frequency (S. freq.), the number of sessions per subject (\# Sess.) and the
 		number of runs (\# Runs).
-    Adapted from~\cite{Aristimunha2023}
-    and~\cite{Chevallier2024}.}
+    Adapted from \textcite{Aristimunha2023} and \textcite{Chevallier2024}.}
 	\label{tab:moabb}
 \end{table*}
 
@@ -582,7 +581,8 @@ to reduce computational cost.
 Other HODA and BTTDA hyperparameters were set to
 $B_\text{max}=10$, $\varepsilon=\num{1e-8}$ and $I_\text{max}=128$.
 
-Furthermore, as additional comparison methods, we used the methods evaluated in~\cite{Chevallier2024}.
+Furthermore, as additional comparison methods, we used the methods evaluated
+by~\textcite{Chevallier2024}.
 For the ERP datasets, these were the Riemannian Geometry-based methods
 using augmented ERP covariance matrices with and without SVD dimensionality
 reduction features for a Minimum Riemannian Distance to Mean classifier
@@ -602,7 +602,7 @@ projected onto the Riemannian tangent space with a support vector machine
 Additionally, we report the performance of the Common Spatial Patterns filter
 and a frequency filterbank combined with a support vector machine (CSP+SVM and
 FilterBank+SVM, respectively).
-We refer to~\cite{Chevallier2024} for implementation details of these comparison
+We refer to \textcite{Chevallier2024} for implementation details of these comparison
 methods.
 
 \subsection{Event-Related Potentials}
@@ -610,11 +610,11 @@ ERPs are spatiotemporal features, with each sample forming a $2^\text{nd}$
 order tensor with $K=2$ modes (a matrix), representing EEG channels and time samples
 per epoch.
 EEG signals for the evaluated datasets were recorded at the sample rate given
-by \cref{tab:moabb} and band-pass filtered between 1Hz
-and 24Hz.
+by \cref{tab:moabb} and band-pass filtered between 1 Hz
+and 24 Hz.
 The signals were cut into epochs starting from stimulus onset with a
 dataset-specific length given by \cref{tab:moabb}.
-For HODA+LDA, PARAFACDA+LDA, and BTTDA+LDA decoders, epochs were downsampled to 48Hz.
+For HODA+LDA, PARAFACDA+LDA, and BTTDA+LDA decoders, epochs were downsampled to 48 Hz.
 For the BNCI2014-008 and BNCI2015-003 datasets, this resulted in matrices of
 dimensionality $(8,48)$ and $(8,38)$, respectively.
 
@@ -628,7 +628,7 @@ decoders.
   datasets.]{Area under the receiver operating characteristic curve for
 		cross-validated within-session evaluation for HODA and our proposed decoders
 		PARAFACDA and BTTDA evaluated on 2 event-related potential datasets.
-    Scores for other decoders were taken from \cite{Chevallier2024}.
+    Scores for other decoders were taken from \textcite{Chevallier2024}.
 		BTTDA reaches the highest performance for both evaluated datasets, closely
 		followed by PARAFACDA.
 	}
@@ -653,11 +653,11 @@ time-frequency domain, forming $3^\text{rd}$ order tensors, with $K=3$ modes
 representing the channels, frequencies, and time bins.
 
 The MI datasets listed in \cref{tab:moabb} were first band-pass filtered
-between 8 and 30Hz and cut into
+between 8 and 30 Hz and cut into
 epochs with time windows as specified by \cref{tab:moabb}.
 Next, time-frequency transformation was performed using a complex Morlet wavelet
 convolution, with 16 wavelet frequencies logarithmically spaced between 8 and
-32Hz.
+32 Hz.
 The number of wavelet cycles $c$ varied with wavelet frequency $f$ as
 $c=0.7*f$.
 Features were extracted by taking the log-transformed envelope of the complex
@@ -668,7 +668,7 @@ $(22, 4, 16)$ and $(3, 4, 18)$, respectively.
 
 \cref{tab:mi-score} lists the cross-validated classification scores for
 the evaluated motor imagery datasets.
-Note that, in line with~\cite{Chevallier2024}, accuracy is reported for the
+Note that, in line with~\textcite{Chevallier2024}, accuracy is reported for the
 multi-class classification problem in BNCI2014-001, while ROC-AUC was reported for the
 binary classification problem in BNCI2014-004.
 \begin{table}[t]
@@ -678,7 +678,7 @@ binary classification problem in BNCI2014-004.
   \caption[Within-session classification score for 2 motor imagery datasets.]{Classification score for
 		cross-validated within-session evaluation for HODA+LDA and our proposed decoders
 		PARAFACDA+LDA and BTTDA+LDA evaluated on 2 motor imagery datasets.
-		Scores for other decoders were taken from \cite{Chevallier2024}. Accuracy
+		Scores for other decoders were taken from \textcite{Chevallier2024}. Accuracy
     is listed for BNCI2014-001, and area under the receiver-operator
     characteristic curve for BNCI2014-004. BTTDA outperforms HODA and PARAFACDA
     for BNCI2014-001 but does not reach performance comparable to the current

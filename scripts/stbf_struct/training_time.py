@@ -54,6 +54,7 @@ def plot_training_time(data, ax, label=None, show_legend=False, show_y_label=Fal
         showfliers=False,
         linewidth=1,
         zorder=1,
+        width=0.5,
     )
 
     ax.set_ylabel("")

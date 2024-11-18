@@ -202,7 +202,7 @@ components~\cite{Ouyang2020}.
 
 Most of the algorithms above can be adapted to work on multiple \ac{erp} components
 by carefully selecting peaks or pre-determined regions of interest.
-\textcite{Hardiansyah2020} uses an \ac{snr} boosting method, applied to a specific
+\textcite{Hardiansyah2020} use an \ac{snr} boosting method, applied to a specific
 time-window for each \ac{erp} component to extract a latency per component.
 Methods based on spatial decomposition filters like \ac{pca}, \ac{ica}, or XDAWN can be leveraged
 to utilize multiple of their components as filters, resulting in multiple time
@@ -310,7 +310,7 @@ arranged in matrices $\mat{Y}^\mathrm{train}\in\mathbb{R}^{N\times R}$ and $\mat
 These can be further classified by training a \textit{second-stage} classifier on
 $\mat{Y}^\mathrm{train}$ and class labels $\mathbf{l}^\mathrm{train}$.
 However, the resulting score-over-time vectors per epoch still suffer from jitter.
-For classification, we follow the approach of \cite{Mowla2017}, using a
+For classification, we follow the approach of \textcite{Mowla2017}, using a
 maximum-level hierarchical Daubechies-4 wavelet transform to reduce
 dimensionality before classification with the second-stage classifier.
 In the \ac{cble}-decoder, it is this wavelet transform that decreases the sensitivity
@@ -342,7 +342,7 @@ after a square transform for linear separability~\cite{Thompson2012}.
 However, including these latency features gives rise to the following issue when
 classifying unseen data.
 The \ac{cble} latency estimate is defined only for target epochs as
-$s_\mathrm{target}=\argmax_s{y_s}$.
+$\textstyle{s_\mathrm{target}=\argmax_s{y_s}}$.
 This is the point in time where the target class reaches the largest separation
 from the background noise and non-target class, indicating the target \ac{erp} is
 most likely to occur here.

@@ -3,8 +3,11 @@
   $\{(r_1^{(b)},r_2^{(b)},\ldots,r_K^{(b)})\}_b^B$
   \State $\ten{\mathbfcal{E}}(n)\gets\ten{X}(n)\ \forall n$
   \For{$b=1,2,\ldots,B$}
-  \State $\{\mat{U}^{(b)}\}\gets$ \parbox[t]{5cm}{\textsc{hoda} on $\{\ten{\mathbfcal{E}}(n)\}_n^N$ and
-  $\{c_n\}_n^N$ with rank $(r_1^{(b)},r_2^{(b)},\ldots,r_K^{(b)})$}
+  \State $\{\mat{U}^{(b)}\}\gets$ \parbox[t]{5cm}{%
+    \raggedright
+    \textsc{hoda} on $\{\ten{\mathbfcal{E}}(n)\}_n^N$ and
+    $\{c_n\}_n^N$ with rank $(r_1^{(b)},r_2^{(b)},\ldots,r_K^{(b)})$
+  }
   \State $\ten{G}^{(b)}(n)\gets\ten{\mathbfcal{E}}(n)\mmpri{\mat{U}^{(b)}}\
   \forall n$
   \State $\{\mat{A}^{(b)}\}\gets$ \parbox[t]{5cm}{Forward \textsc{hoda} on
