@@ -1,5 +1,6 @@
 import os
 
+import ipdb
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -78,6 +79,9 @@ def plot_accuracy(
         )
         plt.setp(ax.get_legend().get_texts(), fontsize="7")  # for legend text
         plt.setp(ax.get_legend().get_title(), fontsize="7")
+
+
+ipdb.set_trace()
 
 
 fig, ax = plt.subplots(1, 1, constrained_layout=True)
