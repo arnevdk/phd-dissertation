@@ -649,8 +649,6 @@
 			\textsc{stbf-struct}) drastically improves performance.}
 		\label{fig:accuracy}
 	\end{figure}
-  \todo{the legend does not correspond to the text (method names are
-  different)}
 
   \fullpagefig{%
     \sffamily
@@ -726,13 +724,14 @@
 	These results were obtained using a laptop with an Intel® Core™ i7-8750H CPU and 16GB of RAM.
 
 	\begin{figure}
-		\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
-    \caption[Classifier training time.]{Median fold training time for different classifiers at different spatial
-			resolution levels evaluated over all training folds for all subjects.
-			Error bars represent standard deviation. The training time of \textsc{stbf-shrunk} increases more
-			steeply with resolution compared to \textsc{stbf-struct}.
-			All \textsc{stbf} classifiers can be trained significantly faster than
-			\textsc{xdawn+rg}.}
+		%\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
+    \sffamily
+    \sansmath
+    \input{figures/stbf_struct/training_time.pgf}
+    \caption[Classifier training time.]{Training time boxplots of different
+    classifiers and individual results for all training folds for all subjects
+    using 32 channels. Using structured covariance estimation greatly reduces
+    training time.}
 		\label{fig:stbf-struct/training-time}
 	\end{figure}
   \todo{the legend does not correspond to the text (method names are
@@ -741,10 +740,9 @@
 
 
 	\cref{fig:stbf-struct/training-time} shows that the training time of
-	\textsc{stbf-struct} increases less steeply than that of \textsc{stbf-shrunk}
-	and \textsc{stbf-emp}. The training time of all three \ac{stbf}-based classifiers is
-  much lower\todo{qualitative} than that of \textsc{xdawn+rg}, which appears nearly constant when using
-	4, 8, 16, or 32 channels.
+	\textsc{stbf-struct} has a lower median training time than
+  \textsc{stbf-shrunk}, \textsc{stbf-emp} and \textsc{xdawn+rg} when training
+  on all available data and using 32 channels\todo{qualitative}.
 
 	\section{Discussion}
 
