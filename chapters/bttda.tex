@@ -692,7 +692,7 @@ PARAFACDA+LDA and BTTDA+LDA improve upon HODA+LDA, and for BTTDA+LDA this
 difference is significant ($p=0.0269$).
 For the BNCI2014-004 dataset, the performance gap with comparison methods is
 smaller, but no significant differences were found between HODA+LDA,
-PARAFACDA+LDA, and BTTDA+LDA\todo{qualitative}.
+PARAFACDA+LDA, and BTTDA+LDA.
 
 \subsection{Block contribution}
 To analyze the contribution of extra feature blocks extracted by BTTDA over
@@ -739,12 +739,15 @@ this case, which is not the main focus of this work.
 
 Nevertheless, when considering the relative improvement over the original
 HODA model, our results show that BTTDA+LDA performs consistently on par or
-higher than HODA+LDA\todo{qualitative}.
+higher than HODA+LDA, with performances of respectively $86.43>83.25$ and
+$85.08>82.57$ for \ac{erp} datasets and $55.13>53.51$ and $80.60<80.88$ for
+\ac{mi} datasets.
 The classification score for BTTDA+LDA was also slightly
-higher\todo{qualitative} than that of
-restricted PARAFACDA+LDA for the ERP datasets and one of the MI datasets, but these
-results were not significant, and further studies with more datasets and
-subjects should show whether this holds.
+higher than that of
+restricted PARAFACDA+LDA for the ERP datasets ($86.43>86.19$ and $85.06>84.85$
+respectively) and one of the MI datasets ($55.13>54.34$ and $80.60<80.88$
+respectively), but these results were not significant, and further studies with
+more datasets and :subjects should show whether this holds.
 \Cref{fig:blocks} shows that there is added value in finding extra blocks
 over the first HODA block.
 While no proof is given, we notice that NMSE monotonically decreases, indicating that
@@ -898,7 +901,7 @@ Via an accompanying heuristic model selection procedure, \ac{bci} decoders using
 \ac{bttda} feature extraction can significantly outperform decoders based on
 \ac{hoda} and reach state-of-the-art decoding performance on event-related potential
 problems (second-order tensors) and scores on par with or higher than \ac{hoda} in motor
-imagery problems (third-order tensors)\todo{qualitative}.
+imagery problems (third-order tensors).
 Moving from the rigid Tucker tensor structure of \ac{hoda} to the more flexible
 block-term structure shifts the problem from finding optimally constrained
 multilinear projections to model and feature selection.
