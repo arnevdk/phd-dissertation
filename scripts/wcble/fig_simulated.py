@@ -1,10 +1,11 @@
+import pdb
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from mne import read_epochs
-from setup import configure_matplotlib_style,colors, save_pgf_trim
-import pdb
+from setup import colors, configure_matplotlib_style, save_pgf_trim
 
 configure_matplotlib_style()
 
@@ -46,9 +47,9 @@ def order(epochs, n_epochs=100):
 def plot_img(ax, epochs, cbar_ax=None):
     order_ = order(epochs)
     if cbar_ax is None:
-        axes=ax
+        axes = ax
     else:
-        axes=[ax, cbar_ax]
+        axes = [ax, cbar_ax]
     epochs.plot_image(
         order=order_,
         colorbar=cbar_ax is not None,
@@ -57,7 +58,7 @@ def plot_img(ax, epochs, cbar_ax=None):
         show=False,
         **img_kwargs,
     )
-    ax_img.axhline(100, linestyle="--", linewidth=0.5, color=colors['darkgray'])
+    ax_img.axhline(100, linestyle="--", linewidth=0.5, color=colors["darkgray"])
 
     ax_img.set_title("")
     ax_img.set_xticks([])
@@ -71,15 +72,17 @@ def plot_ts(ax, epochs):
     df = pd.DataFrame(y.T, index=x)
     df.index.name = "time"
     df = df.melt(ignore_index=False, value_name="amplitude")
-    sns.lineplot(data=df.reset_index(), x="time", y="amplitude", ax=ax_ts,
-    errorbar='sd')
+    sns.lineplot(
+        data=df.reset_index(), x="time", y="amplitude", ax=ax_ts, errorbar="sd"
+    )
     y = epochs["target"].pick("C3").get_data().squeeze() * 1e6
     df = pd.DataFrame(y.T, index=x)
     df.index.name = "time"
     df = df.melt(ignore_index=False, value_name="amplitude")
-    sns.lineplot(data=df.reset_index(), x="time", y="amplitude", ax=ax_ts,
-                 errorbar='sd')
-    ax.set_xlim([-2,2])
+    sns.lineplot(
+        data=df.reset_index(), x="time", y="amplitude", ax=ax_ts, errorbar="sd"
+    )
+    ax.set_xlim([-2, 2])
 
 
 stc = "sine"
@@ -108,7 +111,7 @@ for j, snr in enumerate(snrs):
 
         plot_img(ax_img, curr_epochs, cbar_ax=cbar_ax)
         ax_img.lines[0].remove()
-        label = f"SNR={snr}dB, $\sigma$={jitter}s"
+        label = f"SNR={snr} dB, $\sigma$={jitter} s"
         ax_img.set_title(label)
 
         if k:
@@ -116,18 +119,17 @@ for j, snr in enumerate(snrs):
         else:
             ax_img.set_ylabel("epochs")
         ax_img.set_xticks([-2, -1, 0, 1, 2])
-        ax_img.tick_params(axis='x', labelbottom=False)
+        ax_img.tick_params(axis="x", labelbottom=False)
 
         plot_ts(ax_ts, curr_epochs)
-        ax_ts.set_yticks([-10,10])
-        ax_ts.set_ylabel('µV')
+        ax_ts.set_yticks([-10, 10])
+        ax_ts.set_ylabel("µV")
         ax_ts.set_xticks([-2, -1, 0, 1, 2])
-        if j == len(snrs)-1:
+        if j == len(snrs) - 1:
             ax_ts.set_xlabel("time (s)")
         else:
             ax_ts.set_xlabel("")
-            ax_ts.tick_params(axis='x', labelbottom=False)
+            ax_ts.tick_params(axis="x", labelbottom=False)
 
 
-save_pgf_trim(plt.gcf(), axs[0,0], f'figures/wcble/simulated-{stc}.pgf',
-              height=8)
+save_pgf_trim(plt.gcf(), axs[0, 0], f"figures/wcble/simulated-{stc}.pgf", height=8)

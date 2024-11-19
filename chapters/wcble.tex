@@ -29,11 +29,13 @@ Within-session variability of \ac{erp} latency, called \ac{erp} latency
 accuracy~\cite{Thompson2012}.
 This effect is especially prominent when bringing \ac{bci} development from the
 lab to the clinical setting.
-For instance, \textcite{Zisk2021} showed that \ac{als} results in significantly
-increased \ac{erp} jitter\todo{qualitative}.
-\textcite{Arico2014} showed that latency jitter negatively affects \ac{bci}
-performance, and disproportionately so when the user is not directly gazing at
-intended targets, such as is the case for individuals with \ac{sspgi}.
+For instance, \textcite{Zisk2021} showed that \ac{erp} jitter was significantly higher
+in 6 \ac{als} patients (1350 ms$^2$) compared to neurotypical controls
+(553 ms$^2$).
+\textcite{Arico2014} showed that P3 latency jitter negatively correlated
+($\rho=0.17$) with \ac{bci} accuracy in a covert GeoSpell interface.
+Here the user does not gaze directly at the targets, such as is
+the case for individuals with \ac{sspgi}.
 Therefore, properly accounting for \ac{erp} latency jitter can contribute to
 the development of gaze-independent visual \acp{bci}.
 
@@ -519,7 +521,7 @@ The target epochs were jittered by setting the latency offset $l$
 of each target epoch to a random latency drawn from a normal distribution with 0 mean and standard
 deviations of respectively $\sigma=0.1,0.2,0.3$s.
 The noise was scaled at 32 different noise levels, with the \ac{snr} of a
-target epoch ranging from 0 to -31dB, with
+target epoch ranging from 0 to -31 dB, with
 \begin{equation}
   \text{SNR} = 10\log_{10}\frac{\var\left[s(t,0)\right]}{\var\left(\text{noise}\right)}
 \end{equation}
@@ -571,7 +573,7 @@ decreasing.
 However, we notice that this threshold occurs later for \ac{wcble} than for
 \ac{cble} for all evaluated jitter levels, indicating that \ac{wcble} is more
 robust in the presence of pink spatiotemporal noise.
-At around -28dB, \ac{wcble} does not significantly outperform \ac{cble}
+At around -28 dB, \ac{wcble} does not significantly outperform \ac{cble}
 anymore, and both methods get overtaken by the strong presence of noise.
 
 
@@ -597,16 +599,16 @@ classifier with $L_2$-norm regularization ($C=0.2$).
   \label{fig:wcble/results/accuracy}
 \end{figure}
 
-\Cref{fig:wcble/results/accuracy} shows that the classification accuracy of both \ac{tlda} and \ac{cble}
-decreases with
-$\sigma$ and \ac{snr}, but \ac{cble} outperforms \ac{tlda}.
-This difference is particularly large\todo{qualitative} when $\sigma$ is higher ($\sigma=0.2$
-and $\sigma=0.3$) and \ac{snr} is not yet high.
+\Cref{fig:wcble/results/accuracy} shows that the classification accuracy of all
+three methods decreases with $\sigma$ and \ac{snr}, yet \ac{wcble} outperforms
+both \ac{cble} outperforms \ac{tlda} since its performance declines less steeply.
+This difference is particularly large when $\sigma$ is higher
+($\sigma=0.2$ and $\sigma=0.3$ s) and \ac{snr} is not yet high, with accuracies of respectively
+77.50\% for \ac{wcble}, 17.00\% for \ac{cble} and 9.50\% for \ac{tlda} when
+$\sigma=0.3$ and \ac{snr} = -23 dB.
 \Ac{wcble} always scored better than \ac{cble} and \ac{tlda}, except for
 $\sigma=0.1$ and $\text{\ac{snr}} < 27 \text{dB}$, at which point both \ac{cble}
-and \ac{wcble} performed at chance leveltodo{qualitative}.
-When considering the accuracy of \ac{wcble}, we see that it shows more of a
-plateau as \ac{snr} increases\todo{qualitative}.
+and \ac{wcble} performed below the chance level of 50\%.
 
 \section{Discussion \& conclusion}
 \label{sec:wcble/conclusion}
@@ -625,12 +627,13 @@ classes to discriminate.
 
 The key finding of the simulation study presented
 in \cref{sec:wcble/results} is that \ac{wcble} is robust to higher evoked
-potential jitter and lower \ac{snr} than \ac{cble}\todo{qualitative}.
+potential jitter and lower \ac{snr} than \ac{cble}.
 It could therefore be a better candidate to apply in \ac{erp} analysis and
 decoding in those cases where jittered \ac{erp} data is of interest.
-At a certain noise threshold\todo{qualitative}, both methods begin to fail, but \ac{wcble}
-delivers higher accuracy at intermediate \ac{snr} levels than
-\ac{cble}\todo{qualitative}, likely due to the iterative alignment process.
+At a certain noise threshold (-27 dB for $\sigma=0.1$ s, -26 dB for
+$\sigma=0.2$ s and -23 dB for $\sigma=0.3$ s), both methods begin to fail, but \ac{wcble}
+delivers higher accuracy ($>75\%$) at intermediate \ac{snr} levels than
+\ac{cble}, likely due to the iterative alignment process.
 
 In general, noise beyond a certain level will overwhelm both \ac{cble} and
 \ac{wcble} performance, making it impossible to accurately estimate latencies

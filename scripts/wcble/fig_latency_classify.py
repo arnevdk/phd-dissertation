@@ -1,19 +1,24 @@
-import matplotlib.pyplot as plt
 import pdb
+
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-from setup import configure_matplotlib_style,textwidth_in, save_pgf_trim
+from setup import configure_matplotlib_style, save_pgf_trim, textwidth_in
 
 configure_matplotlib_style()
 
 
 # Latency
 df = pd.read_csv("data/wcble/results_align.csv")
-df = df.replace({'tlda': 'tLDA', 'CBLE-median':'CBLE', 'WCBLE-median':'WCBLE'})
+df = df.replace({"tlda": "tLDA", "CBLE-median": "CBLE", "WCBLE-median": "WCBLE"})
 df = df[df["stc"] == "sine"]
 
-facet_kws = dict(ylim=[0, 1], xlim=[0, -31], despine=False, legend_out=False,
-                 )
+facet_kws = dict(
+    ylim=[0, 1],
+    xlim=[0, -31],
+    despine=False,
+    legend_out=False,
+)
 fg = sns.relplot(
     data=df,
     x="snr",
@@ -24,10 +29,10 @@ fg = sns.relplot(
     kind="line",
     facet_kws=facet_kws,
 )
-fg.set_titles(col_template="$\\sigma={col_name}$s")
+fg.set_titles(col_template="$\\sigma={col_name}$ s")
 fg.set_xlabels("SNR (dB)")
 fg.set_ylabels("$\\rho$")
-save_pgf_trim(fg.fig, fg.axes[0,0], 'figures/wcble/fig_latency.pgf', height=2)
+save_pgf_trim(fg.fig, fg.axes[0, 0], "figures/wcble/fig_latency.pgf", height=2)
 
 
 # Accuracy
@@ -38,7 +43,7 @@ df = pd.concat(
 df = df[df["stc"] == "sine"]
 df["accuracy"] *= 100
 
-df = df.replace({'tlda': 'tLDA', 'CBLE-median':'CBLE', 'WCBLE-median':'WCBLE'})
+df = df.replace({"tlda": "tLDA", "CBLE-median": "CBLE", "WCBLE-median": "WCBLE"})
 
 facet_kws = dict(ylim=[0, 100], xlim=[0, -31], despine=False, legend_out=False)
 fg = sns.relplot(
@@ -51,8 +56,8 @@ fg = sns.relplot(
     kind="line",
     facet_kws=facet_kws,
 )
-fg.set_titles(col_template="$\\sigma={col_name}$s")
+fg.set_titles(col_template="$\\sigma={col_name}$ s")
 fg.set_xlabels("SNR (dB)")
 fg.set_ylabels("accuracy (%)")
 
-save_pgf_trim(fg.fig, fg.axes[0,0], 'figures/wcble/fig_accuracy.pgf', height=2)
+save_pgf_trim(fg.fig, fg.axes[0, 0], "figures/wcble/fig_accuracy.pgf", height=2)
