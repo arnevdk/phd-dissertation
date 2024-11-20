@@ -35,15 +35,14 @@
 
 }
 \opening{Dear chair and members of the reading committee}
-\todo{fix todos in document}
 
-I would like to extend my sincere gratitude for time and effort you have taken
+I would like to extend my sincere gratitude for the time and effort you have taken
 to review the manuscript of my PhD dissertation.
 Additionally, I would like to thank you for the insightful, constructive and
 detailed comments you all have provided.
 The following reply contains a point-by-point response to your review comments.
-Attached, you will also find an updated draft of the manuscript and a version
-with indicated changes for your approval.
+Attached, you will also find an updated draft of the manuscript, as well as a
+version with indicated changes for your approval.
 
 \reply{Andrea K\"ubler}
 Major comments:
@@ -84,8 +83,10 @@ Major comments:
 	and not the metrics per subject, session and cross-validation fold,
 	hence we could not perform relevant statistical comparison with these
 	comparison models.
-	\item \todo{include table with absolute performances for transfer
-	conditions}
+\item Tables 6.2 and 6.3 now report the absolute cross-condition ROC-AUC values
+  per model and dataset for a more complete and interpretable presentation of
+    the results, and the absolute values have been mentioned when referring to
+    effects in the results section.
 \end{enumerate}
 Minor comments:
 \begin{enumerate}
@@ -99,19 +100,20 @@ Minor comments:
 \reply{Reinhold Scherer}
 Major comments:
 \begin{enumerate}
-	\item \todo{quantify qualitative statements}
-	\item  Mathematical equations and derivations have thoroughly
+	\item \todo{quantify qualitative statements} Throughout the text, qualitative
+    statements have been qualified where possible and appropriate.
+	\item  All mathematical equations and derivations have thoroughly
 	been checked for correctness and notational consistency, and have been
-	corrected throughout the manuscript where necessary.
+	corrected where necessary.
 	\item As indicated by the reviewer, true on-line experiments with live
-	feedback have indeed not yet be conducted, but were foreseen to take
+	feedback have indeed not reported in this thesis, but were foreseen to take
 	place within the framework of this doctoral study.
 	I agree that these experiments would be valuable to supplement the
 	presented conclusions and are the logical next step.
-	Indeed, the start of experimentation with healthy control participants
-	as well as patient groups, was heavily delayed by the COVID-19 pandemic, as the
+	Indeed, the start of experimentation with healthy control participants,
+	as well as with patient groups, was heavily delayed by the COVID-19 pandemic, as the
 	preparatory research started in September 2019 and I officially
-	enrolled in the the doctoral training programme in January 2020.
+	enrolled in the doctoral training program in January 2020.
 	This restricted not only our access to experiment subjects for a
 	significant period at the start of the PhD, and even longer for
 	vulnerable patient groups, but also shifted priorities for the medical
@@ -122,14 +124,13 @@ Major comments:
 	with our partner patient centers, with an adapted interface and experimental protocol.
   This limitation has now clearly been mentioned in the future work section of
   chapter 8.
+\end{enumerate}
+Minor comments:
+\begin{enumerate}
 	\item Recorded datasets could not be made publicly available since the
 	ethical protocol (Ethics Commission of University Hospital Leuven --
 	S62547 v1.4) for the conducted studies did not include provisions
 	publishing the data.
-\end{enumerate}
-Minor comments:
-\begin{enumerate}
-	\item
 \end{enumerate}
 
 \reply{Maarten De Vos}
@@ -142,8 +143,24 @@ Major comments:
 	section 1.6.4 has also been corrected, and it was expanded for clarity.
 	Figures 3.1 and 3.2 have been regenerated and relabeled for consistent
 	formatting.
-	\item \todo{replace wilcoxon by delong}
-\end{enumerate}
+	\item The Wilcoxon signed-rank, a non-parametric,
+    paired test was used to compare ROC-AUC values in sections 4.3.3 and 6.3.1.
+    I agree that the DeLong test is indeed an appropriate test for
+    statistically comparing ROC-AUCs between two models, but it is commonly used
+    to compare ROCs obtained from a single test dataset (potentially obtained
+    through stacking cross-validated predictions).
+    Our experiments, on the other hand, involve calculating ROC-AUCs per
+    cross-validation fold, yielding datasets of multiple ROC-AUCs to compare.
+    In this case, the Wilcoxon signed-rank test is the appropriate
+    test~\cite{Rainio2024}.
+    While both approaches are valid strategies and commonly used, I believe
+    the latter is more interpretable in the context of the generalizability
+    of machine learning models, since it more directly reflects the variance
+    across folds.
+    Hence, I recognize the potential application of the DeLong test here,
+    but I would argue that using Wilcoxon signed-rank tests in combination with
+    the evaluation strategy employed in the experiments is still a valid approach.
+   \end{enumerate}
 Minor comments:
 \begin{enumerate}
 	\item Unsupported claims regarding generalisability have been omitted
@@ -191,7 +208,7 @@ Major comments:
 \end{enumerate}
 Minor comments:
 \begin{enumerate}
-	\item Measurements unit representation has been uniformized according to the
+	\item Measurement unit representation has been uniformized according to the
     SI standard throughout the text and in figures 5.4-5.6.
   \item Numerical citations have now consistently been replaced by text-style citations
     mentioning the author names where appropriate in the sentence.

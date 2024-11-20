@@ -625,12 +625,12 @@
 	available training data and apply the cross-validation procedure nine times (the number of blocks in the training fold) for all subjects, keeping the
 	corresponding number of blocks in the training folds and dropping the rest.
   \Cref{fig:accuracy}, \cref{fig:stbf-struct/accuracy-ap} and
-  \crefrange{tab:stbf-struct/accuracy/stbf-struct}{tab:stbf-struct/accuracy/xdawn-rg}
+  \crefrange{tab:stbf-struct/accuracies/stbf-struct}{tab:stbf-struct/accuracies/xdawn-rg}
   shows each classifier's accuracy relative to the data availability and trials
   used for agveraging.
 	We statistically compare the two newly proposed classifiers,
 	\textsc{stbf-struct} and \textsc{stbf-shrunk} with different levels of training
-	data availability using a one-sided paired Wilcoxon rank-sum test with Holm correction for the multiple pairwise comparisons between classifiers.
+	data availability using a one-sided Wilcoxon signed-rank test with Holm correction for the multiple pairwise comparisons between classifiers.
 	Statistical comparisons were performed for trial
   \cref{tab:stbf-struct/p-values-1}, two \cref{tab:stbf-struct/p-values-2}
   and five trials \cref{tab:stbf-struct/p-values-5}.
@@ -1012,7 +1012,7 @@
     \caption[Statistical significance of differences in classifier
     performance.]{%
         Statistical significance of differences in classifier performance.
-        $p$-values calculated by one-sided paired Wilcoxon rank-sum test with
+        $p$-values calculated by one-sided Wilcoxon signed-rank test with
 	    	Holm correction using one testing trial for different classifiers
 	    	and levels of data availability. $p$-values $<0.05$ are considered
         significant.

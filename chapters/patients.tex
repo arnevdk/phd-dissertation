@@ -1,7 +1,7 @@
 \chapter{Case studies}
 \label{sec:patients}
 \epigraph{I knew there would be a lot of unexpected issues involved with
-patient experiments, but I never thought there would be interference from baby
+patient experiments, but I never thought there would be a baby
 goats in the experiment room.}{Juliette}
 
 \section{Introduction}
@@ -228,7 +228,6 @@ and vision in the right eye, and reducing motility in the left.
   \label{tab:patients/eye}
 \end{table}
 
-
 Finally, we also recorded gaze position throughout the experimental session to
 register the participant's gaze relative to the stimulated \ac{bci} targets.
 
@@ -404,12 +403,19 @@ XDAWNCov+TS+LDA performance was slightly lower here (though not
 significantly).
 (\ac{wcble} 74.15\%, XDAWNCov+TS+LDA 71.88\%, \ac{tlda} 74.27\%).
 More interestingly, we noticed that performances of the decoders in free
-\ac{vsa} were close to those in the overt \ac{vsa}.\todo{qualitative}
+\ac{vsa} were close to those in the overt \ac{vsa}.
 A substantial decrease in performance from the overt setting to the free
-setting was observed for
-subjects PC3 and PC4.\todo{qualitative}
+setting was observed for subjects PC3
+(\ac{wcble}: $70.31\%>62.14\%$, XDAWNCov+TS+LDA: $65.78\%>62.18\%$, \ac{tlda}:
+$70.49\%>63.76\%$)
+and PC4
+(\ac{wcble}: $65.56\%>55.71\%$, XDAWNCov+TS+LDA: $62.02\%>54.24\%$, \ac{tlda}:
+$66.12\%>57.08\%$).
 For PB2, who also relied on covert \ac{vsa} during the uncued free \ac{vsa}
-setting, there was no notable decrease in performance.\todo{qualitative}
+according to gaze tracking setting, the decrease in performance was also
+present, but not as substantial
+(\ac{wcble}: $82.76\%>78.88\%$, XDAWNCov+TS+LDA: $80.74\%>77.99\%$, \ac{tlda}:
+$83.21\%>78.84\%$).
 
 \begin{figure}
   \input{figures/patients/fig_decode.pgf}
@@ -512,7 +518,7 @@ drastically boost performance.
 Subject PB2 exemplifies this: his free \ac{vsa} performance is on par with his
 overt \ac{vsa} performance, although eye tracking showed that he relied mostly
 on overt \ac{vsa} when cued to do so, and mostly on covert \ac{vsa} when
-gaze was uncued.\todo{qualitative}
+gaze was uncued.
 This is also supported by our results on cross-condition calibration presented
 in \cref{sec:patients/outcomes/cross}, which show that leveraging residual
 eye motor control to fixate targets during the calibration phase can improve

@@ -1,7 +1,7 @@
 \chapter{Compensating \acs{erp} jitter for gaze-independence}%
 \label{sec:covert-align}
-\epigraph{``You see, but you do not observe!''}{Sherlock Holmes in  \\ A
-Scandal in Bohemia -- Sir Arthur Conan Doyle}
+\epigraph{``You see, but you do not observe!''}{Sherlock Holmes in  \\ \emph{A
+Scandal in Bohemia -- Sir Arthur Conan Doyle}}
 \noindent\emph{This chapter was published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
@@ -20,8 +20,8 @@ The latency estimation and alignment approach proposed in \cref{sec:wcble}
 was specifically designed for this purpose.
 
 \textcite{Arico2014} observed higher variability in single-trial P3 peak
-latencies relative to stimulus onset during covert \ac{vsa} compared to overt
-\ac{vsa}\todo{qualitative, discuss}.
+latencies relative to stimulus onset during covert \ac{vsa} (529 ms$^2$) compared to overt
+\ac{vsa} (256$^2$ ms).
 This latency variability contributes to reduced covert \ac{vsa} decoding performance.
 While they proposed an analysis and performance prediction method, they did not provide a
 decoding solution.
@@ -332,10 +332,11 @@ exceeded 800 µV, and for the CVSA-ERP dataset, if the user's gaze differed by m
 		\subref{fig:covert-align/block-eval} Cross-validated target selection accuracy for
     all decoders plotted as a function of the number of test repetitions in
     different VSA conditions. Significance was determined using one-sided
-    (\ac{wcble} $>$ other) Wilcoxon rank-sum tests using False Discovery Rate correction
+    (\ac{wcble} $>$ other) Wilcoxon signed-rank tests using False Discovery Rate correction
     ($*= p<0.05$, $**=p<0.01$, $***=p<0.001$). \ac{wcble} generally achieves the highest
     covert \ac{vsa} target selection accuracy.}
 \end{figure}
+
 Wilcoxon signed-rank tests controlled for multiple comparisons by Benjamini
 and Hochberg's False Discovery Rate procedure (FDR) revealed that
 for the BNCI2014-009 dataset, \ac{wcble} significantly outperformed \ac{tlda}
@@ -352,43 +353,31 @@ We found no significant difference in \ac{wcble} performance over \ac{tlda} in t
 increased \ac{wcble} performance over \ac{tlda} and \ac{cble} as $d$ increases.
 \ac{cble} failed to significantly outperform its first-stage classifier \ac{tlda} in all
 evaluated \ac{vsa} conditions.
-\Cref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets,
-and conditions.
-
-\begin{table}
-  \centering
-  \makebox[\textwidth][c]{%
-    \input{chapters/covert_align_performance.tex}
-  }
-  \caption{Cross-validated single-trial classification area under the receiver operating characteristic
-curve for all evaluated models, visuospatial attention conditions, and
-  datasets.}
-  \label{tab:covert-align/results/single-trial}
-\end{table}
-
+\Cref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets, and conditions.
 
 \Cref{fig:covert-align/block-eval} shows the cross-validated \ac{bci} selection
 accuracy on the BNCI2014-009 and the CVSA-ERP datasets for all investigated
 decoders.
 Accuracy was determined by, for each block, selecting the character with the
 highest (stage-two if applicable) classifier score and comparing it to the cued target.
-Significance was calculated using one-sided Wilcoxon rank-sum tests ($p=0.05$)
+Significance was calculated using one-sided Wilcoxon signed-rank tests ($p=0.05$)
 corrected for FDR over decoders.
 For this evaluation, no epochs were rejected to keep the trial-based structure
 of \ac{bci} operation intact.
 For all datasets and \ac{vsa} conditions, \ac{cble} scores approximately on par with \ac{tlda}.
 Yet, \ac{wcble} yields an improved decoding accuracy for covert \ac{vsa} in both
 datasets, which is greatest for smaller numbers of repetitions and
-decreases as the number of repetitions increases.\todo{qualitative}
+decreases as the number of repetitions increases.
 This covert \ac{vsa} accuracy increase over \ac{tlda} is significant in the
 BNCI2014-009 dataset for 1 and 3 repetitions, and in CVSA-ERP for 1-5 and 10 repetitions.
 Furthermore, while we reported a relative decrease in single-trial \ac{rocauc} for
 \ac{wcble} in overt \ac{vsa}, this does not seem to result in a consistent decrease in target
-selection accuracy.\todo{qualitative}
+selection accuracy.
 No significant increase of \ac{wcble} over other methods was found in split \ac{vsa}.
 While Riemannian methods are significantly outperformed by \ac{tlda}, \ac{cble}, and \ac{wcble}
 in the BNCI2014-009 dataset, they perform approximately on par with \ac{tlda} and
-\ac{wcble} in CVSA-ERP.\todo{qualitative}
+\ac{wcble} in CVSA-ERP.
+\todo{qualitative, list accuracies for one repetition}
 
 Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
 \ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
@@ -465,20 +454,21 @@ In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/result
 		of target epochs for different \ac{vsa} conditions. Overt \ac{vsa} exhibits lower
     jitter than other conditions.
     Significance of differences
-    was determined with two-sided Wilcoxon rank-sum tests with False Discovery
+    was determined with two-sided Wilcoxon signed-rank tests with False Discovery
     Rate correction on per-subject jitter ($*= p<0.05$, $**=p<0.01$,
     $***=p<0.001$, $****=p<0.0001$).
 	}
 \end{figure*}
 When comparing \ac{cble} and \ac{tlda}, we do not observe large differences in any of the
-evaluated settings, similar to the within-subject conditions.\todo{qualitative}
+evaluated settings, similar to the within-subject conditions.
+\todo{qualitative}
 On the contrary, when considering the comparisons between \ac{wcble} and \ac{tlda}, we
 see that performance is on par or greater using \ac{wcble} for most conditions,
 except for within-overt \ac{vsa} decoding.\todo{qualitative}
 
 \section{Discussion}
 
-\cref{fig:covert-align/single-trial-roc-auc-diff} shows that \ac{wcble} significantly improves
+\Cref{fig:covert-align/single-trial-roc-auc-diff} shows that \ac{wcble} significantly improves
 covert \ac{vsa} decoding.
 This is advantageous for the development of a class of \ac{erp}-\ac{bci} interfaces for
 users who prefer to rest their gaze on a fixation cross on the screen,
@@ -508,8 +498,7 @@ split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the foll
         In covert and split \ac{vsa}, participants have to execute a dual task by
         dissociating their visuospatial attention and gaze fixation.
         Evidence shows that \ac{erp} latency variability is
-        higher when attention is
-        divided~\cite{Polich2007,Arico2014}.
+        higher when attention is divided~\cite{Polich2007,Arico2014}.
         \textcite{Arico2014} also partly attribute higher latency jitter to the covert \ac{vsa}
         task performed in the BNCI2014-009 dataset, since the GeoSpell interface
         requires both spatial and feature attention.
@@ -533,7 +522,6 @@ split \ac{vsa}, and the lack thereof in overt \ac{vsa}, could stem from the foll
         state-of-the-art classifiers, leaving less room for relative improvement
         in this case.
 \end{enumerate*}
-\todo{first item qualitative}
 
 Although it is not immediately clear if \ac{wcble} actively corrects for higher P3 jitter
 present in covert and split \ac{vsa} compared to overt \ac{vsa},
@@ -564,10 +552,10 @@ non-negligible role in covert \ac{vsa} by comparing performance between
 overt and covert \ac{vsa}, while including or excluding early VEPs.
 This analysis showed that the absence of the N1 and other early VEPs is not the
 only factor hampering covert \ac{vsa} decoding performance.
-However, the large increase in performance for covert \ac{vsa} reported by
-\textcite{Arico2014}\todo{qualitative} could also
-be explained by overfitting on artifacts amplified by aligning, since their
-method is not evaluated on unseen data, as opposed to ours.\todo{qualitative}
+However, the large increase in accuracy for covert \ac{vsa} reported by
+\textcite{Arico2014} (60\% to 95\% with a window focusing on only the P3
+component) could also be explained by overfitting on artifacts amplified by
+aligning, since their method is not evaluated on unseen data, as opposed to ours.
 
 We also argue that \ac{wcble} does not only enhance the P3 signal, but effectively reduces the
 negative impact of noise that would otherwise mask the \ac{erp} response, thereby increasing the
@@ -690,3 +678,43 @@ Later studies should confirm whether our findings hold in individuals with
 severe physical impairment and a variety of eye-motor impairments, and develop a
 solution that is capable of properly handling multiple non-time-locked \ac{erp}
 components.
+
+\clearpage
+\begin{subappendices}
+  \section{Single-trial classification performances}
+  \begin{table}[ht]
+  \centering
+  \makebox[\textwidth][c]{%
+    \input{chapters/covert_align_performance.tex}
+  }
+  \caption{Cross-validated single-trial classification area under the receiver operating characteristic
+curve for all evaluated models, visuospatial attention conditions, and
+  datasets.}
+  \label{tab:covert-align/results/single-trial}
+\end{table}
+
+  \clearpage
+  \section{Cross-condition transfer classification performances}
+
+  \begin{table}[ht]
+      \footnotesize
+      \input{chapters/covert_align_cross-CVSA-ERP.tex}
+      \caption[Transfer learning results for CVSA-ERP]{Cross-condition transfer
+      classification performance (cross-validated \ac{rocauc})
+      for all evaluated models in the CVSA-ERP dataset. Each decoder is trained
+      on one \ac{vsa} condition and tested across all
+      \ac{vsa}
+      conditions to evaluate gaze-independence and transfer learning
+      performance.}
+  \end{table}
+  \begin{table}[ht]
+      \footnotesize
+      \input{chapters/covert_align_cross-BNCI2014-009.tex}
+      \caption[Transfer learning results for BNCI2014-009]{Cross-condition transfer
+      classification performance (cross-validated \ac{rocauc})
+      for all evaluated models in the CVSA-ERP dataset. Each decoder is trained
+      on one \ac{vsa} condition and tested across all \ac{vsa}
+      conditions to evaluate gaze-independence and transfer learning
+      performance.}
+  \end{table}
+\end{subappendices}
