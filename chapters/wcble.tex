@@ -2,10 +2,10 @@
 \label{sec:wcble}
 \epigraph{``The sands of time cannot be stopped.''}{Brom in \emph{Eragon --
 Christopher Paolini}}
-\noindent\emph{\Cref{sec:wcble/literature/contrib}, \cref{sec:wcble/methods} (including
+\noindent\emph{\Cref{sec:wcble/literature/contrib},
+\crefrange{sec:wcble/methods/cble}{sec:wcble/methods/wcble} (including
 \cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
-\cref{sec:wcble/conclusion} were published
-as part of~\textcite{VanDenKerchove2024}.}
+\cref{sec:wcble/conclusion} were published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
 \label{sec:wcble/intro}
@@ -408,6 +408,7 @@ trials as compared to the minimum approach.
 
 
 \subsection{\acl{wcble}}
+\label{sec:wcble/methods/wcble}
 To improve performance over \ac{cble}, we propose a new algorithm inspired both by
 \ac{cble} and the aforementioned Woody iteration scheme termed \ac{wcble}.
 Instead of using \ac{cble} to estimate the features of a second-stage classifier
@@ -481,14 +482,14 @@ in~\cref{sec:robust-latency}.
   }
   \label{fig:diagram-eval}
 }
-\section{Results}
-\label{sec:wcble/results}
+
+\subsection{Synthetic data generation}
+\label{sec:wcble/methods/simulation}
 Since it is hard to obtain ground truth measures of \ac{erp} latencies, we
 first evaluate our approach with synthetic data.
 In \cref{sec:covert-align}, the proposed algorithm will be applied to real
 \ac{eeg} data.
 
-\subsection{Synthetic data generation}
 To verify our approach, we simulated synthetic 16 channel \ac{eeg} data with standard
 10-20 electrode positions using the \texttt{simulate\_evoked} method of the
 MNE (version 1.8)~\cite{Gramfort2013} software package.
@@ -540,6 +541,11 @@ A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.
   }
   \label{fig:wcble/sim-sine}
 }
+
+
+
+\section{Results}
+\label{sec:wcble/results}
 
 \subsection{Latency estimation}
 We compared our proposed \ac{wcble} algorithm to \ac{cble} on a latency

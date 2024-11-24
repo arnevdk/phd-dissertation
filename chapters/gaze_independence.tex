@@ -229,22 +229,46 @@ rates~\cite{Willett2021,Metzger2023}, both due to their intuitiveness and the
 complexity that can be captured in commands, but they often do so only when paired
 with invasive recording.
 Non-visual reactive paradigms that use, for example, auditory~\cite{Halder2010} and
-somatosensory~\cite{Brouwer2010}
-stimulation do not rely on gaze redirection but also result in lower \acp{itr}
-compared to visual paradigms, with \acp{itr} ranging between 1 and 10 bits/min
-for auditory paradigms and 0.5 and 5 bits/min for tactile~\cite{Riccio2012}.
+somatosensory~\cite{Brouwer2010} stimulation do not rely on gaze redirection
+but also result in lower \acp{itr} compared to visual paradigms.
+A survey in by \textcite{Riccio} from 2012 reported that \acp{itr} ranged between
+1 and 10 bits/min for auditory paradigms and 0.5 and 5 bits/min for tactile~\cite{Riccio2012}.
+
+On the tactile front, recent studies use steady-state somatosensory evoked
+potentials~\cite{Petit2021} or tactile oddball paradigms~\cite{Waal2012}
+These are analogous to the \ac{ssvep} and visuall oddball paradigms,
+but with vibrotactile stimulation at different spatial locations and/or
+frequencies~\cite{Han2020}.
+Some noteworthy advancements achieved an \ac{itr} of 14.77
+bits/min~\cite{Liu2019} and 20.73 bits/min~\cite{Herweg2016} with tactile
+oddball stimulation through highly optimized stimulation?
+Still, other recent tactile paradigm studies~\cite{Herweg2016a,Han2020,Jin2020,Li2019,Eidel2022}
+fail to exceed 5 bits/min.
+
+Auditory \acp{bci} are similarly implemented as paradigms oddball or
+steady-state stimulation with spatial or tone modulation.
+\textcite{Zhang2020} report that recent decoding methods can reach 16.99
+bits/min \ac{itr}, but, in general, auditory \acp{bci} are also limited in
+their speed and usually outperformed by visual paradigms~\cite{Rezeika2018}.
+
 While auditory and somatosensory stimulation on their own might yield poor
 \ac{itr}, \textcite{Yin2016} showed that it can provide added value in gaze-independent
-settings when coupled with oddball stimulation in a hybrid paradigm.
+settings when coupled with visual oddball stimulation in a hybrid paradigm.
 Their solution using the P3 components of bimodal stimulation reached an \ac{itr} of 14.94 bits/min.
 In general, their approach is interesting as it follows a philosophy that
 relies on establishing as many communication pathways as possible.
-Yet, auditory and somatosensory \acp{bci} suffer from increased mental effort in
-operation and from user-dependent
-variability~\cite{Severens2014,Reichert2020b}.
+Auditory and tactile stimulation can even be paired to create a fully
+non-visual, hybrid \ac{bci}, with a reported \ac{itr} of 11.66 bits/min~\cite{Zhang2020}.
+
+Yet, auditory and somatosensory \acp{bci} also suffer from increased mental effort in
+operation and from user-dependent variability~\cite{Severens2014,Reichert2020b}.
 \textcite{Severens2014} showed that the visual Hex-o-Spell~\cite{Treder2010}
 outperformed a somatosensory alternative in participants with \ac{als} whose
 eye motor capabilities were effectively impaired.
+However, non-visual stimulation modalities are still valuable for developing
+BCIs for individuals affected with severe vision loss or
+blindness~\cite{Nijboer2008,Rutkowski2015}, which can occur in some cases of
+\ac{lis}~\cite{Patterson1986}.
 
 \subsection{Gaze-independent visual stimulation}
 \label{sec:gaze-independence/sota/visual}
@@ -331,7 +355,8 @@ To summarize, for individuals with \ac{sspgi}, gazing directly at a screen targe
 be uncomfortable, impractical, or even impossible.
 Hence, assistive devices that rely on eye tracking are often inefficient for
 them.
-Consequently, while \acp{bci} hold great promise for these individuals, conventional
+Consequently, while visual \acp{bci} hold great promise for these individuals,
+if they do not suffer from severe vision loss, conventional
 gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
 control.
 Therefore, the development of decoding strategies that account for covert
@@ -347,19 +372,20 @@ relies to some extent on eye motor control, we aim to circumvent this.
 In such an interface, stimuli can be presented in a standard \ac{bci} paradigm, but
 visuospatial attention can be decoded separately from gaze position, which do not necessarily need to coincide.
 
-This leads us to adopt a specific approach: \emph{improve the performance of a
-spatially organized visual oddball \ac{erp}-based brain
-computer interface by using a suited decoding strategy}.
+This leads us to adopt the following hypothesis: \emph{it is possible to improve
+the (gaze-independent) accuracy of a spatially organized visual oddball
+\ac{erp}-based brain computer interface by using a suited decoding strategy}.
 
-To achieve our goal, we chose a suitable interface and innovate on decoder
-development.
-We collect data from healthy control subjects to test our decoders.
-Finally, the findings of these experiments will be verified in experiments with
-individuals with \ac{sspgi}, including individuals with \ac{lis}, evaluating
-both performance and comfort.
+To test this hypothesis, we chose a suitable interface, innovate on decoder
+development and test if these innovations improve \ac{bci} performance in a
+meaningful way.
+Accordingly, we collected data from healthy control subjects to test proposed
+decoders, and the findings have be verified in experiments with
+individuals with \ac{sspgi}, including individuals with \ac{lis}, focusing
+both accuracy and comfort.
 
-This specific target is embedded within a broader goal of enabling
-effective communication for those with \ac{sspgi}.
+The specific target of improving \ac{bci} performance under these conditions
+is embedded within a broader goal of enabling effective communication for those with \ac{sspgi}.
 Ultimately, we wish to design a comfortable interface that allows them to maximally exploit
 their residual gaze capabilities.
 We believe this can be done with a non-invasive, spatially

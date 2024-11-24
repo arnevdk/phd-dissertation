@@ -15,6 +15,8 @@
 \RequirePackage{opensans}
 \RequirePackage{titlesec}
 \RequirePackage{ebgaramond}
+\RequirePackage{multicol}
+
 % Set page size ================================================================
 \RequirePackage[paperheight=240mm,paperwidth=160mm,bottom=30mm]{geometry}
 
@@ -74,7 +76,7 @@
 \renewcommand{\sffamily}{\opensans}
 
 % Setup titles
-\titleformat{\part}[display]{\pagecolor{white}\vskip10em\centering\bfseries}{\sffamily\Large\partname\
+\titleformat{\part}[display]{\pagecolor{lightgray}\vskip10em\bfseries}{\sffamily\Large\partname\
 	\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
 \titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
@@ -152,7 +154,8 @@
 \let\oldmainmatter\mainmatter
 \renewcommand{\mainmatter}{\oldmainmatter\pagestyle{main}}
 
-% Setup ToC ====================================================================
+% Setup tables==================================================================
+
 % Setup ToC
 \renewcommand\cftpartfont{\sffamily\bfseries}
 \renewcommand\cftpartpagefont{\sffamily\bfseries}

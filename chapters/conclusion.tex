@@ -1,6 +1,7 @@
 \chapter{Conclusion \& recommendations}
 \epigraph{``The mystery of life isn't a problem to solve, but a reality to
-experience.''}{S{\o}ren Kierkegaard}
+experience.''}{ Reverend Mother Gaius Helen Mohiam in \\ \emph{Dune -- Frank
+Herbert}\\ adapted from S{\o}ren Kierkegaard}
 \noindent\emph{The first paragraph of \cref{sec:conclusion/contrib/decoders} was published as
 part of \textcite{VanDenKerchove2022}.}
 
@@ -23,9 +24,9 @@ We compared these estimators with the original formulation of the
 spatiotemporal (STBF-emp)
 beamformer and a state-of-the-art Riemannian Geometry method (XDAWN+RG) in an off-line P3 detection task on
 an existing dataset.
-Our results show that the structured estimator results in higher
-accuracy\todo{qualitative} in
-general, and specifically when training data are sparsely available.
+Our results show that the structured estimator results in an accuracy
+increase of up to 4 \%. compared to shrinkage regularization.
+y when training data are sparsely available.
 Results can be computed faster and with
 substantially less memory usage.
 Since these algorithms are not paradigm-specific, the conclusions can be
@@ -59,10 +60,10 @@ unseen incoming test data is not yet known.
 \Ac{wcble} was first tested on synthetic data to evaluate its
 effectiveness under conditions of controlled latency variability and noise.
 These results showed that it is robust to higher noise and jitter\ compared to
-a non-iterative method in a latency estimation task\todo{qualitative}.
+a non-iterative method in a latency estimation task.
 Decoding accuracy was higher in high jitter and noise
 settings compared to the non-iterative method and a state-of-the-art
-decoder\todo{qualitative}.
+decoder.
 
 \subsection{Gathered datasets}
 The CVSA-ERP dataset consists of recordings of 15 healthy participants, mean age
@@ -80,7 +81,7 @@ It also confirmed that the effects of covert \ac{vsa} on \ac{erp} component
 amplitude hold for split \ac{vsa}.
 
 Additionally, we gathered data from 7 individuals with \ac{sspgi} with conditions such as
-amyotrophic lateral sclerosis (\ac{als}), Friedreich's ataxia (\ac{fa}), and stroke.
+\ac{als},\ac{fa}, and stroke.
 These participants exhibited varying degrees of eye motor impairment, such as
 involuntary eye movements, ophthalmoplegia, and gaze fixation fatigue.
 The data provide invaluable real-world evidence on how gaze-independent
@@ -98,8 +99,10 @@ We evaluated the BCI decoding performance in a single-trial classification exper
 as well as in a target selection experiment reflecting BCI operation.
 Performance was significantly different between decoders, but this
 result was significantly dependent on the \ac{vsa} condition and the dataset.
-While \ac{wcble} was outperformed by the state-of-the-art in overt \ac{vsa}
-decoding, it increased covert \ac{vsa} decoding.\todo{qualitative}
+While \ac{wcble} was slightly outperformed by the state-of-the-art in overt \ac{vsa}
+decoding ($94.28<94.74$ and  $85.25<86.60$ \% \ac{rocauc}),
+it increased covert \ac{vsa} decoding ($80.84>78.90$ and $73.38>71.11$ \%
+\ac{rocauc}).
 
 For the split attention conditions in the CVSA-ERP
 dataset, \ac{wcble} yielded a significant improvement over CBLE and the
@@ -114,10 +117,12 @@ learning between \ac{vsa} conditions was studied to simulate conditions where an
 individual with gaze impairment can end up in different \ac{vsa} settings within
 a \ac{bci} operation session due to their lack of proper motor control.
 When trained and evaluated on overt VSA data, our proposed \ac{wcble} algorithm
-results in a significant decrease in performance compared to the state-of-the-art,
-consistent with the within-condition results.\todo{qualitative}
+results in a small but significant decrease in performance compared to the state-of-the-art
+($85.25>86.60$ and $94.74>94.28$ \% \ac{rocauc}), consistent with the within-condition
+results.
 For all other pairs of training and evaluation VSA conditions, however,
-\ac{wcble} was equal to or significantly better.\todo{qualitative}
+\ac{wcble} was equal to or significantly better with increases exceeding 4 \%
+\ac{rocauc}.
 
 Later case studies explored gaze-independent
 \ac{bci} performance in individuals with \ac{sspi} and varying eye motor impairments.
@@ -135,17 +140,19 @@ preferred gaze strategy.
 Decoding performance in free \ac{vsa} was often comparable to overt \ac{vsa},
 showing the system's flexibility.
 
-Together, these results show that there is an interest in developing a new class of ERP-BCI
-interfaces for users that prefer to choose their own gaze strategy, to
+Revisiting the hypotheses put forward in
+\cref{sec:gaze-independence/objectives}, we conclude that we have proposed
+several techniques that did in effect improve visual oddball \ac{erp}-based
+\ac{bci} decoding accuracy, and at least one technique that does so specifically
+under conditions relevant for gaze-indepent \ac{bci}.
+It was not conclusively proven, however, that these results have a meaningful
+impact on on-line \ac{bci} assistive technology use by individuals with
+\ac{sspgi}.
+
+Together, the obtained results do show that there is an interest in developing
+a new class of \ac{erp}-\ac{bci} interfaces for users that prefer to choose their own gaze strategy, to
 avoid the effort of redirecting their eye gaze to different spatial locations
 on the stimulation screen in manners that might be uncomfortable for them.
-Coincidentally, advances in gaze-independent decoding also build towards a
-solution for the Midas Touch Problem in visual \ac{bci}.
-Here, a \ac{bci} user sometimes accidentally selects a target while not intending
-to give any input.
-Decoding of true intention independent of eye
-gaze, with the option of gazing without paying visuospatial attention to a
-stimulus, would counteract this.
 
 \section{Current \& future work}
 On the decoder development side, we have partially implemented some interesting
@@ -177,6 +184,15 @@ could be helpful to derive the current setting from the gaze position and the
 \ac{erp}, and propose the most suited decoder for a given data point.
 This could allow us to select the best classifier using eye tracking.
 
+Coincidentally, advances in gaze-independent decoding also build towards a
+solution for the Midas Touch Problem in visual \ac{bci}.
+Here, a \ac{bci} user sometimes accidentally selects a target while not intending
+to give any input.
+Decoding of true intention independent of eye
+gaze, with the option of gazing without paying visuospatial attention to a
+stimulus, would counteract this, and be a valuable addition to a \ac{bci}
+assistive technology device.
+
 We also aim to apply the tensor approach to gaze-independent decoding.
 The problems introduced by jitter could be accounted for, as in \ac{wcble}, by
 alignment, but also by other methods that model the possible time shifts.
@@ -193,8 +209,9 @@ As the work presented in this thesis started during the COVID-19 pandemic,
 experimentation was delayed and the envisioned application could not be
 validated within the time frame of the doctoral project.
 To complete this work, we aim to revisit the participants with an on-line
-experiment and comfort assessment to establish the usability of the proposed
-interface and compare its \ac{itr} to the state-of-the-art literature.
+experiment and satisfaction assessment to establish the usability of the proposed
+interface according the principles of \ac{ucd} and
+compare its \ac{itr} to the state-of-the-art literature.
 
 \section{Limitations and recommendations}
 
@@ -211,8 +228,8 @@ ideally reflecting properties of the signal.
 When faced with a new problem and few data relative to dimensionality, it is a
 good first instinct to pick a simple, restrictive structure.
 
-However, the brain is a complex organ, so neural data is not linear in origin, and
-these regularizing assumptions based on prior knowledge are likely only
+However, the brain is a complex organ, so neural data is not linear in origin.
+These regularizing assumptions based on prior knowledge are likely only
 superficially true.
 When optimizing for performance, it will soon become clear that, given a more
 flexible model, there are
@@ -231,21 +248,56 @@ These models try to combine the best of both worlds.
 
 \subsection{Optimize user experience}
 While our work with \ac{bci} users with \ac{sspgi} resulted in interesting
-preliminary findings, it is currently impossible to make claims about the experience in long-term
-home use of the proposed systems as assistive technology.
+preliminary findings, it is currently impossible to make claims about the
+experience in long-term home use of the proposed systems as assistive technology.
 This work focused heavily on classification methods and solving problems
 arising from gaze-independence through decoding.
-A natural metric to then evaluate proposed decoders is \ac{erp} classification
-performance.
+Since these decoders were evaluated by collecting data and performing tests
+later using cross-validation, only off-line performances have been reported.
 
-However, classification performance is only one aspect of what makes a \ac{bci}
+To gain proper insight in the performance of a system that actually supports
+end-users, performance in an on-line experiment should be reported.
+The interface, now a collection of white circles, should be adapted
+to include meaningful selection elements, like groups of letters or icons and
+selection feedback should immediately be presented to the user.
+The performance metric then also captures effects of user engagement,
+learning and strategy adaptation.
+The measured brain activity and the proper execution of the task by the
+participant are, after all, partially dependent on their sense of completing a task
+that is tangible, entertaining and directly useful for them.
+The participant then becomes an active \ac{bci} assistive technology user,
+instead of just a near-passive observer in an abstract data collection experiment.
+
+Furthermore, classification performance is only one aspect of what makes a \ac{bci}
 desirable as assistive technology.
-\Ac{itr} in on-line operation is a better metric, and the ultimate goal
-is user satisfaction.
-The latter depends on factors such as performance, comfort, and user perception.
-Classification performance is a convenient metric because a researcher can perform a single
+An interesting approach here is to consider the problem from a
+\ac{ucd}~\cite{Standardization2009} perspective.
+\Ac{ucd} is a framework for effective optimization and evaluation of usability
+in product design, which has successfully been applied to \ac{bci}
+development~\cite{Schreuder2013,Kuebler2014,Han2022}.
+\Acp{bci} as assistive technologies for users with particular and individual
+physical and psychological requirements form a perfect use case for such a framework.
+
+One of the main principles of \ac{ucd} is to address the \emph{entire} user
+experience.
+As mentioned before, this includes measuring \emph{effectiveness}, in the form
+of e.g. selection accuracy.
+\Ac{ucd} goes beyond this by also assessing \emph{efficiency} and user
+\emph{satisfaction}
+Similarly to effectiveness, efficiency can objectively be measured as \ac{itr}
+in on-line operation is a better metric.
+Satisfaction, on the other hand, is a more subjective quality.
+
+Nevertheless, optimizing user satisfaction is the penultimate goal in
+application design.
+Satisfaction depends on factors such as performance (in the form of efficiency
+and effectiveness), comfort, and user perception.
+It must be assessed through subjective questionnaires following realistic, on-line
+application use\cite{Kuebler2014}.
+Only focusing on evaluating effectiveness through classification performance is
+a pragmatic approach, because a researcher can perform a single
 data collection and iterate on the results offline.
-However, this can be too limiting when seeking the most suitable interface
+Yet, this can be too limiting when seeking to design the most usable interface
 for a specific group of users.
 
 The optimal approach should unify decoder development, paradigm choice, and interface
@@ -261,7 +313,6 @@ their skills and abilities.
 Longitudinal research should follow several user groups, specifically those with gaze
 impairment, and experiment with specific paradigms, interfaces, and decoders for
 a given \ac{bci} user.
-
 
 \subsection{Work \emph{with} individuals with \acs{sspi}}
 
@@ -294,7 +345,9 @@ with the users and/or a population of healthy controls.
 Finally, the decoder can be optimized, only if it is strongly suspected that
 effects will hold in on-line operation.
 
-Unfortunately, this is also probably one of the least practical ways to set up
+This approach is tied to another valuable \ac{ucd} principle: encouraging early and active
+involvement of users.
+Unfortunately, it also might one of the least practical ways to set up
 a 4-year research project, such as in the context of a doctoral thesis.
 This approach can only work if the proper facilities can be gathered immediately
 from the start, such as ethical approval, access to patients, and on-line \acp{bci}
@@ -320,14 +373,22 @@ achieve satisfactory performance.
 For example, why study a specific number of repetitions or \ac{isi}, if they
 would not be practical to achieve a high \ac{itr}, but could still influence
 decoding performance?
+Having access to (or implementing) a working, on-line \ac{bci} prototype early
+on allows for the implementation of the full \ac{ucd} framework throughout the research
+project.
+It opens the door for iterative design with interaction between developers and
+end-users, yet another \ac{ucd} principle.
 
-This top-down approach is probably not suited for all types of \ac{bci}
-research.
-Yet, in visual oddball \ac{bci}, where the challenge no longer lies in generating
-a proof of concept but in translating the concept into useful technology, this
-approach might help avoid prematurely solving problems that may not necessarily
-arise further down the road.
-A top-down approach could improve the quality of study outcomes by enabling the
-reporting of realistic, interpretable metrics,
-and by taking into account the human aspect of working \emph{with} instead of
-\emph{for} \ac{bci} users.
+This top-down or iterative approach is probably not suited for all types of \ac{bci}
+research
+If a novel \ac{bci} paradigm is still in an early phase, the focus
+should lie on creating limited, fundamental experiments to develop a method to
+decode the brain activity of interest and working bottom-up from there to a
+proof of concept of an end-user application.
+Yet, in visual oddball \ac{bci}, the challenge no longer lies in generating
+this proof of concept but in translating it into usable technology.
+Here, the top-down approach might help to avoid prematurely solving problems
+which may not necessarily arise further down the road.
+\Ac{ucd} could improve the quality of study outcomes by enabling the
+reporting of realistic, interpretable metrics, and by taking into account the
+human aspect of working \emph{with} instead of \emph{for} \ac{bci} users.

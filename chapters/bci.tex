@@ -169,17 +169,18 @@ Let us take a look at each of these elements separately in the next section.
 
 The brain's activity can be recorded using various neuroimaging technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance
-imaging (fMRI) to more portable technologies like acoustic signals obtained by
-functional ultrasound imaging (fUS)~\cite{Zheng2023} and functional near-infrared spectroscopy
+imaging (fMRI) to more portable technologies like the acoustic signals obtained by
+functional ultrasound imaging (fUS)~\cite{Zheng2023}, and functional near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
-
-The technologies above all measure blood flow (the hemodynamic signal), which only
-indirectly reflects brain activity.
-This signal reacts too slowly to reflect the real-time activity that is of interest in
+These technologies all measure blood oxygen levels or blood flow, resulting in the
+\emph{hemodynamic} signal.
+This signal indirectly reflects brain activity through
+metabolic reactions to an increas or decreas in activity.
+Usually, it reacts too slowly to reflect the real-time activity that is of interest in
 \ac{bci} for communication, and it carries little information other than the brain
 region from where it is originating.
 
-A better candidate is the neuronal electrical activity.
+A better signal candidate is the neuronal electrical activity.
 The brain contains 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The \emph{action potential} and its related \emph{postsynaptic potential} are electrical
@@ -337,12 +338,13 @@ From the user's point of view, this concept is probably the most attractive, sin
 cognitive state would be inferred from just their brain activity.
 However, without active user participation, it can be hard to establish reliable
 communication or control.
-Therefore, passive \ac{bci} are currently more suited to tasks like emotion or affect
-monitoring~\cite{Torres2020,Libert2019, Muehl2014}, workload monitoring~\cite{Zanetti2021},
+Therefore, passive \ac{bci} are currently used for control tasks that require
+input, like emotional affect~\cite{Torres2020,Libert2019, Muehl2014},
+workload~\cite{Zanetti2021} or fatigue~\cite{Alimardani2020} detection,
 or, more dependent on stimulation, error detection~\cite{SiMohammed2020}.
-Clinical applications are found in the diagnosis of a multitude of neurological
-and psychological disorders through various forms of neuroimaging, in resting
-state or while performing a specific task.
+Aside from control, clinical applications are found in the diagnosis of a multitude of neurological
+and psychological disorders through various forms of neuroimaging or monitoring,
+in resting state or while performing a specific task.
 Nevertheless, active participation facilitates training data collection for supervised
 machine learning, since the conditions can be more easily controlled by the user or the
 stimulation.

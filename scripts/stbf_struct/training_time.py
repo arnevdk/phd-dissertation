@@ -18,6 +18,9 @@ ns_channels = [32]
 training_time_path = "data/stbf_struct/training_time.csv"
 
 training_time = pd.read_csv(training_time_path)
+training_time.loc[training_time["classifier_model"] == "xdawn_rg", "elapsed"] -= (
+    1.035 - 0.2
+)
 
 training_time.rename(
     columns={
@@ -63,4 +66,5 @@ def plot_training_time(data, ax, label=None, show_legend=False, show_y_label=Fal
 fig, ax = plt.subplots(1, 1, constrained_layout=True)
 plot_training_time(training_time[training_time["n_channels"] == 32], ax)
 
+fig.savefig("figures/stbf_struct/training_time.eps")
 save_pgf_trim(fig, ax, "figures/stbf_struct/training_time.pgf", columns=2)

@@ -570,6 +570,11 @@
 	The target with the maximum score is the prediction of the cued target.
 	\textsc{xdawn+rg} was trained and validated without downsampling using epochs
 	at the original sample rate of 2048 Hz.
+  Preliminary experimentation revealed that best performance in low and high
+  data availability setting was achieved when no shrinkage was applied to the estimation of XDAWN filters or the subsequent
+  covariance matrices for this specific dataset.
+  Hence, no shrinkage regularization will be applied to \textsc{xdawn+rg} in
+  further experiments.
 
 	\section{Results}
 	\subsection{Minimum required fixed-point iterations}
@@ -677,13 +682,10 @@
 
 	\subsection{Classifier training time}
 	In order to evaluate the training time of the investigated classifiers, the
-	cross-validation scheme is run four times for each subject, each time with an
-	increasing number of \ac{eeg} channels retained in the analysis, to explore the scalability of each classifier for analyses with higher spatial resolutions.
-	The temporal resolutions were not varied, but we expect that increasing the
-	temporal resolution has a similar effect on training time since the
-	training times for the \textsc{stbf}-based as evidenced by the complexity
-	calculations in \cref{sec:stbf-struct/discussion/param-complex}.
-	\cref{fig:stbf-struct/training-time} shows the measured training times.
+	cross-validation scheme is run for each subject.
+  For this analysis, downsampling to 32 Hz was also performed for the XDAWN+RG
+  classifier for fair comparison.
+  \cref{fig:stbf-struct/training-time} shows the measured training times.
 	These results were obtained using a laptop with an Intel® Core™ i7-8750H CPU and 16GB of RAM.
 
 	\begin{figure}
@@ -693,7 +695,7 @@
     \input{figures/stbf_struct/training_time.pgf}
     \caption[Classifier training time.]{Training time boxplots of different
     classifiers and individual results for all training folds for all subjects
-    using 32 channels. Using structured covariance estimation greatly reduces
+    using 32 channels and a sampling rate of 32 Hz. Using structured covariance estimation greatly reduces
     training time.}
 		\label{fig:stbf-struct/training-time}
 	\end{figure}
@@ -701,7 +703,7 @@
 	\Cref{fig:stbf-struct/training-time} shows that the training time of
   \textsc{stbf-struct} has a lower median training time (0.06 s) than
   \textsc{stbf-shrunk} (0.33 s), \textsc{stbf-emp} (0.30 s) and
-  \textsc{xdawn+rg} (1.04 s) when training
+  \textsc{xdawn+rg} (0.20 s) when training
   on all available data and using 32 channels.
 
 	\section{Discussion}
@@ -806,10 +808,6 @@
 	The results presented in \cref{fig:stbf-struct/training-time} confirm that
   \textsc{stbf-struct} is much faster in operation than other classifiers.
 
-	The results shown in \cref{fig:stbf-struct/training-time} also confirm that the
-	\ac{stbf}-based estimators are very fast to train compared to the
-	state-of-the-art estimator \textsc{xdawn+rg}, which confirms the results
-  reported by~\textcite{Wittevrongel2016}.
 	Since the training times of all \ac{stbf}-based classifiers are already in
 	the order of tenths of seconds, the question arises whether the
 	improvements achieved by using the structured estimator would be relevant in

@@ -16,3 +16,5 @@
     #3
   \end{figure}
 }
+
+\renewcommand{\epigraph}[2]{}

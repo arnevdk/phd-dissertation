@@ -1,14 +1,20 @@
 \documentclass{booklet}
-
 \begin{document}
 % Front matter ================================================================
 \frontmatter
 
 {%
-  \newgeometry{margin=1cm}
+  \pagestyle{empty}
+  \newgeometry{margin=1.5cm}
   \input{cover_kul.tex}
-  \restoregeometry%
+  \clearpage
+  \clearpage
+  \input{cover_ulille.tex}
+  \restoregeometry
+  \pagestyle{plain}
+  \addtocounter{page}{2}
 }
+
 \include{chapters/preface.tex}
 \include{chapters/abstract.tex}
 \include{chapters/abstract_nl.tex}
@@ -16,9 +22,12 @@
 \tableofcontents
 \listoffigures
 \listoftables
-\printacronyms[name=List of acronyms]
+{%
+  \setlist{itemsep=0pt}
+  \printacronyms[name=List of acronyms]
+}
 
-% Main matter =================================================================
+%% Main matter =================================================================
 \mainmatter%
 
 \part{Introduction \& Literature}

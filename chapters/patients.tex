@@ -1,8 +1,8 @@
 \chapter{Case studies}
 \label{sec:patients}
 \epigraph{I knew there would be a lot of unexpected issues involved with
-patient experiments, but I never thought there would be a baby
-goats in the experiment room.}{Juliette}
+patient experiments, but I would never have guessed that there would be baby
+goats in the experiment room\ldots}{Juliette}
 
 \section{Introduction}
 
@@ -106,9 +106,9 @@ The objectives of this case study are as follows:
 \end{enumerate*}
 
 
-\section{Materials \& methods}
+\section{Methods}
 \subsection{Recruitment}
-Participants were recruited from across the Neuromuscular Reference center at
+Participants were recruited across the Neuromuscular Reference center at
 University Hospital Leuven (Leuven, Belgium), TRAINM Neuro Rehab Clinics
 (Antwerp, Belgium), the Neurorehabilitation Unit at University Hospital Lille
 (Lille, France), and a specialized care home (France).
@@ -198,21 +198,6 @@ As an objective metric, we implemented and performed the automated NeuroEye eye 
 test proposed by~\textcite{Hassan2022} using calibration-free eye tracking to
 check if it revealed any further eye motor abnormalities.
 This was not the case.
-
-Table~\ref{tab:patients/eye} details the eye motor impairments and vision of
-the included participants.
-All participants reported some degree of fatigue or discomfort when fixating.
-Participant PA1 had the mildest impairment, only reporting fatigue when fixating
-for prolonged times.
-The \ac{fa} participants were mostly affected by eye tremors and impaired pursuit.
-PB2 suffered from especially severe horizontal oscillating involuntary eye
-movements.
-Eye motor function of participants PC2, PC3, and PC4 was most severely affected.
-Participant PC2 was only able to look up and down and had a deviation in the
-left eye causing diplopia, but this was corrected by a prism glass.
-Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
-Participant PC4 had one deviated eye with a corneal abscess affecting the motility
-and vision in the right eye, and reducing motility in the left.
 
 \begin{table}[t]
   \centering
@@ -322,12 +307,30 @@ performance.
 Decoding scores were obtained using 6-fold cross-validation where folds corresponded to
 stimulation blocks.
 
-\section{Outcomes}
+\section{Results}
 
-\subsection{Eye tracking analysis}
+
+
+\subsection{Visual skill and eye tracking analysis}
 \label{sec:patients/outcomes/gaze}
 
-First, we aimed to shed more light on the actual capabilities of individuals
+Table~\ref{tab:patients/eye} details the eye motor impairments and vision of
+the included participants.
+All participants reported some degree of fatigue or discomfort when fixating.
+Participant PA1 had the mildest impairment, only reporting fatigue when fixating
+for prolonged times.
+The \ac{fa} participants were mostly affected by eye tremors and impaired pursuit.
+PB2 suffered from especially severe horizontal oscillating involuntary eye
+movements.
+Eye motor function of participants PC2, PC3, and PC4 was most severely affected.
+Participant PC2 was only able to look up and down and had a deviation in the
+left eye causing diplopia, but this was corrected by a prism glass.
+Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
+Participant PC4 had one deviated eye with a corneal abscess affecting the motility
+and vision in the right eye, and reducing motility in the left.
+
+
+Given these information, we aimed to shed more light on the actual capabilities of individuals
 with \ac{sspgi} regarding performing overt \ac{vsa} and central gaze
 fixation, as well as to investigate how relevant these two settings are when the
 gaze is not cued.
@@ -465,6 +468,7 @@ which might have affected the results.
 
 \section{Discussion}
 
+\subsection{Gaze-independent operation \& decoding}
 Due to the heterogeneous nature of the participants' conditions, it is difficult to
 draw general conclusions.
 This study should therefore be seen as a collection of case studies,
@@ -531,7 +535,7 @@ operation phase.
 Early VEPs in the training data could also contribute in those cases where the participant was not
 able to perform covert \ac{vsa} with central gaze fixation.
 
-\section{Limitations}
+\subsection{Limitations}
 
 Despite results that prompt interesting reflections on gaze-independent \ac{bci} approaches,
 there are some limitations to the presented results that need to be
@@ -562,14 +566,16 @@ In this study, user comfort in the different conditions was not objectively
 measured.
 Instead, it was assumed that participants operated most comfortably in the free
 \ac{vsa} condition.
-To properly contextualize performance results, they should be coupled
-with a measure of user comfort and perceived effort, like the NASA Task Load
-Index~\cite{Hart2006}.
+To properly contextualize performance results, they should be coupled with
+metrics evaluating the user's requirements
+with a measures of usability, comfort and perceived effort, like the NASA Task Load
+Index~\cite{Hart2006} and other metrics proposed in the user-centered design
+framework for \acp{bci}~\cite{Kuebler2014}.
 Performance might, after all, be traded off for user comfort.
 Eye motor disability could also have been assessed more
 objectively~\cite{FriedOken2020}, using, e.g.,
 the Revised Coma Recovery Scale~\cite{Giacino2004} or the NSUCO
-oculomotor~\cite{Maples1992}.
+oculomotor exam~\cite{Maples1992}.
 
 Finally, the stimulation procedure parameters
 from~\textcite{VanDenKerchove2024} were adapted to make the counting task

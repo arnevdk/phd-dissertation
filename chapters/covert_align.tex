@@ -377,7 +377,6 @@ No significant increase of \ac{wcble} over other methods was found in split \ac{
 While Riemannian methods are significantly outperformed by \ac{tlda}, \ac{cble}, and \ac{wcble}
 in the BNCI2014-009 dataset, they perform approximately on par with \ac{tlda} and
 \ac{wcble} in CVSA-ERP.
-\todo{qualitative, list accuracies for one repetition}
 
 Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
 \ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
@@ -413,7 +412,7 @@ For BNCI2014-009, this is implemented as an equal mix of overt and
 covert \ac{vsa}; for CVSA-ERP, the combined condition represents an equal mix of overt,
 covert, and split \ac{vsa}, disregarding parameter $d$.
 
-Figure~\ref{fig:covert-align/covert-cross-eval} and Figure~\ref{fig:covert-align/aloise2012-cross-eval} show
+\Cref{fig:covert-align/covert-cross-eval} and \cref{fig:covert-align/aloise2012-cross-eval} show
 the pairwise differences in area under the ROC curve ($\Delta$ROC-AUC)
 between the investigated decoders.
 In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/results/bloc-acc}.
@@ -460,11 +459,38 @@ In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/result
 	}
 \end{figure*}
 When comparing \ac{cble} and \ac{tlda}, we do not observe large differences in any of the
-evaluated settings, similar to the within-subject conditions.
-\todo{qualitative}
+evaluated settings, similar to the within-subject conditions, with the greatest
+\ac{rocauc} difference -2\% for training in split $(d=2)$ \ac{vsa} and overt \ac{vsa}.
 On the contrary, when considering the comparisons between \ac{wcble} and \ac{tlda}, we
 see that performance is on par or greater using \ac{wcble} for most conditions,
-except for within-overt \ac{vsa} decoding.\todo{qualitative}
+except for within-overt \ac{vsa} decoding, with the greatest \ac{rocauc}
+difference +4\% for training in split ($d=2$) \ac{vsa} and testing in overt
+\ac{vsa}.
+
+
+\subsection{Jitter analysis}
+\label{sec:covert-align/results/jitter}
+Finally, an analysis is performed to quantify the jitter presence in the
+different \ac{vsa} conditions.
+To obtain comparable results across \ac{vsa} conditions, \ac{wcble} was
+evaluated per session and trained on all combined \ac{vsa} conditions as in
+\cref{sec:covert-align/results/cross}.
+Since all conditions have the P3 in common, the estimated latencies can be
+interpreted as P3 latencies.
+Results are shown in \cref{fig:jitter}.
+
+Two-sided Wilcoxon rank-sum tests on jitter, expressed as the interquartile
+range (IQR) of the estimated latencies of target trials, revealed that overt
+\ac{vsa} exhibited significantly lower jitter than all other conditions for
+both datasets, with jitter equal to overt: 32 ms and covert:
+56 ms ($p<0.001$) for BNCI2014-009, and overt: 33 ms, covert: 77 ms ($p<0.001$),
+split ($d=1$): 72 ms ($p=0.006$),
+split ($d=2$): 77 ms ($p=0.002$)
+and split ($d=3$): 72 ms ($p=0.002$)
+for CVSA-ERP.
+No other significant differences were found.
+$p$-values were corrected for the family-wise error rate using Bonferroni
+correction.
 
 \section{Discussion}
 
@@ -533,20 +559,9 @@ jitter between data classes.
 Furthermore, some evidence points toward higher P3 jitter as the main
 contributing factor.
 While \autoref{fig:erps} shows no visible smearing effect in
-the shape of the \acp{erp}, a more quantitative analysis on latencies in
-\autoref{fig:jitter} indicates the opposite.
-To obtain comparable results across \ac{vsa} conditions, \ac{wcble} was
-evaluated per session and trained on all combined \ac{vsa} conditions as in
-\cref{sec:covert-align/results/cross}.
-Since all conditions have the P3 in common, the estimated latencies can be
-interpreted as P3 latencies.
-Two-sided Wilcoxon rank-sum tests on jitter, expressed as the interquartile
-range (IQR) of the estimated latencies of target trials, revealed that overt
-\ac{vsa} exhibited significantly lower jitter than all other conditions for
-both datasets.\todo{qualitative}
-No other significant differences were found.
-$p$-values were corrected for the family-wise error rate using Bonferroni
-correction.
+the shape of the \acp{erp}, the more quantitative analysis on latencies
+presented in \cref{sec:covert-align/results/jitter}
+indicates the opposite.
 Additionally, \textcite{Arico2014} prove that P3 jitter does play a
 non-negligible role in covert \ac{vsa} by comparing performance between
 overt and covert \ac{vsa}, while including or excluding early VEPs.
