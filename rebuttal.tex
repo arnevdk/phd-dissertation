@@ -79,50 +79,56 @@ Minor comments:
 \reply{Fabien Lotte}
 Major comments:
 \begin{enumerate}
-	\item Part of the confusion between active and passive BCI might be due
-	to the poor choice of phrasing ``paradigms that require little active
-  participation from the user, like redirecting attention or initiating imagined actions, are classified as passive BCI.''
-	This has been rewritten to ``in contrast to paradigms that require the user's active participation, for
-	instance through redirecting attention or initiating imagined actions,
-	paradigms free of this requirement are classified as passive BCI,''
-	for clarity.
-	Neurofeedback has been reclassified as active BCI in the text and in
-	figure 1.3.
-	\item I agree that investigating the effect of shrinkage
-    regularization on XDAWN+RG is necessary to obtain a fair comparison method,
-    especially in the case of low data availability and when our proposed
-    methods also rely on shrinkage.
+	\item
+    Part of the confusion between active and passive BCI might be due
+	  to the poor choice of phrasing ``paradigms that require little active
+    participation from the user, like redirecting attention or initiating
+    imagined actions, are classified as passive BCI.''
+	  This has been rewritten to ``in contrast to paradigms that require the
+    user's active participation, for
+	  instance through redirecting attention or initiating imagined actions,
+	  paradigms free of this requirement are classified as passive BCI,''
+	  for clarity.
+	  Neurofeedback has been reclassified as active BCI in the text and in
+	  figure 1.3.
+	\item I agree that investigating the effect of shrinkage regularization on the
+    performance of XDAWN+RG is necessary to obtain a fair comparison method.
+    This is especially in the case of interest here, when data are scarcely
+    available and the proposed methods also rely on shrinkage.
     While setting up the decoding performance comparison experiment, we
     evaluated performance with and without Ledoit-Wolf shrinkage for both the
     estimation of the XDAWN filters and the subsequent covariance matrices.
     Indeed, we expected that this regularization would increase performance,
-    just as in the STBF case. However, we noticed that the accuracy for the
+    just as in the STBF case. However, we noticed that highest accuracy for the
     XDAWN+RG method was reached without shrinkage in the XDAWN filter
     estimation and the covariance estimation, and when retaining a sample rate
     of 2048 Hz.
     This has now clearly been indicated in the manuscript.
+  \item
     As indicated by the reviewer, however, using a 2048 Hz sample rate for one of the
-    classifier where 32 Hz has been used for the others, gives a skewed image
+    classifiers, while 32 Hz has been used for the others, gives a skewed image
     of the training time.
-    A fair comparison of training times has now been reported in section 1.3.3 and figure 1.4
-    with XDAWN+RG also using a 32 Hz sample rate.
+    A fair comparison of training times has now been reported in section 1.3.3
+    and figure 1.4 with XDAWN+RG also using a 32 Hz sample rate.
   \item Appendix 1.A now fully reports all obtained accuracies to give a better
     insight in effect sizes. Wherever the significant effects have been mentioned
     in the text, the effect size has now been reported along with it.
-	\item In the results section of chapter 4, statistical comparisons were
-	only performed between methods for which we evaluated the performance
-	ourselves (HODA, PARAFACDA and BTTDA).
-	Since the MOABB benchmarking framework~\cite{Aristimunha2023} allows for
-	fair comparison of performance metrics reported across different works,
-	the analyses for other comparison methods were not re-run
-	by us as reported, but performances were
-	taken from the MOABB benchmark database~\cite{Chevallier2024}.
-	However, this source provided only the aggregated performance metrics
-	and not the metrics per subject, session and cross-validation fold,
-	hence we could not perform relevant statistical comparison with these
-	comparison models.
-\item Tables 6.2 and 6.3 now report the absolute cross-condition ROC-AUC values
-  per model and dataset for a more complete and interpretable presentation of
+	\item
+    In the results section of chapter 4, statistical comparisons were
+	  only performed between methods for which we evaluated the performance
+	  ourselves (HODA, PARAFACDA and BTTDA).
+	  Since the MOABB benchmarking framework~\cite{Aristimunha2023} allows for
+	  fair comparison of performance metrics reported across different works,
+    the analyses for other comparison methods were not re-run by us (as
+    reported).
+    Instead, but performances were taken from the MOABB benchmark database~\cite{Chevallier2024}.
+	  Unfortunately, this source provides only the aggregated performance metrics
+	  and not the metrics per subject, session and cross-validation fold,
+	  hence we could not perform relevant statistical comparison with these
+	  comparison models.
+  \item
+    Tables 6.2 and 6.3 now report the absolute cross-condition ROC-AUC values
+    per model and dataset for a more complete and interpretable presentation of
     the results, and the absolute values have been mentioned when referring to
     effects in the results section.
 \end{enumerate}
@@ -139,7 +145,7 @@ Minor comments:
 Major comments:
 \begin{enumerate}
   \item  I agree that the presented work could have been strengthened by the
-  formulation of clearly testable hypothesis, including a general hypothesis
+  formulation of clearly testable hypotheses, including a general hypothesis
   and per-study subhypotheses.
   I would partially attribute the lack thereof to the exploratory and
   engineering-oriented nature of this thesis.
@@ -159,7 +165,7 @@ Major comments:
     in several chapters.
     In chapter 5, the synthetic data generation procedure has been
     moved to the method section as section 5.3.4.
-    In chapter, the analysis investigating observed jitter per condition has
+    In chapter 6, the analysis investigating observed jitter per condition has
     been moved out of the discussion section and has been given a place in the
     results section as section 6.3.3.
     Sections in chapter 7 have been renamed to follow a proper IMRaD structure.
@@ -169,11 +175,11 @@ Major comments:
     Since chapter 4 focuses on methodological contributions which are then
     verified in experiments that are rather independent from these methods, I
     believe it is clearer to keep the presentation of the evaluation methods
-    and the results together per data modality in a separate 'Experiments'
+    and the results together per data modality in a separate `Experiments'
     section, instead of also moving the description of evaluation methods to
     the method section.
   \item I very much appreciate the instruction of the reviewer to further
-    investigate user-centered design (UCD).
+    investigate user-centered design (UCD)~\cite{Standardization2009,Kuebler2014}.
     In fact, there was a large overlap between the principles and methods laid
     out in the UCD framework and the topics discussed in section 8.2.
     The UCD standard and its applications to BCI research provide a structured
@@ -225,6 +231,7 @@ Major comments:
     cross-validation fold, yielding datasets of multiple ROC-AUCs to compare.
     In this case, the Wilcoxon signed-rank test is the appropriate
     test~\cite{Rainio2024}.
+
     While both approaches are valid strategies and commonly used~\cite{Rainio2024}, I believe
     the latter is more interpretable in the context of the generalizability
     of machine learning models, since it more directly reflects the variance
@@ -244,6 +251,7 @@ Minor comments:
 	These were also the preferred cut-off frequencies for other
 	(unpublished) analyses used during the course of the thesis work, an
 	those used for the analyses in chapter 3.
+
 	However, ERP datasets evaluated in chapter 4 were band-pass filtered
 	between 1 and 24 Hz, and in chapter 6 between 0.1 and 20 Hz.
 	While there is no general consensus in the field about the optimal
@@ -251,6 +259,7 @@ Minor comments:
 	these values all fall well within the accepted
 	bounds~\cite{Bougrain2012}.
 	Decisions to deviate from this were made consciously.
+
 	In chapter 3, filtering between 1 and 24 Hz was applied for consistency
 	with the recommended ERP preprocessing pipeline of the MOABB
 	benchmarking framework~\cite{Aristimunha2023}.
@@ -258,6 +267,7 @@ Minor comments:
 	performance of the proposed algorithm with performances of other
 	algorithms reported by the MOABB benchmarking
 	database~\cite{Chevallier2024}.
+
 	In chapter 6, the low-pass frequency was increased from 16 Hz to 20 Hz,
 	since the analyses in this explicitly involve the short-time effects of
 	latencies of ERP components, and the analysis of faster, early ERP
