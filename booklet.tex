@@ -6,19 +6,19 @@
 {%
   \pagestyle{empty}
   \newgeometry{margin=1.5cm}
-  \input{cover_kul.tex}
+  \input{cover_kul}
   \clearpage
   \clearpage
-  \input{cover_ulille.tex}
+  \input{cover_ulille}
   \restoregeometry
   \pagestyle{plain}
   \addtocounter{page}{2}
 }
 
-\include{chapters/preface.tex}
-\include{chapters/abstract.tex}
-\include{chapters/abstract_nl.tex}
-\include{chapters/abstract_fr.tex}
+\include{chapters/preface}
+\include{chapters/abstract}
+\include{chapters/abstract_nl}
+\include{chapters/abstract_fr}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -31,25 +31,25 @@
 \mainmatter%
 
 \part{Introduction \& Literature}
-\include{chapters/bci.tex}
-\include{chapters/gaze_independence.tex}
+\include{chapters/bci}
+\include{chapters/gaze_independence}
 
 \part{Algorithms \& Decoders}
-\include{chapters/stbf_struct.tex}
-\include{chapters/bttda.tex}
-\include{chapters/wcble.tex}
+\include{chapters/stbf_struct}
+\include{chapters/bttda}
+\include{chapters/wcble}
 
 \part{Experiments \& Applications}
-\include{chapters/covert_align.tex}
-\include{chapters/patients.tex}
-\include{chapters/conclusion.tex}
+\include{chapters/covert_align}
+\include{chapters/patients}
+\include{chapters/conclusion}
 
 %% Back matter =================================================================
 \backmatter%
-\include{chapters/contribution.tex}
-\include{chapters/acknowledgment.tex}
-\include{chapters/conflict.tex}
-\include{chapters/cv.tex}
+\include{chapters/contribution}
+\include{chapters/acknowledgment}
+\include{chapters/conflict}
+\include{chapters/cv}
 
 \printbibliography
 \end{document}
