@@ -1,0 +1,3 @@
+find overhaning linebreaks
+choose best math font
+scale font size down again? abstracts are now longer then a page

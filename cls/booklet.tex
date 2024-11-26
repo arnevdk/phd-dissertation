@@ -1,15 +1,13 @@
-\RequirePackage[cmintegrals,cmbraces]{newtxmath}
+\RequirePackage[T1]{fontenc}
 \RequirePackage{afterpage}
 \RequirePackage{float}
 \RequirePackage{ragged2e}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{fancyhdr}
 \RequirePackage{tocloft}
 \RequirePackage[font={small, sf},labelfont=bf]{caption}
-\RequirePackage[scale=.8]{opensans}
 \RequirePackage{titlesec}
-\RequirePackage{ebgaramond}
 \RequirePackage{multicol}
+\RequirePackage{amssymb}
 
 % Set page size ================================================================
 \RequirePackage[paperheight=240mm,paperwidth=160mm,bottom=30mm]{geometry}
@@ -63,15 +61,25 @@
 
 % Setup font ===================================================================
 
-% Serif font: Garamond
-\RequirePackage{ebgaramond-maths}
 
-% Sans-serif family: Open-Sans
+% Sans-serif family: Open Sans
+\RequirePackage[scale=.8]{opensans}
 \renewcommand{\sffamily}{\opensans}
 
+% Math font: Latin Modern
+\RequirePackage{lmodern}   % Use Latin Modern (default) for math mode
+
+% Serif font: Garamond
+%\RequirePackage{ebgaramond-maths}
+\RequirePackage{ebgaramond}
+
+
 % Setup titles
-\titleformat{\part}[display]{\pagecolor{lightgray}\vskip10em\bfseries}{\sffamily\Large\partname\
-	\thepart}{10pt}{\Huge}[\afterpage{\nopagecolor}]
+\titleformat{\part}[display]{%
+  \pagecolor{lightgray}\vskip10em\bfseries
+}{%
+  \sffamily\Large\partname\	\thepart
+}{10pt}{\Huge}[\afterpage{\nopagecolor}]
 \titleformat{\chapter}[display]{\bfseries}{\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
@@ -89,8 +97,6 @@
 
 % Set bibliography font size
 \renewcommand*{\bibfont}{\small}
-
-
 % Setup pagestyle ==============================================================
 
 % Capture part and chapter title
@@ -133,6 +139,8 @@
 \let\oldmainmatter\mainmatter
 \renewcommand{\mainmatter}{\oldmainmatter\pagestyle{main}}
 
+\setlength{\headheight}{13.6pt} % Adjust as per the warning
+
 % Setup tables==================================================================
 
 % Setup ToC
@@ -162,3 +170,6 @@
 \makeatletter
 \renewcommand\@cftmakelottitle{\chapter{\listtablename}}
 \makeatother
+
+\renewcommand{\publicationnote}[1]{\noindent\emph{\sffamily#1}}
+\raggedbottom

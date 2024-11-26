@@ -17,7 +17,7 @@
 }
 % Kronecker-structured LDA ====================================================
 
-  \noindent\emph{This chapter, except
+  \publicationnote{This chapter, except
   \crefrange{tab:stbf-struct/accuracies/stbf-struct}{tab:stbf-struct/accuracies/xdawn-rg},
   was published as~\textcite{VanDenKerchove2022}.}
 
@@ -161,7 +161,7 @@
 	covariance and inverse covariance calculated as follows:
 	\begin{equation}
     \hat{\mat{C}}_\text{emp} =
-		\frac{1}{N-1}\sum^{N}_{n=1}\mat{x}_n\mat{x}_in\intercal
+		\frac{1}{N-1}\sum^{N}_{n=1}\mat{x}_n\mat{x}_i^\intercal
 		\label{eq:stbf-struct/emp-cov}
 	\end{equation}
 	\begin{equation}
@@ -599,7 +599,6 @@
 
   \begin{figure}
     \sffamily
-    \sansmath
     \begin{subfigure}{\linewidth}
       \input{figures/stbf_struct/fpi-0.pgf}
       \caption{Results for 1, 2, and 5 trials using only the first block in each
@@ -643,7 +642,6 @@
   \begin{figure}
     %\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
     \sffamily
-    \sansmath
     \input{figures/stbf_struct/accuracy.pgf}
     \caption[Clasifier accuracy in function of available training data.]{%
       Accuracy of the different classifiers for all 21 subjects relative to the
@@ -691,7 +689,6 @@
 	\begin{figure}
 		%\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
     \sffamily
-    \sansmath
     \input{figures/stbf_struct/training_time.pgf}
     \caption[Classifier training time.]{Training time boxplots of different
     classifiers and individual results for all training folds for all subjects
@@ -970,8 +967,6 @@
   \clearpage
 
   \fullpagefig{%
-    \sffamily
-    \sansmath
     \input{figures/stbf_struct/accuracy_all.pgf}
   }{%
     \caption[Accuracy averaging over different numbers of trials.]{%

@@ -24,7 +24,7 @@
 %:process options
 \ProcessOptionsX
 %:load \myclasstype
-\PassOptionsToClass{11pt}{book}
+\PassOptionsToClass{10pt}{book}
 \LoadClass{\extendclasstype}% add options if desired
 
 
@@ -33,6 +33,7 @@
 \definecolor{accent1}{HTML}{F29018}
 \definecolor{accent2}{HTML}{F63D1E}
 \definecolor{accent3}{HTML}{78479d}
+\definecolor{accent4}{HTML}{74A4BC}
 \definecolor{lightgray}{HTML}{EAEAEA}
 \definecolor{darkgray}{HTML}{8D807A}
 \definecolor{muteblack}{HTML}{262321}
@@ -75,5 +76,19 @@
 
 \newlength{\fullpagefigwidth}
 
+
+% Bibliography ================================================================
+\DeclareFieldFormat{labelnumberwidth}{#1.\hspace{1em}}
+\setlength{\bibhang}{0em}
+\defbibheading{bibliography}[\refname]{%
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+}
+
+
+% Misc ========================================================================
+\newcommand{\publicationnote}[1]{\noindent\emph{#1}}
+
 % Input option specific =======================================================
+
 \input{cls/\myclasstype.tex}
