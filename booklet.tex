@@ -2,54 +2,57 @@
 \begin{document}
 % Front matter ================================================================
 \frontmatter
+\pagestyle{front}
 
-{%
-  \pagestyle{empty}
-  \newgeometry{margin=1.5cm}
-  \input{cover_kul}
-  \clearpage
-  \clearpage
-  \input{cover_ulille}
-  \restoregeometry
-  \pagestyle{plain}
-  \addtocounter{page}{2}
-}
+%\begin{titlepage}
+%  \newgeometry{margin=1.5cm}
+%  \input{cover_kul}
+%  \restoregeometry
+%\end{titlepage}
+%\begin{titlepage}
+%  \newgeometry{margin=1.5cm}
+%  \input{cover_ulille}
+%  \restoregeometry
+%\end{titlepage}
+%\addtocounter{page}{2}
 
-\include{chapters/preface}
-\include{chapters/abstract}
-\include{chapters/abstract_nl}
-\include{chapters/abstract_fr}
-\tableofcontents
-\listoffigures
-\listoftables
-{%
-  \setlist{itemsep=0pt}
-  \printacronyms[name=List of acronyms]
-}
+%\include{chapters/preface}
+%\include{chapters/abstract}
+%\include{chapters/abstract_nl}
+%\include{chapters/abstract_fr}
+%\tableofcontents
+%\listoffigures
+%\listoftables
+%{%
+%  \setlist{itemsep=0pt}
+%  \printacronyms[name=List of acronyms]
+%}
 
 %% Main matter =================================================================
-\mainmatter%
+%\mainmatter%
+%\pagestyle{main}
 
 \part{Introduction \& Literature}
 \include{chapters/bci}
-\include{chapters/gaze_independence}
-
-\part{Algorithms \& Decoders}
-\include{chapters/stbf_struct}
-\include{chapters/bttda}
-\include{chapters/wcble}
-
-\part{Experiments \& Applications}
-\include{chapters/covert_align}
-\include{chapters/patients}
-\include{chapters/conclusion}
-
-%% Back matter =================================================================
-\backmatter%
-\include{chapters/contribution}
-\include{chapters/acknowledgment}
-\include{chapters/conflict}
-\include{chapters/cv}
-
-\printbibliography
+%\include{chapters/gaze_independence}
+%
+%\part{Algorithms \& Decoders}
+%\include{chapters/stbf_struct}
+%\include{chapters/bttda}
+%\include{chapters/wcble}
+%
+%\part{Experiments \& Applications}
+%\include{chapters/covert_align}
+%\include{chapters/patients}
+%\include{chapters/conclusion}
+%
+%%% Back matter =================================================================
+%\backmatter%
+%\pagestyle{front}
+%\include{chapters/contribution}
+%\include{chapters/acknowledgment}
+%\include{chapters/conflict}
+%\include{chapters/cv}
+%
+%\printbibliography
 \end{document}

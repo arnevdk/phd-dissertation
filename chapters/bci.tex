@@ -635,6 +635,7 @@ oddball, detracting from the concept of control independent from muscle movement
 
 \begin{figure}[t]
   \centering
+
   \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth, height=\textwidth]{figures/bci/illustration}
     \caption{Stimuli are flashed while the \acs{eeg} is recorded.}
@@ -643,13 +644,21 @@ oddball, detracting from the concept of control independent from muscle movement
     \input{figures/bci/p300.tikz.tex}
     \caption{The P300 matrix speller interface. Entire rows or columns flash at once.}
   \end{subfigure}
+  \smallskip
 
   \begin{subfigure}[t]{.45\textwidth}
-    \input{figures/bci/erp.tikz.tex}
+    \input{figures/bci/erp_target.tikz.tex}
     \caption{The idealized \ac{erp} evoked by an attended stimulation in a single
     channel.}
     \label{fig:bci/erp}
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/bci/erp_nontarget.tikz.tex}
+    \caption{The idealized \ac{erp} evoked by an unattended stimulation in a single
+    channel.}
+    \label{fig:bci/erp}
   \end{subfigure}%
+
 \end{figure}
 
 \subsection{The \acl{erp}}

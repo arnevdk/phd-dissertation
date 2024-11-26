@@ -1,9 +1,4 @@
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{booklet}[2024/10/02 Dissertation booklet]
-\LoadClass{book}
-
-\RequirePackage{dissertation}
-
+\RequirePackage{mathspec}
 \RequirePackage{afterpage}
 \RequirePackage{float}
 \RequirePackage{ragged2e}
@@ -16,6 +11,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{ebgaramond}
 \RequirePackage{multicol}
+\RequirePackage{biblatex}
 
 % Set page size ================================================================
 \RequirePackage[paperheight=240mm,paperwidth=160mm,bottom=30mm]{geometry}
@@ -74,6 +70,7 @@
 
 % Sans-serif family: Open-Sans
 \renewcommand{\sffamily}{\opensans}
+\setmathsfont(Digits,Latin,Greek){Open Sans}
 
 % Setup titles
 \titleformat{\part}[display]{\pagecolor{lightgray}\vskip10em\bfseries}{\sffamily\Large\partname\
@@ -90,27 +87,6 @@
 % Set bibliography font size
 \renewcommand*{\bibfont}{\footnotesize}
 
-
-%% Redefine the figure environment
-%\renewenvironment{figure}{%
-%  \begin{figure}\sffamily\sansmath%
-%}{%
-%  \end{figure}
-%}
-%
-%% Redefine the table environment
-%\renewenvironment{table}{%
-%  \begin{table}\sffamily\sansmath%
-%}{%
-%  \end{table}
-%}
-%
-%% Redefine the algorithm environment
-%\renewenvironment{algorithm}{%
-%  \begin{algorithm}\sffamily\sansmath%
-%}{%
-%  \end{algorithm}
-%}
 
 % Setup pagestyle ==============================================================
 
@@ -147,13 +123,6 @@
 }
 \renewcommand{\headrulewidth}{0pt}
 
-\let\oldfrontmatter\frontmatter
-\renewcommand{\frontmatter}{\oldfrontmatter\pagestyle{front}}
-\let\oldbackmatter\backmatter
-\renewcommand{\backmatter}{\oldbackmatter\pagestyle{front}}
-\let\oldmainmatter\mainmatter
-\renewcommand{\mainmatter}{\oldmainmatter\pagestyle{main}}
-
 % Setup tables==================================================================
 
 % Setup ToC
@@ -175,11 +144,11 @@
 \renewcommand\cftfigpagefont{\sffamily\footnotesize}
 \makeatletter
 \renewcommand\@cftmakeloftitle{\chapter{\listfigurename}}
+\makeatother
 
 % Setup LoT
 \renewcommand\cfttabfont{\sffamily\footnotesize}
 \renewcommand\cfttabpagefont{\sffamily\footnotesize}
 \makeatletter
 \renewcommand\@cftmakelottitle{\chapter{\listtablename}}
-\makeatother
 \makeatother
