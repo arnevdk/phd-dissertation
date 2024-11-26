@@ -5,16 +5,16 @@
 \RequirePackage{xcolor}
 \RequirePackage{pgfplots}
 \RequirePackage{amsmath}
-\RequirePackage{sansmath}
+\RequirePackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
 
 % Dynamically extend documentclass ============================================
 
 \DeclareOptionX{manuscript}{%
-    \gdef\extendclasstype{article}
+    \gdef\extendclasstype{report}
     \gdef\myclasstype{manuscript}
 }
 \DeclareOptionX{booklet}{%
-    \gdef\extendclasstype{report}
+    \gdef\extendclasstype{book}
     \gdef\myclasstype{booklet}
 }
 \ProcessOptionsX
@@ -24,6 +24,7 @@
 %:process options
 \ProcessOptionsX
 %:load \myclasstype
+\PassOptionsToClass{11pt}{book}
 \LoadClass{\extendclasstype}% add options if desired
 
 
@@ -58,9 +59,11 @@
     scale only axis,
     enlarge y limits=false,
     enlarge x limits=false,
-    every tick label/.append style={color=darkgray, font=\sffamily\sansmath\footnotesize},
-    every axis label/.append style={color=darkgray, font=\sffamily\sansmath\footnotesize},
-    every title/.append style={color=darkgray, font=\sffamily\sansmath\footnotesize},
+    every tick label/.append style={color=darkgray, font=\sffamily\small,/pgf/number format/assume math mode=true},
+    every axis label/.append style={color=darkgray, font=\sffamily\small},
+    every title/.append style={color=darkgray, font=\sffamily\small},
+    xticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
+    yticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
     axis line style={color=darkgray}, % Set the axis line color to darkgray
     cycle list={%
         {accent1, thick},    % First color (red)
