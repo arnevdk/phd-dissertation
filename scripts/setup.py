@@ -87,6 +87,7 @@ def save_pgf_trim(fig, ax, path, width=textwidth_in, height=None, rows=1, column
     margin_left = ax.get_window_extent().x0 / dpi
     print(margin_left)
     fig.set_size_inches(width + margin_left, height)
+    fig.patch.set_alpha(0)
     plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=0)
     prepend = "\\hspace{-" + str(margin_left) + "in}\n"
     with open(path, "r") as original:

@@ -983,7 +983,7 @@
 
   \clearpage
 
-  \fullpagefig{%
+  \fullpagefig[caption.south, anchor.north]{%
     \input{figures/stbf_struct/accuracy_all.pgf}
   }{%
     \caption[Accuracy averaging over different numbers of trials.]{%
@@ -998,27 +998,30 @@
 
   \clearpage
   \section{Statistical comparisons}
-  \begin{table}[h]
-    \footnotesize
-    \begin{subtable}{\linewidth}
-	    \input{chapters/stbf_struct_tests_1.tex}
-	    \caption{Evaluation on one testing trial.}
-      \label{tab:stbf-struct/p-values-1}
-    \end{subtable}
-    \smallskip
-
-    \begin{subtable}{\linewidth}
-	    \input{chapters/stbf_struct_tests_2.tex}
-	    \caption{Evaluation averaging over two testing trials.}
-	    \label{tab:stbf-struct/p-values-2}
-    \end{subtable}
-    \smallskip
-
-    \begin{subtable}{\linewidth}
-	    \input{chapters/stbf_struct_tests_3.tex}
-	    \caption{Evaluation averaging over five testing trials.}
-	    \label{tab:stbf-struct/p-values-5}
-    \end{subtable}
+  \vfill
+  \begin{table}[h!]
+    \centering
+    \begin{adjustbox}{angle=90}
+      \begin{subtable}{\linewidth}
+	      \input{chapters/stbf_struct_tests_1.tex}
+	      \caption{Evaluation on one testing trial.}
+        \label{tab:stbf-struct/p-values-1}
+      \end{subtable}
+    \end{adjustbox}
+    \begin{adjustbox}{angle=90}
+      \begin{subtable}{\linewidth}
+	      \input{chapters/stbf_struct_tests_2.tex}
+	      \caption{Evaluation averaging over two testing trials.}
+	      \label{tab:stbf-struct/p-values-2}
+      \end{subtable}
+    \end{adjustbox}
+    \begin{adjustbox}{angle=90}
+      \begin{subtable}{\linewidth}
+	      \input{chapters/stbf_struct_tests_3.tex}
+	      \caption{Evaluation averaging over five testing trials.}
+	      \label{tab:stbf-struct/p-values-5}
+      \end{subtable}
+    \end{adjustbox}
     \caption[Statistical significance of differences in classifier
     performance.]{%
         Statistical significance of differences in classifier performance.

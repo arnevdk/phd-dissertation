@@ -57,7 +57,6 @@ def plot_accuracy(
     ax.set_ylim([0, 100])
     ax.set_xticks([2, 4, 6, 8])
     ax.set_xticklabels([str(int(t)) for t in ax.get_xticks()])
-    ax.set_yticklabels([str(int(t)) for t in ax.get_yticks()])
 
     if show_chance_label:
         ax.annotate(
@@ -81,6 +80,8 @@ def plot_accuracy(
         )
         plt.setp(ax.get_legend().get_texts(), fontsize="7")  # for legend text
         plt.setp(ax.get_legend().get_title(), fontsize="7")
+    ax.set_facecolor("white")
+    return ax
 
 
 fig, ax = plt.subplots(1, 1, constrained_layout=True)
@@ -94,6 +95,7 @@ plot_accuracy(
 legend = ax.get_legend()
 legend.set_frame_on(True)  # Ensure the frame is displayed
 legend.get_frame().set_alpha(0.0)
+ax.set_yticklabels([str(int(t)) for t in ax.get_yticks()])
 save_pgf_trim(
     fig,
     ax,
@@ -104,11 +106,20 @@ save_pgf_trim(
 
 fig, axs = plt.subplots(5, 3, constrained_layout=True, sharex=True, sharey=True)
 for n_runs in range(1, 15 + 1):
-    plot_accuracy(
+    ax = plot_accuracy(
         axs.flatten()[n_runs - 1],
         trial_accuracy=accuracy[accuracy["n_runs"] == n_runs],
         show_chance_label=n_runs == 13,
         show_legend=n_runs == 15,
         title="1 trial" if n_runs == 1 else f"{n_runs} trials",
     )
-save_pgf_trim(fig, axs[0, 0], "figures/stbf_struct/accuracy_all.pgf", rows=8, columns=3)
+    if n_runs in [1, 4, 10, 13]:
+        ax.set_yticklabels(["0", "25", "50", "75", "100"])
+save_pgf_trim(
+    fig,
+    axs[0, 0],
+    "figures/stbf_struct/accuracy_all.pgf",
+    width=textwidth_in * 1.05,
+    rows=8,
+    columns=3,
+)

@@ -8,6 +8,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{multicol}
 \RequirePackage{amssymb}
+\RequirePackage{xstring}
 
 % Set page size ================================================================
 \RequirePackage[paperheight=240mm,paperwidth=160mm,bottom=30mm]{geometry}
@@ -20,7 +21,7 @@
 % Custom command to position the caption in the bottom-right
 
 \setlength{\fullpagefigwidth}{\paperwidth}
-\newcommand{\fullpagefig}[3][bottomleft]{%
+\newcommand{\fullpagefig}[3][caption.south, anchor.center]{%
     \afterpage{%
        \clearpage
        \pagecolor{lightgray} % Set background color
@@ -29,26 +30,31 @@
        \begin{figure}[H]
             \centering
             \begin{tikzpicture}[remember picture, overlay]  % Overlay environment
-                % Place the figure content (image, TikZ, PGFPlot, etc.)
+              % Place the figure content (image, TikZ, PGFPlot, etc.)
+              \IfSubStr{#1}{anchor.north}{%
+                \node[anchor=north,inner sep=1cm] (image) at (current page.north) {#2};
+              }{%
                 \node[anchor=center,inner sep=0] (image) at (current page.center) {#2};
+              }
+
                 % Overlay caption
-                \ifthenelse{\equal{#1}{bottomleft}}{%
-                  \node[
-                      anchor=south west,
-                      text width=0.5\paperwidth,
-                      inner sep=1cm,
-                  ] at (current page.south west) {%
-                    \justifying#3
-                  };
-                }{%
-                  \node[
-                      anchor=north west,
-                      text width=0.5\paperwidth,
-                      inner sep=1cm,
-                  ] at (current page.north west) {%
-                    \justifying#3
-                  };
-                }
+              \IfSubStr{#1}{caption.north}{%
+                 \node[
+                     anchor=north west,
+                     text width=0.5\paperwidth,
+                     inner sep=1cm,
+                 ] at (current page.north west) {%
+                   \justifying#3
+                 };
+              }{%
+                 \node[
+                     anchor=south west,
+                     text width=0.5\paperwidth,
+                     inner sep=1cm,
+                 ] at (current page.south west) {%
+                   \justifying#3
+                 };
+              }
             \end{tikzpicture}
        \end{figure}
        \clearpage
@@ -57,7 +63,6 @@
        \clearpage
     }
 }
-
 
 % Setup font ===================================================================
 
