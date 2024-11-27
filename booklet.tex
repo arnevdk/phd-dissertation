@@ -1,8 +1,8 @@
 \documentclass[booklet]{dissertation}
 \usepackage{dissertation}
 
-\includeonly{
-  chapters/stbf_struct
+\includeonly{%
+  chapters/gaze_independence
 }
 
 \begin{document}
@@ -13,12 +13,12 @@
 \begin{titlepage}
   \newgeometry{margin=1.5cm}
   \input{cover_kul}
-  \restoregeometry
+  \restoregeometry%
 \end{titlepage}
 \begin{titlepage}
   \newgeometry{margin=1.5cm}
   \input{cover_ulille}
-  \restoregeometry
+  \restoregeometry%
 \end{titlepage}
 \addtocounter{page}{2}
 
@@ -58,5 +58,5 @@
 \include{chapters/conflict}
 \include{chapters/cv}
 
-\printbibliography
+\printbibliography%
 \end{document}

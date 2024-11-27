@@ -1,3 +1,4 @@
+regenerate figures with correct textwidth based on margins
 find overhaning linebreaks
 choose best math font
 scale font size down again? abstracts are now longer then a page
