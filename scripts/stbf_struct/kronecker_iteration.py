@@ -11,6 +11,7 @@ configure_matplotlib_style()
 iteration_out_path = "data/stbf_struct/iterations.csv"
 
 iteration_accuracy = pd.read_csv(iteration_out_path)
+iteration_accuracy["accuracy"] = iteration_accuracy["accuracy"] * 100
 iteration_accuracy["subject"] = iteration_accuracy["subject"].astype(str)
 iteration_accuracy["fold"] = iteration_accuracy["fold"].astype(str)
 
@@ -19,8 +20,8 @@ def plot_iteration_lines(data, ax, n_trials="", show_chance_label=False):
     sns.lineplot(
         data=data, x="iterations", y="accuracy", ax=ax, marker="s", markersize=3, mew=0
     )
-    ax.set_ylim([0, 1])
-    ax.axhline(1 / 9, color=colors["lightgray"], linestyle="--", linewidth=1)
+    ax.set_ylim([0, 100])
+    ax.axhline(100 / 9, color=colors["lightgray"], linestyle="--", linewidth=1)
     ax.set_xticks([0, 2, 4, 6, 8, 10])
     ax.set_title(n_trials)
     if show_chance_label:
@@ -44,9 +45,11 @@ plot_iteration_lines(
     axs[0],
     n_trials="1 trial",
 )
-axs[0].set_ylabel("Accuracy")
+axs[0].set_ylabel("Accuracy (%)")
 axs[0].set_xlabel("")
 axs[0].set_xticklabels([])
+axs[0].set_yticks([0, 50, 100])
+axs[0].set_yticklabels([str(int(t)) for t in axs[0].get_yticks()])
 plot_iteration_lines(
     data_1_block[data_1_block["n_runs"] == 2], axs[1], n_trials="2 trials"
 )
@@ -58,6 +61,7 @@ plot_iteration_lines(
 axs[2].set_xlabel("")
 axs[2].set_xticklabels([])
 
+
 save_pgf_trim(fig, axs[0], "figures/stbf_struct/fpi-0.pgf", columns=3, rows=1.3)
 
 fig, axs = plt.subplots(1, 3, sharex=True, sharey=True, constrained_layout=True)
@@ -66,22 +70,24 @@ data_1_block = iteration_accuracy[iteration_accuracy["n_train_blocks"] == 9]
 plot_iteration_lines(
     data_1_block[data_1_block["n_runs"] == 1],
     axs[0],
-    n_trials="1 trial",
 )
-axs[0].set_ylabel("Accuracy")
+axs[0].set_ylabel("Accuracy (%)")
 axs[0].set_xlabel("Fixed point iterations")
+axs[0].set_xticklabels([str(int(t)) for t in axs[0].get_xticks()])
+axs[0].set_yticks([0, 50, 100])
+axs[0].set_yticklabels([str(int(t)) for t in axs[0].get_yticks()])
 plot_iteration_lines(
     data_1_block[data_1_block["n_runs"] == 2],
     axs[1],
-    n_trials="2 trials",
 )
 axs[1].set_xlabel("Fixed point iterations")
+axs[1].set_xticklabels([str(int(t)) for t in axs[1].get_xticks()])
 plot_iteration_lines(
     data_1_block[data_1_block["n_runs"] == 5],
     axs[2],
-    n_trials="5 trials",
     show_chance_label=True,
 )
 axs[2].set_xlabel("Fixed point iterations")
+axs[2].set_xticklabels([str(int(t)) for t in axs[2].get_xticks()])
 
-save_pgf_trim(fig, axs[0], "figures/stbf_struct/fpi-1.pgf", columns=3, rows=1.5)
+save_pgf_trim(fig, axs[0], "figures/stbf_struct/fpi-1.pgf", columns=3, rows=1.4)

@@ -97,6 +97,13 @@
 
 % Set bibliography font size
 \renewcommand*{\bibfont}{\small}
+
+
+% Equation labels
+\makeatletter
+\renewcommand{\tagform@}[1]{\maketag@@@{\textsf{(#1)}}}
+\makeatother
+
 % Setup pagestyle ==============================================================
 
 % Capture part and chapter title
@@ -156,6 +163,7 @@
 \renewcommand\@cftmaketoctitle{\chapter{\contentsname}}
 \makeatother
 %\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3} % Number down to subsubsection level
 
 % Setup LoF
 \renewcommand\cftfigfont{\sffamily\small}

@@ -68,7 +68,9 @@ def configure_matplotlib_style():
 
 # Golden ratio to set aesthetic figure height
 inches_per_pt = 1 / 72.27
-textwidth_pt = 345
+# textwidth_pt = 345 # manuscript
+textwidth_pt = 318.66946  # booklet
+
 textwidth_in = textwidth_pt * inches_per_pt
 
 

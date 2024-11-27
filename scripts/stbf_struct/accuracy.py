@@ -56,6 +56,8 @@ def plot_accuracy(
     ax.axhline(100 / 9, color=colors["lightgray"], linestyle="--", linewidth=1)
     ax.set_ylim([0, 100])
     ax.set_xticks([2, 4, 6, 8])
+    ax.set_xticklabels([str(int(t)) for t in ax.get_xticks()])
+    ax.set_yticklabels([str(int(t)) for t in ax.get_yticks()])
 
     if show_chance_label:
         ax.annotate(
@@ -81,22 +83,23 @@ def plot_accuracy(
         plt.setp(ax.get_legend().get_title(), fontsize="7")
 
 
-ipdb.set_trace()
-
-
 fig, ax = plt.subplots(1, 1, constrained_layout=True)
+
 plot_accuracy(
     ax,
     trial_accuracy=accuracy[accuracy["n_runs"] == 1],
     show_chance_label=True,
     show_legend=True,
 )
+legend = ax.get_legend()
+legend.set_frame_on(True)  # Ensure the frame is displayed
+legend.get_frame().set_alpha(0.0)
 save_pgf_trim(
     fig,
     ax,
     "figures/stbf_struct/accuracy.pgf",
-    width=3,
-    height=3,
+    width=2.5,
+    height=2,
 )
 
 fig, axs = plt.subplots(5, 3, constrained_layout=True, sharex=True, sharey=True)

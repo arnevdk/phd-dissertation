@@ -61,10 +61,12 @@ def plot_training_time(data, ax, label=None, show_legend=False, show_y_label=Fal
     )
 
     ax.set_ylabel("")
+    ax.set_xticklabels([str(round(t, 2)) for t in ax.get_xticks()])
+    ax.tick_params(axis="y", pad=-5)  # Moves tick labels closer to the axis
 
 
-fig, ax = plt.subplots(1, 1, constrained_layout=True)
+fig, ax = plt.subplots(1, 1)
 plot_training_time(training_time[training_time["n_channels"] == 32], ax)
 
-fig.savefig("figures/stbf_struct/training_time.eps")
+fig.tight_layout()
 save_pgf_trim(fig, ax, "figures/stbf_struct/training_time.pgf", columns=2)
