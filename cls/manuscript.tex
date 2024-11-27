@@ -1,0 +1,13 @@
+\RequirePackage[pass]{geometry}
+\RequirePackage[modulo]{lineno}
+\RequirePackage{floatpag}
+
+% Full page figure
+\setlength{\fullpagefigwidth}{\textwidth}
+\newcommand{\fullpagefig}[3][bottomleft]{%
+  \begin{figure}[p]
+    \thisfloatpagestyle{empty}
+    #2
+    #3
+  \end{figure}
+}

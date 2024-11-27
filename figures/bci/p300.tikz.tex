@@ -1,31 +1,26 @@
-\sffamily
-\usetikzlibrary {matrix}
+\usetikzlibrary{matrix}
+
 \begin{tikzpicture}
-
-    % Create the matrix, with color specification for the third row
-    \matrix[
-    	matrix of nodes,
-	fill=muteblack,
-        nodes={
-		minimum width={\textwidth/6},
-		minimum height={\textwidth/6},
-	    	anchor=center,
-		text=lightgray
-	},
-	row 3/.style={
-		nodes={
-			text=accent1
-			}
-		},
-        column sep=0pt,
-	row sep=0pt
-    ] (m) at (\textwidth/2, \textwidth/2) {
-        A & B & C & D & E & F \\
-        G & H & I & J & K & L \\
-        M & N & O & P & Q & R \\
-        S & T & U & V & W & X \\
-        Y & Z & 0 & 1 & 2 & 3 \\
-        4 & 5 & 6 & 7 & 8 & 9 \\
-    };
-
-\end{tikzpicture}
+  \fill[color=muteblack] (0,0) rectangle (\textwidth, \textwidth);
+  \matrix[
+      matrix of nodes,
+      fill=muteblack,
+      nodes={
+          minimum size={\textwidth/8},
+          anchor=center,
+          text=lightgray
+      },
+      row 3/.style={
+          nodes={text=accent1}
+      },
+      column sep=0pt,
+      row sep=0pt,
+  ] (m) at (\textwidth/2, \textwidth/2) {
+      A & B & C & D & E & F \\
+      G & H & I & J & K & L \\
+      M & N & O & P & Q & R \\
+      S & T & U & V & W & X \\
+      Y & Z & 0 & 1 & 2 & 3 \\
+      4 & 5 & 6 & 7 & 8 & 9 \\
+  };
+\end{tikzpicture}%

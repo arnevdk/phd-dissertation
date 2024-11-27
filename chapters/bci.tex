@@ -1,10 +1,12 @@
 \chapter{Brain-computer interfaces}
 \label{sec:bci}
+\epigraph{``My mind controls my reality.''}{\emph{Children of Dune -- Frank
+Herbert}}
 
 People with \ac{sspi} due to neurodegenerative disease, stroke, traumatic brain or spine
 injury become entirely reliant on caregivers or family members in their day-to-day
 routine.
-Wouldn't it be great if we could help them regain some quality of life by making them
+Would it not be great if we could help them regain some quality of life by making them
 more independent?
 
 The most basic ability any independent human being needs is interaction with their
@@ -18,7 +20,7 @@ Not everyone has this capability.
 
 The key problem for severely paralyzed individuals is that the mind wants to go where the
 body cannot follow.
-Couldn't we, therefore, design a system that directly interacts with the mind?
+Could we therefore not design a system that directly interacts with the mind?
 This system can then form an interface between the mind and any kind of technology, like
 a robot arm or speech synthesizer, interacting with the world on the user's behalf.
 Such a device is the \ac{bci}\footnote{Sometimes also termed brain-machine interface
@@ -27,13 +29,15 @@ The term \ac{bci} is usually preferred for assistive technology and communicatio
 devices.}, a system that directly couples actions in the `real world' to the mental state
 of the user.
 
-Starting in the 1970s from methods to establish basic communication from minimal brain
-activity (yes/no, left/right, \ldots)~\cite{Wolpaw2002}, \acp{bci} have gradually evolved
-into sophisticated interaction schemes that restore or enhance many capabilities by
-bypassing defective parts of the nervous or muscle system.
+\Acp{bci} started as a speculative concept in the 1970's~\cite{Vidal1973}.
+Now, they have gradually evolved from methods  developed in the the 1990's to
+establish basic communication from minimal brain activity
+(yes/no, left/right, \ldots)~\cite{Wolpaw2002} into sophisticated interaction
+schemes that restore or enhance many capabilities by bypassing defective parts
+of the nervous or muscle system.
 By now, classic \acp{bci} methods are starting to mature outside the lab setting and can
-be used as assistive communication technology by individuals with \acl{sspi}.
-speech~\cite{Wolpaw2018,Milekovic2018}.
+be used as assistive communication technology by individuals with \acl{sspi}
+~\cite{Wolpaw2018,Milekovic2018}.
 Impressive cutting-edge experimental examples include a brain-spine interface allowing a
 paraplegic individual to walk again~\cite{Lorach2023}, a \ac{bci} translating internal
 speech to a facial avatar speaking the imagined text~\cite{Metzger2023}, and fast
@@ -71,17 +75,18 @@ functionally useful inputs to the brain.''}.
 \fullpagefig[topleft]{%
   \includegraphics[width=\fullpagefigwidth]{figures/bci/bci_loop.pdf}
 }{%
-  The \acs{bci} loop.
-}{%
-  The \ac{bci} loop.
-  The user interacts with the \ac{bci} via a specific paradigm, in this case involving
-  visual stimulation.
-  Electrical neural signals are recorded, and neurophysiological features related to the
-  paradigm are extracted.
-  Using machine learning, a decision can then be made based on these features, which can
-  be presented back to the user.
-  In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
-}{fig:bci/loop}
+  \caption[The \acs{bci} loop.]{%
+    The \ac{bci} loop.
+    The user interacts with the \ac{bci} via a specific paradigm, in this case involving
+    visual stimulation.
+    Electrical neural signals are recorded, and neurophysiological features related to the
+    paradigm are extracted.
+    Using machine learning, a decision can then be made based on these features, which can
+    be presented back to the user.
+    In a closed-loop \ac{bci}, this feedback allows the user to adapt to the \ac{bci}.
+  }
+  \label{fig:bci/loop}
+}
 
 Let's break this definition down and focus on its separate parts.
 First of all, we need to identify a signal that is a direct representation of what is
@@ -142,7 +147,7 @@ cochlear implant as a hearing aide, or indirectly through sensory stimulation.
 The latter involves specific, paradigm-related, sensory input, like tactile feedback for
 movement \ac{bci}~\cite{Flesher2021}, or simply presenting selected actions back to the
 user.
-The user's brain will then adapt through reinforcement learning, causing changes in
+The user's brain will then adapt through learning, causing changes in
 behavior or strategy.
 Neuroplasticity, the brain's ability to adapt and reinforce specific neural pathways,
 can have a positive impact on \ac{bci} performance and gives rise to rehabilitation
@@ -164,21 +169,22 @@ Let us take a look at each of these elements separately in the next section.
 
 The brain's activity can be recorded using various neuroimaging technologies.
 These can range from brain scans~\cite{Weiskopf2004} using functional magnetic resonance
-imaging (fMRI) to more portable technologies like acoustic signals obtained by
-functional ultrasound imaging (fUS)~\cite{Zheng2023} and functional near-infrared spectroscopy
+imaging (fMRI) to more portable technologies like the acoustic signals obtained by
+functional ultrasound imaging (fUS)~\cite{Zheng2023}, and functional near-infrared spectroscopy
 (fNIRS)~\cite{Borgheai2020}.
-
-The technologies above all measure blood flow (the hemodynamic signal), which only
-indirectly reflects brain activity.
-This signal reacts too slowly to reflect the real-time activity that is of interest in
+These technologies all measure blood oxygen levels or blood flow, resulting in the
+\emph{hemodynamic} signal.
+This signal indirectly reflects brain activity through
+metabolic reactions to an increas or decreas in activity.
+Usually, it reacts too slowly to reflect the real-time activity that is of interest in
 \ac{bci} for communication, and it carries little information other than the brain
 region from where it is originating.
 
-A better candidate is the neuronal electrical activity.
+A better signal candidate is the neuronal electrical activity.
 The brain contains 86 billion neurons, which are highly interconnected cells that are
 the smallest units of information processing.
 The \emph{action potential} and its related \emph{postsynaptic potential} are electrical
-pulses occurring when a neuron receives input from another neuron and is activated.
+pulses occurring when a neuron receives input from other neurons and is activated.
 The firing of a neuron, or the combined firing of groups of synchronized neurons, thus
 generates an electrical field in and near the brain, which can be measured using
 electrodes.
@@ -208,12 +214,13 @@ risks involved with brain surgery.
 \fullpagefig[topleft]{%
   \includegraphics[width=\fullpagefigwidth]{figures/bci/recording_modalities.pdf}
 }{%
-  Various electrophysiology recording technologies.
-}{%
-	Various electrophysiology recording technologies and their respective position in a
-	cross-section of the skull.
-	There is a trade-off between invasiveness and spatial resolution.
-}{fig:bci/recording}
+  \caption[Various electrophysiology recording technologies.]{%
+	  Various electrophysiology recording technologies and their respective position in a
+	  cross-section of the skull.
+	  There is a trade-off between invasiveness and \\ spatial resolution.
+  }
+  \label{fig:bci/recording}
+}
 
 Specifically, invasive methods are less noisy and come with an increased \emph{spatial
 resolution}, meaning they can extract a signal from a specific brain region or even a
@@ -222,7 +229,7 @@ This makes it easier to retrieve a signal with a known origin from the brain, wh
 might be leveraged by the paradigm to modulate information.
 Generally, microelectrodes penetrating the cortex are considered to have the highest
 spatial resolution.
-These are needles with a diameter smaller than 10µm and one or multiple electrodes that
+These are needles with a diameter smaller than 10 µm and one or multiple electrodes that
 extend several millimeters into the cortex.
 Microelectrodes can measure the Local Field Potential (LFP), the extracellular potential
 of a small group of neurons, or even intracellular single neuron action potential
@@ -231,9 +238,11 @@ They come in single-electrode form, or, more popularly, in microelectrode arrays
 Well-known examples are the Utah array~\cite{Maynard1997}, the more recent NeuraLink
 implant~\cite{Musk2019}, and IMEC's Neuropixels 2.0~\cite{Steinmetz2021}.
 
-Larger implanted electrodes are referred to as intracranial \ac{eeg} (i\ac{eeg}).
+Larger implanted electrodes (usually a few millimeters in size) are referred to
+as intracranial \ac{eeg} (i\ac{eeg}).
 Depth electrodes, like those found in in stereo-\ac{eeg}, can be used for \ac{bci}~\cite{Wu2024}
- and other applications, like closed-loop adaptive control for Deep Brain Stimulation to mitigate Parkinson's disease
+ and other applications, like closed-loop adaptive control for Deep Brain Stimulation
+ to mitigate Parkinson's disease
 symptoms~\cite{Arlotti2018}.
 Depth electrodes are longer rods with multiple electrodes that can extend deeper into
 the brain.
@@ -241,8 +250,10 @@ Since these still penetrate the cortex, electrodes that sit on top of the cortex
 more popular, as they are considered less invasive.
 \Ac{ecog} is a powerful method with many applications in \ac{bci}~\cite{Schalk2011} and
 epilepsy diagnosis.
-Newer developments like micro-ECoG (µECoG)~\cite{Shokoueinejad2019}, with a higher
-number of smaller electrodes per surface area, allow for more precise measurements.
+Newer developments like micro-ECoG (µECoG), with a higher
+number of smaller electrodes per surface area (recording from sites with
+diameter of 10s of micrometers instead of $\pm$ 1 cm)~\cite{Shokoueinejad2019},
+allow for more precise measurements.
 
 Some impressive recent breakthroughs in speech and motor \ac{bci} for communication have
 been realized using invasive microelectrode arrays~\cite{Willett2021} and
@@ -311,29 +322,34 @@ stimulation and the engagement of the user as shown in \cref{fig:bci/paradigms}.
 \fullpagefig{%
   \input{figures/bci/paradigms.tikz.tex}
 }{%
-  Overview of \acs{bci} paradigms.
-}{%
-  A \ac{bci} paradigm defines which brain activity will be used for control.
-  They can be categorized in active, reactive and passive paradigms, depending on their
-  reliance on external stimulation and active participation required from the user.
-  Adapted from~\textcite{Muehl2014}.
-}{fig:bci/paradigms}
+  \caption[Overview of \acs{bci} paradigms.]{%
+    A \ac{bci} paradigm defines which brain activity will be used for control.
+    They can be categorized in active, reactive and passive paradigms, depending on their
+    reliance on external stimulation and active participation required from the user.
+    Adapted from~\textcite{Muehl2014}.
+  }
+  \label{fig:bci/paradigms}
+}
 
-Paradigms that require little active participation from the user, like redirecting
-attention or initiating imagined actions, are classified as \emph{passive \ac{bci}}.
+In contrast to paradigms that require the user's active participation, for
+instance through redirecting attention or initiating imagined actions,
+paradigms free of this requirement are classified as \emph{passive \ac{bci}}.
 From the user's point of view, this concept is probably the most attractive, since their
 cognitive state would be inferred from just their brain activity.
 However, without active user participation, it can be hard to establish reliable
 communication or control.
-Therefore, passive \ac{bci} are currently more suited to tasks like emotion or affect
-monitoring~\cite{Torres2020,Libert2019, Muehl2014}, workload monitoring~\cite{Zanetti2021},
+Therefore, passive \ac{bci} are currently used for control tasks that require
+input, like emotional affect~\cite{Torres2020,Libert2019, Muehl2014},
+workload~\cite{Zanetti2021} or fatigue~\cite{Alimardani2020} detection,
 or, more dependent on stimulation, error detection~\cite{SiMohammed2020}.
-It also has clinical applications in the form of neurofeedback~\cite{Hammond2011}.
+Aside from control, clinical applications are found in the diagnosis of a multitude of neurological
+and psychological disorders through various forms of neuroimaging or monitoring,
+in resting state or while performing a specific task.
 Nevertheless, active participation facilitates training data collection for supervised
 machine learning, since the conditions can be more easily controlled by the user or the
 stimulation.
 
-Paradigms requiring high active participation can be split up into \emph{active
+Paradigms that do require high active participation can be split up into \emph{active
 \ac{bci}} and \emph{reactive \ac{bci}}.
 Active \ac{bci} paradigms encode endogenous activity initiated by the user, such as
 imagined movement or imagined speech.
@@ -343,12 +359,18 @@ cursor, or a few words~\cite{Panachakel2021}.
 Invasive recordings are necessary for decoding more complex encoded activities like
 natural speech~\cite{Metzger2023} or meaningful motor trajectories, like handwritten
 symbols~\cite{Willett2021} or sign language~\cite{Branco2017}.
-Active paradigms are also subject to large inter-subject variability due to the
+Active BCI also has clinical applications in the form of
+neurofeedback~\cite{Hammond2011}, where the user adapts mental strategies to
+perform active self-regulation of their brain activity which is presented to
+them, causing a feedback loop.
+
+Active paradigms are subject to large inter-subject variability due to the
 complexity of the performed tasks.
 They might require extensive user training and are sensitive to correct task
 instruction.
-Imagined speech or movements can be performed in a multitude of ways, which can each
-have different neural representations for separate individuals.
+Imagined speech or movements, or mental strategies in general, can be
+performed in a multitude of ways, which can themselves have different neural
+representations for separate individuals.
 This can make it hard to adapt the \ac{bci} to specific individuals, causing poor
 performance and giving rise to the concept of \ac{bci} illiteracy~\cite{Allison2010}\footnote{%
 Recently, the concept of BCI illiteracy is increasingly being seen as outdated.
@@ -410,7 +432,7 @@ motor command~\cite{Neeling2019}, or combining multiple visual paradigms by stim
 along multiple dimensions at once.
 \textcite{Han2023} recently used this strategy, combining frequency and phase coding in
 \ac{ssvep} with the \ac{mvep} and oddball paradigms to develop an efficient \ac{bci}
-where one of 200 targets can be accurately selected with only 800ms of stimulation.
+where one of 200 targets can be accurately selected with only 800 ms of stimulation.
 
 \section{Preprocessing}
 \label{sec:bci/preprocessing}
@@ -432,7 +454,7 @@ by removing frequencies that are too high or too low to contain relevant neural 
 Band-pass filters eliminate slow drifts and high-frequency noise, such as muscle
 artifacts or environmental electrical interference, improving the \ac{snr}.
 Additionally, notch filtering can be used to remove strong power line interference\footnote{%
-Typically at 50Hz in Europe.}.
+Typically at 50 Hz in Europe.}.
 This interference can heavily contaminate \ac{eeg} recordings and even leak through when
 outside the passband of a previous filter.
 Notch filtering efficiently attenuates this narrowband noise without affecting the
@@ -541,7 +563,7 @@ in general, is \ac{itr}.
 \Ac{itr} reflects how fluently a \ac{bci} can be used for communication and can be
 calculated as
 \begin{equation}
-  \text{\acs{itr}} = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
+  \ITR = Q\left(\log_2N+P\log_2P+(1-P)\log_2\frac{1-P}{N-1}\right)
 \end{equation}
 \Ac{itr} is expressed in bits/s and is dependent on $N$, the number of different options
 that can be selected per trial\footnote{Given that selections are independent of each
@@ -567,15 +589,15 @@ Nevertheless, it can score relatively high on the \ac{itr} parameters establishe
 The brain response of interest is the visual \ac{erp}, which can be accurately measured
 and decoded from non-invasive \ac{eeg} signals with a relatively low computational
 effort and short calibration time.
-First established by~\cite{Farwell1988} in 1988, it is well supported by literature and
+First established by \textcite{Farwell1988} in 1988, it is well supported by literature and
 has been proven to work for those with \acl{sspi} in day-to-day home use~\cite{Wolpaw2018}.
 
 \subsection{Stimulation paradigm}
 
 One by one, visual elements on a computer screen are \emph{intensified} for a short
 period of time by changing in color, brightness, or size.
-Intensifications of different targets are usually 100-200ms apart and last for about
-100ms~\cite{Sellers2006a}.
+Intensifications of different targets are usually 100-200 ms apart and last for about
+100 ms~\cite{Sellers2006a}.
 On each flash observed by the user, specific brain activity is elicited.
 If one of these intensified elements is rare with respect to the others, i.e., it is the
 \emph{odd-one out} or \emph{oddball}, this brain activity is altered.
@@ -590,7 +612,7 @@ intensification.
 
 \Ac{itr} in the oddball paradigm is optimized by intensifying multiple targets at once
 in a row-column strategy and using a sequence of selections, giving rise to the classic
-matrix speller of~\cite{Farwell1988}.
+matrix speller of \textcite{Farwell1988}.
 Other optimizations increase response \ac{snr}, like using flashing face images as
 intensifications~\cite{Jin2012} or adding distinct colors and shapes to the
 stimuli~\cite{Treder2011}.
@@ -603,26 +625,39 @@ of selections~\cite{Treder2010}.
 Together with \ac{ssvep}, oddball paradigms are most frequently used in visual \ac{bci}.
 There are, however, indications that users prefer oddball stimulation over \ac{ssvep},
 which can cause eye strain and fatigue due to the continuous oscillatory stimulation of
-all targets at once~\cite{Xu2021}.
+all targets at once~\cite{Xu2021}\footnote{
+  Recent work mitigates this by making SSVEP stimulation
+  more comfortable without compormising selection accuracy through
+  high-frequency low-contrast stimulation~\cite{Ladouce2022}.
+}.
 Furthermore, \ac{ssvep} relies more on directing the gaze at the intended target than
 oddball, detracting from the concept of control independent from muscle movement.
 
 \begin{figure}[t]
-  \centering
   \begin{subfigure}[t]{.45\textwidth}
   \includegraphics[width=\textwidth, height=\textwidth]{figures/bci/illustration}
     \caption{Stimuli are flashed while the \acs{eeg} is recorded.}
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
+    %\resizebox{\textwidth}{\textwidth}{%
     \input{figures/bci/p300.tikz.tex}
-    \caption{The P300 matrix speller interface. Entire rows or columns flash at once.}
+    %}
+    \caption{The P3 matrix speller interface. Entire rows or columns flash at once.}
   \end{subfigure}
 
+  \bigskip
+
   \begin{subfigure}[t]{.45\textwidth}
-    \input{figures/bci/erp.tikz.tex}
+    \input{figures/bci/erp_target.tikz.tex}%
     \caption{The idealized \ac{erp} evoked by an attended stimulation in a single
-    channel.}
-    \label{fig:bci/erp}
+    channel.}%
+    \label{fig:bci/erp}%
+  \end{subfigure}\hfill%
+  \begin{subfigure}[t]{.45\textwidth}
+    \input{figures/bci/erp_nontarget.tikz.tex}
+    \caption{The idealized \ac{erp} evoked by an unattended stimulation in a single
+    channel.}%
+    \label{fig:bci/erp}%
   \end{subfigure}%
 \end{figure}
 
@@ -639,7 +674,7 @@ N2 or N200 for a negative component after $\pm200$ ms).
 The component most prominently modulated by attention is called the P3 (positive
 deflection after $\pm300$ ms).
 Some \ac{bci}\footnote{In \ac{erp} analysis, components are sometimes referred to with
-the timing around which they occur (e.g., N170, negative after 170ms), or by their rank
+the timing around which they occur (e.g., N170, negative after 170 ms), or by their rank
 in order of occurrence (N1, the first negative component).
 The timing nomenclature is based on average latencies for neurotypical individuals, but
 is seldom correct for specific \ac{bci} users due to the large variability across
@@ -731,8 +766,8 @@ improving user interaction, particularly in contexts involving visual oddball ta
 
 
 \subsection{Preprocessing \& feature extraction}
-For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5Hz and
-16Hz.
+For \ac{erp} analysis, the \ac{eeg} is usually band-pass filtered between 0.5 Hz and
+16 Hz.
 Re-referencing can be done to average mastoids to highlight the contribution of the P3
 component.
 In addition to the steps outlined in \cref{sec:bci/preprocessing}, the signal is
@@ -744,8 +779,9 @@ normalize the response.
 The epochs contain values representing the voltage of a specific channel relative to the
 reference at a specific time relative to the stimulus.
 In \ac{erp} classification, they are usually directly used as features, by concatenating
-all channels in the matrix format epoch $\mat{X}$ into one feature vector such that
-$\mat{x} = \text{vec}(\mat{X})$.
+all $C$ channels of length $S$ time samples in the matrix format epoch
+$\mat{X}\in\mathbb{R}^{C\times S}$ into one feature vector
+$\mat{x}\in\mathbb{R}^{CS}$ such that $\mat{x} = \text{vec}(\mat{X})$.
 
 \subsection{Decoders}
 
@@ -767,9 +803,10 @@ this work.
 
 Linear decoding techniques such as the \ac{lcmv} beamformer~\cite{Wittevrongel2016}
 generally work well for classifying \ac{erp} epochs.
-\Ac{lcmv} beamforming learns a weight vector $\mat{w}$ from a set of epochs that can be
-multiplied with the feature vector of a new epoch to obtain a prediction score.
-The weights $\mat{w}$ are obtained by minimizing the variance of the output
+\Ac{lcmv} beamforming learns a weight vector $\mat{w}\in\mathbb{R}^{CS}$ from
+a set of epochs that can be multiplied with the feature vector $\mat{x}$ of a
+new epoch to obtain a prediction score.
+The weights are obtained by minimizing the variance of the output
 \begin{equation}
   \argmin_\mat{w}\mat{w}^\intercal\mat{C}
 	\mat{w}^\intercal
@@ -778,15 +815,17 @@ under the linear constraint
 \begin{equation}
 	\mat{a}^\intercal\mat{w} = 1
 \end{equation}
-with activation pattern $\mat{a}$ the difference between the average of the attended
-epochs and the average of the non-attended epochs in the training data.
+with \emph{activation pattern} $\mat{a}\in\mathbb{R}^{CS}$ the difference between the
+average of feature vectors of the attended and non-attended epochs in the
+training data,
+and $\mat{C}\in\mathbb{R}^{CS\times CS}$ the background covariance matrix which
+can be estimated empirically from the training data.
 This is then solved by the method of Lagrange multipliers as
 \begin{equation}
 	\mat{w} =
   \frac{\mat{C}^{-1}\mat{a}^\intercal}
   {\mat{a}\mat{C}^{-1}\mat{a}^\intercal}
 \end{equation}
-with $\mat{C}$ the background covariance.
 
 \subsubsection{\Acf{lda}}
 
@@ -794,13 +833,13 @@ with $\mat{C}$ the background covariance.
 \ac{lcmv} beamforming~\cite{Treder2016} under certain conditions.
 It assumes normally distributed data with a different mean per class but a common
 covariance.
-Similar to \ac{lcmv} beamforming, \ac{lda} learns a weight vector $\mat{w}$ that
-satisfies
+Similar to \ac{lcmv} beamforming, \ac{lda} learns a weight vector
+$\mat{w}\in\mathbb{R}^{CS}$ which satisfies
 \begin{equation}
   \argmax_\mat{w}\frac{\mat{w}^\intercal\mat{S}_\text{b}\mat{w}}{\mat{w}^\intercal\mat{S}_\text{w}\mat{w}}
 \end{equation}
-The between-class scatter matrix $\mat{S}_\text{b}$ models the variability between the
-expected responses, while the within-class scatter matrix $\mat{S}_\text{w}$ models the
+The between-class scatter matrix $\mat{S}_\text{b}\in\mathbb{R}^{CS\times CS}$ models the variability between the
+expected responses, while the within-class scatter matrix $\mat{S}_\text{w}\in\mathbb{R}^{CS\times CS}$ models the
 expected noise.
 The optimization criterion corresponds to finding a projection that maximizes the spread
 between classes (signal) while minimizing the spread within classes (noise).
@@ -808,11 +847,10 @@ $\mat{w}$ can be obtained as the eigenvector of
 $\mat{S}_\text{w}^{-1}\mat{S}_\text{b}$ corresponding to the largest eigenvalue.
 
 There is one caveat with these linear methods, however:
-the number of values ($=\text{nb. of channels}\times\text{nb. of sampled time points}$)
-is usually relatively high compared to the training dataset, since calibration time
-should be kept minimal.
-Therefore, strong regularization should be applied, such as covariance/scatter
-shrinkage.
+the number of values ($=C\cdot S$) is usually relatively high compared to the
+size of the training dataset, since calibration time should be kept minimal.
+Therefore, strong regularization, such as covariance/scatter
+shrinkage, should be applied.
 Regularization can also be performed by retaining structure in the data, such as in the
 case for the multilinear methods presented by~\textcite{Lotte2018}.
 
@@ -820,18 +858,32 @@ case for the multilinear methods presented by~\textcite{Lotte2018}.
 
 Another example of this is \ac{tlda}~\cite{Sosulski2022}, which assumes temporal
 stationarity in the background noise to regularize the problem.
-It does this by imposing a block-Toeplitz structure to the between-class covariance
-matrix of \ac{lda}, such that every temporal covariance block corresponding to a channel
-has the structure
+It does this by imposing a block-Toeplitz structure to the within-class
+scatter $\mat{S}_\text{w}$ matrix of \ac{lda}.
+This means
 \begin{equation}
-  \mat{S}_\text{w}^{(c)} = \begin{bmatrix}
-s_0 & s_1 & s_2 & \cdots & s_{k-1} \\
-s_1 & s_0 & s_1 & \cdots & s_{k-2} \\
-s_2 & s_1 & s_0 & \cdots & s_{k-3} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-s_{k-1} & s_{k-2} & s_{k-3} & \cdots & s_0
+  \mat{S}_\text{w} = \begin{bmatrix}
+    \mat{S}_\text{w}^{(1,1)} & \mat{S}_\text{w}^{(1,2)} & \cdots & \mat{S}_\text{w}^{(1,C)}\\
+    \mat{S}_\text{w}^{(2,1)} & \mat{S}_\text{w}^{(2,2)} & \cdots & \mat{S}_\text{w}^{(2,C)}\\
+    \vdots             & \vdots             & \ddots & \vdots            \\
+    \mat{S}_\text{w}^{(C,1)} & \mat{S}_\text{w}^{(C,2)} & \cdots & \mat{S}_\text{w}^{(C,C)}\\
+  \end{bmatrix}
+\end{equation}
+consists of $C\times C$ temporal scatter matrices
+$\mat{S}_\text{w}^{(c_1,c_2)}\in\mathbb{R}^{S\times S}$
+corresponding to a pair of channels $(c_1,c_2)$, such
+that every temporal scatter matrix has the Toeplitz structure
+\begin{equation}
+  \mat{S}_\text{w}^{(c_1,c_2)} = \begin{bmatrix}
+    s_1^{(c_1,c_2)}  & s_2^{(c_1,c_2)}  & \cdots & s_S^{(c_1,c_2)}  \\
+    s_2^{(c_1,c_2)}  & s_1^{(c_1,c_2)}  & \cdots & s_{S-1}^{(c_1,c_2)}  \\
+    \vdots & \vdots &  \ddots & \vdots \\
+    s_S^{(c_1,c_2)}  & s_{S-1}^{(c_1,c_2)}  & \cdots & s_1^{(c_1,c_2)}
 \end{bmatrix}
 \end{equation}
+The structuring is performed by setting all elements to the average of their
+corresponding block-subdiagonal and subsequently applying shrinkage
+regularization.
 This method is simple yet effective, reaching state-of-the-art decoding performance.
 
 \subsubsection{Riemannian geometry}
@@ -904,8 +956,14 @@ impairment due to  with various degrees
 of paralysis, or even with \ac{lis}, the complete loss of muscle control with preserved
 consciousness.
 While \ac{bci}s are most attractive as a solution for individuals with \ac{sspi},
-studies paradoxically often report poor performance in exactly this group,
-precisely due to their lack of adequate eye motor control.
+studies paradoxically often report poor performance in exactly this group.
+This is caused by a multitude of factors, including diminished
+electrophysiological responses and cognitive defects linked to the
+pathophysiology, psychological factors such as the ``extinction of goal directed thinking''
+phenomenon in complete impairment, and, importantly, sensory impairments such as vision and
+oculomotor defects~\cite{Seguin2023}.
+While visual \acp{bci} often rely on visual sensory functions, it is precisely this
+group of patients that could benefit from them, that lacks adequate eye motor control.
 Equally often, participants with gaze impairments were excluded from the study.
 
 Different degrees of eye motor impairment can render visual \ac{bci}s uncomfortable or

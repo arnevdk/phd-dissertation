@@ -17,8 +17,9 @@
 }
 % Kronecker-structured LDA ====================================================
 
-  \emph{This chapter was
-  published as~\textcite{VanDenKerchove2022}.}
+  \publicationnote{This chapter, except
+  \crefrange{tab:stbf-struct/accuracies/stbf-struct}{tab:stbf-struct/accuracies/xdawn-rg},
+  was published as~\textcite{VanDenKerchove2022}.}
 
 	\section{Introduction}
 
@@ -63,7 +64,7 @@
 	Earlier work has shown that it is
 	possible to apply the spatiotemporal beamformer to multiple time-locked visual
   \ac{bci} paradigms, including the P3 oddball paradigm, \ac{ssvep},
-  \ac{cvep}~\cite{Wittevrongel2017a}, \ac{mvep}~\cite{Libert2021}.
+  \ac{cvep}~\cite{Wittevrongel2017a}, and the \ac{mvep}~\cite{Libert2021}.
 
 	This work shows that the original spatiotemporal
 	beamformer~\cite{Wittevrongel2016} can fall short in performance when \ac{bci}
@@ -74,11 +75,11 @@
 	exploits prior knowledge about the spatiotemporal nature of the \ac{eeg} signal to
 	improve the accuracy for low data availability settings and speed up the
 	classifier training time, thereby considerably reducing memory usage.
-	Similar structured regularization approaches have been applied to other linear
+	Similarly structured regularization approaches have been applied to other linear
 	\ac{erp} classifiers~\cite{GonzalezNavarro2017, Vliet2020} and have shown
 	significant increases in performance.
-	Additionally, we show that regularization results in an interpretable
-	classification model, which can aid in analyzing and developing spatiotemporal beamformer-based classifiers.
+%	Additionally, we show that regularization results in an interpretable
+%	classification model, which can aid in analyzing and developing spatiotemporal beamformer-based classifiers.
 
 	\section{Materials \& methods}
 	\subsection{Notation}
@@ -86,10 +87,10 @@
 	lowercase letters, fixed scalars with uppercase cursive letters and variable
   scalars with cursive lowercase letters.
 	The epoched \ac{eeg} data with $N$ epochs, $C$ channels, and $S$ samples are
-  represented in epoch format as $\{\mat{X}_i\in\mathbb{R}^{C\times S}\}^N_{i=1}$
+  represented in epoch format as $\{\mat{X}_n\in\mathbb{R}^{C\times S}\}^N_{n=1}$
   or flattened vector format by concatenating all channels for each epoch.
-	Flattening results in $\{\mat{x}_i\in\mathbb{R}^{CS}\}^N_{i=1}$ such that
-  $\mat{x}_i = \text{vec}(\mat{X}_i)$.
+	Flattening results in $\{\mat{x}_n\in\mathbb{R}^{CS}\}^N_{n=1}$ such that
+  $\mat{x}_n = \text{vec}(\mat{X}_n)$.
 	The real covariance matrix of the epochs in vector format is
   denoted by $\mat{C}$, estimators thereof as $\hat{\mat{C}}$.
 
@@ -100,20 +101,20 @@
 	\textcite{VanVliet2015} first applied the spatiotemporal
 	\ac{lcmv}-beamformer as a method for the analysis of \acp{erp}.
 	The extension to the combined spatiotemporal domain~\cite{VanVliet2015} and the
-	data-driven approaches proposed by Treder et al.~\cite{Treder2016} and
-	Wittevrongel et al.~\cite{Wittevrongel2016} allow for its application to classification problems.
+	data-driven approaches proposed by \textcite{Treder2016} and
+	\textcite{Wittevrongel2016} allow for its application to classification problems.
 
 	For the following analyses, we assume that all \ac{eeg} channels are normalized with zero mean and unit variance without loss of generality.
-	Solving \cref{eq:minimum_variance} under the linear constraint given by
-	\cref{eq:linear_constraint} returns the filter weights $w$ defining the spatiotemporal \ac{lcmv}-beamformer.
+	Solving \cref{eq:stbf-struct/minimum-variance} under the linear constraint given by
+  \cref{eq:stbf-struct/linear-constraint} returns the filter weights $\mat{w}$ defining the spatiotemporal \ac{lcmv}-beamformer.
 	\begin{equation}
-    \underset{\mat{w}}{\arg\min}\mat{w}^\intercal \mat{C}
+    \argmin_\mat{w}\mat{w}^\intercal \mat{C}
 		\mat{w}^\intercal
-		\label{eq:minimum_variance}
+		\label{eq:stbf-struct/minimum-variance}
 	\end{equation}
 	\begin{equation}
 		\mat{a}^\intercal\mat{w} = 1
-		\label{eq:linear_constraint}
+		\label{eq:stbf-struct/linear-constraint}
 	\end{equation}
 	These weights minimize the variance of the output of the filter while enhancing
 	the signal characterized by the constraint.
@@ -122,26 +123,26 @@
 	epochs, determined as follows:
 	\begin{equation}
 		\mathbf{a} =
-		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_i} -
-		\frac{1}{|\text{class 2}|}\sum_\text{class 2}\mathbf{x_i}
-		\label{eq:activation_pattern}
+		\frac{1}{|\text{class 1}|}\sum_\text{class 1}\mathbf{x_n} -
+		\frac{1}{|\text{class 2}|}\sum_\text{class 2}\mathbf{x_n}
+		\label{eq:stbf-struct/ap}
 	\end{equation}
 
 	The method of Lagrange multipliers then gives the closed-form solution to the minimization problem posed by
-	\cref{eq:minimum_variance} and \cref{eq:linear_constraint} as:
+	\cref{eq:stbf-struct/minimum-variance} and \cref{eq:stbf-struct/linear-constraint} as:
 	\begin{equation}
 		\mat{w} =
     \frac{\mat{C}^{-1}\mat{a}^\intercal}
-		{\mat{a}C^{-1}\mat{a}^\intercal}
-		\label{eq:closed_form}
+    {\mat{a}\mat{C}^{-1}\mat{a}^\intercal}
+		\label{eq:stbf-struct/closed-form}
 	\end{equation}
 	The beamformer can be applied to epochs (unseen or not) as:
 	\begin{equation}
-		y_i = \mathbf{w}\mathbf{x}_i
-		\label{eq:apply_beamformer}
+		y_n = \mathbf{w}\mathbf{x}_n
+		\label{eq:stbf-struct/apply-bf}
 	\end{equation}
 	resulting in a scalar output per epoch.
-	The linear constraint in \cref{eq:linear_constraint} ensures that the
+	The linear constraint in \cref{eq:stbf-struct/linear-constraint} ensures that the
 	beamformer maps epochs containing a target response to a score close to one
 	and, conversely, epochs not containing a target response to a score close to
 	zero.
@@ -154,20 +155,20 @@
   matrix $\mat{C}^{-1}$ since the real underlying covariance matrix generating the data is, in principle, unknown.
 
 	\subsubsection{Empirical covariance estimation}
-	\label{sec:empirical_covariance}
+	\label{sec:stbf-struct/methods/emp-cov}
 	Earlier spatiotemporal beamformer studies~\cite{Wittevrongel2016,
 		Wittevrongel2016a, Wittevrongel2017, Wittevrongel2017a} use the empirical
 	covariance and inverse covariance calculated as follows:
 	\begin{equation}
     \hat{\mat{C}}_\text{emp} =
-		\frac{1}{N-1}\sum^{N}_{i=1}\mat{x}_i\mat{x}_i^\intercal
-		\label{eq:empirical_covariance}
+		\frac{1}{N-1}\sum^{N}_{n=1}\mat{x}_n\mat{x}_i^\intercal
+		\label{eq:stbf-struct/emp-cov}
 	\end{equation}
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\text{emp} = \hat{\mat{C}}_\text{emp}^+
-		\label{eq:empirical_inverse_covariance}
+		\label{eq:stbf-struct/emp-inv-cov}
 	\end{equation}
-	The Moore-Penrose pseudoinverse $^+$, ensures a solution exists when
+	The Moore-Penrose pseudoinverse, $^+$, ensures a solution exists when
   $\hat{\mat{C}}_\text{emp}$ is singular.
 	\cref{fig:kronlda-covs}a and \cref{fig:kronlda-covs}b respectively show examples of the
 	empirical estimators of the covariance and the inverse covariance matrices.
@@ -175,8 +176,8 @@
 	stability issues if the number of epochs $N$ used or estimation is not much larger than the number of features $CS$~\cite{Stein1956,Khatri1987}.
 
 	\subsubsection{Shrunk covariance estimation}
-	\label{sec:shrunk_covariance}
-	The shrinkage covariance estimator creates a better-conditioned inversion matrix problem and generally performs better when applied to unseen data.
+	\label{sec:stbf-struct/methods/shrunk-cov}
+	The shrinkage covariance estimator creates a better conditioned inversion matrix problem and generally performs better when applied to unseen data.
 	The estimators for the covariance and inverse covariance are given by:
 	\begin{equation}
     \hat{\mat{C}}_\alpha =
@@ -187,7 +188,7 @@
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\alpha =
     \hat{\mat{C}}^+_\alpha
-		\label{eq:shrinkage_inverse}
+		\label{eq:stbf-struct/shrinkage-inv}
 	\end{equation}
 	with $0<\alpha<1$.
 	Analogous to $L_2$ regularization of the beamforming problem,
@@ -204,11 +205,11 @@
 	covariance matrix's dimensionality, and the independence and variance of the
 	data, which can vary across evaluation settings and per session.
 	The optimal value for $\alpha$ can be found with a line search using cross-validation, but this can be a costly procedure.
+
 	Methods exist to estimate an optimal shrinkage value from the data directly.
 	Most notable among these are the Ledoit-Wolf procedure~\cite{Ledoit2004},
 	Rao-Blackwell Ledoit-Wolf~\cite{Chen2010}, and Oracle Approximating Shrinkage~\cite{Chen2010}.
-	A more recent estimation method~\cite{Tong2018} emulates a leave-one-out
-	cross-validation (\ac{loocv}) scheme expressed by the data-driven closed-form
+  A more recent estimation method~\cite{Tong2018} emulates a \ac{loocv} scheme expressed by the data-driven closed-form
 	estimate:
 	\begin{equation}
 		\alpha =
@@ -216,24 +217,23 @@
       \frac{N}{N-1}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
       - \frac{2}{CS}\left[\text{Tr}(\hat{\mat{C}}_\text{emp})\right]^2
       + \frac{1}{CS}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
-			- \frac{1}{N(N-1)}\sum_{i=1}^N||\mat{x}_i||_2^4
+			- \frac{1}{N(N-1)}\sum_{n=1}^N||\mat{x}_n||_2^4
 		}
 		{
       \frac{N^2 -2N}{(N-1)^2}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
       - \frac{2}{CS}\left[\text{Tr}(\hat{\mat{C}}_\text{emp})\right]^2
       + \frac{1}{CS}\text{Tr}(\hat{\mat{C}}_\text{emp}^2)
-			+ \frac{1}{N(N-1)^2}\sum_{i=1}^N||\mat{x}_i||_2^4
+			+ \frac{1}{N(N-1)^2}\sum_{n=1}^N||\mat{x}_n||_2^4
 		}
 		\label{eq:loocv}
 	\end{equation}
-
 	We opt for the \ac{loocv} shrinkage estimator because it avoids some of the
-	assumptions made by~\cite{Ledoit2004} and~\cite{Chen2010} and
+	assumptions made by \textcite{Ledoit2004} and \textcite{Chen2010} and
 	because it generalizes to structured covariance estimation as described in
-	\cref{seq:structured_estimation}.
+	\cref{sec:stbf-struct/methods/structured-estimation}.
 
 	\subsubsection{Spatiotemporal beamforming with Kronecker-Toeplitz structured covariance}
-	\label{seq:structured_estimation}
+	\label{sec:stbf-struct/methods/structured-estimation}
 	Exploiting prior knowledge about the spatiotemporal structure of the \ac{eeg} signal leads to a more regularized estimator of the covariance.
 	When viewing the example of empirical spatiotemporal \ac{eeg} covariance in
 	\cref{fig:kronlda-covs}a, it becomes clear that this matrix consists of a block pattern of repeated, similar matrices.
@@ -254,40 +254,40 @@
     \hat{\mat{T}}_{i,j} = \hat{\mat{T}}_{i+1,j+1}
 		\label{eq:toeplitz}
 	\end{equation}
-	\Cref{prop:inverse_kronecker} then leads to
-	\cref{eq:cov_inverse_kronecker} to estimate the inverse
+	\Cref{prop:stbf-struct/inverse-kronecker} then leads to
+	\cref{eq:stbf-struct/cov-inverse-kronecker} to estimate the inverse
 	covariance.
 
 	\begin{property}
     $(\mat{U} \otimes \mat{V})^+ = \mat{U}^+ \otimes \mat{V}^+$ for any non-singular
     matrices $\mat{U}$ and $\mat{V}$~\cite{Langville2004}.
-		\label{prop:inverse_kronecker}
+		\label{prop:stbf-struct/inverse-kronecker}
 	\end{property}
 
 	\begin{equation}
     \widehat{\mat{C}^{-1}}_\text{struct} = \hat{\mat{S}}^+ \otimes \hat{\mat{T}}^+
-		\label{eq:cov_inverse_kronecker}
+		\label{eq:stbf-struct/cov-inverse-kronecker}
 	\end{equation}
 
-	Finally, based on \cref{prop:kronecker_multiplication},
-	\cref{eq:closed_form} can be reformulated more efficiently as
-	\cref{eq:closed_form_kronecker}.
+	Finally, based on \cref{propr:stbf-struct/kron-multiplication},
+	\cref{eq:stbf-struct/closed-form} can be reformulated more efficiently as
+	\cref{eq:stbf-struct/closed-form-kron}.
 	\begin{property}
-    $(\mat{U}\otimes \mat{V})\cdot\text{vec}(\mat{W}) =
-    \text{vec}(\mat{V}\mat{W}\mat{U}^\intercal)$
+    $(\mat{U}\otimes \mat{V})\cdot\vect(\mat{W}) =
+    \vect(\mat{V}\mat{W}\mat{U}^\intercal)$
     for any matrices $\mat{U}\in\mathbb{R}^{P\times P}$,
     $\mat{V}\in\mathbb{R}^{Q\times Q}$ and $\mat{W}\in\mathbb{R}^{P\times Q}$~\cite{Loan2000}.
-		\label{prop:kronecker_multiplication}
+		\label{propr:stbf-struct/kron-multiplication}
 	\end{property}
 
 	\begin{equation}
 		\hat{\mat{w}}_\text{struct} =
     \frac{\hat{\mat{S}}^+\mat{A}^\intercal\hat{\mat{T}}^+}
-    {\mat{a}\cdot\text{vec}(\hat{\mat{S}}^+A^\intercal\hat{\mat{T}}^+)}
-		\label{eq:closed_form_kronecker}
+    {\mat{a}\cdot\vect\left(\hat{\mat{S}}^+A^\intercal\hat{\mat{T}}^+\right)}
+		\label{eq:stbf-struct/closed-form-kron}
 	\end{equation}
 
-	Using \cref{eq:closed_form_kronecker} removes the need to calculate the
+	Using \cref{eq:stbf-struct/closed-form-kron} removes the need to calculate the
   full, high dimensional Kronecker product $\hat{\mat{S}}^+\otimes
     \hat{\mat{T}}^+$.
 	\Cref{fig:kronlda-covs}e and \cref{fig:kronlda-covs}f respectively show examples of the
@@ -297,16 +297,64 @@
 	\cref{fig:kronlda-covs}j).
 
 	\begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
+		%\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-0.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-1.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-2.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{minipage}[b]{\textwidth/10}
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-6.eps}
+        \caption{}
+      \end{subfigure}\vfill%
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-7.eps}
+        \caption{}
+      \end{subfigure}\hfill%
+    \end{minipage}
+
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-3.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-4.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{subfigure}{\textwidth/4}
+		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-5.eps}
+      \caption{}
+    \end{subfigure}\hfill%
+    \begin{minipage}[b]{\textwidth/10}
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-8.eps}
+        \caption{}
+      \end{subfigure}\vfill%
+      \begin{subfigure}{\textwidth}
+  		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-9.eps}
+        \caption{}
+      \end{subfigure}\hfill%
+    \end{minipage}
+
+
+
     \caption[Estimated covariance and inverse covariance.]{Different estimators of the covariance and inverse covariance
 			of 100 epochs of data from \textit{Subject 01} for channels
 			\textit{Fz}, \textit{Cz}, \textit{Pz}, and \textit{Oz} and time samples between 0.1s and 0.6s.
 			Regularized estimators of the inverse covariance exhibit less extreme values and have a sparser structure.
-			(\textbf{a,b}) Empirical covariance and inverse covariance matrices.
-			(\textbf{c,d}) Shrunk covariance and inverse covariance matrices with $\alpha=0.14$ as
-			determined by the closed-form \ac{loocv} method. (\textbf{e,f}) Kronecker-Toeplitz
+			(\textbf{a,f}) Empirical covariance and inverse covariance matrices.
+			(\textbf{b,g}) Shrunk covariance and inverse covariance matrices with $\alpha=0.14$ as
+			determined by the closed-form \ac{loocv} method. (\textbf{c,h}) Kronecker-Toeplitz
 			structured covariance and inverse covariance matrices.
-			(\textbf{g,h}) Spatial Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.
+			(\textbf{d,e}) Spatial Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.
 			(\textbf{i,j}) Temporal Kronecker factor of the Kronecker-Toeplitz structured shrunk estimator and its inverse.}
 		\label{fig:kronlda-covs}
 	\end{figure}
@@ -320,8 +368,8 @@
 	structure on the temporal covariance.
 
 	\subsubsection{Kronecker-Toeplitz structured covariance estimation}
-	\label{sec:structured_covariance}
-	The question remains how to estimate $\hat{S}$ and $\hat{T}$.
+	\label{sec:stbf-struct/methods/struct-cov}
+  The question remains how to estimate $\mat{\hat{S}}$ and $\mat{\hat{T}}$.
 	While the Flip-Flop and Non-iterative Flip-Flop
 	algorithms~\cite{Lu2005, Werner2008, Wirfaelt2010} can estimate Kronecker or Kronecker-Toeplitz structured covariances, new results show that a fixed point iteration is more efficient~\cite{Wiesel2012a,Wiesel2012}.
 	After each iteration, the spatial and temporal covariances matrices are scaled to unit
@@ -333,58 +381,51 @@
 	iteration with shrinkage factors $\beta_k$ and $\gamma_k$ before matrix
 	inversion in the
 	next iteration.
+
 	Combined, this leads to the iterative estimation algorithm described by the
 	following equations:
-
 	\begin{subequations}
 		\begin{equation}
       \tilde{\mat{S}}_{k+1} =
 			\frac{1}{N}
-      \sum^N_{i=1}\mat{X}_i^\intercal\hat{\mat{T}}_k^+\mat{X}_i
-			\label{eq:fpi_spatial}
+      \sum^N_{n=1}\mat{X}_n^\intercal\hat{\mat{T}}_k^+\mat{X}_n
+			\label{eq:stbf-struct/fpi-spatial}
 		\end{equation}
 		\begin{equation}
       \tilde{\mat{T}}_{k+1} =
 			\frac{1}{N}
-      \sum^N_{i=1}\mat{X}_i\hat{\mat{S}}_k^+\mat{X}_i^\intercal
-			\label{eq:fpi_temporal}
+      \sum^N_{n=1}\mat{X}_n\hat{\mat{S}}_k^+\mat{X}_n^\intercal
+			\label{eq:stbf-struct/fpi-temporal}
 		\end{equation}
 	\end{subequations}
-
-
-
 	\begin{subequations}
 		\begin{equation}
       \tilde{\mat{S}}_{k+1}^{(\beta)} =
       (1-\beta_{k+1})\tilde{\mat{S}}_{k+1}
       +\beta_{k+1}\frac{\text{Tr}(\tilde{\mat{S}}_{k+1})}{C}\mathbb{I}
-			\label{eq:fpi_spatial_shrunk}
+			\label{eq:stbf-struct/fpi-spatial-shrunk}
 		\end{equation}
 		\begin{equation}
       \tilde{\mat{T}}_{k+1}^{(\gamma)} =
       (1-\gamma_{k+1})\tilde{\mat{T}}_{k+1}
       +\gamma_{k+1}\frac{\text{Tr}(\tilde{\mat{T}}_{k+1})}{S}\mathbb{I}
-			\label{eq:fpi_temporal_shrunk}
+			\label{eq:stbf-struct/fpi-temporal-shrunk}
 		\end{equation}
 	\end{subequations}
-
-
-
 	\begin{subequations}
 		\begin{equation}
       \hat{\mat{S}}_{k+1} =
       \frac{C}{\text{Tr}\left[\tilde{\mat{S}}_{k+1}^{(\beta)}\right]}
       \tilde{\mat{S}}_{k+1}^{(\beta)}
-			\label{eq:fpi_spatial_norm}
+			\label{eq:stbf-struct/fpi-spatial-norm}
 		\end{equation}
 		\begin{equation}
       \hat{\mat{T}}_{k+1} =
       \frac{S}{\text{Tr}\left[\tilde{\mat{T}}_{k+1}^{(\gamma)}\right]}
       \tilde{\mat{T}}_{k+1}^{(\gamma)}
-			\label{eq:fpi_temporal_norm}
+			\label{eq:stbf-struct/fpi-temporal-norm}
 		\end{equation}
 	\end{subequations}
-
   $\hat{\mat{S}}_0$ and $\hat{\mat{T}}_0$ can be initialized to any positive definite matrix.
 	We choose to use the identity matrices $\mathbb{I}^{C\times C}$ and $\mathbb{I}^{S\times S}$.
   After each iteration, all diagonals of $\hat{\mat{R}}_{k+1}$ are set to their mean
@@ -399,8 +440,8 @@
 			\beta_{k+1} =
 			1-
 			\frac{
-        \frac{N}{N-1}\text{Tr}(\tilde{\hat{S}}_{k+1}^2)
-        - \frac{2}{C}\left[\text{Tr}(\tilde{\mat{S}}_{k+1})\right]^2
+        \frac{N}{N-1}\text{Tr}(\tilde{\mat{\hat{\S}}}_{k+1}^2)
+        - \frac{2}{C}\left[\text{Tr}(\mat{\tilde{S}}_{k+1})\right]^2
         + \frac{1}{C}\text{Tr}(\tilde{\mat{S}}_{k+1}^2)
 				- \frac{1}{N(N-1)}\sum_{i=1}^N
         \left[\text{Tr}(\mat{X}_i\hat{\mat{T}}_k^+\mat{X}_i^\intercal)^2\right]
@@ -411,7 +452,7 @@
 				+ \frac{1}{N(N-1)^2}\sum_{i=1}^N
         \left[\text{Tr}(\mat{X}_i\hat{\mat{T}}_k^+\mat{X}_i^\intercal)^2\right]
 			}
-			\label{eq:spatial_shrinkage}
+			\label{eq:stbf-struct/spatial-shrinkage}
 		\end{equation}
 		\begin{equation}
 			\gamma_{k+1} =
@@ -419,17 +460,17 @@
 			\frac{
         \frac{N}{N-1}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
         - \frac{2}{S}\left[\text{Tr}(\tilde{\mat{T}}_{k+1})\right]^2
-				+ \frac{1}{S}\text{Tr}(\tilde{T}_{k+1}^2)
-				- \frac{1}{N(N-1)}\sum_{i=1}^N
-        \left[\text{Tr}(\mat{X}_i^\intercal\mat{\mat{S}}_k^+\mat{X}_i)^2\right]
+        + \frac{1}{S}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
+				- \frac{1}{N(N-1)}\sum_{n=1}^N
+        \left[\text{Tr}(\mat{X}_n^\intercal\mat{\mat{S}}_k^+\mat{X}_n)^2\right]
 			}{
         \frac{N^2-2N}{(N-1)^2}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
         - \frac{2}{S}\left[\text{Tr}(\tilde{\mat{T}}_{k+1})\right]^2
         + \frac{1}{S}\text{Tr}(\tilde{\mat{T}}_{k+1}^2)
-				+ \frac{1}{N(N-1)^2}\sum_{i=1}^N
-        \left[\text{Tr}(\mat{X}_i^\intercal\hat{\mat{S}}_k^+\mat{X}_i)^2\right]
+				+ \frac{1}{N(N-1)^2}\sum_{n=1}^N
+        \left[\text{Tr}(\mat{X}_n^\intercal\hat{\mat{S}}_k^+\mat{X}_n)^2\right]
 			}
-			\label{eq:temporal_shrinkage}
+			\label{eq:stbf-struct/temporal-shrinkage}
 		\end{equation}
 	\end{subequations}
 	The shrinkage parameters $0<\beta_{k+1}<1$ and $0<\gamma_{k+1}<1$ should be
@@ -465,13 +506,18 @@
 	pyRiemann (version 0.2.7).
 	Statistical tests were performed in R (version 4.1.2).
 
-	The \ac{eeg} recorded at 2048Hz was re-referenced off-line to the average of the mastoids.
+	The \ac{eeg} recorded at 2048 Hz was re-referenced off-line to the average of the mastoids.
 	The reference electrodes were dropped from the analysis.
-	Data were subsequently filtered between 0.5Hz and 16Hz using forward-backward
+	Data were subsequently filtered between 0.5 Hz and 16 Hz using forward-backward
 	filtering with a fourth-order Butterworth IIR filter.
 	The \ac{eeg} signal was corrected for ocular artifacts using Independent Component
-	Analysis (ICA) by rejecting components that correlated with the bipolar EOG channels vEOG and hEOG, according to adaptive Z-score thresholding.
-	Finally, epochs were cut from 0.1s to 0.6s after stimulus onset.
+	Analysis (ICA) by rejecting components that correlated with the bipolar EOG
+  channels vEOG and hEOG using iterative Z-score thresholding.
+  Components with a Z-scored pearson correlation coefficient
+  exceeding  3 times the standard deviation of the Z-scored
+  correlation coefficients of other components, were iteratively
+  rejected until none that exceed the threshold remained.
+  Finally, epochs were cut from 0.1s to 0.6s after stimulus onset.
 	No baseline correction was performed since this affects the temporal covariance
 	of the data, violating the Toeplitz structure assumption~\cite{Bijma2003}.
 
@@ -500,18 +546,18 @@
 
   \subsubsection{\Acl{stbf} classifier}
 	Before calculating the \ac{stbf}, the signal was downsampled to
-	32Hz or twice the low-pass frequency 16Hz, resulting in 17 time samples
+	32 Hz or twice the low-pass frequency 16 Hz, resulting in 17 time samples
 	between 0.1 and 0.6s. According to the Nyquist Theorem, more samples would not
 	contain more information hence the minimum temporal resolution is chosen to reduce
-	the dimensionality of the covariance and improve its covariance.
+	the dimensionality of the covariance and improve its condition number.
 	The activation pattern is the difference between the averages of epochs in response to cued targets and the averages of those in response to non-cued targets.
 	We constructed three variations of the spatiotemporal beamformer:
 	\ac{stbf} with empirical covariance estimation (\textsc{stbf-emp}) as in
-	\cref{sec:empirical_covariance}, \ac{stbf} with
+	\cref{sec:stbf-struct/methods/emp-cov}, \ac{stbf} with
 	\ac{loocv}-shrunk covariance estimation (\textsc{stbf-shrunk}) as in
-	\cref{sec:shrunk_covariance}, and \ac{stbf} with
+	\cref{sec:stbf-struct/methods/shrunk-cov}, and \ac{stbf} with
 	Kronecker-Toeplitz structured covariance estimation (\textsc{stbf-struct}) with \ac{loocv} shrinkage for
-	the Kronecker factors as in \cref{sec:structured_covariance}.
+	the Kronecker factors as in \cref{sec:stbf-struct/methods/struct-cov}.
 
 	\subsubsection{Riemannian geometry classifier}
 	\label{sec:riemannian}
@@ -523,13 +569,18 @@
 	This classifier uses four XDAWN spatial filters and each epoch's empirical spatial covariance matrix.
 	The target with the maximum score is the prediction of the cued target.
 	\textsc{xdawn+rg} was trained and validated without downsampling using epochs
-	at the original sample rate of 2048Hz.
+	at the original sample rate of 2048 Hz.
+  Preliminary experimentation revealed that best performance in low and high
+  data availability setting was achieved when no shrinkage was applied to the estimation of XDAWN filters or the subsequent
+  covariance matrices for this specific dataset.
+  Hence, no shrinkage regularization will be applied to \textsc{xdawn+rg} in
+  further experiments.
 
 	\section{Results}
 	\subsection{Minimum required fixed-point iterations}
 	The fixed point iteration algorithm described
 	in
-  \crefrange{eq:fpi_spatial}{eq:fpi_temporal_norm}
+  \crefrange{eq:stbf-struct/fpi-spatial}{eq:stbf-struct/fpi-temporal-norm}
   estimates the Kronecker-Toeplitz structured covariance for the
 	\textsc{stbf-struct} classifier.
 	Fixed-point iteration is an iterative procedure starting from (in our case)
@@ -542,23 +593,31 @@
 	\cref{fig:iterations} confirms these results for the \textsc{stbf-struct} classifier.
 	Using more than one fixed-point iteration does not significantly improve the
 	accuracy across the amounts of training data and the number of trials
-	used for evaluation.
+  used for evaluation.
 	Hence, only one iteration is used for the \textsc{stbf-struct} classifier, leading to a drastic speed-up of
-	the training process.
+  the  training process.
 
   \begin{figure}
-		\includegraphics[width=\linewidth]{figures/stbf_struct/fpi.eps}
+    \sffamily
+    \begin{subfigure}{\linewidth}
+      \input{figures/stbf_struct/fpi-0.pgf}
+      \caption{Results for 1, 2, and 5 trials using only the first block in each
+      training fold for training.}
+    \end{subfigure}
+    \smallskip
+
+    \begin{subfigure}{\linewidth}
+      \input{figures/stbf_struct/fpi-1.pgf}
+      \caption{Results for 1, 2, and 5 trials using all nine training blocks in
+      the training folds.}
+    \end{subfigure}
     \caption[Average cross-validated \textsc{stbf-struct} accuracy]{%
       Average cross-validated \textsc{stbf-struct} accuracy using
 			one trial per block over all 21 subjects
 			relative to the number of iterations used to estimate the Kronecker-Toeplitz structured shrunk
-			covariance. Error bars represent the first and third quartiles. The
-			accuracy does not improve when using more than one iteration.
-			(\textbf{a}) Results for 1, 2, and 5 trials using only the first block in each
-			training fold for training. (\textbf{b}) Results
-			for 1, 2, and 5 trials using
-			all nine training blocks in the training folds.
-		}
+			covariance. Shaded area represents a 95\% confidenced interval obtained
+      through 1000 bootstrapping iterations.
+      Accuracy does not improve when using more than one iteration.}
 		\label{fig:iterations}
 	\end{figure}
 
@@ -569,26 +628,28 @@
 	We evaluate the performance of all classifiers for different levels of
 	available training data and apply the cross-validation procedure nine times (the number of blocks in the training fold) for all subjects, keeping the
 	corresponding number of blocks in the training folds and dropping the rest.
-	\Cref{fig:accuracy} and \cref{fig:accuracy_ap} show each classifier's
-	accuracy relative to the data availability.
+  \Cref{fig:accuracy}, \cref{fig:stbf-struct/accuracy-ap} and
+  \crefrange{tab:stbf-struct/accuracies/stbf-struct}{tab:stbf-struct/accuracies/xdawn-rg}
+  shows each classifier's accuracy relative to the data availability and trials
+  used for agveraging.
 	We statistically compare the two newly proposed classifiers,
-	\textsc{stbf-struct} and \textsc{stbf-shrunk}, for different levels of training
-	data availability using a one-sided paired Wilcoxon rank-sum test with Holm correction for the multiple pairwise comparisons between classifiers.
-	We performed this analysis three times: by only using the first trial of a
-	block, by averaging epochs across the first two trials of a block and across
-	the first five trials of a block.
-	Results validated on one trial are reported in \cref{tab:p_values_1}, 2-trial results
-	in \cref{tab:p_values_2}, and 5-trial results in \cref{tab:p_values_5}.
+	\textsc{stbf-struct} and \textsc{stbf-shrunk} with different levels of training
+	data availability using a one-sided Wilcoxon signed-rank test with Holm correction for the multiple pairwise comparisons between classifiers.
+	Statistical comparisons were performed for trial
+  \cref{tab:stbf-struct/p-values-1}, two \cref{tab:stbf-struct/p-values-2}
+  and five trials \cref{tab:stbf-struct/p-values-5}.
 
   \begin{figure}
-		\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
+    %\includegraphics[width=.66\linewidth]{figures/stbf_struct/accuracy.eps}
+    \sffamily
+    \input{figures/stbf_struct/accuracy.pgf}
     \caption[Clasifier accuracy in function of available training data.]{%
       Accuracy of the different classifiers for all 21 subjects relative to the
 			number of blocks available for training. One block consists of 135
 			epochs and corresponds to 27 seconds of stimulation. Accuracies
 			are shown for the evaluation settings averaging over 1, 2, and
 			3 trials of testing stimuli.
-			\cref{fig:accuracy_ap} contains results for all numbers of trials.
+			\cref{fig:stbf-struct/accuracy-ap} contains results for all numbers of trials.
 			While \textsc{stbf-emp} is unstable when little training data
 			are available,
 			regularization of the covariance matrix (\textsc{stbf-shrunk} and
@@ -596,99 +657,60 @@
 		\label{fig:accuracy}
 	\end{figure}
 
-  \fullpagefig{%
-		\includegraphics[width=\textwidth]{figures/stbf_struct/accuracy_app.eps}
-  }{%
-    Accuracy averaging over different numbers of trials.
-  }{%
-    Accuracy of the different classifiers for all 21 subjects relative to the
-		number of blocks available for training. One block consists of 135
-		epochs and corresponds to 27 seconds of stimulation. Accuracies
-		are shown for the evaluation settings averaging over different
-	        numbers of trials, ranging from 1 to 15.
-
-  }{fig:accuracy_ap}
-
-  \begin{table}[p]
-		\centering
-    \makebox[\textwidth][c]{%
-		\input{chapters/stbf_struct_tests_1.tex}
-  }
-    \caption[Statistical significance of differences in classifier performance (1 repetition).]{%
-      Statistical significance of differences in classifier performance.
-      $p$-values calculated by one-sided paired Wilcoxon rank-sum test with
-			Holm correction using one testing trial for different classifiers
-			and levels of data availability. $p$-values $<0.05$ are considered significant
-			and marked in grey.}
-		\label{tab:p_values_1}
-    \bigskip
-
-		\centering
-    \makebox[\textwidth][c]{%
-		\input{chapters/stbf_struct_tests_2.tex}
-    }
-		\caption[Statistical significance of differences in classifier performance (2 repetitions).]{%
-      $p$-values as in \cref{tab:p_values_1} averaging over two testing trials.}
-		\label{tab:p_values_2}
-    \bigskip
-
-		\centering
-    \makebox[\textwidth][c]{%
-		\input{chapters/stbf_struct_tests_3.tex}
-    }
-    \caption[Statistical significance of differences in classifier performance (5 repetitions).]{%
-      $p$-values as in \cref{tab:p_values_1} averaging over five testing trials.}
-		\label{tab:p_values_5}
-	\end{table}
-	\unskip
-
 	The tables show that \textsc{stbf-struct} has a significant advantage over
-	\textsc{stbf-shrunk} when the number of training blocks is low.
-	This effect is present for 1-, 2- and 5-trial evaluation.
-	This advantage decreases (the $p$-value increases) when
-	adding more training blocks.
+  \textsc{stbf-shrunk} when the number of training blocks is low, with
+  significance $p=0.005$ and  an accuracy increase of 4,14$\%.$ for a single training block
+  and testing trial.
+  This effect is present for 1-, 2- and 5-trial evaluation, up to 3, 4 and 3
+  blocks respectively, but the advantage decreases when adding more training blocks.
 	Both \textsc{stbf-struct} and \textsc{stbf-shrunk} perform significantly better
-	than \textsc{stbf-emp} for all evaluated settings.
+  than \textsc{stbf-emp} for all evaluated settings, with $p<0.001$ for all number
+  of training blocks and testing trials, with accuracy
+  increase of 6.92 and 2.78$\%.$ respectively for a single training block
+  and testing trial.
 	Compared to \textsc{xdawn+rg}, \textsc{stbf-struct} also has significantly
-	higher accuracy in almost all evaluated settings, except when using only one training block.
-	\textsc{stbf-shrunk} does not outperform \textsc{xdawn+rg} when training data is low but gains a significant advantage
-	when using more training data.
+	higher accuracy in almost all evaluated settings, except when using only one
+  training block, with significance $p<0.001$ and an accuracy increase of
+  5.20$\%.$ when using all 9 training blocks and 1 testing trial.
+	\textsc{stbf-shrunk} does not outperform \textsc{xdawn+rg} when training data
+  is low (up to 3,3 and 2 blocks respectively for 1, 2 and 5 testing trials),
+  but gains a significant advantage	when using more training data, with
+  significange $p=0.001$ and an accuracy increase of 5.33$\%.$ when using all
+  9 training blocks and 1 testing trial.
 
 	\subsection{Classifier training time}
 	In order to evaluate the training time of the investigated classifiers, the
-	cross-validation scheme is run four times for each subject, each time with an
-	increasing number of \ac{eeg} channels retained in the analysis, to explore the scalability of each classifier for analyses with higher spatial resolutions.
-	The temporal resolutions were not varied, but we expect that increasing the
-	temporal resolution has a similar effect on training time since the
-	training times for the \textsc{stbf}-based as evidenced by the complexity
-	calculations in \cref{sec:parameters_complexity}.
-	\cref{fig:training_time} shows the measured training times.
+	cross-validation scheme is run for each subject.
+  For this analysis, downsampling to 32 Hz was also performed for the XDAWN+RG
+  classifier for fair comparison.
+  \cref{fig:stbf-struct/training-time} shows the measured training times.
 	These results were obtained using a laptop with an Intel® Core™ i7-8750H CPU and 16GB of RAM.
 
 	\begin{figure}
-		\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
-    \caption[Classifier training time.]{Median fold training time for different classifiers at different spatial
-			resolution levels evaluated over all training folds for all subjects.
-			Error bars represent standard deviation. The training time of \textsc{stbf-shrunk} increases more
-			steeply with resolution compared to \textsc{stbf-struct}.
-			All \textsc{stbf} classifiers can be trained significantly faster than
-			\textsc{xdawn+rg}.}
-		\label{fig:training_time}
+		%\includegraphics[width=.66\linewidth]{figures/stbf_struct/training_time.eps}
+    \sffamily
+    \input{figures/stbf_struct/training_time.pgf}
+    \caption[Classifier training time.]{Training time boxplots of different
+    classifiers and individual results for all training folds for all subjects
+    using 32 channels and a sampling rate of 32 Hz. Using structured covariance estimation greatly reduces
+    training time.}
+		\label{fig:stbf-struct/training-time}
 	\end{figure}
 
-	\cref{fig:training_time} shows that the training time of
-	\textsc{stbf-struct} increases less steeply than that of \textsc{stbf-shrunk}
-	and \textsc{stbf-emp}. The training time of all three \ac{stbf}-based classifiers is
-	much lower than that of \textsc{xdawn+rg}, which appears nearly constant when using
-	4, 8, 16, or 32 channels.
+	\Cref{fig:stbf-struct/training-time} shows that the training time of
+  \textsc{stbf-struct} has a lower median training time (0.06 s) than
+  \textsc{stbf-shrunk} (0.33 s), \textsc{stbf-emp} (0.30 s) and
+  \textsc{xdawn+rg} (0.20 s) when training
+  on all available data and using 32 channels.
 
 	\section{Discussion}
 
 	\subsection{Classification accuracy}
-	As evidenced by \cref{fig:accuracy} and Tables \ref{tab:p_values_1}-\ref{tab:p_values_5}, the regularized classifiers \textsc{stbf-shrunk}
+	As evidenced by \cref{fig:accuracy} and \cref{tab:stbf-struct/p-values},
+  the regularized classifiers \textsc{stbf-shrunk}
 	and \textsc{stbf-struct} significantly improve the classification accuracy
 	compared to the original \textsc{stbf-emp} for all numbers of training blocks
-	indicated.
+  indicated.
 	We believe there are three reasons for this.
 	First and foremost, the empirical covariance matrix in \textsc{stbf-emp} becomes
 	ill-conditioned when the number of available training epochs is smaller than
@@ -723,7 +745,8 @@
 	would yield the best classification accuracy for the unseen data.
 
 	Another observation is the significantly better accuracy score of
-	\textsc{stbf-struct} over \textsc{stbf-shrunk} when the amount of available training data is small.
+	\textsc{stbf-struct} over \textsc{stbf-shrunk} when the amount of available
+  training data is small ($<540$ epochs).
 	This property is an attractive advantage in a \ac{bci} setting since it is desirable to keep the calibration (training) phase as short as possible without losing accuracy.
 	The accuracy advantage of the structured estimator is a consequence of the
 	Kronecker-Toeplitz covariance structure, which is informative for the
@@ -732,30 +755,31 @@
 	the brain with added noise~\cite{Munck1992, DeMunck2002, GonzalezNavarro2017}.
 	Hence, \textsc{stbf-struct} can utilize this prior information to better estimate the inverse
 	covariance.
-	The increase in accuracy for small training set sizes can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:parameters_complexity}), increasing the stability of matrix inversions.
+  The increase in accuracy for small training set sizes can also be explained by the smaller number of parameters necessary to estimate the inverse covariance (see \cref{sec:stbf-struct/discussion/param-complex}), increasing the stability of matrix inversions.
 
 	When compared to the state-of-the-art \textsc{xdawn+rg} classifier, we conclude
 	that \textsc{stbf-struct} reaches similar accuracy when using only one block of
-	training data.
-	The authors suspect this is due to both
-	classifiers having insufficient training information to reach
-	satisfactory classification accuracy.
-	When more data are available, \textsc{stbf-struct} reaches significantly better accuracies.
-	Combined with the benefits laid out in \cref{sec:parameters_complexity}, this
+  training data, with accuracies of and 34.70\% 32.5\% respectively and $p=0.086$.
+	The authors suspect this is due to both	classifiers having insufficient training
+  information to reach satisfactory classification accuracy.
+	When more data are available, \textsc{stbf-struct} reaches significantly
+  better accuracies.
+	Combined with the benefits laid out in \cref{sec:stbf-struct/discussion/param-complex}, this
   makes it an attractive option for \ac{erp} classification.
 	\textsc{stbf-shrunk} does not show decisive accuracy improvements over
-	\textsc{xdawn+rg} using a few training blocks, but this improves as the training data increases.
+	\textsc{xdawn+rg} using a few training blocks, but this improves as the
+  training data increases.
 
 	\subsection{Time and memory complexity}
-	\label{sec:parameters_complexity}
+	\label{sec:stbf-struct/discussion/param-complex}
 	As mentioned above, inverting the full $CS \times CS$ dimensional covariance
 	matrix to construct \textsc{stbf-emp} and \textsc{stbf-shrunk} can be costly
 	and unstable, in particular in high-resolution settings with many \ac{eeg} channels or time samples.
 	Constructing the full covariance and inverse covariance matrices also requires a considerable amount of memory.
 	The structured covariance estimator of \textsc{stbf-struct} has two advantages here.
 
-	First, because of \cref{prop:inverse_kronecker} and
-	\cref{prop:kronecker_multiplication} there is no need to calculate or keep in memory the full $cs\times cs$
+	First, because of \cref{prop:stbf-struct/inverse-kronecker} and
+	\cref{propr:stbf-struct/kron-multiplication} there is no need to calculate or keep in memory the full $cs\times cs$
 	symmetric covariance and inverse covariance matrices for \textsc{stbf-struct}; they can instead be replaced by two smaller symmetric matrices respectively of dimensions $c\times c$ and $s\times s$.
 	Furthermore, since the temporal component of the Kronecker product is
 	Toeplitz-structured, it only requires $s$ parameters to
@@ -776,21 +800,18 @@
 	Second, structured estimation has better time complexity.
 	Covariance estimation and inversion occupy the largest part of the \ac{stbf} training time.
 	For \textsc{stbf-emp} and \textsc{stbf-shrunk}, the time complexity of this process is $\mathcal{O}(NC^2S^2+C^3S^3)$.
-	Thanks to Property~\ref{prop:inverse_kronecker}, the complexity can be reduced to
+	Thanks to Property~\ref{prop:stbf-struct/inverse-kronecker}, the complexity can be reduced to
 	$\mathcal{O}(NS^2S^2+C^3+S^3)$ for the structured estimator of \textsc{stbf-struct}.
-	The results presented in \cref{fig:training_time} confirm these
-	calculations.
-	It can be observed that the training time of \textsc{stbf-struct} stays low compared to \textsc{stbf-emp} and \textsc{stbf-shrunk} when dimensionality increases.
+	The results presented in \cref{fig:stbf-struct/training-time} confirm that
+  \textsc{stbf-struct} is much faster in operation than other classifiers.
 
-	The results shown in \cref{fig:training_time} also confirm that the
-	\ac{stbf}-based estimators are very fast to train compared to the
-	state-of-the-art estimator \textsc{xdawn+rg}, which confirms the results in~\cite{Wittevrongel2016}.
 	Since the training times of all \ac{stbf}-based classifiers are already in
 	the order of tenths of seconds, the question arises whether the
 	improvements achieved by using the structured estimator would be relevant in
 	practice.
 	However, the authors believe that these results could significantly impact some
-	use cases of the spatiotemporal beamformer, like high spatial or temporal resolution \ac{erp} analyses.
+	use cases of the spatiotemporal beamformer, like high spatial or temporal
+  resolution \ac{erp} analyses (e.g., $C>>32, S>>256$).
 	One example is single-trial \ac{erp} analysis with a high-temporal
 	resolution to extract \ac{erp} time features.
 	Such higher-resolution analyses can later be incorporated into an \ac{erp}
@@ -849,7 +870,7 @@
 	%	\cref{fig:interpret_weights}d correspond to the spatial activation pattern
 	%	in \cref{fig:interpret_weights}a.
 	%	This is not unsurprising, since shrinkage transforms the covariance matrix closer to the
-	%	identity matrix and assuming identity covariance in \cref{eq:closed_form} yields weights
+	%	identity matrix and assuming identity covariance in \cref{eq:stbf-struct/closed-form} yields weights
 	%	identical to the activation pattern (up to a scaling factor).
 	%	Additionaly, \cref{fig:interpret_weights}b shows that weights in the baseline interval and after 0.6s, which should
 	%	contain no response information, are close to zero for the structured estimator.
@@ -887,7 +908,9 @@
 	signal.
 	We compared these estimators with the original spatiotemporal
 	beamformer and a state-of-the-art method in an off-line P3 detection task.
-	Our results show that the structured estimator performs better when training data are sparsely available and that it can be computed faster and with substantially less memory usage.
+	Our results show that the structured estimator performs better when training
+  data are sparsely available and that it can be computed faster and with
+  substantially less memory usage.
 	Since these algorithms are not paradigm-specific,  the conclusions can be generalized to
 	other \ac{erp}-based \ac{bci} settings.
 
@@ -907,3 +930,87 @@
 %\begin{equation}
 %	\mat{C} = \sum_k^{CS}\mat{S}\otimes\mat{T}
 %\end{equation}
+
+
+\clearpage
+\begin{subappendices}
+  \section{Accuracies per number of trials and available training data}
+
+  \begin{table}[!h]
+      \footnotesize
+	    \input{chapters/stbf_struct-acc-stbf_kron_toep_shrunk.tex}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for \textsc{stbf-struct}.}
+      \label{tab:stbf-struct/accuracies/stbf-struct}
+  \end{table}
+  \begin{table}[!h]
+      \footnotesize
+	    \input{chapters/stbf_struct-acc-stbf_loocv.tex}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{stbf-shrunk}.}
+      \label{tab:stbf-struct/accuracies/stbf-shrunk}
+  \end{table}
+  \begin{table}[!h]
+      \footnotesize
+	    \input{chapters/stbf_struct-acc-stbf_emp.tex}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{stbf-emp}.}
+      \label{tab:stbf-struct/accuracies/stbf-emp}
+  \end{table}
+  \begin{table}[!h]
+      \footnotesize
+	    \input{chapters/stbf_struct-acc-xdawn_rg.tex}
+      \caption[Accuracies for \textsc{stbf-struct}.]{Accuracies (\%) for
+      \textsc{xdawn+rg}.}
+      \label{tab:stbf-struct/accuracies/xdawn-rg}
+  \end{table}
+
+  \clearpage
+
+  \fullpagefig{%
+    \input{figures/stbf_struct/accuracy_all.pgf}
+  }{%
+    \caption[Accuracy averaging over different numbers of trials.]{%
+      Accuracy of the different classifiers for all 21 subjects relative to the
+		  number of blocks available for training. One block consists of 135
+		  epochs and corresponds to 27 seconds of stimulation. Accuracies
+		  are shown for the evaluation settings averaging over different
+	    numbers of trials, ranging from 1 to 15.
+    }
+    \label{fig:stbf-struct/accuracy-ap}
+  }
+
+  \clearpage
+  \section{Statistical comparisons}
+  \begin{table}[h]
+    \footnotesize
+    \begin{subtable}{\linewidth}
+	    \input{chapters/stbf_struct_tests_1.tex}
+	    \caption{Evaluation on one testing trial.}
+      \label{tab:stbf-struct/p-values-1}
+    \end{subtable}
+    \smallskip
+
+    \begin{subtable}{\linewidth}
+	    \input{chapters/stbf_struct_tests_2.tex}
+	    \caption{Evaluation averaging over two testing trials.}
+	    \label{tab:stbf-struct/p-values-2}
+    \end{subtable}
+    \smallskip
+
+    \begin{subtable}{\linewidth}
+	    \input{chapters/stbf_struct_tests_3.tex}
+	    \caption{Evaluation averaging over five testing trials.}
+	    \label{tab:stbf-struct/p-values-5}
+    \end{subtable}
+    \caption[Statistical significance of differences in classifier
+    performance.]{%
+        Statistical significance of differences in classifier performance.
+        $p$-values calculated by one-sided Wilcoxon signed-rank test with
+	    	Holm correction using one testing trial for different classifiers
+	    	and levels of data availability. $p$-values $<0.05$ are considered
+        significant.
+    }
+	  \label{tab:stbf-struct/p-values}
+	\end{table}
+
+\end{subappendices}

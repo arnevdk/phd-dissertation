@@ -1,44 +1,65 @@
-\documentclass{booklet}
+\documentclass[booklet]{dissertation}
+\usepackage{dissertation}
+
+\includeonly{
+  chapters/abstract,
+  chapters/abstract_nl,
+  chapters/abstract_fr,
+  chapters/stbf_struct
+}
 
 \begin{document}
+
 % Front matter ================================================================
 \frontmatter
 
-\include{chapters/preface.tex}
-\include{chapters/abstract.tex}
-\include{chapters/abstract_nl.tex}
-\include{chapters/abstract_ft.tex}
+\begin{titlepage}
+  \newgeometry{margin=1.5cm}
+  \input{cover_kul}
+  \restoregeometry
+\end{titlepage}
+\begin{titlepage}
+  \newgeometry{margin=1.5cm}
+  \input{cover_ulille}
+  \restoregeometry
+\end{titlepage}
+\addtocounter{page}{2}
+
+\include{chapters/preface}
+\include{chapters/abstract}
+\include{chapters/abstract_nl}
+\include{chapters/abstract_fr}
 \tableofcontents
 \listoffigures
 \listoftables
-\printacronyms[name=List of acronyms]
+{%
+  \setlist{itemsep=0pt}
+  \printacronyms[name=List of acronyms]
+}
 
 % Main matter =================================================================
 \mainmatter%
 
 \part{Introduction \& Literature}
-\include{chapters/bci.tex}
-\include{chapters/gaze_independence.tex}
+\include{chapters/bci}
+\include{chapters/gaze_independence}
 
 \part{Algorithms \& Decoders}
-\include{chapters/stbf_struct.tex}
-\include{chapters/bttda.tex}
-\todo{discuss Tensorizations coping with latency jitter to make link}
-\include{chapters/wcble.tex}
+\include{chapters/stbf_struct}
+\include{chapters/bttda}
+\include{chapters/wcble}
 
 \part{Experiments \& Applications}
-\include{chapters/covert_align.tex}
-\include{chapters/patients.tex}
-\include{chapters/conclusion.tex}
-\todo{Integrating gaze-tracking data}
-\todo{extension to the space-time-frequency domain}
+\include{chapters/covert_align}
+\include{chapters/patients}
+\include{chapters/conclusion}
 
-% Back matter =================================================================
+%% Back matter =================================================================
 \backmatter%
-\include{chapters/contribution.tex}
-\include{chapters/acknowledgment.tex}
-\include{chapters/conflict.tex}
-\include{chapters/cv.tex}
+\include{chapters/contribution}
+\include{chapters/acknowledgment}
+\include{chapters/conflict}
+\include{chapters/cv}
 
 \printbibliography
 \end{document}

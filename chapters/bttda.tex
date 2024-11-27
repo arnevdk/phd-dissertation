@@ -2,7 +2,18 @@
 \chapter{Block-term tensor discriminant analysis}
 \label{sec:bttda}
 \input{chapters/bttda/tensorviz.tex}
-\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
+\epigraph{%
+  ``I journeyed to the market to purchase a cow, its price set at ninety-and-seven coins.
+  Lacking this sum, I therefore borrowed fifty coins from each of my two good friends.
+  With the hundred coins, I paid for the beast and received three coins in change.
+  Of these, I returned one coin each to my companions, keeping one for myself.
+  Now, I owe each friend forty-and-nine coins, and with mine one remaining, the
+  total merely equals ninety-and-nine coins, short of one hundred!
+  Tell me then, kind stranger, whither hath the missing coin gone?''
+}{%
+  Ancient Algerian riddle
+}
+\noindent\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
 
 \section{Introduction}
 
@@ -14,7 +25,7 @@ technologies, among other applications~\cite{Wolpaw2020}.
 To achieve their functionality, \acp{bci} record and process neural data obtained through
 a neuroimaging technique, with \ac{eeg} being the most popular.
 
-\subsection{Tensor \& tensor methods}
+\subsection{Tensors \& tensor methods}
 
 Due to its multichannel time series structure, \ac{eeg} data, like most neural
 signal acquisition modalities used for \acp{bci}, naturally exist as multiway data,
@@ -114,8 +125,8 @@ optimized for discriminability, since they rely on a low-rank common subspace
 between the input and classification labels.
 \textcite{Huang2020} propose a supervised approach for finding multiple discriminant
 multilinear spectral filter terms and apply it to motor imagery BCI, but their
-decomposition is also restricted in flexibility.
-
+decomposition is also restricted in flexibility, since the solution can only
+extract rank $(r_1,r_2,1)$ with mode 3 corresponding to the frequency domain.
 
 \subsection{A block-term structured model for classification}
 
@@ -318,7 +329,7 @@ reconstructed tensor $\hat{\ten{X}}$, and error term $\ten{\mathbfcal{E}}$.
 \begin{figure}[t]
 	\centering
 	\input{figures/bttda/HODA_forward.tikz.tex}
-  \caption[A forward projection for \ac{hoda}.]{The forward projection for HODA.
+  \caption[A forward projection for \acs{hoda}.]{The forward projection for HODA.
     By calculating activation patterns $\mat{A}_k$, the original tensor $\ten{X}$ can approximately be
     reconstructed as $\hat{\ten{X}}$ from projected latent tensor $\ten{G}$.
     The reconstruction is accurate up to an error term $\ten{\mathbfcal{E}}$,
@@ -344,8 +355,8 @@ the noise term and the extracted latent tensors:
 or, equivalently~\cite{Parra2005,Haufe2014},
 \begin{equation}
 	\left\{\mat{A}^*\right\}
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left(\ten{X}(n) - \hat{\ten{X}}(n)\right)^2
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left(\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right)^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \hat{\ten{X}}(n)\right]^2
+  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right]^2
 \end{equation}
 This least squares tensor approximation problem can be solved efficiently using the
 alternating least squares algorithm~\cite{Bentbib2022}, iteratively fixing all but one of the activation patterns such that:
@@ -548,8 +559,7 @@ characteristic curve (ROC-AUC).
     datasets (\# Trials), the epoch length (Epoch len.), the sampling
 		frequency (S. freq.), the number of sessions per subject (\# Sess.) and the
 		number of runs (\# Runs).
-    Adapted from~\cite{Aristimunha2023}
-    and~\cite{Chevallier2024}.}
+    Adapted from \textcite{Aristimunha2023} and \textcite{Chevallier2024}.}
 	\label{tab:moabb}
 \end{table*}
 
@@ -571,7 +581,8 @@ to reduce computational cost.
 Other HODA and BTTDA hyperparameters were set to
 $B_\text{max}=10$, $\varepsilon=\num{1e-8}$ and $I_\text{max}=128$.
 
-Furthermore, as additional comparison methods, we used the methods evaluated in~\cite{Chevallier2024}.
+Furthermore, as additional comparison methods, we used the methods evaluated
+by~\textcite{Chevallier2024}.
 For the ERP datasets, these were the Riemannian Geometry-based methods
 using augmented ERP covariance matrices with and without SVD dimensionality
 reduction features for a Minimum Riemannian Distance to Mean classifier
@@ -591,7 +602,7 @@ projected onto the Riemannian tangent space with a support vector machine
 Additionally, we report the performance of the Common Spatial Patterns filter
 and a frequency filterbank combined with a support vector machine (CSP+SVM and
 FilterBank+SVM, respectively).
-We refer to~\cite{Chevallier2024} for implementation details of these comparison
+We refer to \textcite{Chevallier2024} for implementation details of these comparison
 methods.
 
 \subsection{Event-Related Potentials}
@@ -599,11 +610,11 @@ ERPs are spatiotemporal features, with each sample forming a $2^\text{nd}$
 order tensor with $K=2$ modes (a matrix), representing EEG channels and time samples
 per epoch.
 EEG signals for the evaluated datasets were recorded at the sample rate given
-by \cref{tab:moabb} and band-pass filtered between 1Hz
-and 24Hz.
+by \cref{tab:moabb} and band-pass filtered between 1 Hz
+and 24 Hz.
 The signals were cut into epochs starting from stimulus onset with a
 dataset-specific length given by \cref{tab:moabb}.
-For HODA+LDA, PARAFACDA+LDA, and BTTDA+LDA decoders, epochs were downsampled to 48Hz.
+For HODA+LDA, PARAFACDA+LDA, and BTTDA+LDA decoders, epochs were downsampled to 48 Hz.
 For the BNCI2014-008 and BNCI2015-003 datasets, this resulted in matrices of
 dimensionality $(8,48)$ and $(8,38)$, respectively.
 
@@ -617,7 +628,7 @@ decoders.
   datasets.]{Area under the receiver operating characteristic curve for
 		cross-validated within-session evaluation for HODA and our proposed decoders
 		PARAFACDA and BTTDA evaluated on 2 event-related potential datasets.
-    Scores for other decoders were taken from \cite{Chevallier2024}.
+    Scores for other decoders were taken from \textcite{Chevallier2024}.
 		BTTDA reaches the highest performance for both evaluated datasets, closely
 		followed by PARAFACDA.
 	}
@@ -642,11 +653,11 @@ time-frequency domain, forming $3^\text{rd}$ order tensors, with $K=3$ modes
 representing the channels, frequencies, and time bins.
 
 The MI datasets listed in \cref{tab:moabb} were first band-pass filtered
-between 8 and 30Hz and cut into
+between 8 and 30 Hz and cut into
 epochs with time windows as specified by \cref{tab:moabb}.
 Next, time-frequency transformation was performed using a complex Morlet wavelet
 convolution, with 16 wavelet frequencies logarithmically spaced between 8 and
-32Hz.
+32 Hz.
 The number of wavelet cycles $c$ varied with wavelet frequency $f$ as
 $c=0.7*f$.
 Features were extracted by taking the log-transformed envelope of the complex
@@ -657,7 +668,7 @@ $(22, 4, 16)$ and $(3, 4, 18)$, respectively.
 
 \cref{tab:mi-score} lists the cross-validated classification scores for
 the evaluated motor imagery datasets.
-Note that, in line with~\cite{Chevallier2024}, accuracy is reported for the
+Note that, in line with~\textcite{Chevallier2024}, accuracy is reported for the
 multi-class classification problem in BNCI2014-001, while ROC-AUC was reported for the
 binary classification problem in BNCI2014-004.
 \begin{table}[t]
@@ -667,11 +678,11 @@ binary classification problem in BNCI2014-004.
   \caption[Within-session classification score for 2 motor imagery datasets.]{Classification score for
 		cross-validated within-session evaluation for HODA+LDA and our proposed decoders
 		PARAFACDA+LDA and BTTDA+LDA evaluated on 2 motor imagery datasets.
-		Scores for other decoders were taken from \cite{Chevallier2024}. Accuracy
-    is listed for BNCI2014-001, and area under the receiver-operator
-    characteristic curve for BNCI2014-004. BTTDA outperforms HODA and PARAFACDA
-    for BNCI2014-001 but does not reach performance comparable to the current
-    state-of-the-art. For BNCI2014-004, PARAFACDA and BTTDA perform
+		Scores for other decoders were taken from \textcite{Chevallier2024}.
+    Accuracy is listed for BNCI2014-001, and \ac{rocauc} for BNCI2014-004.
+    BTTDA outperforms HODA and PARAFACDA for BNCI2014-001 but does not reach
+    performance comparable to the current state-of-the-art.
+    For BNCI2014-004, PARAFACDA and BTTDA perform
     approximately on par with HODA and the current state-of-the art.}
 	\label{tab:mi-score}
 \end{table}
@@ -688,7 +699,7 @@ To analyze the contribution of extra feature blocks extracted by BTTDA over
 the first one found by HODA, we pick an ERP ($K=2$) dataset
 (BNCI2014-008) and an MI ($K=3$) dataset (BNCI2014-001).
 We report within-session ROC-AUC scores for training, validation, and test data as a function
-of the number of blocks increases, shown in \cref{fig:blocks}.
+of the number of blocks, shown in \cref{fig:blocks}.
 Training and validation folds were taken from the model selection procedure.
 Additionally, the Normalized Mean Squared Error (NMSE) is reported for the
 reconstructed from the truncated BTTDA decomposition
@@ -727,11 +738,16 @@ by the exact tensorization method used, i.e., the time-frequency transform in
 this case, which is not the main focus of this work.
 
 Nevertheless, when considering the relative improvement over the original
-HODA model, our results show that BTTDA+LDA performs consistently on par or higher than HODA+LDA.
-The classification score for BTTDA+LDA was also slightly higher than that of
-restricted PARAFACDA+LDA for the ERP datasets and one of the MI datasets, but these
-results were not significant, and further studies with more datasets and
-subjects should show whether this holds.
+HODA model, our results show that BTTDA+LDA performs consistently on par or
+higher than HODA+LDA, with performances of respectively $86.43>83.25$ and
+$85.08>82.57$ for \ac{erp} datasets and $55.13>53.51$ and $80.60<80.88$ for
+\ac{mi} datasets.
+The classification score for BTTDA+LDA was also slightly
+higher than that of
+restricted PARAFACDA+LDA for the ERP datasets ($86.43>86.19$ and $85.06>84.85$
+respectively) and one of the MI datasets ($55.13>54.34$ and $80.60<80.88$
+respectively), but these results were not significant, and further studies with
+more datasets and subjects should show whether this holds.
 \Cref{fig:blocks} shows that there is added value in finding extra blocks
 over the first HODA block.
 While no proof is given, we notice that NMSE monotonically decreases, indicating that
@@ -773,9 +789,10 @@ or on the true underlying structure of the data.
 Alternatively, the enhanced performance could also stem from the modeled data
 covariance.
 Since HODA estimates one within-class scatter matrix
-$S_{-k,\text{w}}\in\mathbb{R}^{D_k\times D_k}$ per mode, its overall
+$\mat{S}_{-k,\text{w}}\in\mathbb{R}^{D_k\times D_k}$ per mode, its overall
 model of the data scatter is determined by these per-mode scatter matrices as a
-Kronecker product $S_{-1,\text{w}}\otimes S_{-2,\text{w}}\otimes\cdots\otimes S_{-K,\text{w}}$, which corresponds to the assumption that the EEG data is
+Kronecker product $\mat{S}_{-1,\text{w}}\otimes
+\mat{S}_{-2,\text{w}}\otimes\cdots\otimes \mat{S}_{-K,\text{w}}$, which corresponds to the assumption that the EEG data is
 drawn from a multilinear normal distribution~\cite{Ohlson2013}.
 However, it is known that the EEG covariance cannot fully be expressed as a
 single Kronecker product, but rather is more accurately modeled by a sum of
@@ -840,7 +857,7 @@ Examples of this are sparsity, pattern interpretability, minimal or maximal
 between- or within-block feature correlation, decreasing discriminability, etc.
 Finally, the completeness of the presented results is limited by the artificial
 restriction in hyperparameter choice.
-We imposed $(r_1=r_2=\ldots=r_k)$ that to reduce the computational demand of
+We imposed $(r_1=r_2=\ldots=r_k)$ to reduce the computational demand of
 the performed experiments.
 In a sense, this goes against the proposition of increased model flexibility.
 It might well be that \ac{bttda} in some cases offers little added value over the
@@ -880,7 +897,7 @@ applied as a special sum-of-rank-one tensors PARAFACDA model.
 The model is obtained by iteratively fitting \ac{hoda} in a deflation scheme,
 leveraging a novel forward modeling step.
 
-Via an accompanying heuristic model selection procedure, \ac{bci}decoders using
+Via an accompanying heuristic model selection procedure, \ac{bci} decoders using
 \ac{bttda} feature extraction can significantly outperform decoders based on
 \ac{hoda} and reach state-of-the-art decoding performance on event-related potential
 problems (second-order tensors) and scores on par with or higher than \ac{hoda} in motor

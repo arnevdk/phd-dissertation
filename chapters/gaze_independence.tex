@@ -1,6 +1,7 @@
 \chapter{Gaze-independent visual \acsp{bci}}
 \label{sec:gaze-independent}
 \epigraph{%
+  %\justifying
   ``\elide\ This begs the question: if a patient had reliable control
   over their eye gaze, why would one aim to facilitate communication with that
   patient via a BCI? It would be far simpler and more efficient to use an
@@ -15,12 +16,12 @@
   \textcite{Egan2017}
 }
 
-\noindent\emph{The last paragraph of \cref{sec:gaze-independence/sota},
+\publicationnote{The last paragraph of \cref{sec:gaze-independence/sota},
 \cref{sec:gaze-independence/oculomotor/gaze}, and the first paragraph of
 \cref{sec:gaze-independence/objectives} were adapted from
 \textcite{VanDenKerchove2024}.}
 
-\section{Eye motor impairment in individuals with \acl{sspi}}%
+\section{Eye motor impairment in \acs{bci} users}%
 \label{sec:gaze-dependence}
 
 One of the goals of brain-computer interfacing is establishing a communication
@@ -112,9 +113,8 @@ involuntary movements and trouble pursuing or fixating on targets.
 They also gradually have more trouble speaking but often retain some muscular
 control.
 
-Some other groups that are heavily affected are \ac{cp}~\cite{Fazzi2012} and
-\ac{fa}~\cite{Fahey2008,Hocking2010,Furman1983}.
-Individuals with some neurodegenerative diseases like
+Another group that is heavily affected, is \ac{cp}~\cite{Fazzi2012}.
+Additionally, individuals with other neurodegenerative diseases like
 \ac{sma}~\cite{Anagnostou2021} and \ac{dmd}~\cite{Lui2001} are
 sometimes also interested in \ac{bci} use, but their eye motor capabilities are
 mostly preserved.
@@ -156,7 +156,7 @@ Instead of categorizing users by their etiology, we will refer to those who migh
 \ac{bci} assistive communication technology as having \ac{sspi}, in line with
 the terminology used by~\textcite{FriedOken2020}.
 If they have eye motor impairment that affects their use of visual \ac{bci} or
-eye-tracking solutions, we use the term \ac{sspgi} (see \cref{fig:gaze_independence/venn}).
+eye-tracking solutions, we use the term \ac{sspgi} (see \cref{fig:gaze-independence/venn}).
 
 \begin{figure}
   \input{figures/gaze_independence/lis_venn.tikz.tex}
@@ -170,7 +170,7 @@ eye-tracking solutions, we use the term \ac{sspgi} (see \cref{fig:gaze_independe
     \Acp{bci} are especially relevant for the last two groups, as they are not
     able to use eye tracking solutions.
   }
-  \label{fig:gaze_independence/venn}
+  \label{fig:gaze-independence/venn}
 \end{figure}
 
 The most severely impaired of the user groups above constitute the \ac{lis}
@@ -230,20 +230,47 @@ rates~\cite{Willett2021,Metzger2023}, both due to their intuitiveness and the
 complexity that can be captured in commands, but they often do so only when paired
 with invasive recording.
 Non-visual reactive paradigms that use, for example, auditory~\cite{Halder2010} and
-somatosensory~\cite{Brouwer2010}
-stimulation do not rely on gaze redirection but also result in lower information transfer
-rates compared to visual paradigms.
+somatosensory~\cite{Brouwer2010} stimulation do not rely on gaze redirection
+but also result in lower \acp{itr} compared to visual paradigms.
+A survey by \textcite{Riccio2012} from 2012 reported that \acp{itr} ranged between
+1 and 10 bits/min for auditory paradigms and 0.5 and 5 bits/min for tactile~\cite{Riccio2012}.
+
+On the tactile front, recent studies use steady-state somatosensory evoked
+potentials~\cite{Petit2021} or tactile oddball paradigms~\cite{Waal2012}
+These are analogous to the \ac{ssvep} and visuall oddball paradigms.
+Instead of visual stimulation, however, they use physical vibrotactile pulses
+stimulation at different spatial locations and/or frequencies~\cite{Han2020}.
+Some noteworthy advancements have achieved an \ac{itr} of 14.77 bits/min~\cite{Liu2019}
+and 20.73 bits/min~\cite{Herweg2016} with a tactile oddball paradigm through
+highly optimized stimulation.
+Still, other recent tactile \ac{bci} studies~\cite{Herweg2016a,Han2020,Jin2020,Li2019,Eidel2022}
+fail to exceed 5 bits/min.
+
+Auditory \acp{bci} are similarly implemented as paradigms oddball or
+steady-state stimulation with spatial or tone modulation.
+\textcite{Zhang2020} report that recent decoding methods can reach 16.99
+bits/min \ac{itr}, but, in general, auditory \acp{bci} are also limited in
+their speed and usually outperformed by visual paradigms~\cite{Rezeika2018}.
+
 While auditory and somatosensory stimulation on their own might yield poor
-\ac{itr}, \textcite{Yin2016} showed that it can provide added value in gaze-independent
-settings when coupled with oddball stimulation in a hybrid paradigm.
+\ac{itr}, \textcite{Yin2016} showed that these modalities can provide added
+value in gaze-independent settings when coupled with visual oddball
+stimulation in a hybrid paradigm.
 Their solution using the P3 components of bimodal stimulation reached an \ac{itr} of 14.94 bits/min.
 In general, their approach is interesting as it follows a philosophy that
 relies on establishing as many communication pathways as possible.
-Yet, auditory and somatosensory \acp{bci} suffer from increased mental effort in
+Auditory and tactile stimulation can even be paired to create a fully
+non-visual, hybrid \ac{bci}, with a reported \ac{itr} of 11.66 bits/min~\cite{Zhang2020}.
+
+Yet, auditory and somatosensory \acp{bci} also suffer from increased mental effort in
 operation and from user-dependent variability~\cite{Severens2014,Reichert2020b}.
 \textcite{Severens2014} showed that the visual Hex-o-Spell~\cite{Treder2010}
 outperformed a somatosensory alternative in participants with \ac{als} whose
 eye motor capabilities were effectively impaired.
+However, non-visual stimulation modalities are still valuable for developing
+\acp{bci} for individuals affected with severe vision loss or
+blindness~\cite{Nijboer2008,Rutkowski2015}, which can occur in some cases of
+\ac{lis}~\cite{Patterson1986}.
 
 \subsection{Gaze-independent visual stimulation}
 \label{sec:gaze-independence/sota/visual}
@@ -257,9 +284,11 @@ The \ac{rsvp} paradigm, in particular, is a prime contender for a performant gaz
 \ac{bci}.
 \textcite{Lin2018} reported an average online \ac{itr} of 20.259 bits/min using
 a paradigm with subsequently flashing sets of three characters filling the user's field of view.
+
 We make a distinction here between spatially organized interfaces, where
 multiple targets are displayed at the same time at different spatial locations,
-and temporally organized interfaces, like \ac{rsvp}, where targets or small sets of targets are shown consecutively.
+and temporally organized interfaces, like \ac{rsvp}, where targets or small
+sets of targets (e.g. 3) are shown consecutively.
 The Hex-o-Spell, GeoSpell, and GIBS Block Speller are spatially organized, while
 variants of the \ac{rsvp} paradigm are temporally organized.
 \textcite{Lin2018} follow the philosophy that spatially organized interfaces
@@ -318,9 +347,9 @@ extra communication channels in a hybrid paradigm.
 component while performing \ac{ssvep} stimulation.
 \textcite{Egan2017} also showed an increase in \ac{ssvep} performance by
 concurrently decoding the covert \ac{vsa} shift from spectral content, but
-their study only used a few stimulation targets.
-In general, we can state that gaze-independent decoding in the fast-paced reactive \ac{erp} paradigm
-leveraging spatial attention remains underexplored.
+their study only used two stimulation targets.
+In general, we conclude that gaze-independent decoding in the fast-paced reactive
+\ac{erp} paradigm leveraging spatial attention remains underexplored.
 
 \section{Research objectives}
 \label{sec:gaze-independence/objectives}
@@ -329,7 +358,8 @@ To summarize, for individuals with \ac{sspgi}, gazing directly at a screen targe
 be uncomfortable, impractical, or even impossible.
 Hence, assistive devices that rely on eye tracking are often inefficient for
 them.
-Consequently, while \acp{bci} hold great promise for these individuals, conventional
+Consequently, while visual \acp{bci} hold great promise for these individuals,
+if they do not suffer from severe vision loss, conventional
 gaze-dependent \ac{bci} solutions do not meet their needs due to the absence of gaze
 control.
 Therefore, the development of decoding strategies that account for covert
@@ -345,19 +375,21 @@ relies to some extent on eye motor control, we aim to circumvent this.
 In such an interface, stimuli can be presented in a standard \ac{bci} paradigm, but
 visuospatial attention can be decoded separately from gaze position, which do not necessarily need to coincide.
 
-This leads us to adopt a specific approach: \emph{improve the performance of a
-spatially organized visual oddball \ac{erp}-based brain
-computer interface by using a suited decoding strategy}.
+This leads us to adopt the following central hypothesis:
+\emph{it is possible to improve the (gaze-independent) accuracy of a spatially
+organized visual oddball \ac{erp}-based brain computer interface by using a
+suited decoding strategy}.
 
-To achieve our goal, we chose a suitable interface and innovate on decoder
-development.
-We collect data from healthy control subjects to test our decoders.
-Finally, the findings of these experiments will be verified in experiments with
-individuals with \ac{sspgi}, including individuals with \ac{lis}, evaluating
-both performance and comfort.
+To test this hypothesis, we chose a suitable interface, innovate on decoder
+development and test if these innovations improve \ac{bci} performance in a
+meaningful way.
+Accordingly, we collected data from healthy control subjects to test proposed
+decoders, and the findings have been verified in experiments with
+individuals with \ac{sspgi}, including individuals with \ac{lis}, focusing
+both accuracy and comfort.
 
-This specific target is embedded within a broader goal of enabling
-effective communication for those with \ac{sspgi}.
+The specific target of improving \ac{bci} performance under these conditions
+is embedded within a broader goal of enabling effective communication for those with \ac{sspgi}.
 Ultimately, we wish to design a comfortable interface that allows them to maximally exploit
 their residual gaze capabilities.
 We believe this can be done with a non-invasive, spatially
@@ -412,9 +444,9 @@ Unlike traditional methods that flatten data, TDA operates directly on tensors,
 making it particularly suited for \ac{bci} applications, where signals are structured
 across multiple channels and time points.
 
-A widely used method is \ac{hoda}~\cite{Phan2010}, which projects tensors onto subspaces
-optimized for class separation, similar to \ac{lda} but extended to multidimensional data.
-This method has been applied to various \ac{bci} tasks, including \ac{erp} and
+A relatively well-known example is \ac{hoda}~\cite{Phan2010}
+It projects tensors onto subspaces optimized for class separation, similar to \ac{lda} but extended to multidimensional data.
+\Ac{hoda} has been applied to various \ac{bci} tasks, including \ac{erp} and
 \ac{mi} decoding, enabling the extraction of class-relevant features while reducing
 the data's dimensionality.
 
@@ -439,7 +471,7 @@ The following approach is targeted at improving decoding performance in
 gaze-independent settings by accounting for a known property of the covert
 attention \ac{erp} response.
 
-P3 latency generally falls between 350ms and 600ms~\cite{Luck2014}, but this
+P3 latency generally falls between 350 ms and 600 ms~\cite{Luck2014}, but this
 value is heavily dependent on the subject and the task and can vary from trial
 to trial~\cite{Ouyang2017}.
 The work of \cite{Arico2014} illustrates that the variation in single-trial P3
@@ -495,7 +527,7 @@ The interface can be operated in different \ac{vsa} conditions, as illustrated i
 
 \begin{figure}
   \begin{subfigure}[t]{.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_overt.eps}
+    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_overt.pdf}
     \caption[Overt \ac{vsa}]{%
       \emph{Overt} \ac{vsa}.
       Gaze and \ac{vsa} coincide on a target.
@@ -503,7 +535,7 @@ The interface can be operated in different \ac{vsa} conditions, as illustrated i
     \label{fig:gaze/vsa/overt}
   \end{subfigure}\hfill%
   \begin{subfigure}[t]{.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_covert.eps}
+    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_covert.pdf}
     \caption[Covert \ac{vsa}]{%
       \emph{Covert} \ac{vsa}.
       Gaze rests on the center of the screen, while \ac{vsa} is directed towards a target.
@@ -512,7 +544,7 @@ The interface can be operated in different \ac{vsa} conditions, as illustrated i
   \end{subfigure}
 
   \begin{subfigure}[t]{.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_split.eps}
+    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_split.pdf}
     \caption[Split \ac{vsa}]{%
       \emph{Split} \ac{vsa}.
       \Ac{vsa} is directed towards a target, while the gaze rests on another.
@@ -520,17 +552,17 @@ The interface can be operated in different \ac{vsa} conditions, as illustrated i
     \label{fig:gaze/vsa/split}
   \end{subfigure}\hfill%
    \begin{subfigure}[t]{.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_free.eps}
+    \includegraphics[width=\textwidth]{figures/gaze_independence/attention_free.pdf}
     \caption[Free \ac{vsa}]{%
       \emph{Free} \ac{vsa}.
-      Gaze and \ac{vsa} coincide on a target.
       The user is free to direct their gaze as they deem most comfortable.
       All previous \ac{vsa} conditions are possible.
     }
     \label{fig:gaze/vsa/free}
   \end{subfigure}\hfill%
   \caption[\Ac{vsa} conditions]{%
-    \Acl{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm interface.
+    \Acf{vsa} conditions defined in our hexagonal spatial \ac{erp} paradigm
+    interface. Full lines indicated gaze fixation, dashed lines \ac{vsa}.
   }
   \label{fig:gaze/vsa}
 \end{figure}

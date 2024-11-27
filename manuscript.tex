@@ -1,10 +1,20 @@
-\documentclass{manuscript}
+\documentclass[manuscript]{dissertation}
+\usepackage{dissertation}
 \begin{document}
 
 % Front matter ================================================================
 
-\input{cover_kul}
-\linenumbers
+\begin{titlepage}
+  \newgeometry{margin=1.5cm}
+  \input{cover_kul}
+  \restoregeometry
+\end{titlepage}
+\begin{titlepage}
+  \newgeometry{margin=1.5cm}
+  \input{cover_ulille}
+  \restoregeometry
+\end{titlepage}
+
 \include{chapters/abstract}
 \include{chapters/abstract_nl}
 \include{chapters/abstract_fr}

@@ -229,7 +229,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=0.443671in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0dB, \(\displaystyle \sigma\)=0.1s}%
+\pgftext[x=0.443671in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0 dB, \(\displaystyle \sigma\)=0.1 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -411,7 +411,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.075753in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0dB, \(\displaystyle \sigma\)=0.2s}%
+\pgftext[x=2.075753in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0 dB, \(\displaystyle \sigma\)=0.2 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -593,7 +593,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.707835in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0dB, \(\displaystyle \sigma\)=0.3s}%
+\pgftext[x=3.707835in,y=7.829854in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=0 dB, \(\displaystyle \sigma\)=0.3 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -8032,7 +8032,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=0.443671in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8dB, \(\displaystyle \sigma\)=0.1s}%
+\pgftext[x=0.443671in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8 dB, \(\displaystyle \sigma\)=0.1 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -8214,7 +8214,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.075753in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8dB, \(\displaystyle \sigma\)=0.2s}%
+\pgftext[x=2.075753in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8 dB, \(\displaystyle \sigma\)=0.2 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -8396,7 +8396,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.707835in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8dB, \(\displaystyle \sigma\)=0.3s}%
+\pgftext[x=3.707835in,y=6.297910in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-8 dB, \(\displaystyle \sigma\)=0.3 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -16184,7 +16184,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=0.443671in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16dB, \(\displaystyle \sigma\)=0.1s}%
+\pgftext[x=0.443671in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16 dB, \(\displaystyle \sigma\)=0.1 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -16366,7 +16366,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.075753in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16dB, \(\displaystyle \sigma\)=0.2s}%
+\pgftext[x=2.075753in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16 dB, \(\displaystyle \sigma\)=0.2 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -16548,7 +16548,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.707835in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16dB, \(\displaystyle \sigma\)=0.3s}%
+\pgftext[x=3.707835in,y=4.765966in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-16 dB, \(\displaystyle \sigma\)=0.3 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -24954,7 +24954,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=0.443671in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24dB, \(\displaystyle \sigma\)=0.1s}%
+\pgftext[x=0.443671in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24 dB, \(\displaystyle \sigma\)=0.1 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -25136,7 +25136,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.075753in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24dB, \(\displaystyle \sigma\)=0.2s}%
+\pgftext[x=2.075753in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24 dB, \(\displaystyle \sigma\)=0.2 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -25318,7 +25318,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.707835in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24dB, \(\displaystyle \sigma\)=0.3s}%
+\pgftext[x=3.707835in,y=3.234021in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-24 dB, \(\displaystyle \sigma\)=0.3 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -34399,7 +34399,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=0.443671in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31dB, \(\displaystyle \sigma\)=0.1s}%
+\pgftext[x=0.443671in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31 dB, \(\displaystyle \sigma\)=0.1 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -34581,7 +34581,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.075753in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31dB, \(\displaystyle \sigma\)=0.2s}%
+\pgftext[x=2.075753in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31 dB, \(\displaystyle \sigma\)=0.2 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -34763,7 +34763,7 @@
 \definecolor{textcolor}{rgb}{0.552941,0.501961,0.478431}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=3.707835in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31dB, \(\displaystyle \sigma\)=0.3s}%
+\pgftext[x=3.707835in,y=1.702077in,left,base]{\color{textcolor}\sffamily\fontsize{9.000000}{10.800000}\selectfont SNR=-31 dB, \(\displaystyle \sigma\)=0.3 s}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%

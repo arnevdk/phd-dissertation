@@ -1,0 +1,35 @@
+\begin{tikzpicture}[trim axis left]
+    \begin{axis}[
+        width=\textwidth,
+        height=0.6180\textwidth,
+        xlabel={Time (ms)},
+        %ylabel={Potential ($\mu$V)},
+        axis lines=middle,
+        ymin=-5, ymax=10,
+        xmin=-100, xmax=800,
+        ytick={-5,0,5}, % Y-ticks at -5, 0, 5
+        xtick={200,400,600}, % X-ticks at 200, 400, 600, 800
+      	ylabel near ticks,
+      	xlabel near ticks,
+    ]
+      % ERP waveform using cubic splines for smooth connection
+      \addplot[
+          smooth,
+          tension=0.5,
+          style={very thick, darkgray},
+      ] coordinates {%
+          (-100, 0)  % Starting point
+          (0, 0)     % Baseline
+          (50, 0)    % Pre-P1
+          (80, 1)    % P1
+          (115, -2)  % N1
+          (160, 2)   % P2
+          (220, -1)   % N2
+          (400, 2)   % P3
+          (650, 0)   % LPP (Late Positive Potential)
+          (800, 0)   % End point
+      };
+
+
+    \end{axis}
+\end{tikzpicture}%

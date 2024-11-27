@@ -1,6 +1,9 @@
-
 \chapter{Case studies}
 \label{sec:patients}
+\epigraph{I knew there would be a lot of unexpected issues involved with
+patient experiments, but I would never have guessed that there would be baby
+goats in the experiment room\ldots}{Juliette}
+
 \section{Introduction}
 
 \Acp{bci} for communication assistive technology~\cite{Millan2010}
@@ -70,7 +73,7 @@ expected to have eye motor impairment, they did not verify the gaze direction
 of participants during the experiment.
 It was suggested that participants were performing overtly.
 Participants with \ac{als} also had a substantially lower accuracy than healthy
-controls (58\% vs 88\%).
+controls (58\% vs. 88\%).
 
 Our previous study, presented in \cref{sec:covert-align} also used the
 visual Hex-o-Spell interface~\cite{VanDenKerchove2024}.
@@ -103,9 +106,9 @@ The objectives of this case study are as follows:
 \end{enumerate*}
 
 
-\section{Materials \& methods}
+\section{Methods}
 \subsection{Recruitment}
-Participants were recruited from across the Neuromuscular Reference center at
+Participants were recruited across the Neuromuscular Reference center at
 University Hospital Leuven (Leuven, Belgium), TRAINM Neuro Rehab Clinics
 (Antwerp, Belgium), the Neurorehabilitation Unit at University Hospital Lille
 (Lille, France), and a specialized care home (France).
@@ -196,21 +199,6 @@ test proposed by~\textcite{Hassan2022} using calibration-free eye tracking to
 check if it revealed any further eye motor abnormalities.
 This was not the case.
 
-Table~\ref{tab:patients/eye} details the eye motor impairments and vision of
-the included participants.
-All participants reported some degree of fatigue or discomfort when fixating.
-Participant PA1 had the mildest impairment, only reporting fatigue when fixating
-for prolonged times.
-The \ac{fa} participants were mostly affected by eye tremors and impaired pursuit.
-PB2 suffered from especially severe horizontal oscillating involuntary eye
-movements.
-Eye motor function of participants PC2, PC3, and PC4 was most severely affected.
-Participant PC2 was only able to look up and down and had a deviation in the
-left eye causing diplopia, but this was corrected by a prism glass.
-Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
-Participant PC4 had one deviated eye with a corneal abscess affecting the motility
-and vision in the right eye, and reducing motility in the left.
-
 \begin{table}[t]
   \centering
   \footnotesize
@@ -224,7 +212,6 @@ and vision in the right eye, and reducing motility in the left.
   logMAR: lower is better.}
   \label{tab:patients/eye}
 \end{table}
-
 
 Finally, we also recorded gaze position throughout the experimental session to
 register the participant's gaze relative to the stimulated \ac{bci} targets.
@@ -287,7 +274,7 @@ Technology AB, Sweden) portable eye tracker placed at the bottom of the laptop s
 Australia) connected to a second laptop for registration.
 The \ac{eeg} headset used 18 active AgCl electrodes (EASYCAP GmbH, Germany) placed on a cap
 according to the international 10-20 layout.
-Using electrolyte gel, electrode impedances were reduced below 10k$\Omega$.
+Using electrolyte gel, electrode impedances were reduced below 10 k$\Omega$.
 Additionally, the \ac{eog} was recorded.
 
 The \ac{eeg} was band-pass filtered between 0.5 and 16 Hz.
@@ -296,8 +283,8 @@ and visual inspection.
 Next, the \ac{eeg} was re-referenced to the average of mastoid electrodes TP9
 and TP10, and \ac{ica} was performed to reject artifactual components based on
 correlation with the \ac{eog} or by visual inspection.
-Epochs were cut from -0.1 to 0.9s relative to stimulus onset, and no baseline
-correction was performed.
+Epochs were cut from -0.1 to 0.9 s relative to stimulus onset, and no baseline
+correction was performed in order to meet the assumptions.
 
 Eye tracking data was cleaned by fusing left and right gaze into one channel
 for the horizontal and vertical gaze position.
@@ -306,7 +293,7 @@ values.
 If at a given sample either the left or the right eye was not detected for a
 given channel, the value of the other one was adopted.
 If both were missing, the gaze position remained unset at that time point, and no
-interpolation was performed.
+interpolation was performed of the employed classifiers.
 
 \subsection{\Acs{bci} decoding}
 
@@ -320,12 +307,30 @@ performance.
 Decoding scores were obtained using 6-fold cross-validation where folds corresponded to
 stimulation blocks.
 
-\section{Outcomes}
+\section{Results}
 
-\subsection{Eye tracking analysis}
+
+
+\subsection{Visual skill and eye tracking analysis}
 \label{sec:patients/outcomes/gaze}
 
-First, we aimed to shed more light on the actual capabilities of individuals
+Table~\ref{tab:patients/eye} details the eye motor impairments and vision of
+the included participants.
+All participants reported some degree of fatigue or discomfort when fixating.
+Participant PA1 had the mildest impairment, only reporting fatigue when fixating
+for prolonged times.
+The \ac{fa} participants were mostly affected by eye tremors and impaired pursuit.
+PB2 suffered from especially severe horizontal oscillating involuntary eye
+movements.
+Eye motor function of participants PC2, PC3, and PC4 was most severely affected.
+Participant PC2 was only able to look up and down and had a deviation in the
+left eye causing diplopia, but this was corrected by a prism glass.
+Participant PC3 only retained partial motility of the right eye, while the left eye was permanently closed.
+Participant PC4 had one deviated eye with a corneal abscess affecting the motility
+and vision in the right eye, and reducing motility in the left.
+
+
+Given these information, we aimed to shed more light on the actual capabilities of individuals
 with \ac{sspgi} regarding performing overt \ac{vsa} and central gaze
 fixation, as well as to investigate how relevant these two settings are when the
 gaze is not cued.
@@ -340,15 +345,16 @@ tracheostomy.
 \fullpagefig{%
   \includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
 }{%
-  Distribution of the recorded gaze position.
-}{%
-  Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}
-  conditions.
-  Crosshairs represent stimulus positions, with the orange ones cued during
-  the given condition.
-  Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
-  near the middle of the screen, and PC4 near the bottom.
-}{fig:patients/gaze}
+  \caption[Distribution of the recorded gaze position.]{%
+    Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}
+    conditions.
+    Crosshairs represent stimulus positions, with the orange ones cued during
+    the given condition.
+    Subjects PB2 and PC4 preferred covert \ac{bci} operation, with PB2 resting gaze
+    near the middle of the screen, and PC4 near the bottom.
+  }
+  \label{fig:patients/gaze}
+}
 
 PA1 had relatively intact gaze control and was able to correctly perform the
 cued overt and covert settings.
@@ -385,22 +391,6 @@ stimuli.
 \Cref{fig:patients/decode} shows single-trial
 \ac{rocauc} in the evaluated \ac{vsa} settings for the different decoders.
 
-\begin{figure}[t]
-  \input{figures/patients/fig_decode.pgf}
-  \caption[%
-    Decoding performance in different \acs{vsa} settings.
-  ]{%
-    Decoding performance in different \ac{vsa} settings reported as
-    single-trial \ac{rocauc}.
-    Free \ac{vsa} is generally on par with performance in the overt \ac{vsa}
-    setting.
-    Performance in the covert \ac{vsa} setting with central gaze fixation is lower, but can
-    be improved with the \ac{wcble} decoder.
-    95\% confidence intervals were calculated using 1000 bootstrapping
-    repetitions.
-  }
-  \label{fig:patients/decode}
-\end{figure}
 
 In the overt \ac{vsa} setting, the evaluated decoders performed similarly on average
 (\ac{wcble} 75.58\%, XDAWNCov+TS+LDA 74.24\%, \ac{tlda} 75.99\%).
@@ -418,10 +408,34 @@ significantly).
 More interestingly, we noticed that performances of the decoders in free
 \ac{vsa} were close to those in the overt \ac{vsa}.
 A substantial decrease in performance from the overt setting to the free
-setting was observed for
-subjects PC3 and PC4.
+setting was observed for subjects PC3
+(\ac{wcble}: $70.31\%>62.14\%$, XDAWNCov+TS+LDA: $65.78\%>62.18\%$, \ac{tlda}:
+$70.49\%>63.76\%$)
+and PC4
+(\ac{wcble}: $65.56\%>55.71\%$, XDAWNCov+TS+LDA: $62.02\%>54.24\%$, \ac{tlda}:
+$66.12\%>57.08\%$).
 For PB2, who also relied on covert \ac{vsa} during the uncued free \ac{vsa}
-setting, there was no decrease in performance.
+according to gaze tracking setting, the decrease in performance was also
+present, but not as substantial
+(\ac{wcble}: $82.76\%>78.88\%$, XDAWNCov+TS+LDA: $80.74\%>77.99\%$, \ac{tlda}:
+$83.21\%>78.84\%$).
+
+\begin{figure}
+  \input{figures/patients/fig_decode.pgf}
+  \caption[%
+    Decoding performance in different \acs{vsa} settings.
+  ]{%
+    Decoding performance in different \ac{vsa} settings reported as
+    single-trial \ac{rocauc}.
+    Free \ac{vsa} is generally on par with performance in the overt \ac{vsa}
+    setting.
+    Performance in the covert \ac{vsa} setting with central gaze fixation is lower, but can
+    be improved with the \ac{wcble} decoder.
+    95\% confidence intervals were calculated using 1000 bootstrapping
+    repetitions.
+  }
+  \label{fig:patients/decode}
+\end{figure}
 
 \subsection{Cross-condition calibration}
 \label{sec:patients/outcomes/cross}
@@ -438,7 +452,7 @@ Note that, according to eye tracking data, participants PB1, PB4, and PC4 did no
 always perform cued central gaze fixation in the covert \ac{vsa} setting,
 which might have affected the results.
 
-\begin{figure}[t]
+\begin{figure}
   \input{figures/patients/fig_cross.pgf}
   \caption[Cross-setting calibration and decoding performance.]{
     Decoding performance when calibrating the \ac{tlda} decoder in a given \ac{vsa}
@@ -454,6 +468,7 @@ which might have affected the results.
 
 \section{Discussion}
 
+\subsection{Gaze-independent operation \& decoding}
 Due to the heterogeneous nature of the participants' conditions, it is difficult to
 draw general conclusions.
 This study should therefore be seen as a collection of case studies,
@@ -520,7 +535,7 @@ operation phase.
 Early VEPs in the training data could also contribute in those cases where the participant was not
 able to perform covert \ac{vsa} with central gaze fixation.
 
-\section{Limitations}
+\subsection{Limitations}
 
 Despite results that prompt interesting reflections on gaze-independent \ac{bci} approaches,
 there are some limitations to the presented results that need to be
@@ -551,14 +566,16 @@ In this study, user comfort in the different conditions was not objectively
 measured.
 Instead, it was assumed that participants operated most comfortably in the free
 \ac{vsa} condition.
-To properly contextualize performance results, they should be coupled
-with a measure of user comfort and perceived effort, like the NASA Task Load
-Index~\cite{Hart2006}.
+To properly contextualize performance results, they should be coupled with
+metrics evaluating the user's requirements
+with a measure of usability, comfort and perceived effort, like the NASA Task Load
+Index~\cite{Hart2006} and other metrics proposed in the user-centered design
+framework for \acp{bci}~\cite{Kuebler2014}.
 Performance might, after all, be traded off for user comfort.
 Eye motor disability could also have been assessed more
 objectively~\cite{FriedOken2020}, using, e.g.,
 the Revised Coma Recovery Scale~\cite{Giacino2004} or the NSUCO
-oculomotor~\cite{Maples1992}.
+oculomotor exam~\cite{Maples1992}.
 
 Finally, the stimulation procedure parameters
 from~\textcite{VanDenKerchove2024} were adapted to make the counting task

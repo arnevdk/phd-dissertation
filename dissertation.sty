@@ -1,10 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dissertation}[2024/09/27 Dissertation custom commands]
 
-\RequirePackage{xcolor}
 \RequirePackage{acro}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
+%\RequirePackage{amssymb}
 \RequirePackage{siunitx}
 \RequirePackage{hyperref}
 \RequirePackage{tabularx}
@@ -16,15 +14,15 @@
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 \RequirePackage{float}
-\RequirePackage{pgfplots}
 \RequirePackage{epigraph}
 \RequirePackage{expl3}
 \RequirePackage[geometry]{ifsym}
-\RequirePackage{todonotes}
 \RequirePackage{sansmath}
 \RequirePackage{appendix}
-\RequirePackage[utf8]{inputenc}
 \RequirePackage{cleveref}
+\RequirePackage{todonotes}
+\RequirePackage{multirow}
+\RequirePackage{amssymb}
 
 % Preamble ====================================================================
 %\pdfminorversion=7
@@ -35,19 +33,9 @@
 
 
 % Bibliography
-\usepackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
 \addbibresource{references.bib}
 \addbibresource{publications.bib}
 
-% PGF
-% Matplotlib used the following preamble
-\def\mathdefault#1{#1}
-\everymath=\expandafter{\the\everymath\displaystyle}
-
-\ifdefined\pdftexversion\else  % non-pdftex case.
-  \usepackage{fontspec}
-\fi
-\makeatletter\@ifpackageloaded{underscore}{}{\usepackage[strings]{underscore}}\makeatother
 
 % Set list names
 \renewcommand{\listfigurename}{List of figures}
@@ -55,18 +43,6 @@
 
 % Setup epigraph
 \setlength{\epigraphwidth}{.66\textwidth}
-
-
-% Colors ======================================================================
-
-\definecolor{accent1}{HTML}{F29018}
-\definecolor{accent2}{HTML}{F63D1E}
-\definecolor{accent3}{HTML}{78479d}
-%\definecolor{lightgray}{HTML}{CECECE}
-\definecolor{lightgray}{HTML}{E0E0E0}
-\definecolor{darkgray}{HTML}{8D807A}
-\definecolor{muteblack}{HTML}{262321}
-% Extra accent brownish?
 
 % Commands ====================================================================
 
@@ -83,7 +59,6 @@
 \newfloat{algorithm}{t}{lop}
 
 
-\newlength{\fullpagefigwidth}
 
 % Define publicaition list bibliography style
 \makeatletter
@@ -102,28 +77,9 @@
 \input{#1/#2}
 }}
 
-% TikZPlotLib===================================================================
-\RequirePackage[T1]{fontenc}
-\RequirePackage{textcomp}
-\RequirePackage{pgfplots}
-\DeclareUnicodeCharacter{2212}{−}
-\usepgfplotslibrary{groupplots,dateplot}
-\usetikzlibrary{patterns,shapes.arrows}
-\pgfplotsset{%
-  compat=newest,
-  every axis/.style={%
-       scale only axis,
-       enlarge y limits=false,
-       enlarge x limits=false,
-      	label style={darkgray, font=\footnotesize},
-        tick style={darkgray, font=\footnotesize}, % Set the tick color to darkgray
-        tick label style={darkgray}, % Set the tick label color to darkgray
-        axis line style={darkgray}, % Set the axis line color to darkgray
-        title style={color=darkgray},
-        cycle list={
-            {accent1, thick},    % First color (red)
-            {accent2, thick},   % Second color (blue)
-            {accent3, thick},  % Third color (green)
-        },
-  }
-}
+% Setup matplotlib ================================================================
+
+% Matplotlib used the following preamble
+\def\mathdefault#1{#1}
+\everymath=\expandafter{\the\everymath\displaystyle}
+\makeatletter\@ifpackageloaded{underscore}{}{\usepackage[strings]{underscore}}\makeatother

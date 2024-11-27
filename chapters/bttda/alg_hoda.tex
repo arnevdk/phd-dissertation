@@ -2,13 +2,13 @@
   \Require $\{\ten{X}(n)\}_n^N$, $\{c_n\}_n^N$,
   $(r_1,r_2,\ldots,r_K)$, $I_\text{max}$, $\epsilon$
   \State $\mat{U}_k \gets $ orthonormal matrix $\in \mathbb{R}^{D_k\times r_k}
-  \ \forall k$
+  \quad \forall k$
   \State $\mat{S}_{k,\text{t}} \gets
-  \textstyle{\sum_n^N}\mat{X}_k(n)\cdot\mat{X}_k^\intercal(n)\ \forall k$
+  \textstyle{\sum_n^N}\mat{X}_k(n)\cdot\mat{X}_k^\intercal(n)\quad \forall k$
   \State $i\gets 1$
   \Repeat
   \For{$k=1,2\ldots,K$}
-  \State $\ten{G}(n)_{-k} \gets \ten{X}(n)\mmprs{\mat{U}}{k} \ \forall n$
+  \State $\ten{G}(n)_{-k} \gets \ten{X}(n)\mmprs{\mat{U}}{k} \quad \forall n$
   \State $\mat{S}_{-k,\text{w}} \gets
   \textstyle{\sum_n^N}\tilde{\mat{G}}_{-k,k}(n)\cdot\tilde{\mat{G}}_{-k,k}^\intercal(n)$
   \State $\mat{S}_{-k,\text{b}} \gets
@@ -20,5 +20,5 @@
   \EndFor
   \State $i\gets i+1$
   \Until{$i=I_\text{max}$ or $||\mat{U}_k^{(i)}-\mat{U}_k^{(i-1)}||<\epsilon
-    \ \forall k$}
+    \quad \forall k$}
 \end{algorithmic}

@@ -1,6 +1,6 @@
 \sffamily
 \begin{tikzpicture}[
-    scale=\textwidth/2cm,
+    scale=\textwidth/3cm,
   ]
   \useasboundingbox (-1,-1.25) rectangle (1,1);
   \pgfmathsetmacro{\margin}{.1}
@@ -17,9 +17,9 @@
     \draw[draw=accent3, fill=white, very thick] (-1, {-\margin}) rectangle (1,-1);
 
     %% Add text
-    \node[color=accent1, align=left,font=\bfseries, anchor=north west] at  (-1,1){active};
-    \node[color=accent2, align=left,font=\bfseries, anchor=north east] at  (1,1){reactive};
-    \node[color=accent3, align=left,font=\bfseries, anchor=south west] at  (-1,-1){passive};
+    \node[color=accent1, align=left,font=\bfseries, anchor=north west, inner sep=2pt] at  (-1,1){active};
+    \node[color=accent2, align=left,font=\bfseries, anchor=north east, inner sep=2pt] at  (1,1){reactive};
+    \node[color=accent3, align=left,font=\bfseries, anchor=south west, inner sep=2pt] at  (-1,-1){passive};
 
     \node[color=darkgray, align=center,font=\bfseries, anchor=north] at
     (0,{-(1+\margin)}) {passive\\participation};
@@ -29,18 +29,19 @@
     \node[color=darkgray, align=center,font=\bfseries, anchor=west] at ({1+\margin},0) {stimulus\\dependent};
 
     %% Text in rectangles
-    \node[align=center] at ({-\center}, {\center+\textspacing}) {motor\\imagery};
-    \node[align=center] at ({-\center}, {\center-\textspacing}) {imagined\\speech};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({-\center}, {\center+1.5*\textspacing}) {motor\\imagery};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({-\center}, {\center}) {imagined\\speech};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({-\center}, {\center-1.5*\textspacing}) {neurofeedback};
 
-    \node[align=center] at ({\center+\textspacing}, {\center+\textspacing}) {P300};
-    \node[align=center] at ({\center+\textspacing}, {\center-\textspacing}) {SSVEP};
-    \node[align=center] at ({\center-\textspacing}, {\center+\textspacing}) {cVEP};
-    \node[align=center] at ({\center-\textspacing}, {\center-\textspacing}) {mVEP};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({\center+\textspacing}, {\center+\textspacing}) {P300};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({\center+\textspacing}, {\center-\textspacing}) {SSVEP};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({\center-\textspacing}, {\center+\textspacing}) {cVEP};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({\center-\textspacing}, {\center-\textspacing}) {mVEP};
 
     %% More text
-    \node[align=center] at ({\center+\textspacing}, {-\center+\textspacing})  {error\\potentials};
-    \node[align=center] at ({-\center-\textspacing}, {-\center+\textspacing}) {attention\\monitoring};
-    \node[align=center] at ({-\center+\textspacing}, {-\center-\textspacing}) {emotion\\monitoring};
-    \node[align=center] at ({\center-\textspacing}, {-\center-\textspacing}) {neurofeedback};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({\center}, {-\center+\textspacing}) {error\\potentials};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({-\center}, {-\center+\textspacing}) {attention and \\ workload detection};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({-\center}, {-\center-\textspacing}) {clinical neuroimaging \\ and monitoring};
+    \node[align=center,font=\footnotesize, color=muteblack] at ({+\center}, {-\center-\textspacing})  {emotion \\ detection};
   %\end{scope}
 \end{tikzpicture}

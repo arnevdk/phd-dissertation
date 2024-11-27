@@ -1,14 +1,16 @@
 \begin{algorithmic}[1]
   \Require $\{\ten{G}(n)\}_n^N$, $\{\ten{X}(n)\}_n^N$, $I_\text{max}$, $\epsilon$
-  \State $\mat{A}_k \gets $ $\mat{U}_k \ \forall k$
+  \State $\mat{A}_k \gets $ $\mat{U}_k \quad \forall k$
   \State $i\gets 1$
   \Repeat
   \For{$k=1,2\ldots,K$}
-  \State $\mat{X}_{-k}(n)\gets\left[\ten{G}(n)\mmprsi{\mat{A}}{k}\right]_k \ \forall n$
+  \State $\mat{X}_{-k}(n)\gets\left[\ten{G}(n)\mmprsi{\mat{A}}{k}\right]_k
+  \quad \forall n$
   \State
   $\mat{A}_k\gets\textstyle{\argmin_{\mat{A}_k}\sum_n^N}\left[\mat{X}_k(n)-\mat{A}_k\mat{X}_{-k}(n)\right]^2$
   \EndFor
   \State $i\gets i+1$
-  \Until{$i=I_\text{max}$ or $||\mat{A}_k^{(i)}-\mat{A}_k^{(i-1)}||<\epsilon\
+  \Until{$i=I_\text{max}$ or
+  $||\mat{A}_k^{(i)}-\mat{A}_k^{(i-1)}||<\epsilon\quad
   \forall k$}
 \end{algorithmic}
