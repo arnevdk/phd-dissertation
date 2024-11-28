@@ -43,7 +43,11 @@ def configure_matplotlib_style():
             "ytick.direction": "in",  # Y-axis ticks inward
             "xtick.major.size": 3,  # Major tick size for x-axis
             "ytick.major.size": 3,  # Major tick size for y-axis
-            "text.latex.preamble": "\\usepackage{sansmath}\\sansmath",
+            "text.latex.preamble": """
+                \\usepackage[scale=.8]{opensans}
+                \\renewcommand{\sffamily}{\opensans}
+                \\usepackage{sansmath}
+                \\sansmath""",
             "axes.edgecolor": colors["darkgray"],  # Spine color
             "axes.labelcolor": colors["darkgray"],  # Axis label color
             "axes.titlesize": font_size,  # Axis title font size
@@ -89,7 +93,7 @@ def save_pgf_trim(fig, ax, path, width=textwidth_in, height=None, rows=1, column
     fig.set_size_inches(width + margin_left, height)
     fig.patch.set_alpha(0)
     plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=0)
-    prepend = "\\hspace{-" + str(margin_left) + "in}\n"
+    prepend = "\\hspace{-" + str(margin_left) + "in}\n%"
     with open(path, "r") as original:
         data = original.read()
     with open(path, "w") as modified:

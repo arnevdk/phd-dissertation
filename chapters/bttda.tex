@@ -4,16 +4,17 @@
 \input{chapters/bttda/tensorviz.tex}
 \epigraph{%
   ``I journeyed to the market to purchase a cow, its price set at ninety-and-seven coins.
-  Lacking this sum, I therefore borrowed fifty coins from each of my two good friends.
-  With the hundred coins, I paid for the beast and received three coins in change.
-  Of these, I returned one coin each to my companions, keeping one for myself.
-  Now, I owe each friend forty-and-nine coins, and with mine one remaining, the
-  total merely equals ninety-and-nine coins, short of one hundred!
+  Lacking this sum, I therefore borrowed fifty coins from each of two good friends.
+  With these hundred coins, I paid for the beast and received three coins in change.
+  Of the three, I returned one coin each to my companions, keeping one for myself.
+  Now, I owe each friend forty-and-nine coins, a total debt of
+  ninety-and-eight. And with mine one remaining, the
+  total merely equals ninety-and-nine coins, short of the hundred I borrowed!
   Tell me then, kind stranger, whither hath the missing coin gone?''
 }{%
   Ancient Algerian riddle
 }
-\noindent\emph{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
+\publicationnote{This chapter was submitted as~\textcite{VanDenKerchove2024a}.}
 
 \section{Introduction}
 
@@ -195,7 +196,6 @@ tensor-matrix mode products:
 \end{equation}
 as visualized in \cref{fig:HODA-backward}.
 \begin{figure}[t]
-	\centering
 	\input{figures/bttda/HODA_backward.tikz.tex}
   \caption[A \acs{hoda} backward projection.]{%
     A visualization of the multilinear projection obtained by \acf{hoda} applied to a third-order tensor
@@ -327,7 +327,6 @@ forward model, visualized in \cref{fig:HODA-forward}, is given by:
 with \emph{activation patterns} $\mat{A}_k \in \mathbb{R}^{D_k\times r_k}$,
 reconstructed tensor $\hat{\ten{X}}$, and error term $\ten{\mathbfcal{E}}$.
 \begin{figure}[t]
-	\centering
 	\input{figures/bttda/HODA_forward.tikz.tex}
   \caption[A forward projection for \acs{hoda}.]{The forward projection for HODA.
     By calculating activation patterns $\mat{A}_k$, the original tensor $\ten{X}$ can approximately be
@@ -418,7 +417,6 @@ for $B$ extracted latent tensors $\ten{G}^{(b)}$ and residual error term
 $\ten{\mathbfcal{E}}$.
 The BTTDA model is further illustrated by~\cref{fig:BTTDA}.
 \begin{figure*}[t]
-	\centering
 	\input{figures/bttda/BTTDA.tikz.tex}
   \caption[A forward model for \acs{bttda}.]{A forward model for \acf{bttda}.
     \Ac{bttda} can extract more features
@@ -548,17 +546,15 @@ Within-session classification performance was assessed using stratified 5-fold
 cross-validation to calculate the area under the receiver operating
 characteristic curve (ROC-AUC).
 \begin{table*}[t]
-	\centering
-	\footnotesize
   \makebox[\textwidth][c]{
 	  \input{chapters/bttda/moabb.tex}
   }
   \caption[MOABB datasets used for evaluation.]{MOABB datasets used for evaluation, with the number of
-		subjects (\# Sub.), the number of EEG channels (\# Chan.), the number of
-    classes (\# Classes), the number of trials or trials per class for ERP
-    datasets (\# Trials), the epoch length (Epoch len.), the sampling
-		frequency (S. freq.), the number of sessions per subject (\# Sess.) and the
-		number of runs (\# Runs).
+		subjects (Sub.), the number of EEG channels (Chan.), the number of
+    classes (Cls.), the number of trials or trials per class for ERP
+    datasets (Trials), the epoch length (Epoch len.), the sampling
+		frequency (S. freq.), the number of sessions per subject (Sess.) and the
+		number of runs.
     Adapted from \textcite{Aristimunha2023} and \textcite{Chevallier2024}.}
 	\label{tab:moabb}
 \end{table*}
@@ -621,8 +617,6 @@ dimensionality $(8,48)$ and $(8,38)$, respectively.
 \Cref{tab:erp-score} lists the cross-validated ROC-AUC for all evaluated
 decoders.
 \begin{table}[t]
-	\footnotesize
-	\centering
 	\input{chapters/bttda/score_erp.tex}
   \caption[Within-session classification score for 2 event-related potential
   datasets.]{Area under the receiver operating characteristic curve for
@@ -672,8 +666,6 @@ Note that, in line with~\textcite{Chevallier2024}, accuracy is reported for the
 multi-class classification problem in BNCI2014-001, while ROC-AUC was reported for the
 binary classification problem in BNCI2014-004.
 \begin{table}[t]
-  \centering
-	\footnotesize
 	\input{chapters/bttda/score_mi.tex}
   \caption[Within-session classification score for 2 motor imagery datasets.]{Classification score for
 		cross-validated within-session evaluation for HODA+LDA and our proposed decoders
@@ -711,10 +703,8 @@ NMSE is calculated as:
 	{\sum_n^N\left\lVert\ten{X}(n)\right\rVert_F^2}
 \end{equation}
 \begin{figure*}[t]
-  \centering
-  \makebox[\linewidth][c]{
-	  \input{figures/bttda/blocks.pgf}
-  }
+  \sffamily
+	\input{figures/bttda/blocks.pgf}
   \caption[Analysis of NMSE and classification score per block.]{%
     Normalized Mean Square Error (NMSE) (left), and difference in
     classification score for the training and validation for the ERP datasets
@@ -814,12 +804,51 @@ the activation patterns and contrasts after forward projection clearly show
 that ERP components can be recognized and separated into different
 BTTDA blocks.
 \begin{figure*}[t]
-	\includegraphics[width=\linewidth]{figures/bttda/forward_block-0.png}
-	\includegraphics[width=\linewidth]{figures/bttda/forward_block-1.png}
+  \begin{subfigure}[b]{\linewidth}
+    \begin{minipage}[b]{.15\linewidth}
+      \inputpgf{figures/bttda}{forward_block-0_ap-sp-0.pgf}
+      \vspace{3em}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.15\linewidth}
+      \inputpgf{figures/bttda}{forward_block-0_ap-sp-1.pgf}
+      \vspace{3em}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.25\linewidth}
+      \inputpgf{figures/bttda}{forward_block-0_ap-tmp.pgf}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.3\linewidth}
+      \includegraphics[width=\linewidth]{figures/bttda/forward_block-0_contrast.png}
+    \end{minipage}
+    \vspace{-1em}
+    \subcaption{The first block.}
+  \end{subfigure}
+
+
+  \begin{subfigure}[b]{\linewidth}
+    \begin{minipage}[b]{.15\linewidth}
+      \inputpgf{figures/bttda}{forward_block-1_ap-sp-0.pgf}
+      \vspace{3em}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.15\linewidth}
+      \inputpgf{figures/bttda}{forward_block-1_ap-sp-1.pgf}
+      \vspace{3em}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.25\linewidth}
+      \inputpgf{figures/bttda}{forward_block-1_ap-tmp.pgf}
+    \end{minipage}\hfill%
+    \begin{minipage}[b]{.3\linewidth}
+      \includegraphics[width=\linewidth]{figures/bttda/forward_block-1_contrast.png}
+    \end{minipage}
+    \vspace{-1em}
+    \subcaption{The second block.}
+  \end{subfigure}
+
+	%\includegraphics[width=\linewidth]{figures/bttda/forward_block-0.png}
+	%\includegraphics[width=\linewidth]{figures/bttda/forward_block-1.png}
   \caption[Extracted \acs{bttda} activation patterns.]{%
     Spatial (left two columns) and temporal (middle column) activation patterns and
 		condition contrasts (right column) obtained after forward projection of the latent
-    features for 2 blocks (row 1 and row 2) of rank $(2,2)$ of \ac{bttda}
+    features for 2 blocks of rank $(2,2)$ of \ac{bttda}
     fit on the full dataset BNCI2014-008.
     The separate blocks approximately model different \ac{erp}
 		components.}

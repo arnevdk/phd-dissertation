@@ -22,9 +22,10 @@
   top=25mm,
   showcrop,
   %showframe,
-  %inner=20mm,
-  %outer=20mm,
+  inner=20mm,
+  outer=20mm,
 ]{geometry}
+\RequirePackage{geometry}
 
 % Full page figure =============================================================
 
@@ -95,9 +96,9 @@
 
 % Setup titles
 \titleformat{\part}[display]{%
-  \pagecolor{lightgray}\vskip10em\bfseries
+  \pagecolor{lightgray}\vspace{10em}\bfseries
 }{%
-  \sffamily\Large\partname\	\thepart
+  \sffamily\Large\partname\	\thepart%
 }{10pt}{\Huge}[\afterpage{\nopagecolor}]
 \titleformat{\chapter}[display]{\bfseries}{\raggedright\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
 \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
