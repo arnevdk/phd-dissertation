@@ -132,4 +132,10 @@ for j, snr in enumerate(snrs):
             ax_ts.tick_params(axis="x", labelbottom=False)
 
 
-save_pgf_trim(plt.gcf(), axs[0, 0], f"figures/wcble/simulated-{stc}.pgf", height=8)
+save_pgf_trim(
+    plt.gcf(),
+    axs[0, 0],
+    f"figures/wcble/simulated-{stc}.pgf",
+    height=8,
+    transparent=True,
+)

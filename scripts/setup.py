@@ -78,7 +78,9 @@ textwidth_pt = 318.66946  # booklet
 textwidth_in = textwidth_pt * inches_per_pt
 
 
-def save_pgf_trim(fig, ax, path, width=textwidth_in, height=None, rows=1, columns=1):
+def save_pgf_trim(
+    fig, ax, path, width=textwidth_in, height=None, rows=1, columns=1, **kwargs
+):
     if height is None:
         golden_ratio = (5**0.5 - 1) / 2
         height = rows * width * golden_ratio / columns
@@ -92,7 +94,7 @@ def save_pgf_trim(fig, ax, path, width=textwidth_in, height=None, rows=1, column
     print(margin_left)
     fig.set_size_inches(width + margin_left, height)
     fig.patch.set_alpha(0)
-    plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=0)
+    plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=0, **kwargs)
     prepend = "\\hspace{-" + str(margin_left) + "in}\n%"
     with open(path, "r") as original:
         data = original.read()

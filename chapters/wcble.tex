@@ -2,7 +2,7 @@
 \label{sec:wcble}
 \epigraph{``The sands of time cannot be stopped.''}{Brom in \emph{Eragon --
 Christopher Paolini}}
-\noindent\emph{\Cref{sec:wcble/literature/contrib},
+\publicationnote{\Cref{sec:wcble/literature/contrib},
 \crefrange{sec:wcble/methods/cble}{sec:wcble/methods/wcble} (including
 \cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
 \cref{sec:wcble/conclusion} were published as part of~\textcite{VanDenKerchove2024}.}
@@ -19,7 +19,7 @@ These components each have their own distinct amplitude and latency.
 \Ac{erp} component latency can reflect a wide range of cognitive,
 neurophysiological, and clinical properties, that can be confounding factors in
 the development of \acp{bci}~\cite{Luck2014}.
-Latency is often assessed as the timing of an \ac{erp} component peak, obtained
+Latency is often assessed as the timing of an \ac{erp} co, **kwargsmponent peak, obtained
 after averaging over trials.
 Latencies of non-averaged, single-trial \acp{erp} should capture even more
 relevant information, yet they are very hard to measure due to the low \ac{snr} of
@@ -528,8 +528,8 @@ target epoch ranging from 0 to -31 dB, with
 \end{equation}
 
 A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.
-\fullpagefig{%
-  \inputpgf{figures/wcble}{simulated-sine.pgf}
+\fullpagefig[anchor.north]{%
+  \hspace{1cm}\inputpgf{figures/wcble}{simulated-sine.pgf}
 }{%
   \caption[Simulated target and non-target evoked data.]{%
     Simulated target (bottom half of epochs) and non-target (top half of epochs) evoked data
