@@ -29,12 +29,12 @@ condition_cmap = {
 condition_order = ["overt", "covert", "split ($d=1$)", "split ($d=2$)", "split ($d=3$)"]
 
 
-MODEL_CMAP = {
-    "WCBLE": "#AF56BA",
-    "CBLE": "#b488ba",
-    "tLDA": "#bababa",
-    "XDAWNCov-TS-LR": "#FFC61E",
-    "ERPCov-TS-LR": "#F28522",
+model_cmap = {
+    "WCBLE": colors["accent3"],
+    "CBLE": "#ceb3e2",
+    "tLDA": colors["darkgray"],
+    "XDAWNCov-TS-LR": colors["accent1"],
+    "ERPCov-TS-LR": colors["accent2"],
 }
 
 

@@ -1,6 +1,4 @@
-regenerate figures with correct textwidth based on margins
 find overhaning linebreaks
-consistent 'material and methods' or 'methods'
 author initials
 no math font in text description of results
 lines on part pages
