@@ -2,7 +2,7 @@
 \label{sec:covert-align}
 \epigraph{``You see, but you do not observe!''}{Sherlock Holmes in  \\ \emph{A
 Scandal in Bohemia -- Sir Arthur Conan Doyle}}
-\noindent\emph{This chapter was published as part of~\textcite{VanDenKerchove2024}.}
+\publicationnote{This chapter was published as part of~\textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
 
@@ -64,7 +64,7 @@ BNCI2014-009 dataset~\cite{Aloise2012a}.
 
 We recorded a dataset to validate our approach.
 The Covert Visuospatial Attention \ac{erp} (CVSA-ERP) dataset
-consists of 15 participants, mean age $26.34\pm3.04$ years.
+consists of 15 participants, mean age 26.34$\pm$3.04 years.
 This study was approved by the Ethics Commission of University Hospital Leuven
 (S62547).
 Each subject performed different \ac{vsa} conditions (overt, covert, and split),
@@ -75,24 +75,10 @@ symbols) to the participant while the \ac{eeg}, electrooculogram (EOG), and the
 participant's eye gaze using eye tracking were recorded.
 The \ac{vsa} conditions described in the first row of Figure~\ref{fig:interface} are
 considered.
-\begin{figure*}
-  \bigskip
-	\begin{subfigure}{\linewidth}
-		\caption{}%
-		\label{fig:interface}
-		\includegraphics[width=\linewidth]{figures/covert_align/figure3a.pdf}
-	\end{subfigure}
-
-	\bigskip
-	\bigskip
-	\begin{subfigure}{\linewidth}
-		\caption{}%
-		\label{fig:erps}
-		\includegraphics[width=\linewidth]{figures/covert_align/figure3b.pdf}
-	\end{subfigure}%
-
-  \caption[Stimulation interfaces and evoked \acsp{erp}.]{%
-		\subref{fig:interface} Interfaces and visuospatial attention (\ac{vsa})
+\begin{figure*}[t]
+		\includegraphics[width=\linewidth]{figures/covert_align/dataset_vsa.pdf}
+    \caption[Dataset stimulation interfaces.]{%
+    Interfaces and visuospatial attention (\ac{vsa})
     conditions in the CVSA-ERP and BNCI2014-009 datasets.
 		In the CVSA-ERP oddball \ac{bci} interface, screen targets are intensified one after
     the other in pseudorandom order while the participant can either pay overt,
@@ -101,14 +87,24 @@ considered.
 		intensified at once. In its covert counterpart,
 		groups of 6 letters are intensified one after the other, partly relying on
     feature attention.
-		\subref{fig:erps} Contrast between target (color) and non-target, and
+
+    }%
+		\label{fig:interface}
+\end{figure*}
+\begin{figure*}[t]
+  \input{figures/covert_align/grand_avg.pfg}
+	%\includegraphics[width=\linewidth]{figures/covert_align/figure3b.pdf}
+  \caption[Evoked \acs{erp} per dataset and condition.]{%
+		Contrast between target (color) and non-target, and
     distractor (gray) and non-target grand average event-related potentials per \ac{vsa} condition and dataset.
     Overt \ac{vsa} yields a strong modulation of the N1 component in both datasets;
     the P3 amplitude decreases with the degree of split \ac{vsa}.
     In split \ac{vsa}, N1 and P2 are more prominently evoked by the distractor,
     while the P3 is evoked by the target.
 	}
+		\label{fig:erps}
 \end{figure*}
+
 
 In contrast to the protocol proposed by \textcite{Frenzel2011}, split \ac{vsa} was
 performed by instructing the participant to attend to the intensifications of the
@@ -149,7 +145,7 @@ experienced when visually fixating~\cite{Troxler1804}.}~\cite{Treder2010} in the
 peripheral visual field.
 Stimuli were presented using PsychoPy (version 2023.1.3)~\cite{Peirce2019}.
 
-\begin{figure}
+\begin{figure}[t]
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/covert_align/interface_1.tikz.tex}
     \caption[The stimulation interface.]{The stimulation interface based on the visual Hex-o-Spell
@@ -162,6 +158,8 @@ Stimuli were presented using PsychoPy (version 2023.1.3)~\cite{Peirce2019}.
     a very short time.}%
     \label{fig:covert-align/interface/intensification}
   \end{subfigure}
+
+  \bigskip
 
   \begin{subfigure}[t]{.45\textwidth}
     \input{figures/covert_align/interface_3.tikz.tex}
@@ -698,21 +696,15 @@ components.
 \begin{subappendices}
   \section{Single-trial classification performances}
   \begin{table}[ht]
-  \centering
-  \makebox[\textwidth][c]{%
-    \input{chapters/covert_align_performance.tex}
-  }
-  \caption{Cross-validated single-trial classification area under the receiver operating characteristic
-curve for all evaluated models, visuospatial attention conditions, and
-  datasets.}
-  \label{tab:covert-align/results/single-trial}
-\end{table}
-
+  \input{chapters/covert_align_performance.tex}
+    \caption[Classification performances.]{Cross-validated single-trial
+    classification \ac{rocauc} (\%) for all evaluated models, visuospatial attention conditions, and
+    datasets.}
+    \label{tab:covert-align/results/single-trial}
+  \end{table}
   \clearpage
   \section{Cross-condition transfer classification performances}
-
   \begin{table}[ht]
-      \footnotesize
       \input{chapters/covert_align_cross-CVSA-ERP.tex}
       \caption[Transfer learning results for CVSA-ERP]{Cross-condition transfer
       classification performance (cross-validated \ac{rocauc})
@@ -722,8 +714,8 @@ curve for all evaluated models, visuospatial attention conditions, and
       conditions to evaluate gaze-independence and transfer learning
       performance.}
   \end{table}
+  \clearpage
   \begin{table}[ht]
-      \footnotesize
       \input{chapters/covert_align_cross-BNCI2014-009.tex}
       \caption[Transfer learning results for BNCI2014-009]{Cross-condition transfer
       classification performance (cross-validated \ac{rocauc})

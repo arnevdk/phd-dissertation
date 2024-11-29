@@ -16,6 +16,25 @@ colors = dict(
 diverging_cmap = "RdYlBu_r"
 
 
+condition_cmap = {
+    "overt": colors["accent1"],
+    "covert": colors["accent2"],
+    "split ($d=1$)": colors["accent3"],
+    "split ($d=2$)": colors["accent3"],
+    "split ($d=3$)": colors["accent3"],
+}
+condition_order = ["overt", "covert", "split ($d=1$)", "split ($d=2$)", "split ($d=3$)"]
+
+
+MODEL_CMAP = {
+    "WCBLE": "#AF56BA",
+    "CBLE": "#b488ba",
+    "tLDA": "#bababa",
+    "XDAWNCov-TS-LR": "#FFC61E",
+    "ERPCov-TS-LR": "#F28522",
+}
+
+
 # Function to configure matplotlib styles
 def configure_matplotlib_style():
     custom_color_palette = [
@@ -73,13 +92,14 @@ def configure_matplotlib_style():
 # Golden ratio to set aesthetic figure height
 inches_per_pt = 1 / 72.27
 # textwidth_pt = 345 # manuscript
-textwidth_pt = 318.66946  # booklet
+# textwidth_pt = 318.66946  # booklet
+textwidth_pt = 341.43307
 
 textwidth_in = textwidth_pt * inches_per_pt
 
 
 def save_pgf_trim(
-    fig, ax, path, width=textwidth_in, height=None, rows=1, columns=1, **kwargs
+    fig, ax, path, width=textwidth_in, height=None, rows=1, columns=1, pad=0, **kwargs
 ):
     if height is None:
         golden_ratio = (5**0.5 - 1) / 2
@@ -94,12 +114,16 @@ def save_pgf_trim(
     print(margin_left)
     fig.set_size_inches(width + margin_left, height)
     fig.patch.set_alpha(0)
-    plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=0, **kwargs)
-    prepend = "\\hspace{-" + str(margin_left) + "in}\n%"
+    plt.savefig(path, format="pgf", bbox_inches="tight", pad_inches=pad, **kwargs)
+    prepend = "\\hspace{-" + str(margin_left + pad) + "in}\n%"
+    if pad:
+        append = "\\vspace{-" + str(pad) + "in}"
+    else:
+        append = ""
     with open(path, "r") as original:
         data = original.read()
     with open(path, "w") as modified:
-        modified.write(prepend + data)
+        modified.write(prepend + data + append)
 
 
 def remove_tickspec(input_string):

@@ -1,0 +1,236 @@
+,dataset,condition,label,evoked,subject,evoked_path
+0,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=57), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_overt_target.fif
+1,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=292), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_overt_non-target.fif
+2,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=227), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_covert_non-target.fif
+3,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=40), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_covert_target.fif
+4,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=343), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=1$)_non-target.fif
+5,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=83), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=1$)_target.fif
+6,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=87), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=1$)_distractor.fif
+7,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=90), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=2$)_distractor.fif
+8,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=361), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=2$)_non-target.fif
+9,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=92), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=2$)_target.fif
+10,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=229), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=3$)_non-target.fif
+11,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=56), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=3$)_target.fif
+12,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=55), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A08,evokeds/CVSA-ERP/A08_split ($d=3$)_distractor.fif
+13,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=295), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_overt_non-target.fif
+14,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_overt_target.fif
+15,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=298), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_covert_non-target.fif
+16,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_covert_target.fif
+17,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=106), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=1$)_distractor.fif
+18,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=432), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=1$)_non-target.fif
+19,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=109), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=1$)_target.fif
+20,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=473), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=2$)_non-target.fif
+21,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=118), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=2$)_distractor.fif
+22,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=118), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=2$)_target.fif
+23,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=240), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=3$)_non-target.fif
+24,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=3$)_target.fif
+25,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A13,evokeds/CVSA-ERP/A13_split ($d=3$)_distractor.fif
+26,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=299), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_overt_non-target.fif
+27,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_overt_target.fif
+28,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=296), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_covert_non-target.fif
+29,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_covert_target.fif
+30,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=468), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=1$)_non-target.fif
+31,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=118), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=1$)_distractor.fif
+32,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=116), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=1$)_target.fif
+33,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=112), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=2$)_target.fif
+34,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=463), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=2$)_non-target.fif
+35,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=117), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=2$)_distractor.fif
+36,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=3$)_target.fif
+37,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=238), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=3$)_non-target.fif
+38,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A18,evokeds/CVSA-ERP/A18_split ($d=3$)_distractor.fif
+39,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=250), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_overt_non-target.fif
+40,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=50), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_overt_target.fif
+41,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_covert_non-target.fif
+42,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_covert_target.fif
+43,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=461), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=1$)_non-target.fif
+44,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=115), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=1$)_distractor.fif
+45,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=113), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=1$)_target.fif
+46,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=478), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=2$)_non-target.fif
+47,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=2$)_distractor.fif
+48,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=2$)_target.fif
+49,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=51), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=3$)_target.fif
+50,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=209), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=3$)_non-target.fif
+51,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=51), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A06,evokeds/CVSA-ERP/A06_split ($d=3$)_distractor.fif
+52,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=53), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_overt_target.fif
+53,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=287), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_overt_non-target.fif
+54,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=297), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_covert_non-target.fif
+55,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=58), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_covert_target.fif
+56,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=116), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=1$)_target.fif
+57,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=462), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=1$)_non-target.fif
+58,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=118), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=1$)_distractor.fif
+59,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=453), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=2$)_non-target.fif
+60,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=114), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=2$)_target.fif
+61,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=118), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=2$)_distractor.fif
+62,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=57), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=3$)_target.fif
+63,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=237), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=3$)_non-target.fif
+64,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A07,evokeds/CVSA-ERP/A07_split ($d=3$)_distractor.fif
+65,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=54), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_overt_target.fif
+66,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=265), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_overt_non-target.fif
+67,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=268), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_covert_non-target.fif
+68,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=52), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_covert_target.fif
+69,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=76), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=1$)_distractor.fif
+70,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=1$)_non-target.fif
+71,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=71), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=1$)_target.fif
+72,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=93), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=2$)_target.fif
+73,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=381), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=2$)_non-target.fif
+74,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=96), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=2$)_distractor.fif
+75,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=163), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=3$)_non-target.fif
+76,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=44), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=3$)_distractor.fif
+77,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=42), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A15,evokeds/CVSA-ERP/A15_split ($d=3$)_target.fif
+78,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=295), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_overt_non-target.fif
+79,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=58), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_overt_target.fif
+80,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=250), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_covert_non-target.fif
+81,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=50), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_covert_target.fif
+82,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=440), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=1$)_non-target.fif
+83,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=110), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=1$)_target.fif
+84,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=110), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=1$)_distractor.fif
+85,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=408), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=2$)_non-target.fif
+86,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=102), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=2$)_target.fif
+87,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=102), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=2$)_distractor.fif
+88,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=54), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=3$)_target.fif
+89,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=220), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=3$)_non-target.fif
+90,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=54), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A04,evokeds/CVSA-ERP/A04_split ($d=3$)_distractor.fif
+91,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=299), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_overt_non-target.fif
+92,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_overt_target.fif
+93,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_covert_target.fif
+94,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_covert_non-target.fif
+95,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=1$)_non-target.fif
+96,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=1$)_distractor.fif
+97,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=1$)_target.fif
+98,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=2$)_distractor.fif
+99,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=2$)_non-target.fif
+100,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=2$)_target.fif
+101,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=3$)_distractor.fif
+102,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=240), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=3$)_non-target.fif
+103,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A19,evokeds/CVSA-ERP/A19_split ($d=3$)_target.fif
+104,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_overt_non-target.fif
+105,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_overt_target.fif
+106,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_covert_non-target.fif
+107,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_covert_target.fif
+108,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=478), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=1$)_non-target.fif
+109,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=1$)_target.fif
+110,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=117), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=1$)_distractor.fif
+111,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=479), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=2$)_non-target.fif
+112,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=2$)_target.fif
+113,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=119), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=2$)_distractor.fif
+114,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=3$)_distractor.fif
+115,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=240), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=3$)_non-target.fif
+116,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A02,evokeds/CVSA-ERP/A02_split ($d=3$)_target.fif
+117,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_overt_non-target.fif
+118,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_overt_target.fif
+119,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_covert_non-target.fif
+120,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_covert_target.fif
+121,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=1$)_distractor.fif
+122,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=1$)_non-target.fif
+123,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=1$)_target.fif
+124,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=2$)_non-target.fif
+125,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=2$)_target.fif
+126,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=2$)_distractor.fif
+127,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=240), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=3$)_non-target.fif
+128,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=3$)_distractor.fif
+129,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A17,evokeds/CVSA-ERP/A17_split ($d=3$)_target.fif
+130,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=296), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_overt_non-target.fif
+131,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_overt_target.fif
+132,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=296), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_covert_non-target.fif
+133,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_covert_target.fif
+134,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=1$)_distractor.fif
+135,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=467), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=1$)_non-target.fif
+136,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=1$)_target.fif
+137,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=477), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=2$)_non-target.fif
+138,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=2$)_target.fif
+139,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=119), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=2$)_distractor.fif
+140,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=239), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=3$)_non-target.fif
+141,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=3$)_target.fif
+142,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A09,evokeds/CVSA-ERP/A09_split ($d=3$)_distractor.fif
+143,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=284), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_overt_non-target.fif
+144,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=54), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_overt_target.fif
+145,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=56), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_covert_target.fif
+146,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=292), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_covert_non-target.fif
+147,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=460), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=1$)_non-target.fif
+148,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=113), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=1$)_distractor.fif
+149,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=116), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=1$)_target.fif
+150,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=473), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=2$)_non-target.fif
+151,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=117), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=2$)_target.fif
+152,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=117), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=2$)_distractor.fif
+153,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=59), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=3$)_target.fif
+154,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=237), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=3$)_non-target.fif
+155,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A12,evokeds/CVSA-ERP/A12_split ($d=3$)_distractor.fif
+156,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=235), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_overt_non-target.fif
+157,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=48), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_overt_target.fif
+158,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=277), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_covert_non-target.fif
+159,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=53), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_covert_target.fif
+160,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=349), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=1$)_non-target.fif
+161,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=87), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=1$)_distractor.fif
+162,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=83), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=1$)_target.fif
+163,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=371), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=2$)_non-target.fif
+164,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=94), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=2$)_distractor.fif
+165,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=95), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=2$)_target.fif
+166,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=147), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=3$)_non-target.fif
+167,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=45), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=3$)_target.fif
+168,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=41), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A14,evokeds/CVSA-ERP/A14_split ($d=3$)_distractor.fif
+169,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=260), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_overt_non-target.fif
+170,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=52), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_overt_target.fif
+171,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=221), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_covert_non-target.fif
+172,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=43), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_covert_target.fif
+173,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=343), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=1$)_non-target.fif
+174,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=80), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=1$)_target.fif
+175,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=90), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=1$)_distractor.fif
+176,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=398), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=2$)_non-target.fif
+177,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=93), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=2$)_distractor.fif
+178,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=101), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=2$)_target.fif
+179,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=51), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=3$)_distractor.fif
+180,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=52), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=3$)_target.fif
+181,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=205), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A03,evokeds/CVSA-ERP/A03_split ($d=3$)_non-target.fif
+182,CVSA-ERP,overt,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_overt_non-target.fif
+183,CVSA-ERP,overt,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_overt_target.fif
+184,CVSA-ERP,covert,non-target,"<Evoked | 'non-target' (average, N=300), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_covert_non-target.fif
+185,CVSA-ERP,covert,target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_covert_target.fif
+186,CVSA-ERP,split ($d=1$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=1$)_non-target.fif
+187,CVSA-ERP,split ($d=1$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=1$)_distractor.fif
+188,CVSA-ERP,split ($d=1$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=1$)_target.fif
+189,CVSA-ERP,split ($d=2$),target,"<Evoked | 'target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=2$)_target.fif
+190,CVSA-ERP,split ($d=2$),non-target,"<Evoked | 'non-target' (average, N=480), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=2$)_non-target.fif
+191,CVSA-ERP,split ($d=2$),distractor,"<Evoked | 'non-target' (average, N=120), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=2$)_distractor.fif
+192,CVSA-ERP,split ($d=3$),non-target,"<Evoked | 'non-target' (average, N=240), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=3$)_non-target.fif
+193,CVSA-ERP,split ($d=3$),distractor,"<Evoked | 'non-target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=3$)_distractor.fif
+194,CVSA-ERP,split ($d=3$),target,"<Evoked | 'target' (average, N=60), -0.195 – 0.9975 s, baseline -0.2 – 0 s, 15 ch, ~67 kB>",A16,evokeds/CVSA-ERP/A16_split ($d=3$)_target.fif
+195,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1425), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A08,evokeds/BNCI2014-009/A08_covert_non-target.fif
+196,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=286), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A08,evokeds/BNCI2014-009/A08_covert_target.fif
+197,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1439), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A08,evokeds/BNCI2014-009/A08_overt_non-target.fif
+198,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A08,evokeds/BNCI2014-009/A08_overt_target.fif
+199,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1338), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A10,evokeds/BNCI2014-009/A10_covert_non-target.fif
+200,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=252), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A10,evokeds/BNCI2014-009/A10_covert_target.fif
+201,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1389), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A10,evokeds/BNCI2014-009/A10_overt_non-target.fif
+202,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=272), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A10,evokeds/BNCI2014-009/A10_overt_target.fif
+203,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A06,evokeds/BNCI2014-009/A06_covert_non-target.fif
+204,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A06,evokeds/BNCI2014-009/A06_covert_target.fif
+205,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A06,evokeds/BNCI2014-009/A06_overt_non-target.fif
+206,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A06,evokeds/BNCI2014-009/A06_overt_target.fif
+207,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1393), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A07,evokeds/BNCI2014-009/A07_covert_non-target.fif
+208,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=274), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A07,evokeds/BNCI2014-009/A07_covert_target.fif
+209,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1393), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A07,evokeds/BNCI2014-009/A07_overt_non-target.fif
+210,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=276), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A07,evokeds/BNCI2014-009/A07_overt_target.fif
+211,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1428), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A05,evokeds/BNCI2014-009/A05_covert_non-target.fif
+212,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=287), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A05,evokeds/BNCI2014-009/A05_covert_target.fif
+213,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1392), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A05,evokeds/BNCI2014-009/A05_overt_non-target.fif
+214,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=272), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A05,evokeds/BNCI2014-009/A05_overt_target.fif
+215,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1428), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A04,evokeds/BNCI2014-009/A04_covert_non-target.fif
+216,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=286), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A04,evokeds/BNCI2014-009/A04_covert_target.fif
+217,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1415), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A04,evokeds/BNCI2014-009/A04_overt_non-target.fif
+218,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=281), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A04,evokeds/BNCI2014-009/A04_overt_target.fif
+219,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A02,evokeds/BNCI2014-009/A02_covert_non-target.fif
+220,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A02,evokeds/BNCI2014-009/A02_covert_target.fif
+221,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A02,evokeds/BNCI2014-009/A02_overt_non-target.fif
+222,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A02,evokeds/BNCI2014-009/A02_overt_target.fif
+223,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1422), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A09,evokeds/BNCI2014-009/A09_covert_non-target.fif
+224,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=285), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A09,evokeds/BNCI2014-009/A09_covert_target.fif
+225,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1403), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A09,evokeds/BNCI2014-009/A09_overt_non-target.fif
+226,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=278), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A09,evokeds/BNCI2014-009/A09_overt_target.fif
+227,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1391), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A03,evokeds/BNCI2014-009/A03_covert_non-target.fif
+228,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=275), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A03,evokeds/BNCI2014-009/A03_covert_target.fif
+229,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1402), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A03,evokeds/BNCI2014-009/A03_overt_non-target.fif
+230,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=278), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A03,evokeds/BNCI2014-009/A03_overt_target.fif
+231,BNCI2014-009,covert,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A01,evokeds/BNCI2014-009/A01_covert_non-target.fif
+232,BNCI2014-009,covert,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A01,evokeds/BNCI2014-009/A01_covert_target.fif
+233,BNCI2014-009,overt,non-target,"<Evoked | 'non-target' (average, N=1440), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A01,evokeds/BNCI2014-009/A01_overt_non-target.fif
+234,BNCI2014-009,overt,target,"<Evoked | 'target' (average, N=288), -0.19531 – 1 s, baseline -0.2 – 0 s, 16 ch, ~50 kB>",A01,evokeds/BNCI2014-009/A01_overt_target.fif

@@ -1,6 +1,9 @@
-\begin{tabular}{@{}llcccccc@{}}
+\sffamily
+\small
+\begin{tabularx}{\textwidth}{@{}XXrrrrrr@{}}
 \toprule
- & test & overt & covert & split ($d=1$) & split ($d=2$) & split ($d=3$) & combined \\
+  & test & overt & covert & \makecell[r]{split \\ ($d=1$)} & \makecell[r]{split
+  \\($d=2$)} & \makecell[r]{split \\ ($d=3$)} & combined \\
 classifier & train &  &  &  &  &  &  \\
 \midrule
 \multirow[t]{6}{*}{CBLE} & overt & 85.59 & 66.68 & 63.92 & 60.22 & 60.11 & 66.25 \\
@@ -24,4 +27,4 @@ classifier & train &  &  &  &  &  &  \\
  & split ($d=3$) & 63.79 & 72.21 & 70.57 & 72.80 & 76.87 & 76.05 \\
  & combined & 71.09 & 73.36 & 74.53 & 76.07 & 76.26 & 75.15 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
