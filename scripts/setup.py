@@ -22,6 +22,9 @@ condition_cmap = {
     "split ($d=1$)": colors["accent3"],
     "split ($d=2$)": colors["accent3"],
     "split ($d=3$)": colors["accent3"],
+    "split\n($d=1$)": colors["accent3"],
+    "split\n($d=2$)": colors["accent3"],
+    "split\n($d=3$)": colors["accent3"],
 }
 condition_order = ["overt", "covert", "split ($d=1$)", "split ($d=2$)", "split ($d=3$)"]
 

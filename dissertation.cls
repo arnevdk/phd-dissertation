@@ -24,7 +24,7 @@
 %:process options
 \ProcessOptionsX
 %:load \myclasstype
-\PassOptionsToClass{10pt}{book}
+\PassOptionsToClass{12pt}{book}
 \LoadClass{\extendclasstype}% add options if desired
 
 

@@ -123,8 +123,10 @@ for j, snr in enumerate(snrs):
 
         plot_ts(ax_ts, curr_epochs)
         ax_ts.set_yticks([-10, 10])
+        ax_ts.set_yticklabels([str(int(t)) for t in ax_ts.get_yticks()])
         ax_ts.set_ylabel("µV")
         ax_ts.set_xticks([-2, -1, 0, 1, 2])
+        ax_ts.set_xticklabels([str(int(t)) for t in ax_ts.get_xticks()])
         if j == len(snrs) - 1:
             ax_ts.set_xlabel("time (s)")
         else:
@@ -132,10 +134,12 @@ for j, snr in enumerate(snrs):
             ax_ts.tick_params(axis="x", labelbottom=False)
 
 
+cbar_ax.set_yticklabels([str(int(t)) for t in cbar_ax.get_yticks()])
 save_pgf_trim(
     plt.gcf(),
     axs[0, 0],
     f"figures/wcble/simulated-{stc}.pgf",
-    height=8,
+    rows=8,
+    columns=3,
     transparent=True,
 )

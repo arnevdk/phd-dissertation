@@ -69,4 +69,7 @@ fig, ax = plt.subplots(1, 1)
 plot_training_time(training_time[training_time["n_channels"] == 32], ax)
 
 fig.tight_layout()
-save_pgf_trim(fig, ax, "figures/stbf_struct/training_time.pgf", columns=2)
+fig.set_size_inches(textwidth_in, 0.3 * textwidth_in)
+fig.savefig("figures/stbf_struct/training_time.pgf", bbox_inches="tight", pad_inches=0)
+# save_pgf_trim(fig, ax, "figures/stbf_struct/training_time.pgf", columns=2)
+# save_pgf_trim(fig, ax, "figures/stbf_struct/training_time.pgf", columns=2)

@@ -5,7 +5,7 @@ Christopher Paolini}}
 \publicationnote{\Cref{sec:wcble/literature/contrib},
 \crefrange{sec:wcble/methods/cble}{sec:wcble/methods/wcble} (including
 \cref{fig:diagram-train,fig:diagram-eval}), and the third-to-last paragraph of
-\cref{sec:wcble/conclusion} were published as part of~\textcite{VanDenKerchove2024}.}
+\cref{sec:wcble/conclusion} were published as part of \textcite{VanDenKerchove2024}.}
 
 \section{Introduction}
 \label{sec:wcble/intro}
@@ -70,7 +70,7 @@ More generally, the smearing effect leads to difficulties interpreting \ac{erp}
 results and making inferences about amplitude or latency effects because these
 are entangled when using averaging~\cite{Luck2014}.
 
-\begin{figure}
+\begin{figure}[t]
   \centering
   \input{figures/wcble/smearing.tikz.tex}
   \caption[The smearing effect.]{The smearing effect. When obtaining an \ac{erp} template through
@@ -442,18 +442,18 @@ positive, by the difference between the latency and the window onset.
   \includegraphics[width=\textwidth]{figures/wcble/figure1.pdf}
 }{%
   \caption[Schematic representation of the \acs{wcble} training phase.]{%
-    Schematic representation of the \acf{wcble} training phase.
-    (1) The first-stage spatiotemporal binary classifier is trained on a set of
+    The \acf{wcble} training phase.
+    (1) The first-stage classifier is trained on a set of
     epochs.
-    (2) It is then applied to time-shifted copies of the epochs to obtain scores
+    (2) It is then applied to time-shifted copies of the epochs, yielding scores
     and class probabilities over time.
-    (3) The medians of these probability distributions are assumed as the class
+    (3) The medians of the probability distributions are assumed as the class
     latencies.
-    (4) The epochs are aligned to their corresponding class latencies by
-    shifting in time such that all latencies fall at the same moment.
+    (4) The epochs are aligned by shifting in time based on their corresponding class latencies by
+    shifting in time.
     (5) The spatiotemporal classifier is then retrained on the aligned epochs
     for the next iteration.
-    (6) After the iterative process halts, the scores and latencies obtained
+    (6) On convergence, the scores and latencies obtained
     from the last iteration are used to train the second-stage
     classifier.
   }
@@ -473,9 +473,9 @@ in~\cref{sec:robust-latency}.
   \includegraphics[width=\textwidth]{figures/wcble/figure2.pdf}
 }{%
   \caption[Schematic representation of the \acs{wcble} test phase.]{%
-    Schematic representation of the \acf{wcble}. (1) The
-	  first-stage spatiotemporal binary classifier obtained from the training phase is
-	  applied to time-shifted copies of the epochs to obtain scores and class probabilities
+    The \acf{wcble} test phase. (1) The
+	  first-stage classifier obtained from the training phase is
+	  applied to time-shifted copies of the epochs, yielding scores and class probabilities
 	  over time. (2) The medians of these probability distributions are assumed
 	  as the new class latencies. (3) The scores and class latencies are input to the
     trained second-stage classifier, which predicts the label of the epochs.
@@ -559,18 +559,6 @@ Results are presented in \cref{fig:wcble/results/latency}.
 A 95\% confidence interval on each measure was obtained through bootstrapping
 with 1000 permutations.
 
-\begin{figure}
-  \sffamily\sansmath
-  \input{figures/wcble/fig_latency.pgf}
-  \caption[Synthetic latency estimation results]{Correctness of estimated
-  latency for varying jitter ($\sigma$) and \ac{snr} introduced in synthetic evoked target
-  data, measured as Pearson correlation coefficient $\rho$ between
-  estimated and ground truth latencies.
-  \Ac{wcble} estimates latencies more accurately in the presence of noise and
-  high jitter.}
-  \label{fig:wcble/results/latency}
-\end{figure}
-
 % AND HERE ====================================================================
 As the \ac{snr} decreases, both \ac{cble} and \ac{wcble} can accurately
 estimate evoked potential latencies up to a given threshold. After this
@@ -581,7 +569,6 @@ However, we notice that this threshold occurs later for \ac{wcble} than for
 robust in the presence of pink spatiotemporal noise.
 At around -28 dB, \ac{wcble} does not significantly outperform \ac{cble}
 anymore, and both methods get overtaken by the strong presence of noise.
-
 
 \subsection{Classification}
 
@@ -594,16 +581,6 @@ in \cref{sec:wcble/methods}, with both the wavelet-transformed score time series
 and square-transformed latencies as input to a second-stage logistic regression
 classifier with $L_2$-norm regularization ($C=0.2$).
 
-\begin{figure}
-  \sffamily\sansmath
-  \input{figures/wcble/fig_accuracy.pgf}
-  \caption[Synthetic decoding results]{Decoding performance, measured as binary
-  classification accuracy, for \ac{cble}, \ac{wcble}, and their first stage
-  classifier \ac{tlda} for varying introduced jitter ($\sigma$) and \ac{snr} in
-  synthetic evoked target and non-target data.
-  \Ac{wcble} decoding performance is robust to more noise and jitter than the other methods.}
-  \label{fig:wcble/results/accuracy}
-\end{figure}
 
 \Cref{fig:wcble/results/accuracy} shows that the classification accuracy of all
 three methods decreases with $\sigma$ and \ac{snr}, yet \ac{wcble} outperforms
@@ -615,6 +592,29 @@ $\sigma=0.3$ and \ac{snr} = -23 dB.
 \Ac{wcble} always scored better than \ac{cble} and \ac{tlda}, except for
 $\sigma=0.1$ and $\text{\ac{snr}} < 27 \text{dB}$, at which point both \ac{cble}
 and \ac{wcble} performed below the chance level of 50\%.
+
+\begin{figure}[t!]
+  \input{figures/wcble/fig_latency.pgf}
+  \caption[Synthetic latency estimation results]{Correctness of estimated
+  latency for varying jitter ($\sigma$) and \ac{snr} introduced in synthetic evoked target
+  data, measured as Pearson correlation coefficient $\rho$ between
+  estimated and ground truth latencies.
+  \Ac{wcble} estimates latencies more accurately in the presence of noise and
+  high jitter.}
+  \label{fig:wcble/results/latency}
+\end{figure}
+
+
+\begin{figure}[t!]
+  \sffamily\sansmath
+  \input{figures/wcble/fig_accuracy.pgf}
+  \caption[Synthetic decoding results]{Decoding performance, measured as binary
+  classification accuracy, for \ac{cble}, \ac{wcble}, and their first stage
+  classifier \ac{tlda} for varying introduced jitter ($\sigma$) and \ac{snr} in
+  synthetic evoked target and non-target data.
+  \Ac{wcble} decoding performance is robust to more noise and jitter than the other methods.}
+  \label{fig:wcble/results/accuracy}
+\end{figure}
 
 \section{Discussion \& conclusion}
 \label{sec:wcble/conclusion}
@@ -753,6 +753,7 @@ be properly studied for this case.
 \section{\Acs{wcble} algorithm}
 \label{sec:wcble/app/wcble-alg}
 \begin{algorithm}[h]
+  \small
 	\textsc{Train}
 	\smallskip \hrule \smallskip
 	\textbf{Input:} $\{\mat{X}_n^\mathrm{train}\}_{n=1}^N, \mathbf{l^\mathrm{train}},

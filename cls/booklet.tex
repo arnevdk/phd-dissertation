@@ -18,12 +18,12 @@
   layoutvoffset=5mm,
   layoutwidth=160mm,
   layoutheight=240mm,
-  bottom=25mm,
+  bottom=15mm,
   top=25mm,
   showcrop,
   %showframe,
-  inner=20mm,
-  outer=20mm,
+  inner=25mm,
+  outer=15mm,
 ]{geometry}
 \RequirePackage{geometry}
 
@@ -101,11 +101,11 @@
 }{%
   \sffamily\Large\partname\	\thepart%
 }{10pt}{\Huge}[\afterpage{\nopagecolor}]
-\titleformat{\chapter}[display]{\bfseries}{\raggedright\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\Huge}
-\titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\sffamily\bfseries}{\thesubsubsection}{1em}{}
-\titleformat{\paragraph}[runin]{\sffamily\bfseries}{\theparagraph}{1em}{}
+\titleformat{\chapter}[display]{\bfseries}{\raggedright\sffamily\Large\chaptertitlename\ \thechapter}{10pt}{\raggedright\Huge}
+\titleformat{\section}{\sffamily\Large\bfseries\raggedright}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\raggedright}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\raggedright}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\sffamily\bfseries\raggedright}{\theparagraph}{1em}{}
 
 \titlespacing*{\section}{0pt}{1.25em}{.25em}
 \titlespacing*{\subsection}{0pt}{1.25em}{.25em}
@@ -167,7 +167,7 @@
 \let\oldmainmatter\mainmatter
 \renewcommand{\mainmatter}{\oldmainmatter\pagestyle{main}}
 
-\setlength{\headheight}{13.6pt} % Adjust as per the warning
+\setlength{\headheight}{14.5pt} % Adjust as per the warning
 
 % Setup tables==================================================================
 

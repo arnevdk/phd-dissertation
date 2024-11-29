@@ -48,7 +48,7 @@ fig, axs = plt.subplots(
     len(conditions),
     sharex=True,
     sharey=True,
-    figsize=(textwidth_in, 1.75 * textwidth_in),
+    figsize=(textwidth_in, 1.6 * textwidth_in),
     layout="constrained",
 )
 axs = axs.reshape((len(subjects), len(conditions)))

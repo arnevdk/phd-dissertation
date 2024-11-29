@@ -4,3 +4,5 @@ matplotlib<3.6
 numpy<2.0
 webcolors<24.6.0
 git+ssh://git@gitlab.kuleuven.be/u0136005/mcbf-python.git#egg=mcbf
+statsmodels
+statannotations

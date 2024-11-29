@@ -16,6 +16,7 @@
 	#1
 }
 \epigraph{%
+  \justifying
   I journeyed to the market to purchase a cow, its price set at ninety-and-seven coins.
   Lacking this sum, I therefore borrowed fifty coins from each of two good friends.
   With these hundred coins, I paid for the beast and received three coins in change.
@@ -313,7 +314,7 @@
 	\cref{fig:kronlda-covs}h) and a temporal component (\cref{fig:kronlda-covs}i and
 	\cref{fig:kronlda-covs}j).
 
-	\begin{figure}
+  \begin{figure}[t]
 		%\includegraphics[width=\linewidth]{figures/stbf_struct/covs.eps}
     \begin{subfigure}{\textwidth/4}
 		  \includegraphics[width=\linewidth]{figures/stbf_struct/covs-0.eps}
@@ -959,8 +960,7 @@
 
 \clearpage
 \begin{subappendices}
-  \section{Accuracies per number of trials and available training data}
-
+  \section{\Acs{stbf-struct} selection accuracies}
   \begin{table}[!ht]
       \small
       \sffamily
@@ -968,6 +968,8 @@
       \caption[Accuracies for \acs{stbf-struct}.]{Accuracies (\%) for \ac{stbf-struct}.}
       \label{tab:stbf-struct/accuracies/stbf-struct}
   \end{table}
+  \clearpage
+  \section{\Acs{stbf-shrunk} selection accuracies}
   \begin{table}[!ht]
       \small
       \sffamily
@@ -976,6 +978,8 @@
       \ac{stbf-shrunk}.}
       \label{tab:stbf-struct/accuracies/stbf-shrunk}
   \end{table}
+  \clearpage
+  \section{\Acs{stbf-emp} selection accuracies}
   \begin{table}[!ht]
       \small
       \sffamily
@@ -984,6 +988,8 @@
       \ac{stbf-emp}.}
       \label{tab:stbf-struct/accuracies/stbf-emp}
   \end{table}
+  \clearpage
+  \section{XDAWN+RG selection accuracies}
   \begin{table}[!ht]
       \small
       \sffamily

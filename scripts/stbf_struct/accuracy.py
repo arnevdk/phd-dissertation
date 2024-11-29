@@ -119,7 +119,7 @@ save_pgf_trim(
     fig,
     axs[0, 0],
     "figures/stbf_struct/accuracy_all.pgf",
-    width=textwidth_in * 1.05,
+    width=textwidth_in,
     rows=8,
     columns=3,
 )

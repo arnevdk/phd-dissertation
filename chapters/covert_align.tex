@@ -305,34 +305,18 @@ and \ac{wcble} for single-trial classification to investigate the contributions 
 For this evaluation, epochs were rejected when the peak-to-peak amplitude
 exceeded 800 µV, and for the CVSA-ERP dataset, if the user's gaze differed by more than
 10 degrees of visual angle from the fixation crosshair.
-\begin{figure}
-  \bigskip
-	\begin{subfigure}{\linewidth}
-		\caption{}
-		\label{fig:covert-align/single-trial-roc-auc-diff}%
-		\includegraphics[width=\linewidth]{figures/covert_align/figure4a.pdf}
-	\end{subfigure}
-
-	\bigskip
-
-	\begin{subfigure}{\linewidth}
-		\caption{}
-		\label{fig:covert-align/block-eval}%
-		\includegraphics[width=\linewidth]{figures/covert_align/figure4b.pdf}
-	\end{subfigure}
-  \caption[Decoder performance.]{%
-		\subref{fig:covert-align/single-trial-roc-auc-diff} Difference in cross-validated
-    single-trial classification \acl{rocauc} ($\Delta$ROC-AUC)
+\begin{figure}[t]
+	%\includegraphics[width=\linewidth]{figures/covert_align/figure4a.pdf}
+  \input{figures/covert_align/roc_auc_diff.pgf}
+  \caption[Difference in classification \acs{rocauc}.]{%
+    Difference in cross-validated
+    single-trial classification \acl{rocauc} (\%.)
     between \ac{cble}, \ac{wcble}, and their first-stage classifier \ac{tlda}.
     95\% confidence intervals were determined using $k=1000$ bootstrapping.
     Our proposed \ac{wcble} decoder outperforms \ac{tlda} and \ac{cble} for covert and split
     ($d=3$)	\ac{vsa}. \ac{cble} scores on par with \ac{tlda}.
-		\subref{fig:covert-align/block-eval} Cross-validated target selection accuracy for
-    all decoders plotted as a function of the number of test repetitions in
-    different VSA conditions. Significance was determined using one-sided
-    (\ac{wcble} $>$ other) Wilcoxon signed-rank tests using False Discovery Rate correction
-    ($*= p<0.05$, $**=p<0.01$, $***=p<0.001$). \ac{wcble} generally achieves the highest
-    covert \ac{vsa} target selection accuracy.}
+    }
+		\label{fig:covert-align/single-trial-roc-auc-diff}%
 \end{figure}
 
 Wilcoxon signed-rank tests controlled for multiple comparisons by Benjamini
@@ -352,6 +336,7 @@ increased \ac{wcble} performance over \ac{tlda} and \ac{cble} as $d$ increases.
 \ac{cble} failed to significantly outperform its first-stage classifier \ac{tlda} in all
 evaluated \ac{vsa} conditions.
 \Cref{tab:covert-align/results/single-trial} reports all single-trial classification scores for all considered models, datasets, and conditions.
+
 
 \Cref{fig:covert-align/block-eval} shows the cross-validated \ac{bci} selection
 accuracy on the BNCI2014-009 and the CVSA-ERP datasets for all investigated
@@ -375,6 +360,18 @@ No significant increase of \ac{wcble} over other methods was found in split \ac{
 While Riemannian methods are significantly outperformed by \ac{tlda}, \ac{cble}, and \ac{wcble}
 in the BNCI2014-009 dataset, they perform approximately on par with \ac{tlda} and
 \ac{wcble} in CVSA-ERP.
+\begin{figure}[t]
+		\label{fig:covert-align/block-eval}%
+		\includegraphics[width=\linewidth]{figures/covert_align/figure4b.pdf}
+  \caption[Selection accuracy.]{%
+		Cross-validated target selection accuracy for
+    all decoders plotted as a function of the number of test repetitions in
+    different VSA conditions. Significance was determined using one-sided
+    (\ac{wcble} $>$ other) Wilcoxon signed-rank tests using False Discovery Rate correction
+    ($*= p<0.05$, $**=p<0.01$, $***=p<0.001$). \ac{wcble} generally achieves the highest
+    covert \ac{vsa} target selection accuracy.}
+\end{figure}
+
 
 Overall, we observed a 5.10\%pt. accuracy increase with \ac{wcble} over
 \ac{tlda} for covert \ac{vsa} in the BNCI2014-009 dataset and 5.55\%pt. in the CVSA-ERP dataset.
@@ -414,32 +411,23 @@ covert, and split \ac{vsa}, disregarding parameter $d$.
 the pairwise differences in area under the ROC curve ($\Delta$ROC-AUC)
 between the investigated decoders.
 In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/results/bloc-acc}.
-\begin{figure*}
-  \bigskip
-	\begin{subfigure}{\linewidth}
-		\caption{}
+\begin{figure}[t!]
+  \sffamily
+  \footnotesize
+	\begin{subfigure}{\textwidth}
+		%\includegraphics[width=\linewidth]{figures/covert_align/figure5a.pdf}
+    \hspace{-.5in}\input{figures/covert_align/cross_cvsa-erp.pgf}
+		\caption{Cross-condition performance for CVSA-ERP}
 		\label{fig:covert-align/covert-cross-eval}
-		\includegraphics[width=\linewidth]{figures/covert_align/figure5a.pdf}
 	\end{subfigure}
-
-	\bigskip
-	\bigskip
-
-	\begin{subfigure}[c]{.48\linewidth}
-		\caption{}
+	\begin{subfigure}{\textwidth}
+		%\includegraphics[width=\linewidth]{figures/covert_align/figure5b.pdf}
+    \hspace{-.5in}\input{figures/covert_align/cross_bnci2014-009.pgf}
+		\caption{Cross-condition performance for BNCI2014-009}
 		\label{fig:covert-align/aloise2012-cross-eval}
-		\includegraphics[width=\linewidth]{figures/covert_align/figure5b.pdf}
-	\end{subfigure}\hfill%
-	\begin{subfigure}[c]{.48\linewidth}
-		\caption{}
-		\label{fig:jitter}
-		\includegraphics[width=\linewidth]{figures/covert_align/figure5c.pdf}
-	\end{subfigure}
-
-  \caption[Cross-condition classifier performance and estimated jitter.]{
-		\subref{fig:covert-align/covert-cross-eval},\subref{fig:covert-align/aloise2012-cross-eval}
-    Difference in cross-validated area under the receiver
-		operating characteristic curves between Classifier-based Latency Estimation
+	\end{subfigure}%
+  \caption[Cross-condition classifier performance]{
+    Difference in cross-validated  \ac{rocauc} (\%.) between Classifier-based Latency Estimation
     (CBLE) and Woody CBLE (WCBLE) across conditions for the CVSA-ERP and
     BNCI2014-009 datasets, respectively.
     A decoder is each	time trained on a visuospatial attention (VSA) condition
@@ -447,15 +435,8 @@ In this evaluation, bad epochs were rejected as in \cref{sec:covert-align/result
     WCBLE yields an improvement in most
 		non-overt \ac{vsa} settings, indicating it is more invariant to eye gaze than
     CBLE and \ac{tlda}.
-		\subref{fig:jitter} Jitter characterized as the interquartile range (IQR)
-		of target epochs for different \ac{vsa} conditions. Overt \ac{vsa} exhibits lower
-    jitter than other conditions.
-    Significance of differences
-    was determined with two-sided Wilcoxon signed-rank tests with False Discovery
-    Rate correction on per-subject jitter ($*= p<0.05$, $**=p<0.01$,
-    $***=p<0.001$, $****=p<0.0001$).
-	}
-\end{figure*}
+  }
+\end{figure}
 When comparing \ac{cble} and \ac{tlda}, we do not observe large differences in any of the
 evaluated settings, similar to the within-subject conditions, with the greatest
 \ac{rocauc} difference -2\% for training in split $(d=2)$ \ac{vsa} and overt \ac{vsa}.
@@ -476,6 +457,19 @@ evaluated per session and trained on all combined \ac{vsa} conditions as in
 Since all conditions have the P3 in common, the estimated latencies can be
 interpreted as P3 latencies.
 Results are shown in \cref{fig:jitter}.
+\begin{figure}[t!]
+		%\includegraphics[width=\linewidth]{figures/covert_align/figure5c.pdf}
+    \input{figures/covert_align/jitter.pgf}
+    \caption[Estimated jitter]{ Jitter characterized as the interquartile range (IQR)
+	of target epochs for different \ac{vsa} conditions. Overt \ac{vsa} exhibits lower
+   jitter than other conditions.
+   Significance of differences
+   was determined with two-sided Wilcoxon signed-rank tests with False Discovery
+   Rate correction on per-subject jitter ($*= p<0.05$, $**=p<0.01$,
+   $***=p<0.001$, $****=p<0.0001$).}
+		\label{fig:jitter}
+\end{figure}
+
 
 Two-sided Wilcoxon rank-sum tests on jitter, expressed as the interquartile
 range (IQR) of the estimated latencies of target trials, revealed that overt
