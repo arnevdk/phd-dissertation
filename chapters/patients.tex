@@ -1,8 +1,8 @@
 \chapter{Case studies}
 \label{sec:patients}
-\epigraph{I knew there would be a lot of unexpected issues involved with
-patient experiments, but I would never have guessed that there would be baby
-goats in the experiment room\ldots}{Juliette}
+\epigraph{``I knew there would be a lot of unexpected issues involved with
+patient experiments, but I never would have guessed that there would be a baby
+goat in the experiment room\ldots''}{Juliette}
 
 \section{Introduction}
 
@@ -124,26 +124,24 @@ To qualify for inclusion, participants must:
 \end{enumerate}
 Participants were excluded if they:
 \begin{enumerate}
-  \item have a diagnosis of a major medical condition, including any major
+  \item had a diagnosis of a major medical condition, including any major
     neurological or psychiatric disorder other than those of interest based on
     inclusion criteria~\ref{item:patients/inclusion/wolpaw},
     and~\ref{item:patients/inclusion/oculomotor}\label{item:patients/exclusion/medical}
-  \item have a predisposition to or have a history of any kind of epileptic seizures,
+  \item had a predisposition to or a history of any kind of epileptic seizures,
     including photosensitive epilepsy,\label{item:patients/exclusion/epilepsy}
-  \item have a severe loss in vision or hearing that would significantly impair
+  \item had a severe loss in vision or hearing that would significantly impair
         participation in the experiment,\label{item:patients/exclusion/vision}
   \item are currently using specific psychoactive medications or substances that could affect the outcome.\label{item:patients/exclusion/cognitive}
-  \item be unable to understand the experiment instructions and cooperate,
-  \item have any other limitations preventing them from performing the given task.
+  \item were unable to understand the experiment instructions and cooperate,
+  \item had any other limitations preventing them from performing the given task.
 \end{enumerate}
 
-In total, 11 individuals were contacted, of which one person with \ac{ms} was excluded based on
-criterion~\ref{item:patients/exclusion/vision}, one person recovering from
-\ac{tbi} on
-both~\ref{item:patients/exclusion/epilepsy}
+In total, 11 individuals were contacted. Of these, which one person with
+\ac{ms} was excluded based on criterion~\ref{item:patients/exclusion/vision}.
+One person recovering from \ac{tbi} was excluded based on both~\ref{item:patients/exclusion/epilepsy}
 and~\ref{item:patients/exclusion/cognitive}, and one person recovering from
-stroke based
-on~\ref{item:patients/exclusion/medical}.
+stroke based on~\ref{item:patients/exclusion/medical}.
 One further person recovering from a stroke was excluded due to technical
 difficulties during the experimental session.
 Vision was assessed using a LogMAR chart~\cite{Bailey1976}.
@@ -155,18 +153,6 @@ We refer to \cref{sec:gaze-independent/gaze-dependence/incidence} for a short
 description of these conditions.
 Table~\ref{tab:patients/patients} lists the included participants and their
 diagnoses.
-
-\newcommand{\fnkuebler}{%
-  \footnote{
-``With minor degree of impairment,
-we refer to patients who had only slightly impaired limb movement
-and normal speech. Under the category moderate impairment, we
-summarized those patients with restricted limb movement (wheelchair-bound) and
-unaffected speech or intact limb movement without speech (such as the bulbar form of ALS which first affects speech
-and swallowing). Patients who were almost tetraplegic with restricted speech were considered majorly impaired. Categories four
-and five were the LIS and the CLIS, respectively."~\cite{Kuebler2008}
-  }
-}
 \begin{table}[t]
   \centering
   \makebox[\textwidth][c]{%
@@ -176,16 +162,24 @@ and five were the LIS and the CLIS, respectively."~\cite{Kuebler2008}
   \caption[Included participants with their diagnosis and
   capabilities.]{Included participants with their diagnosis and
   capabilities.
-  Trach.: underwent a tracheostomy, Cls. W: classification according
-  to~\textcite{Wolpaw2006}, Cls. KB: classification according
-  to~\textcite{Kuebler2008}\fnkuebler.
+  Trach.: underwent a tracheostomy, W: classification according
+  to~\textcite{Wolpaw2006}\footnotemark[1], KB: classification according
+  to~\textcite{Kuebler2008}\footnotemark[2].
   }
   \label{tab:patients/patients}
 \end{table}
+\subsection{Visual skills and eye tracking and eye motor examination}
+\footnotetext[1]{See \cpageref{fn:bci/wolpawcrit} \cref{fn:bci/wolpawcrit}.}
+\footnotetext[2]{``With minor degree of impairment,
+we refer to patients who had only slightly impaired limb movement
+and normal speech. Under the category moderate impairment, we
+summarized those patients with restricted limb movement (wheelchair-bound) and
+unaffected speech or intact limb movement without speech. \elide Patients who were almost tetraplegic with restricted speech were considered majorly impaired. Categories four
+and five were the LIS and the CLIS, respectively."~\cite{Kuebler2008}}
 %\todo{include years since diagnosis}
 
 
-\subsection{Visual skills and eye tracking and eye motor examination}
+
 
 Self-reported eye motor and visual abnormalities were recorded according to the
 relevant visual \ac{bci} skills presented by~\textcite{FriedOken2020}.
@@ -200,8 +194,6 @@ check if it revealed any further eye motor abnormalities.
 This was not the case.
 
 \begin{table}[t]
-  \centering
-  \footnotesize
   \input{chapters/patients_table_eye.tex}
   \caption[Visual skills of the included participants.]{%
   Visual skills of the included participants.
@@ -342,8 +334,10 @@ The participant's position relative to the eye tracker might have shifted
 throughout the experimental session despite our best efforts, e.g., because they needed aspiration of their
 tracheostomy.
 
-\fullpagefig{%
-  \includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
+\fullpagefig[anchor.north]{%
+  %\includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
+  %\includegraphics[width=\textwidth]{figures/patients/fig_gaze.pdf}
+  \inputpgf{figures/patients}{fig_gaze.pgf}
 }{%
   \caption[Distribution of the recorded gaze position.]{%
     Distribution of the recorded gaze position during the experimental session in the three \ac{vsa}

@@ -11,13 +11,18 @@
 %  PC4  & deviation of the left eye & 0.6 \\
 %  \bottomrule
 %\end{tabular}
-\footnotesize
+
+\small
+\sffamily
 \let\oldarraystretch\arraystretch
 \renewcommand{\arraystretch}{2}
 \newcommand{\skill}{\cellcolor{lightgray}}
 \newcommand{\noskill}{\cellcolor{accent1}\textcolor{muteblack}{\BigCross}}
 \newcommand{\snoskill}{\cellcolor{accent2}\textcolor{muteblack}{\BigDiamondshape}}
-\begin{tabular}{r|ccccccc}
+\arrayrulecolor{darkgray} % Set line color to darkgray
+
+\begin{tabular}{|l|ccccccc|}
+  \hline
                           & PA1      & PB1      & PB2       & PB4      & PC2       & PC3       & PC4 \\ \hline
   Visual fixation         & \noskill & \noskill & \noskill  & \noskill & \noskill  & \noskill  & \noskill \\
   Eyelid function         & \skill   & \skill   & \skill    & \skill   &  \skill  & \noskill  & \noskill \\
@@ -26,4 +31,5 @@
   Field of vision         & \skill   & \skill   & \skill    & \skill   & \skill    & \noskill  & \noskill \\
   Involuntary movement    & \skill   & \noskill & \snoskill  & \noskill &  \noskill  & \noskill  & \skill \\ \hline
   Visual acuity (logMAR)  & 0.0      & 0.0      & 0.6       & 0.2      & 0.0       & 0.7  & 0.6\\
+  \hline
 \end{tabular}

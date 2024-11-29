@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib.patches import Rectangle
 from mne import read_epochs
-from setup import colors, configure_matplotlib_style, pagesize, savefig_kws
+from setup import colors, configure_matplotlib_style, textwidth_in
 
 configure_matplotlib_style()
 
@@ -48,7 +48,7 @@ fig, axs = plt.subplots(
     len(conditions),
     sharex=True,
     sharey=True,
-    figsize=pagesize,
+    figsize=(textwidth_in, 1.75 * textwidth_in),
     layout="constrained",
 )
 axs = axs.reshape((len(subjects), len(conditions)))
@@ -56,17 +56,17 @@ for i, (subject, sub) in enumerate(subjects.items()):
     for j, condition in enumerate(conditions):
         axs[i, j].set_title(f"{subject}, {condition} VSA")
         hist = np.load(f"data/patients/gaze/gaze_sub-{sub}_cond-{condition}.npy")
-        axs[i, j].pcolormesh(xedges, yedges, hist.T)
+        axs[i, j].pcolormesh(xedges, yedges, hist.T, rasterized=True)
         axs[i, j].set_aspect("equal")
         axs[i, j].set_axis_off()
         for target in ["center", 0, 1, 2, 3, 4, 5]:
             pos = get_target_pos(target)
-            if condition=='overt':
-                c=colors["lightgray"] if target == "center" else colors["accent1"]
-            elif condition=='covert':
-                c=colors["accent1"] if target == "center" else colors["lightgray"]
-            elif condition == 'free':
-                c=colors["lightgray"]
+            if condition == "overt":
+                c = colors["lightgray"] if target == "center" else colors["accent1"]
+            elif condition == "covert":
+                c = colors["accent1"] if target == "center" else colors["lightgray"]
+            elif condition == "free":
+                c = colors["lightgray"]
             axs[i, j].scatter(
                 pos[0],
                 pos[1],
@@ -104,5 +104,6 @@ ax_top_left.text(
     va="bottom",
 )
 
-fig.savefig("figures/patients/fig_gaze.pgf", **savefig_kws)
-fig.savefig("figures/patients/fig_gaze.png", dpi=300, **savefig_kws)
+fig.savefig(
+    "figures/patients/fig_gaze.pgf", bbox_inches="tight", pad_inches=0, transparent=True
+)

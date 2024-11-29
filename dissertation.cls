@@ -2,7 +2,7 @@
 \ProvidesPackage{dissertation}[2024/10/02 Dissertation booklet or manuscript]
 
 \RequirePackage{xkeyval}
-\RequirePackage{xcolor}
+\RequirePackage[table]{xcolor}
 \RequirePackage{pgfplots}
 \RequirePackage{amsmath}
 \RequirePackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
