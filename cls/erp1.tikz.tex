@@ -1,0 +1,13 @@
+\usetikzlibrary{calc}
+% Continuous ERP waveform across the entire page
+\begin{tikzpicture}[remember picture, overlay]
+    % Define a vertical position 5 cm above the bottom
+    \coordinate (baseline) at ($(current page.south) + (0, 5)$);
+
+    % Draw a continuous ERP waveform across the page
+    \draw[ultra thick, accent1, smooth, tension=0.5]
+      (current page.west |- baseline)
+      -- (current page.west |- baseline)++(10,0)
+      -- (current page.west |- baseline)++(11,1)
+      -- (current page.east |- baseline);
+\end{tikzpicture}

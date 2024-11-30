@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="170mm"
+   height="250mm"
+   viewBox="0 0 170 250"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="erpI.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4614334"
+     inkscape:cx="293.88955"
+     inkscape:cy="694.52362"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="238"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="true">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999995"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+    <sodipodi:guide
+       position="-49.999997,245"
+       orientation="0,-1"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="4.9999997,240"
+       orientation="1,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="144.99999,4.9999981"
+       orientation="0,-1"
+       id="guide3"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="164.99999,250"
+       orientation="1,0"
+       id="guide4"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#eaeaea;stroke:none;stroke-width:0.499999;stroke-dasharray:5.99998, 5.99998;paint-order:stroke fill markers;fill-opacity:1"
+       id="rect1"
+       width="169.99998"
+       height="250"
+       x="0"
+       y="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#f29018;stroke-width:1;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 170,205 h -20 c -5.72425,0 -11.35668,-20 -14.06492,-19.86771 C 133,185 127.31126,201.86626 124.75848,201.86626 c -2.03804,0 -2.80119,-6.86626 -4.62753,-6.86626 -1.73057,0 -3.56919,16.5481 -5.25299,16.73519 -1.54348,-0.14031 -2.12636,-11.75287 -3.3449,-11.79965 -1.22069,2e-5 -0.93309,5.06446 -5.02731,5.06446 H 0"
+       id="path70"
+       sodipodi:nodetypes="ccccccccc" />
+  </g>
+</svg>

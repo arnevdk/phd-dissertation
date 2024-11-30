@@ -9,6 +9,7 @@
 \RequirePackage{multicol}
 \RequirePackage{amssymb}
 \RequirePackage{xstring}
+\RequirePackage{eso-pic}
 
 % Set page size ================================================================
 \RequirePackage[
@@ -96,8 +97,16 @@
 
 
 % Setup titles
+
+% Command to add a background
+\newcommand{\AddBackground}[1]{%
+  \AddToShipoutPictureBG*{%
+    \includegraphics[width=\paperwidth,height=\paperheight]{#1}
+  }
+}
+
 \titleformat{\part}[display]{%
-  \pagecolor{lightgray}\vspace{10em}\bfseries
+  \AddBackground{cls/erp\thepart.pdf}\pagecolor{lightgray}\vspace{10em}\bfseries
 }{%
   \sffamily\Large\partname\	\thepart%
 }{10pt}{\Huge}[\afterpage{\nopagecolor}]
