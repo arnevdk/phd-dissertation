@@ -526,15 +526,15 @@
 
 	\subsection{Software and preprocessing}
 	Data processing and classifier analysis were performed in Python using
-	Scikit-Learn (version 1.0.1)~\cite{Pedregosa2011} and SciPy (version
+	Scikit-Learn (v1.0.1)~\cite{Pedregosa2011} and SciPy (version
 	1.7.1)~\cite{Virtanen2020}.
 	The preprocessing pipeline was implemented using the MNE-Python toolbox
-	(version 0.24.0)~\cite{Gramfort2013}.
+	(v0.24.0)~\cite{Gramfort2013}.
 	The dataset was converted to BIDS-\ac{eeg} format~\cite{Pernet2019} and managed and
 	loaded with MNE-BIDS (version 0.9)~\cite{Appelhoff2019}.
 	The Riemannian classifier from \cref{sec:riemannian} was implemented using
-	pyRiemann (version 0.2.7).
-	Statistical tests were performed in R (version 4.1.2).
+	pyRiemann (v0.2.7).
+	Statistical tests were performed in R (v4.1.2).
 
 	The \ac{eeg} recorded at 2048 Hz was re-referenced off-line to the average of the mastoids.
 	The reference electrodes were dropped from the analysis.
@@ -591,8 +591,8 @@
 	We opted for a Riemannian
 	geometry-based classifier to compare our results.
 	The Riemannian model (XDAWN+RG) uses the XDAWN spatial filter combined
-	with Riemannian geometry in tangent space as implemented by Barachant et
-	al.~\cite{Barachant2014a}.
+  with Riemannian geometry in tangent space as implemented by
+  \textcite{Barachant2014a}.
 	This classifier uses four XDAWN spatial filters and each epoch's empirical spatial covariance matrix.
 	The target with the maximum score is the prediction of the cued target.
 	XDAWN+RG was trained and validated without downsampling using epochs
@@ -825,7 +825,8 @@
 
 	Second, structured estimation has better time complexity.
 	Covariance estimation and inversion occupy the largest part of the \ac{stbf} training time.
-	For \ac{stbf-emp} and \ac{stbf-shrunk}, the time complexity of this process is $\mathcal{O}(NC^2S^2+C^3S^3)$.
+	For \ac{stbf-emp} and \ac{stbf-shrunk}, the time complexity of this process
+  is described by $\mathcal{O}(NC^2S^2+C^3S^3)$.
 	Thanks to Property~\ref{prop:stbf-struct/inverse-kronecker}, the complexity can be reduced to
 	$\mathcal{O}(NS^2S^2+C^3+S^3)$ for the structured estimator of \ac{stbf-struct}.
 	The results presented in \cref{fig:stbf-struct/training-time} confirm that

@@ -175,7 +175,7 @@ It starts with an average \ac{erp} as a rough estimation of the aligned template
 cross-correlation of this template with all single-trial \acp{erp} and aligning them
 on these time points to form the next template.
 Similarly, cross-correlation template matching can be combined with filtering.
-\textcite{Souloumiac2013} uses XDAWN to construct a spatial filter before
+\textcite{Souloumiac2013} use the XDAWN technique to construct a spatial filter before
 template matching the spatially filtered signal. \textcite{Iturrate2014} uses a
 spatiotemporal filter. Instead of aligning the
 latencies to obtain the template for the next iteration, weighted averaging can
@@ -213,7 +213,7 @@ however, these algorithms lack an integrated approach to deal with multiple
 \ac{erp} components. A clear evaluation of the performance of these
 methods in multi-component settings is lacking.
 
-Some algorithms separate components into stimulus- and response-locked component clusters based on their
+Some algorithms separate components into (sets of) stimulus- and response-locked component clusters based on their
 latency distributions~\cite{Jung2001, Takeda2008, Zhang1998, Yin2009}.
 These algorithms do, however, require a response
 button trigger signal as input to determine the response time, which is
@@ -251,8 +251,7 @@ for jitter-resistant decoding.
 \textcite{Hardiansyah2020} incorporated single-trial latencies in
 classification by peak-picking within a given
 \ac{erp} time window, unaware of the class of the epoch under investigation.
-The \ac{cble} algorithm introduced
-by \textcite{Thompson2012} also explicitly applies latency estimation in a
+The \ac{cble} algorithm by \textcite{Thompson2012} also explicitly applies latency estimation in a
 decoding setting.
 \textcite{Thompson2012} initially formulated \ac{cble} as an offline performance
 prediction method.
@@ -280,7 +279,7 @@ compensate for jitter, to improve covert VSA decoding performance.
 
 Consider a training set of $N$ EEG epochs with $C$ channels of $S$
 samples $\{\mat{X}_n^\mathrm{train} \in \mathbb{R}^{C\times S}\}_{n=1}^N$
-with corresponding training labels $\mathbf{l^\mathrm{train}} \in \{\mathrm{target},
+This dataset has a corresponding set of training labels $\mathbf{l^\mathrm{train}} \in \{\mathrm{target},
 	\textrm{non-target}\}_{n=1}^N$, and a
 similar testing set of $M$ epochs $\{\mat{X}_m^\mathrm{test} \in
 	\mathbb{R}^{C\times S}\}_{m=1}^M$.
@@ -392,7 +391,7 @@ Analogous to equation~\ref{eq:score}, we can now write
 	\label{eq:prob}
 \end{equation}
 The latency features assuming the epoch belongs to a given class
-$l\in\{\textrm{target},\textrm{non-target}\}$ are then defined as the median of
+$l\in\{\textrm{target}, \textrm{non-target}\}$ are then defined as the median of
 the corresponding distributions
 \begin{equation}
   s_l =\mathrm{median}\left[\Pr(s|\mat{X},\theta,l) \right]
@@ -409,8 +408,8 @@ trials as compared to the minimum approach.
 
 \subsection{\acl{wcble}}
 \label{sec:wcble/methods/wcble}
-To improve performance over \ac{cble}, we propose a new algorithm inspired both by
-\ac{cble} and the aforementioned Woody iteration scheme termed \ac{wcble}.
+To improve performance over \ac{cble}, we propose \ac{wcble} a new algorithm inspired both by
+\ac{cble} and the aforementioned Woody iteration scheme.
 Instead of using \ac{cble} to estimate the features of a second-stage classifier
 directly, \ac{cble} latency estimation is used as a step in a Woody iteration scheme.
 While the Woody algorithm iteratively enhances the \ac{snr} of an \ac{erp} template to

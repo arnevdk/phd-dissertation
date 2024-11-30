@@ -143,7 +143,7 @@ features while adhering to a flexible and efficient block-term tensor
 structure.
 This work features the following contributions:
 \begin{enumerate*}[label={\arabic*)}]
-  \item  We develop a forward model for \ac{hoda} to reconstruct a
+  \item  We develop a forward model for \ac{hoda}. It can reconstruct a
 	      given input tensor from the extracted features.
       \item This allows us to introduce a state-of-the-art \ac{bci} feature extraction
         method based on the block-term tensor structure, named \acf{bttda}.
@@ -176,9 +176,8 @@ written as $\ten{X}\mmprs{\mat{U}}{k} =
 \subsection{\Acl{hoda}}
 \Acl{hoda}~\cite{Phan2010} is a
 supervised tensor-based feature extraction technique.
-For a set of $N$ tensors of order $K$
-$\left\{\ten{X}(n)\in\mathbb{R}^{D_1\times D_2 \times \cdots \times
-		D_K}\right\}_n^N$, HODA finds projection matrices $\mat{U_k}$ for each mode $k$
+Let $\left\{\ten{X}(n)\in\mathbb{R}^{D_1\times D_2 \times \cdots \times
+		D_K}\right\}_n^N$ be a set of $N$ tensors of order$K$. HODA finds projection matrices $\mat{U_k}$ for each mode $k$
 that project a given $\ten{X}$ to a latent tensor
 $\ten{G}\in\mathbb{R}^{r_1\times r_2\times\cdots\times r_K}$, usually with lower
 dimensionality $(r_1\leq D_1,r_2\leq D_2,\ldots,r_K\leq D_K)$ using
@@ -346,11 +345,11 @@ the noise term and the extracted latent tensors:
     \right]_n
 \end{equation}
 or, equivalently~\cite{Parra2005,Haufe2014},
-\begin{equation}
+\begin{align}
 	\left\{\mat{A}^*\right\}
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \hat{\ten{X}}(n)\right]^2
-  = \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right]^2
-\end{equation}
+  &= \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \hat{\ten{X}}(n)\right]^2  \\
+  &= \argmin_{\{\mat{A}\}}\sum_n^N\left[\ten{X}(n) - \ten{G}(n)\mmpr{\mat{A}}\right]^2
+\end{align}
 This least squares tensor approximation problem can be solved efficiently using the
 alternating least squares algorithm~\cite{Bentbib2022}, iteratively fixing all but one of the activation patterns such that:
 \begin{equation}
@@ -524,7 +523,7 @@ Finally, the series of blocks can be truncated to the point with
 the highest validation score to determine $B$.
 
 Alternatively, a special case of \ac{bttda} can be constructed using only rank-one
-blocks such that the resulting forward model adheres to the PARAFAC structure.
+blocks such that the resulting forward model adheres to the PA\-RA\-FAC structure.
 The optimal number of rank-one blocks can be found by truncating as above.
 We refer to this strategy as PARAFACDA.
 
@@ -567,7 +566,7 @@ threshold as only hyperparameters.
 Hyperparameters were determined separately for each fold using nested
 stratified 5-fold cross-validation, and, for BTTDA+LDA, in conjunction with the
 greedy model selection algorithm in \cref{alg:model-selection}.
-For HODA+LDA and the HODA blocks in BTTDA+LDA, we chose
+For HODA+LDA, as well as for the HODA blocks in BTTDA+LDA, we chose
 $r=r_1=r_2=\ldots=r_K$ with possible values
 $\textstyle{1,2,4,8,\ldots,\max_kD_k}$
 to reduce computational cost.
@@ -629,7 +628,7 @@ The highest performance is achieved with the proposed BTTDA+LDA.
 One-sided Wilcoxon signed-rank tests with a significance level of $\alpha=0.05$
 reveal that both PARAFACDA+LDA and BTTDA+LDA significantly outperform
 HODA+LDA in both the BNCI2014-008 (PARAFACDA+LDA: $p=0.0039$, BTTDA+LDA:
-$p=0.0039$) and the BNCI2015-003 (PARAFACDA+LDA: $p=0.0001$, BTTDA+LDA:
+$p=0.0039$) and the BNCI2015-003 (PA\-RA\-FAC\-DA+LDA: $p=0.0001$, BTTDA+LDA:
 $p=0.0049$) datasets.
 No significant difference was found between BTTDA+LDA and PARAFACDA+LDA.
 
@@ -716,8 +715,8 @@ NMSE is calculated as:
 
 \section{Discussion}
 \subsection{Contribution}
-The results in \cref{tab:erp-score} and \autoref{tab:mi-score} show that
-in the ERP datasets, BTTDA+LDA and PARAFACDA+LDA reach state-of-the-art decoding performance by
+The results listed in \cref{tab:erp-score} and \autoref{tab:mi-score} show
+that, for the tested ERP datasets, BTTDA+LDA and PARAFACDA+LDA reach state-of-the-art decoding performance by
 exceeding all comparison methods for the two evaluated datasets, but
 for MI datasets, results fall short of those of comparison methods.
 Performance on the MI classification task could, however, be greatly influenced
@@ -729,8 +728,8 @@ HODA model, our results show that BTTDA+LDA performs consistently on par or
 higher than HODA+LDA, with performances of respectively $86.43>83.25$ and
 $85.08>82.57$ for \ac{erp} datasets and $55.13>53.51$ and $80.60<80.88$ for
 \ac{mi} datasets.
-The classification score for BTTDA+LDA was also slightly
-higher than that of
+The classification score obtained by BTTDA+LDA was also slightly
+higher than that of the
 restricted PARAFACDA+LDA for the ERP datasets ($86.43>86.19$ and $85.06>84.85$
 respectively) and one of the MI datasets ($55.13>54.34$ and $80.60<80.88$
 respectively), but these results were not significant, and further studies with
@@ -919,7 +918,7 @@ We have introduced \acf{bttda}, a novel,
 tensor-based, supervised dimensionality reduction technique optimized for class
 discriminability, which adheres to the block-term tensor structure.
 \ac{bttda} is a generalization of \acf{hoda} and can also be
-applied as a special sum-of-rank-one tensors PARAFACDA model.
+applied as a special sum-of-rank-one tensors PA\-RA\-FAC\-DA model.
 The model is obtained by iteratively fitting \ac{hoda} in a deflation scheme,
 leveraging a novel forward modeling step.
 
