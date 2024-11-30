@@ -1,6 +1,2 @@
 find overhaning linebreaks
-author initials
-no math font in text description of results
 lines on part pages
-cover
-sans-serif in algorithms

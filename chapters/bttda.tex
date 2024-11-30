@@ -268,6 +268,7 @@ The iterative process halts after a fixed number of iterations, or when the
 update of each $\mat{U}_k$ is lower than a predetermined threshold.
 The full \ac{hoda} procedure is summarized in \cref{alg:HODA}.
 \begin{algorithm}
+  \sffamily
   \caption[A \acs{hoda} backward solution.]{The \acs{hoda} backward solution.}
 	\label{alg:HODA}
 	\input{chapters/bttda/alg_HODA.tex}
@@ -366,6 +367,7 @@ $\mat{A}_k$ is lower than a predetermined threshold.
 The full algorithm to determine the HODA forward projection is listed
 in \cref{alg:HODA-fw}.
 \begin{algorithm}
+  \sffamily
   \caption[A \acs{hoda} forward solution.]{The \acs{hoda} forward solution.}
 	\label{alg:HODA-fw}
 	\input{chapters/bttda/alg_HODA_fw.tex}
@@ -435,6 +437,7 @@ is required which finds the latent tensors $\ten{G}^{(b)}$ given $\ten{X}$ for
 The extracted features represented by the latent tensors $\ten{G}^{(b)}$ can be
 computed through a deflation scheme summarized in \cref{alg:BTTDA}.
 \begin{algorithm}
+  \sffamily
   \caption[A \acs{bttda} feature extraction.]{\Ac{bttda}.}
 	\label{alg:BTTDA}
 	\input{chapters/bttda/alg_bttda.tex}
@@ -512,6 +515,7 @@ The \ac{rocauc}, or the accuracy in the case of a balanced multi-class problem,
 of classification of extracted feature vectors after feature selection is used as
 a cross-validation score.
 \begin{algorithm}
+  \sffamily
   \caption[Greedy model selection procedure.]{Greedy model selection.}
 	\label{alg:model-selection}
 	\input{chapters/bttda/alg_model_selection.tex}
