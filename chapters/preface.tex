@@ -1,35 +1,36 @@
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-The past four years have been a stimulating, instructive, and intense
+The past four and a half years have been a stimulating, instructive, and intense
 journey of scientific and self-discovery. What started as a vague interest
-in the applications of machine learning in the biomedical domain during
-my master's studies rapidly evolved into a fascination with neural
-signal processing, from the moment I came into contact with ith.
-This was supercharged by the very high science-fiction factor
+in the applications of machine learning in the biomedical domain rapidly evolved
+into a fascination with neural signal processing when I came into contact with
+it via my master thesis.
+Ultimately, this was supercharged by the very high science-fiction factor
 of Brain-Computer Interfaces.
 There is something about both the brain and computers, and
-their beautiful complexity-from-simplicity, that I just can't
+their beautiful complexity arising from simplicity, that I just can't
 seem to let go of.
 
-However, it is the potential impact on people's lives that first drew
-me to the field. The biggest advantage my PhD project had to offer was
-its holistic, end-to-end nature, involving everything from signal
-processing and innovating with machine learning under the hood to EEG
+Yet, it is the tangible impact on people's lives of neurotechnology
+which first drew me to the field.
+The biggest advantage my PhD project had to offer was
+its holistic, end-to-end nature, involving everything from innovation in signal
+processing and machine learning under the hood to EEG
 experimentation and, eventually, working with end-user patients. I have
-always considered this PhD, first and foremost, a learning experience—
-one that has provided me, after a lot of trial and error, with the
-toolkit to, hopefully, improve lives through advancements in biomedical
-technology in the future.
+always considered this PhD, first and foremost, a learning experience.
+An experience that has provided me -- after a lot of trial and error -- with the
+toolkit to, hopefully, continue making this impact in the future by
+advancing biomedical technology.
 
-For this, I am grateful to my thesis supervisors. The excellent and
-complementary combination of the network, resources, advice, and
-feedback you provided helped this project succeed. I would specifically
-like to thank prof. Marc Van Hulle for the many opportunities you have
-given me, prof. François Cabestaing for your close, active, and
-involved supervision, and prof. Hakim Si-Mohammed for the many
-sharp-witted ideas and contributions you brought to the table. I also
-want to thank the members of the jury, prof. Andrea Kübler, prof.
+For this, I am grateful to my thesis supervisors. The combination of the
+network, resources, advice, and feedback you provided helped this project
+succeed.
+I would specifically like to thank prof. Marc Van Hulle for the many
+opportunities you have given me, prof. François Cabestaing for your close,
+active, and involved supervision, and prof. Hakim Si-Mohammed for the many
+sharp-witted ideas and contributions you brought to the table.
+I also want to thank the members of the jury, prof. Andrea Kübler, prof.
 Fabien Lotte, prof. Reinhold Scherer, prof. Maarten De Vos, and prof.
 Adalberto Simeone, for the time and effort you have spent evaluating
 this thesis and for your insightful feedback.
@@ -38,11 +39,12 @@ Furthermore, I would like to explicitly thank everyone else who helped
 in realizing the work presented in this thesis. Juliette, your
 proactive attitude and multidisciplinary perspective were an immense help in
 data collection. Without you, this thesis would probably be missing its
-last chapter, and I hope you enjoy your well-deserved upcoming PhD
-career. Working with participants with physical impairment would also
+last chapter, and I hope you enjoy your well-deserved upcoming academic
+career.
+Working with some of our end-user study participants would also
 not have been possible without the medical advice of prof. Etienne
-Allart from the Neurorehabilitation Unit at CHU Lille. I would also
-like to thank the others involved in recruiting and interacting with
+Allart from the Neurorehabilitation Unit at CHU Lille, as well as
+the others involved in recruiting and interacting with
 these participants: Alixe and dr. Edward Schietekatte at TRAINM Neuro
 Rehab Clinics, prof. Kristl Claeys and prof. Philip Van Damme from the
 Neuromuscular Reference Center at UZ Leuven, Marie and the team at
@@ -50,66 +52,63 @@ Fondation Partage et Vie, and all colleagues who helped me in data
 collection and processing. Most importantly, I am grateful to everyone
 who participated in our study, and I am sincerely moved by the positive
 reception among those of you who could benefit from it. Of course, I
-would also like to thank all students, colleagues, and friends who
-submitted themselves to having their hair messed up in yet another EEG
+would also like to thank all other students, colleagues, and friends who
+submitted themselves to having their hair messed up by yet another EEG
 experiment.
 
 Since my thesis was a joint PhD between two labs, one at KU Leuven in
 Belgium and one at the University of Lille in France, I got to
-experience working at two different research institutions, which formed
-an invaluable enrichment of my mini-career so far. This also means I've
-had the amazing luck of having double the amount of wonderful
+experience working at two different research institutions
+This formed an invaluable enrichment of my career until now.
+It also means I've had the amazing luck of having double the amount of wonderful
 colleagues.
 
 In Lille, I've very much appreciated working with Gaël. Your presence
 never failed to lighten up the mood, and I wish you smooth sailings
 in completing your own PhD. Next, I want to thank Jimmy for showing
 me the way through Lille and its campus life, and for all the tea. I
-also enjoyed discussing with José, Jean-Marc, and Marie-Hélène. Finally,
-I'm glad that the SIGMA team was around to keep me in touch with
-my computer science roots. Even though I was not always physically
-present in Lille, I've always considered all of you as very good
-colleagues, and I'm glad I've had the opportunity to revive my high
-school French, which was in dire need of a refresher.
+also enjoyed discussing with José, Jean-Marc, and Marie-Hélène.
+Even though I was not always physically
+present in Lille, you've always made sure I felt part of the team.
+Finally, I'm glad that the SIGMA team was around to keep me in touch with
+my computer science roots.
 
 In Leuven, I want to begin with a special thanks to those of you who
-guided me in the beginning of my PhD: Benjamin, for introducing me to
+guided me at the start of my PhD: Benjamin, for introducing me to
 the wonderful world of ERPs and linear decoding, and Axel and Arno for
-powering through COVID with me. As for the rest of you lot—Aline,
-Anahit, Aurélie, Barbara, Bob, Bob, Elvira, Eva, Li Ang, Liuyin, Mani,
-Mani, Mansoureh, Qiang, Tjaša, Valentina, and Yide—you've made my days
-brighter in many ways, and I could always count on you for advice,
-support, or help. To Dilara, Gijs, Lunky, Reniflal, and Zoe, master
-students and interns that I was fortunate enough to supervise: thank
-you for your dedication, and good luck with your future adventures. I
-would also like to mention the great work of the students at NeuroTech
-Leuven—you never fail to impress me with wonderful ideas and excellent
+powering through COVID with me. As for the rest of you lot -- Aline,
+Anahit, Aurélie, Barbara, Bob, Elvira, Eva, Li Ang, Liuyin, Mani, Mansoureh,
+Qiang, Tjaša, Valentina, and Yide -- you've made my days brighter in many ways,
+and I could always count on you, be it for advice, support or help.
+I also wish to thank the students and interns I was fortunate enough to
+supervise for their dedication and great work, as well as the students at NeuroTech Leuven.
+You never failed to impress me with creative ideas and excellent
 execution. A final shoutout to everyone in and around the
 Neurophysiology lab: Alessia, Astrid, Christophe, Inez, Jonathan,
-Kenneth, Noa, Saba, Sara, Sofie, Stijn, Wouter, and all others.
+Kenneth, Lara, Noa, Saba, Sara, Sofie, Stijn, Wouter, and all others.
 
-On a more personal note, I probably wouldn't have gotten here if it was
-not for the support (and proofreading) I have \emph{always} experienced
+On a more personal note, I probably wouldn't have gotten here if it wasn't
+for the support (and proofreading) I have \emph{always} experienced
 from my family and friends.
 Cato, Loes, Mama, and Papa, I think you've provided about the
-best nest I could imagine to grow up in. To Aderik, Joran, Siebe: thank you for
+best nest I could imagine to grow up in. To Aderik, Joran and Siebe: thank you for
 carrying me throughout my university studies.
-To Hanne, Ingrid, Jonah, Kiefer, Joshua, Mathias, Vik, and Yana, I have but one
-thing to say: Snek is love, Snek \emph{is} life.
+To Hanne, Ingrid, Jonah, Joshua, Kiefer, Mathi, Vik, Ward and Yana, I have but one
+thing to say: Snek \emph{is} love, Snek \emph{is} life.
 
-Some people say whoever is mentioned first on a paper is the most
-important, since they're supposed to have done done all the work.
+Some say that whoever is mentioned first on a paper is the most
+important, since they're supposed to have done all the work.
 Without the last author on there, however, most scientific publications would
-either never have materialized or go unnoticed. Therefore, I would like to
-mention my partner Liesel here at the end.
-Liesel, thank you for everything you have done
-for me. This does not only include the last few months, taking care of
-practical arrangements, proofreading, managing, and putting up with me as I was
-focused -- maybe a bit too much -- on work, \ldots, but much, much more than
-that.
+either never materialize or go unnoticed.
+Therefore, I would like to mention my partner Liesel here at the end.
+Liesel, thank you for everything you do and have done
+for me. This does not only include the past few months and your help with
+practical arrangements, proofreading, and putting up with me as I was
+-- maybe a bit too much -- focused on work, but much, much more
+than that.
 I still cannot believe how lucky I am to have you by my side.
 
 As you turn this page and start reading the first chapter, I will also
-start a new chapter in my life. You, on the other hand, will now dive
-into about 200 pages of algebra, convoluted procedures, and tables with
+start a new chapter in my life. You, on the other hand, will dive into
+some 200 pages of algebra, convoluted procedures, and tables with
 numbers. Enjoy!

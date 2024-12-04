@@ -239,11 +239,11 @@ For example, spatiotemporal beamforming or \ac{lda} with Kronecker-structured co
 improves performance in low sample sizes but is outperformed by more flexible
 methods, such as \ac{lda} using a Kronecker-sum covariance model or \ac{tlda}
 when the training sample size increases.
-Similarly, \ac{bttda} offers more flexibility.
+Similarly, \ac{bttda} offers more flexibility than \ac{hoda}.
 
 This calls for the development of more flexible (multi-)linear models that still rely on some
 structure but are combined with efficient model
-selection, such as those proposed by \ac{bttda}.
+selection, such as the methods proposed in conjunction with \ac{bttda}.
 These models try to combine the best of both worlds.
 
 \subsection{Optimize user experience}
@@ -300,7 +300,7 @@ data collection and iterate on the results offline.
 Yet, this can be too limiting when seeking to design the most usable interface
 for a specific group of users.
 
-The optimal approach should unify decoder development, choice of paradigm, and interface
+The optimal approach should unify decoder development, choice of pa\-ra\-digm, and interface
 design, as advocated by~\textcite{Pan2022} and~\textcite{Fouad2020}, by integrating both
 engineering and clinical perspectives.
 Performance and abilities likely depend to a great degree on the user,

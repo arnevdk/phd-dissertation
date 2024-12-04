@@ -5,7 +5,9 @@
 \RequirePackage[table]{xcolor}
 \RequirePackage{pgfplots}
 \RequirePackage{amsmath}
+\RequirePackage[T1]{fontenc}
 \RequirePackage[backend=biber, doi=false, url=false, isbn=false, eprint=false]{biblatex}
+\RequirePackage{epigraph}
 
 % Dynamically extend documentclass ============================================
 

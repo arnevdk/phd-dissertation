@@ -530,7 +530,7 @@ We refer to this strategy as PARAFACDA.
 \section{Experiments}
 \subsection{Datasets and decoders}
 We evaluated our proposed model in two offline EEG-based BCI decoding problems:
-the event-related potential (ERP) and motor imagery (MI) paradigms using a
+the event-related potential (ERP) and motor imagery (MI) pa\-ra\-digms using a
 selection of the openly available MOABB benchmarking datasets~\cite{Aristimunha2023}.
 Two ERP and two MI datasets were retained to reduce computational
 demand.
@@ -614,8 +614,7 @@ dimensionality $(8,48)$ and $(8,38)$, respectively.
 decoders.
 \begin{table}[t]
 	\input{chapters/bttda/score_erp.tex}
-  \caption[Within-session classification score for 2 event-related potential
-  datasets.]{Area under the receiver operating characteristic curve for
+  \caption[Within-session classification score for 2 \acs{erp}.]{Area under the receiver operating characteristic curve for
 		cross-validated within-session evaluation for HODA and our proposed decoders
 		PARAFACDA and BTTDA evaluated on 2 event-related potential datasets.
     Scores for other decoders were taken from \textcite{Chevallier2024}.
@@ -630,7 +629,7 @@ reveal that both PARAFACDA+LDA and BTTDA+LDA significantly outperform
 HODA+LDA in both the BNCI2014-008 (PARAFACDA+LDA: $p=0.0039$, BTTDA+LDA:
 $p=0.0039$) and the BNCI2015-003 (PA\-RA\-FAC\-DA+LDA: $p=0.0001$, BTTDA+LDA:
 $p=0.0049$) datasets.
-No significant difference was found between BTTDA+LDA and PARAFACDA+LDA.
+No significant difference was found between BTTDA+LDA and PA\-RA\-FAC\-DA+LDA.
 
 
 \subsection{Motor Imagery}
@@ -663,7 +662,7 @@ multi-class classification problem in BNCI2014-001, while ROC-AUC was reported f
 binary classification problem in BNCI2014-004.
 \begin{table}[t]
 	\input{chapters/bttda/score_mi.tex}
-  \caption[Within-session classification score for 2 motor imagery datasets.]{Classification score for
+  \caption[Within-session classification score for 2 \acs{mi} datasets.]{Classification score for
 		cross-validated within-session evaluation for HODA+LDA and our proposed decoders
 		PARAFACDA+LDA and BTTDA+LDA evaluated on 2 motor imagery datasets.
 		Scores for other decoders were taken from \textcite{Chevallier2024}.
@@ -730,7 +729,7 @@ $85.08>82.57$ for \ac{erp} datasets and $55.13>53.51$ and $80.60<80.88$ for
 \ac{mi} datasets.
 The classification score obtained by BTTDA+LDA was also slightly
 higher than that of the
-restricted PARAFACDA+LDA for the ERP datasets ($86.43>86.19$ and $85.06>84.85$
+restricted PA\-RA\-FAC\-DA+LDA for the ERP datasets ($86.43>86.19$ and $85.06>84.85$
 respectively) and one of the MI datasets ($55.13>54.34$ and $80.60<80.88$
 respectively), but these results were not significant, and further studies with
 more datasets and subjects should show whether this holds.
