@@ -437,7 +437,7 @@ label.
 Aligning is performed by shifting and zero-padding the signal to the right if
 the latency is negative relative to the time window onset, and to the left if
 positive, by the difference between the latency and the window onset.
-\fullpagefig{%
+\fullpagefig[caption.fullwidth, odd]{%
   \includegraphics[width=\textwidth]{figures/wcble/figure1.pdf}
 }{%
   \caption[Schematic representation of the \acs{wcble} training phase.]{%
@@ -534,8 +534,8 @@ A sample of the simulated evoked data is displayed in \cref{fig:wcble/sim-sine}.
     Simulated target (bottom half of epochs) and non-target (top half of epochs) evoked data
     and their average (red: target, yellow: non-target, shaded area: standard
     deviation).
-    Targets contain a sine wave pulse jittered by $\sigma$. 32 \ac{eeg} channels with pink
-    spatiotemporal noise were simulated using a forward head model, and channel C3 is
+    Targets contain a sine wave pulse, jittered by $\sigma$. 32 \ac{eeg}
+    channels with varying levels of noise were simulated using a forward model, channel C3 is
     plotted here.
   }
   \label{fig:wcble/sim-sine}

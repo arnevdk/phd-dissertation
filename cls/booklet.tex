@@ -35,7 +35,7 @@
 % Custom command to position the caption in the bottom-right
 
 \setlength{\fullpagefigwidth}{\paperwidth}
-\newcommand{\fullpagefig}[3][caption.south, anchor.center]{%
+\newcommand{\fullpagefig}[3][caption.south, anchor.center, even]{%
     \afterpage{%
        \clearpage
        \pagecolor{lightgray} % Set background color
@@ -47,23 +47,29 @@
             \begin{tikzpicture}[remember picture, overlay]  % Overlay environment
               % Place the figure content (image, TikZ, PGFPlot, etc.)
 
-             \ifoddpage
-                 \def\xsep{1cm}% For even pages
-             \else
-                 \def\xsep{2.5cm}% For odd pages
-             \fi
+              \IfSubStr{#1}{odd}{%
+                \def\xsep{2cm}% For odd pages
+              }{%
+                \def\xsep{1cm}% For even pages
+              }
+
+              \IfSubStr{#1}{caption.fullwidth}{%
+                \def\captionwidth{\textwidth}
+              }{%
+                \def\captionwidth{.5\paperwidth}
+              }
 
               \IfSubStr{#1}{anchor.north}{%
-                \node[anchor=north,inner sep=1cm] (image) at (current page.north) {#2};
+                \node[anchor=north,inner sep=1.5cm] (image) at (current page.north) {#2};
               }{%
                 \node[anchor=center,inner sep=0] (image) at (current page.center) {#2};
               }
 
-                % Overlay caption
+              % Overlay caption
               \IfSubStr{#1}{caption.north}{%
                  \node[
                      anchor=north west,
-                     text width=0.6\paperwidth,
+                     text width=\captionwidth,
                      inner xsep=\xsep,
                      inner ysep=1cm,
                      xshift=5mm,
@@ -73,7 +79,7 @@
               }{%
                  \node[
                      anchor=south west,
-                     text width=0.5\paperwidth,
+                     text width=\captionwidth,
                      inner xsep=\xsep,
                      inner ysep=1cm,
                      xshift=5mm,
