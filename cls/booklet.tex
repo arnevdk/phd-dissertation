@@ -9,6 +9,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{xstring}
 \RequirePackage{eso-pic}
+\RequirePackage{ifoddpage}
 
 % Set page size ================================================================
 \RequirePackage[
@@ -45,6 +46,13 @@
             \sffamily
             \begin{tikzpicture}[remember picture, overlay]  % Overlay environment
               % Place the figure content (image, TikZ, PGFPlot, etc.)
+
+             \ifoddpage
+                 \def\xsep{1cm}% For even pages
+             \else
+                 \def\xsep{2.5cm}% For odd pages
+             \fi
+
               \IfSubStr{#1}{anchor.north}{%
                 \node[anchor=north,inner sep=1cm] (image) at (current page.north) {#2};
               }{%
@@ -55,8 +63,9 @@
               \IfSubStr{#1}{caption.north}{%
                  \node[
                      anchor=north west,
-                     text width=0.5\paperwidth,
-                     inner sep=1cm,
+                     text width=0.6\paperwidth,
+                     inner xsep=\xsep,
+                     inner ysep=1cm,
                      xshift=5mm,
                  ] at (current page.north west) {%
                    \justifying#3
@@ -65,7 +74,8 @@
                  \node[
                      anchor=south west,
                      text width=0.5\paperwidth,
-                     inner sep=1cm,
+                     inner xsep=\xsep,
+                     inner ysep=1cm,
                      xshift=5mm,
                  ] at (current page.south west) {%
                    \justifying#3
