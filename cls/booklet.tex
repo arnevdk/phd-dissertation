@@ -1,3 +1,4 @@
+\RequirePackage{acro}
 \RequirePackage{afterpage}
 \RequirePackage{float}
 \RequirePackage{ragged2e}
@@ -38,7 +39,19 @@
 \newcommand{\fullpagefig}[3][caption.south, anchor.center, even]{%
     \afterpage{%
        \clearpage
-       \pagecolor{lightgray} % Set background color
+
+       % set background color
+       \IfSubStr{#1}{background.black}{%
+         \pagecolor{black}
+         \captionsetup{
+           justification=justified,
+           singlelinecheck=off,
+           labelfont={color=white, bf},
+           textfont={color=lightgray}
+         }
+       }{%
+         \pagecolor{lightgray}
+       }
        \pagestyle{empty}    % Remove headers/footers
        % Begin the figure
        \begin{figure}[H]
@@ -65,6 +78,8 @@
                 \node[anchor=center,inner sep=0] (image) at (current page.center) {#2};
               }
 
+
+
               % Overlay caption
               \IfSubStr{#1}{caption.north}{%
                  \node[
@@ -83,7 +98,7 @@
                      inner xsep=\xsep,
                      inner ysep=1cm,
                      xshift=5mm,
-                 ] at (current page.south west) {%
+                   ] at (current page.south west) {%
                    \justifying#3
                  };
               }
@@ -223,6 +238,10 @@
 \makeatletter
 \renewcommand\@cftmakelottitle{\chapter{\listtablename}}
 \makeatother
+
+
+% Setup LoA
+
 
 \renewcommand{\publicationnote}[1]{\noindent\emph{\sffamily#1}}
 \raggedbottom

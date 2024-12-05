@@ -195,7 +195,7 @@ map_df_kws = dict(
 )
 g = sns.FacetGrid(
     df_diff[df_diff["dataset"] == "CVSA-ERP"],
-    height=(textwidth_in + 0.2) / aspect,
+    height=(textwidth_in + 0.0) / aspect,
     **fg_kws,
 )
 g.map_dataframe(**map_df_kws)
@@ -211,7 +211,7 @@ plt.savefig(
 
 g = sns.FacetGrid(
     df_diff[df_diff["dataset"] == "BNCI2014-009"],
-    height=((textwidth_in / 2) + 0.5) / aspect,
+    height=((textwidth_in / 2) + 0.0) / aspect,
     **fg_kws,
 )
 g.map_dataframe(**map_df_kws)

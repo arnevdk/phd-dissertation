@@ -1,7 +1,7 @@
 \documentclass[booklet]{dissertation}
 \usepackage{dissertation}
 
-\includeonly{chapters/wcble}
+%\includeonly{}
 
 \begin{document}
 
@@ -33,7 +33,12 @@
 \listoftables
 {%
   \setlist{itemsep=0pt}
-  \printacronyms[name=List of acronyms]
+  \sffamily
+  \setlist[description]{%
+    font={\bfseries\sffamily}, % set the label font
+  }
+  \printacronyms[heading=chapter*, name=List of acronyms]
+  \addcontentsline{toc}{chapter}{List of acronyms}
 }
 
 % Main matter =================================================================

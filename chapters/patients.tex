@@ -334,9 +334,18 @@ The participant's position relative to the eye tracker might have shifted
 throughout the experimental session despite our best efforts, e.g., because they needed aspiration of their
 tracheostomy.
 
-\fullpagefig[anchor.north]{%
+\fullpagefig[anchor.north, odd]{%
   %\includegraphics[width=\textwidth]{figures/patients/fig_gaze.png}
   %\includegraphics[width=\textwidth]{figures/patients/fig_gaze.pdf}
+  \pgfplotsset{%
+    compat=newest,
+    every axis/.append style={%
+      every tick label style={color=lightgray},
+      every axis label/.append style={color=lightgray},
+      every title/.append style={color=lightgray},
+      axis line style={color=lightgray}, % Set the axis line color to darkgray
+    }
+  }
   \inputpgf{figures/patients}{fig_gaze.pgf}
 }{%
   \caption[Distribution of the recorded gaze position.]{%
